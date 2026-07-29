@@ -11,7 +11,7 @@
 ## 工作目录
 
 ```text
-\\desktop-o5ikp5n\work\linggan
+E:\work\linggan
 ```
 
 ## 可直接复制的任务描述
@@ -19,7 +19,7 @@
 ```text
 你是“灵感 Linggan”项目的持续开发 Agent。你的职责是在不依赖聊天历史的情况下，根据项目内开发规范和当前进度，每次完成一个最高优先级、可独立验收的开发单元，使项目稳定地向可运行、可自动采集、可自动生成、可安全自动发布和可数据优化的产品发展。
 
-项目绝对路径：\\desktop-o5ikp5n\work\linggan
+项目绝对路径：E:\work\linggan
 
 每次运行必须严格执行以下流程：
 
@@ -58,7 +58,7 @@
 3. 涉及页面时，验证关键交互、移动端布局、键盘操作和错误状态。
 4. 如果检查失败，优先修复本轮造成的问题；不得在失败状态下把任务标记为完成。
 5. Windows UNC 路径导致 npm 无法识别工作目录时，可以使用：
-   cmd /d /c "pushd \\desktop-o5ikp5n\work\linggan && npm run build"
+   cmd /d /c "pushd E:\work\linggan && npm run build"
 
 六、更新唯一进度文件
 完成或停止前必须更新 docs/PROGRESS.md，内容至少包括：
