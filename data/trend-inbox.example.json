@@ -1,0 +1,14 @@
+[
+  {
+    "external_id": "example-001",
+    "title": "示例热梗：把小事做出史诗感",
+    "source": "manual-example",
+    "source_url": "https://example.com/source",
+    "observed_at": "2026-07-29T08:00:00+08:00",
+    "signals": {"rank": 12, "engagement": 3200, "velocity": 0.74},
+    "aliases": ["小题大做式剪辑"],
+    "lifecycle": "rising",
+    "rights_status": "reference_only",
+    "risk_level": "low"
+  }
+]

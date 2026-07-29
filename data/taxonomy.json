@@ -1,0 +1,12 @@
+{
+  "media": ["原创", "动漫", "电视剧", "电影", "游戏", "综艺", "网络文化"],
+  "entity_types": ["character", "meme", "scene", "element", "story_pattern", "style"],
+  "character_roles": ["主角", "宿敌", "导师", "反派", "搭档", "团队领袖", "喜剧担当", "神秘来客"],
+  "personalities": ["热血", "冷酷", "傲娇", "理性", "莽撞", "温柔", "腹黑", "社恐", "话痨"],
+  "relationships": ["宿敌", "师徒", "搭档", "陌生人组队", "身份对立", "家庭", "职场上下级", "临时联盟"],
+  "scene_patterns": ["公开对决", "身份揭露", "误会升级", "久别重逢", "训练觉醒", "倒计时营救", "会议甩锅", "比赛逆转", "日常反差", "牺牲告别"],
+  "moods": ["荒诞", "热血", "治愈", "悬疑", "浪漫", "紧张", "讽刺", "怀旧"],
+  "lifecycle": ["emerging", "rising", "peak", "declining", "evergreen", "archived"],
+  "rights_status": ["original", "licensed", "public_domain", "reference_only", "unknown", "restricted"],
+  "risk_level": ["low", "medium", "high", "blocked"]
+}

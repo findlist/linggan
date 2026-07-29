@@ -1,0 +1,26 @@
+{
+  "timezone": "Asia/Shanghai",
+  "schedule": {
+    "trend_collection": "0 8 * * *",
+    "candidate_generation": "30 8 * * *",
+    "review_digest": "0 10 * * *",
+    "metric_rollup": "30 2 * * *",
+    "weekly_weight_update": "0 3 * * 1"
+  },
+  "limits": {
+    "max_items_per_source": 100,
+    "candidate_count": 30,
+    "publish_score": 70,
+    "similarity_ceiling": 0.86,
+    "automatic_publish": false
+  },
+  "weights": {
+    "heat": 0.2,
+    "velocity": 0.15,
+    "contrast": 0.15,
+    "visuality": 0.15,
+    "generatability": 0.15,
+    "seriality": 0.1,
+    "novelty": 0.1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "characters": [
+    {"id":"char_archetype_swordsman","name":"冷酷剑客","kind":"archetype","media":"原创","traits":["冷酷","守诺"],"abilities":["剑术"],"relations":["宿敌","搭档"],"rights_status":"original"},
+    {"id":"char_archetype_hotblood","name":"热血新人","kind":"archetype","media":"原创","traits":["热血","莽撞"],"abilities":["快速学习"],"relations":["导师","宿敌"],"rights_status":"original"},
+    {"id":"char_archetype_detective","name":"失眠侦探","kind":"archetype","media":"原创","traits":["理性","话痨"],"abilities":["观察推理"],"relations":["搭档","神秘来客"],"rights_status":"original"},
+    {"id":"char_archetype_villain_parent","name":"反派奶爸","kind":"archetype","media":"原创","traits":["腹黑","温柔"],"abilities":["组织管理"],"relations":["家庭","身份对立"],"rights_status":"original"}
+  ],
+  "scenes": [
+    {"id":"scene_duel_reversal","name":"弱者在公开对决中逆转","pattern":["公开对峙","遭到轻视","第一次失败","发现破绽","标志性逆转"],"lifecycle":"evergreen","rights_status":"original"},
+    {"id":"scene_identity_reveal","name":"隐藏身份突然揭露","pattern":["异常线索","众人质疑","证据出现","身份揭露","关系重置"],"lifecycle":"evergreen","rights_status":"original"},
+    {"id":"scene_meeting_blame","name":"严肃会议集体甩锅","pattern":["公布事故","逐个采访","证词冲突","真相回放","更大事故发生"],"lifecycle":"evergreen","rights_status":"original"}
+  ],
+  "story_patterns": [
+    {"id":"story_serious_absurd","name":"一本正经的荒诞","beats":["严肃建立规则","目标极其微小","过程逐渐史诗化","生活化台词收尾"]},
+    {"id":"story_countdown","name":"倒计时挑战","beats":["展示倒计时","连续受阻","最后十秒觉醒","结果二次反转"]},
+    {"id":"story_mockumentary","name":"伪纪录片复盘","beats":["事故结果先行","多角色采访","证词互相矛盾","监控揭露真相"]}
+  ],
+  "elements": [
+    {"id":"element_billiards","name":"台球","category":"sport","actions":["开球","走位","清台"],"generatability":0.85},
+    {"id":"element_noodle_shop","name":"深夜拉面铺","category":"location","actions":["拉面","端碗","打烊"],"generatability":0.88},
+    {"id":"element_office_meeting","name":"公司会议室","category":"location","actions":["汇报","投屏","甩锅"],"generatability":0.95}
+  ]
+}
