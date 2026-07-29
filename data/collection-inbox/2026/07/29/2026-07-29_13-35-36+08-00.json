@@ -1,0 +1,419 @@
+{
+  "schema_version": 1,
+  "run": {
+    "id": "collection_20260729_133536",
+    "started_at": "2026-07-29T13:32:57+08:00",
+    "finished_at": "2026-07-29T13:35:36+08:00",
+    "timezone": "Asia/Shanghai",
+    "lookback_hours": 24,
+    "status": "success",
+    "source_count": 8,
+    "item_count": 6,
+    "deduplicated_count": 3,
+    "errors": []
+  },
+  "items": [
+    {
+      "id": "spider_man_brand_new_day_release_20260729",
+      "name": "《蜘蛛侠：崭新之日》上映与首映讨论",
+      "aliases": [
+        "《蜘蛛侠：崭新之日》上映",
+        "《蜘蛛侠：崭新之日》首映影评",
+        "蜘蛛侠崭新之日票房破亿",
+        "蛛联B合"
+      ],
+      "category": "film",
+      "description": "新片上映后，实时热榜、两条首映影评和一条把唢呐演奏带到主演见面场景的跨文化互动内容在近24小时同时获得关注。可复用传播结构是上映节点承接即时观点，再以熟悉主题音乐和本土乐器反差扩大讨论入口。",
+      "source_evidence": [
+        {
+          "url": "https://top.baidu.com/board?tab=realtime",
+          "source_name": "百度热搜",
+          "page_title": "百度热搜",
+          "published_at": null,
+          "collected_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "url": "https://www.bilibili.com/video/BV1k9366mEiW",
+          "source_name": "哔哩哔哩热门",
+          "page_title": "《蜘蛛侠：崭新之日》看完了！微剧透点评！",
+          "published_at": "2026-07-29T04:33:18+08:00",
+          "collected_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "url": "https://www.bilibili.com/video/BV1u73z6sE1S",
+          "source_name": "哔哩哔哩热门",
+          "page_title": "口碑两极？但我超爱！《蜘蛛侠：崭新之日》首映影评",
+          "published_at": "2026-07-28T23:58:22+08:00",
+          "collected_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "url": "https://www.bilibili.com/video/BV1hy3Y6rE44",
+          "source_name": "哔哩哔哩热门",
+          "page_title": "当我在荷兰弟面前用唢呐吹蜘蛛侠主题曲【蛛联B合】",
+          "published_at": "2026-07-28T20:00:00+08:00",
+          "collected_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T13:35:10+08:00",
+      "observed_metrics": [
+        {
+          "name": "百度热搜指数",
+          "value": 5895109,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "微剧透点评播放量",
+          "value": 512106,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "微剧透点评评论数",
+          "value": 4064,
+          "unit": "条",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "首映影评播放量",
+          "value": 262572,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "首映影评评论数",
+          "value": 3844,
+          "unit": "条",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "唢呐互动视频播放量",
+          "value": 517794,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "唢呐互动视频分享数",
+          "value": 1273,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "rising",
+      "contexts": [
+        "新片上映速评",
+        "首映口碑对照",
+        "中西乐器反差",
+        "主题音乐互动"
+      ],
+      "visual_actions": [
+        "上映日期卡切换到即时观点",
+        "两组口碑标签并列展开",
+        "唢呐轮廓与蛛网线条交叠",
+        "观众反应卡按节奏弹出"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "四个同属新片上映传播周期的公开信号已合并，并保留全部来源证据。具体电影、演员、音乐和创作者作品仅作趋势参考；未下载、复制或保存任何视频、音频、台词和图片。"
+    },
+    {
+      "id": "wukong_dasheng_withdrawal_20260729",
+      "name": "电影《悟空大圣》上映五天撤档讨论",
+      "aliases": [
+        "《悟空大圣》突然撤档",
+        "《悟空大圣》上映仅5天"
+      ],
+      "category": "film",
+      "description": "电影上映五天后撤档的消息进入实时热榜，形成围绕短上映窗口和档期变化的集中讨论。可复用结构是先展示原定上映进度，再用时间轴突然中断制造信息反差。",
+      "source_evidence": [
+        {
+          "url": "https://top.baidu.com/board?tab=realtime",
+          "source_name": "百度热搜",
+          "page_title": "百度热搜",
+          "published_at": null,
+          "collected_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T13:35:10+08:00",
+      "observed_metrics": [
+        {
+          "name": "百度热搜指数",
+          "value": 7332467,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "peak",
+      "contexts": [
+        "电影档期变化",
+        "上映窗口复盘",
+        "行业事件时间线"
+      ],
+      "visual_actions": [
+        "上映日历推进五格后暂停",
+        "排片时间轴突然折返",
+        "撤档标签覆盖原定日期"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "只记录实时热榜公开呈现的事件标题和指数，不延伸推断撤档原因、票房或责任归属。具体电影与相关主体仅作趋势参考。"
+    },
+    {
+      "id": "path_to_nowhere_three_body_crossover_20260729",
+      "name": "《无期迷途》与《三体》联动先导公开",
+      "aliases": [
+        "无期迷途三体联动",
+        "无期迷途三体联动先导预告"
+      ],
+      "category": "game",
+      "description": "游戏官方公开与《三体》的联动先导后进入热门，科幻作品世界观与游戏周年传播周期叠加，形成跨作品合作的独立讨论入口。",
+      "source_evidence": [
+        {
+          "url": "https://www.bilibili.com/video/BV1AN3B6CEx8",
+          "source_name": "哔哩哔哩热门",
+          "page_title": "无期迷途|三体 联动先导预告",
+          "published_at": "2026-07-28T21:00:00+08:00",
+          "collected_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T13:35:10+08:00",
+      "observed_metrics": [
+        {
+          "name": "播放量",
+          "value": 816414,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "点赞数",
+          "value": 28773,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "评论数",
+          "value": 3186,
+          "unit": "条",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "分享数",
+          "value": 4487,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "rising",
+      "contexts": [
+        "游戏跨作品联动",
+        "科幻世界观碰撞",
+        "周年节点预告",
+        "联动线索猜测"
+      ],
+      "visual_actions": [
+        "两套世界观符号从两侧靠近",
+        "联动标题分层揭示",
+        "倒计时与坐标信息交替出现",
+        "未知信号波形逐步放大"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "本条与上一批《无期迷途》四周年主线活动属于不同事件，未合并为同一趋势。两个具体作品及其角色、设定和预告素材均仅作参考；未下载或保存媒体内容。"
+    },
+    {
+      "id": "concert_4k_fancam_format_20260729",
+      "name": "演唱会单人4K直拍高互动内容",
+      "aliases": [
+        "演唱会4K直拍",
+        "单人舞台直拍",
+        "苏新皓囍直拍"
+      ],
+      "category": "video_format",
+      "description": "一条聚焦单名表演者的演唱会4K直拍在发布24小时内进入全站排行榜前列，并呈现高密度弹幕、评论与分享。其结构以稳定跟拍、完整舞台动作和粉丝即时互动为核心。",
+      "source_evidence": [
+        {
+          "url": "https://www.bilibili.com/video/BV1Dx3i6nEm8",
+          "source_name": "哔哩哔哩排行榜",
+          "page_title": "【苏新皓｜4K直拍】囍 直拍｜梦寐以求·演唱会",
+          "published_at": "2026-07-28T13:46:58+08:00",
+          "collected_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T13:35:10+08:00",
+      "observed_metrics": [
+        {
+          "name": "播放量",
+          "value": 533031,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "弹幕数",
+          "value": 153097,
+          "unit": "条",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "评论数",
+          "value": 158894,
+          "unit": "条",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "分享数",
+          "value": 112235,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "peak",
+      "contexts": [
+        "演唱会单人舞台",
+        "粉丝向直拍",
+        "舞蹈动作观察",
+        "高密度实时互动"
+      ],
+      "visual_actions": [
+        "镜头持续锁定单名表演者",
+        "全身动作与面部近景交替",
+        "弹幕密度随节拍增强",
+        "舞台灯光变化作为段落转场"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "当前证据是单个高互动样本，不能据此推断全平台长期趋势。涉及真人表演者、演唱会、音乐与创作者视频，均仅作结构参考；不使用肖像、舞台录像、歌曲或其他受保护素材。"
+    },
+    {
+      "id": "game_resource_spending_challenge_20260729",
+      "name": "高价值游戏账号限时清空挑战",
+      "aliases": [
+        "租号一晚上花光挑战",
+        "高价值账号消耗挑战",
+        "梦回COD"
+      ],
+      "category": "video_format",
+      "description": "一条以租用高价值游戏账号并在一晚内尽量消耗资源为目标的挑战内容进入全站排行榜。可复用结构是先给出夸张但可量化的资源目标，再用限时推进和阶段性结算制造连续悬念。",
+      "source_evidence": [
+        {
+          "url": "https://www.bilibili.com/video/BV1pH3v6NEK5",
+          "source_name": "哔哩哔哩排行榜",
+          "page_title": "当老六租了一个6000W的号挑战一晚上花光，梦回COD",
+          "published_at": "2026-07-28T18:06:52+08:00",
+          "collected_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T13:35:10+08:00",
+      "observed_metrics": [
+        {
+          "name": "播放量",
+          "value": 974829,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "点赞数",
+          "value": 83307,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "投币数",
+          "value": 11983,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "收藏数",
+          "value": 9611,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "rising",
+      "contexts": [
+        "游戏账号挑战",
+        "限时资源消耗",
+        "阶段结算悬念",
+        "高价值目标反差"
+      ],
+      "visual_actions": [
+        "资源总值从大数字开始倒计时",
+        "每轮操作后刷新剩余数值",
+        "限时时钟持续压缩",
+        "最终结算卡揭示完成比例"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "标题中的账号价值和租用情节是创作者公开表达，未独立核实为真实资产估值，不作为事实扩展。具体游戏、账号和创作者视频仅作参考，不复制玩法画面或视频素材。"
+    },
+    {
+      "id": "jingdezhen_world_heritage_explainer_20260729",
+      "name": "景德镇世界遗产门槛拆解内容",
+      "aliases": [
+        "景德镇凭什么是世界遗产",
+        "成为世界遗产有多难",
+        "景德镇申遗科普"
+      ],
+      "category": "cultural_event",
+      "description": "一条以连续提问拆解景德镇世界遗产价值和申报门槛的科普视频在近24小时进入热门。传播结构从熟悉地点切入，用评选条件、历史证据和反问逐层回答“凭什么”与“有多难”。",
+      "source_evidence": [
+        {
+          "url": "https://www.bilibili.com/video/BV1Su3v6VE5U",
+          "source_name": "哔哩哔哩热门",
+          "page_title": "景德镇凭什么是世界遗产?要成为世界遗产有多难?【阿Test正经比比】",
+          "published_at": "2026-07-28T18:30:31+08:00",
+          "collected_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T13:35:10+08:00",
+      "observed_metrics": [
+        {
+          "name": "播放量",
+          "value": 608356,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "点赞数",
+          "value": 19497,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        },
+        {
+          "name": "收藏数",
+          "value": 3938,
+          "unit": "次",
+          "observed_at": "2026-07-29T13:35:10+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "rising",
+      "contexts": [
+        "文化遗产科普",
+        "申报门槛拆解",
+        "城市文化解释",
+        "连续问题式标题"
+      ],
+      "visual_actions": [
+        "地图定位到代表性城市",
+        "评选条件逐项点亮",
+        "历史时间轴与工艺流程并列",
+        "问题卡翻转为证据卡"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "只记录公开页面标题、发布时间与可见互动指标；没有复制视频中的解说、图像或论证细节。具体城市文化遗产与创作者作品仅作趋势参考。"
+    }
+  ]
+}
