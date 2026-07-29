@@ -29,6 +29,20 @@ npm run build
 npm run pipeline:daily
 ```
 
+校验基础知识库、种子数据与正式趋势存储：
+
+```bash
+npm run validate:data
+```
+
+将 `data/collection-inbox/` 中通过 Schema 的采集批次去重迁移到本地正式趋势库：
+
+```bash
+npm run migrate:trends
+```
+
+基础作品、知名人物、人物关系和抽象名场面存放在 `data/knowledge-base.json`。具体知名角色与名场面仅作 `reference_only`，不得作为精确复刻素材。
+
 自进化系统的完整规划见 [开发计划](docs/DEVELOPMENT_PLAN.md) 和 [内容分类规范](docs/CONTENT_SYSTEM.md)。当前脚本只读取示例趋势并向标准输出生成候选，不会自动发布内容。
 
 ## 产品路线

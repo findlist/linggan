@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_empresses_palace",
+      "title": "甄嬛传",
+      "original_title": "后宫·甄嬛传",
+      "aliases": ["Empresses in the Palace"],
+      "media_type": "television",
+      "regions": ["中国大陆"],
+      "release_year": 2011,
+      "genres": ["古装", "剧情"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [{"url":"https://en.wikipedia.org/wiki/Empresses_in_the_Palace","source_name":"Wikipedia","page_title":"Empresses in the Palace","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "work_naruto",
+      "title": "火影忍者",
+      "original_title": "NARUTO -ナルト-",
+      "aliases": ["Naruto"],
+      "media_type": "anime",
+      "regions": ["日本"],
+      "release_year": 2002,
+      "genres": ["冒险", "成长"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [{"url":"https://en.wikipedia.org/wiki/Naruto","source_name":"Wikipedia","page_title":"Naruto","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "work_matrix",
+      "title": "黑客帝国",
+      "original_title": "The Matrix",
+      "aliases": ["矩阵"],
+      "media_type": "film",
+      "regions": ["美国"],
+      "release_year": 1999,
+      "genres": ["科幻", "动作"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [{"url":"https://en.wikipedia.org/wiki/The_Matrix","source_name":"Wikipedia","page_title":"The Matrix","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {"id":"known_zhen_huan","work_id":"work_empresses_palace","name":"甄嬛","aliases":[],"roles":["核心人物"],"traits":["审慎","坚韧"],"relationships":["known_empress_yixiu"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Empresses_in_the_Palace","source_name":"Wikipedia","page_title":"Empresses in the Palace","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
+    {"id":"known_empress_yixiu","work_id":"work_empresses_palace","name":"宜修皇后","aliases":["皇后"],"roles":["权力对手"],"traits":["克制","善谋"],"relationships":["known_zhen_huan"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Empresses_in_the_Palace","source_name":"Wikipedia","page_title":"Empresses in the Palace","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
+    {"id":"known_naruto","work_id":"work_naruto","name":"漩涡鸣人","aliases":["Naruto Uzumaki"],"roles":["成长型主角"],"traits":["乐观","执着"],"relationships":["known_sasuke"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Naruto","source_name":"Wikipedia","page_title":"Naruto","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
+    {"id":"known_sasuke","work_id":"work_naruto","name":"宇智波佐助","aliases":["Sasuke Uchiha"],"roles":["宿敌与同伴"],"traits":["冷静","执着"],"relationships":["known_naruto"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Naruto","source_name":"Wikipedia","page_title":"Naruto","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
+    {"id":"known_neo","work_id":"work_matrix","name":"尼奥","aliases":["Neo"],"roles":["觉醒者"],"traits":["怀疑","勇敢"],"relationships":["known_morpheus"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/The_Matrix","source_name":"Wikipedia","page_title":"The Matrix","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
+    {"id":"known_morpheus","work_id":"work_matrix","name":"墨菲斯","aliases":["Morpheus"],"roles":["引路人"],"traits":["坚定","启发"],"relationships":["known_neo"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/The_Matrix","source_name":"Wikipedia","page_title":"The Matrix","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"}
+  ],
+  "relationships": [
+    {"id":"relation_zhen_huan_yixiu","work_id":"work_empresses_palace","from_character_id":"known_zhen_huan","to_character_id":"known_empress_yixiu","relation":"权力对手","description":"双方围绕宫廷秩序与生存空间形成持续博弈。","sources":[{"url":"https://en.wikipedia.org/wiki/Empresses_in_the_Palace","source_name":"Wikipedia","page_title":"Empresses in the Palace","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
+    {"id":"relation_naruto_sasuke","work_id":"work_naruto","from_character_id":"known_naruto","to_character_id":"known_sasuke","relation":"同伴与宿敌","description":"竞争、分离和追寻共同构成长线关系张力。","sources":[{"url":"https://en.wikipedia.org/wiki/Naruto","source_name":"Wikipedia","page_title":"Naruto","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
+    {"id":"relation_neo_morpheus","work_id":"work_matrix","from_character_id":"known_morpheus","to_character_id":"known_neo","relation":"导师与觉醒者","description":"引路人提供选择，主角通过亲自验证完成认知转变。","sources":[{"url":"https://en.wikipedia.org/wiki/The_Matrix","source_name":"Wikipedia","page_title":"The Matrix","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"}
+  ],
+  "iconic_moments": [
+    {"id":"moment_return_power_shift","work_id":"work_empresses_palace","name":"旧人物回归引发权力重排","participant_ids":["known_zhen_huan","known_empress_yixiu"],"setting":"等级森严的封闭权力场","conflict_type":"身份回归与秩序挑战","emotional_arc":["压抑","试探","反制","格局重置"],"visual_actions":["缓慢入场","群体反应切换","位置对比"],"reusable_beats":["缺席者被谈论","人物以新身份出现","对手表面欢迎","座次或站位暗示权力变化"],"abstraction":"用回归、群像反应和空间位置变化表现权力格局重置，不复刻原作台词、服装或镜头。","rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Empresses_in_the_Palace","source_name":"Wikipedia","page_title":"Empresses in the Palace","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
+    {"id":"moment_rivals_final_confrontation","work_id":"work_naruto","name":"长期宿敌在终局正面对抗","participant_ids":["known_naruto","known_sasuke"],"setting":"与共同记忆相关的开阔决战地","conflict_type":"理念分歧与关系挽回","emotional_arc":["决绝","对抗","耗尽","理解"],"visual_actions":["远景对峙","能力逐级升级","近身消耗","并置收尾"],"reusable_beats":["重申无法调和的目标","用行动回应共同历史","双方能力逐步耗尽","冲突结果改变关系定义"],"abstraction":"将长线关系矛盾压缩成由远及近、由宏大到朴素的终局对抗节奏，不使用专属招式或原作画面。","rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Naruto","source_name":"Wikipedia","page_title":"Naruto","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
+    {"id":"moment_reality_choice","work_id":"work_matrix","name":"主角在两种认知之间作出不可逆选择","participant_ids":["known_neo","known_morpheus"],"setting":"安静、封闭且带有象征物的谈话空间","conflict_type":"安全幻觉与危险真相","emotional_arc":["怀疑","诱导","选择","觉醒"],"visual_actions":["展示两个选项","手部特写","短暂停顿","环境突变"],"reusable_beats":["导师指出现实存在裂缝","给出清晰但代价不同的选择","主角主动选择未知","世界规则立即改变"],"abstraction":"用二选一象征物和选择后的环境变化表现认知觉醒，避免复刻原作道具造型、台词和构图。","rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/The_Matrix","source_name":"Wikipedia","page_title":"The Matrix","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"}
+  ]
+}

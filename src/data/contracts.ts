@@ -1,13 +1,14 @@
 import { z } from 'zod'
 
 const NonEmptyTextSchema = z.string().trim().min(1)
-const StableIdSchema = z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/)
+export const StableIdSchema = z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/)
 const StringListSchema = z.array(NonEmptyTextSchema)
 const UniqueStringListSchema = StringListSchema.refine(
   values => new Set(values).size === values.length,
   'must not contain duplicate values'
 )
 const ScoreValueSchema = z.number().finite().min(0).max(100)
+const HttpUrlSchema = z.string().url().refine(value => /^https?:\/\//u.test(value), 'must be an HTTP(S) URL')
 
 export const RightsStatusSchema = z.enum([
   'original',
@@ -28,6 +29,227 @@ export const LifecycleSchema = z.enum([
 ])
 
 export const RiskLevelSchema = z.enum(['low', 'medium', 'high', 'blocked'])
+
+export const SourceEvidenceSchema = z.object({
+  url: HttpUrlSchema,
+  source_name: NonEmptyTextSchema,
+  page_title: NonEmptyTextSchema,
+  published_at: z.iso.datetime({ offset: true }).nullable(),
+  collected_at: z.iso.datetime({ offset: true })
+}).strict()
+
+export const WorkSchema = z.object({
+  id: StableIdSchema,
+  title: NonEmptyTextSchema,
+  original_title: NonEmptyTextSchema.nullable(),
+  aliases: UniqueStringListSchema,
+  media_type: z.enum(['television', 'anime', 'film', 'game', 'variety']),
+  regions: UniqueStringListSchema.min(1),
+  release_year: z.number().int().min(1800).max(2200).nullable(),
+  genres: UniqueStringListSchema.min(1),
+  rights_status: RightsStatusSchema,
+  risk_level: RiskLevelSchema,
+  sources: z.array(SourceEvidenceSchema).min(1),
+  last_verified_at: z.iso.datetime({ offset: true })
+}).strict()
+
+export const KnownCharacterSchema = z.object({
+  id: StableIdSchema,
+  work_id: StableIdSchema,
+  name: NonEmptyTextSchema,
+  aliases: UniqueStringListSchema,
+  roles: UniqueStringListSchema.min(1),
+  traits: UniqueStringListSchema.min(1),
+  relationships: z.array(StableIdSchema),
+  rights_status: z.literal('reference_only'),
+  risk_level: RiskLevelSchema,
+  sources: z.array(SourceEvidenceSchema).min(1),
+  last_verified_at: z.iso.datetime({ offset: true })
+}).strict()
+
+export const CharacterRelationshipSchema = z.object({
+  id: StableIdSchema,
+  work_id: StableIdSchema,
+  from_character_id: StableIdSchema,
+  to_character_id: StableIdSchema,
+  relation: NonEmptyTextSchema,
+  description: NonEmptyTextSchema,
+  sources: z.array(SourceEvidenceSchema).min(1),
+  last_verified_at: z.iso.datetime({ offset: true })
+}).strict().refine(value => value.from_character_id !== value.to_character_id, {
+  message: 'relationship endpoints must differ'
+})
+
+export const IconicMomentSchema = z.object({
+  id: StableIdSchema,
+  work_id: StableIdSchema,
+  name: NonEmptyTextSchema,
+  participant_ids: z.array(StableIdSchema).min(1),
+  setting: NonEmptyTextSchema,
+  conflict_type: NonEmptyTextSchema,
+  emotional_arc: UniqueStringListSchema.min(2),
+  visual_actions: UniqueStringListSchema.min(1),
+  reusable_beats: UniqueStringListSchema.min(3),
+  abstraction: NonEmptyTextSchema,
+  rights_status: z.literal('reference_only'),
+  risk_level: RiskLevelSchema,
+  sources: z.array(SourceEvidenceSchema).min(1),
+  last_verified_at: z.iso.datetime({ offset: true })
+}).strict()
+
+export const KnowledgeBaseSchema = z.object({
+  schema_version: z.literal(1),
+  works: z.array(WorkSchema),
+  known_characters: z.array(KnownCharacterSchema),
+  relationships: z.array(CharacterRelationshipSchema),
+  iconic_moments: z.array(IconicMomentSchema)
+}).strict().superRefine((knowledge, context) => {
+  const workIds = new Set(knowledge.works.map(work => work.id))
+  const characterIds = new Set(knowledge.known_characters.map(character => character.id))
+  const allIds = [
+    ...knowledge.works.map(item => item.id),
+    ...knowledge.known_characters.map(item => item.id),
+    ...knowledge.relationships.map(item => item.id),
+    ...knowledge.iconic_moments.map(item => item.id)
+  ]
+
+  if (new Set(allIds).size !== allIds.length) {
+    context.addIssue({ code: 'custom', path: [], message: 'knowledge entity ids must be globally unique' })
+  }
+
+  knowledge.known_characters.forEach((character, index) => {
+    if (!workIds.has(character.work_id)) {
+      context.addIssue({ code: 'custom', path: ['known_characters', index, 'work_id'], message: 'unknown work id' })
+    }
+    character.relationships.forEach((id, relationIndex) => {
+      if (!characterIds.has(id)) {
+        context.addIssue({ code: 'custom', path: ['known_characters', index, 'relationships', relationIndex], message: 'unknown character id' })
+      }
+    })
+  })
+
+  knowledge.relationships.forEach((relationship, index) => {
+    if (!workIds.has(relationship.work_id)) {
+      context.addIssue({ code: 'custom', path: ['relationships', index, 'work_id'], message: 'unknown work id' })
+    }
+    for (const field of ['from_character_id', 'to_character_id'] as const) {
+      if (!characterIds.has(relationship[field])) {
+        context.addIssue({ code: 'custom', path: ['relationships', index, field], message: 'unknown character id' })
+      }
+    }
+  })
+
+  knowledge.iconic_moments.forEach((moment, index) => {
+    if (!workIds.has(moment.work_id)) {
+      context.addIssue({ code: 'custom', path: ['iconic_moments', index, 'work_id'], message: 'unknown work id' })
+    }
+    moment.participant_ids.forEach((id, participantIndex) => {
+      if (!characterIds.has(id)) {
+        context.addIssue({ code: 'custom', path: ['iconic_moments', index, 'participant_ids', participantIndex], message: 'unknown character id' })
+      }
+    })
+  })
+})
+
+export const TrendCategorySchema = z.enum([
+  'meme',
+  'expression',
+  'television',
+  'anime',
+  'film',
+  'game',
+  'variety',
+  'character',
+  'video_format',
+  'creator_demand',
+  'festival',
+  'sports',
+  'cultural_event'
+])
+
+export const ObservedMetricSchema = z.object({
+  name: NonEmptyTextSchema,
+  value: z.number().finite().nonnegative(),
+  unit: NonEmptyTextSchema,
+  observed_at: z.iso.datetime({ offset: true })
+}).strict()
+
+export const CollectionItemSchema = z.object({
+  id: StableIdSchema,
+  name: NonEmptyTextSchema,
+  aliases: UniqueStringListSchema,
+  category: TrendCategorySchema,
+  description: NonEmptyTextSchema,
+  source_evidence: z.array(SourceEvidenceSchema).min(1),
+  discovered_at: z.iso.datetime({ offset: true }),
+  observed_metrics: z.array(ObservedMetricSchema),
+  heat: z.number().finite().nonnegative().nullable(),
+  velocity: z.number().finite().min(0).max(1).nullable(),
+  lifecycle: LifecycleSchema,
+  contexts: UniqueStringListSchema,
+  visual_actions: UniqueStringListSchema,
+  risk_level: RiskLevelSchema,
+  rights_status: RightsStatusSchema,
+  notes: NonEmptyTextSchema
+}).strict()
+
+export const CollectionRunSchema = z.object({
+  id: StableIdSchema,
+  started_at: z.iso.datetime({ offset: true }),
+  finished_at: z.iso.datetime({ offset: true }),
+  timezone: NonEmptyTextSchema,
+  lookback_hours: z.number().int().positive().max(168),
+  status: z.enum(['success', 'partial', 'failed']),
+  source_count: z.number().int().nonnegative(),
+  item_count: z.number().int().nonnegative(),
+  deduplicated_count: z.number().int().nonnegative(),
+  errors: z.array(NonEmptyTextSchema)
+}).strict()
+
+export const CollectionBatchSchema = z.object({
+  schema_version: z.literal(1),
+  run: CollectionRunSchema,
+  items: z.array(CollectionItemSchema)
+}).strict().superRefine((batch, context) => {
+  if (batch.run.item_count !== batch.items.length) {
+    context.addIssue({ code: 'custom', path: ['run', 'item_count'], message: 'must match items length' })
+  }
+  const ids = batch.items.map(item => item.id)
+  if (new Set(ids).size !== ids.length) {
+    context.addIssue({ code: 'custom', path: ['items'], message: 'duplicate item ids' })
+  }
+})
+
+export const StoredTrendSchema = z.object({
+  id: StableIdSchema,
+  fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
+  name: NonEmptyTextSchema,
+  aliases: UniqueStringListSchema,
+  category: TrendCategorySchema,
+  description: NonEmptyTextSchema,
+  source_evidence: z.array(SourceEvidenceSchema).min(1),
+  observed_metrics: z.array(ObservedMetricSchema),
+  heat: z.number().finite().nonnegative().nullable(),
+  velocity: z.number().finite().min(0).max(1).nullable(),
+  lifecycle: LifecycleSchema,
+  contexts: UniqueStringListSchema,
+  visual_actions: UniqueStringListSchema,
+  risk_level: RiskLevelSchema,
+  rights_status: RightsStatusSchema,
+  first_seen_at: z.iso.datetime({ offset: true }),
+  last_seen_at: z.iso.datetime({ offset: true }),
+  source_batch_ids: z.array(StableIdSchema).min(1)
+}).strict()
+
+export const TrendStoreDocumentSchema = z.object({
+  schema_version: z.literal(1),
+  trends: z.array(StoredTrendSchema)
+}).strict().superRefine((document, context) => {
+  const fingerprints = document.trends.map(trend => trend.fingerprint)
+  if (new Set(fingerprints).size !== fingerprints.length) {
+    context.addIssue({ code: 'custom', path: ['trends'], message: 'duplicate trend fingerprints' })
+  }
+})
 
 export const CharacterSchema = z.object({
   id: StableIdSchema,
@@ -150,3 +372,9 @@ export type Scene = z.infer<typeof SceneSchema>
 export type Element = z.infer<typeof ElementSchema>
 export type Trend = z.infer<typeof TrendSchema>
 export type Candidate = z.infer<typeof CandidateSchema>
+export type SourceEvidence = z.infer<typeof SourceEvidenceSchema>
+export type KnowledgeBase = z.infer<typeof KnowledgeBaseSchema>
+export type CollectionBatch = z.infer<typeof CollectionBatchSchema>
+export type CollectionItem = z.infer<typeof CollectionItemSchema>
+export type StoredTrend = z.infer<typeof StoredTrendSchema>
+export type TrendStoreDocument = z.infer<typeof TrendStoreDocumentSchema>

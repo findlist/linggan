@@ -1,9 +1,11 @@
 import { readFile } from 'node:fs/promises'
 import type { ZodType } from 'zod'
 import {
+  KnowledgeBaseSchema,
   SeedEntitiesSchema,
   TaxonomySchema,
-  TrendInboxSchema
+  TrendInboxSchema,
+  TrendStoreDocumentSchema
 } from '../src/data/contracts.ts'
 
 const root = new URL('../', import.meta.url)
@@ -11,7 +13,9 @@ const root = new URL('../', import.meta.url)
 const inputs: Array<{ path: string; schema: ZodType }> = [
   { path: 'data/seed-entities.json', schema: SeedEntitiesSchema },
   { path: 'data/taxonomy.json', schema: TaxonomySchema },
-  { path: 'data/trend-inbox.example.json', schema: TrendInboxSchema }
+  { path: 'data/trend-inbox.example.json', schema: TrendInboxSchema },
+  { path: 'data/knowledge-base.json', schema: KnowledgeBaseSchema },
+  { path: 'data/stores/trends.json', schema: TrendStoreDocumentSchema }
 ]
 
 let failed = false
