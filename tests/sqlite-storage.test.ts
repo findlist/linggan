@@ -67,7 +67,10 @@ test('SQLite URL parser resolves project-relative files and memory databases', (
 
 test('database migrations initialize all baseline tables and are idempotent', async () => {
   await withDatabase(async ({ database, applied }) => {
-    assert.deepEqual(applied, [{ version: 1, name: 'initial' }])
+    assert.deepEqual(applied, [
+      { version: 1, name: 'initial' },
+      { version: 2, name: 'candidate_state_machine' }
+    ])
     const tables = (database.prepare(
       "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%'"
     ).all() as Array<{ name: string }>).map(row => row.name)
