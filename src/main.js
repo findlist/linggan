@@ -1,109 +1,281 @@
+import knowledge from '../data/knowledge-base.json'
+
 const icon = (name, size = 20) => {
   const paths = {
-    sparkles: '<path d="m12 3-1.4 3.6L7 8l3.6 1.4L12 13l1.4-3.6L17 8l-3.6-1.4L12 3Z"/><path d="m5 14-.8 2.2L2 17l2.2.8L5 20l.8-2.2L8 17l-2.2-.8L5 14Z"/><path d="m19 13-.6 1.4L17 15l1.4.6L19 17l.6-1.4L21 15l-1.4-.6L19 13Z"/>',
-    compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/>',
-    wand: '<path d="m15 4 5 5L8 21l-5-5L15 4Z"/><path d="m6 14 5 5M6 4V2M6 8v2M2 6h2M8 6h2M19 16v-2M19 20v2M16 18h-2M20 18h2"/>',
-    bookmark: '<path d="M6 3h12v18l-6-4-6 4V3Z"/>',
-    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
-    fire: '<path d="M12 22c4 0 7-2.9 7-7 0-3-1.5-5.4-4.4-7.5.1 2-1 3.4-2.2 4.2.2-3.4-1.9-6.8-5.1-9.7.2 4-2.3 6.1-2.3 10 0 5.2 3 10 7 10Z"/><path d="M9 18c0 2 1.3 4 3 4s3-1.4 3-3.3c0-1.5-.8-2.7-2.3-3.7.1 1-.4 1.7-1 2.1.1-1.7-.9-2.8-2.2-4.1.1 2-0.5 3.1-0.5 5Z"/>',
-    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
-    copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
+    sparkles: '<path d="m12 3-1.4 3.6L7 8l3.6 1.4L12 13l1.4-3.6L17 8l-3.6-1.4L12 3Z"/><path d="m5 14-.8 2.2L2 17l2.2.8L5 20l.8-2.2L8 17l-2.2-.8L5 14Z"/>',
+    radar: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 19 5M12 3v2M3 12h2M12 19v2"/>',
+    database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',
+    shuffle: '<path d="M3 7h3c4 0 5 10 9 10h6M18 14l3 3-3 3M3 17h3c1.8 0 3-2 4-4M15 7h6M18 4l3 3-3 3"/>',
+    book: '<path d="M4 5a3 3 0 0 1 3-3h5v18H7a3 3 0 0 0-3 3V5ZM20 5a3 3 0 0 0-3-3h-5v18h5a3 3 0 0 1 3 3V5Z"/>',
     arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    bookmark: '<path d="M6 3h12v18l-6-4-6 4V3Z"/>',
+    copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
     shield: '<path d="M12 3 4 6v5c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-3Z"/><path d="m9 12 2 2 4-4"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
     menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
-    close: '<path d="m6 6 12 12M18 6 6 18"/>'
+    close: '<path d="m6 6 12 12M18 6 6 18"/>',
+    play: '<path d="m9 7 8 5-8 5V7Z"/>',
+    check: '<path d="m5 12 4 4L19 6"/>'
   }
-  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]}</svg>`
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] ?? paths.sparkles}</svg>`
 }
 
-const ideas = [
-  { id: 1, badge: '今日热榜', title: '宿敌被迫经营一家深夜拉面铺', desc: '把高燃对决换成厨房协作：两位宿敌必须在打烊前完成 100 碗拉面。', tags: ['宿敌关系', '经营反差', '30秒'], heat: 96, color: 'violet', scene: '拉面铺', role: '热血宿敌', hook: '最后一碗，决定谁才是真正的“面之王”。' },
-  { id: 2, badge: '反差感', title: '冷酷剑客第一次参加村口台球赛', desc: '出招即出杆，必杀技变成清台镜头，严肃角色说出生活化台词。', tags: ['动作喜剧', '体育', '20秒'], heat: 91, color: 'blue', scene: '村口台球厅', role: '冷酷剑客', hook: '他拔杆的瞬间，整个台球厅安静了。' },
-  { id: 3, badge: '易生成', title: '四位魔法学徒开会复盘团建事故', desc: '用职场纪录片结构复盘一场魔法失控，角色轮流面对镜头甩锅。', tags: ['伪纪录片', '职场梗', '45秒'], heat: 88, color: 'orange', scene: '魔法会议室', role: '冒失学徒', hook: '这不是爆炸，是一次可控的能量释放。' },
-  { id: 4, badge: '可连载', title: '末日小队在超市争夺最后一包薯片', desc: '宏大末日氛围与微小目标碰撞，每位队员都有一本正经的理由。', tags: ['末日反差', '群像', '30秒'], heat: 84, color: 'pink', scene: '废墟超市', role: '末日小队', hook: '人类文明最后的希望，只剩番茄味。' }
+const workById = new Map(knowledge.works.map(work => [work.id, work]))
+const characterById = new Map(knowledge.known_characters.map(character => [character.id, character]))
+const mediaNames = { television: '电视剧', anime: '动漫', film: '电影', game: '游戏', variety: '综艺' }
+const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char])
+const hash = value => [...value].reduce((total, char) => ((total << 5) - total + char.charCodeAt(0)) | 0, 0)
+const pick = (items, seed) => items[Math.abs(seed) % items.length]
+
+const radarChannels = [
+  { name: '公开热点', detail: '热搜、赛事与文化事件', state: '每 6 小时', tone: 'pink' },
+  { name: '热门角色', detail: '作品人物与关系变化', state: '待入库', tone: 'violet' },
+  { name: '视频形式', detail: '镜头结构与评论区需求', state: '待入库', tone: 'blue' }
+]
+
+const remixStyles = [
+  { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图、逐步升级的群像调度' },
+  { id: 'absurd', label: '一本正经的荒诞', prompt: '严肃表演处理微小目标，反差来自角色态度而非恶搞造型' },
+  { id: 'animation', label: '国风动画', prompt: '原创东方幻想视觉、粒子化气流、清晰动作轮廓与留白' },
+  { id: 'mockumentary', label: '伪纪录片', prompt: '手持跟拍、角色采访、证词冲突与监控式反转' }
 ]
 
 const app = document.querySelector('#app')
+
+const renderCharacterOptions = selected => knowledge.known_characters.map(character => {
+  const work = workById.get(character.work_id)
+  return `<option value="${character.id}" ${character.id === selected ? 'selected' : ''}>${escapeHtml(character.name)} · ${escapeHtml(work.title)}</option>`
+}).join('')
+
+const renderMomentOptions = selected => knowledge.iconic_moments.map(moment => {
+  const work = workById.get(moment.work_id)
+  return `<option value="${moment.id}" ${moment.id === selected ? 'selected' : ''}>${escapeHtml(moment.name)} · ${escapeHtml(work.title)}</option>`
+}).join('')
+
 app.innerHTML = `
   <header class="topbar">
     <nav class="nav shell" aria-label="主导航">
-      <a class="brand" href="#" aria-label="灵感首页"><span class="brand-mark">${icon('sparkles', 22)}</span><span>灵感</span><small>LINGGAN</small></a>
-      <div class="nav-links">
-        <a class="active" href="#discover">发现灵感</a><a href="#mixer">创意组合器</a><a href="#workflow">创作工作台</a>
-      </div>
-      <div class="nav-actions"><button class="icon-btn" aria-label="查看收藏">${icon('bookmark')}</button><button class="btn secondary">登录</button><button class="btn primary">免费开始</button></div>
-      <button class="menu-btn" aria-expanded="false" aria-label="打开菜单">${icon('menu')}</button>
+      <a class="brand" href="#top"><span class="brand-mark">${icon('sparkles', 21)}</span><span>灵感</span><small>LINGGAN LAB</small></a>
+      <div class="nav-links"><a href="#radar">热点雷达</a><a href="#remix">跨界混搭</a><a href="#library">素材库</a></div>
+      <div class="nav-status"><i></i><span>采集与 SQLite 入库已连接</span></div>
+      <button class="menu-button" aria-label="打开导航" aria-expanded="false">${icon('menu')}</button>
     </nav>
   </header>
   <main id="main">
-    <section class="hero shell" id="discover">
+    <section class="hero shell" id="top">
       <div class="hero-copy">
-        <div class="eyebrow"><span class="pulse"></span> 每日更新 AI 视频创意</div>
-        <h1>一个念头，<br><span>长成一支好视频。</span></h1>
-        <p>把热点、角色原型与经典叙事重新组合。几分钟获得创意、分镜、提示词和发布文案。</p>
-        <div class="search-box">
-          <div class="search-input">${icon('search')}<input aria-label="描述你的初步想法" placeholder="试试：几个动漫风格角色一起打台球……" /></div>
-          <button class="btn primary generate">生成灵感 ${icon('sparkles',18)}</button>
+        <div class="eyebrow"><span></span> REAL-TIME REMIX ENGINE</div>
+        <h1>热点会过去，<br><em>组合永远有新意。</em></h1>
+        <p>自动发现实时热点、热梗、热门角色和名场面，再把不同作品的角色关系、冲突节奏与视频形式重新排列，生成真正能拍的创意方案。</p>
+        <div class="hero-actions"><a class="btn primary" href="#remix">开始一次混搭 ${icon('arrow', 18)}</a><a class="btn ghost" href="#library">浏览基础库</a></div>
+        <div class="stat-line"><div><strong>${knowledge.works.length}</strong><span>参考作品</span></div><div><strong>${knowledge.known_characters.length}</strong><span>主要角色</span></div><div><strong>${knowledge.iconic_moments.length}</strong><span>名场面结构</span></div></div>
+      </div>
+      <div class="hero-stage" aria-label="混搭示意">
+        <div class="stage-grid"></div>
+        <article class="stage-card role-card role-a"><span>角色 A · 凡人修仙传</span><b>韩立</b><small>谨慎成长者 / 资源规划者</small></article>
+        <article class="stage-card role-card role-b"><span>角色 B · 仙逆</span><b>李慕婉</b><small>温柔智者 / 稳定支点</small></article>
+        <article class="stage-card scene-card"><span>名场面节奏 · 亮剑</span><b>限时集结攻坚</b><small>目标受困 → 多路集结 → 侧翼破局</small></article>
+        <div class="stage-core">${icon('shuffle', 28)}<b>REMIX</b></div>
+      </div>
+    </section>
+
+    <section class="radar-section" id="radar">
+      <div class="shell">
+        <div class="section-title"><div><span class="kicker">DISCOVERY PIPELINE</span><h2>实时热点雷达</h2><p>公开来源先留证，再经过 Schema、去重与风险标记进入素材系统。</p></div><span class="system-pill">${icon('database', 16)} SQLite 正式库 · 等待真实采集批次</span></div>
+        <div class="radar-layout">
+          <div class="radar-visual"><div class="radar-ring ring-1"></div><div class="radar-ring ring-2"></div><div class="radar-ring ring-3"></div><div class="radar-sweep"></div><div class="radar-center">${icon('radar', 28)}<span>07:30<br>13:30<br>19:30</span></div><i class="blip b1"></i><i class="blip b2"></i><i class="blip b3"></i></div>
+          <div class="channel-list">${radarChannels.map(channel => `<article><i class="channel-dot ${channel.tone}"></i><div><b>${channel.name}</b><p>${channel.detail}</p></div><span>${channel.state}</span></article>`).join('')}<div class="pipeline-note">${icon('shield', 18)}<p><b>不编造热度</b><br>无法核实的指标保持为空，具体 IP 只作参考标签。</p></div></div>
+          <div class="flow-card"><span class="kicker">DATA FLOW</span><ol><li class="done"><i>${icon('check', 14)}</i><div><b>公开来源采集</b><small>URL、时间、可见指标</small></div></li><li class="done"><i>${icon('check', 14)}</i><div><b>批次校验与去重</b><small>坏批次隔离，原始证据保留</small></div></li><li class="done"><i>${icon('check', 14)}</i><div><b>SQLite 事务入库</b><small>人物、名场面与趋势可关联</small></div></li><li><i>4</i><div><b>创意组合与评分</b><small>接通正式趋势库进行中</small></div></li></ol></div>
         </div>
-        <div class="quick"><span>试试这些：</span><button>名场面反转</button><button>角色跨界</button><button>今日热梗</button></div>
-      </div>
-      <div class="hero-visual" aria-label="创意方案预览">
-        <div class="orb orb-one"></div><div class="orb orb-two"></div>
-        <article class="preview-card">
-          <div class="preview-top"><span>正在生长的灵感</span><span class="live"><i></i> LIVE</span></div>
-          <div class="poster violet"><span class="poster-label">场景 03 · 高潮</span><div class="silhouette one"></div><div class="silhouette two"></div><strong>最后一杆<br>决定胜负</strong></div>
-          <div class="preview-info"><span class="step">03</span><div><b>子弹时间清台</b><p>镜头环绕主角，球杆挥动形成能量轨迹……</p></div></div>
-          <div class="timeline"><i></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
-        </article>
-        <div class="float-chip chip-a">${icon('wand',16)} 6 镜头分镜</div><div class="float-chip chip-b">${icon('copy',16)} 提示词已就绪</div>
       </div>
     </section>
 
-    <section class="ideas-section shell">
-      <div class="section-head"><div><span class="kicker">TRENDING TODAY</span><h2>今天，大家在想什么？</h2><p>经过可视化与生成难度筛选，不只是热搜搬运。</p></div><button class="text-btn">查看全部灵感 ${icon('arrow',18)}</button></div>
-      <div class="filter-row" role="group" aria-label="灵感分类"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="角色跨界">角色跨界</button><button class="filter" data-filter="名场面">名场面重构</button><button class="filter" data-filter="热梗">当日热梗</button><button class="filter" data-filter="连载">可连载</button></div>
-      <div class="idea-grid">${ideas.map(idea => `
-        <article class="idea-card" data-title="${idea.title}">
-          <div class="idea-art ${idea.color}"><span class="idea-badge">${idea.badge}</span><button class="save-btn" aria-label="收藏${idea.title}">${icon('bookmark',19)}</button><div class="art-lines"></div><span class="heat">${icon('fire',15)} 热度 ${idea.heat}</span></div>
-          <div class="idea-body"><h3>${idea.title}</h3><p>${idea.desc}</p><div class="tags">${idea.tags.map(t=>`<span>${t}</span>`).join('')}</div><button class="open-idea" data-id="${idea.id}">展开完整方案 ${icon('arrow',17)}</button></div>
-        </article>`).join('')}</div>
-    </section>
-
-    <section class="mixer shell" id="mixer">
-      <div class="mixer-copy"><span class="kicker">IDEA MIXER</span><h2>不等灵感，<br>现在就把它组合出来。</h2><p>选择四块创意积木，让系统完成一次有逻辑的碰撞，而不是随机拼接。</p><ul><li>${icon('shield',18)} 自动检查可生成性与版权风险</li><li>${icon('clock',18)} 约 30 秒生成完整制作包</li></ul></div>
-      <div class="mixer-panel">
-        <div class="mix-field"><label for="role">角色原型</label><select id="role"><option>冷酷剑客</option><option>热血宿敌</option><option>冒失魔法学徒</option><option>末日生存小队</option></select></div>
-        <span class="plus">+</span><div class="mix-field"><label for="scene">发生场景</label><select id="scene"><option>村口台球厅</option><option>深夜拉面铺</option><option>公司会议室</option><option>废墟超市</option></select></div>
-        <span class="plus">+</span><div class="mix-field"><label for="tone">叙事味道</label><select id="tone"><option>一本正经的荒诞</option><option>热血反转</option><option>伪纪录片</option><option>温柔治愈</option></select></div>
-        <button class="btn primary mix-button">碰撞一下 ${icon('sparkles',18)}</button>
+    <section class="remix-section shell" id="remix">
+      <div class="section-title"><div><span class="kicker">CROSSOVER LAB</span><h2>跨作品混搭实验室</h2><p>人物借用的是关系与性格，名场面借用的是冲突节奏；输出使用原创改写台词与非精确视觉方案。</p></div><button class="btn ghost randomize">${icon('shuffle', 17)} 随机换一组</button></div>
+      <div class="remix-workspace">
+        <form class="composer" id="remix-form">
+          <div class="field"><label for="character-a"><span>01</span>主行动角色</label><select id="character-a">${renderCharacterOptions('known_han_li')}</select><small class="field-hint" id="hint-a"></small></div>
+          <div class="operator">×</div>
+          <div class="field"><label for="character-b"><span>02</span>关系碰撞角色</label><select id="character-b">${renderCharacterOptions('known_li_muwan')}</select><small class="field-hint" id="hint-b"></small></div>
+          <div class="operator">×</div>
+          <div class="field wide"><label for="moment"><span>03</span>名场面冲突结构</label><select id="moment">${renderMomentOptions('moment_mass_assault')}</select><small class="field-hint" id="hint-moment"></small></div>
+          <div class="field style-field"><label for="style"><span>04</span>视频风格</label><select id="style">${remixStyles.map(style => `<option value="${style.id}">${style.label}</option>`).join('')}</select></div>
+          <div class="duration"><span>时长</span><button type="button" data-duration="15">15s</button><button type="button" class="active" data-duration="30">30s</button><button type="button" data-duration="60">60s</button></div>
+          <button class="btn primary generate-remix" type="submit">${icon('sparkles', 18)} 生成混搭方案</button>
+        </form>
+        <article class="result-card" id="result-card" aria-live="polite"></article>
       </div>
     </section>
+
+    <section class="library-section" id="library">
+      <div class="shell">
+        <div class="section-title"><div><span class="kicker">KNOWLEDGE BASE</span><h2>可组合的内容基因库</h2><p>不是素材下载站，而是可追溯的角色类型、关系张力、台词风格和叙事结构索引。</p></div></div>
+        <div class="library-toolbar"><div class="tabs" role="tablist"><button class="active" data-tab="characters">主要角色</button><button data-tab="moments">名场面</button><button data-tab="works">作品</button></div><label class="library-search">${icon('search', 17)}<input id="library-search" placeholder="搜索角色、类型、作品或场面" /></label></div>
+        <div class="library-grid" id="library-grid"></div>
+      </div>
+    </section>
+
+    <section class="saved-section shell"><div><span class="kicker">YOUR WORKSPACE</span><h2>已收藏的混搭</h2></div><div class="saved-list" id="saved-list"><p class="empty">还没有收藏方案。先生成一次意外碰撞。</p></div></section>
   </main>
-  <footer><div class="shell footer-inner"><a class="brand" href="#"><span class="brand-mark">${icon('sparkles',18)}</span><span>灵感</span></a><p>让每个念头，都有成为作品的机会。</p><span>原创原型优先 · 尊重创作版权</span></div></footer>
-  <div class="modal-backdrop" aria-hidden="true"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" aria-label="关闭方案">${icon('close')}</button><span class="kicker">完整制作包</span><h2 id="modal-title"></h2><p class="modal-desc"></p><div class="plan-grid"><div><span>角色</span><b id="plan-role"></b></div><div><span>场景</span><b id="plan-scene"></b></div><div class="wide"><span>前三秒钩子</span><b id="plan-hook"></b></div></div><h3>30 秒结构</h3><ol class="shots"><li><span>00–03s</span>反常画面直接出现，角色进入场景</li><li><span>03–12s</span>建立冲突，第一次尝试以失败告终</li><li><span>12–24s</span>角色用标志性方式解决问题</li><li><span>24–30s</span>反转收尾，留下可连载的悬念</li></ol><button class="btn primary copy-plan">${icon('copy',18)} 复制完整提示词</button><p class="risk">${icon('shield',16)} 建议使用原创角色原型；公开发布前请确认素材授权。</p></section></div>
+  <footer><div class="shell footer-inner"><a class="brand" href="#top"><span class="brand-mark">${icon('sparkles',18)}</span><span>灵感</span></a><p>公开来源留证 · 参考资产隔离 · 原创表达优先</p><span>Linggan Remix Lab</span></div></footer>
   <div class="toast" role="status" aria-live="polite"></div>
 `
 
-const toast = (message) => {
-  const el = document.querySelector('.toast'); el.textContent = message; el.classList.add('show');
-  clearTimeout(window.toastTimer); window.toastTimer = setTimeout(() => el.classList.remove('show'), 2800)
+let duration = 30
+let generation = 0
+let currentResult = null
+let activeTab = 'characters'
+let saved = JSON.parse(localStorage.getItem('linggan-saved-remixes') ?? '[]')
+
+const toast = message => {
+  const element = document.querySelector('.toast')
+  element.textContent = message
+  element.classList.add('show')
+  clearTimeout(window.lingganToast)
+  window.lingganToast = setTimeout(() => element.classList.remove('show'), 2600)
 }
 
-document.querySelector('.menu-btn').addEventListener('click', (e) => {
-  const nav = document.querySelector('.nav-links'); nav.classList.toggle('open');
-  const open = nav.classList.contains('open'); e.currentTarget.setAttribute('aria-expanded', open); e.currentTarget.innerHTML = icon(open ? 'close' : 'menu')
+const updateHints = () => {
+  const a = characterById.get(document.querySelector('#character-a').value)
+  const b = characterById.get(document.querySelector('#character-b').value)
+  const moment = knowledge.iconic_moments.find(item => item.id === document.querySelector('#moment').value)
+  document.querySelector('#hint-a').textContent = `${a.character_types.join(' · ')}｜${a.traits.join('、')}`
+  document.querySelector('#hint-b').textContent = `${b.character_types.join(' · ')}｜${b.traits.join('、')}`
+  document.querySelector('#hint-moment').textContent = `${moment.conflict_type}｜${moment.reusable_beats.slice(0, 2).join(' → ')}`
+}
+
+const buildRemix = () => {
+  const a = characterById.get(document.querySelector('#character-a').value)
+  const b = characterById.get(document.querySelector('#character-b').value)
+  const moment = knowledge.iconic_moments.find(item => item.id === document.querySelector('#moment').value)
+  const style = remixStyles.find(item => item.id === document.querySelector('#style').value)
+  const sourceWork = workById.get(moment.work_id)
+  const seed = hash(`${a.id}${b.id}${moment.id}${style.id}${generation}`)
+  const hooks = [
+    `${a.name}还在计算退路，${b.name}已经把最后一道防线点亮。`,
+    `所有人都在等一次正面强攻，${a.name}却先问：谁规定缺口一定在城门？`,
+    `${b.name}报出最后 ${pick(['十息', '三分钟', '一盏茶'], seed)}，${a.name}把整张地图倒了过来。`
+  ]
+  const dialogueA = `“${pick(['先别急着冲。', '把能用的都列出来。', '正面只是给他们看的。'], seed + 2)} ${pick(a.dialogue_style, seed + 3)}，我们只做胜算最高的那一步。”`
+  const dialogueB = `“${pick(['阵线还能撑住。', '退路我来守。', '你只管打开缺口。'], seed + 5)} ${pick(b.dialogue_style, seed + 7)}，剩下的交给我。”`
+  const beats = moment.reusable_beats.slice(0, duration === 15 ? 3 : duration === 60 ? 4 : 4)
+  return {
+    id: `remix-${Date.now()}`,
+    title: `${a.name} × ${b.name}：${moment.name}`,
+    concept: `让《${workById.get(a.work_id).title}》的${a.character_types[0]}与《${workById.get(b.work_id).title}》的${b.character_types[0]}，进入《${sourceWork.title}》启发的“${moment.conflict_type}”结构。保留性格与关系张力，人物造型、台词、镜头和世界观全部原创改写。`,
+    hook: pick(hooks, seed),
+    a, b, moment, style, duration, dialogueA, dialogueB, beats,
+    prompt: `${style.prompt}。原创角色造型，不复刻任何具体演员或动画形象。场景：${moment.setting}。动作：${moment.visual_actions.join('、')}。情绪：${moment.emotional_arc.join(' → ')}。`
+  }
+}
+
+const renderResult = result => {
+  const card = document.querySelector('#result-card')
+  card.innerHTML = `
+    <div class="result-top"><span class="result-label">生成完成 · ${result.duration}s</span><span class="risk-badge">REFERENCE ONLY</span></div>
+    <h3>${escapeHtml(result.title)}</h3><p class="concept">${escapeHtml(result.concept)}</p>
+    <div class="hook"><span>前三秒钩子</span><b>${escapeHtml(result.hook)}</b></div>
+    <div class="beat-list">${result.beats.map((beat, index) => `<div><span>${String(index + 1).padStart(2, '0')}</span><p>${escapeHtml(beat)}</p></div>`).join('')}</div>
+    <div class="dialogues"><div><span>${escapeHtml(result.a.name)} · 原创改写</span><p>${escapeHtml(result.dialogueA)}</p></div><div><span>${escapeHtml(result.b.name)} · 原创改写</span><p>${escapeHtml(result.dialogueB)}</p></div></div>
+    <details><summary>画面提示词与版权边界</summary><p>${escapeHtml(result.prompt)}</p><small>${icon('shield', 14)} 参考角色和名场面不包含精确复刻素材；商业发布前需替换为原创或已授权资产。</small></details>
+    <div class="result-actions"><button class="btn ghost copy-result">${icon('copy', 16)} 复制方案</button><button class="btn primary save-result">${icon('bookmark', 16)} 收藏混搭</button></div>`
+  card.querySelector('.copy-result').addEventListener('click', async () => {
+    await navigator.clipboard?.writeText(card.innerText)
+    toast('方案已复制')
+  })
+  card.querySelector('.save-result').addEventListener('click', () => {
+    if (!saved.some(item => item.title === result.title)) saved.unshift({ id: result.id, title: result.title, hook: result.hook })
+    saved = saved.slice(0, 8)
+    localStorage.setItem('linggan-saved-remixes', JSON.stringify(saved))
+    renderSaved()
+    toast('已收藏到工作台')
+  })
+}
+
+const renderSaved = () => {
+  const list = document.querySelector('#saved-list')
+  list.innerHTML = saved.length ? saved.map(item => `<article><span>${icon('bookmark', 16)}</span><div><b>${escapeHtml(item.title)}</b><p>${escapeHtml(item.hook)}</p></div><button data-remove="${escapeHtml(item.id)}" aria-label="删除收藏">${icon('close', 16)}</button></article>`).join('') : '<p class="empty">还没有收藏方案。先生成一次意外碰撞。</p>'
+  list.querySelectorAll('[data-remove]').forEach(button => button.addEventListener('click', () => {
+    saved = saved.filter(item => item.id !== button.dataset.remove)
+    localStorage.setItem('linggan-saved-remixes', JSON.stringify(saved))
+    renderSaved()
+  }))
+}
+
+const libraryItems = tab => {
+  if (tab === 'characters') return knowledge.known_characters.map(character => ({
+    title: character.name,
+    meta: `${workById.get(character.work_id).title} · ${character.roles.join(' / ')}`,
+    tags: character.character_types,
+    body: `${character.traits.join('、')}。台词风格：${character.dialogue_style.join('；')}`,
+    badge: '角色参考'
+  }))
+  if (tab === 'moments') return knowledge.iconic_moments.map(moment => ({
+    title: moment.name,
+    meta: `${workById.get(moment.work_id).title} · ${moment.conflict_type}`,
+    tags: moment.emotional_arc,
+    body: moment.abstraction,
+    badge: '结构参考'
+  }))
+  return knowledge.works.map(work => ({
+    title: work.title,
+    meta: `${mediaNames[work.media_type]} · ${work.release_year ?? '年份未知'} · ${work.regions.join(' / ')}`,
+    tags: work.genres,
+    body: `别名：${work.aliases.join('、') || '无'}。已记录 ${work.sources.length} 条公开来源证据。`,
+    badge: '作品索引'
+  }))
+}
+
+const renderLibrary = () => {
+  const query = document.querySelector('#library-search').value.trim().toLowerCase()
+  const items = libraryItems(activeTab).filter(item => JSON.stringify(item).toLowerCase().includes(query))
+  document.querySelector('#library-grid').innerHTML = items.length ? items.map((item, index) => `<article class="library-card"><div class="library-index">${String(index + 1).padStart(2, '0')}</div><span class="library-badge">${item.badge}</span><h3>${escapeHtml(item.title)}</h3><p class="library-meta">${escapeHtml(item.meta)}</p><p>${escapeHtml(item.body)}</p><div class="mini-tags">${item.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div><small>${icon('shield', 13)} reference_only</small></article>`).join('') : '<p class="empty">没有匹配的内容。</p>'
+}
+
+document.querySelector('.menu-button').addEventListener('click', event => {
+  const links = document.querySelector('.nav-links')
+  links.classList.toggle('open')
+  const open = links.classList.contains('open')
+  event.currentTarget.setAttribute('aria-expanded', String(open))
+  event.currentTarget.innerHTML = icon(open ? 'close' : 'menu')
 })
-document.querySelectorAll('.save-btn').forEach(btn => btn.addEventListener('click', () => { btn.classList.toggle('saved'); toast(btn.classList.contains('saved') ? '已收藏这条灵感' : '已取消收藏') }))
-document.querySelectorAll('.filter').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active')); btn.classList.add('active'); toast(`正在展示：${btn.textContent}`) }))
-document.querySelectorAll('.open-idea').forEach(btn => btn.addEventListener('click', () => {
-  const data = ideas.find(x => x.id === Number(btn.dataset.id));
-  document.querySelector('#modal-title').textContent = data.title; document.querySelector('.modal-desc').textContent = data.desc; document.querySelector('#plan-role').textContent = data.role; document.querySelector('#plan-scene').textContent = data.scene; document.querySelector('#plan-hook').textContent = data.hook;
-  const back = document.querySelector('.modal-backdrop'); back.classList.add('open'); back.setAttribute('aria-hidden','false'); document.querySelector('.modal-close').focus()
+
+document.querySelectorAll('#character-a,#character-b,#moment').forEach(select => select.addEventListener('change', updateHints))
+document.querySelectorAll('[data-duration]').forEach(button => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-duration]').forEach(item => item.classList.remove('active'))
+  button.classList.add('active')
+  duration = Number(button.dataset.duration)
 }))
-const closeModal = () => { const b=document.querySelector('.modal-backdrop'); b.classList.remove('open'); b.setAttribute('aria-hidden','true') }
-document.querySelector('.modal-close').addEventListener('click', closeModal)
-document.querySelector('.modal-backdrop').addEventListener('click', e => { if(e.target === e.currentTarget) closeModal() })
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal() })
-document.querySelector('.copy-plan').addEventListener('click', async () => { await navigator.clipboard?.writeText(document.querySelector('.modal').innerText); toast('制作方案已复制') })
-document.querySelector('.generate').addEventListener('click', () => { const input=document.querySelector('.search-input input'); toast(input.value.trim() ? '已根据你的想法生成 4 个方向' : '先描述一个初步想法吧'); if(input.value.trim()) document.querySelector('.ideas-section').scrollIntoView({behavior:'smooth'}) })
-document.querySelector('.mix-button').addEventListener('click', () => { const role=document.querySelector('#role').value, scene=document.querySelector('#scene').value, tone=document.querySelector('#tone').value; toast(`已碰撞：${role} × ${scene} × ${tone}`) })
+
+document.querySelector('#remix-form').addEventListener('submit', event => {
+  event.preventDefault()
+  generation += 1
+  currentResult = buildRemix()
+  renderResult(currentResult)
+  toast('新的跨界方案已生成')
+})
+
+document.querySelector('.randomize').addEventListener('click', () => {
+  const selects = ['#character-a', '#character-b', '#moment', '#style'].map(selector => document.querySelector(selector))
+  selects.forEach((select, index) => { select.selectedIndex = Math.floor(Math.random() * select.options.length) })
+  if (selects[0].value === selects[1].value) selects[1].selectedIndex = (selects[1].selectedIndex + 1) % selects[1].options.length
+  updateHints()
+  generation += 1
+  currentResult = buildRemix()
+  renderResult(currentResult)
+  toast('已随机换一组内容基因')
+})
+
+document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-tab]').forEach(item => item.classList.remove('active'))
+  button.classList.add('active')
+  activeTab = button.dataset.tab
+  renderLibrary()
+}))
+document.querySelector('#library-search').addEventListener('input', renderLibrary)
+
+updateHints()
+currentResult = buildRemix()
+renderResult(currentResult)
+renderLibrary()
+renderSaved()
