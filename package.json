@@ -7,9 +7,17 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "pipeline:daily": "node scripts/daily-pipeline.mjs"
+    "pipeline:daily": "node --experimental-strip-types scripts/daily-pipeline.ts",
+    "test": "node --experimental-strip-types --test tests/data-contracts.test.ts tests/candidate-generator.test.ts",
+    "typecheck": "tsc --noEmit",
+    "validate:data": "node --experimental-strip-types scripts/validate-data.ts"
   },
   "devDependencies": {
+    "@types/node": "^26.1.2",
+    "typescript": "^7.0.2",
     "vite": "^7.0.0"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
   }
 }
