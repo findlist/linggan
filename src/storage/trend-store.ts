@@ -69,7 +69,7 @@ const rightsPriority: Record<StoredTrend['rights_status'], number> = {
   restricted: 4
 }
 
-const toStoredTrend = (item: CollectionItem, batchId: string): StoredTrend => {
+export const toStoredTrend = (item: CollectionItem, batchId: string): StoredTrend => {
   const fingerprint = trendFingerprint(item)
   return {
     id: `trend_${fingerprint.slice(0, 16)}`,
@@ -93,7 +93,7 @@ const toStoredTrend = (item: CollectionItem, batchId: string): StoredTrend => {
   }
 }
 
-const mergeTrend = (current: StoredTrend, incoming: StoredTrend): StoredTrend => {
+export const mergeTrend = (current: StoredTrend, incoming: StoredTrend): StoredTrend => {
   const incomingIsNewer = incoming.last_seen_at >= current.last_seen_at
   return {
     ...current,

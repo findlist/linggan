@@ -4,8 +4,7 @@ import {
   KnowledgeBaseSchema,
   SeedEntitiesSchema,
   TaxonomySchema,
-  TrendInboxSchema,
-  TrendStoreDocumentSchema
+  TrendInboxSchema
 } from '../src/data/contracts.ts'
 
 const root = new URL('../', import.meta.url)
@@ -14,8 +13,7 @@ const inputs: Array<{ path: string; schema: ZodType }> = [
   { path: 'data/seed-entities.json', schema: SeedEntitiesSchema },
   { path: 'data/taxonomy.json', schema: TaxonomySchema },
   { path: 'data/trend-inbox.example.json', schema: TrendInboxSchema },
-  { path: 'data/knowledge-base.json', schema: KnowledgeBaseSchema },
-  { path: 'data/stores/trends.json', schema: TrendStoreDocumentSchema }
+  { path: 'data/knowledge-base.json', schema: KnowledgeBaseSchema }
 ]
 
 let failed = false
