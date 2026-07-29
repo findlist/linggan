@@ -60,6 +60,6 @@ export const exportTrends = async (options: ExportOptions): Promise<TrendExportD
 }
 
 // CLI entry point
-const outputPath = process.argv[2] ?? 'data/trend-export.json'
+const outputPath = process.argv[2] ?? 'public/data/trend-export.json'
 const result = await exportTrends({ outputPath })
 process.stdout.write(`Exported ${result.trend_count} trends to ${outputPath}\n`)
