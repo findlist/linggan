@@ -379,5 +379,31 @@ export type SourceEvidence = z.infer<typeof SourceEvidenceSchema>
 export type KnowledgeBase = z.infer<typeof KnowledgeBaseSchema>
 export type CollectionBatch = z.infer<typeof CollectionBatchSchema>
 export type CollectionItem = z.infer<typeof CollectionItemSchema>
+/**
+ * Read-only export document for static site consumption.
+ * The frontend reads this file instead of accessing SQLite directly.
+ */
+export const TrendExportDocumentSchema = z.object({
+  schema_version: z.literal(1),
+  exported_at: z.iso.datetime({ offset: true }),
+  trend_count: z.number().int().nonnegative(),
+  trends: z.array(StoredTrendSchema)
+}).strict().superRefine((document, context) => {
+  if (document.trend_count !== document.trends.length) {
+    context.addIssue({
+      code: 'custom',
+      path: ['trend_count'],
+      message: 'must match trends length'
+    })
+  }
+
+  const fingerprints = document.trends.map(trend => trend.fingerprint)
+  if (new Set(fingerprints).size !== fingerprints.length) {
+    context.addIssue({ code: 'custom', path: ['trends'], message: 'duplicate trend fingerprints' })
+  }
+})
+
+export type TrendExportDocument = z.infer<typeof TrendExportDocumentSchema>
+
 export type StoredTrend = z.infer<typeof StoredTrendSchema>
 export type TrendStoreDocument = z.infer<typeof TrendStoreDocumentSchema>
