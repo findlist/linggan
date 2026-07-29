@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
     "pipeline:daily": "node --experimental-strip-types scripts/daily-pipeline.ts",
-    "test": "node --experimental-strip-types --test tests/data-contracts.test.ts tests/candidate-generator.test.ts tests/trend-ingestion.test.ts tests/sqlite-storage.test.ts",
+    "test": "node --experimental-strip-types --test tests/data-contracts.test.ts tests/candidate-generator.test.ts tests/trend-ingestion.test.ts tests/sqlite-storage.test.ts tests/trend-adapter.test.ts",
     "typecheck": "tsc --noEmit",
     "validate:data": "node --experimental-strip-types scripts/validate-data.ts",
     "database:init": "node --experimental-strip-types scripts/database/init.ts",
