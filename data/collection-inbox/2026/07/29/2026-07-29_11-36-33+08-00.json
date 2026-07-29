@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "run": {
+    "id": "collection_20260729_113633",
+    "started_at": "2026-07-29T11:29:30+08:00",
+    "finished_at": "2026-07-29T11:36:33+08:00",
+    "timezone": "Asia/Shanghai",
+    "lookback_hours": 24,
+    "status": "partial",
+    "source_count": 5,
+    "item_count": 6,
+    "deduplicated_count": 9,
+    "errors": [
+      "Google Trends CN RSS request timed out; no evidence was ingested.",
+      "Google Trends US RSS request timed out; no evidence was ingested.",
+      "Zhihu hot-list endpoint returned HTTP 401 AuthenticationError; no login was attempted and no evidence was ingested.",
+      "Bing News search endpoint returned homepage HTML instead of the requested RSS results; no evidence was ingested."
+    ]
+  },
+  "items": [
+    {
+      "id": "wang_de_caixiang_cultural_event_20260729",
+      "name": "《王的猜想》报道走红与报纸收藏潮",
+      "aliases": [
+        "《王的猜想》报纸紧急加印",
+        "《王的猜想》为啥令广西纸贵",
+        "《王的猜想》报纸被炒至50元一份",
+        "《王的猜想》为什么响了",
+        "《王的猜想》爆火"
+      ],
+      "category": "cultural_event",
+      "description": "一篇人物报道从线上标题与叙事讨论扩展到纸质报纸求购、加印和收藏，形成同一文化事件的多个实时热搜词条。可复用结构是专业人物故事先以克制标题破圈，再由实体载体稀缺性推动二次传播。",
+      "source_evidence": [
+        {
+          "url": "https://top.baidu.com/board?tab=realtime",
+          "source_name": "百度热搜",
+          "page_title": "百度热搜",
+          "published_at": null,
+          "collected_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T11:35:41+08:00",
+      "observed_metrics": [
+        {
+          "name": "百度热搜指数（报纸紧急加印词条）",
+          "value": 7426828,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "百度热搜指数（广西纸贵词条）",
+          "value": 6189270,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "百度热搜指数（报纸被炒至50元词条）",
+          "value": 5617469,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "百度热搜指数（为什么响了词条）",
+          "value": 4854857,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "百度热搜指数（爆火词条）",
+          "value": 4003623,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "peak",
+      "contexts": [
+        "人物报道标题拆解",
+        "纸媒与数字传播反差",
+        "知识人物故事",
+        "实体收藏热潮"
+      ],
+      "visual_actions": [
+        "报纸印刷机连续出纸",
+        "线上词条切换到线下排队求购",
+        "标题文字逐层放大",
+        "纸张堆叠形成传播曲线"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "同一事件在百度实时热榜出现五个关联词条，已合并并保留别名和各词条公开指数。涉及具体报道、媒体与真人，仅作趋势参考；未保存报道正文、图片或其他受保护媒体。"
+    },
+    {
+      "id": "cttsl_second_stage_20260729",
+      "name": "2026乒超常规赛第二站多场对阵",
+      "aliases": [
+        "乒超男团林诗栋领衔上海地产出战",
+        "乒超女团深大vs成都高新若水居",
+        "乒超男团米粒特长生vs安徽中程",
+        "乒超男团汕头明润vs四川丰谷",
+        "乒超女团上海中心vs黄石东楚"
+      ],
+      "category": "sports",
+      "description": "乒超常规赛第二站在同一时段以多场男团、女团对阵占据实时热榜，显示赛事日的并行赛程和明星球员带队是主要讨论入口。",
+      "source_evidence": [
+        {
+          "url": "https://top.baidu.com/board?tab=realtime",
+          "source_name": "百度热搜",
+          "page_title": "百度热搜",
+          "published_at": null,
+          "collected_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T11:35:41+08:00",
+      "observed_metrics": [
+        {
+          "name": "百度热搜指数（上海地产集团对山东鲁能词条）",
+          "value": 5989172,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "百度热搜指数（深圳大学对成都高新若水居词条）",
+          "value": 5424002,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "百度热搜指数（米粒乒乓特长生对安徽中程词条）",
+          "value": 4544627,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "百度热搜指数（汕头明润对四川丰谷词条）",
+          "value": 4164406,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "百度热搜指数（上海中心对黄石东楚词条）",
+          "value": 3699987,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "peak",
+      "contexts": [
+        "赛事日赛程速览",
+        "明星球员带队",
+        "多场并行对阵",
+        "赛前阵容对比"
+      ],
+      "visual_actions": [
+        "多块记分牌并列切换",
+        "球拍挥击匹配节奏转场",
+        "球队对阵线快速连接",
+        "赛程卡按时间依次翻开"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "五个同属乒超第二站赛事日的实时词条已合并为一条赛事趋势。涉及具体运动员、俱乐部和赛事标识，仅作参考，不使用赛事画面或肖像资产。"
+    },
+    {
+      "id": "ai_short_drama_cost_discussion_20260729",
+      "name": "AI短剧制作成本与周期讨论",
+      "aliases": [
+        "AI剧成本有多少",
+        "AI短剧成本",
+        "AI剧制作周期"
+      ],
+      "category": "creator_demand",
+      "description": "公开热榜出现对AI短剧制作成本、制作周期及其与真人短剧差异的集中讨论，反映创作者对预算拆分、生产效率和质量边界的高频决策需求。",
+      "source_evidence": [
+        {
+          "url": "https://top.baidu.com/board?tab=realtime",
+          "source_name": "百度热搜",
+          "page_title": "百度热搜",
+          "published_at": null,
+          "collected_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T11:35:41+08:00",
+      "observed_metrics": [
+        {
+          "name": "百度热搜指数",
+          "value": 4947466,
+          "unit": "热搜指数",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "rising",
+      "contexts": [
+        "短剧预算规划",
+        "AI与真人制作对比",
+        "制作周期估算",
+        "创作者项目决策"
+      ],
+      "visual_actions": [
+        "预算条目逐项展开",
+        "双时间轴并行推进",
+        "真人片场与生成工作流对照",
+        "成本和周期指标交叉切换"
+      ],
+      "risk_level": "low",
+      "rights_status": "unknown",
+      "notes": "只记录热榜公开呈现的需求方向与指数，不把页面中的行业报价当作统一市场价格。由于缺少跨来源归一化，本条 heat 和 velocity 保持 null。"
+    },
+    {
+      "id": "wuchimitu_fourth_anniversary_juexiang",
+      "name": "《无期迷途》四周年主线活动「绝响」",
+      "aliases": [
+        "无期迷途四周年",
+        "绝响",
+        "无期迷途四周年庆典"
+      ],
+      "category": "game",
+      "description": "游戏官方发布四周年庆典主线限时活动信息后进入哔哩哔哩热门内容，周年节点、主线推进与限时开启时间共同构成讨论核心。",
+      "source_evidence": [
+        {
+          "url": "https://www.bilibili.com/video/BV1Nj3v6zEuN",
+          "source_name": "哔哩哔哩热门",
+          "page_title": "《无期迷途》四周年庆典·主线限时活动——「绝响」",
+          "published_at": "2026-07-28T19:45:00+08:00",
+          "collected_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T11:35:41+08:00",
+      "observed_metrics": [
+        {
+          "name": "播放量",
+          "value": 851637,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "点赞数",
+          "value": 19865,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "评论数",
+          "value": 2756,
+          "unit": "条",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "分享数",
+          "value": 1322,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "rising",
+      "contexts": [
+        "游戏周年庆典",
+        "主线限时活动",
+        "活动倒计时",
+        "玩家回流"
+      ],
+      "visual_actions": [
+        "周年数字揭示",
+        "机密档案逐页解锁",
+        "活动日期倒计时",
+        "角色剪影与地点坐标交替出现"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "证据来自无需登录可访问的官方账号视频页及公开热门接口。具体游戏、角色与活动均仅作趋势参考；未下载或保存视频、音频、台词和图片。"
+    },
+    {
+      "id": "vertical_theatrical_microdrama_20260729",
+      "name": "剧场版式竖屏剧情小剧场",
+      "aliases": [
+        "竖屏剧场版",
+        "大制作小剧场",
+        "连续剧情竖屏短片"
+      ],
+      "category": "video_format",
+      "description": "两条不同创作者发布的竖屏剧情演绎作品在近24小时同时进入热门并获得百万级播放。共同结构是用剧场版或连续剧情的包装提升短视频叙事规模，以强情境开场、冲突升级和角色反应维持观看。",
+      "source_evidence": [
+        {
+          "url": "https://www.bilibili.com/video/BV1VC3q6ZEtP",
+          "source_name": "哔哩哔哩热门",
+          "page_title": "【乾乾特工·剧场版】大制作来啦！！！",
+          "published_at": "2026-07-28T20:23:25+08:00",
+          "collected_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "url": "https://www.bilibili.com/video/BV1Qy3v6JEiq",
+          "source_name": "哔哩哔哩热门",
+          "page_title": "锅已就位",
+          "published_at": "2026-07-28T17:10:03+08:00",
+          "collected_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T11:35:41+08:00",
+      "observed_metrics": [
+        {
+          "name": "乾乾特工剧场版播放量",
+          "value": 1251715,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "乾乾特工剧场版点赞数",
+          "value": 155158,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "锅已就位播放量",
+          "value": 1919199,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "锅已就位点赞数",
+          "value": 119359,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "rising",
+      "contexts": [
+        "竖屏剧情演绎",
+        "短视频系列化",
+        "剧场版包装",
+        "角色冲突升级"
+      ],
+      "visual_actions": [
+        "强情境动作直接开场",
+        "近景反应与全身动作交替",
+        "冲突节点用硬切推进",
+        "结尾留下下一段悬念"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "两个不同创作者的同类热门结构已合并为一条并保留全部来源。只抽象镜头节奏和叙事结构，不复制角色、剧情、台词或视听素材。"
+    },
+    {
+      "id": "silver_palace_detective_beta_20260729",
+      "name": "《白银之城》侦探题材测试内容",
+      "aliases": [
+        "白银之城二测",
+        "白银之城试玩",
+        "侦探题材开放世界试玩"
+      ],
+      "category": "game",
+      "description": "以侦探身份和非严肃查案反差为标题的《白银之城》测试内容进入哔哩哔哩热门，侦探题材、开放探索与角色互动反差构成主要传播点。",
+      "source_evidence": [
+        {
+          "url": "https://www.bilibili.com/video/BV1JT3i6eE95",
+          "source_name": "哔哩哔哩热门",
+          "page_title": "侦探大人，不是说好正经查案吗.....【泛式】",
+          "published_at": "2026-07-28T18:05:00+08:00",
+          "collected_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "discovered_at": "2026-07-29T11:35:41+08:00",
+      "observed_metrics": [
+        {
+          "name": "播放量",
+          "value": 1340479,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "点赞数",
+          "value": 78940,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "收藏数",
+          "value": 16976,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        },
+        {
+          "name": "分享数",
+          "value": 3039,
+          "unit": "次",
+          "observed_at": "2026-07-29T11:35:41+08:00"
+        }
+      ],
+      "heat": null,
+      "velocity": null,
+      "lifecycle": "rising",
+      "contexts": [
+        "游戏测试期",
+        "侦探题材",
+        "开放探索",
+        "严肃身份与轻松互动反差"
+      ],
+      "visual_actions": [
+        "线索板快速串联",
+        "侦探姿态切换到意外互动",
+        "城市探索镜头与角色近景交替",
+        "证据图标逐一弹出"
+      ],
+      "risk_level": "medium",
+      "rights_status": "reference_only",
+      "notes": "证据页在采集时无需登录且可公开访问。具体游戏、角色和创作者内容仅作趋势参考；未下载或保存任何受保护媒体。"
+    }
+  ]
+}
