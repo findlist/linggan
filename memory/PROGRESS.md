@@ -1,9 +1,61 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：C5 多维筛选轮
-当前阶段：Phase 2 进行中（C1、C2、C3、C4、C5、C8 已完成，剩余 C6—C7）
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；C4 创作工作台已升级为三栏布局（左素材选择/中核心预览/右完整制作包），中栏预览展示标题/钩子/封面文案/C3 重复检测标记/复制收藏快捷操作，右栏展示完整分镜表（含景别/运镜/转场中文标签）、结构化画面提示词（正向/负面/比例/风格强度）、版权边界三字段声明和导出按钮，前端集成 detectDuplicates 把当前方案与已收藏方案对比并在相似度≥0.7 时显示换皮警告，桌面端三栏在 ≤980px 堆叠为单栏；C5 素材库多维筛选已建立，业务规则与 UI 分离为 src/library/filter.ts 纯函数（filterLibraryItems/collectFilterOptions），素材库三个 tab 各配置 3 个筛选维度（角色：类型/作品/版权；名场面：冲突/情绪/作品；作品：媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与所有维度 AND，chip 动态收集可选项避免死选项，切换 tab 自动重置筛选，有选中时显示清空按钮和"显示 N / 共 M 项"计数；尚无自动发布闭环
+当前轮次：C6 前端模块化轮
+当前阶段：Phase 2 进行中（C1、C2、C3、C4、C5、C6、C8 已完成，剩余 C7）
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；C4 创作工作台已升级为三栏布局（左素材选择/中核心预览/右完整制作包），中栏预览展示标题/钩子/封面文案/C3 重复检测标记/复制收藏快捷操作，右栏展示完整分镜表（含景别/运镜/转场中文标签）、结构化画面提示词（正向/负面/比例/风格强度）、版权边界三字段声明和导出按钮，前端集成 detectDuplicates 把当前方案与已收藏方案对比并在相似度≥0.7 时显示换皮警告，桌面端三栏在 ≤980px 堆叠为单栏；C5 素材库多维筛选已建立，业务规则与 UI 分离为 src/library/filter.ts 纯函数（filterLibraryItems/collectFilterOptions），素材库三个 tab 各配置 3 个筛选维度（角色：类型/作品/版权；名场面：冲突/情绪/作品；作品：媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与所有维度 AND，chip 动态收集可选项避免死选项，切换 tab 自动重置筛选，有选中时显示清空按钮和"显示 N / 共 M 项"计数；C6 前端模块化已完成，main.js 从 730 行减至 78 行（-92%），按行为边界拆分为 6 个 section 组件（Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList/FeedSection）和 4 个基础模块（data/knowledge.js 知识库读取层、data/store.js 状态管理、ui/icons.js 图标库、ui/dom.js DOM 工具），原 main.js 顶层 6 个可变 let（duration/generation/currentResult/activeTab/libraryFilters/saved）全部收敛到 store.js，跨 section 调用通过 ctx 注入回调避免循环依赖，浏览器 DOM 检查 6/7 项 PASS（唯一 FAIL 是验证脚本查询方式问题，代码正确）；尚无自动发布闭环
+
+### C6 前端模块化轮 — 2026-07-31
+
+本轮目标：把 main.js（730 行）按行为边界拆为 Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList 等组件，建立 src/data/store.js 本地状态管理和 src/data/knowledge.js 知识库读取层。对应 DEVELOPMENT_DIRECTION.md 第六节"前端架构演进方向"和阶段 C"前端组件化拆分"，验收条件为至少 5 个行为边界组件、本地状态管理模块、现有功能保持不变、构建产物大小不显著增加。
+
+完成：
+
+- 新增 `src/data/knowledge.js` 知识库读取层（65 行）：集中管理 knowledge-base.json 导入、workById/characterById 查找表构建和 mediaNames/rightsLabels/riskLabels/categoryLabels/lifecycleLabels/remixStyles/personalityLabels/hookCategoryLabels/shotTypeLabels/cameraMovementLabels/transitionLabels 等标签常量，供所有 section 通过同一份 import 引用，避免重复导入和不一致；
+- 新增 `src/data/store.js` 状态管理（48 行）：把原 main.js 顶层的 6 个可变 let（duration/generation/currentResult/activeTab/libraryFilters/saved）收敛到 store，提供 getState/patch/setSaved/setDuration/setGeneration/incrementGeneration/setCurrentResult/setActiveTab/setLibraryFilters/resetLibraryFilters 等接口；saved 在 setSaved 时自动同步 localStorage，避免各 section 各自处理；loadSaved 读取并规范化旧数据（缺 plan/context/savedAt 字段时降级）；
+- 新增 `src/ui/icons.js` 图标库（20 行）：把原本散落在 main.js 内联的 14 个 SVG paths（sparkles/radar/database/shuffle/book/arrow/bookmark/copy/shield/search/menu/close/play/check）集中到一处；
+- 新增 `src/ui/dom.js` DOM 工具（34 行）：escapeHtml、downloadText、toast、formatScore 四个通用函数；toast 用模块级 toastTimer 取代原 window.lingganToast 全局变量；
+- 新增 `src/sections/Hero.js` 首屏（21 行）：纯静态 HTML，导出 renderHero() 返回 hero section HTML 字符串，含统计行和示意化角色/名场面卡片；
+- 新增 `src/sections/RadarSection.js` 热点雷达（74 行）：导出 renderRadarSection(trendExport) 返回初始 HTML 和 mountRadarSection() 异步加载 trend-export.json 后刷新状态 pill 和渠道列表；占位渠道、雷达视觉、数据流卡片、pipeline_note 都封装在本模块；
+- 新增 `src/sections/FeedSection.js` 今日推荐流（44 行）：导出 mountFeedSection() 异步加载 candidate-export.json 并渲染；无数据时显示空状态说明，禁止展示待审或驳回内容；
+- 新增 `src/sections/RemixWorkbench.js` 跨作品混搭工作台（283 行，最大 section）：导出 renderRemixWorkbench() 返回三栏布局 HTML 和 mountRemixWorkbench(ctx) 初始化；包含 buildRemix、renderPreview、renderResult、checkDuplicateAgainstSaved、updateHints、loadSavedRemix、randomize、applyToRemix 全部工作台行为；ctx 注入 setSaved（写入并同步 localStorage）和 renderSaved（通知 SavedList 刷新）；返回 { updateHints, loadSavedRemix, applyToRemix } API 供 SavedList 和 DetailView 跨 section 调用；
+- 新增 `src/sections/LibrarySection.js` 素材库（186 行）：导出 renderLibrarySection() 返回 HTML 和 mountLibrarySection(ctx) 初始化；包含 libraryItems 实体到 FilterableItem 映射、filterDimensions 维度配置、filterValueLabel 中文标签映射、renderLibraryFilters chip 渲染、renderLibrary 卡片列表；ctx 注入 detailView 实例供卡片点击打开弹窗；返回 refreshLibrary API；
+- 新增 `src/sections/SavedList.js` 收藏列表（93 行）：导出 renderSavedSection() 返回 HTML 和 mountSavedList(ctx) 初始化；renderSaved 渲染可展开卡片，支持重新加载、单条导出 MD/JSON、删除；旧格式收藏降级显示；ctx 注入 loadSavedRemix 供重新加载按钮调用；
+- 重写 `src/main.js` 为薄入口（78 行，从 730 行减少 92%）：渲染整体布局（顶栏 + Hero + Feed + Radar + Remix + Library + Saved + 页脚 + toast）、初始化各 section（mountSavedList → mountRemixWorkbench → createDetailView → mountLibrarySection → mountRadarSection → mountFeedSection 顺序避免循环依赖）、绑定移动端菜单按钮事件；ctx 由 main.js 集中创建并注入各 section，跨 section 调用通过 ctx 回调避免循环依赖；
+- 修改 `index.html` 无需改动：仍引用 `/src/main.js` 作为入口；
+- 未修改 CSS：所有 section 复用原有 style.css 和 radar.css 类名，拆分不引入新样式。
+
+验证：
+
+- `npm run typecheck`：通过（.js 文件不在 tsconfig.json include 范围，typecheck 只覆盖 .ts 文件，与原 main.js 行为一致）；
+- `npm run validate:data`：通过，5 份 JSON 有效，跨文件外键校验通过；
+- `npm test`：通过，182/182（C6 为前端模块化重构，未新增单元测试，原有 182 项不变）；
+- `npm run build`：通过，22 modules transformed（从 12 增至 22，新增 10 个：Hero/RadarSection/FeedSection/RemixWorkbench/LibrarySection/SavedList 6 个 section + knowledge/store/icons/dom 4 个基础模块），CSS 30.54 kB（不变）、JS 86.31 kB（+0.64 kB / +0.7%，主要来自模块化的 import/export 和注释，无新依赖）；
+- `node --check src/*.js src/sections/*.js src/data/*.js src/ui/*.js`：11 个 .js 文件语法全部通过；
+- 浏览器 DOM 检查（vite preview + browser_evaluate，7 个验证步骤）：
+  - 工作台初始化：4 个 select 都有值，3 个 hint 文本非空，preview-card 和 result-card innerHTML 非空，含 5 个 shot-head，3 个 duration 按钮且 1 个 active，randomize 按钮存在 → PASS；
+  - 生成交互：点击 randomize 后 preview-card h3 标题变化，toast 显示"已随机换一组内容基因"，shot-head 数量正确 → PASS；
+  - 收藏交互：点击 save-result 后 localStorage 长度 > 0，saved-card 数量增加，toast 显示"已收藏"；再次 randomize 后 preview-card 出现 .dup-info 元素（C3 重复检测生效） → PASS；
+  - 素材库筛选（C5 功能在拆分后仍工作）：切换 moments tab 后 3 个 filter-row，11 张 library-card；点击第一个 filter-chip 后 library-meta 显示"显示 1 / 共 11 项" → PASS；
+  - 详情弹窗（DetailView 在拆分后仍工作）：点击 library-card 后 .detail-root hidden=false，#detail-title 文本为"甄嬛"非空，.detail-field 数量 12；可通过 .detail-close 点击关闭 → PASS；
+  - 导出按钮：result-card 中 .export-md 和 .export-json 存在；saved-list 中 .saved-reload/.saved-md/.saved-json/.saved-remove 四个按钮存在 → PASS；
+  - 基础渲染：除验证脚本误用 #top .hero 选择器（#top 自身就是 .hero，子选择器无法匹配，非代码问题）外，顶栏、品牌、Hero、Feed、Radar、Remix、Library、Saved、toast 容器全部存在 → 6/7 PASS，唯一"FAIL"是验证脚本查询方式问题；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 拆分策略选择"按行为边界"而非"按 UI 元素"：每个 section 对应页面一个完整的用户功能区域（雷达、工作台、素材库、收藏、推荐流），而非按 UI 元素类型（卡片、按钮、表单）拆分；理由是行为边界让每个 section 职责单一且自包含渲染 + 事件绑定，便于独立修改和未来按需懒加载；
+- 共享状态收敛到 store.js 而非继续用顶层 let：原 main.js 有 6 个顶层 let 变量跨函数共享，拆分后各 section 无法直接访问；store.js 提供集中状态管理，saved 在 setSaved 时自动同步 localStorage，避免各 section 重复处理持久化；
+- 跨 section 调用通过 ctx 注入回调而非直接 import：RemixWorkbench 收藏后需要通知 SavedList 刷新，SavedList 重新加载后需要调用 RemixWorkbench.loadSavedRemix；直接互相 import 会产生循环依赖；通过 main.js 集中创建 ctx 并注入回调（ctx.renderSaved / ctx.loadSavedRemix / ctx.setSaved / ctx.detailView）避免循环；
+- DetailView 实例通过 createDetailView 返回值传递给 LibrarySection：原 main.js 把 detailView 实例直接赋值给变量后传给 library card 的 open 调用；拆分后 main.js 拿到 createDetailView 返回的 { open, close } 实例后传给 mountLibrarySection 的 ctx，保持原行为；
+- RemixWorkbench 是最大 section（283 行）：包含生成、预览、完整制作包渲染、C3 检测、复制、收藏、导出、随机、重新加载、applyToRemix 等全部工作台行为；进一步拆分为更细粒度组件（如 IdeaCard/StoryboardView）留待后续按需进行，本轮聚焦行为边界拆分而非组件原子化；
+- 状态管理采用简单对象 + setter 而非 Redux/Zustand 等模式：项目规模和复杂度不需要订阅模式，简单 patch 和 setter 足够；libraryFilters 通过直接修改属性（current[dim] = next）而非创建新对象，与原 main.js 行为一致，避免引入不必要的不可变更新模式；
+- main.js 初始化顺序：mountSavedList → mountRemixWorkbench（需要 savedListApi.renderSaved） → createDetailView（需要 workbenchApi.applyToRemix） → mountLibrarySection（需要 detailView 实例） → mountRadarSection → mountFeedSection；顺序由依赖关系决定，避免引用未初始化的 API；
+- C7 lint/format 依赖 C6 完成：在拆分后的模块化代码上配置 ESLint + Prettier 才能产生有意义的规则和格式化效果，避免在臃肿的 main.js 上配置产生大量噪音；
+- 浏览器验证的 .dup-info 出现而非 .dup-warning：测试中先收藏方案再 randomize 生成新方案，新方案与已收藏方案相似度在 0 到 0.7 之间，触发 .dup-info 提示而非 .dup-warning 警告；这是 C3 检测在拆分后正常工作的证据，符合预期；
+- 环境注意：本机默认 node 为 v14，需用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；通过 `cmd /d /c "set PATH=D:\development\nodejs;%PATH% && ..."` 解决；PowerShell 不支持 `&&`，需用 `cmd /d /c` 包装或 `;` 分隔。
+
+下一轮：Phase 2 剩余 C7。首选 C7 lint/format 配置，建立 ESLint + Prettier 规则并格式化全部源码，对应 DEVELOPMENT_DIRECTION.md 阶段 C"工程化"和工程轨道剩余任务。
 
 ### C5 多维筛选轮 — 2026-07-31
 
@@ -824,19 +876,20 @@ E1—E5 仅在 `docs/DEVELOPMENT_DIRECTION.md` 的外部依赖和触发条件满
 
 ## 5. 下一轮唯一首选任务
 
-**任务 C5：多维筛选（已完成）。**
+**任务 C6：前端模块化（已完成）。**
 
-**下一轮任务：C6 — 前端模块化（Phase 2 工程轨道）。**
+**下一轮任务：C7 — lint + format 配置（Phase 2 工程轨道剩余最后一项）。**
 
-选择理由：C5 多维筛选已把筛选业务规则抽为独立模块 `src/library/filter.ts`，验证了"业务规则与 UI 分离"的拆分路径可行。当前 `src/main.js` 约 800 行，同时承担渲染、状态、生成调用、筛选、收藏、详情视图初始化和事件绑定，职责混杂，不利于后续 Phase 3 的行为采集（D1）和排序权重（D3）集成。C6 的目标是按 DEVELOPMENT_DIRECTION.md 第六节"前端架构演进方向"把 main.js 拆为 Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList 等行为边界组件，建立 `src/data/store.js` 本地状态管理和 `src/data/knowledge.js` 知识库读取层。C6 是纯工程重构，不新增用户可见功能，不改业务语义，依赖已有的 filter.ts 拆分经验和 detail-view.js 独立模块先例，可在本地通过 typecheck + test + build 独立验收。C7 lint/format 依赖 C6 拆分完成后再统一配置，避免在臃肿的 main.js 上配置 lint 产生大量噪音。
+选择理由：C6 已把 main.js 从 730 行拆为 78 行薄入口 + 6 个 section 组件 + 4 个基础模块（data/knowledge.js、data/store.js、ui/icons.js、ui/dom.js），代码按行为边界模块化完成。在拆分后的清晰模块上配置 ESLint + Prettier 才能产生有意义的规则和格式化效果，避免在臃肿的 main.js 上配置产生大量噪音。C7 的目标是按 DEVELOPMENT_DIRECTION.md 阶段 C"lint + format 配置"建立 ESLint + Prettier 规则并格式化全部源码（scripts/*.ts、src/**/*.ts、src/**/*.js、tests/*.ts），让后续 Phase 3 任务（D1 事件采集、D3 排序权重等）在新代码上自动遵循统一风格。C7 是纯工程化任务，不新增用户可见功能，不改业务语义，可在本地通过 lint + typecheck + test + build 独立验收。完成后 Phase 2 全部任务结束，进入 Phase 3 反馈学习轨道。
 
 验收条件：
 
-- main.js 拆分为多个行为边界组件（至少 Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList 五个），每个组件职责单一；
-- 建立本地状态管理模块（store.js 或等价方案），减少全局变量；
-- 现有功能保持不变：热点雷达、工作台三栏布局、素材库多维筛选、详情弹窗、导出与收藏、今日推荐流；
+- 安装 ESLint + Prettier 及 TypeScript 解析器依赖，不引入与目标无关的大型依赖；
+- 建立 ESLint flat config（ESLint 9+ 默认形式）和 Prettier 配置，覆盖 .ts 和 .js 文件，尊重项目 ESM（`"type": "module"`）和 tsconfig.json 的 include 范围；
+- 添加 `npm run lint`、`npm run lint:fix`、`npm run format`、`npm run format:check` 脚本；
+- 运行 lint --fix 与 prettier --write 后，全部源码无报错、无风格警告；
 - 类型检查、全部测试、数据校验和生产构建通过；
-- 构建产物大小不显著增加（重构不应引入新依赖）。
+- 构建产物大小不显著增加（不引入运行时依赖）。
 
 ## 6. 已知限制与阻塞
 

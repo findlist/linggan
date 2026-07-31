@@ -1,174 +1,26 @@
-import knowledge from '../data/knowledge-base.json'
-import { buildRemixPlan } from './generation/remix-engine.ts'
-import { buildRemixFileName, buildRemixJson, buildRemixMarkdown } from './generation/exporters.ts'
-// C4：引入 C3 近似度检测，在前端把当前方案与已收藏方案对比，标记换皮创意
-import { detectDuplicates } from './generation/similarity.ts'
-// C5：素材库多维度组合筛选纯函数，业务规则与 UI 分离便于单测
-import { filterLibraryItems, collectFilterOptions } from './library/filter.ts'
+// 灵感前端入口：渲染整体页面布局、初始化各 section 和详情视图、绑定全局事件。
+// 各 section 的具体行为（生成、筛选、收藏、雷达刷新等）封装在 src/sections/ 下，
+// 共享状态通过 src/data/store.js 集中管理，共享依赖通过 ctx 注入避免循环依赖。
+
+import { icon } from './ui/icons.js'
+import { setSaved } from './data/store.js'
+import {
+  knowledge, workById, characterById,
+  mediaNames, rightsLabels, riskLabels
+} from './data/knowledge.js'
+import { escapeHtml } from './ui/dom.js'
 import { createDetailView } from './detail-view.js'
+import { renderHero } from './sections/Hero.js'
+import { renderRadarSection, mountRadarSection } from './sections/RadarSection.js'
+import { mountFeedSection } from './sections/FeedSection.js'
+import { renderRemixWorkbench, mountRemixWorkbench } from './sections/RemixWorkbench.js'
+import { renderLibrarySection, mountLibrarySection } from './sections/LibrarySection.js'
+import { renderSavedSection, mountSavedList } from './sections/SavedList.js'
 import './radar.css'
-
-let trendExport = null
-let candidateExport = null
-
-const loadTrendExport = async () => {
-  try {
-    const response = await fetch('./data/trend-export.json')
-    if (!response.ok) {
-      try { const fallback = await fetch('/data/trend-export.json'); if (fallback.ok) return await fallback.json() } catch {}
-      return null
-    }
-    const data = await response.json()
-    if (data.schema_version !== 1) return null
-    return data
-  } catch {
-    return null
-  }
-}
-
-// 加载已批准候选导出文档；前端不直接访问 SQLite，只消费只读 JSON
-const loadCandidateExport = async () => {
-  try {
-    const response = await fetch('./data/candidate-export.json')
-    if (!response.ok) {
-      try { const fallback = await fetch('/data/candidate-export.json'); if (fallback.ok) return await fallback.json() } catch {}
-      return null
-    }
-    const data = await response.json()
-    if (data.schema_version !== 1) return null
-    return data
-  } catch {
-    return null
-  }
-}
-
-const riskLabels = { low: '低风险', medium: '中风险', high: '高风险', blocked: '阻断' }
-const rightsLabels = { original: '原创', licensed: '已授权', public_domain: '公共领域', reference_only: '仅参考', unknown: '版权未知', restricted: '受限' }
-const formatScore = value => Number.isFinite(value) ? Math.round(value) : '—'
-
-// 渲染今日推荐流：无已批准候选时显示明确空状态，禁止展示待审内容
-const renderCandidateFeed = data => {
-  const feed = document.querySelector('#feed-grid')
-  const pill = document.querySelector('#feed-status-pill')
-  if (!feed) return
-  if (!data || data.candidate_count === 0) {
-    if (pill) pill.innerHTML = `${icon('database', 16)} 暂无已批准候选`
-    feed.innerHTML = `<div class="feed-empty">${icon('sparkles', 24)}<p>暂无已批准的创意候选</p><small>候选生成并审核通过后，今日推荐流会在这里展示真实方案。当前展示内容均为已审核 approved 候选，不会出现待审或驳回内容。</small></div>`
-    return
-  }
-  if (pill) pill.innerHTML = `${icon('check', 16)} ${data.candidate_count} 条已批准候选`
-  feed.innerHTML = data.candidates.map((candidate, index) => `<article class="feed-card">
-    <div class="feed-index">${String(index + 1).padStart(2, '0')}</div>
-    <span class="feed-badge">${icon('shield', 13)} ${rightsLabels[candidate.rights_status] ?? candidate.rights_status}</span>
-    <h3>${escapeHtml(candidate.title)}</h3>
-    <p class="feed-source">来源趋势 · ${escapeHtml(candidate.source_trend)}</p>
-    <div class="feed-hook"><span>前三秒钩子</span><b>${escapeHtml(candidate.hook)}</b></div>
-    <div class="feed-meta"><span>质量分 <strong>${formatScore(candidate.score.total)}</strong></span><span>${riskLabels[candidate.risk_level] ?? candidate.risk_level}</span><span>${candidate.generated_at.slice(0, 10)}</span></div>
-  </article>`).join('')
-}
-
-const icon = (name, size = 20) => {
-  const paths = {
-    sparkles: '<path d="m12 3-1.4 3.6L7 8l3.6 1.4L12 13l1.4-3.6L17 8l-3.6-1.4L12 3Z"/><path d="m5 14-.8 2.2L2 17l2.2.8L5 20l.8-2.2L8 17l-2.2-.8L5 14Z"/>',
-    radar: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 19 5M12 3v2M3 12h2M12 19v2"/>',
-    database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',
-    shuffle: '<path d="M3 7h3c4 0 5 10 9 10h6M18 14l3 3-3 3M3 17h3c1.8 0 3-2 4-4M15 7h6M18 4l3 3-3 3"/>',
-    book: '<path d="M4 5a3 3 0 0 1 3-3h5v18H7a3 3 0 0 0-3 3V5ZM20 5a3 3 0 0 0-3-3h-5v18h5a3 3 0 0 1 3 3V5Z"/>',
-    arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
-    bookmark: '<path d="M6 3h12v18l-6-4-6 4V3Z"/>',
-    copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
-    shield: '<path d="M12 3 4 6v5c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-3Z"/><path d="m9 12 2 2 4-4"/>',
-    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
-    menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
-    close: '<path d="m6 6 12 12M18 6 6 18"/>',
-    play: '<path d="m9 7 8 5-8 5V7Z"/>',
-    check: '<path d="m5 12 4 4L19 6"/>'
-  }
-  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] ?? paths.sparkles}</svg>`
-}
-
-const workById = new Map(knowledge.works.map(work => [work.id, work]))
-const characterById = new Map(knowledge.known_characters.map(character => [character.id, character]))
-const mediaNames = { television: '电视剧', anime: '动漫', film: '电影', game: '游戏', variety: '综艺' }
-const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char])
-
-// 触发浏览器下载文本文件：用 Blob + 临时 a 标签 + URL.revokeObjectURL 释放
-const downloadText = (filename, content, mime) => {
-  const blob = new Blob([content], { type: mime })
-  const url = URL.createObjectURL(blob)
-  const anchor = document.createElement('a')
-  anchor.href = url
-  anchor.download = filename
-  document.body.appendChild(anchor)
-  anchor.click()
-  document.body.removeChild(anchor)
-  URL.revokeObjectURL(url)
-}
-
-const radarChannels = [
-  { name: '公开热点', detail: '热搜、赛事与文化事件', state: '每 6 小时', tone: 'pink' },
-  { name: '热门角色', detail: '作品人物与关系变化', state: '待入库', tone: 'violet' },
-  { name: '视频形式', detail: '镜头结构与评论区需求', state: '待入库', tone: 'blue' }
-]
-
-const categoryLabels = {
-  meme: '热梗', expression: '表情包', television: '电视剧', anime: '动漫',
-  film: '电影', game: '游戏', variety: '综艺', character: '角色',
-  video_format: '视频形式', creator_demand: '创作者需求',
-  festival: '节日', sports: '体育', cultural_event: '文化事件'
-}
-
-const lifecycleLabels = {
-  emerging: '萌芽期', rising: '上升期', peak: '峰值期',
-  declining: '回落期', evergreen: '常青', archived: '已归档'
-}
-
-const renderRadarChannels = (trends) => {
-  if (!trends || trends.length === 0) {
-    return `<div class="radar-empty">${icon('radar', 24)}<p>暂无已入库的热点趋势</p><small>采集任务运行后，经过校验和去重的热点会出现在这里</small></div>`
-  }
-  const channels = {}
-  for (const trend of trends) {
-    const cat = trend.category
-    if (!channels[cat]) channels[cat] = []
-    channels[cat].push(trend)
-  }
-  const topCategories = Object.entries(channels)
-    .sort(([, a], [, b]) => b.length - a.length)
-    .slice(0, 3)
-  const tones = ['pink', 'violet', 'blue']
-  return topCategories.map(([category, items], index) => {
-    const top = items.sort((a, b) => (b.heat ?? 0) - (a.heat ?? 0))[0]
-    return `<article>
-      <i class="channel-dot ${tones[index]}"></i>
-      <div>
-        <b>${categoryLabels[category] ?? category}</b>
-        <p>${escapeHtml(top.name)}${items.length > 1 ? ` 等 ${items.length} 条` : ''}</p>
-      </div>
-      <span>${lifecycleLabels[top.lifecycle] ?? top.lifecycle}</span>
-    </article>`
-  }).join('')
-}
-
-const remixStyles = [
-  { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图、逐步升级的群像调度' },
-  { id: 'absurd', label: '一本正经的荒诞', prompt: '严肃表演处理微小目标，反差来自角色态度而非恶搞造型' },
-  { id: 'animation', label: '国风动画', prompt: '原创东方幻想视觉、粒子化气流、清晰动作轮廓与留白' },
-  { id: 'mockumentary', label: '伪纪录片', prompt: '手持跟拍、角色采访、证词冲突与监控式反转' }
-]
 
 const app = document.querySelector('#app')
 
-const renderCharacterOptions = selected => knowledge.known_characters.map(character => {
-  const work = workById.get(character.work_id)
-  return `<option value="${character.id}" ${character.id === selected ? 'selected' : ''}>${escapeHtml(character.name)} · ${escapeHtml(work.title)}</option>`
-}).join('')
-
-const renderMomentOptions = selected => knowledge.iconic_moments.map(moment => {
-  const work = workById.get(moment.work_id)
-  return `<option value="${moment.id}" ${moment.id === selected ? 'selected' : ''}>${escapeHtml(moment.name)} · ${escapeHtml(work.title)}</option>`
-}).join('')
-
+// 渲染整体布局：顶栏 + Hero + 今日推荐 + 雷达 + 工作台 + 素材库 + 收藏 + 页脚 + toast 容器
 app.innerHTML = `
   <header class="topbar">
     <nav class="nav shell" aria-label="主导航">
@@ -179,513 +31,43 @@ app.innerHTML = `
     </nav>
   </header>
   <main id="main">
-    <section class="hero shell" id="top">
-      <div class="hero-copy">
-        <div class="eyebrow"><span></span> REAL-TIME REMIX ENGINE</div>
-        <h1>热点会过去，<br><em>组合永远有新意。</em></h1>
-        <p>自动发现实时热点、热梗、热门角色和名场面，再把不同作品的角色关系、冲突节奏与视频形式重新排列，生成真正能拍的创意方案。</p>
-        <div class="hero-actions"><a class="btn primary" href="#remix">开始一次混搭 ${icon('arrow', 18)}</a><a class="btn ghost" href="#library">浏览基础库</a></div>
-        <div class="stat-line"><div><strong>${knowledge.works.length}</strong><span>参考作品</span></div><div><strong>${knowledge.known_characters.length}</strong><span>主要角色</span></div><div><strong>${knowledge.iconic_moments.length}</strong><span>名场面结构</span></div></div>
-      </div>
-      <div class="hero-stage" aria-label="混搭示意">
-        <div class="stage-grid"></div>
-        <article class="stage-card role-card role-a"><span>角色 A · 凡人修仙传</span><b>韩立</b><small>谨慎成长者 / 资源规划者</small></article>
-        <article class="stage-card role-card role-b"><span>角色 B · 仙逆</span><b>李慕婉</b><small>温柔智者 / 稳定支点</small></article>
-        <article class="stage-card scene-card"><span>名场面节奏 · 亮剑</span><b>限时集结攻坚</b><small>目标受困 → 多路集结 → 侧翼破局</small></article>
-        <div class="stage-core">${icon('shuffle', 28)}<b>REMIX</b></div>
-      </div>
-    </section>
-
+    ${renderHero()}
     <section class="feed-section" id="feed">
       <div class="shell">
         <div class="section-title"><div><span class="kicker">TODAY'S PICKS</span><h2>今日推荐</h2><p>只展示已审核通过的持久化候选，待审、驳回或归档内容不会出现在这里。</p></div><span class="system-pill" id="feed-status-pill">${icon('database', 16)} 读取中</span></div>
         <div class="feed-grid" id="feed-grid"><div class="feed-empty">${icon('sparkles', 24)}<p>正在加载今日推荐...</p></div></div>
       </div>
     </section>
-
-    <section class="radar-section" id="radar">
-      <div class="shell">
-        <div class="section-title"><div><span class="kicker">DISCOVERY PIPELINE</span><h2>实时热点雷达</h2><p>公开来源先留证，再经过 Schema、去重与风险标记进入素材系统。</p></div><span class="system-pill" id="radar-status-pill">${icon('database', 16)} SQLite 正式库 · ${trendExport ? `${trendExport.trend_count} 条已入库` : '等待真实采集批次'}</span></div>
-        <div class="radar-layout">
-          <div class="radar-visual"><div class="radar-ring ring-1"></div><div class="radar-ring ring-2"></div><div class="radar-ring ring-3"></div><div class="radar-sweep"></div><div class="radar-center">${icon('radar', 28)}<span>07:30<br>13:30<br>19:30</span></div><i class="blip b1"></i><i class="blip b2"></i><i class="blip b3"></i></div>
-          <div class="channel-list" id="radar-channel-list">${trendExport ? renderRadarChannels(trendExport.trends) : radarChannels.map(channel => `<article><i class="channel-dot ${channel.tone}"></i><div><b>${channel.name}</b><p>${channel.detail}</p></div><span>${channel.state}</span></article>`).join('')}<div class="pipeline-note">${icon('shield', 18)}<p><b>不编造热度</b><br>无法核实的指标保持为空，具体 IP 只作参考标签。</p></div></div>
-          <div class="flow-card"><span class="kicker">DATA FLOW</span><ol><li class="done"><i>${icon('check', 14)}</i><div><b>公开来源采集</b><small>URL、时间、可见指标</small></div></li><li class="done"><i>${icon('check', 14)}</i><div><b>批次校验与去重</b><small>坏批次隔离，原始证据保留</small></div></li><li class="done"><i>${icon('check', 14)}</i><div><b>SQLite 事务入库</b><small>人物、名场面与趋势可关联</small></div></li><li class="done"><i>${icon('check', 14)}</i><div><b>创意组合与评分</b><small>候选流水线已接通正式趋势库</small></div></li></ol></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="remix-section shell" id="remix">
-      <div class="section-title"><div><span class="kicker">CROSSOVER LAB</span><h2>跨作品混搭实验室</h2><p>人物借用的是关系与性格，名场面借用的是冲突节奏；输出使用原创改写台词与非精确视觉方案。</p></div><button class="btn ghost randomize">${icon('shuffle', 17)} 随机换一组</button></div>
-      <div class="remix-workspace">
-        <form class="composer" id="remix-form">
-          <div class="field"><label for="character-a"><span>01</span>主行动角色</label><select id="character-a">${renderCharacterOptions('known_han_li')}</select><small class="field-hint" id="hint-a"></small></div>
-          <div class="operator">×</div>
-          <div class="field"><label for="character-b"><span>02</span>关系碰撞角色</label><select id="character-b">${renderCharacterOptions('known_li_muwan')}</select><small class="field-hint" id="hint-b"></small></div>
-          <div class="operator">×</div>
-          <div class="field wide"><label for="moment"><span>03</span>名场面冲突结构</label><select id="moment">${renderMomentOptions('moment_mass_assault')}</select><small class="field-hint" id="hint-moment"></small></div>
-          <div class="field style-field"><label for="style"><span>04</span>视频风格</label><select id="style">${remixStyles.map(style => `<option value="${style.id}">${style.label}</option>`).join('')}</select></div>
-          <div class="duration"><span>时长</span><button type="button" data-duration="15">15s</button><button type="button" class="active" data-duration="30">30s</button><button type="button" data-duration="60">60s</button></div>
-          <button class="btn primary generate-remix" type="submit">${icon('sparkles', 18)} 生成混搭方案</button>
-        </form>
-        <article class="preview-card" id="preview-card" aria-live="polite"></article>
-        <article class="result-card" id="result-card" aria-live="polite"></article>
-      </div>
-    </section>
-
-    <section class="library-section" id="library">
-      <div class="shell">
-        <div class="section-title"><div><span class="kicker">KNOWLEDGE BASE</span><h2>可组合的内容基因库</h2><p>不是素材下载站，而是可追溯的角色类型、关系张力、台词风格和叙事结构索引。</p></div></div>
-        <div class="library-toolbar"><div class="tabs" role="tablist"><button class="active" data-tab="characters">主要角色</button><button data-tab="moments">名场面</button><button data-tab="works">作品</button></div><label class="library-search">${icon('search', 17)}<input id="library-search" placeholder="搜索角色、类型、作品或场面" /></label></div>
-        <div class="library-filters" id="library-filters" aria-label="素材筛选"></div>
-        <div class="library-meta" id="library-meta"></div>
-        <div class="library-grid" id="library-grid"></div>
-      </div>
-    </section>
-
-    <section class="saved-section shell"><div><span class="kicker">YOUR WORKSPACE</span><h2>已收藏的混搭</h2></div><div class="saved-list" id="saved-list"><p class="empty">还没有收藏方案。先生成一次意外碰撞。</p></div></section>
+    ${renderRadarSection(null)}
+    ${renderRemixWorkbench()}
+    ${renderLibrarySection()}
+    ${renderSavedSection()}
   </main>
-  <footer><div class="shell footer-inner"><a class="brand" href="#top"><span class="brand-mark">${icon('sparkles',18)}</span><span>灵感</span></a><p>公开来源留证 · 参考资产隔离 · 原创表达优先</p><span>Linggan Remix Lab</span></div></footer>
+  <footer><div class="shell footer-inner"><a class="brand" href="#top"><span class="brand-mark">${icon('sparkles', 18)}</span><span>灵感</span></a><p>公开来源留证 · 参考资产隔离 · 原创表达优先</p><span>Linggan Remix Lab</span></div></footer>
   <div class="toast" role="status" aria-live="polite"></div>
 `
 
-let duration = 30
-let generation = 0
-let currentResult = null
-let activeTab = 'characters'
-// 收藏结构：{id, title, hook, plan, context, savedAt}；旧数据缺少 plan/context/savedAt，降级显示
-let saved = JSON.parse(localStorage.getItem('linggan-saved-remixes') ?? '[]').map(item => ({
-  id: item.id,
-  title: item.title,
-  hook: item.hook,
-  plan: item.plan ?? null,
-  context: item.context ?? null,
-  savedAt: item.savedAt ?? null
-}))
+// 移动端菜单按钮：点击展开 / 收起导航链接
+document.querySelector('.menu-button').addEventListener('click', event => {
+  const links = document.querySelector('.nav-links')
+  links.classList.toggle('open')
+  const open = links.classList.contains('open')
+  event.currentTarget.setAttribute('aria-expanded', String(open))
+  event.currentTarget.innerHTML = icon(open ? 'close' : 'menu')
+})
 
-const toast = message => {
-  const element = document.querySelector('.toast')
-  element.textContent = message
-  element.classList.add('show')
-  clearTimeout(window.lingganToast)
-  window.lingganToast = setTimeout(() => element.classList.remove('show'), 2600)
-}
+// 先挂载收藏列表，得到 renderSaved 函数；工作台需要通过 ctx.renderSaved 通知列表刷新
+const savedListApi = mountSavedList({})
 
-const updateHints = () => {
-  const a = characterById.get(document.querySelector('#character-a').value)
-  const b = characterById.get(document.querySelector('#character-b').value)
-  const moment = knowledge.iconic_moments.find(item => item.id === document.querySelector('#moment').value)
-  document.querySelector('#hint-a').textContent = `${a.character_types.join(' · ')}｜${a.traits.join('、')}`
-  document.querySelector('#hint-b').textContent = `${b.character_types.join(' · ')}｜${b.traits.join('、')}`
-  document.querySelector('#hint-moment').textContent = `${moment.conflict_type}｜${moment.reusable_beats.slice(0, 2).join(' → ')}`
-}
+// 工作台 ctx：setSaved 用于收藏写入并同步 localStorage；renderSaved 通知列表刷新
+const workbenchApi = mountRemixWorkbench({
+  setSaved,
+  renderSaved: () => savedListApi.renderSaved()
+})
 
-const personalityLabels = { cold: '冷酷型', hot: '热血型', cunning: '腹黑型', gentle: '温柔型' }
-const hookCategoryLabels = { suspense: '悬念', contrast: '反差', question: '提问', action: '行动' }
-// C2 分镜新字段的中文标签：景别 / 运镜 / 转场，用于右栏完整制作包展示
-const shotTypeLabels = { extreme_close_up: '大特写', close_up: '特写', medium: '中景', full: '全景', wide: '远景' }
-const cameraMovementLabels = { fixed: '固定', push: '推', pull: '拉', pan: '摇', tilt: '俯仰', tracking: '跟拍' }
-const transitionLabels = { cut: '切', dissolve: '溶', fade: '淡变', match_cut: '匹配剪辑' }
-
-/**
- * C3 近似度检测：把当前生成的 plan 与已收藏 plans 合并后调用 detectDuplicates，
- * 找出当前 plan 是否与某个已收藏方案相似度超过阈值（默认 0.7），用于在前端标记换皮创意。
- * 返回 { isDuplicate, maxSimilarity, similarTitle } 供中栏预览展示警告。
- */
-const checkDuplicateAgainstSaved = (plan) => {
-  // 排除与当前 plan 相同 id 的已收藏方案，避免收藏后自比导致相似度恒为 1
-  const savedPlans = saved.filter(item => item.plan && item.plan.id !== plan.id).map(item => item.plan)
-  if (savedPlans.length === 0) return { isDuplicate: false, maxSimilarity: 0, similarTitle: null }
-  // 把当前 plan 放在数组末尾，检测时能拿到它与其他方案的相似度
-  const detection = detectDuplicates([...savedPlans, plan])
-  const currentFlag = detection.flags[detection.flags.length - 1]
-  if (!currentFlag || !currentFlag.is_duplicate) {
-    return { isDuplicate: false, maxSimilarity: currentFlag?.max_similarity ?? 0, similarTitle: null }
-  }
-  // 找出最相似的已收藏方案标题，用于提示用户
-  const similarId = currentFlag.similar_to[0]
-  const similarSaved = saved.find(item => item.plan?.id === similarId)
-  return {
-    isDuplicate: true,
-    maxSimilarity: currentFlag.max_similarity,
-    similarTitle: similarSaved?.title ?? '已收藏方案'
-  }
-}
-
-const buildRemix = () => {
-  const a = characterById.get(document.querySelector('#character-a').value)
-  const b = characterById.get(document.querySelector('#character-b').value)
-  const moment = knowledge.iconic_moments.find(item => item.id === document.querySelector('#moment').value)
-  const style = remixStyles.find(item => item.id === document.querySelector('#style').value)
-  // 种子加入 generation 计数器，使每次点击“生成”都能产生不同方案；同一 seed 字符串在引擎内确定性展开
-  const seed = `${a.id}${b.id}${moment.id}${style.id}${generation}`
-  const plan = buildRemixPlan({
-    characterA: a,
-    characterB: b,
-    moment,
-    workA: workById.get(a.work_id),
-    workB: workById.get(b.work_id),
-    momentWork: workById.get(moment.work_id),
-    style,
-    duration,
-    seed
-  })
-  return { plan, a, b, moment, style }
-}
-
-const renderResult = result => {
-  const { plan } = result
-  renderPreview(result)
-  const card = document.querySelector('#result-card')
-  // C2 完整制作包：分镜表含景别/运镜/转场，结构化提示词，版权边界三字段
-  card.innerHTML = `
-    <div class="result-top"><span class="result-label">完整制作包 · ${plan.duration}s · ${hookCategoryLabels[plan.hookCategory]}钩子</span></div>
-    <div class="storyboard-section">
-      <h4>分镜表（${plan.storyboard.length} 镜头）</h4>
-      <div class="beat-list storyboard-list">${plan.storyboard.map(shot => `<div class="shot"><div class="shot-head"><span>#${String(shot.index).padStart(2, '0')} · ${shot.duration}s</span><small>${shotTypeLabels[shot.shot_type]} · ${cameraMovementLabels[shot.camera_movement]} · 转${transitionLabels[shot.transition]}</small></div><p class="shot-visual">${escapeHtml(shot.visual)}</p><small>动作：${escapeHtml(shot.action)} · 情绪：${escapeHtml(shot.emotion)}</small></div>`).join('')}</div>
-    </div>
-    <div class="dialogues"><div><span>${escapeHtml(result.a.name)} · 原创改写</span><p>${escapeHtml(plan.dialogueA)}</p></div><div><span>${escapeHtml(result.b.name)} · 原创改写</span><p>${escapeHtml(plan.dialogueB)}</p></div></div>
-    <details class="copywriting-block"><summary>发布文案（3 标题 · 描述 · 标签 · 封面文案）</summary><div class="copy-titles"><span>标题候选</span><ul>${plan.copywriting.titles.map(title => `<li>${escapeHtml(title)}</li>`).join('')}</ul></div><p class="copy-desc">${escapeHtml(plan.copywriting.description)}</p><div class="copy-tags">${plan.copywriting.hashtags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div><div class="cover-copy-row"><span>封面文案</span><b>${escapeHtml(plan.copywriting.cover_copy)}</b></div></details>
-    <details class="prompt-block"><summary>结构化画面提示词</summary><div class="prompt-grid"><div><span>正向提示词</span><p>${escapeHtml(plan.production.prompts.positive)}</p></div><div><span>负面提示词</span><p>${escapeHtml(plan.production.prompts.negative)}</p></div><div class="prompt-meta"><span>比例</span><b>${escapeHtml(plan.production.prompts.aspect_ratio)}</b><span>风格强度</span><b>${(plan.production.prompts.style_strength * 100).toFixed(0)}%</b></div></div></details>
-    <details class="copyright-block"><summary>版权边界声明</summary><div class="copyright-grid"><div><span>参考状态</span><p>${escapeHtml(plan.production.copyright_boundary.reference_status)}</p></div><div><span>商用限制</span><p>${escapeHtml(plan.production.copyright_boundary.commercial_use)}</p></div><div><span>改写范围</span><p>${escapeHtml(plan.production.copyright_boundary.rewrite_scope)}</p></div></div></details>
-    <div class="result-actions"><button class="btn ghost export-md">${icon('arrow', 16)} 导出 Markdown</button><button class="btn ghost export-json">${icon('database', 16)} 导出 JSON</button></div>`
-  // 导出 Markdown：人类可读，含完整字段和版权边界
-  card.querySelector('.export-md').addEventListener('click', () => {
-    try {
-      downloadText(`${buildRemixFileName(plan)}.md`, buildRemixMarkdown(plan), 'text/markdown;charset=utf-8')
-      toast('Markdown 已导出')
-    } catch (error) {
-      toast('导出失败：' + (error?.message ?? error))
-    }
-  })
-  // 导出 JSON：机器可读，保存完整 RemixPlan 字段
-  card.querySelector('.export-json').addEventListener('click', () => {
-    try {
-      downloadText(`${buildRemixFileName(plan)}.json`, buildRemixJson(plan), 'application/json;charset=utf-8')
-      toast('JSON 已导出')
-    } catch (error) {
-      toast('导出失败：' + (error?.message ?? error))
-    }
-  })
-}
-
-// 中栏预览：核心信息 + C3 重复标记 + 快速操作（复制/收藏）
-const renderPreview = result => {
-  const { plan } = result
-  const preview = document.querySelector('#preview-card')
-  // C3 近似度检测：与已收藏方案对比，标记换皮创意（排除自身 id 避免收藏后自比）
-  const dup = checkDuplicateAgainstSaved(plan)
-  const dupBanner = dup.isDuplicate
-    ? `<div class="dup-warning">${icon('shield', 14)}<span>近似度 ${(dup.maxSimilarity * 100).toFixed(0)}% · 与《${escapeHtml(dup.similarTitle)}》高度相似，可能是换皮创意</span></div>`
-    : dup.maxSimilarity > 0
-      ? `<div class="dup-info">${icon('check', 14)}<span>与已收藏方案最大相似度 ${(dup.maxSimilarity * 100).toFixed(0)}%，未达换皮阈值</span></div>`
-      : ''
-  preview.innerHTML = `
-    <div class="preview-top"><span class="preview-label">核心预览</span><span class="risk-badge">REFERENCE ONLY</span></div>
-    <h3>${escapeHtml(plan.title)}</h3>
-    <p class="concept">${escapeHtml(plan.concept)}</p>
-    <div class="hook"><span>前三秒钩子</span><b>${escapeHtml(plan.hook)}</b></div>
-    <div class="cover-copy"><span>封面文案</span><b>${escapeHtml(plan.copywriting.cover_copy)}</b></div>
-    <div class="preview-tags"><span>${plan.duration}s</span><span>${hookCategoryLabels[plan.hookCategory]}钩子</span><span>${personalityLabels[plan.personalityA]} × ${personalityLabels[plan.personalityB]}</span><span>${plan.storyboard.length} 镜头</span></div>
-    ${dupBanner}
-    <div class="preview-actions"><button class="btn ghost copy-result">${icon('copy', 16)} 复制</button><button class="btn primary save-result">${icon('bookmark', 16)} 收藏</button></div>`
-  preview.querySelector('.copy-result').addEventListener('click', async () => {
-    await navigator.clipboard?.writeText(preview.innerText)
-    toast('方案已复制')
-  })
-  preview.querySelector('.save-result').addEventListener('click', () => {
-    // 收藏保存完整方案和上下文，支持后续展开、重新加载和单条导出；按 plan.id 去重
-    if (!saved.some(item => item.id === plan.id)) {
-      saved.unshift({
-        id: plan.id,
-        title: plan.title,
-        hook: plan.hook,
-        plan,
-        context: {
-          characterAId: result.a.id,
-          characterBId: result.b.id,
-          momentId: result.moment.id,
-          styleId: result.style.id
-        },
-        savedAt: new Date().toISOString()
-      })
-    }
-    saved = saved.slice(0, 8)
-    localStorage.setItem('linggan-saved-remixes', JSON.stringify(saved))
-    renderSaved()
-    // 收藏后重新渲染预览，更新 C3 标记状态
-    renderPreview(result)
-    toast('已收藏到工作台')
-  })
-}
-
-const renderSaved = () => {
-  const list = document.querySelector('#saved-list')
-  if (!saved.length) {
-    list.innerHTML = '<p class="empty">还没有收藏方案。先生成一次意外碰撞。</p>'
-    return
-  }
-  // 每条收藏可展开查看完整方案；旧收藏无 plan 字段时降级显示，仅保留删除
-  list.innerHTML = saved.map(item => {
-    const hasPlan = !!item.plan
-    const meta = item.savedAt ? `收藏于 ${new Date(item.savedAt).toLocaleString('zh-CN')}` : '旧格式收藏'
-    const body = hasPlan
-      ? `<div class="saved-body" hidden>
-          <div class="saved-meta"><span>${icon('shield', 13)} ${item.plan.duration}s · ${hookCategoryLabels[item.plan.hookCategory]}钩子</span><span>${personalityLabels[item.plan.personalityA]} × ${personalityLabels[item.plan.personalityB]}</span></div>
-          <div class="saved-dialogues"><div><span>A · 原创改写</span><p>${escapeHtml(item.plan.dialogueA)}</p></div><div><span>B · 原创改写</span><p>${escapeHtml(item.plan.dialogueB)}</p></div></div>
-          <details><summary>分镜（${item.plan.storyboard.length} 镜头）</summary><ol class="saved-shots">${item.plan.storyboard.map(shot => `<li><b>${shot.duration}s</b> ${escapeHtml(shot.visual)} <small>动作：${escapeHtml(shot.action)} · 情绪：${escapeHtml(shot.emotion)}</small></li>`).join('')}</ol></details>
-          <div class="saved-actions">
-            <button class="btn ghost saved-reload" data-id="${escapeHtml(item.id)}">${icon('play', 14)} 重新加载</button>
-            <button class="btn ghost saved-md" data-id="${escapeHtml(item.id)}">${icon('arrow', 14)} 导出 MD</button>
-            <button class="btn ghost saved-json" data-id="${escapeHtml(item.id)}">${icon('database', 14)} 导出 JSON</button>
-            <button class="btn ghost saved-remove" data-id="${escapeHtml(item.id)}" aria-label="删除收藏">${icon('close', 14)} 删除</button>
-          </div>
-        </div>`
-      : `<div class="saved-body saved-old" hidden><p>该收藏为旧格式，仅保存了标题和钩子，无法展开或重新加载。请重新生成并收藏以使用完整功能。</p><div class="saved-actions"><button class="btn ghost saved-remove" data-id="${escapeHtml(item.id)}" aria-label="删除收藏">${icon('close', 14)} 删除</button></div></div>`
-    return `<article class="saved-card">
-      <header class="saved-head" role="button" tabindex="0" aria-expanded="false">
-        <span class="saved-icon">${icon('bookmark', 16)}</span>
-        <div class="saved-title"><b>${escapeHtml(item.title)}</b><p>${escapeHtml(item.hook)}</p><small>${meta}</small></div>
-        <span class="saved-toggle">${icon('arrow', 14)}</span>
-      </header>
-      ${body}
-    </article>`
-  }).join('')
-  // 展开/折叠：点击头部或 Enter/Space 切换
-  list.querySelectorAll('.saved-head').forEach(head => {
-    const toggle = () => {
-      const body = head.nextElementSibling
-      const expanded = head.getAttribute('aria-expanded') === 'true'
-      head.setAttribute('aria-expanded', String(!expanded))
-      if (body) body.hidden = expanded
-    }
-    head.addEventListener('click', toggle)
-    head.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggle() }
-    })
-  })
-  // 操作按钮：stopPropagation 避免触发头部 toggle
-  list.querySelectorAll('.saved-reload').forEach(btn => btn.addEventListener('click', event => { event.stopPropagation(); loadSavedRemix(btn.dataset.id) }))
-  list.querySelectorAll('.saved-md').forEach(btn => btn.addEventListener('click', event => {
-    event.stopPropagation()
-    const item = saved.find(s => s.id === btn.dataset.id)
-    if (!item?.plan) { toast('该收藏无法导出'); return }
-    try {
-      downloadText(`${buildRemixFileName(item.plan)}.md`, buildRemixMarkdown(item.plan), 'text/markdown;charset=utf-8')
-      toast('Markdown 已导出')
-    } catch (error) { toast('导出失败：' + (error?.message ?? error)) }
-  }))
-  list.querySelectorAll('.saved-json').forEach(btn => btn.addEventListener('click', event => {
-    event.stopPropagation()
-    const item = saved.find(s => s.id === btn.dataset.id)
-    if (!item?.plan) { toast('该收藏无法导出'); return }
-    try {
-      downloadText(`${buildRemixFileName(item.plan)}.json`, buildRemixJson(item.plan), 'application/json;charset=utf-8')
-      toast('JSON 已导出')
-    } catch (error) { toast('导出失败：' + (error?.message ?? error)) }
-  }))
-  list.querySelectorAll('.saved-remove').forEach(btn => btn.addEventListener('click', event => {
-    event.stopPropagation()
-    saved = saved.filter(s => s.id !== btn.dataset.id)
-    localStorage.setItem('linggan-saved-remixes', JSON.stringify(saved))
-    renderSaved()
-    toast('已删除收藏')
-  }))
-}
-
-// 把已收藏的方案重新加载到工作台：恢复选择器状态并直接渲染保存的 plan，避免 seed 变化产生不同方案
-const loadSavedRemix = id => {
-  const item = saved.find(s => s.id === id)
-  if (!item?.plan || !item.context) { toast('该收藏无法重新加载'); return }
-  const { characterAId, characterBId, momentId, styleId } = item.context
-  const selectA = document.querySelector('#character-a')
-  const selectB = document.querySelector('#character-b')
-  const momentSelect = document.querySelector('#moment')
-  const styleSelect = document.querySelector('#style')
-  selectA.value = characterAId
-  selectB.value = characterBId
-  momentSelect.value = momentId
-  styleSelect.value = styleId
-  // 知识库变更后，收藏中的实体可能已被删除；任一选择器为空时拒绝加载
-  if (!selectA.value || !selectB.value || !momentSelect.value || !styleSelect.value) {
-    toast('收藏中的角色或场面已不在知识库中')
-    return
-  }
-  document.querySelectorAll('[data-duration]').forEach(btn => {
-    btn.classList.toggle('active', Number(btn.dataset.duration) === item.plan.duration)
-  })
-  duration = item.plan.duration
-  const a = characterById.get(characterAId)
-  const b = characterById.get(characterBId)
-  const moment = knowledge.iconic_moments.find(m => m.id === momentId)
-  const style = remixStyles.find(s => s.id === styleId)
-  currentResult = { plan: item.plan, a, b, moment, style }
-  renderResult(currentResult)
-  updateHints()
-  document.querySelector('#remix').scrollIntoView({ behavior: 'smooth', block: 'start' })
-  toast(`已重新加载：${item.title}`)
-}
-
-const libraryItems = tab => {
-  if (tab === 'characters') return knowledge.known_characters.map(character => {
-    const work = workById.get(character.work_id)
-    return {
-      id: character.id,
-      title: character.name,
-      meta: `${work.title} · ${character.roles.join(' / ')}`,
-      tags: character.character_types,
-      body: `${character.traits.join('、')}。台词风格：${character.dialogue_style.join('；')}`,
-      badge: '角色参考',
-      // C5：筛选维度——角色类型 / 所属作品 / 版权状态，供 filterLibraryItems 使用
-      fields: {
-        type: character.character_types,
-        work: [work.title],
-        rights: [character.rights_status]
-      },
-      searchableText: [character.name, ...character.aliases, work.title, ...character.roles, ...character.character_types, ...character.traits, ...character.dialogue_style].join(' ').toLowerCase()
-    }
-  })
-  if (tab === 'moments') return knowledge.iconic_moments.map(moment => {
-    const work = workById.get(moment.work_id)
-    return {
-      id: moment.id,
-      title: moment.name,
-      meta: `${work.title} · ${moment.conflict_type}`,
-      tags: moment.emotional_arc,
-      body: moment.abstraction,
-      badge: '结构参考',
-      // C5：筛选维度——冲突类型 / 情绪弧 / 所属作品
-      fields: {
-        conflict: [moment.conflict_type],
-        emotion: moment.emotional_arc,
-        work: [work.title]
-      },
-      searchableText: [moment.name, work.title, moment.conflict_type, moment.setting, ...moment.emotional_arc, ...moment.visual_actions, ...moment.dialogue_patterns, moment.abstraction].join(' ').toLowerCase()
-    }
-  })
-  return knowledge.works.map(work => ({
-    id: work.id,
-    title: work.title,
-    meta: `${mediaNames[work.media_type]} · ${work.release_year ?? '年份未知'} · ${work.regions.join(' / ')}`,
-    tags: work.genres,
-    body: `别名：${work.aliases.join('、') || '无'}。已记录 ${work.sources.length} 条公开来源证据。`,
-    badge: '作品索引',
-    // C5：筛选维度——媒介类型 / 类型 / 版权状态
-    fields: {
-      media: [work.media_type],
-      genre: work.genres,
-      rights: [work.rights_status]
-    },
-    searchableText: [work.title, work.original_title, ...work.aliases, mediaNames[work.media_type] ?? work.media_type, ...work.genres, ...work.regions, String(work.release_year ?? '')].join(' ').toLowerCase()
-  }))
-}
-
-// C5：每个 tab 的筛选维度配置，key 对应 fields 的键，label 为中文维度名
-const filterDimensions = {
-  characters: [
-    { key: 'type', label: '角色类型' },
-    { key: 'work', label: '所属作品' },
-    { key: 'rights', label: '版权状态' }
-  ],
-  moments: [
-    { key: 'conflict', label: '冲突类型' },
-    { key: 'emotion', label: '情绪弧' },
-    { key: 'work', label: '所属作品' }
-  ],
-  works: [
-    { key: 'media', label: '媒介类型' },
-    { key: 'genre', label: '类型' },
-    { key: 'rights', label: '版权状态' }
-  ]
-}
-// C5：筛选状态——维度 key → 选中的值列表；切换 tab 时重置为空对象
-let libraryFilters = {}
-
-// C5：把维度值映射为中文显示标签；rights 用现有 rightsLabels，media 用 mediaNames，其余原样
-const filterValueLabel = (dimension, value) => {
-  if (dimension === 'rights') return rightsLabels[value] ?? value
-  if (dimension === 'media') return mediaNames[value] ?? value
-  return value
-}
-
-// C5：渲染筛选器 chips，每个维度一行，支持多选（同维度 OR），跨维度 AND；有选中时显示清空按钮
-const renderLibraryFilters = () => {
-  const container = document.querySelector('#library-filters')
-  if (!container) return
-  const dimensions = filterDimensions[activeTab] ?? []
-  const allItems = libraryItems(activeTab)
-  container.innerHTML = dimensions.map(dim => {
-    // 动态收集该维度所有可选值，避免出现"选了却无结果"的死选项
-    const options = collectFilterOptions(allItems, dim.key)
-    const selected = libraryFilters[dim.key] ?? []
-    const chips = options.map(value => {
-      const isActive = selected.includes(value)
-      return `<button class="filter-chip ${isActive ? 'active' : ''}" type="button" data-dim="${dim.key}" data-value="${escapeHtml(value)}" aria-pressed="${isActive}">${escapeHtml(filterValueLabel(dim.key, value))}</button>`
-    }).join('')
-    return `<div class="filter-row"><span class="filter-label">${dim.label}</span><div class="filter-chips">${chips}</div></div>`
-  }).join('')
-  // 任意维度有选中值时显示清空按钮
-  const hasSelection = Object.values(libraryFilters).some(arr => Array.isArray(arr) && arr.length > 0)
-  if (hasSelection) {
-    container.innerHTML += `<button class="filter-clear" type="button" id="filter-clear">${icon('close', 14)} 清空筛选</button>`
-  }
-  // chip 点击：切换选中态后重渲染筛选器和列表
-  container.querySelectorAll('.filter-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const { dim, value } = chip.dataset
-      const current = libraryFilters[dim] ?? []
-      libraryFilters[dim] = current.includes(value)
-        ? current.filter(v => v !== value)
-        : [...current, value]
-      renderLibraryFilters()
-      renderLibrary()
-    })
-  })
-  const clearBtn = container.querySelector('#filter-clear')
-  if (clearBtn) clearBtn.addEventListener('click', () => {
-    libraryFilters = {}
-    renderLibraryFilters()
-    renderLibrary()
-  })
-}
-
-// 把详情视图中的实体带入跨作品混搭工作台，自动避免 A/B 选到同一角色
-const applyToRemix = (type, id, slot) => {
-  const remixSection = document.querySelector('#remix')
-  const selectA = document.querySelector('#character-a')
-  const selectB = document.querySelector('#character-b')
-  const momentSelect = document.querySelector('#moment')
-
-  if (type === 'characters') {
-    const target = slot === 'b' ? selectB : selectA
-    target.value = id
-    if (selectA.value === selectB.value) {
-      const other = knowledge.known_characters.find(c => c.id !== selectA.value)
-      if (other) (slot === 'b' ? selectA : selectB).value = other.id
-    }
-    updateHints()
-    remixSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    toast(`已把 ${characterById.get(id).name} 填入角色 ${slot === 'b' ? 'B' : 'A'}`)
-  } else if (type === 'moments') {
-    momentSelect.value = id
-    updateHints()
-    remixSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    toast(`已带入名场面：${knowledge.iconic_moments.find(item => item.id === id).name}`)
-  } else if (type === 'works') {
-    // 作品没有直接对应的工作台字段，把该作品首个角色填入角色 A
-    const character = knowledge.known_characters.find(c => c.work_id === id)
-    if (!character) { toast('该作品暂无可带入的角色'); return }
-    selectA.value = character.id
-    if (selectA.value === selectB.value) {
-      const other = knowledge.known_characters.find(c => c.id !== selectA.value)
-      if (other) selectB.value = other.id
-    }
-    updateHints()
-    remixSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    toast(`已带入《${workById.get(id).title}》的 ${character.name}`)
-  }
-}
-
-// 详情视图：在 body 末尾挂载弹窗，素材库卡片点击后打开
+// 详情视图：在 body 末尾挂载弹窗；点击素材库卡片后打开，提供"开始创作"入口
+// 通过 ctx 注入工作台的 applyToRemix，避免 DetailView 与 RemixWorkbench 互相 import
+// createDetailView 返回 { open, close }，直接传给素材库的 ctx 复用
 const detailView = createDetailView({
   knowledge,
   workById,
@@ -695,105 +77,14 @@ const detailView = createDetailView({
   riskLabels,
   icon,
   escapeHtml,
-  onApplyToRemix: applyToRemix
+  onApplyToRemix: workbenchApi.applyToRemix
 })
 
-const renderLibrary = () => {
-  const query = document.querySelector('#library-search').value
-  const allItems = libraryItems(activeTab)
-  // C5：文本搜索 + 多维度组合筛选，业务规则集中在 filterLibraryItems 纯函数
-  const items = filterLibraryItems(allItems, libraryFilters, query)
-  const grid = document.querySelector('#library-grid')
-  // 结果计数：有筛选或搜索时显示"显示 N / 共 M 项"，否则留空避免噪音
-  const meta = document.querySelector('#library-meta')
-  const hasFilter = Object.values(libraryFilters).some(arr => Array.isArray(arr) && arr.length > 0)
-  if (meta) {
-    meta.textContent = (hasFilter || query.trim()) && allItems.length
-      ? `显示 ${items.length} / 共 ${allItems.length} 项`
-      : ''
-  }
-  grid.innerHTML = items.length ? items.map((item, index) => `<article class="library-card" role="button" tabindex="0" data-detail-link="${activeTab}" data-detail-id="${item.id}" aria-label="查看 ${escapeHtml(item.title)} 详情"><div class="library-index">${String(index + 1).padStart(2, '0')}</div><span class="library-badge">${item.badge}</span><h3>${escapeHtml(item.title)}</h3><p class="library-meta">${escapeHtml(item.meta)}</p><p>${escapeHtml(item.body)}</p><div class="mini-tags">${item.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div><small>${icon('shield', 13)} reference_only</small><span class="library-cta">${icon('arrow', 14)} 查看详情</span></article>`).join('') : '<p class="empty">没有匹配的素材。试着减少筛选条件或清空搜索关键词。</p>'
-  // 卡片支持点击与键盘（Enter / Space）打开详情视图
-  grid.querySelectorAll('.library-card').forEach(card => {
-    const open = () => detailView.open(card.dataset.detailLink, card.dataset.detailId)
-    card.addEventListener('click', open)
-    card.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault()
-        open()
-      }
-    })
-  })
-}
+// 素材库 ctx：detailView 是详情视图实例，卡片点击时调用 detailView.open 打开弹窗
+mountLibrarySection({ detailView })
 
-document.querySelector('.menu-button').addEventListener('click', event => {
-  const links = document.querySelector('.nav-links')
-  links.classList.toggle('open')
-  const open = links.classList.contains('open')
-  event.currentTarget.setAttribute('aria-expanded', String(open))
-  event.currentTarget.innerHTML = icon(open ? 'close' : 'menu')
-})
+// 雷达 section：异步加载真实趋势数据后刷新状态 pill 和渠道列表
+mountRadarSection()
 
-document.querySelectorAll('#character-a,#character-b,#moment').forEach(select => select.addEventListener('change', updateHints))
-document.querySelectorAll('[data-duration]').forEach(button => button.addEventListener('click', () => {
-  document.querySelectorAll('[data-duration]').forEach(item => item.classList.remove('active'))
-  button.classList.add('active')
-  duration = Number(button.dataset.duration)
-}))
-
-document.querySelector('#remix-form').addEventListener('submit', event => {
-  event.preventDefault()
-  generation += 1
-  currentResult = buildRemix()
-  renderResult(currentResult)
-  toast('新的跨界方案已生成')
-})
-
-document.querySelector('.randomize').addEventListener('click', () => {
-  const selects = ['#character-a', '#character-b', '#moment', '#style'].map(selector => document.querySelector(selector))
-  selects.forEach((select, index) => { select.selectedIndex = Math.floor(Math.random() * select.options.length) })
-  if (selects[0].value === selects[1].value) selects[1].selectedIndex = (selects[1].selectedIndex + 1) % selects[1].options.length
-  updateHints()
-  generation += 1
-  currentResult = buildRemix()
-  renderResult(currentResult)
-  toast('已随机换一组内容基因')
-})
-
-document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => {
-  document.querySelectorAll('[data-tab]').forEach(item => item.classList.remove('active'))
-  button.classList.add('active')
-  activeTab = button.dataset.tab
-  // C5：切换 tab 时重置筛选状态，避免上一个 tab 的选中值对新 tab 产生无意义筛选
-  libraryFilters = {}
-  renderLibraryFilters()
-  renderLibrary()
-}))
-document.querySelector('#library-search').addEventListener('input', renderLibrary)
-
-updateHints()
-currentResult = buildRemix()
-renderResult(currentResult)
-renderLibraryFilters()
-renderLibrary()
-renderSaved()
-
-// Load trend export and update radar section
-loadTrendExport().then(data => {
-  if (data) {
-    trendExport = data
-    const pill = document.querySelector('#radar-status-pill')
-    if (pill) pill.innerHTML = `${icon('database', 16)} SQLite 正式库 · ${data.trend_count} 条已入库`
-    const channelList = document.querySelector('#radar-channel-list')
-    if (channelList) {
-      const note = `<div class="pipeline-note">${icon('shield', 18)}<p><b>不编造热度</b><br>无法核实的指标保持为空，具体 IP 只作参考标签。</p></div>`
-      channelList.innerHTML = renderRadarChannels(data.trends) + note
-    }
-  }
-}).catch(() => {})
-
-// 加载已批准候选导出并渲染今日推荐流
-loadCandidateExport().then(data => {
-  candidateExport = data
-  renderCandidateFeed(data)
-}).catch(() => renderCandidateFeed(null))
+// 今日推荐流：异步加载 approved 候选导出文档并渲染
+mountFeedSection()
