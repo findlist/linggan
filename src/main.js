@@ -1,5 +1,6 @@
 import knowledge from '../data/knowledge-base.json'
 import { buildRemixPlan } from './generation/remix-engine.ts'
+import { createDetailView } from './detail-view.js'
 import './radar.css'
 
 let trendExport = null
@@ -311,6 +312,7 @@ const renderSaved = () => {
 
 const libraryItems = tab => {
   if (tab === 'characters') return knowledge.known_characters.map(character => ({
+    id: character.id,
     title: character.name,
     meta: `${workById.get(character.work_id).title} · ${character.roles.join(' / ')}`,
     tags: character.character_types,
@@ -318,6 +320,7 @@ const libraryItems = tab => {
     badge: '角色参考'
   }))
   if (tab === 'moments') return knowledge.iconic_moments.map(moment => ({
+    id: moment.id,
     title: moment.name,
     meta: `${workById.get(moment.work_id).title} · ${moment.conflict_type}`,
     tags: moment.emotional_arc,
@@ -325,6 +328,7 @@ const libraryItems = tab => {
     badge: '结构参考'
   }))
   return knowledge.works.map(work => ({
+    id: work.id,
     title: work.title,
     meta: `${mediaNames[work.media_type]} · ${work.release_year ?? '年份未知'} · ${work.regions.join(' / ')}`,
     tags: work.genres,
@@ -333,10 +337,72 @@ const libraryItems = tab => {
   }))
 }
 
+// 把详情视图中的实体带入跨作品混搭工作台，自动避免 A/B 选到同一角色
+const applyToRemix = (type, id, slot) => {
+  const remixSection = document.querySelector('#remix')
+  const selectA = document.querySelector('#character-a')
+  const selectB = document.querySelector('#character-b')
+  const momentSelect = document.querySelector('#moment')
+
+  if (type === 'characters') {
+    const target = slot === 'b' ? selectB : selectA
+    target.value = id
+    if (selectA.value === selectB.value) {
+      const other = knowledge.known_characters.find(c => c.id !== selectA.value)
+      if (other) (slot === 'b' ? selectA : selectB).value = other.id
+    }
+    updateHints()
+    remixSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    toast(`已把 ${characterById.get(id).name} 填入角色 ${slot === 'b' ? 'B' : 'A'}`)
+  } else if (type === 'moments') {
+    momentSelect.value = id
+    updateHints()
+    remixSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    toast(`已带入名场面：${knowledge.iconic_moments.find(item => item.id === id).name}`)
+  } else if (type === 'works') {
+    // 作品没有直接对应的工作台字段，把该作品首个角色填入角色 A
+    const character = knowledge.known_characters.find(c => c.work_id === id)
+    if (!character) { toast('该作品暂无可带入的角色'); return }
+    selectA.value = character.id
+    if (selectA.value === selectB.value) {
+      const other = knowledge.known_characters.find(c => c.id !== selectA.value)
+      if (other) selectB.value = other.id
+    }
+    updateHints()
+    remixSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    toast(`已带入《${workById.get(id).title}》的 ${character.name}`)
+  }
+}
+
+// 详情视图：在 body 末尾挂载弹窗，素材库卡片点击后打开
+const detailView = createDetailView({
+  knowledge,
+  workById,
+  characterById,
+  mediaNames,
+  rightsLabels,
+  riskLabels,
+  icon,
+  escapeHtml,
+  onApplyToRemix: applyToRemix
+})
+
 const renderLibrary = () => {
   const query = document.querySelector('#library-search').value.trim().toLowerCase()
   const items = libraryItems(activeTab).filter(item => JSON.stringify(item).toLowerCase().includes(query))
-  document.querySelector('#library-grid').innerHTML = items.length ? items.map((item, index) => `<article class="library-card"><div class="library-index">${String(index + 1).padStart(2, '0')}</div><span class="library-badge">${item.badge}</span><h3>${escapeHtml(item.title)}</h3><p class="library-meta">${escapeHtml(item.meta)}</p><p>${escapeHtml(item.body)}</p><div class="mini-tags">${item.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div><small>${icon('shield', 13)} reference_only</small></article>`).join('') : '<p class="empty">没有匹配的内容。</p>'
+  const grid = document.querySelector('#library-grid')
+  grid.innerHTML = items.length ? items.map((item, index) => `<article class="library-card" role="button" tabindex="0" data-detail-link="${activeTab}" data-detail-id="${item.id}" aria-label="查看 ${escapeHtml(item.title)} 详情"><div class="library-index">${String(index + 1).padStart(2, '0')}</div><span class="library-badge">${item.badge}</span><h3>${escapeHtml(item.title)}</h3><p class="library-meta">${escapeHtml(item.meta)}</p><p>${escapeHtml(item.body)}</p><div class="mini-tags">${item.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div><small>${icon('shield', 13)} reference_only</small><span class="library-cta">${icon('arrow', 14)} 查看详情</span></article>`).join('') : '<p class="empty">没有匹配的内容。</p>'
+  // 卡片支持点击与键盘（Enter / Space）打开详情视图
+  grid.querySelectorAll('.library-card').forEach(card => {
+    const open = () => detailView.open(card.dataset.detailLink, card.dataset.detailId)
+    card.addEventListener('click', open)
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        open()
+      }
+    })
+  })
 }
 
 document.querySelector('.menu-button').addEventListener('click', event => {
