@@ -25,6 +25,8 @@ import { buildRemixFileName, buildRemixJson, buildRemixMarkdown } from '../gener
 import { detectDuplicates } from '../generation/similarity.ts'
 // D2：前端事件采集，记录方案曝光、复制、收藏和导出行为
 import { track } from '../data/tracker.ts'
+// D5：创作历史自动记录，每次用户主动生成都持久化到 localStorage 供回看
+import { addHistory, getHistory } from '../data/history.ts'
 
 // 渲染角色 A / B 下拉选项；selected 用于初始默认值（来自原 main.js）
 const renderCharacterOptions = (selected) =>
@@ -121,7 +123,23 @@ const buildRemix = () => {
     duration: getState().duration,
     seed,
   })
-  return { plan, a, b, moment, style }
+  // D5：返回 seed 供 addHistory 记录，支持后续可复现性
+  return { plan, a, b, moment, style, seed }
+}
+
+// D5：把一次生成结果记录到创作历史，供用户回看和重新加载
+const recordHistory = (result) => {
+  const { plan, a, b, moment, style, seed } = result
+  addHistory({
+    plan,
+    context: {
+      characterAId: a.id,
+      characterBId: b.id,
+      momentId: moment.id,
+      styleId: style.id,
+    },
+    seed,
+  })
 }
 
 // 中栏预览：核心信息 + C3 重复标记 + 快速操作（复制 / 收藏）
@@ -235,15 +253,14 @@ const renderResult = (result, ctx) => {
   })
 }
 
-// 把已收藏的方案重新加载到工作台：恢复选择器状态并直接渲染保存的 plan，避免 seed 变化产生不同方案
-const loadSavedRemix = (id, ctx) => {
-  const { saved } = getState()
-  const item = saved.find((s) => s.id === id)
-  if (!item?.plan || !item.context) {
-    toast('该收藏无法重新加载')
+// D5：通用重新加载逻辑——从收藏或历史的 entry 恢复选择器并渲染保存的 plan。
+// 提取自 loadSavedRemix，供 loadHistoryRemix 复用，避免重复代码。
+const loadRemixFromEntry = (entry, ctx, errorLabel, successPrefix) => {
+  if (!entry?.plan || !entry.context) {
+    toast(errorLabel)
     return
   }
-  const { characterAId, characterBId, momentId, styleId } = item.context
+  const { characterAId, characterBId, momentId, styleId } = entry.context
   const selectA = document.querySelector('#character-a')
   const selectB = document.querySelector('#character-b')
   const momentSelect = document.querySelector('#moment')
@@ -252,25 +269,38 @@ const loadSavedRemix = (id, ctx) => {
   selectB.value = characterBId
   momentSelect.value = momentId
   styleSelect.value = styleId
-  // 知识库变更后，收藏中的实体可能已被删除；任一选择器为空时拒绝加载
+  // 知识库变更后，收藏/历史中的实体可能已被删除；任一选择器为空时拒绝加载
   if (!selectA.value || !selectB.value || !momentSelect.value || !styleSelect.value) {
-    toast('收藏中的角色或场面已不在知识库中')
+    toast('方案中的角色或场面已不在知识库中')
     return
   }
   document.querySelectorAll('[data-duration]').forEach((btn) => {
-    btn.classList.toggle('active', Number(btn.dataset.duration) === item.plan.duration)
+    btn.classList.toggle('active', Number(btn.dataset.duration) === entry.plan.duration)
   })
-  setDuration(item.plan.duration)
+  setDuration(entry.plan.duration)
   const a = characterById.get(characterAId)
   const b = characterById.get(characterBId)
   const moment = knowledge.iconic_moments.find((m) => m.id === momentId)
   const style = remixStyles.find((s) => s.id === styleId)
-  const result = { plan: item.plan, a, b, moment, style }
+  const result = { plan: entry.plan, a, b, moment, style, seed: entry.seed ?? '' }
   setCurrentResult(result)
   renderResult(result, ctx)
   updateHints()
   document.querySelector('#remix').scrollIntoView({ behavior: 'smooth', block: 'start' })
-  toast(`已重新加载：${item.title}`)
+  toast(`${successPrefix}：${entry.title}`)
+}
+
+// 把已收藏的方案重新加载到工作台：恢复选择器状态并直接渲染保存的 plan，避免 seed 变化产生不同方案
+const loadSavedRemix = (id, ctx) => {
+  const { saved } = getState()
+  const item = saved.find((s) => s.id === id)
+  loadRemixFromEntry(item, ctx, '该收藏无法重新加载', '已重新加载')
+}
+
+// D5：把历史记录中的方案重新加载到工作台，逻辑与 loadSavedRemix 一致
+const loadHistoryRemix = (id, ctx) => {
+  const item = getHistory().find((h) => h.id === id)
+  loadRemixFromEntry(item, ctx, '该历史记录无法重新加载', '已从历史重新加载')
 }
 
 // 随机切换 4 个选择器，并自动生成方案
@@ -288,6 +318,9 @@ const randomize = (ctx) => {
   const result = buildRemix()
   setCurrentResult(result)
   renderResult(result, ctx)
+  // D5：随机生成也记录到历史
+  recordHistory(result)
+  ctx.renderHistory?.()
   toast('已随机换一组内容基因')
 }
 
@@ -333,8 +366,10 @@ const applyToRemix = (type, id, slot) => {
 
 /**
  * 挂载工作台 section：绑定表单、随机、时长切换等事件。
- * ctx 提供：setSaved（写入 store 并同步 localStorage）、renderSaved（通知 SavedList 刷新）
- * 返回 API：{ updateHints, loadSavedRemix, applyToRemix }，供 SavedList / DetailView 跨 section 调用
+ * ctx 提供：setSaved（写入 store 并同步 localStorage）、renderSaved（通知 SavedList 刷新）、
+ *           renderHistory（通知 HistoryList 刷新）
+ * 返回 API：{ updateHints, loadSavedRemix, loadHistoryRemix, applyToRemix }，
+ *           供 SavedList / HistoryList / DetailView 跨 section 调用
  */
 export const mountRemixWorkbench = (ctx) => {
   // 表单提交：generation 计数器 +1 后生成新方案
@@ -344,6 +379,9 @@ export const mountRemixWorkbench = (ctx) => {
     const result = buildRemix()
     setCurrentResult(result)
     renderResult(result, ctx)
+    // D5：用户主动生成时记录到创作历史；初始挂载的默认方案不记录
+    recordHistory(result)
+    ctx.renderHistory?.()
     toast('新的跨界方案已生成')
   })
 
@@ -363,11 +401,16 @@ export const mountRemixWorkbench = (ctx) => {
     .querySelectorAll('#character-a,#character-b,#moment')
     .forEach((select) => select.addEventListener('change', updateHints))
 
-  // 初始化：渲染提示 + 默认方案
+  // 初始化：渲染提示 + 默认方案（不记录历史，避免页面加载就产生历史条目）
   updateHints()
   const result = buildRemix()
   setCurrentResult(result)
   renderResult(result, ctx)
 
-  return { updateHints, loadSavedRemix: (id) => loadSavedRemix(id, ctx), applyToRemix }
+  return {
+    updateHints,
+    loadSavedRemix: (id) => loadSavedRemix(id, ctx),
+    loadHistoryRemix: (id) => loadHistoryRemix(id, ctx),
+    applyToRemix,
+  }
 }

@@ -18,6 +18,8 @@ const paths = {
   close: '<path d="m6 6 12 12M18 6 6 18"/>',
   play: '<path d="m9 7 8 5-8 5V7Z"/>',
   check: '<path d="m5 12 4 4L19 6"/>',
+  // 历史记录：时钟 + 逆时针箭头，与收藏的 bookmark 区分
+  history: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/>',
 }
 
 // 渲染一个带 stroke 的 SVG 图标；未知图标回退到 sparkles，避免页面空白

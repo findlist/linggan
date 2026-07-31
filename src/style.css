@@ -2193,3 +2193,191 @@ footer {
     margin-left: 0;
   }
 }
+
+/* ----------------------- D5 创作历史列表 ----------------------- */
+/* 与收藏列表视觉区分：history 用 cyan 色系图标，saved 用 lime 色系；
+   历史卡片更紧凑（单列），因为最多 50 条需快速扫描 */
+
+.history-section {
+  padding-block: 90px;
+}
+.history-section h2 {
+  font-size: 28px;
+}
+.history-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.history-count {
+  font: 600 11px Manrope;
+  color: #8b94a5;
+  letter-spacing: 0.5px;
+}
+.history-clear {
+  min-height: 34px;
+  font-size: 11px;
+  color: #ff9370;
+  border-color: rgba(255, 147, 112, 0.25);
+}
+.history-clear:hover {
+  background: rgba(255, 147, 112, 0.08);
+}
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.history-list article.history-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+}
+.history-head {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  width: 100%;
+}
+.history-head:hover {
+  background: #171c26;
+}
+.history-head:focus-visible {
+  outline: 3px solid #4ec9d8;
+  outline-offset: -3px;
+}
+.history-icon {
+  color: #4ec9d8;
+  flex: none;
+  display: flex;
+  align-items: center;
+}
+.history-title {
+  flex: 1;
+  min-width: 0;
+}
+.history-title b {
+  font-size: 13px;
+  display: block;
+}
+.history-title p {
+  margin: 4px 0 0;
+  color: #7d8595;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.history-title small {
+  display: block;
+  color: #616a79;
+  font: 600 9px Manrope;
+  letter-spacing: 0.3px;
+  margin-top: 6px;
+}
+.history-toggle {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  color: #7c8493;
+  background: #171c26;
+  border-radius: 9px;
+  transition: transform 0.2s;
+}
+.history-head[aria-expanded='true'] .history-toggle {
+  transform: rotate(90deg);
+}
+.history-body {
+  padding: 14px 16px 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.history-body[hidden] {
+  display: none;
+}
+.history-concept span {
+  display: block;
+  color: #777f8e;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.history-concept p {
+  margin: 0;
+  font-size: 11px;
+  color: #cdd4df;
+  line-height: 1.55;
+}
+.history-dialogues {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.history-dialogues div {
+  padding: 12px;
+  background: #191724;
+  border: 1px solid rgba(78, 201, 216, 0.12);
+  border-radius: 11px;
+}
+.history-dialogues span {
+  display: block;
+  color: #777f8e;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.history-dialogues p {
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: #d5d2df;
+  line-height: 1.55;
+}
+.history-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding-top: 4px;
+}
+.history-actions .btn {
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: 11px;
+  flex: none;
+}
+.history-actions .history-remove {
+  margin-left: auto;
+  color: #ff9370;
+  border-color: rgba(255, 147, 112, 0.25);
+}
+.history-actions .history-remove:hover {
+  background: rgba(255, 147, 112, 0.08);
+}
+@media (max-width: 640px) {
+  .history-dialogues {
+    grid-template-columns: 1fr;
+  }
+  .history-actions {
+    flex-direction: column;
+  }
+  .history-actions .btn {
+    width: 100%;
+  }
+  .history-actions .history-remove {
+    margin-left: 0;
+  }
+}

@@ -13,6 +13,7 @@ import { mountFeedSection } from './sections/FeedSection.js'
 import { renderRemixWorkbench, mountRemixWorkbench } from './sections/RemixWorkbench.js'
 import { renderLibrarySection, mountLibrarySection } from './sections/LibrarySection.js'
 import { renderSavedSection, mountSavedList } from './sections/SavedList.js'
+import { renderHistorySection, mountHistoryList } from './sections/HistoryList.js'
 import { renderEventSyncButton, mountEventSyncBar } from './sections/EventSyncBar.js'
 import './radar.css'
 
@@ -41,6 +42,7 @@ app.innerHTML = `
     ${renderRemixWorkbench()}
     ${renderLibrarySection()}
     ${renderSavedSection()}
+    ${renderHistorySection()}
   </main>
   <footer><div class="shell footer-inner"><a class="brand" href="#top"><span class="brand-mark">${icon('sparkles', 18)}</span><span>灵感</span></a><p>公开来源留证 · 参考资产隔离 · 原创表达优先</p><span>Linggan Remix Lab</span></div></footer>
   <div class="toast" role="status" aria-live="polite"></div>
@@ -55,14 +57,23 @@ document.querySelector('.menu-button').addEventListener('click', (event) => {
   event.currentTarget.innerHTML = icon(open ? 'close' : 'menu')
 })
 
-// 先挂载收藏列表，得到 renderSaved 函数；工作台需要通过 ctx.renderSaved 通知列表刷新
+// 先挂载收藏列表和历史列表，得到 renderSaved / renderHistory 函数；
+// 工作台需要通过 ctx.renderSaved / ctx.renderHistory 通知两个列表刷新
 const savedListApi = mountSavedList({})
+// D5：历史列表 ctx 用可变对象，工作台挂载后注入 loadHistoryRemix（解决循环依赖）
+const historyCtx = {}
+const historyApi = mountHistoryList(historyCtx)
 
-// 工作台 ctx：setSaved 用于收藏写入并同步 localStorage；renderSaved 通知列表刷新
+// 工作台 ctx：setSaved 用于收藏写入并同步 localStorage；
+// renderSaved / renderHistory 通知两个列表刷新
 const workbenchApi = mountRemixWorkbench({
   setSaved,
   renderSaved: () => savedListApi.renderSaved(),
+  renderHistory: () => historyApi.renderHistory(),
 })
+
+// 工作台挂载后注入 loadHistoryRemix 到历史列表 ctx，供历史卡片"重新加载"按钮调用
+historyCtx.loadHistoryRemix = (id) => workbenchApi.loadHistoryRemix(id)
 
 // 详情视图：在 body 末尾挂载弹窗；点击素材库卡片后打开，提供"开始创作"入口
 // 通过 ctx 注入工作台的 applyToRemix，避免 DetailView 与 RemixWorkbench 互相 import
