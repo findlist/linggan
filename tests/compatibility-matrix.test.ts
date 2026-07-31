@@ -1,21 +1,9 @@
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { test } from 'node:test'
-import {
-  CompatibilityMatrixSchema,
-  KnowledgeBaseSchema,
-  validateMatrixWithKnowledge
-} from '../src/data/contracts.ts'
-import type {
-  CompatibilityMatrix,
-  KnowledgeBase,
-  KnownCharacter,
-  IconicMoment
-} from '../src/data/contracts.ts'
-import {
-  computeCompatibility,
-  filterCompatibleCombinations
-} from '../src/generation/compatibility.ts'
+import { CompatibilityMatrixSchema, KnowledgeBaseSchema, validateMatrixWithKnowledge } from '../src/data/contracts.ts'
+import type { CompatibilityMatrix, KnowledgeBase, KnownCharacter, IconicMoment } from '../src/data/contracts.ts'
+import { computeCompatibility, filterCompatibleCombinations } from '../src/generation/compatibility.ts'
 import { buildRemixPlan } from '../src/generation/remix-engine.ts'
 import type { RemixDuration } from '../src/generation/remix-engine.ts'
 
@@ -23,20 +11,20 @@ const root = new URL('../', import.meta.url)
 
 // 加载真实知识库和兼容矩阵，供多组测试复用
 const knowledge = KnowledgeBaseSchema.parse(
-  JSON.parse(await readFile(new URL('data/knowledge-base.json', root), 'utf8')) as unknown
+  JSON.parse(await readFile(new URL('data/knowledge-base.json', root), 'utf8')) as unknown,
 )
 const matrix = CompatibilityMatrixSchema.parse(
-  JSON.parse(await readFile(new URL('data/compatibility-matrix.json', root), 'utf8')) as unknown
+  JSON.parse(await readFile(new URL('data/compatibility-matrix.json', root), 'utf8')) as unknown,
 ) as CompatibilityMatrix
 
-const workById = new Map(knowledge.works.map(work => [work.id, work]))
+const workById = new Map(knowledge.works.map((work) => [work.id, work]))
 const findCharacter = (id: string): KnownCharacter => {
-  const character = knowledge.known_characters.find(item => item.id === id)
+  const character = knowledge.known_characters.find((item) => item.id === id)
   assert.ok(character, `character ${id} must exist`)
   return character
 }
 const findMoment = (id: string): IconicMoment => {
-  const moment = knowledge.iconic_moments.find(item => item.id === id)
+  const moment = knowledge.iconic_moments.find((item) => item.id === id)
   assert.ok(moment, `moment ${id} must exist`)
   return moment
 }
@@ -62,14 +50,14 @@ test('缺失能力维度字段被拒绝', () => {
           combat: 0.2,
           strategy: 0.9,
           social: 0.85,
-          tech: 0.3
+          tech: 0.3,
         },
-        notes: null
-      }
+        notes: null,
+      },
     ],
     scene_constraints: [],
     conflict_difficulties: [],
-    ability_conflict_fits: []
+    ability_conflict_fits: [],
   }
   const result = CompatibilityMatrixSchema.safeParse(badMatrix)
   assert.equal(result.success, false)
@@ -86,14 +74,14 @@ test('维度分值越界被拒绝（> 1）', () => {
           strategy: 0.9,
           social: 0.85,
           tech: 0.3,
-          emotional_control: 0.8
+          emotional_control: 0.8,
         },
-        notes: null
-      }
+        notes: null,
+      },
     ],
     scene_constraints: [],
     conflict_difficulties: [],
-    ability_conflict_fits: []
+    ability_conflict_fits: [],
   }
   const result = CompatibilityMatrixSchema.safeParse(badMatrix)
   assert.equal(result.success, false)
@@ -106,17 +94,17 @@ test('重复角色 ID 被拒绝', () => {
       {
         character_id: 'known_zhen_huan',
         abilities: { combat: 0.2, strategy: 0.9, social: 0.85, tech: 0.3, emotional_control: 0.8 },
-        notes: null
+        notes: null,
       },
       {
         character_id: 'known_zhen_huan', // 重复
         abilities: { combat: 0.3, strategy: 0.8, social: 0.7, tech: 0.4, emotional_control: 0.7 },
-        notes: null
-      }
+        notes: null,
+      },
     ],
     scene_constraints: [],
     conflict_difficulties: [],
-    ability_conflict_fits: []
+    ability_conflict_fits: [],
   }
   const result = CompatibilityMatrixSchema.safeParse(badMatrix)
   assert.equal(result.success, false)
@@ -132,16 +120,16 @@ test('重复冲突类型被拒绝', () => {
         conflict_type: '身份回归与秩序挑战',
         difficulty: { shot_complexity: 0.4, dialogue_density: 0.7, vfx_burden: 0.2, action_choreography: 0.3 },
         min_duration: 30,
-        notes: null
+        notes: null,
       },
       {
         conflict_type: '身份回归与秩序挑战', // 重复
         difficulty: { shot_complexity: 0.5, dialogue_density: 0.6, vfx_burden: 0.3, action_choreography: 0.4 },
         min_duration: 15,
-        notes: null
-      }
+        notes: null,
+      },
     ],
-    ability_conflict_fits: []
+    ability_conflict_fits: [],
   }
   const result = CompatibilityMatrixSchema.safeParse(badMatrix)
   assert.equal(result.success, false)
@@ -156,16 +144,16 @@ test('validateMatrixWithKnowledge 检测到未知角色 ID', () => {
       {
         character_id: 'known_nonexistent',
         abilities: { combat: 0.5, strategy: 0.5, social: 0.5, tech: 0.5, emotional_control: 0.5 },
-        notes: null
-      }
+        notes: null,
+      },
     ],
     scene_constraints: [],
     conflict_difficulties: [],
-    ability_conflict_fits: []
+    ability_conflict_fits: [],
   }
   const issues = validateMatrixWithKnowledge(badMatrix, knowledge as KnowledgeBase)
   assert.ok(issues.length > 0)
-  assert.ok(issues.some(i => i.message.includes('unknown character id')))
+  assert.ok(issues.some((i) => i.message.includes('unknown character id')))
 })
 
 test('真实兼容矩阵与真实知识库外键一致（0 issues）', () => {
@@ -183,14 +171,14 @@ test('validateMatrixWithKnowledge 检测到未知冲突类型', () => {
         conflict_type: '不存在的冲突类型',
         difficulty: { shot_complexity: 0.4, dialogue_density: 0.7, vfx_burden: 0.2, action_choreography: 0.3 },
         min_duration: 30,
-        notes: null
-      }
+        notes: null,
+      },
     ],
-    ability_conflict_fits: []
+    ability_conflict_fits: [],
   }
   const issues = validateMatrixWithKnowledge(badMatrix, knowledge as KnowledgeBase)
   assert.ok(issues.length > 0)
-  assert.ok(issues.some(i => i.message.includes('conflict_type not found')))
+  assert.ok(issues.some((i) => i.message.includes('conflict_type not found')))
 })
 
 /* --------------------- 引擎过滤行为测试 --------------------- */
@@ -203,7 +191,7 @@ test('computeCompatibility 合理组合得到高分', () => {
     findCharacter('known_empress_yixiu'),
     findMoment('moment_return_power_shift'),
     30,
-    matrix
+    matrix,
   )
   assert.ok(score.score >= 0.5, `reasonable combination should score >= 0.5, got ${score.score}`)
   assert.equal(score.reasons.length, 0, 'reasonable combination should have no deduction reasons')
@@ -218,14 +206,14 @@ test('computeCompatibility 不合理组合得到低分（温柔型角色 × 强�
     findCharacter('known_moss'),
     findMoment('moment_mass_assault'),
     15,
-    matrix
+    matrix,
   )
   // 应同时触发：角色能力低适配、场景高约束短时长、时长低于最小时长
   assert.ok(score.score < 0.5, `unreasonable combination should score < 0.5, got ${score.score}`)
   assert.ok(score.reasons.length >= 2, `should have multiple deduction reasons, got ${score.reasons.length}`)
   assert.ok(
-    score.reasons.some(r => r.includes('最小时长')),
-    'should include min_duration violation reason'
+    score.reasons.some((r) => r.includes('最小时长')),
+    'should include min_duration violation reason',
   )
 })
 
@@ -234,13 +222,13 @@ test('filterCompatibleCombinations 过滤掉低兼容组合，保留高兼容组
     characterA: findCharacter('known_zhen_huan'),
     characterB: findCharacter('known_empress_yixiu'),
     moment: findMoment('moment_return_power_shift'),
-    duration: 30 as RemixDuration
+    duration: 30 as RemixDuration,
   }
   const unreasonable = {
     characterA: findCharacter('known_li_muwan'),
     characterB: findCharacter('known_moss'),
     moment: findMoment('moment_mass_assault'),
-    duration: 15 as RemixDuration
+    duration: 15 as RemixDuration,
   }
   const filtered = filterCompatibleCombinations([reasonable, unreasonable], matrix)
   assert.equal(filtered.length, 1, 'should filter out the unreasonable combination')
@@ -262,7 +250,7 @@ test('矩阵可被 remix-engine 生态读取：过滤后组合可成功生成方
     momentWork: workById.get(moment.work_id)!,
     style: { id: 'cinematic', label: '电影感', prompt: '克制写实光影' },
     duration: 30,
-    seed: 'c1-compat-test'
+    seed: 'c1-compat-test',
   })
   assert.ok(plan.id, 'filtered combination should produce a valid plan')
   assert.ok(plan.hook.length > 0, 'plan should have a hook')

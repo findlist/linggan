@@ -6,13 +6,14 @@ import { test } from 'node:test'
 import { CandidateSchema } from '../src/data/contracts.ts'
 import { CandidateExportDocumentSchema } from '../src/data/contracts.ts'
 import type { Candidate } from '../src/data/contracts.ts'
-import { parseSqliteUrl } from '../src/config/database.ts'
 import { migrateDatabase } from '../src/database/migrate.ts'
 import { SqliteCandidateStore } from '../src/storage/sqlite-candidate-store.ts'
 import { exportCandidates } from '../scripts/export-candidates.ts'
 
-const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname
-  .replace(/^\/(?:[A-Za-z]:)/u, value => value.slice(1))
+const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname.replace(
+  /^\/(?:[A-Za-z]:)/u,
+  (value) => value.slice(1),
+)
 
 // 复用 candidate-store 测试中的基础候选结构，确保通过 CandidateSchema
 const baseCandidate: Candidate = CandidateSchema.parse({
@@ -24,25 +25,28 @@ const baseCandidate: Candidate = CandidateSchema.parse({
   score: {
     total: 76,
     metrics: {
-      heat: 78, velocity: 72, contrast: 75, visuality: 82,
-      generatability: 70, seriality: 68, novelty: 80
-    }
+      heat: 78,
+      velocity: 72,
+      contrast: 75,
+      visuality: 82,
+      generatability: 70,
+      seriality: 68,
+      novelty: 80,
+    },
   },
   risk_level: 'low',
   rights_status: 'original',
   status: 'pending_review',
-  generated_at: '2026-07-29T08:30:00.000+08:00'
+  generated_at: '2026-07-29T08:30:00.000+08:00',
 })
 
 const createCandidate = (id: string, generatedAt = '2026-07-29T08:30:00.000+08:00'): Candidate => ({
   ...baseCandidate,
   id,
-  generated_at: generatedAt
+  generated_at: generatedAt,
 })
 
-const withDatabase = async (
-  callback: (input: { store: SqliteCandidateStore; dbPath: string }) => Promise<void>
-) => {
+const withDatabase = async (callback: (input: { store: SqliteCandidateStore; dbPath: string }) => Promise<void>) => {
   const directory = await mkdtemp(join(tmpdir(), 'linggan-b3-'))
   try {
     const dbPath = join(directory, 'test.sqlite')
@@ -60,16 +64,16 @@ const withDatabase = async (
 
 test('export writes a valid schema-conformant JSON file with approved candidates', async () => {
   await withDatabase(async ({ store, dbPath }) => {
-    await store.insert([
-      createCandidate('c1', '2026-07-29T08:30:00.000+08:00'),
-      createCandidate('c2', '2026-07-29T08:31:00.000+08:00')
-    ], 'run_001')
+    await store.insert(
+      [createCandidate('c1', '2026-07-29T08:30:00.000+08:00'), createCandidate('c2', '2026-07-29T08:31:00.000+08:00')],
+      'run_001',
+    )
     await store.transition('c1', 'approved', 'high quality')
 
     const outputPath = join(dbPath, '..', 'candidate-export.json')
     const result = await exportCandidates({
       outputPath,
-      databaseUrl: `file:${dbPath}`
+      databaseUrl: `file:${dbPath}`,
     })
 
     assert.equal(result.schema_version, 1)
@@ -91,7 +95,7 @@ test('export from empty SQLite produces zero-candidate document', async () => {
     const outputPath = join(dbPath, '..', 'candidate-export-empty.json')
     const result = await exportCandidates({
       outputPath,
-      databaseUrl: `file:${dbPath}`
+      databaseUrl: `file:${dbPath}`,
     })
 
     assert.equal(result.candidate_count, 0)
@@ -106,12 +110,15 @@ test('export from empty SQLite produces zero-candidate document', async () => {
 test('export only includes approved candidates, never pending/rejected/archived', async () => {
   await withDatabase(async ({ store, dbPath }) => {
     // c1 → approved, c2 → rejected, c3 保持 pending_review, c4 → approved → archived
-    await store.insert([
-      createCandidate('c1', '2026-07-29T08:30:00.000+08:00'),
-      createCandidate('c2', '2026-07-29T08:31:00.000+08:00'),
-      createCandidate('c3', '2026-07-29T08:32:00.000+08:00'),
-      createCandidate('c4', '2026-07-29T08:33:00.000+08:00')
-    ], 'run_001')
+    await store.insert(
+      [
+        createCandidate('c1', '2026-07-29T08:30:00.000+08:00'),
+        createCandidate('c2', '2026-07-29T08:31:00.000+08:00'),
+        createCandidate('c3', '2026-07-29T08:32:00.000+08:00'),
+        createCandidate('c4', '2026-07-29T08:33:00.000+08:00'),
+      ],
+      'run_001',
+    )
     await store.transition('c1', 'approved')
     await store.transition('c2', 'rejected')
     await store.transition('c4', 'approved')
@@ -120,7 +127,7 @@ test('export only includes approved candidates, never pending/rejected/archived'
     const outputPath = join(dbPath, '..', 'candidate-export-filtered.json')
     const result = await exportCandidates({
       outputPath,
-      databaseUrl: `file:${dbPath}`
+      databaseUrl: `file:${dbPath}`,
     })
 
     assert.equal(result.candidate_count, 1)
@@ -136,7 +143,7 @@ test('export respects limit option for homepage feed', async () => {
   await withDatabase(async ({ store, dbPath }) => {
     // 插入 12 条并全部 approve，验证默认上限 10
     const candidates = Array.from({ length: 12 }, (_, index) =>
-      createCandidate(`c${index + 1}`, `2026-07-29T08:${String(index).padStart(2, '0')}:00.000+08:00`)
+      createCandidate(`c${index + 1}`, `2026-07-29T08:${String(index).padStart(2, '0')}:00.000+08:00`),
     )
     await store.insert(candidates, 'run_001')
     for (const candidate of candidates) {
@@ -146,7 +153,7 @@ test('export respects limit option for homepage feed', async () => {
     const outputPath = join(dbPath, '..', 'candidate-export-limit.json')
     const result = await exportCandidates({
       outputPath,
-      databaseUrl: `file:${dbPath}`
+      databaseUrl: `file:${dbPath}`,
     })
 
     assert.equal(result.candidate_count, 10)
@@ -166,7 +173,7 @@ test('export atomically replaces existing file', async () => {
 
     const result = await exportCandidates({
       outputPath,
-      databaseUrl: `file:${dbPath}`
+      databaseUrl: `file:${dbPath}`,
     })
 
     assert.equal(result.candidate_count, 1)
@@ -185,7 +192,7 @@ test('export document rejects candidate_count mismatch', () => {
     schema_version: 1,
     exported_at: '2026-07-29T08:00:00.000+08:00',
     candidate_count: 5,
-    candidates: []
+    candidates: [],
   }
   assert.equal(CandidateExportDocumentSchema.safeParse(badDoc).success, false)
 })
@@ -195,10 +202,12 @@ test('export document rejects non-approved candidate status', () => {
     schema_version: 1,
     exported_at: '2026-07-29T08:00:00.000+08:00',
     candidate_count: 1,
-    candidates: [{
-      ...baseCandidate,
-      status: 'pending_review'
-    }]
+    candidates: [
+      {
+        ...baseCandidate,
+        status: 'pending_review',
+      },
+    ],
   }
   assert.equal(CandidateExportDocumentSchema.safeParse(badDoc).success, false)
 })
@@ -209,7 +218,7 @@ test('exported file includes exported_at timestamp', async () => {
     const before = new Date().toISOString()
     const result = await exportCandidates({
       outputPath,
-      databaseUrl: `file:${dbPath}`
+      databaseUrl: `file:${dbPath}`,
     })
     const after = new Date().toISOString()
 

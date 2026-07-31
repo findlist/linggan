@@ -3,16 +3,11 @@ import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { test } from 'node:test'
-import {
-  CollectionBatchSchema,
-  KnowledgeBaseSchema,
-  TrendStoreDocumentSchema
-} from '../src/data/contracts.ts'
+import { CollectionBatchSchema, KnowledgeBaseSchema, TrendStoreDocumentSchema } from '../src/data/contracts.ts'
 import { migrateCollectionInbox } from '../src/ingestion/migrate-collection-inbox.ts'
 import { JsonDocumentStore } from '../src/storage/json-document-store.ts'
 import { JsonTrendStore } from '../src/storage/trend-store.ts'
 
-const root = new URL('../', import.meta.url)
 const collectedAt = '2026-07-29T07:30:00.000+08:00'
 
 const createItem = (overrides: Record<string, unknown> = {}) => ({
@@ -21,13 +16,15 @@ const createItem = (overrides: Record<string, unknown> = {}) => ({
   aliases: ['示例梗'],
   category: 'meme',
   description: '用于验证迁移管线的公开热点样本。',
-  source_evidence: [{
-    url: 'https://example.com/trends/1',
-    source_name: 'Example',
-    page_title: 'Example trend',
-    published_at: null,
-    collected_at: collectedAt
-  }],
+  source_evidence: [
+    {
+      url: 'https://example.com/trends/1',
+      source_name: 'Example',
+      page_title: 'Example trend',
+      published_at: null,
+      collected_at: collectedAt,
+    },
+  ],
   discovered_at: collectedAt,
   observed_metrics: [{ name: 'rank', value: 1, unit: 'position', observed_at: collectedAt }],
   heat: 80,
@@ -38,7 +35,7 @@ const createItem = (overrides: Record<string, unknown> = {}) => ({
   risk_level: 'low',
   rights_status: 'reference_only',
   notes: '测试样本，不代表真实热点。',
-  ...overrides
+  ...overrides,
 })
 
 const createBatch = (id: string, items = [createItem()]) => ({
@@ -53,9 +50,9 @@ const createBatch = (id: string, items = [createItem()]) => ({
     source_count: 1,
     item_count: items.length,
     deduplicated_count: 0,
-    errors: []
+    errors: [],
   },
-  items
+  items,
 })
 
 const withTemporaryDirectory = async (callback: (directory: string) => Promise<void>) => {
@@ -73,21 +70,34 @@ test('knowledge base is valid and all known characters are reference only', asyn
   assert.equal(knowledge.works.length, 9)
   assert.equal(knowledge.known_characters.length, 19)
   assert.equal(knowledge.iconic_moments.length, 11)
-  assert.equal(knowledge.known_characters.every(character => character.rights_status === 'reference_only'), true)
-  assert.equal(knowledge.known_characters.every(character => character.character_types.length > 0), true)
-  assert.equal(knowledge.iconic_moments.every(moment => moment.dialogue_patterns.length >= 2), true)
+  assert.equal(
+    knowledge.known_characters.every((character) => character.rights_status === 'reference_only'),
+    true,
+  )
+  assert.equal(
+    knowledge.known_characters.every((character) => character.character_types.length > 0),
+    true,
+  )
+  assert.equal(
+    knowledge.iconic_moments.every((moment) => moment.dialogue_patterns.length >= 2),
+    true,
+  )
 })
 
 test('collection batch rejects invalid source URLs', () => {
-  const batch = createBatch('run_invalid_url', [createItem({
-    source_evidence: [{
-      url: 'file:///private/source',
-      source_name: 'Invalid',
-      page_title: 'Invalid',
-      published_at: null,
-      collected_at: collectedAt
-    }]
-  })])
+  const batch = createBatch('run_invalid_url', [
+    createItem({
+      source_evidence: [
+        {
+          url: 'file:///private/source',
+          source_name: 'Invalid',
+          page_title: 'Invalid',
+          published_at: null,
+          collected_at: collectedAt,
+        },
+      ],
+    }),
+  ])
   assert.equal(CollectionBatchSchema.safeParse(batch).success, false)
 })
 
@@ -97,7 +107,7 @@ test('collection batch rejects duplicate item ids', () => {
 })
 
 test('migration skips a bad batch while importing valid batches', async () => {
-  await withTemporaryDirectory(async directory => {
+  await withTemporaryDirectory(async (directory) => {
     const inbox = join(directory, 'inbox')
     const storePath = join(directory, 'trends.json')
     await mkdir(inbox)
@@ -115,7 +125,7 @@ test('migration skips a bad batch while importing valid batches', async () => {
 })
 
 test('cross-batch duplicates merge evidence into one stored trend', async () => {
-  await withTemporaryDirectory(async directory => {
+  await withTemporaryDirectory(async (directory) => {
     const inbox = join(directory, 'inbox')
     const storePath = join(directory, 'trends.json')
     await mkdir(inbox)
@@ -123,16 +133,18 @@ test('cross-batch duplicates merge evidence into one stored trend', async () => 
     const secondItem = createItem({
       id: 'item_example_trend_second',
       aliases: ['示例梗', '第二别名'],
-      source_evidence: [{
-        url: 'https://example.org/another-source',
-        source_name: 'Example Two',
-        page_title: 'Another source',
-        published_at: null,
-        collected_at: '2026-07-29T13:30:00.000+08:00'
-      }],
+      source_evidence: [
+        {
+          url: 'https://example.org/another-source',
+          source_name: 'Example Two',
+          page_title: 'Another source',
+          published_at: null,
+          collected_at: '2026-07-29T13:30:00.000+08:00',
+        },
+      ],
       discovered_at: '2026-07-29T13:30:00.000+08:00',
       rights_status: 'original',
-      risk_level: 'high'
+      risk_level: 'high',
     })
     await writeFile(join(inbox, 'second.json'), JSON.stringify(createBatch('run_second', [secondItem])))
 
@@ -149,7 +161,7 @@ test('cross-batch duplicates merge evidence into one stored trend', async () => 
 })
 
 test('repeating migration is idempotent', async () => {
-  await withTemporaryDirectory(async directory => {
+  await withTemporaryDirectory(async (directory) => {
     const inbox = join(directory, 'inbox')
     const storePath = join(directory, 'trends.json')
     await mkdir(inbox)
@@ -165,11 +177,14 @@ test('repeating migration is idempotent', async () => {
 })
 
 test('invalid document write preserves the previous JSON file', async () => {
-  await withTemporaryDirectory(async directory => {
+  await withTemporaryDirectory(async (directory) => {
     const storePath = join(directory, 'trends.json')
     const original = '{"schema_version":1,"trends":[]}\n'
     await writeFile(storePath, original)
-    const store = new JsonDocumentStore(storePath, TrendStoreDocumentSchema, () => ({ schema_version: 1 as const, trends: [] }))
+    const store = new JsonDocumentStore(storePath, TrendStoreDocumentSchema, () => ({
+      schema_version: 1 as const,
+      trends: [],
+    }))
 
     await assert.rejects(store.write({ schema_version: 1, trends: [{ invalid: true }] } as never))
     assert.equal(await readFile(storePath, 'utf8'), original)

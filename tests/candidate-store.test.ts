@@ -9,25 +9,23 @@ import {
   IllegalTransitionError,
   CandidateNotFoundError,
   isLegalTransition,
-  LEGAL_TRANSITIONS,
-  generateIdempotencyKey
+  generateIdempotencyKey,
 } from '../src/storage/candidate-store.ts'
 import type { CandidateStatus } from '../src/storage/candidate-store.ts'
 import { SqliteCandidateStore } from '../src/storage/sqlite-candidate-store.ts'
-import { parseSqliteUrl } from '../src/config/database.ts'
 import { migrateDatabase } from '../src/database/migrate.ts'
 
-const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname
-  .replace(/^\/(?:[A-Za-z]:)/u, value => value.slice(1))
+const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname.replace(
+  /^\/(?:[A-Za-z]:)/u,
+  (value) => value.slice(1),
+)
 
-const withDatabase = async (
-  callback: (store: SqliteCandidateStore) => Promise<void>
-) => {
+const withDatabase = async (callback: (store: SqliteCandidateStore) => Promise<void>) => {
   const directory = await mkdtemp(join(tmpdir(), 'linggan-a5-'))
   try {
     const migrated = await migrateDatabase({
       filePath: join(directory, 'test.sqlite'),
-      migrationsDirectory
+      migrationsDirectory,
     })
     try {
       const store = new SqliteCandidateStore(migrated.database)
@@ -55,19 +53,19 @@ const baseCandidate: Candidate = CandidateSchema.parse({
       visuality: 85,
       generatability: 70,
       seriality: 65,
-      novelty: 78
-    }
+      novelty: 78,
+    },
   },
   risk_level: 'low',
   rights_status: 'original',
   status: 'pending_review',
-  generated_at: '2026-07-29T08:30:00.000+08:00'
+  generated_at: '2026-07-29T08:30:00.000+08:00',
 })
 
 const createCandidate = (id: string, sourceTrend = 'trend_abc123'): Candidate => ({
   ...baseCandidate,
   id,
-  source_trend: sourceTrend
+  source_trend: sourceTrend,
 })
 
 // === State Machine Tests ===
@@ -261,10 +259,7 @@ test('transition approved → rejected throws IllegalTransitionError', async () 
   await withDatabase(async (store) => {
     await store.insert([createCandidate('c1')], 'run_001')
     await store.transition('c1', 'approved')
-    await assert.rejects(
-      store.transition('c1', 'rejected'),
-      IllegalTransitionError
-    )
+    await assert.rejects(store.transition('c1', 'rejected'), IllegalTransitionError)
   })
 })
 
@@ -273,19 +268,13 @@ test('transition archived → approved throws IllegalTransitionError', async () 
     await store.insert([createCandidate('c1')], 'run_001')
     await store.transition('c1', 'approved')
     await store.transition('c1', 'archived')
-    await assert.rejects(
-      store.transition('c1', 'approved'),
-      IllegalTransitionError
-    )
+    await assert.rejects(store.transition('c1', 'approved'), IllegalTransitionError)
   })
 })
 
 test('transition on non-existent candidate throws CandidateNotFoundError', async () => {
   await withDatabase(async (store) => {
-    await assert.rejects(
-      store.transition('nonexistent', 'approved'),
-      CandidateNotFoundError
-    )
+    await assert.rejects(store.transition('nonexistent', 'approved'), CandidateNotFoundError)
   })
 })
 
@@ -293,11 +282,10 @@ test('transition on non-existent candidate throws CandidateNotFoundError', async
 
 test('countByStatus returns correct counts', async () => {
   await withDatabase(async (store) => {
-    await store.insert([
-      createCandidate('c1'),
-      createCandidate('c2', 'trend_def'),
-      createCandidate('c3', 'trend_ghi')
-    ], 'run_001')
+    await store.insert(
+      [createCandidate('c1'), createCandidate('c2', 'trend_def'), createCandidate('c3', 'trend_ghi')],
+      'run_001',
+    )
 
     await store.transition('c1', 'approved')
     await store.transition('c2', 'rejected')
@@ -341,7 +329,7 @@ test('full pipeline: generate → persist → list → transition', async () => 
   try {
     const migrated = await migrateDatabase({
       filePath: join(directory, 'test.sqlite'),
-      migrationsDirectory
+      migrationsDirectory,
     })
     try {
       // Generate candidates using the real pipeline
@@ -353,7 +341,7 @@ test('full pipeline: generate → persist → list → transition', async () => 
       const { CollectionItemSchema } = await import('../src/data/contracts.ts')
 
       const knowledge = JSON.parse(
-        await readFile(new URL('../data/knowledge-base.json', import.meta.url), 'utf8')
+        await readFile(new URL('../data/knowledge-base.json', import.meta.url), 'utf8'),
       ) as unknown
       seedKnowledgeBase(migrated.database, knowledge)
 
@@ -364,17 +352,17 @@ test('full pipeline: generate → persist → list → transition', async () => 
         aliases: [],
         category: 'meme',
         description: 'A5 full pipeline test.',
-        source_evidence: [{
-          url: 'https://example.com/a5',
-          source_name: 'Example',
-          page_title: 'A5 test',
-          published_at: null,
-          collected_at: '2026-07-29T07:30:00.000+08:00'
-        }],
-        discovered_at: '2026-07-29T07:30:00.000+08:00',
-        observed_metrics: [
-          { name: 'rank', value: 3, unit: 'position', observed_at: '2026-07-29T07:30:00.000+08:00' }
+        source_evidence: [
+          {
+            url: 'https://example.com/a5',
+            source_name: 'Example',
+            page_title: 'A5 test',
+            published_at: null,
+            collected_at: '2026-07-29T07:30:00.000+08:00',
+          },
         ],
+        discovered_at: '2026-07-29T07:30:00.000+08:00',
+        observed_metrics: [{ name: 'rank', value: 3, unit: 'position', observed_at: '2026-07-29T07:30:00.000+08:00' }],
         heat: 90,
         velocity: 0.8,
         lifecycle: 'peak',
@@ -382,7 +370,7 @@ test('full pipeline: generate → persist → list → transition', async () => 
         visual_actions: ['定格'],
         risk_level: 'low',
         rights_status: 'reference_only',
-        notes: 'A5 test.'
+        notes: 'A5 test.',
       })
       await store.upsert([{ item, batchId: 'run_a5_test' }])
 
@@ -390,17 +378,17 @@ test('full pipeline: generate → persist → list → transition', async () => 
       const trends = storedTrendsToTrends(storedTrends)
 
       const rawSeeds = JSON.parse(
-        await readFile(new URL('../data/seed-entities.json', import.meta.url), 'utf8')
+        await readFile(new URL('../data/seed-entities.json', import.meta.url), 'utf8'),
       ) as unknown
       const rawConfig = JSON.parse(
-        await readFile(new URL('../config/pipeline.json', import.meta.url), 'utf8')
+        await readFile(new URL('../config/pipeline.json', import.meta.url), 'utf8'),
       ) as unknown
 
       const report = generateDailyCandidates({
         config: rawConfig as never,
         seeds: SeedEntitiesSchema.parse(rawSeeds),
         trends,
-        clock: () => new Date('2026-07-29T08:30:00.000Z')
+        clock: () => new Date('2026-07-29T08:30:00.000Z'),
       })
 
       assert.ok(report.candidates.length > 0, 'should generate candidates')

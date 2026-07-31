@@ -9,9 +9,9 @@ import type { StoredTrend, Trend } from '../data/contracts.ts'
  * observed metrics when available.
  */
 export const storedTrendToTrend = (stored: StoredTrend): Trend => {
-  const rankMetric = stored.observed_metrics.find(metric => metric.name === 'rank')
+  const rankMetric = stored.observed_metrics.find((metric) => metric.name === 'rank')
   const engagementMetric = stored.observed_metrics.find(
-    metric => metric.name === 'engagement' || metric.name === 'heat_score'
+    (metric) => metric.name === 'engagement' || metric.name === 'heat_score',
   )
 
   return {
@@ -23,17 +23,16 @@ export const storedTrendToTrend = (stored: StoredTrend): Trend => {
     signals: {
       rank: rankMetric ? Math.round(rankMetric.value) : null,
       engagement: engagementMetric ? engagementMetric.value : stored.heat,
-      velocity: stored.velocity
+      velocity: stored.velocity,
     },
     aliases: stored.aliases,
     lifecycle: stored.lifecycle,
     rights_status: stored.rights_status,
-    risk_level: stored.risk_level
+    risk_level: stored.risk_level,
   }
 }
 
 /**
  * Convert a list of StoredTrends into Trend inputs for the pipeline.
  */
-export const storedTrendsToTrends = (stored: StoredTrend[]): Trend[] =>
-  stored.map(storedTrendToTrend)
+export const storedTrendsToTrends = (stored: StoredTrend[]): Trend[] => stored.map(storedTrendToTrend)

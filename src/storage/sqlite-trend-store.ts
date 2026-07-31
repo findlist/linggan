@@ -1,14 +1,8 @@
 import type { DatabaseSync, StatementSync } from 'node:sqlite'
 import { StoredTrendSchema } from '../data/contracts.ts'
 import type { CollectionItem, StoredTrend } from '../data/contracts.ts'
-import {
-  mergeTrend,
-  toStoredTrend
-} from './trend-store.ts'
-import type {
-  TrendStore,
-  TrendStoreUpsertResult
-} from './trend-store.ts'
+import { mergeTrend, toStoredTrend } from './trend-store.ts'
+import type { TrendStore, TrendStoreUpsertResult } from './trend-store.ts'
 
 const parseStoredTrend = (row: { payload_json: string }): StoredTrend =>
   StoredTrendSchema.parse(JSON.parse(row.payload_json) as unknown)
@@ -21,16 +15,14 @@ export class SqliteTrendStore implements TrendStore {
   }
 
   async list(): Promise<StoredTrend[]> {
-    const rows = this.database.prepare(
-      'SELECT payload_json FROM trends ORDER BY id'
-    ).all() as Array<{ payload_json: string }>
+    const rows = this.database.prepare('SELECT payload_json FROM trends ORDER BY id').all() as Array<{
+      payload_json: string
+    }>
     return rows.map(parseStoredTrend)
   }
 
   async upsert(entries: Array<{ item: CollectionItem; batchId: string }>): Promise<TrendStoreUpsertResult> {
-    const selectTrend = this.database.prepare(
-      'SELECT payload_json FROM trends WHERE fingerprint = ?'
-    ) as StatementSync
+    const selectTrend = this.database.prepare('SELECT payload_json FROM trends WHERE fingerprint = ?') as StatementSync
     const upsertTrend = this.database.prepare(`
       INSERT INTO trends (
         id, fingerprint, name, category, heat, velocity, lifecycle,
@@ -60,9 +52,7 @@ export class SqliteTrendStore implements TrendStore {
       VALUES (?, ?, ?, ?, ?)
     `)
     const deleteBatches = this.database.prepare('DELETE FROM trend_batches WHERE trend_id = ?')
-    const insertBatch = this.database.prepare(
-      'INSERT INTO trend_batches (trend_id, batch_id) VALUES (?, ?)'
-    )
+    const insertBatch = this.database.prepare('INSERT INTO trend_batches (trend_id, batch_id) VALUES (?, ?)')
 
     let inserted = 0
     let updated = 0
@@ -92,7 +82,7 @@ export class SqliteTrendStore implements TrendStore {
           trend.risk_level,
           trend.first_seen_at,
           trend.last_seen_at,
-          JSON.stringify(trend)
+          JSON.stringify(trend),
         )
 
         deleteSources.run(trend.id)
@@ -103,7 +93,7 @@ export class SqliteTrendStore implements TrendStore {
             source.source_name,
             source.page_title,
             source.published_at,
-            source.collected_at
+            source.collected_at,
           )
         }
 

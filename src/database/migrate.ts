@@ -33,8 +33,9 @@ export const migrateDatabase = async (input: {
     `)
     const files = (await readdir(input.migrationsDirectory)).sort()
     const current = new Set(
-      (database.prepare('SELECT version FROM schema_migrations').all() as Array<{ version: number }>)
-        .map(row => row.version)
+      (database.prepare('SELECT version FROM schema_migrations').all() as Array<{ version: number }>).map(
+        (row) => row.version,
+      ),
     )
 
     for (const file of files) {
@@ -48,9 +49,9 @@ export const migrateDatabase = async (input: {
       database.exec('BEGIN IMMEDIATE')
       try {
         database.exec(sql)
-        database.prepare(
-          'INSERT INTO schema_migrations (version, name, applied_at) VALUES (?, ?, ?)'
-        ).run(version, name, new Date().toISOString())
+        database
+          .prepare('INSERT INTO schema_migrations (version, name, applied_at) VALUES (?, ?, ?)')
+          .run(version, name, new Date().toISOString())
         database.exec('COMMIT')
       } catch (error) {
         database.exec('ROLLBACK')

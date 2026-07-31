@@ -4,24 +4,19 @@ import { test } from 'node:test'
 import { KnowledgeBaseSchema, KnownCharacterSchema } from '../src/data/contracts.ts'
 import type { KnownCharacter } from '../src/data/contracts.ts'
 import type { RemixPlanInput } from '../src/generation/remix-engine.ts'
-import {
-  buildRemixPlan,
-  countHookTemplates,
-  detectPersonalityFromCharacter,
-  HOOK_TEMPLATES
-} from '../src/generation/remix-engine.ts'
+import { buildRemixPlan, countHookTemplates, detectPersonalityFromCharacter } from '../src/generation/remix-engine.ts'
 
 const root = new URL('../', import.meta.url)
 const knowledge = KnowledgeBaseSchema.parse(
-  JSON.parse(await readFile(new URL('data/knowledge-base.json', root), 'utf8')) as unknown
+  JSON.parse(await readFile(new URL('data/knowledge-base.json', root), 'utf8')) as unknown,
 )
 
-const workById = new Map(knowledge.works.map(work => [work.id, work]))
+const workById = new Map(knowledge.works.map((work) => [work.id, work]))
 const moment = knowledge.iconic_moments[0]
 const style = { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图' }
 
 const findCharacter = (id: string): KnownCharacter => {
-  const character = knowledge.known_characters.find(item => item.id === id)
+  const character = knowledge.known_characters.find((item) => item.id === id)
   assert.ok(character, `character ${id} must exist in knowledge base`)
   return character
 }
@@ -39,7 +34,7 @@ const buildInput = (overrides: Partial<RemixPlanInput> = {}): RemixPlanInput => 
     style,
     duration: 30,
     seed: 'test-seed',
-    ...overrides
+    ...overrides,
   }
 }
 
@@ -74,7 +69,7 @@ test('detectPersonality covers all 4 personality types from real knowledge base'
     rights_status: 'reference_only',
     risk_level: 'low',
     sources: knowledge.known_characters[0].sources,
-    last_verified_at: knowledge.known_characters[0].last_verified_at
+    last_verified_at: knowledge.known_characters[0].last_verified_at,
   })
   assert.equal(detectPersonalityFromCharacter(hotCharacter), 'hot')
 })
@@ -92,7 +87,11 @@ test('different seeds produce different hooks for the same input', () => {
 })
 
 test('storyboard shot count matches duration: 15s→3, 30s→5, 60s→8', () => {
-  for (const [duration, expected] of [[15, 3], [30, 5], [60, 8]] as const) {
+  for (const [duration, expected] of [
+    [15, 3],
+    [30, 5],
+    [60, 8],
+  ] as const) {
     const plan = buildRemixPlan(buildInput({ duration }))
     assert.equal(plan.storyboard.length, expected, `duration ${duration}s should have ${expected} shots`)
     // 每镜头必须包含时长、画面、动作、情绪四个字段
@@ -128,15 +127,13 @@ test('20 plans from a preset input set achieve >= 70% normalized hook uniqueness
     const characterA = characters[i % characters.length]
     const characterB = characters[(i + 3) % characters.length]
     // 跳过两角色相同的情况，保证碰撞有意义
-    const safeCharacterB = characterB.id === characterA.id
-      ? characters[(i + 4) % characters.length]
-      : characterB
+    const safeCharacterB = characterB.id === characterA.id ? characters[(i + 4) % characters.length] : characterB
     const input = buildInput({
       characterA,
       characterB: safeCharacterB,
       moment: moments[i % moments.length],
       duration: durations[i % durations.length],
-      seed: `uniqueness-seed-${i}`
+      seed: `uniqueness-seed-${i}`,
     })
     const plan = buildRemixPlan(input)
     // 规范化：替换角色名与场面字段为占位符，衡量模板选择多样性而非填入值差异
@@ -152,15 +149,17 @@ test('20 plans from a preset input set achieve >= 70% normalized hook uniqueness
   const uniquenessRate = uniqueCount / hooks.length
   assert.ok(
     uniquenessRate >= 0.7,
-    `normalized hook uniqueness must be >= 70%, got ${uniquenessRate * 100}% (${uniqueCount}/${hooks.length})`
+    `normalized hook uniqueness must be >= 70%, got ${uniquenessRate * 100}% (${uniqueCount}/${hooks.length})`,
   )
 })
 
 test('plan personality fields are populated from characters', () => {
-  const plan = buildRemixPlan(buildInput({
-    characterA: findCharacter('known_wang_lin'),
-    characterB: findCharacter('known_zhen_huan')
-  }))
+  const plan = buildRemixPlan(
+    buildInput({
+      characterA: findCharacter('known_wang_lin'),
+      characterB: findCharacter('known_zhen_huan'),
+    }),
+  )
   assert.equal(plan.personalityA, 'cold')
   assert.equal(plan.personalityB, 'cunning')
   // 钩子类别必须属于 4 类之一

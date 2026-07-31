@@ -5,14 +5,15 @@ import { join } from 'node:path'
 import { test } from 'node:test'
 import { TrendExportDocumentSchema } from '../src/data/contracts.ts'
 import { CollectionItemSchema } from '../src/data/contracts.ts'
-import { parseSqliteUrl } from '../src/config/database.ts'
 import { migrateDatabase } from '../src/database/migrate.ts'
 import { seedKnowledgeBase } from '../src/database/seed-knowledge.ts'
 import { SqliteTrendStore } from '../src/storage/sqlite-trend-store.ts'
 import { exportTrends } from '../scripts/export-trends.ts'
 
-const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname
-  .replace(/^\/(?:[A-Za-z]:)/u, value => value.slice(1))
+const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname.replace(
+  /^\/(?:[A-Za-z]:)/u,
+  (value) => value.slice(1),
+)
 
 const collectedAt = '2026-07-29T07:30:00.000+08:00'
 
@@ -23,17 +24,19 @@ const createItem = (idSlug: string, name: string) =>
     aliases: [],
     category: 'meme',
     description: 'Export test item.',
-    source_evidence: [{
-      url: `https://example.com/${encodeURIComponent(idSlug)}`,
-      source_name: 'Example',
-      page_title: `Source for ${name}`,
-      published_at: null,
-      collected_at: collectedAt
-    }],
+    source_evidence: [
+      {
+        url: `https://example.com/${encodeURIComponent(idSlug)}`,
+        source_name: 'Example',
+        page_title: `Source for ${name}`,
+        published_at: null,
+        collected_at: collectedAt,
+      },
+    ],
     discovered_at: collectedAt,
     observed_metrics: [
       { name: 'rank', value: 7, unit: 'position', observed_at: collectedAt },
-      { name: 'engagement', value: 3200, unit: 'count', observed_at: collectedAt }
+      { name: 'engagement', value: 3200, unit: 'count', observed_at: collectedAt },
     ],
     heat: 75,
     velocity: 0.65,
@@ -42,11 +45,11 @@ const createItem = (idSlug: string, name: string) =>
     visual_actions: ['定格'],
     risk_level: 'low',
     rights_status: 'reference_only',
-    notes: 'Export test.'
+    notes: 'Export test.',
   })
 
 const withDatabase = async (
-  callback: (input: { database: import('node:sqlite').DatabaseSync; dbPath: string }) => Promise<void>
+  callback: (input: { database: import('node:sqlite').DatabaseSync; dbPath: string }) => Promise<void>,
 ) => {
   const directory = await mkdtemp(join(tmpdir(), 'linggan-a2-'))
   try {
@@ -65,7 +68,7 @@ const withDatabase = async (
 test('export writes a valid schema-conformant JSON file from populated SQLite', async () => {
   await withDatabase(async ({ database, dbPath }) => {
     const knowledge = JSON.parse(
-      await readFile(new URL('../data/knowledge-base.json', import.meta.url), 'utf8')
+      await readFile(new URL('../data/knowledge-base.json', import.meta.url), 'utf8'),
     ) as unknown
     seedKnowledgeBase(database, knowledge)
 
@@ -76,7 +79,7 @@ test('export writes a valid schema-conformant JSON file from populated SQLite', 
     const outputPath = join(dbPath, '..', 'trend-export.json')
     const result = await exportTrends({
       outputPath,
-      databaseUrl: `file:${dbPath}`
+      databaseUrl: `file:${dbPath}`,
     })
 
     assert.equal(result.trend_count, 1)
@@ -97,7 +100,7 @@ test('export from empty SQLite produces zero-trend document', async () => {
     const outputPath = join(dbPath, '..', 'trend-export-empty.json')
     const result = await exportTrends({
       outputPath,
-      databaseUrl: `file:${dbPath}`
+      databaseUrl: `file:${dbPath}`,
     })
 
     assert.equal(result.trend_count, 0)
@@ -112,35 +115,34 @@ test('export from empty SQLite produces zero-trend document', async () => {
 test('export fails gracefully on corrupted SQLite data', async () => {
   await withDatabase(async ({ database, dbPath }) => {
     // Insert corrupted payload
-    database.prepare(
-      'INSERT INTO trends (id, fingerprint, name, category, heat, velocity, lifecycle, rights_status, risk_level, first_seen_at, last_seen_at, payload_json) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-    ).run(
-      'trend_corrupt_export',
-      'e'.repeat(64),
-      'corrupt',
-      'meme',
-      null,
-      null,
-      'rising',
-      'reference_only',
-      'low',
-      '2026-07-29T07:30:00.000+08:00',
-      '2026-07-29T07:30:00.000+08:00',
-      '{broken'
-    )
+    database
+      .prepare(
+        'INSERT INTO trends (id, fingerprint, name, category, heat, velocity, lifecycle, rights_status, risk_level, first_seen_at, last_seen_at, payload_json) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      )
+      .run(
+        'trend_corrupt_export',
+        'e'.repeat(64),
+        'corrupt',
+        'meme',
+        null,
+        null,
+        'rising',
+        'reference_only',
+        'low',
+        '2026-07-29T07:30:00.000+08:00',
+        '2026-07-29T07:30:00.000+08:00',
+        '{broken',
+      )
 
     const outputPath = join(dbPath, '..', 'trend-export-corrupt.json')
-    await assert.rejects(
-      exportTrends({ outputPath, databaseUrl: `file:${dbPath}` }),
-      /JSON|parse/i
-    )
+    await assert.rejects(exportTrends({ outputPath, databaseUrl: `file:${dbPath}` }), /JSON|parse/i)
   })
 })
 
 test('export atomically replaces existing file', async () => {
   await withDatabase(async ({ database, dbPath }) => {
     const knowledge = JSON.parse(
-      await readFile(new URL('../data/knowledge-base.json', import.meta.url), 'utf8')
+      await readFile(new URL('../data/knowledge-base.json', import.meta.url), 'utf8'),
     ) as unknown
     seedKnowledgeBase(database, knowledge)
 
@@ -157,7 +159,7 @@ test('export atomically replaces existing file', async () => {
     await store.upsert([{ item, batchId: 'run_atomic' }])
     const result = await exportTrends({
       outputPath,
-      databaseUrl: `file:${dbPath}`
+      databaseUrl: `file:${dbPath}`,
     })
 
     assert.equal(result.trend_count, 1)
@@ -179,7 +181,7 @@ test('export document rejects trend_count mismatch', () => {
     schema_version: 1,
     exported_at: '2026-07-29T08:00:00.000+08:00',
     trend_count: 5,
-    trends: []
+    trends: [],
   }
   assert.equal(TrendExportDocumentSchema.safeParse(badDoc).success, false)
 })
@@ -190,7 +192,7 @@ test('exported file includes exported_at timestamp', async () => {
     const before = new Date().toISOString()
     const result = await exportTrends({
       outputPath,
-      databaseUrl: `file:${dbPath}`
+      databaseUrl: `file:${dbPath}`,
     })
     const after = new Date().toISOString()
 

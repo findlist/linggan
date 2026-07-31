@@ -1,13 +1,8 @@
-import type {
-  CompatibilityMatrix,
-  IconicMoment,
-  KnownCharacter,
-  Work
-} from '../data/contracts.ts'
+import type { CompatibilityMatrix, IconicMoment, KnownCharacter, Work } from '../data/contracts.ts'
 import {
   filterCompatibleCombinations,
   type CompatibilityFilterOptions,
-  type RemixCombination
+  type RemixCombination,
 } from './compatibility.ts'
 
 /**
@@ -133,8 +128,7 @@ const createPrng = (seed: number): (() => number) => {
   }
 }
 
-const pick = <T>(items: readonly T[], rng: () => number): T =>
-  items[Math.floor(rng() * items.length)] ?? items[0]
+const pick = <T>(items: readonly T[], rng: () => number): T => items[Math.floor(rng() * items.length)] ?? items[0]
 
 /* ------------------------------- 钩子模板 ------------------------------- */
 // 4 类各 6 个，共 24 个模板。占位符：{A}/{B}=角色名，{E}=元素焦点，{X}=动作线索。
@@ -147,7 +141,7 @@ export const HOOK_TEMPLATES: Record<HookCategory, string[]> = {
     '直到最后一秒，{A}才亮出真正的底牌。',
     '谁也没想到，{E}会成为压垮秩序的最后一块拼图。',
     '表面上是一次{X}，真相却藏在{B}的沉默里。',
-    '真相在{B}开口之前就已经定局。'
+    '真相在{B}开口之前就已经定局。',
   ],
   contrast: [
     '还在计算退路，{B}已经把最后一道防线点亮。',
@@ -155,7 +149,7 @@ export const HOOK_TEMPLATES: Record<HookCategory, string[]> = {
     '{A}不动声色，{B}却已按下整张地图的反转键。',
     '所有人都准备正面强攻，{A}却问：谁规定缺口一定在正面？',
     '看起来是退让，{B}其实把对手引进了自己设好的节奏。',
-    '所有人都以为{A}会妥协，{A}却把选项压缩到只剩一个。'
+    '所有人都以为{A}会妥协，{A}却把选项压缩到只剩一个。',
   ],
   question: [
     '如果{E}不再受规则约束，会怎样？',
@@ -163,7 +157,7 @@ export const HOOK_TEMPLATES: Record<HookCategory, string[]> = {
     '当秩序失效，谁还愿意守最后一道线？',
     '{A}凭什么相信，这一次{B}不会转身离开？',
     '如果只剩一次机会，你会先保人还是先破局？',
-    '当{A}选择沉默，谁还敢替{B}做决定？'
+    '当{A}选择沉默，谁还敢替{B}做决定？',
   ],
   action: [
     '第一步：把{E}变成所有人的焦点。',
@@ -171,8 +165,8 @@ export const HOOK_TEMPLATES: Record<HookCategory, string[]> = {
     '直接干。{B}已经替所有人决定了开场。',
     '先动手再说，{A}用行动回应所有质疑。',
     '不解释，不犹豫，{B}把退路全部封死。',
-    '不犹豫，{A}把第一步踩成整个场面的支点。'
-  ]
+    '不犹豫，{A}把第一步踩成整个场面的支点。',
+  ],
 }
 
 /** 性格 → 偏好的钩子类别。性格驱动钩子选择，满足“按角色性格选择”要求。 */
@@ -180,7 +174,7 @@ const PERSONALITY_HOOK_BIAS: Record<PersonalityType, HookCategory[]> = {
   cold: ['suspense', 'question'],
   hot: ['action', 'contrast'],
   cunning: ['suspense', 'contrast'],
-  gentle: ['question', 'action']
+  gentle: ['question', 'action'],
 }
 
 const fillHook = (template: string, ctx: HookContext): string =>
@@ -201,19 +195,19 @@ interface HookContext {
 const durationHookBias: Record<RemixDuration, HookCategory[]> = {
   15: ['action', 'contrast'],
   30: ['contrast', 'suspense', 'question', 'action'],
-  60: ['suspense', 'question', 'contrast', 'action']
+  60: ['suspense', 'question', 'contrast', 'action'],
 }
 
 const buildHook = (
   personalityA: PersonalityType,
   duration: RemixDuration,
   ctx: HookContext,
-  rng: () => number
+  rng: () => number,
 ): { text: string; category: HookCategory } => {
   // 合并性格偏好与时长偏好，取交集优先，无交集时回退到性格偏好
   const personalityBias = PERSONALITY_HOOK_BIAS[personalityA]
   const durationBias = durationHookBias[duration]
-  const intersection = personalityBias.filter(category => durationBias.includes(category))
+  const intersection = personalityBias.filter((category) => durationBias.includes(category))
   const effectiveCategories = intersection.length > 0 ? intersection : personalityBias
   // 从候选类别的全部模板合并池中选择，扩大选择空间，避免同性格组合钩子高度雷同
   const pool: { category: HookCategory; template: string }[] = []
@@ -234,22 +228,18 @@ const PERSONALITY_KEYWORDS: Record<PersonalityType, string[]> = {
   cold: ['冷静', '短句', '判断', '代价', '最坏', '果决', '克制', '冷酷', '冷静陈述', '孤绝', '坚忍'],
   hot: ['热血', '承诺', '行动', '激情', '直率', '冲动', '成长', '挑战', '热血', '勇猛', '爆发'],
   cunning: ['含蓄', '试探', '礼貌', '施压', '转折', '肯定', '暗示', '谋略', '隐忍', '善谋', '腹黑', '心机'],
-  gentle: ['平静', '安定', '温和', '温柔', '细致', '守护', '稳定', '安抚', '包容', '支点']
+  gentle: ['平静', '安定', '温和', '温柔', '细致', '守护', '稳定', '安抚', '包容', '支点'],
 }
 
 const detectPersonality = (character: KnownCharacter): PersonalityType => {
-  const haystack = [
-    ...character.character_types,
-    ...character.traits,
-    ...character.dialogue_style
-  ].join('')
+  const haystack = [...character.character_types, ...character.traits, ...character.dialogue_style].join('')
 
   let best: PersonalityType = 'cold'
   let bestScore = 0
   for (const type of Object.keys(PERSONALITY_KEYWORDS) as PersonalityType[]) {
     const score = PERSONALITY_KEYWORDS[type].reduce(
       (count, keyword) => (haystack.includes(keyword) ? count + 1 : count),
-      0
+      0,
     )
     if (score > bestScore) {
       bestScore = score
@@ -272,30 +262,30 @@ const DIALOGUE_TEMPLATES: Record<PersonalityType, string[]> = {
   cold: [
     '“{style}。最坏的结果我先说：{cost}。能接受就动。”',
     '“别绕。{style}。我们只做胜算最高的那一步。”',
-    '“{style}。退路我已经算过，没有。”'
+    '“{style}。退路我已经算过，没有。”',
   ],
   hot: [
     '“你只管打开缺口，剩下的我来扛。{style}——我说到做到。”',
     '“{style}。如果今天只能做一件事，那就把这一件做到没有人能忽视。”',
-    '“别问我怕不怕。{style}。行动会比质疑先到。”'
+    '“别问我怕不怕。{style}。行动会比质疑先到。”',
   ],
   cunning: [
     '“你说的我都认。{style}。不过先把界限讲清楚，对你我都好。”',
     '“{style}。这件事我不拦你，只是替你把代价摆到台面上。”',
-    '“可以。{style}。但我有一个条件——听完再决定。”'
+    '“可以。{style}。但我有一个条件——听完再决定。”',
   ],
   gentle: [
     '“先别急。{style}。我们在，局面就不会失控。”',
     '“{style}。你先稳住，能走的那一步我替你想好了。”',
-    '“没事。{style}。剩下的交给我，你只需要往前。”'
-  ]
+    '“没事。{style}。剩下的交给我，你只需要往前。”',
+  ],
 }
 
 const buildDialogue = (
   personality: PersonalityType,
   character: KnownCharacter,
   costCue: string,
-  rng: () => number
+  rng: () => number,
 ): string => {
   const template = pick(DIALOGUE_TEMPLATES[personality], rng)
   const style = pick(character.dialogue_style, rng)
@@ -309,13 +299,13 @@ const buildDialogue = (
 const STORYBOARD_BEATS: Record<RemixDuration, string[]> = {
   15: ['钩子', '冲突', '反转'],
   30: ['钩子', '铺垫', '冲突', '转折', '收尾'],
-  60: ['钩子', '铺垫', '升级', '冲突', '受阻', '破局', '收尾', '彩蛋']
+  60: ['钩子', '铺垫', '升级', '冲突', '受阻', '破局', '收尾', '彩蛋'],
 }
 
 const SHOT_DURATION_PLAN: Record<RemixDuration, number[]> = {
   15: [4, 6, 5],
   30: [4, 5, 7, 8, 6],
-  60: [5, 6, 8, 10, 9, 9, 8, 5]
+  60: [5, 6, 8, 10, 9, 9, 8, 5],
 }
 
 // 节拍 → 镜头角色：开场/铺垫/高潮/转折/收尾，决定景别、运镜和转场候选池
@@ -335,7 +325,7 @@ const SHOT_TYPE_POOL: Record<BeatRole, ShotType[]> = {
   buildup: ['medium', 'full'],
   climax: ['close_up', 'extreme_close_up'],
   turning: ['close_up', 'medium'],
-  ending: ['full', 'wide']
+  ending: ['full', 'wide'],
 }
 
 // 按镜头角色分组的运镜候选：开场推入建立代入，收尾拉出留白
@@ -344,7 +334,7 @@ const CAMERA_MOVEMENT_POOL: Record<BeatRole, CameraMovement[]> = {
   buildup: ['fixed', 'pan'],
   climax: ['tracking', 'push'],
   turning: ['tilt', 'push'],
-  ending: ['fixed', 'pull']
+  ending: ['fixed', 'pull'],
 }
 
 // 按镜头角色分组的转场候选：首镜无前置转场用 cut，结尾用 fade 留余韵
@@ -353,14 +343,14 @@ const TRANSITION_POOL: Record<BeatRole, TransitionType[]> = {
   buildup: ['cut', 'dissolve'],
   climax: ['cut', 'match_cut'],
   turning: ['match_cut', 'dissolve'],
-  ending: ['fade', 'dissolve']
+  ending: ['fade', 'dissolve'],
 }
 
 const buildStoryboard = (
   duration: RemixDuration,
   moment: IconicMoment,
   style: RemixStyle,
-  rng: () => number
+  rng: () => number,
 ): StoryboardShot[] => {
   const beats = STORYBOARD_BEATS[duration]
   const durations = SHOT_DURATION_PLAN[duration]
@@ -383,7 +373,7 @@ const buildStoryboard = (
       visual,
       action,
       emotion,
-      transition: pick(TRANSITION_POOL[role], rng)
+      transition: pick(TRANSITION_POOL[role], rng),
     }
   })
 }
@@ -393,7 +383,7 @@ const buildStoryboard = (
 const buildCopywriting = (
   input: RemixPlanInput,
   personalityA: PersonalityType,
-  rng: () => number
+  rng: () => number,
 ): RemixCopywriting => {
   const { characterA, characterB, moment, workA, workB, momentWork } = input
 
@@ -401,7 +391,7 @@ const buildCopywriting = (
   const titles = [
     `${characterA.name}与${characterB.name}的${moment.conflict_type}：没人预见的结局`,
     `${characterA.name} × ${characterB.name}｜${moment.name}结构改写`,
-    `本以为是${moment.conflict_type}，结果${characterA.name}改写了规则`
+    `本以为是${moment.conflict_type}，结果${characterA.name}改写了规则`,
   ]
 
   // 约 100 字描述：交代角色来源、碰撞结构与版权边界
@@ -417,19 +407,15 @@ const buildCopywriting = (
     cold: '冷酷决策',
     hot: '热血破局',
     cunning: '高段博弈',
-    gentle: '温柔坚定'
+    gentle: '温柔坚定',
   }
-  const hashtags = [
-    `#${personalityLabel[personalityA]}`,
-    `#${moment.conflict_type}`,
-    `#${input.style.label}`
-  ]
+  const hashtags = [`#${personalityLabel[personalityA]}`, `#${moment.conflict_type}`, `#${input.style.label}`]
 
   // 封面文案：用于视频封面图的吸睛短句，区别于标题候选，控制在 12 字以内
   const coverTemplates = [
     `${characterA.name}的${moment.conflict_type}`,
     `${characterA.name} × ${characterB.name}`,
-    `${moment.conflict_type}·${characterA.name}`
+    `${moment.conflict_type}·${characterA.name}`,
   ]
   const cover_copy = pick(coverTemplates, rng)
 
@@ -445,19 +431,14 @@ const STYLE_STRENGTH: Record<string, number> = {
   cinematic: 0.85,
   absurd: 0.6,
   animation: 0.75,
-  mockumentary: 0.55
+  mockumentary: 0.55,
 }
 
-const buildProduction = (
-  input: RemixPlanInput,
-  prompt: string
-): ProductionPackage => {
+const buildProduction = (input: RemixPlanInput, prompt: string): ProductionPackage => {
   const { style, characterA, characterB, moment } = input
 
   // 正向提示词：在人类可读摘要基础上补充制作关键词
-  const positive =
-    `${prompt} 画面比例 9:16 竖屏，${style.prompt}，` +
-    `原创角色造型，高对比度光影，电影级质感。`
+  const positive = `${prompt} 画面比例 9:16 竖屏，${style.prompt}，` + `原创角色造型，高对比度光影，电影级质感。`
 
   // 负面提示词：排除低质量输出和版权风险
   const negative =
@@ -475,15 +456,13 @@ const buildProduction = (
     reference_status:
       `参考角色（${characterA.name}、${characterB.name}）和名场面（${moment.name}）` +
       `仅作结构与性格参考，rights_status 为 reference_only。`,
-    commercial_use:
-      '商业发布前必须替换为原创或已授权资产，不得直接使用参考角色形象。',
-    rewrite_scope:
-      '台词、镜头、世界观、角色造型全部原创改写，不包含原作精确台词、截图或视频片段。'
+    commercial_use: '商业发布前必须替换为原创或已授权资产，不得直接使用参考角色形象。',
+    rewrite_scope: '台词、镜头、世界观、角色造型全部原创改写，不包含原作精确台词、截图或视频片段。',
   }
 
   return {
     prompts: { positive, negative, aspect_ratio, style_strength },
-    copyright_boundary
+    copyright_boundary,
   }
 }
 
@@ -501,7 +480,7 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
     nameA: characterA.name,
     nameB: characterB.name,
     focus: moment.conflict_type,
-    actionCue: moment.visual_actions[0] ?? '行动'
+    actionCue: moment.visual_actions[0] ?? '行动',
   }
   const hook = buildHook(personalityA, duration, hookContext, rng)
 
@@ -541,7 +520,7 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
     copywriting,
     prompt,
     duration,
-    production
+    production,
   }
 }
 
@@ -550,12 +529,9 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
 
 export const detectPersonalityFromCharacter = detectPersonality
 export const countHookTemplates = (): Record<HookCategory, number> =>
-  (Object.fromEntries(
-    (Object.keys(HOOK_TEMPLATES) as HookCategory[]).map(category => [
-      category,
-      HOOK_TEMPLATES[category].length
-    ])
-  ) as Record<HookCategory, number>)
+  Object.fromEntries(
+    (Object.keys(HOOK_TEMPLATES) as HookCategory[]).map((category) => [category, HOOK_TEMPLATES[category].length]),
+  ) as Record<HookCategory, number>
 
 /* --------------------- C2 批量制作包与 C1 过滤集成 --------------------- */
 // buildProductionPlans 在生成前调用 filterCompatibleCombinations 过滤低兼容组合，
@@ -589,30 +565,32 @@ export interface ProductionPlanResult {
 export const buildProductionPlans = (
   inputs: readonly ProductionPlanInput[],
   matrix: CompatibilityMatrix,
-  options?: CompatibilityFilterOptions
+  options?: CompatibilityFilterOptions,
 ): ProductionPlanResult => {
   const threshold = options?.threshold ?? 0.5
   // filterCompatibleCombinations 的泛型约束为 T extends RemixCombination，
   // ProductionPlanInput 继承 RemixCombination，因此可以整体传入并保留额外字段
   const filtered = filterCompatibleCombinations(inputs, matrix, { threshold })
-  const plans = filtered.map(input => buildRemixPlan({
-    characterA: input.characterA,
-    characterB: input.characterB,
-    moment: input.moment,
-    workA: input.workA,
-    workB: input.workB,
-    momentWork: input.momentWork,
-    style: input.style,
-    duration: input.duration,
-    seed: input.seed
-  }))
+  const plans = filtered.map((input) =>
+    buildRemixPlan({
+      characterA: input.characterA,
+      characterB: input.characterB,
+      moment: input.moment,
+      workA: input.workA,
+      workB: input.workB,
+      momentWork: input.momentWork,
+      style: input.style,
+      duration: input.duration,
+      seed: input.seed,
+    }),
+  )
   return {
     plans,
     stats: {
       total_combinations: inputs.length,
       filtered_out: inputs.length - filtered.length,
       remaining: filtered.length,
-      threshold
-    }
+      threshold,
+    },
   }
 }

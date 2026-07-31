@@ -22,19 +22,19 @@ const databaseUrl = argumentsByName.get('database') ?? config.url
 const logger = createTaskRunLogger({
   taskName: 'migrate:trends',
   logDirectory: resolve(argumentsByName.get('logs') ?? 'data/run-logs'),
-  metadata: { inbox: inboxDirectory, database: databaseUrl }
+  metadata: { inbox: inboxDirectory, database: databaseUrl },
 })
 
 try {
   const { database, applied } = await migrateDatabase({
     filePath: parseSqliteUrl(databaseUrl),
-    migrationsDirectory: config.migrationsDirectory
+    migrationsDirectory: config.migrationsDirectory,
   })
 
   try {
     const report = await migrateCollectionInbox({
       inboxDirectory,
-      store: new SqliteTrendStore(database)
+      store: new SqliteTrendStore(database),
     })
     database.close()
 
@@ -47,13 +47,13 @@ try {
         processedCount: report.files_discovered,
         successCount: report.files_processed,
         failureCount: report.files_failed,
-        errors: report.failures.map(failure => `${failure.file}: ${failure.error}`),
+        errors: report.failures.map((failure) => `${failure.file}: ${failure.error}`),
         metadata: {
           inserted: report.inserted,
           updated: report.updated,
           deduplicated: report.deduplicated,
-          total_trends: report.total_trends
-        }
+          total_trends: report.total_trends,
+        },
       })
     } else {
       await logger.succeed({
@@ -64,8 +64,8 @@ try {
           inserted: report.inserted,
           updated: report.updated,
           deduplicated: report.deduplicated,
-          total_trends: report.total_trends
-        }
+          total_trends: report.total_trends,
+        },
       })
     }
   } catch (error) {

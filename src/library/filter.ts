@@ -24,10 +24,10 @@ export type LibraryFilters = Record<string, string[]>
 export const filterLibraryItems = (
   items: FilterableItem[],
   filters: LibraryFilters,
-  query: string
+  query: string,
 ): FilterableItem[] => {
   const q = query.trim().toLowerCase()
-  return items.filter(item => {
+  return items.filter((item) => {
     // 文本搜索：query 为空时跳过；非空时要求可索引文本包含 query
     if (q && !item.searchableText.includes(q)) return false
     // 逐维度判断：选中值非空时，素材该维度的值集合必须与选中值有交集
@@ -35,7 +35,7 @@ export const filterLibraryItems = (
       if (selected.length === 0) continue
       const itemValues = item.fields[dimension] ?? []
       // 同维度 OR：素材只要命中任意一个选中值即通过该维度
-      if (!selected.some(value => itemValues.includes(value))) return false
+      if (!selected.some((value) => itemValues.includes(value))) return false
     }
     return true
   })
@@ -45,10 +45,7 @@ export const filterLibraryItems = (
  * 从一批素材中收集某维度的所有可选值，去重并按字典序排序。
  * 用于动态生成筛选器选项，避免出现"选了却无结果"的死选项。
  */
-export const collectFilterOptions = (
-  items: FilterableItem[],
-  dimension: string
-): string[] => {
+export const collectFilterOptions = (items: FilterableItem[], dimension: string): string[] => {
   const set = new Set<string>()
   for (const item of items) {
     const values = item.fields[dimension] ?? []

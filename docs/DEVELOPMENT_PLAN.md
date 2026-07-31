@@ -125,17 +125,17 @@ flowchart LR
 
 ## 5. 必须记录的产品事件
 
-| 事件 | 用途 |
-|---|---|
-| `idea_impression` | 判断曝光基数 |
-| `idea_opened` | 判断标题与封面吸引力 |
-| `idea_saved` | 判断长期价值 |
-| `prompt_copied` | 判断方案是否可执行 |
-| `idea_exported` | 判断专业使用意图 |
-| `video_created` | 核心成片转化 |
-| `video_published` | 北极星指标输入 |
-| `idea_hidden` | 识别反感和重复 |
-| `risk_reported` | 修正合规策略 |
+| 事件              | 用途                 |
+| ----------------- | -------------------- |
+| `idea_impression` | 判断曝光基数         |
+| `idea_opened`     | 判断标题与封面吸引力 |
+| `idea_saved`      | 判断长期价值         |
+| `prompt_copied`   | 判断方案是否可执行   |
+| `idea_exported`   | 判断专业使用意图     |
+| `video_created`   | 核心成片转化         |
+| `video_published` | 北极星指标输入       |
+| `idea_hidden`     | 识别反感和重复       |
+| `risk_reported`   | 修正合规策略         |
 
 ## 6. 发布门槛
 

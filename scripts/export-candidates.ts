@@ -16,11 +16,11 @@ export interface CandidateExportOptions {
   limit?: number
 }
 
-export const exportCandidates = async (
-  options: CandidateExportOptions
-): Promise<CandidateExportDocument> => {
-  const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname
-    .replace(/^\/(?:[A-Za-z]:)/u, value => value.slice(1))
+export const exportCandidates = async (options: CandidateExportOptions): Promise<CandidateExportDocument> => {
+  const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname.replace(
+    /^\/(?:[A-Za-z]:)/u,
+    (value) => value.slice(1),
+  )
 
   const dbConfig = options.databaseUrl
     ? { url: options.databaseUrl, filePath: parseSqliteUrl(options.databaseUrl), migrationsDirectory }
@@ -28,7 +28,7 @@ export const exportCandidates = async (
 
   const { database } = await migrateDatabase({
     filePath: dbConfig.filePath,
-    migrationsDirectory: dbConfig.migrationsDirectory
+    migrationsDirectory: dbConfig.migrationsDirectory,
   })
 
   try {
@@ -42,7 +42,7 @@ export const exportCandidates = async (
       schema_version: 1,
       exported_at: new Date().toISOString(),
       candidate_count: candidates.length,
-      candidates
+      candidates,
     }
 
     // 写入前再次校验：状态机、数量、唯一 ID、全部 approved
@@ -55,7 +55,7 @@ export const exportCandidates = async (
     try {
       await writeFile(tempPath, `${JSON.stringify(validated, null, 2)}\n`, {
         encoding: 'utf8',
-        flag: 'wx'
+        flag: 'wx',
       })
       await rename(tempPath, options.outputPath)
     } catch (error) {
@@ -74,7 +74,7 @@ const outputPath = process.argv[2] ?? 'public/data/candidate-export.json'
 const logger = createTaskRunLogger({
   taskName: 'export:candidates',
   logDirectory: 'data/run-logs',
-  metadata: { output: outputPath }
+  metadata: { output: outputPath },
 })
 
 try {
@@ -84,7 +84,7 @@ try {
     processedCount: result.candidate_count,
     successCount: result.candidate_count,
     failureCount: 0,
-    metadata: { candidate_count: result.candidate_count }
+    metadata: { candidate_count: result.candidate_count },
   })
 } catch (error) {
   await logger.fail(error)

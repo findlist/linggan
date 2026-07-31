@@ -1,9 +1,58 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：C6 前端模块化轮
-当前阶段：Phase 2 进行中（C1、C2、C3、C4、C5、C6、C8 已完成，剩余 C7）
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；C4 创作工作台已升级为三栏布局（左素材选择/中核心预览/右完整制作包），中栏预览展示标题/钩子/封面文案/C3 重复检测标记/复制收藏快捷操作，右栏展示完整分镜表（含景别/运镜/转场中文标签）、结构化画面提示词（正向/负面/比例/风格强度）、版权边界三字段声明和导出按钮，前端集成 detectDuplicates 把当前方案与已收藏方案对比并在相似度≥0.7 时显示换皮警告，桌面端三栏在 ≤980px 堆叠为单栏；C5 素材库多维筛选已建立，业务规则与 UI 分离为 src/library/filter.ts 纯函数（filterLibraryItems/collectFilterOptions），素材库三个 tab 各配置 3 个筛选维度（角色：类型/作品/版权；名场面：冲突/情绪/作品；作品：媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与所有维度 AND，chip 动态收集可选项避免死选项，切换 tab 自动重置筛选，有选中时显示清空按钮和"显示 N / 共 M 项"计数；C6 前端模块化已完成，main.js 从 730 行减至 78 行（-92%），按行为边界拆分为 6 个 section 组件（Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList/FeedSection）和 4 个基础模块（data/knowledge.js 知识库读取层、data/store.js 状态管理、ui/icons.js 图标库、ui/dom.js DOM 工具），原 main.js 顶层 6 个可变 let（duration/generation/currentResult/activeTab/libraryFilters/saved）全部收敛到 store.js，跨 section 调用通过 ctx 注入回调避免循环依赖，浏览器 DOM 检查 6/7 项 PASS（唯一 FAIL 是验证脚本查询方式问题，代码正确）；尚无自动发布闭环
+当前轮次：C7 lint/format 配置轮
+当前阶段：Phase 2 全部完成（C1—C8 全部完成），准备进入 Phase 3 反馈学习轨道
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；C4 创作工作台已升级为三栏布局（左素材选择/中核心预览/右完整制作包），中栏预览展示标题/钩子/封面文案/C3 重复检测标记/复制收藏快捷操作，右栏展示完整分镜表（含景别/运镜/转场中文标签）、结构化画面提示词（正向/负面/比例/风格强度）、版权边界三字段声明和导出按钮，前端集成 detectDuplicates 把当前方案与已收藏方案对比并在相似度≥0.7 时显示换皮警告，桌面端三栏在 ≤980px 堆叠为单栏；C5 素材库多维筛选已建立，业务规则与 UI 分离为 src/library/filter.ts 纯函数（filterLibraryItems/collectFilterOptions），素材库三个 tab 各配置 3 个筛选维度（角色：类型/作品/版权；名场面：冲突/情绪/作品；作品：媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与所有维度 AND，chip 动态收集可选项避免死选项，切换 tab 自动重置筛选，有选中时显示清空按钮和"显示 N / 共 M 项"计数；C6 前端模块化已完成，main.js 从 730 行减至 78 行（-92%），按行为边界拆分为 6 个 section 组件（Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList/FeedSection）和 4 个基础模块（data/knowledge.js 知识库读取层、data/store.js 状态管理、ui/icons.js 图标库、ui/dom.js DOM 工具），原 main.js 顶层 6 个可变 let（duration/generation/currentResult/activeTab/libraryFilters/saved）全部收敛到 store.js，跨 section 调用通过 ctx 注入回调避免循环依赖，浏览器 DOM 检查 6/7 项 PASS（唯一 FAIL 是验证脚本查询方式问题，代码正确）；C7 lint/format 配置已完成，ESLint 9 flat config + Prettier 3 覆盖全部 .ts/.js 源码，lint 与 format:check 全部通过，TypeScript 降级至 6.0.3 以兼容 typescript-eslint v8，Phase 2 全部任务结束；尚无自动发布闭环
+
+### C7 lint/format 配置轮 — 2026-07-31
+
+本轮目标：建立 ESLint + Prettier 规则并格式化全部源码，让后续 Phase 3 任务在新代码上自动遵循统一风格。对应 DEVELOPMENT_DIRECTION.md 阶段 C"lint + format 配置"和工程轨道剩余最后一项。验收条件为安装 ESLint + Prettier 及 TypeScript 解析器依赖、建立 ESLint flat config 和 Prettier 配置覆盖 .ts 与 .js 文件、添加 lint/format npm 脚本、运行 lint --fix 与 prettier --write 后全部源码无报错无风格警告、类型检查/全部测试/数据校验/生产构建通过、构建产物大小不显著增加。
+
+完成：
+
+- 新增 `eslint.config.js`（ESLint 9+ flat config 默认形式，项目用 ESM 故 import/export）：
+  - 全局忽略 dist/node_modules/data/public/data/memory/archive；
+  - 启用 `@eslint/js` recommended 规则捕捉常见 JS 错误；
+  - 启用 `typescript-eslint` recommended 规则（不带类型检查，仅语法）捕捉 TS 特有问题；
+  - 语言选项 ecmaVersion 2022 + module；
+  - 规则微调：`no-undef` 关闭（TS 类型检查已覆盖，JS 文件浏览器/Node 全局较多避免误报）、`@typescript-eslint/no-explicit-any` 关闭（项目允许 any 用于适配器和边界场景）、`@typescript-eslint/no-require-imports` 关闭（部分脚本通过 createRequire 互操作 CommonJS）、`@typescript-eslint/no-unused-vars` 设为 warn 且下划线前缀豁免；
+  - 集成 `eslint-config-prettier` 关闭与 Prettier 冲突的格式规则，让 Prettier 统一格式、ESLint 负责代码质量；
+- 新增 `.prettierrc.json`：`semi:false`（无分号）、`singleQuote:true`（单引号）、`trailingComma:'all'`、`printWidth:120`、`tabWidth:2`、`arrowParens:'always'`、`endOfLine:'lf'`；
+- 新增 `.prettierignore`：忽略 dist/node_modules/data/public/data/memory/archive、package-lock.json 和 eslint.config.js 自身；
+- 修改 `package.json`：
+  - devDependencies 新增 `eslint@^9.39.5`、`typescript-eslint@^8.65.0`、`prettier@^3.9.6`、`eslint-config-prettier@^9.1.2`；
+  - TypeScript 从 `~7.0.2` 降级至 `~6.0.3`（typescript-eslint v8 不支持 TypeScript 7.0+，降级后兼容）；
+  - scripts 新增 `lint`（eslint .）、`lint:fix`（eslint . --fix）、`format`（prettier --write .）、`format:check`（prettier --check .）；
+- 运行 `npm run lint -- --fix` 和 `npm run format` 后修复 ESLint 报错与警告：
+  - `src/sections/FeedSection.js` 和 `src/sections/RadarSection.js` 的空 catch 块补充注释说明 fallback 路径失败时忽略的原因（`no-empty` 规则）；
+  - `src/sections/LibrarySection.js` 移除未使用的 `characterById` 导入；
+  - `tests/candidate-export.test.ts`、`tests/candidate-store.test.ts`、`tests/production-package.test.ts`、`tests/remix-engine.test.ts`、`tests/similarity.test.ts`、`tests/trend-adapter.test.ts`、`tests/trend-export.test.ts`、`tests/trend-ingestion.test.ts` 移除未使用的 import/类型/变量（`@typescript-eslint/no-unused-vars`）；
+  - Prettier 统一全部 .ts/.js 源码格式（无分号、单引号、行宽 120、尾随逗号等），涉及大量源文件的格式微调（缩进、引号、换行），无业务逻辑改动。
+
+验证：
+
+- `npm run lint`：通过（无报错、无警告）；
+- `npm run format:check`：通过（All matched files use Prettier code style!）；
+- `npm run typecheck`：通过；
+- `npm run validate:data`：通过，5 份 JSON 有效，跨文件外键校验通过（compatibility-matrix.json ↔ knowledge-base.json）；
+- `npm test`：通过，182/182（C7 为纯工程化任务，未新增测试，原有 182 项不变）；
+- `npm run build`：通过，22 modules transformed（与 C6 一致，未新增前端模块），CSS 30.56 kB（+0.02 kB，可忽略）、JS 86.31 kB（与 C6 完全一致，无运行时依赖增加）；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- TypeScript 从 7.0.2 降级至 6.0.3：typescript-eslint v8 的解析器 `@typescript-eslint/parser` 不支持 TypeScript 7.0+ 语法，运行 lint 时报 "TypeScript version not supported" 错误；降级到 6.0.3 后兼容，且不影响现有 typecheck/test/build（Node 24 内置 `--experimental-strip-types` 不依赖 TypeScript 版本，tsc 6.0.3 同样支持项目用到的全部 TS 语法）；
+- ESLint flat config 而非 .eslintrc：ESLint 9+ 默认 flat config，且项目用 ESM（`"type":"module"`），flat config 用 import/export 更自然；旧格式 .eslintrc 在 ESLint 9 已废弃；
+- 关闭 `no-undef`：TS 文件由类型检查覆盖未定义变量检测；JS 文件（main.js、sections/*.js）在浏览器和 Node 环境有大量全局（document、window、localStorage、process、URL 等），开启 no-undef 会产生大量误报，关闭后由 TS 类型检查和运行时兜底；
+- `@typescript-eslint/no-explicit-any` 关闭而非逐行豁免：项目适配器（wikipedia-adapter）、测试和原型边界场景常用 any 接收外部响应，逐行豁免会产生大量 `// eslint-disable-next-line` 噪音；后续如需收紧可在具体文件覆写规则；
+- `@typescript-eslint/no-unused-vars` 设为 warn 而非 error：避免误伤测试中为对称而保留的占位参数；下划线前缀（`_`）豁免是约定俗成的占位符约定；
+- `.prettierignore` 忽略 eslint.config.js 自身：eslint.config.js 是配置文件，Prettier 格式化会破坏其可读性（如多行 import 对齐）；package-lock.json 是自动生成文件无需格式化；
+- 安装依赖时使用 `--legacy-peer-deps`：TypeScript 7 与 typescript-eslint v8 的 peer dependency 冲突，降级 TypeScript 后冲突解除，但安装时仍需 `--legacy-peer-deps` 避免 npm 解析失败；
+- C7 是 Phase 2 最后一项，完成后 Phase 2 全部任务结束，进入 Phase 3 反馈学习轨道；C7 不改业务语义，仅建立工程规范，所有 182 项测试不变即为正确性证明；
+- 环境注意：本机默认 node 为 v14，需用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；通过 `cmd /d /c "set PATH=D:\development\nodejs;%PATH% && ..."` 解决；PowerShell 不支持 `&&`，需用 `cmd /d /c` 包装或 `;` 分隔。
+
+下一轮：Phase 2 全部完成，进入 Phase 3 反馈学习轨道。首选 D1 事件采集，建立 9 类核心产品事件（idea_impression/idea_opened/idea_saved/prompt_copied/idea_exported/video_created/video_published/idea_hidden/risk_reported）的采集能力，对应 DEVELOPMENT_DIRECTION.md 阶段 D"D1 事件采集（impression/opened/saved/copied 等 9 类）"和 DEVELOPMENT_PLAN.md 第 5 节"必须记录的产品事件"表，验收条件为 9 类核心事件可记录。
 
 ### C6 前端模块化轮 — 2026-07-31
 
@@ -766,25 +815,25 @@
 
 ## 1. 当前项目健康状态
 
-| 项目 | 状态 | 说明 |
-|---|---|---|
-| 前端 MVP | 通过 | 已重构为热点雷达、跨作品混搭器、知识库和收藏工作台，Vite 生产构建成功 |
-| 响应式 UI | 自动化回归通过 | 桌面端 1440px 五大核心流程（详情弹窗/工作台/收藏/雷达/推荐流）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证 |
-| 示例内容 | 已有 | 4 条首页创意和结构化种子数据 |
-| 每日候选脚本 | SQLite 闭环通过 | 默认读取正式趋势、生成候选并幂等持久化；显式示例输入仅用于测试和演示 |
-| 内容图谱 | 基础库可校验，增量合并已用真实批次验证 | 已有 9 部作品、19 个知名人物、7 组关系和 11 个抽象名场面；具体知名内容均为 `reference_only`；增量批次可通过 `merge:knowledge` 合并入库 |
-| 创意生成引擎 | 质量升级完成 | 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；固定种子可复现，20 条规范化钩子唯一率 ≥ 70% |
-| 素材库详情视图 | 基础闭环通过 | 角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段（角色类型、对白风格、关系、情绪弧、视觉动作、可复用节拍、来源证据等）；每个详情页有"开始创作"入口带入混搭工作台；键盘可访问，移动端有适配 |
-| 素材库多维筛选 | 基础闭环通过 | 角色/名场面/作品三个 tab 各 3 个筛选维度（类型/作品/版权、冲突/情绪/作品、媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与筛选 AND；业务规则抽为 src/library/filter.ts 纯函数，13 项单元测试覆盖；chip 动态收集可选项避免死选项，切换 tab 自动重置，有清空按钮和结果计数 |
-| 导出与收藏 | 基础闭环通过 | 混搭方案可导出 Markdown（人类可读，含分镜表格/对白/文案/版权边界）和 JSON（机器可读，完整 RemixPlan）；收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除；旧格式收藏降级显示；导出/收藏操作有 toast 反馈；尚缺浏览器交互回归 |
-| 热点采集 | SQLite 入库闭环完成，任务启用 | 每天 07:30、13:30、19:30 采集；已有公开批次经 Schema、跨批次去重和事务迁移进入 SQLite |
-| 来源适配器 | 首个固定适配器已建立 | 维基百科最热词条 REST API 适配器已建立，纯转换函数 + 本地 fixture 测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；CLI 已就绪但未实际拉取公网数据 |
-| 运行日志 | 基础闭环通过 | 采集、迁移、生成和导出 5 个 CLI 环节均产生结构化运行记录；日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询；覆盖正常运行、部分失败和完全失败 |
-| 本地持久化 | SQLite 通过 | 默认 `data/linggan.sqlite`；版本化迁移、知识种子、事务回滚、幂等和多来源合并测试通过 |
-| 候选审核 | 基础状态机通过 | candidates 已持久化，支持 pending_review、approved、rejected、archived 合法流转；approved 候选可导出供推荐流消费；尚无自动发布目标 |
-| 今日推荐 | 基础闭环通过 | 首页读取 approved 候选导出，无数据时显示空状态；当前无 approved 候选 |
-| 行为分析 | 未实现 | 尚未采集曝光、复制和成片事件 |
-| 测试体系 | 基础验证通过 | 已覆盖数据契约、生成、SQLite 趋势适配与导出、候选存储和状态机、运行日志、素材库筛选（C5 新增 13 项）；B4/B5 浏览器交互回归已通过 C8 补齐；当前 182 项测试全部通过 |
+| 项目           | 状态                                   | 说明                                                                                                                                                                                                                                                                            |
+| -------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 前端 MVP       | 通过                                   | 已重构为热点雷达、跨作品混搭器、知识库和收藏工作台，Vite 生产构建成功                                                                                                                                                                                                           |
+| 响应式 UI      | 自动化回归通过                         | 桌面端 1440px 五大核心流程（详情弹窗/工作台/收藏/雷达/推荐流）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证                                                                                                                                        |
+| 示例内容       | 已有                                   | 4 条首页创意和结构化种子数据                                                                                                                                                                                                                                                    |
+| 每日候选脚本   | SQLite 闭环通过                        | 默认读取正式趋势、生成候选并幂等持久化；显式示例输入仅用于测试和演示                                                                                                                                                                                                            |
+| 内容图谱       | 基础库可校验，增量合并已用真实批次验证 | 已有 9 部作品、19 个知名人物、7 组关系和 11 个抽象名场面；具体知名内容均为 `reference_only`；增量批次可通过 `merge:knowledge` 合并入库                                                                                                                                          |
+| 创意生成引擎   | 质量升级完成                           | 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；固定种子可复现，20 条规范化钩子唯一率 ≥ 70%                                                                                                                       |
+| 素材库详情视图 | 基础闭环通过                           | 角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段（角色类型、对白风格、关系、情绪弧、视觉动作、可复用节拍、来源证据等）；每个详情页有"开始创作"入口带入混搭工作台；键盘可访问，移动端有适配                                                                              |
+| 素材库多维筛选 | 基础闭环通过                           | 角色/名场面/作品三个 tab 各 3 个筛选维度（类型/作品/版权、冲突/情绪/作品、媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与筛选 AND；业务规则抽为 src/library/filter.ts 纯函数，13 项单元测试覆盖；chip 动态收集可选项避免死选项，切换 tab 自动重置，有清空按钮和结果计数 |
+| 导出与收藏     | 基础闭环通过                           | 混搭方案可导出 Markdown（人类可读，含分镜表格/对白/文案/版权边界）和 JSON（机器可读，完整 RemixPlan）；收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除；旧格式收藏降级显示；导出/收藏操作有 toast 反馈；尚缺浏览器交互回归                         |
+| 热点采集       | SQLite 入库闭环完成，任务启用          | 每天 07:30、13:30、19:30 采集；已有公开批次经 Schema、跨批次去重和事务迁移进入 SQLite                                                                                                                                                                                           |
+| 来源适配器     | 首个固定适配器已建立                   | 维基百科最热词条 REST API 适配器已建立，纯转换函数 + 本地 fixture 测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；CLI 已就绪但未实际拉取公网数据                                                                                                             |
+| 运行日志       | 基础闭环通过                           | 采集、迁移、生成和导出 5 个 CLI 环节均产生结构化运行记录；日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询；覆盖正常运行、部分失败和完全失败                                                                                                           |
+| 本地持久化     | SQLite 通过                            | 默认 `data/linggan.sqlite`；版本化迁移、知识种子、事务回滚、幂等和多来源合并测试通过                                                                                                                                                                                            |
+| 候选审核       | 基础状态机通过                         | candidates 已持久化，支持 pending_review、approved、rejected、archived 合法流转；approved 候选可导出供推荐流消费；尚无自动发布目标                                                                                                                                              |
+| 今日推荐       | 基础闭环通过                           | 首页读取 approved 候选导出，无数据时显示空状态；当前无 approved 候选                                                                                                                                                                                                            |
+| 行为分析       | 未实现                                 | 尚未采集曝光、复制和成片事件                                                                                                                                                                                                                                                    |
+| 测试体系       | 基础验证通过                           | 已覆盖数据契约、生成、SQLite 趋势适配与导出、候选存储和状态机、运行日志、素材库筛选（C5 新增 13 项）；B4/B5 浏览器交互回归已通过 C8 补齐；当前 182 项测试全部通过                                                                                                               |
 
 ## 2. 已完成内容
 
@@ -853,22 +902,26 @@
 - [x] C3 近似度检测（避免换皮创意）。
 - [x] C4 工作台三栏布局（左素材/中预览/右完整制作包）。
 - [x] C5 多维筛选（素材库三类实体各 3 维度，OR/AND 组合）。
+- [x] C6 前端模块化（main.js 拆为 6 个 section + 4 个基础模块）。
+- [x] C7 lint/format 配置（ESLint + Prettier，格式化全部源码）。
 
 ### Phase 1 已完成
 
 Phase 1 全部任务已完成。本地内容数据基础验证里程碑（M1）达成：公开来源 → 采集批次 → Schema 与去重 → SQLite → 候选生成与持久化 → 只读导出 → 网站展示形成完整闭环。
 
-### Phase 2 进行中
+### Phase 2 已完成
 
-C1、C2、C3、C4、C5、C8 已完成。剩余按依赖顺序：
-
-1. C6 前端模块化 — 把 main.js 按行为边界拆为组件；
-2. C7 lint/format — ESLint + Prettier 配置。
+C1、C2、C3、C4、C5、C6、C7、C8 全部完成。Phase 2 创意引擎增强与质量保障轨道结束：兼容矩阵、完整制作包、近似度检测、工作台三栏布局、多维筛选、前端模块化、lint/format 配置和浏览器回归全部交付。
 
 ### Phase 3 待完成
 
-1. D1 事件采集；D2 创作者偏好画像；D3 可解释排序权重；
-2. D4 探索流量；D5 创作历史与项目管理。
+按依赖顺序：
+
+1. D1 事件采集 — 9 类核心产品事件可记录（首选）；
+2. D2 创作者偏好画像 — 个性化排序；
+3. D3 可解释排序权重 — 权重可回滚、可解释；
+4. D4 探索流量 — 首页 ≥ 15% 探索内容；
+5. D5 创作历史与项目管理。
 
 ### Phase 4 — 条件触发
 
@@ -876,20 +929,20 @@ E1—E5 仅在 `docs/DEVELOPMENT_DIRECTION.md` 的外部依赖和触发条件满
 
 ## 5. 下一轮唯一首选任务
 
-**任务 C6：前端模块化（已完成）。**
+**任务 C7：lint/format 配置（已完成）。**
 
-**下一轮任务：C7 — lint + format 配置（Phase 2 工程轨道剩余最后一项）。**
+**下一轮任务：D1 — 事件采集（Phase 3 反馈学习轨道首项）。**
 
-选择理由：C6 已把 main.js 从 730 行拆为 78 行薄入口 + 6 个 section 组件 + 4 个基础模块（data/knowledge.js、data/store.js、ui/icons.js、ui/dom.js），代码按行为边界模块化完成。在拆分后的清晰模块上配置 ESLint + Prettier 才能产生有意义的规则和格式化效果，避免在臃肿的 main.js 上配置产生大量噪音。C7 的目标是按 DEVELOPMENT_DIRECTION.md 阶段 C"lint + format 配置"建立 ESLint + Prettier 规则并格式化全部源码（scripts/*.ts、src/**/*.ts、src/**/*.js、tests/*.ts），让后续 Phase 3 任务（D1 事件采集、D3 排序权重等）在新代码上自动遵循统一风格。C7 是纯工程化任务，不新增用户可见功能，不改业务语义，可在本地通过 lint + typecheck + test + build 独立验收。完成后 Phase 2 全部任务结束，进入 Phase 3 反馈学习轨道。
+选择理由：Phase 2 全部任务已完成，进入 Phase 3 反馈学习轨道。D1 是 Phase 3 的起点，也是后续 D2 偏好画像和 D3 排序权重的前置依赖——没有事件数据就无法建立偏好画像和优化排序。D1 的目标是建立 9 类核心产品事件（idea_impression/idea_opened/idea_saved/prompt_copied/idea_exported/video_created/video_published/idea_hidden/risk_reported）的采集能力，对应 DEVELOPMENT_DIRECTION.md 阶段 D"D1 事件采集（impression/opened/saved/copied 等 9 类）"和 DEVELOPMENT_PLAN.md 第 5 节"必须记录的产品事件"表。事件数据是后续个性化排序和探索流量机制的输入，必须先建立采集能力才能积累样本。验收条件为 9 类核心事件可记录。
 
 验收条件：
 
-- 安装 ESLint + Prettier 及 TypeScript 解析器依赖，不引入与目标无关的大型依赖；
-- 建立 ESLint flat config（ESLint 9+ 默认形式）和 Prettier 配置，覆盖 .ts 和 .js 文件，尊重项目 ESM（`"type": "module"`）和 tsconfig.json 的 include 范围；
-- 添加 `npm run lint`、`npm run lint:fix`、`npm run format`、`npm run format:check` 脚本；
-- 运行 lint --fix 与 prettier --write 后，全部源码无报错、无风格警告；
+- 建立 9 类核心产品事件的 Schema 与类型（idea_impression/idea_opened/idea_saved/prompt_copied/idea_exported/video_created/video_published/idea_hidden/risk_reported），每类事件记录必要字段（event_type、target_id、user_id/session_id、occurred_at、metadata）；
+- 建立事件存储能力（优先复用 SQLite 边界，与现有 TrendStore/CandidateStore 一致），支持写入和按事件类型/时间范围查询；
+- 前端在关键交互点埋点：候选曝光（feed 渲染）、展开（详情打开）、收藏、复制提示词、导出（MD/JSON）；video_created/video_published/idea_hidden/risk_reported 可先建立 Schema 和写入接口，前端无对应交互时留空；
+- 事件采集不阻塞现有功能，写入失败降级不报错；
 - 类型检查、全部测试、数据校验和生产构建通过；
-- 构建产物大小不显著增加（不引入运行时依赖）。
+- 新增事件采集的单测覆盖 Schema 校验、写入和查询。
 
 ## 6. 已知限制与阻塞
 

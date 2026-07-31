@@ -1,39 +1,29 @@
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { test } from 'node:test'
-import {
-  CompatibilityMatrixSchema,
-  KnowledgeBaseSchema
-} from '../src/data/contracts.ts'
-import type {
-  CompatibilityMatrix,
-  KnownCharacter,
-  Work
-} from '../src/data/contracts.ts'
-import {
-  computeCompatibility,
-  filterCompatibleCombinations
-} from '../src/generation/compatibility.ts'
+import { CompatibilityMatrixSchema, KnowledgeBaseSchema } from '../src/data/contracts.ts'
+import type { KnownCharacter, Work } from '../src/data/contracts.ts'
+import { computeCompatibility, filterCompatibleCombinations } from '../src/generation/compatibility.ts'
 import {
   buildProductionPlans,
   buildRemixPlan,
   type ProductionPlanInput,
-  type RemixStyle
+  type RemixStyle,
 } from '../src/generation/remix-engine.ts'
 
 const root = new URL('../', import.meta.url)
 const knowledge = KnowledgeBaseSchema.parse(
-  JSON.parse(await readFile(new URL('data/knowledge-base.json', root), 'utf8')) as unknown
+  JSON.parse(await readFile(new URL('data/knowledge-base.json', root), 'utf8')) as unknown,
 )
 const matrix = CompatibilityMatrixSchema.parse(
-  JSON.parse(await readFile(new URL('data/compatibility-matrix.json', root), 'utf8')) as unknown
+  JSON.parse(await readFile(new URL('data/compatibility-matrix.json', root), 'utf8')) as unknown,
 )
 
 const workById = new Map(knowledge.works.map((w: Work) => [w.id, w]))
 const style: RemixStyle = { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图' }
 
 const findCharacter = (id: string): KnownCharacter => {
-  const c = knowledge.known_characters.find(item => item.id === id)
+  const c = knowledge.known_characters.find((item) => item.id === id)
   assert.ok(c, `character ${id} must exist`)
   return c
 }
@@ -43,9 +33,9 @@ const buildInput = (
   characterB: KnownCharacter,
   momentId: string,
   duration: 15 | 30 | 60,
-  seed: string
+  seed: string,
 ): ProductionPlanInput => {
-  const moment = knowledge.iconic_moments.find(m => m.id === momentId)
+  const moment = knowledge.iconic_moments.find((m) => m.id === momentId)
   assert.ok(moment, `moment ${momentId} must exist`)
   const workA = workById.get(characterA.work_id)!
   const workB = workById.get(characterB.work_id)!
@@ -74,13 +64,15 @@ const VALID_SHOT_TYPES = ['extreme_close_up', 'close_up', 'medium', 'full', 'wid
 const VALID_CAMERA_MOVEMENTS = ['fixed', 'push', 'pull', 'pan', 'tilt', 'tracking']
 const VALID_TRANSITIONS = ['cut', 'dissolve', 'fade', 'match_cut']
 
-const samplePlan = buildRemixPlan(buildInput(
-  findCharacter('known_wang_lin'),
-  findCharacter('known_li_muwan'),
-  knowledge.iconic_moments[0].id,
-  30,
-  'c2-sample'
-))
+const samplePlan = buildRemixPlan(
+  buildInput(
+    findCharacter('known_wang_lin'),
+    findCharacter('known_li_muwan'),
+    knowledge.iconic_moments[0].id,
+    30,
+    'c2-sample',
+  ),
+)
 
 /* ----------------------- 验收条件 1：制作包结构校验 ----------------------- */
 
@@ -169,9 +161,7 @@ test('buildProductionPlans filters out low-compatibility combinations via C1 mat
   // 验证剩余组合的兼容性得分均 >= 阈值
   const filtered = filterCompatibleCombinations(inputs, matrix, { threshold: 0.5 })
   for (const input of filtered) {
-    const { score } = computeCompatibility(
-      input.characterA, input.characterB, input.moment, input.duration, matrix
-    )
+    const { score } = computeCompatibility(input.characterA, input.characterB, input.moment, input.duration, matrix)
     assert.ok(score >= 0.5, `filtered combination score ${score} should be >= 0.5`)
   }
   assert.equal(result.plans.length, filtered.length, 'plans count must equal filtered combinations count')

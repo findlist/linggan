@@ -8,7 +8,7 @@ import {
   SeedEntitiesSchema,
   TaxonomySchema,
   TrendInboxSchema,
-  TrendSchema
+  TrendSchema,
 } from '../src/data/contracts.ts'
 
 const root = new URL('../', import.meta.url)
@@ -30,13 +30,13 @@ const validCandidate = {
       visuality: 84,
       generatability: 85,
       seriality: 72,
-      novelty: 78
-    }
+      novelty: 78,
+    },
   },
   risk_level: 'low',
   rights_status: 'original',
   status: 'pending_review',
-  generated_at: '2026-07-29T00:00:00.000Z'
+  generated_at: '2026-07-29T00:00:00.000Z',
 }
 
 test('seed entities match the shared contract', async () => {
@@ -60,7 +60,7 @@ test('character rejects an unsupported rights status', () => {
     traits: ['理性'],
     abilities: ['推理'],
     relations: [],
-    rights_status: 'copied'
+    rights_status: 'copied',
   }
 
   assert.equal(CharacterSchema.safeParse(character).success, false)
@@ -76,7 +76,7 @@ test('trend rejects a missing source', () => {
     aliases: [],
     lifecycle: 'rising',
     rights_status: 'reference_only',
-    risk_level: 'low'
+    risk_level: 'low',
   }
 
   assert.equal(TrendSchema.safeParse(trend).success, false)
@@ -93,7 +93,7 @@ test('trend rejects an invalid source URL', () => {
     aliases: [],
     lifecycle: 'rising',
     rights_status: 'reference_only',
-    risk_level: 'low'
+    risk_level: 'low',
   }
 
   assert.equal(TrendSchema.safeParse(trend).success, false)
@@ -110,7 +110,7 @@ test('trend rejects velocity above its normalized range', () => {
     aliases: [],
     lifecycle: 'rising',
     rights_status: 'reference_only',
-    risk_level: 'low'
+    risk_level: 'low',
   }
 
   assert.equal(TrendSchema.safeParse(trend).success, false)
@@ -122,7 +122,7 @@ test('element rejects generatability above one', () => {
     name: '测试元素',
     category: 'prop',
     actions: ['旋转'],
-    generatability: 1.1
+    generatability: 1.1,
   }
 
   assert.equal(ElementSchema.safeParse(element).success, false)
@@ -151,7 +151,7 @@ test('candidate rejects an out-of-range component score', () => {
 })
 
 test('seed entities reject duplicate IDs across collections', async () => {
-  const seed = await readJson('data/seed-entities.json') as {
+  const seed = (await readJson('data/seed-entities.json')) as {
     characters: Array<Record<string, unknown>>
     scenes: Array<Record<string, unknown>>
   }
@@ -161,7 +161,7 @@ test('seed entities reject duplicate IDs across collections', async () => {
 })
 
 test('taxonomy rejects duplicate values', async () => {
-  const taxonomy = await readJson('data/taxonomy.json') as Record<string, unknown>
+  const taxonomy = (await readJson('data/taxonomy.json')) as Record<string, unknown>
   const media = taxonomy.media as string[]
   taxonomy.media = [...media, media[0]]
 

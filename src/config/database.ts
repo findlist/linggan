@@ -20,13 +20,11 @@ export const parseSqliteUrl = (url: string, baseDirectory = projectRoot): string
   return resolve(baseDirectory, path)
 }
 
-export const loadDatabaseConfig = (
-  environment: NodeJS.ProcessEnv = process.env
-): DatabaseConfig => {
+export const loadDatabaseConfig = (environment: NodeJS.ProcessEnv = process.env): DatabaseConfig => {
   const url = environment.DATABASE_URL ?? 'file:./data/linggan.sqlite'
   return {
     url,
     filePath: parseSqliteUrl(url),
-    migrationsDirectory: resolve(projectRoot, 'database/migrations')
+    migrationsDirectory: resolve(projectRoot, 'database/migrations'),
   }
 }

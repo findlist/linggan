@@ -4,23 +4,20 @@ import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { test } from 'node:test'
 import { TaskRunLogSchema } from '../src/data/contracts.ts'
-import {
-  createTaskRunLogger,
-  listTaskRunLogs
-} from '../src/observability/task-run-logger.ts'
+import { createTaskRunLogger, listTaskRunLogs } from '../src/observability/task-run-logger.ts'
 
 // 可变固定时钟：确保测试可重复，同时允许前进时间验证 duration_ms
 const createFixedClock = (initial: string = '2026-07-31T12:00:00.000Z') => {
   let current = new Date(initial)
   return {
     now: () => new Date(current),
-    advance: (ms: number) => { current = new Date(current.getTime() + ms) }
+    advance: (ms: number) => {
+      current = new Date(current.getTime() + ms)
+    },
   }
 }
 
-const withTemporaryDirectory = async (
-  callback: (directory: string) => Promise<void>
-): Promise<void> => {
+const withTemporaryDirectory = async (callback: (directory: string) => Promise<void>): Promise<void> => {
   const directory = await mkdtemp(join(tmpdir(), 'linggan-logs-'))
   try {
     await callback(directory)
@@ -44,7 +41,7 @@ const buildValidLog = (overrides: Record<string, unknown> = {}) => ({
   errors: [],
   metadata: {},
   environment: { node_version: '24.14.0', command: 'scripts/collect-wikipedia.ts' },
-  ...overrides
+  ...overrides,
 })
 
 test('schema accepts a valid success log', () => {
@@ -59,35 +56,20 @@ test('schema rejects missing required fields', () => {
 })
 
 test('schema rejects unknown task names', () => {
-  assert.equal(
-    TaskRunLogSchema.safeParse({ ...buildValidLog(), task_name: 'unknown:task' }).success,
-    false
-  )
+  assert.equal(TaskRunLogSchema.safeParse({ ...buildValidLog(), task_name: 'unknown:task' }).success, false)
 })
 
 test('schema rejects invalid status values', () => {
-  assert.equal(
-    TaskRunLogSchema.safeParse({ ...buildValidLog(), status: 'completed' }).success,
-    false
-  )
+  assert.equal(TaskRunLogSchema.safeParse({ ...buildValidLog(), status: 'completed' }).success, false)
 })
 
 test('schema rejects status-error inconsistency', () => {
   // success 状态不能有错误
-  assert.equal(
-    TaskRunLogSchema.safeParse({ ...buildValidLog(), status: 'success', errors: ['err'] }).success,
-    false
-  )
+  assert.equal(TaskRunLogSchema.safeParse({ ...buildValidLog(), status: 'success', errors: ['err'] }).success, false)
   // partial 状态必须有错误
-  assert.equal(
-    TaskRunLogSchema.safeParse({ ...buildValidLog(), status: 'partial', errors: [] }).success,
-    false
-  )
+  assert.equal(TaskRunLogSchema.safeParse({ ...buildValidLog(), status: 'partial', errors: [] }).success, false)
   // failed 状态必须有错误
-  assert.equal(
-    TaskRunLogSchema.safeParse({ ...buildValidLog(), status: 'failed', errors: [] }).success,
-    false
-  )
+  assert.equal(TaskRunLogSchema.safeParse({ ...buildValidLog(), status: 'failed', errors: [] }).success, false)
 })
 
 test('schema rejects finished_at preceding started_at', () => {
@@ -95,26 +77,26 @@ test('schema rejects finished_at preceding started_at', () => {
     TaskRunLogSchema.safeParse({
       ...buildValidLog(),
       started_at: '2026-07-31T12:00:02.000Z',
-      finished_at: '2026-07-31T12:00:01.000Z'
+      finished_at: '2026-07-31T12:00:01.000Z',
     }).success,
-    false
+    false,
   )
 })
 
 test('succeed writes a valid success log to dated directory', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const clock = createFixedClock()
     const logger = createTaskRunLogger({
       taskName: 'collect:wikipedia',
       logDirectory: logDir,
       clock: clock.now,
-      metadata: { language: 'zh', date: '2026-07-31' }
+      metadata: { language: 'zh', date: '2026-07-31' },
     })
     clock.advance(500)
     const log = await logger.succeed({
       processedCount: 5,
       successCount: 5,
-      failureCount: 0
+      failureCount: 0,
     })
 
     assert.equal(log.status, 'success')
@@ -136,17 +118,17 @@ test('succeed writes a valid success log to dated directory', async () => {
 })
 
 test('partial writes a log with errors for partial failure', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const logger = createTaskRunLogger({
       taskName: 'migrate:trends',
       logDirectory: logDir,
-      clock: createFixedClock().now
+      clock: createFixedClock().now,
     })
     const log = await logger.partial({
       processedCount: 3,
       successCount: 2,
       failureCount: 1,
-      errors: ['bad.json: invalid JSON']
+      errors: ['bad.json: invalid JSON'],
     })
 
     assert.equal(log.status, 'partial')
@@ -156,11 +138,11 @@ test('partial writes a log with errors for partial failure', async () => {
 })
 
 test('fail writes a log with error extracted from exception', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const logger = createTaskRunLogger({
       taskName: 'pipeline:daily',
       logDirectory: logDir,
-      clock: createFixedClock().now
+      clock: createFixedClock().now,
     })
     const log = await logger.fail(new Error('database connection failed'))
 
@@ -171,11 +153,11 @@ test('fail writes a log with error extracted from exception', async () => {
 })
 
 test('fail handles non-Error throwables', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const logger = createTaskRunLogger({
       taskName: 'export:trends',
       logDirectory: logDir,
-      clock: createFixedClock().now
+      clock: createFixedClock().now,
     })
     const log = await logger.fail('string error')
     assert.equal(log.errors[0], 'string error')
@@ -183,19 +165,19 @@ test('fail handles non-Error throwables', async () => {
 })
 
 test('listTaskRunLogs filters by task name', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const clock = createFixedClock()
     const logger1 = createTaskRunLogger({
       taskName: 'collect:wikipedia',
       logDirectory: logDir,
-      clock: clock.now
+      clock: clock.now,
     })
     await logger1.succeed({ processedCount: 1, successCount: 1, failureCount: 0 })
     clock.advance(1000)
     const logger2 = createTaskRunLogger({
       taskName: 'migrate:trends',
       logDirectory: logDir,
-      clock: clock.now
+      clock: clock.now,
     })
     await logger2.succeed({ processedCount: 1, successCount: 1, failureCount: 0 })
 
@@ -212,19 +194,19 @@ test('listTaskRunLogs filters by task name', async () => {
 })
 
 test('listTaskRunLogs filters by status', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const clock = createFixedClock()
     const successLogger = createTaskRunLogger({
       taskName: 'export:trends',
       logDirectory: logDir,
-      clock: clock.now
+      clock: clock.now,
     })
     await successLogger.succeed({ processedCount: 5, successCount: 5, failureCount: 0 })
     clock.advance(1000)
     const failedLogger = createTaskRunLogger({
       taskName: 'export:trends',
       logDirectory: logDir,
-      clock: clock.now
+      clock: clock.now,
     })
     await failedLogger.fail(new Error('export failed'))
 
@@ -239,12 +221,12 @@ test('listTaskRunLogs filters by status', async () => {
 })
 
 test('listTaskRunLogs filters by date range', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     for (const date of ['2026-07-30', '2026-07-31', '2026-08-01']) {
       const logger = createTaskRunLogger({
         taskName: 'collect:wikipedia',
         logDirectory: logDir,
-        clock: () => new Date(`${date}T12:00:00.000Z`)
+        clock: () => new Date(`${date}T12:00:00.000Z`),
       })
       await logger.succeed({ processedCount: 1, successCount: 1, failureCount: 0 })
     }
@@ -252,14 +234,14 @@ test('listTaskRunLogs filters by date range', async () => {
     const july31Only = await listTaskRunLogs({
       logDirectory: logDir,
       startDate: '2026-07-31',
-      endDate: '2026-07-31'
+      endDate: '2026-07-31',
     })
     assert.equal(july31Only.length, 1)
 
     const allJuly = await listTaskRunLogs({
       logDirectory: logDir,
       startDate: '2026-07-01',
-      endDate: '2026-07-31'
+      endDate: '2026-07-31',
     })
     assert.equal(allJuly.length, 2)
   })
@@ -267,19 +249,19 @@ test('listTaskRunLogs filters by date range', async () => {
 
 test('listTaskRunLogs returns empty array when directory does not exist', async () => {
   const logs = await listTaskRunLogs({
-    logDirectory: join(tmpdir(), `nonexistent-logs-${Date.now()}`)
+    logDirectory: join(tmpdir(), `nonexistent-logs-${Date.now()}`),
   })
   assert.deepEqual(logs, [])
 })
 
 test('each run produces an independent log file with unique id', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const clock = createFixedClock()
     for (let i = 0; i < 3; i++) {
       const logger = createTaskRunLogger({
         taskName: 'pipeline:daily',
         logDirectory: logDir,
-        clock: clock.now
+        clock: clock.now,
       })
       await logger.succeed({ processedCount: i, successCount: i, failureCount: 0 })
       clock.advance(1000)
@@ -287,17 +269,17 @@ test('each run produces an independent log file with unique id', async () => {
 
     const logs = await listTaskRunLogs({ logDirectory: logDir })
     assert.equal(logs.length, 3)
-    const ids = new Set(logs.map(log => log.id))
+    const ids = new Set(logs.map((log) => log.id))
     assert.equal(ids.size, 3)
   })
 })
 
 test('listTaskRunLogs skips corrupted log files', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const logger = createTaskRunLogger({
       taskName: 'collect:wikipedia',
       logDirectory: logDir,
-      clock: createFixedClock().now
+      clock: createFixedClock().now,
     })
     await logger.succeed({ processedCount: 1, successCount: 1, failureCount: 0 })
 
@@ -311,14 +293,14 @@ test('listTaskRunLogs skips corrupted log files', async () => {
 })
 
 test('listTaskRunLogs returns logs sorted by started_at descending', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const clock = createFixedClock()
     const timestamps: string[] = []
     for (let i = 0; i < 3; i++) {
       const logger = createTaskRunLogger({
         taskName: 'export:candidates',
         logDirectory: logDir,
-        clock: clock.now
+        clock: clock.now,
       })
       const log = await logger.succeed({ processedCount: i, successCount: i, failureCount: 0 })
       timestamps.push(log.started_at)
@@ -333,18 +315,18 @@ test('listTaskRunLogs returns logs sorted by started_at descending', async () =>
 })
 
 test('metadata is merged from constructor and finish summary', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const logger = createTaskRunLogger({
       taskName: 'collect:wikipedia',
       logDirectory: logDir,
       clock: createFixedClock().now,
-      metadata: { language: 'zh', date: '2026-07-31' }
+      metadata: { language: 'zh', date: '2026-07-31' },
     })
     const log = await logger.succeed({
       processedCount: 5,
       successCount: 5,
       failureCount: 0,
-      metadata: { items_written: 5, dry_run: false }
+      metadata: { items_written: 5, dry_run: false },
     })
 
     assert.equal(log.metadata.language, 'zh')
@@ -355,11 +337,11 @@ test('metadata is merged from constructor and finish summary', async () => {
 })
 
 test('environment records node version and command', async () => {
-  await withTemporaryDirectory(async logDir => {
+  await withTemporaryDirectory(async (logDir) => {
     const logger = createTaskRunLogger({
       taskName: 'migrate:trends',
       logDirectory: logDir,
-      clock: createFixedClock().now
+      clock: createFixedClock().now,
     })
     const log = await logger.succeed({ processedCount: 1, successCount: 1, failureCount: 0 })
 

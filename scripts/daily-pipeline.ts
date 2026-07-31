@@ -4,16 +4,12 @@ import {
   CompatibilityMatrixSchema,
   KnowledgeBaseSchema,
   SeedEntitiesSchema,
-  TrendInboxSchema
+  TrendInboxSchema,
 } from '../src/data/contracts.ts'
 import type { CandidateGenerationConfig } from '../src/generation/candidate-generator.ts'
 import { generateDailyCandidates } from '../src/generation/candidate-generator.ts'
 import { storedTrendsToTrends } from '../src/generation/trend-adapter.ts'
-import {
-  buildProductionPlans,
-  type ProductionPlanInput,
-  type RemixStyle
-} from '../src/generation/remix-engine.ts'
+import { buildProductionPlans, type ProductionPlanInput, type RemixStyle } from '../src/generation/remix-engine.ts'
 import { detectDuplicates } from '../src/generation/similarity.ts'
 import { loadDatabaseConfig, parseSqliteUrl } from '../src/config/database.ts'
 import { migrateDatabase } from '../src/database/migrate.ts'
@@ -31,13 +27,13 @@ const persist = !process.argv.includes('--no-persist')
 const logger = createTaskRunLogger({
   taskName: 'pipeline:daily',
   logDirectory: resolve('data/run-logs'),
-  metadata: { use_example: useExample, persist }
+  metadata: { use_example: useExample, persist },
 })
 
 try {
   const [rawConfig, rawSeeds] = await Promise.all([
     readJson('config/pipeline.json'),
-    readJson('data/seed-entities.json')
+    readJson('data/seed-entities.json'),
   ])
 
   let trends
@@ -52,7 +48,7 @@ try {
     const dbConfig = loadDatabaseConfig()
     const migrated = await migrateDatabase({
       filePath: parseSqliteUrl(dbConfig.url),
-      migrationsDirectory: dbConfig.migrationsDirectory
+      migrationsDirectory: dbConfig.migrationsDirectory,
     })
     database = migrated.database
 
@@ -74,7 +70,7 @@ try {
     config: rawConfig as CandidateGenerationConfig,
     seeds: SeedEntitiesSchema.parse(rawSeeds),
     trends,
-    clock: () => new Date()
+    clock: () => new Date(),
   })
 
   let inserted = 0
@@ -88,24 +84,28 @@ try {
     inserted = result.inserted
     skipped = result.skipped
     total = result.total
-    process.stderr.write(
-      `Persisted ${inserted} candidates (${skipped} duplicates skipped, ${total} total in store)\n`
-    )
+    process.stderr.write(`Persisted ${inserted} candidates (${skipped} duplicates skipped, ${total} total in store)\n`)
     database.close()
   }
 
   // C2: 集成 C1 兼容矩阵过滤，生成完整制作包并记录统计
   // 在候选生成后，读取知识库和兼容矩阵，构建跨作品组合并用 C1 过滤
   let productionStats: { total: number; filtered_out: number; remaining: number; threshold: number } | null = null
-  let similarityStats: { total: number; duplicates: number; unique: number; avg_max_similarity: number; threshold: number } | null = null
+  let similarityStats: {
+    total: number
+    duplicates: number
+    unique: number
+    avg_max_similarity: number
+    threshold: number
+  } | null = null
   try {
     const [rawKnowledge, rawMatrix] = await Promise.all([
       readJson('data/knowledge-base.json'),
-      readJson('data/compatibility-matrix.json')
+      readJson('data/compatibility-matrix.json'),
     ])
     const knowledge = KnowledgeBaseSchema.parse(rawKnowledge)
     const matrix = CompatibilityMatrixSchema.parse(rawMatrix)
-    const workById = new Map(knowledge.works.map(w => [w.id, w]))
+    const workById = new Map(knowledge.works.map((w) => [w.id, w]))
     const style: RemixStyle = { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图' }
 
     // 构建有限组合列表：前 5 个角色两两配对 × 前 3 个名场面 × 30s，控制单轮规模
@@ -128,7 +128,7 @@ try {
             workB,
             momentWork,
             style,
-            seed: `pipeline-${report.date}-${i}-${j}-${moment.id}`
+            seed: `pipeline-${report.date}-${i}-${j}-${moment.id}`,
           })
         }
       }
@@ -139,10 +139,10 @@ try {
       total: productionResult.stats.total_combinations,
       filtered_out: productionResult.stats.filtered_out,
       remaining: productionResult.stats.remaining,
-      threshold: productionResult.stats.threshold
+      threshold: productionResult.stats.threshold,
     }
     process.stderr.write(
-      `Production plans: ${productionResult.stats.remaining}/${productionResult.stats.total_combinations} combinations passed C1 filter (threshold ${productionResult.stats.threshold}, ${productionResult.stats.filtered_out} filtered out)\n`
+      `Production plans: ${productionResult.stats.remaining}/${productionResult.stats.total_combinations} combinations passed C1 filter (threshold ${productionResult.stats.threshold}, ${productionResult.stats.filtered_out} filtered out)\n`,
     )
 
     // C3: 对生成的制作包做近似度检测，标记重复/高度相似方案，避免连续发布换皮创意
@@ -152,10 +152,10 @@ try {
       duplicates: detection.stats.duplicates,
       unique: detection.stats.unique,
       avg_max_similarity: detection.stats.avg_max_similarity,
-      threshold: detection.stats.threshold
+      threshold: detection.stats.threshold,
     }
     process.stderr.write(
-      `Duplicate detection: ${detection.stats.duplicates}/${detection.stats.total} plans flagged as duplicates (threshold ${detection.stats.threshold}, avg max_similarity ${detection.stats.avg_max_similarity.toFixed(3)})\n`
+      `Duplicate detection: ${detection.stats.duplicates}/${detection.stats.total} plans flagged as duplicates (threshold ${detection.stats.threshold}, avg max_similarity ${detection.stats.avg_max_similarity.toFixed(3)})\n`,
     )
   } catch (productionError) {
     // 知识库或兼容矩阵不可用时不阻塞候选生成流程
@@ -182,8 +182,8 @@ try {
       similarity_duplicates: similarityStats?.duplicates ?? 0,
       similarity_unique: similarityStats?.unique ?? 0,
       similarity_avg_max_similarity: similarityStats?.avg_max_similarity ?? 0,
-      similarity_threshold: similarityStats?.threshold ?? 0
-    }
+      similarity_threshold: similarityStats?.threshold ?? 0,
+    },
   })
 } catch (error) {
   await logger.fail(error)

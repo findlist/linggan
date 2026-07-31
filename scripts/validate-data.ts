@@ -6,7 +6,7 @@ import {
   SeedEntitiesSchema,
   TaxonomySchema,
   TrendInboxSchema,
-  validateMatrixWithKnowledge
+  validateMatrixWithKnowledge,
 } from '../src/data/contracts.ts'
 
 const root = new URL('../', import.meta.url)
@@ -16,7 +16,7 @@ const inputs: Array<{ path: string; schema: ZodType }> = [
   { path: 'data/taxonomy.json', schema: TaxonomySchema },
   { path: 'data/trend-inbox.example.json', schema: TrendInboxSchema },
   { path: 'data/knowledge-base.json', schema: KnowledgeBaseSchema },
-  { path: 'data/compatibility-matrix.json', schema: CompatibilityMatrixSchema }
+  { path: 'data/compatibility-matrix.json', schema: CompatibilityMatrixSchema },
 ]
 
 let failed = false
@@ -46,7 +46,7 @@ const knowledge = parsed['data/knowledge-base.json']
 if (matrix && knowledge) {
   const issues = validateMatrixWithKnowledge(
     matrix as Parameters<typeof validateMatrixWithKnowledge>[0],
-    knowledge as Parameters<typeof validateMatrixWithKnowledge>[1]
+    knowledge as Parameters<typeof validateMatrixWithKnowledge>[1],
   )
   if (issues.length > 0) {
     failed = true

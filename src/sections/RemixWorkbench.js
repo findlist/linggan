@@ -8,29 +8,38 @@
 import { icon } from '../ui/icons.js'
 import { escapeHtml, downloadText, toast } from '../ui/dom.js'
 import {
-  knowledge, workById, characterById, remixStyles,
-  personalityLabels, hookCategoryLabels,
-  shotTypeLabels, cameraMovementLabels, transitionLabels
+  knowledge,
+  workById,
+  characterById,
+  remixStyles,
+  personalityLabels,
+  hookCategoryLabels,
+  shotTypeLabels,
+  cameraMovementLabels,
+  transitionLabels,
 } from '../data/knowledge.js'
-import {
-  getState, incrementGeneration, setCurrentResult,
-  setDuration
-} from '../data/store.js'
+import { getState, incrementGeneration, setCurrentResult, setDuration } from '../data/store.js'
 import { buildRemixPlan } from '../generation/remix-engine.ts'
 import { buildRemixFileName, buildRemixJson, buildRemixMarkdown } from '../generation/exporters.ts'
 // C4：引入 C3 近似度检测，在前端把当前方案与已收藏方案对比，标记换皮创意
 import { detectDuplicates } from '../generation/similarity.ts'
 
 // 渲染角色 A / B 下拉选项；selected 用于初始默认值（来自原 main.js）
-const renderCharacterOptions = (selected) => knowledge.known_characters.map(character => {
-  const work = workById.get(character.work_id)
-  return `<option value="${character.id}" ${character.id === selected ? 'selected' : ''}>${escapeHtml(character.name)} · ${escapeHtml(work.title)}</option>`
-}).join('')
+const renderCharacterOptions = (selected) =>
+  knowledge.known_characters
+    .map((character) => {
+      const work = workById.get(character.work_id)
+      return `<option value="${character.id}" ${character.id === selected ? 'selected' : ''}>${escapeHtml(character.name)} · ${escapeHtml(work.title)}</option>`
+    })
+    .join('')
 
-const renderMomentOptions = (selected) => knowledge.iconic_moments.map(moment => {
-  const work = workById.get(moment.work_id)
-  return `<option value="${moment.id}" ${moment.id === selected ? 'selected' : ''}>${escapeHtml(moment.name)} · ${escapeHtml(work.title)}</option>`
-}).join('')
+const renderMomentOptions = (selected) =>
+  knowledge.iconic_moments
+    .map((moment) => {
+      const work = workById.get(moment.work_id)
+      return `<option value="${moment.id}" ${moment.id === selected ? 'selected' : ''}>${escapeHtml(moment.name)} · ${escapeHtml(work.title)}</option>`
+    })
+    .join('')
 
 // 渲染工作台 section 初始 HTML：三栏布局（表单 / 预览 / 完整制作包）
 export const renderRemixWorkbench = () => `
@@ -43,7 +52,7 @@ export const renderRemixWorkbench = () => `
         <div class="field"><label for="character-b"><span>02</span>关系碰撞角色</label><select id="character-b">${renderCharacterOptions('known_li_muwan')}</select><small class="field-hint" id="hint-b"></small></div>
         <div class="operator">×</div>
         <div class="field wide"><label for="moment"><span>03</span>名场面冲突结构</label><select id="moment">${renderMomentOptions('moment_mass_assault')}</select><small class="field-hint" id="hint-moment"></small></div>
-        <div class="field style-field"><label for="style"><span>04</span>视频风格</label><select id="style">${remixStyles.map(style => `<option value="${style.id}">${style.label}</option>`).join('')}</select></div>
+        <div class="field style-field"><label for="style"><span>04</span>视频风格</label><select id="style">${remixStyles.map((style) => `<option value="${style.id}">${style.label}</option>`).join('')}</select></div>
         <div class="duration"><span>时长</span><button type="button" data-duration="15">15s</button><button type="button" class="active" data-duration="30">30s</button><button type="button" data-duration="60">60s</button></div>
         <button class="btn primary generate-remix" type="submit">${icon('sparkles', 18)} 生成混搭方案</button>
       </form>
@@ -57,10 +66,11 @@ export const renderRemixWorkbench = () => `
 const updateHints = () => {
   const a = characterById.get(document.querySelector('#character-a').value)
   const b = characterById.get(document.querySelector('#character-b').value)
-  const moment = knowledge.iconic_moments.find(item => item.id === document.querySelector('#moment').value)
+  const moment = knowledge.iconic_moments.find((item) => item.id === document.querySelector('#moment').value)
   document.querySelector('#hint-a').textContent = `${a.character_types.join(' · ')}｜${a.traits.join('、')}`
   document.querySelector('#hint-b').textContent = `${b.character_types.join(' · ')}｜${b.traits.join('、')}`
-  document.querySelector('#hint-moment').textContent = `${moment.conflict_type}｜${moment.reusable_beats.slice(0, 2).join(' → ')}`
+  document.querySelector('#hint-moment').textContent =
+    `${moment.conflict_type}｜${moment.reusable_beats.slice(0, 2).join(' → ')}`
 }
 
 /**
@@ -71,7 +81,7 @@ const updateHints = () => {
 const checkDuplicateAgainstSaved = (plan) => {
   const { saved } = getState()
   // 排除与当前 plan 相同 id 的已收藏方案，避免收藏后自比导致相似度恒为 1
-  const savedPlans = saved.filter(item => item.plan && item.plan.id !== plan.id).map(item => item.plan)
+  const savedPlans = saved.filter((item) => item.plan && item.plan.id !== plan.id).map((item) => item.plan)
   if (savedPlans.length === 0) return { isDuplicate: false, maxSimilarity: 0, similarTitle: null }
   // 把当前 plan 放在数组末尾，检测时能拿到它与其他方案的相似度
   const detection = detectDuplicates([...savedPlans, plan])
@@ -81,11 +91,11 @@ const checkDuplicateAgainstSaved = (plan) => {
   }
   // 找出最相似的已收藏方案标题，用于提示用户
   const similarId = currentFlag.similar_to[0]
-  const similarSaved = saved.find(item => item.plan?.id === similarId)
+  const similarSaved = saved.find((item) => item.plan?.id === similarId)
   return {
     isDuplicate: true,
     maxSimilarity: currentFlag.max_similarity,
-    similarTitle: similarSaved?.title ?? '已收藏方案'
+    similarTitle: similarSaved?.title ?? '已收藏方案',
   }
 }
 
@@ -93,8 +103,8 @@ const checkDuplicateAgainstSaved = (plan) => {
 const buildRemix = () => {
   const a = characterById.get(document.querySelector('#character-a').value)
   const b = characterById.get(document.querySelector('#character-b').value)
-  const moment = knowledge.iconic_moments.find(item => item.id === document.querySelector('#moment').value)
-  const style = remixStyles.find(item => item.id === document.querySelector('#style').value)
+  const moment = knowledge.iconic_moments.find((item) => item.id === document.querySelector('#moment').value)
+  const style = remixStyles.find((item) => item.id === document.querySelector('#style').value)
   const { generation } = getState()
   // 种子加入 generation 计数器，使每次点击"生成"都能产生不同方案；同一 seed 字符串在引擎内确定性展开
   const seed = `${a.id}${b.id}${moment.id}${style.id}${generation}`
@@ -107,7 +117,7 @@ const buildRemix = () => {
     momentWork: workById.get(moment.work_id),
     style,
     duration: getState().duration,
-    seed
+    seed,
   })
   return { plan, a, b, moment, style }
 }
@@ -139,20 +149,23 @@ const renderPreview = (result, ctx) => {
   preview.querySelector('.save-result').addEventListener('click', () => {
     const { saved } = getState()
     // 收藏保存完整方案和上下文，支持后续展开、重新加载和单条导出；按 plan.id 去重
-    if (!saved.some(item => item.id === plan.id)) {
-      const nextSaved = [{
-        id: plan.id,
-        title: plan.title,
-        hook: plan.hook,
-        plan,
-        context: {
-          characterAId: result.a.id,
-          characterBId: result.b.id,
-          momentId: result.moment.id,
-          styleId: result.style.id
+    if (!saved.some((item) => item.id === plan.id)) {
+      const nextSaved = [
+        {
+          id: plan.id,
+          title: plan.title,
+          hook: plan.hook,
+          plan,
+          context: {
+            characterAId: result.a.id,
+            characterBId: result.b.id,
+            momentId: result.moment.id,
+            styleId: result.style.id,
+          },
+          savedAt: new Date().toISOString(),
         },
-        savedAt: new Date().toISOString()
-      }, ...saved].slice(0, 8)
+        ...saved,
+      ].slice(0, 8)
       ctx.setSaved(nextSaved)
       // 收藏后重新渲染预览，更新 C3 标记状态；同步刷新 SavedList
       renderPreview(result, ctx)
@@ -172,10 +185,10 @@ const renderResult = (result, ctx) => {
     <div class="result-top"><span class="result-label">完整制作包 · ${plan.duration}s · ${hookCategoryLabels[plan.hookCategory]}钩子</span></div>
     <div class="storyboard-section">
       <h4>分镜表（${plan.storyboard.length} 镜头）</h4>
-      <div class="beat-list storyboard-list">${plan.storyboard.map(shot => `<div class="shot"><div class="shot-head"><span>#${String(shot.index).padStart(2, '0')} · ${shot.duration}s</span><small>${shotTypeLabels[shot.shot_type]} · ${cameraMovementLabels[shot.camera_movement]} · 转${transitionLabels[shot.transition]}</small></div><p class="shot-visual">${escapeHtml(shot.visual)}</p><small>动作：${escapeHtml(shot.action)} · 情绪：${escapeHtml(shot.emotion)}</small></div>`).join('')}</div>
+      <div class="beat-list storyboard-list">${plan.storyboard.map((shot) => `<div class="shot"><div class="shot-head"><span>#${String(shot.index).padStart(2, '0')} · ${shot.duration}s</span><small>${shotTypeLabels[shot.shot_type]} · ${cameraMovementLabels[shot.camera_movement]} · 转${transitionLabels[shot.transition]}</small></div><p class="shot-visual">${escapeHtml(shot.visual)}</p><small>动作：${escapeHtml(shot.action)} · 情绪：${escapeHtml(shot.emotion)}</small></div>`).join('')}</div>
     </div>
     <div class="dialogues"><div><span>${escapeHtml(result.a.name)} · 原创改写</span><p>${escapeHtml(plan.dialogueA)}</p></div><div><span>${escapeHtml(result.b.name)} · 原创改写</span><p>${escapeHtml(plan.dialogueB)}</p></div></div>
-    <details class="copywriting-block"><summary>发布文案（3 标题 · 描述 · 标签 · 封面文案）</summary><div class="copy-titles"><span>标题候选</span><ul>${plan.copywriting.titles.map(title => `<li>${escapeHtml(title)}</li>`).join('')}</ul></div><p class="copy-desc">${escapeHtml(plan.copywriting.description)}</p><div class="copy-tags">${plan.copywriting.hashtags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div><div class="cover-copy-row"><span>封面文案</span><b>${escapeHtml(plan.copywriting.cover_copy)}</b></div></details>
+    <details class="copywriting-block"><summary>发布文案（3 标题 · 描述 · 标签 · 封面文案）</summary><div class="copy-titles"><span>标题候选</span><ul>${plan.copywriting.titles.map((title) => `<li>${escapeHtml(title)}</li>`).join('')}</ul></div><p class="copy-desc">${escapeHtml(plan.copywriting.description)}</p><div class="copy-tags">${plan.copywriting.hashtags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div><div class="cover-copy-row"><span>封面文案</span><b>${escapeHtml(plan.copywriting.cover_copy)}</b></div></details>
     <details class="prompt-block"><summary>结构化画面提示词</summary><div class="prompt-grid"><div><span>正向提示词</span><p>${escapeHtml(plan.production.prompts.positive)}</p></div><div><span>负面提示词</span><p>${escapeHtml(plan.production.prompts.negative)}</p></div><div class="prompt-meta"><span>比例</span><b>${escapeHtml(plan.production.prompts.aspect_ratio)}</b><span>风格强度</span><b>${(plan.production.prompts.style_strength * 100).toFixed(0)}%</b></div></div></details>
     <details class="copyright-block"><summary>版权边界声明</summary><div class="copyright-grid"><div><span>参考状态</span><p>${escapeHtml(plan.production.copyright_boundary.reference_status)}</p></div><div><span>商用限制</span><p>${escapeHtml(plan.production.copyright_boundary.commercial_use)}</p></div><div><span>改写范围</span><p>${escapeHtml(plan.production.copyright_boundary.rewrite_scope)}</p></div></div></details>
     <div class="result-actions"><button class="btn ghost export-md">${icon('arrow', 16)} 导出 Markdown</button><button class="btn ghost export-json">${icon('database', 16)} 导出 JSON</button></div>`
@@ -202,8 +215,11 @@ const renderResult = (result, ctx) => {
 // 把已收藏的方案重新加载到工作台：恢复选择器状态并直接渲染保存的 plan，避免 seed 变化产生不同方案
 const loadSavedRemix = (id, ctx) => {
   const { saved } = getState()
-  const item = saved.find(s => s.id === id)
-  if (!item?.plan || !item.context) { toast('该收藏无法重新加载'); return }
+  const item = saved.find((s) => s.id === id)
+  if (!item?.plan || !item.context) {
+    toast('该收藏无法重新加载')
+    return
+  }
   const { characterAId, characterBId, momentId, styleId } = item.context
   const selectA = document.querySelector('#character-a')
   const selectB = document.querySelector('#character-b')
@@ -218,14 +234,14 @@ const loadSavedRemix = (id, ctx) => {
     toast('收藏中的角色或场面已不在知识库中')
     return
   }
-  document.querySelectorAll('[data-duration]').forEach(btn => {
+  document.querySelectorAll('[data-duration]').forEach((btn) => {
     btn.classList.toggle('active', Number(btn.dataset.duration) === item.plan.duration)
   })
   setDuration(item.plan.duration)
   const a = characterById.get(characterAId)
   const b = characterById.get(characterBId)
-  const moment = knowledge.iconic_moments.find(m => m.id === momentId)
-  const style = remixStyles.find(s => s.id === styleId)
+  const moment = knowledge.iconic_moments.find((m) => m.id === momentId)
+  const style = remixStyles.find((s) => s.id === styleId)
   const result = { plan: item.plan, a, b, moment, style }
   setCurrentResult(result)
   renderResult(result, ctx)
@@ -236,9 +252,14 @@ const loadSavedRemix = (id, ctx) => {
 
 // 随机切换 4 个选择器，并自动生成方案
 const randomize = (ctx) => {
-  const selects = ['#character-a', '#character-b', '#moment', '#style'].map(selector => document.querySelector(selector))
-  selects.forEach(select => { select.selectedIndex = Math.floor(Math.random() * select.options.length) })
-  if (selects[0].value === selects[1].value) selects[1].selectedIndex = (selects[1].selectedIndex + 1) % selects[1].options.length
+  const selects = ['#character-a', '#character-b', '#moment', '#style'].map((selector) =>
+    document.querySelector(selector),
+  )
+  selects.forEach((select) => {
+    select.selectedIndex = Math.floor(Math.random() * select.options.length)
+  })
+  if (selects[0].value === selects[1].value)
+    selects[1].selectedIndex = (selects[1].selectedIndex + 1) % selects[1].options.length
   updateHints()
   incrementGeneration()
   const result = buildRemix()
@@ -258,7 +279,7 @@ const applyToRemix = (type, id, slot) => {
     const target = slot === 'b' ? selectB : selectA
     target.value = id
     if (selectA.value === selectB.value) {
-      const other = knowledge.known_characters.find(c => c.id !== selectA.value)
+      const other = knowledge.known_characters.find((c) => c.id !== selectA.value)
       if (other) (slot === 'b' ? selectA : selectB).value = other.id
     }
     updateHints()
@@ -268,14 +289,17 @@ const applyToRemix = (type, id, slot) => {
     momentSelect.value = id
     updateHints()
     remixSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    toast(`已带入名场面：${knowledge.iconic_moments.find(item => item.id === id).name}`)
+    toast(`已带入名场面：${knowledge.iconic_moments.find((item) => item.id === id).name}`)
   } else if (type === 'works') {
     // 作品没有直接对应的工作台字段，把该作品首个角色填入角色 A
-    const character = knowledge.known_characters.find(c => c.work_id === id)
-    if (!character) { toast('该作品暂无可带入的角色'); return }
+    const character = knowledge.known_characters.find((c) => c.work_id === id)
+    if (!character) {
+      toast('该作品暂无可带入的角色')
+      return
+    }
     selectA.value = character.id
     if (selectA.value === selectB.value) {
-      const other = knowledge.known_characters.find(c => c.id !== selectA.value)
+      const other = knowledge.known_characters.find((c) => c.id !== selectA.value)
       if (other) selectB.value = other.id
     }
     updateHints()
@@ -291,7 +315,7 @@ const applyToRemix = (type, id, slot) => {
  */
 export const mountRemixWorkbench = (ctx) => {
   // 表单提交：generation 计数器 +1 后生成新方案
-  document.querySelector('#remix-form').addEventListener('submit', event => {
+  document.querySelector('#remix-form').addEventListener('submit', (event) => {
     event.preventDefault()
     incrementGeneration()
     const result = buildRemix()
@@ -303,14 +327,18 @@ export const mountRemixWorkbench = (ctx) => {
   document.querySelector('.randomize').addEventListener('click', () => randomize(ctx))
 
   // 时长切换：单选按钮互斥
-  document.querySelectorAll('[data-duration]').forEach(button => button.addEventListener('click', () => {
-    document.querySelectorAll('[data-duration]').forEach(item => item.classList.remove('active'))
-    button.classList.add('active')
-    setDuration(Number(button.dataset.duration))
-  }))
+  document.querySelectorAll('[data-duration]').forEach((button) =>
+    button.addEventListener('click', () => {
+      document.querySelectorAll('[data-duration]').forEach((item) => item.classList.remove('active'))
+      button.classList.add('active')
+      setDuration(Number(button.dataset.duration))
+    }),
+  )
 
   // 选择器变化时更新提示
-  document.querySelectorAll('#character-a,#character-b,#moment').forEach(select => select.addEventListener('change', updateHints))
+  document
+    .querySelectorAll('#character-a,#character-b,#moment')
+    .forEach((select) => select.addEventListener('change', updateHints))
 
   // 初始化：渲染提示 + 默认方案
   updateHints()

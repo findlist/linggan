@@ -5,13 +5,13 @@ import {
   CandidateNotFoundError,
   IllegalTransitionError,
   isLegalTransition,
-  generateIdempotencyKey
+  generateIdempotencyKey,
 } from './candidate-store.ts'
 import type {
   CandidateInsertResult,
   CandidateStatus,
   CandidateStore,
-  CandidateTransitionResult
+  CandidateTransitionResult,
 } from './candidate-store.ts'
 
 const parseCandidate = (row: {
@@ -33,16 +33,9 @@ export class SqliteCandidateStore implements CandidateStore {
     this.database = database
   }
 
-  async insert(
-    candidates: Candidate[],
-    idempotencyKeyPrefix: string
-  ): Promise<CandidateInsertResult> {
-    const selectExisting = this.database.prepare(
-      'SELECT 1 FROM candidates WHERE idempotency_key = ?'
-    )
-    const selectExistingId = this.database.prepare(
-      'SELECT 1 FROM candidates WHERE id = ?'
-    )
+  async insert(candidates: Candidate[], idempotencyKeyPrefix: string): Promise<CandidateInsertResult> {
+    const selectExisting = this.database.prepare('SELECT 1 FROM candidates WHERE idempotency_key = ?')
+    const selectExistingId = this.database.prepare('SELECT 1 FROM candidates WHERE id = ?')
     const insertCandidate = this.database.prepare(`
       INSERT INTO candidates (
         id, source_trend_id, status, total_score, payload_json,
@@ -77,7 +70,7 @@ export class SqliteCandidateStore implements CandidateStore {
           candidate.score.total,
           JSON.stringify(candidate),
           candidate.generated_at,
-          idempotencyKey
+          idempotencyKey,
         )
         inserted += 1
       }
@@ -87,9 +80,7 @@ export class SqliteCandidateStore implements CandidateStore {
       throw error
     }
 
-    const total = (this.database.prepare(
-      'SELECT COUNT(*) AS count FROM candidates'
-    ).get() as { count: number }).count
+    const total = (this.database.prepare('SELECT COUNT(*) AS count FROM candidates').get() as { count: number }).count
 
     return { inserted, skipped, total }
   }
@@ -109,27 +100,24 @@ export class SqliteCandidateStore implements CandidateStore {
   }
 
   async get(id: string): Promise<Candidate | null> {
-    const row = this.database.prepare(
-      'SELECT payload_json, status, reviewed_at, reviewed_reason FROM candidates WHERE id = ?'
-    ).get(id) as {
-      payload_json: string
-      status: string
-      reviewed_at: string | null
-      reviewed_reason: string | null
-    } | undefined
+    const row = this.database
+      .prepare('SELECT payload_json, status, reviewed_at, reviewed_reason FROM candidates WHERE id = ?')
+      .get(id) as
+      | {
+          payload_json: string
+          status: string
+          reviewed_at: string | null
+          reviewed_reason: string | null
+        }
+      | undefined
 
     if (!row) return null
     return parseCandidate(row)
   }
 
-  async transition(
-    id: string,
-    to: CandidateStatus,
-    reason?: string
-  ): Promise<CandidateTransitionResult> {
-    const row = this.database.prepare(
-      'SELECT status FROM candidates WHERE id = ?'
-    ).get(id) as { status: string } | undefined
+  async transition(id: string, to: CandidateStatus, reason?: string): Promise<CandidateTransitionResult> {
+    const row = this.database.prepare('SELECT status FROM candidates WHERE id = ?').get(id) as
+      { status: string } | undefined
 
     if (!row) throw new CandidateNotFoundError(id)
 
@@ -139,25 +127,29 @@ export class SqliteCandidateStore implements CandidateStore {
     }
 
     const reviewedAt = new Date().toISOString()
-    this.database.prepare(`
+    this.database
+      .prepare(
+        `
       UPDATE candidates
       SET status = ?, reviewed_at = ?, reviewed_reason = ?
       WHERE id = ?
-    `).run(to, reviewedAt, reason ?? null, id)
+    `,
+      )
+      .run(to, reviewedAt, reason ?? null, id)
 
     return { id, from, to, reviewed_at: reviewedAt }
   }
 
   async countByStatus(): Promise<Record<CandidateStatus, number>> {
-    const rows = this.database.prepare(
-      'SELECT status, COUNT(*) AS count FROM candidates GROUP BY status'
-    ).all() as Array<{ status: string; count: number }>
+    const rows = this.database
+      .prepare('SELECT status, COUNT(*) AS count FROM candidates GROUP BY status')
+      .all() as Array<{ status: string; count: number }>
 
     const counts: Record<CandidateStatus, number> = {
       pending_review: 0,
       approved: 0,
       rejected: 0,
-      archived: 0
+      archived: 0,
     }
 
     for (const row of rows) {

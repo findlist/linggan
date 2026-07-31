@@ -8,10 +8,7 @@ export interface KnowledgeSeedResult {
   iconic_moments: number
 }
 
-export const seedKnowledgeBase = (
-  database: DatabaseSync,
-  input: unknown
-): KnowledgeSeedResult => {
+export const seedKnowledgeBase = (database: DatabaseSync, input: unknown): KnowledgeSeedResult => {
   const knowledge = KnowledgeBaseSchema.parse(input)
   const upsertWork = database.prepare(`
     INSERT INTO works (
@@ -70,27 +67,48 @@ export const seedKnowledgeBase = (
   try {
     for (const work of knowledge.works) {
       upsertWork.run(
-        work.id, work.title, work.original_title, work.media_type, work.release_year,
-        work.rights_status, work.risk_level, JSON.stringify(work), work.last_verified_at
+        work.id,
+        work.title,
+        work.original_title,
+        work.media_type,
+        work.release_year,
+        work.rights_status,
+        work.risk_level,
+        JSON.stringify(work),
+        work.last_verified_at,
       )
     }
     for (const character of knowledge.known_characters) {
       upsertCharacter.run(
-        character.id, character.work_id, character.name, character.rights_status,
-        character.risk_level, JSON.stringify(character), character.last_verified_at
+        character.id,
+        character.work_id,
+        character.name,
+        character.rights_status,
+        character.risk_level,
+        JSON.stringify(character),
+        character.last_verified_at,
       )
     }
     for (const relationship of knowledge.relationships) {
       upsertRelationship.run(
-        relationship.id, relationship.work_id, relationship.from_character_id,
-        relationship.to_character_id, relationship.relation,
-        JSON.stringify(relationship), relationship.last_verified_at
+        relationship.id,
+        relationship.work_id,
+        relationship.from_character_id,
+        relationship.to_character_id,
+        relationship.relation,
+        JSON.stringify(relationship),
+        relationship.last_verified_at,
       )
     }
     for (const moment of knowledge.iconic_moments) {
       upsertMoment.run(
-        moment.id, moment.work_id, moment.name, moment.rights_status,
-        moment.risk_level, JSON.stringify(moment), moment.last_verified_at
+        moment.id,
+        moment.work_id,
+        moment.name,
+        moment.rights_status,
+        moment.risk_level,
+        JSON.stringify(moment),
+        moment.last_verified_at,
       )
     }
     database.exec('COMMIT')
@@ -103,6 +121,6 @@ export const seedKnowledgeBase = (
     works: knowledge.works.length,
     known_characters: knowledge.known_characters.length,
     relationships: knowledge.relationships.length,
-    iconic_moments: knowledge.iconic_moments.length
+    iconic_moments: knowledge.iconic_moments.length,
   }
 }

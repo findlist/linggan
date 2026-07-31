@@ -6,10 +6,7 @@ import { test } from 'node:test'
 import { CollectionBatchSchema } from '../src/data/contracts.ts'
 import { migrateCollectionInbox } from '../src/ingestion/migrate-collection-inbox.ts'
 import { JsonTrendStore } from '../src/storage/trend-store.ts'
-import {
-  WikipediaMostReadResponseSchema,
-  transformWikipediaMostRead
-} from '../src/collectors/wikipedia-adapter.ts'
+import { WikipediaMostReadResponseSchema, transformWikipediaMostRead } from '../src/collectors/wikipedia-adapter.ts'
 import type { WikipediaMostReadResponse } from '../src/collectors/wikipedia-adapter.ts'
 
 const fixturesDir = new URL('../data/fixtures/wikipedia-most-read/', import.meta.url)
@@ -18,15 +15,13 @@ const runId = 'wiki_most_read_en_20260730_073000'
 
 // 顶层预加载所有 fixture，测试中同步引用，避免每个用例重复读文件
 const parseFixture = async (name: string): Promise<WikipediaMostReadResponse> =>
-  WikipediaMostReadResponseSchema.parse(
-    JSON.parse(await readFile(new URL(name, fixturesDir), 'utf8')) as unknown
-  )
+  WikipediaMostReadResponseSchema.parse(JSON.parse(await readFile(new URL(name, fixturesDir), 'utf8')) as unknown)
 
 const [normalResponse, emptyResponse, missingFieldsResponse, badTitlesResponse] = await Promise.all([
   parseFixture('normal.json'),
   parseFixture('empty.json'),
   parseFixture('missing-fields.json'),
-  parseFixture('bad-titles.json')
+  parseFixture('bad-titles.json'),
 ])
 
 test('normal sample produces a valid batch with 5 items', () => {
@@ -39,7 +34,7 @@ test('normal sample produces a valid batch with 5 items', () => {
 
 test('category mapping covers sports, film, game, festival and cultural_event', () => {
   const batch = transformWikipediaMostRead({ response: normalResponse, language: 'en', collectedAt, runId })
-  const categories = batch.items.map(item => item.category)
+  const categories = batch.items.map((item) => item.category)
   assert.equal(categories[0], 'sports')
   assert.equal(categories[1], 'film')
   assert.equal(categories[2], 'game')
@@ -58,10 +53,13 @@ test('all source evidence URLs are valid HTTPS Wikipedia links', () => {
 
 test('item ids are stable and unique within a batch', () => {
   const batch = transformWikipediaMostRead({ response: normalResponse, language: 'en', collectedAt, runId })
-  const ids = batch.items.map(item => item.id)
+  const ids = batch.items.map((item) => item.id)
   // 同一输入再次转换得到相同 ID
   const batch2 = transformWikipediaMostRead({ response: normalResponse, language: 'en', collectedAt, runId })
-  assert.deepEqual(batch2.items.map(item => item.id), ids)
+  assert.deepEqual(
+    batch2.items.map((item) => item.id),
+    ids,
+  )
   // ID 批次内唯一
   assert.equal(new Set(ids).size, ids.length)
   // ID 格式符合 StableIdSchema
@@ -110,7 +108,7 @@ test('articles with empty or whitespace-only titles are skipped', () => {
 test('invalid language code is rejected', () => {
   assert.throws(
     () => transformWikipediaMostRead({ response: normalResponse, language: 'evil;rm', collectedAt, runId }),
-    /invalid language code/u
+    /invalid language code/u,
   )
 })
 

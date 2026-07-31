@@ -84,15 +84,15 @@ export interface SimilarityOptions {
 
 const WEIGHTS: SimilarityBreakdown = {
   hook: 0.25,
-  title: 0.10,
-  concept: 0.10,
-  dialogue: 0.10,
+  title: 0.1,
+  concept: 0.1,
+  dialogue: 0.1,
   description: 0.05,
-  positive_prompt: 0.10,
+  positive_prompt: 0.1,
   personality_pair: 0.08,
   hook_category: 0.05,
   storyboard_sequence: 0.12,
-  duration: 0.05
+  duration: 0.05,
 }
 
 /* --------------------------- 文本相似度 --------------------------- */
@@ -140,31 +140,25 @@ const sequenceSimilarity = <T>(a: readonly T[], b: readonly T[]): number => {
 }
 
 /** 性格对相似度：排序后比较，(cold,hot) 与 (hot,cold) 视为相同组合 */
-const personalityPairSimilarity = (
-  planA: RemixPlan,
-  planB: RemixPlan
-): number => {
+const personalityPairSimilarity = (planA: RemixPlan, planB: RemixPlan): number => {
   const pairA = [planA.personalityA, planA.personalityB].sort().join('|')
   const pairB = [planB.personalityA, planB.personalityB].sort().join('|')
   return enumSimilarity(pairA, pairB)
 }
 
 /** 分镜序列相似度：景别、运镜、转场三个序列匹配率的平均 */
-const storyboardSequenceSimilarity = (
-  planA: RemixPlan,
-  planB: RemixPlan
-): number => {
+const storyboardSequenceSimilarity = (planA: RemixPlan, planB: RemixPlan): number => {
   const shotTypes = sequenceSimilarity(
-    planA.storyboard.map(s => s.shot_type),
-    planB.storyboard.map(s => s.shot_type)
+    planA.storyboard.map((s) => s.shot_type),
+    planB.storyboard.map((s) => s.shot_type),
   )
   const cameraMoves = sequenceSimilarity(
-    planA.storyboard.map(s => s.camera_movement),
-    planB.storyboard.map(s => s.camera_movement)
+    planA.storyboard.map((s) => s.camera_movement),
+    planB.storyboard.map((s) => s.camera_movement),
   )
   const transitions = sequenceSimilarity(
-    planA.storyboard.map(s => s.transition),
-    planB.storyboard.map(s => s.transition)
+    planA.storyboard.map((s) => s.transition),
+    planB.storyboard.map((s) => s.transition),
   )
   return (shotTypes + cameraMoves + transitions) / 3
 }
@@ -176,22 +170,13 @@ const computeBreakdown = (planA: RemixPlan, planB: RemixPlan): SimilarityBreakdo
   title: textJaccardSimilarity(planA.title, planB.title),
   concept: textJaccardSimilarity(planA.concept, planB.concept),
   // 对白 A/B 合并计算，避免单侧对白相同拉高相似度
-  dialogue: textJaccardSimilarity(
-    `${planA.dialogueA} ${planA.dialogueB}`,
-    `${planB.dialogueA} ${planB.dialogueB}`
-  ),
-  description: textJaccardSimilarity(
-    planA.copywriting.description,
-    planB.copywriting.description
-  ),
-  positive_prompt: textJaccardSimilarity(
-    planA.production.prompts.positive,
-    planB.production.prompts.positive
-  ),
+  dialogue: textJaccardSimilarity(`${planA.dialogueA} ${planA.dialogueB}`, `${planB.dialogueA} ${planB.dialogueB}`),
+  description: textJaccardSimilarity(planA.copywriting.description, planB.copywriting.description),
+  positive_prompt: textJaccardSimilarity(planA.production.prompts.positive, planB.production.prompts.positive),
   personality_pair: personalityPairSimilarity(planA, planB),
   hook_category: enumSimilarity(planA.hookCategory, planB.hookCategory),
   storyboard_sequence: storyboardSequenceSimilarity(planA, planB),
-  duration: enumSimilarity(planA.duration, planB.duration)
+  duration: enumSimilarity(planA.duration, planB.duration),
 })
 
 const weightScore = (breakdown: SimilarityBreakdown): number => {
@@ -205,10 +190,7 @@ const weightScore = (breakdown: SimilarityBreakdown): number => {
 /* --------------------------- 公共 API --------------------------- */
 
 /** 计算两个 RemixPlan 的加权相似度，返回 0-1 分数和各维度分项 */
-export const computePlanSimilarity = (
-  planA: RemixPlan,
-  planB: RemixPlan
-): PlanSimilarity => {
+export const computePlanSimilarity = (planA: RemixPlan, planB: RemixPlan): PlanSimilarity => {
   const breakdown = computeBreakdown(planA, planB)
   return { score: weightScore(breakdown), breakdown }
 }
@@ -220,14 +202,14 @@ export const computePlanSimilarity = (
  */
 export const detectDuplicates = (
   plans: readonly RemixPlan[],
-  options?: SimilarityOptions
+  options?: SimilarityOptions,
 ): DuplicateDetectionResult => {
   const threshold = options?.threshold ?? 0.7
-  const flags: DuplicateFlag[] = plans.map(plan => ({
+  const flags: DuplicateFlag[] = plans.map((plan) => ({
     plan,
     max_similarity: 0,
     is_duplicate: false,
-    similar_to: []
+    similar_to: [],
   }))
 
   // 两两比较，O(n²) 复杂度可接受：daily-pipeline 单轮规模 ≤ 几十
@@ -253,10 +235,8 @@ export const detectDuplicates = (
     flag.similar_to.sort()
   }
 
-  const duplicates = flags.filter(f => f.is_duplicate).length
-  const avgMax = flags.length === 0
-    ? 0
-    : flags.reduce((sum, f) => sum + f.max_similarity, 0) / flags.length
+  const duplicates = flags.filter((f) => f.is_duplicate).length
+  const avgMax = flags.length === 0 ? 0 : flags.reduce((sum, f) => sum + f.max_similarity, 0) / flags.length
 
   return {
     flags,
@@ -265,8 +245,8 @@ export const detectDuplicates = (
       duplicates,
       unique: plans.length - duplicates,
       threshold,
-      avg_max_similarity: avgMax
-    }
+      avg_max_similarity: avgMax,
+    },
   }
 }
 
@@ -274,10 +254,7 @@ export const detectDuplicates = (
  * 过滤重复方案，保留每组相似方案中首个出现的。
  * 被过滤的方案记录与哪个已保留方案相似及相似度，便于审计。
  */
-export const filterUniquePlans = (
-  plans: readonly RemixPlan[],
-  options?: SimilarityOptions
-): UniqueFilterResult => {
+export const filterUniquePlans = (plans: readonly RemixPlan[], options?: SimilarityOptions): UniqueFilterResult => {
   const threshold = options?.threshold ?? 0.7
   const unique: RemixPlan[] = []
   const removed: UniqueFilterResult['removed'] = []
@@ -298,7 +275,7 @@ export const filterUniquePlans = (
         plan: current,
         removed_at: i,
         similar_to: duplicateOf.id,
-        similarity: duplicateOf.score
+        similarity: duplicateOf.score,
       })
     } else {
       unique.push(current)
@@ -312,7 +289,7 @@ export const filterUniquePlans = (
       total: plans.length,
       removed: removed.length,
       remaining: unique.length,
-      threshold
-    }
+      threshold,
+    },
   }
 }

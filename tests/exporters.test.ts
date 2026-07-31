@@ -4,18 +4,14 @@ import { test } from 'node:test'
 import { KnowledgeBaseSchema } from '../src/data/contracts.ts'
 import type { RemixPlanInput } from '../src/generation/remix-engine.ts'
 import { buildRemixPlan } from '../src/generation/remix-engine.ts'
-import {
-  buildRemixFileName,
-  buildRemixJson,
-  buildRemixMarkdown
-} from '../src/generation/exporters.ts'
+import { buildRemixFileName, buildRemixJson, buildRemixMarkdown } from '../src/generation/exporters.ts'
 
 const root = new URL('../', import.meta.url)
 const knowledge = KnowledgeBaseSchema.parse(
-  JSON.parse(await readFile(new URL('data/knowledge-base.json', root), 'utf8')) as unknown
+  JSON.parse(await readFile(new URL('data/knowledge-base.json', root), 'utf8')) as unknown,
 )
 
-const workById = new Map(knowledge.works.map(work => [work.id, work]))
+const workById = new Map(knowledge.works.map((work) => [work.id, work]))
 const characterA = knowledge.known_characters[0]
 const characterB = knowledge.known_characters[1]
 const moment = knowledge.iconic_moments[0]
@@ -30,7 +26,7 @@ const input: RemixPlanInput = {
   momentWork: workById.get(moment.work_id)!,
   style,
   duration: 30,
-  seed: 'export-test-seed'
+  seed: 'export-test-seed',
 }
 
 const plan = buildRemixPlan(input)
@@ -69,8 +65,17 @@ test('buildRemixMarkdown escapes pipe characters in table cells to preserve stru
   const planWithPipe = {
     ...plan,
     storyboard: [
-      { index: 1, duration: 4, shot_type: 'medium' as const, camera_movement: 'fixed' as const, visual: '场景|带管道符', action: '动作|管道', emotion: '情绪', transition: 'cut' as const }
-    ]
+      {
+        index: 1,
+        duration: 4,
+        shot_type: 'medium' as const,
+        camera_movement: 'fixed' as const,
+        visual: '场景|带管道符',
+        action: '动作|管道',
+        emotion: '情绪',
+        transition: 'cut' as const,
+      },
+    ],
   }
   const md = buildRemixMarkdown(planWithPipe)
   // 转义后管道符应写作 \|，避免破坏表格列数

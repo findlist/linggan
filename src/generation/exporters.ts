@@ -8,8 +8,7 @@ import type { RemixPlan } from './remix-engine.ts'
  */
 
 /** 把字符串中的管道符和换行符转义，避免破坏 Markdown 表格结构。 */
-const escapeTableCell = (value: string): string =>
-  String(value).replace(/\|/g, '\\|').replace(/\r?\n/g, ' ')
+const escapeTableCell = (value: string): string => String(value).replace(/\|/g, '\\|').replace(/\r?\n/g, ' ')
 
 /** 生成人类可读的 Markdown 文档，包含方案的全部字段和版权边界说明。 */
 export const buildRemixMarkdown = (plan: RemixPlan): string => {
@@ -24,7 +23,7 @@ export const buildRemixMarkdown = (plan: RemixPlan): string => {
   lines.push('|---|---|---|---|---|---|---|---|')
   for (const shot of plan.storyboard) {
     lines.push(
-      `| ${shot.index} | ${shot.duration}s | ${shot.shot_type} | ${shot.camera_movement} | ${escapeTableCell(shot.visual)} | ${escapeTableCell(shot.action)} | ${escapeTableCell(shot.emotion)} | ${shot.transition} |`
+      `| ${shot.index} | ${shot.duration}s | ${shot.shot_type} | ${shot.camera_movement} | ${escapeTableCell(shot.visual)} | ${escapeTableCell(shot.action)} | ${escapeTableCell(shot.emotion)} | ${shot.transition} |`,
     )
   }
   lines.push('')
@@ -55,9 +54,7 @@ export const buildRemixMarkdown = (plan: RemixPlan): string => {
 }
 
 /** 生成机器可读的 JSON 文档，结构化保存完整 RemixPlan 字段。 */
-export const buildRemixJson = (plan: RemixPlan): string =>
-  JSON.stringify(plan, null, 2)
+export const buildRemixJson = (plan: RemixPlan): string => JSON.stringify(plan, null, 2)
 
 /** 生成下载文件名（不含扩展名），格式：linggan-remix-{plan.id}。 */
-export const buildRemixFileName = (plan: RemixPlan): string =>
-  `linggan-remix-${plan.id}`
+export const buildRemixFileName = (plan: RemixPlan): string => `linggan-remix-${plan.id}`

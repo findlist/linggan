@@ -2,11 +2,7 @@ import { randomBytes } from 'node:crypto'
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { extname, join } from 'node:path'
 import { TaskRunLogSchema } from '../data/contracts.ts'
-import type {
-  TaskRunLog,
-  TaskRunLogStatus,
-  TaskRunLogTaskName
-} from '../data/contracts.ts'
+import type { TaskRunLog, TaskRunLogStatus, TaskRunLogTaskName } from '../data/contracts.ts'
 
 // 元数据值只允许可 JSON 序列化的原始类型，避免运行日志写入时出现不可逆对象
 type MetadataValue = string | number | boolean | null
@@ -28,27 +24,25 @@ export interface TaskRunSummary {
   metadata?: Metadata
 }
 
-const formatError = (error: unknown): string =>
-  error instanceof Error ? error.message : String(error)
+const formatError = (error: unknown): string => (error instanceof Error ? error.message : String(error))
 
 // 递归收集目录下所有 JSON 文件，与 collection-inbox 的扫描逻辑保持一致
 const listJsonFiles = async (directory: string): Promise<string[]> => {
   const entries = await readdir(directory, { withFileTypes: true })
-  const nested = await Promise.all(entries.map(async entry => {
-    const path = join(directory, entry.name)
-    if (entry.isDirectory()) return listJsonFiles(path)
-    return entry.isFile() && extname(entry.name).toLowerCase() === '.json' ? [path] : []
-  }))
+  const nested = await Promise.all(
+    entries.map(async (entry) => {
+      const path = join(directory, entry.name)
+      if (entry.isDirectory()) return listJsonFiles(path)
+      return entry.isFile() && extname(entry.name).toLowerCase() === '.json' ? [path] : []
+    }),
+  )
   return nested.flat().sort()
 }
 
 // 生成符合 StableIdSchema 的稳定 ID：task_run_{task_slug}_{timestamp}_{random}
 const buildLogId = (taskName: TaskRunLogTaskName, finishedAt: Date): string => {
   const slug = taskName.replace(/:/gu, '_')
-  const stamp = finishedAt.toISOString()
-    .replace(/[-:]/gu, '')
-    .replace('T', '_')
-    .slice(0, 15)
+  const stamp = finishedAt.toISOString().replace(/[-:]/gu, '').replace('T', '_').slice(0, 15)
   const suffix = randomBytes(3).toString('hex')
   return `task_run_${slug}_${stamp}_${suffix}`
 }
@@ -89,8 +83,8 @@ export class TaskRunLogger {
       metadata: { ...this.baseMetadata, ...(summary.metadata ?? {}) },
       environment: {
         node_version: process.versions.node,
-        command: this.command
-      }
+        command: this.command,
+      },
     })
 
     // 按日期分目录写入，与 collection-inbox 的不可覆盖批次规则一致
@@ -112,23 +106,19 @@ export class TaskRunLogger {
   }
 
   // 快捷方法：完全失败，自动从 error 提取错误信息
-  async fail(
-    error: unknown,
-    summary?: Partial<Omit<TaskRunSummary, 'status'>>
-  ): Promise<TaskRunLog> {
+  async fail(error: unknown, summary?: Partial<Omit<TaskRunSummary, 'status'>>): Promise<TaskRunLog> {
     return this.finish({
       status: 'failed',
       processedCount: summary?.processedCount ?? 0,
       successCount: summary?.successCount ?? 0,
       failureCount: summary?.failureCount ?? 1,
       errors: summary?.errors ?? [formatError(error)],
-      metadata: summary?.metadata
+      metadata: summary?.metadata,
     })
   }
 }
 
-export const createTaskRunLogger = (options: TaskRunLoggerOptions): TaskRunLogger =>
-  new TaskRunLogger(options)
+export const createTaskRunLogger = (options: TaskRunLoggerOptions): TaskRunLogger => new TaskRunLogger(options)
 
 export interface ListTaskRunLogsOptions {
   logDirectory: string

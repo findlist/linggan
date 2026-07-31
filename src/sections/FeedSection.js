@@ -11,7 +11,12 @@ const loadCandidateExport = async () => {
   try {
     const response = await fetch('./data/candidate-export.json')
     if (!response.ok) {
-      try { const fallback = await fetch('/data/candidate-export.json'); if (fallback.ok) return await fallback.json() } catch {}
+      try {
+        const fallback = await fetch('/data/candidate-export.json')
+        if (fallback.ok) return await fallback.json()
+      } catch {
+        // fallback 路径失败时忽略，返回 null 让上层显示空状态
+      }
       return null
     }
     const data = await response.json()
@@ -49,6 +54,6 @@ const renderCandidateFeed = (data) => {
 // 挂载今日推荐流 section：异步加载导出文档并渲染，失败时显示空状态
 export const mountFeedSection = () => {
   loadCandidateExport()
-    .then(data => renderCandidateFeed(data))
+    .then((data) => renderCandidateFeed(data))
     .catch(() => renderCandidateFeed(null))
 }

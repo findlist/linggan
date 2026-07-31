@@ -9,8 +9,10 @@ import { seedKnowledgeBase } from '../src/database/seed-knowledge.ts'
 import { CollectionItemSchema } from '../src/data/contracts.ts'
 import { SqliteTrendStore } from '../src/storage/sqlite-trend-store.ts'
 
-const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname
-  .replace(/^\/(?:[A-Za-z]:)/u, value => value.slice(1))
+const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname.replace(
+  /^\/(?:[A-Za-z]:)/u,
+  (value) => value.slice(1),
+)
 const collectedAt = '2026-07-29T07:30:00.000+08:00'
 
 const createItem = (name: string, sourceUrl = 'https://example.com/source') =>
@@ -20,13 +22,15 @@ const createItem = (name: string, sourceUrl = 'https://example.com/source') =>
     aliases: [],
     category: 'meme',
     description: 'SQLite 存储测试热点。',
-    source_evidence: [{
-      url: sourceUrl,
-      source_name: 'Example',
-      page_title: 'Example source',
-      published_at: null,
-      collected_at: collectedAt
-    }],
+    source_evidence: [
+      {
+        url: sourceUrl,
+        source_name: 'Example',
+        page_title: 'Example source',
+        published_at: null,
+        collected_at: collectedAt,
+      },
+    ],
     discovered_at: collectedAt,
     observed_metrics: [{ name: 'rank', value: 1, unit: 'position', observed_at: collectedAt }],
     heat: 88,
@@ -36,17 +40,15 @@ const createItem = (name: string, sourceUrl = 'https://example.com/source') =>
     visual_actions: ['定格'],
     risk_level: 'low',
     rights_status: 'reference_only',
-    notes: '固定测试数据。'
+    notes: '固定测试数据。',
   })
 
-const withDatabase = async (
-  callback: (input: Awaited<ReturnType<typeof migrateDatabase>>) => Promise<void>
-) => {
+const withDatabase = async (callback: (input: Awaited<ReturnType<typeof migrateDatabase>>) => Promise<void>) => {
   const directory = await mkdtemp(join(tmpdir(), 'linggan-sqlite-'))
   try {
     const migrated = await migrateDatabase({
       filePath: join(directory, 'test.sqlite'),
-      migrationsDirectory
+      migrationsDirectory,
     })
     try {
       await callback(migrated)
@@ -69,33 +71,47 @@ test('database migrations initialize all baseline tables and are idempotent', as
   await withDatabase(async ({ database, applied }) => {
     assert.deepEqual(applied, [
       { version: 1, name: 'initial' },
-      { version: 2, name: 'candidate_state_machine' }
+      { version: 2, name: 'candidate_state_machine' },
     ])
-    const tables = (database.prepare(
-      "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%'"
-    ).all() as Array<{ name: string }>).map(row => row.name)
+    const tables = (
+      database
+        .prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%'")
+        .all() as Array<{ name: string }>
+    ).map((row) => row.name)
     for (const name of [
-      'schema_migrations', 'works', 'known_characters', 'character_relationships',
-      'iconic_moments', 'trends', 'trend_sources', 'trend_metrics', 'trend_batches',
-      'collection_runs', 'collection_items', 'candidates'
-    ]) assert.equal(tables.includes(name), true, `missing table ${name}`)
+      'schema_migrations',
+      'works',
+      'known_characters',
+      'character_relationships',
+      'iconic_moments',
+      'trends',
+      'trend_sources',
+      'trend_metrics',
+      'trend_batches',
+      'collection_runs',
+      'collection_items',
+      'candidates',
+    ])
+      assert.equal(tables.includes(name), true, `missing table ${name}`)
   })
 })
 
 test('knowledge seed populates SQLite and can be repeated without duplicates', async () => {
   await withDatabase(async ({ database }) => {
     const knowledge = JSON.parse(
-      await (await import('node:fs/promises')).readFile(
-        new URL('../data/knowledge-base.json', import.meta.url),
-        'utf8'
-      )
+      await (
+        await import('node:fs/promises')
+      ).readFile(new URL('../data/knowledge-base.json', import.meta.url), 'utf8'),
     ) as unknown
     const first = seedKnowledgeBase(database, knowledge)
     const second = seedKnowledgeBase(database, knowledge)
     assert.deepEqual(first, { works: 9, known_characters: 19, relationships: 7, iconic_moments: 11 })
     assert.deepEqual(second, first)
     assert.equal((database.prepare('SELECT COUNT(*) AS count FROM works').get() as { count: number }).count, 9)
-    assert.equal((database.prepare('SELECT COUNT(*) AS count FROM known_characters').get() as { count: number }).count, 19)
+    assert.equal(
+      (database.prepare('SELECT COUNT(*) AS count FROM known_characters').get() as { count: number }).count,
+      19,
+    )
   })
 })
 
@@ -130,10 +146,13 @@ test('SQLite upsert transaction rolls back the whole batch on failure', async ()
       END;
     `)
     const store = new SqliteTrendStore(database)
-    await assert.rejects(store.upsert([
-      { item: createItem('正常热点'), batchId: 'run_transaction' },
-      { item: createItem('失败热点'), batchId: 'run_transaction' }
-    ]), /forced test failure/)
+    await assert.rejects(
+      store.upsert([
+        { item: createItem('正常热点'), batchId: 'run_transaction' },
+        { item: createItem('失败热点'), batchId: 'run_transaction' },
+      ]),
+      /forced test failure/,
+    )
     assert.equal((database.prepare('SELECT COUNT(*) AS count FROM trends').get() as { count: number }).count, 0)
   })
 })

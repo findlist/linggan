@@ -1,0 +1,14 @@
+# 构建产物与依赖
+dist/
+node_modules/
+
+# 运行时数据与采集批次（不属于源码）
+data/
+public/data/
+
+# 历史归档记忆
+memory/archive/
+
+# 锁文件与配置自身（无需格式化）
+package-lock.json
+eslint.config.js

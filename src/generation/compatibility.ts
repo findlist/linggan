@@ -5,7 +5,7 @@ import type {
   ConflictDifficultyProfile,
   IconicMoment,
   KnownCharacter,
-  SceneConstraintProfile
+  SceneConstraintProfile,
 } from '../data/contracts.ts'
 import type { RemixDuration } from './remix-engine.ts'
 
@@ -41,27 +41,21 @@ export interface RemixCombination {
 
 const findCharacterAbilities = (
   matrix: CompatibilityMatrix,
-  characterId: string
+  characterId: string,
 ): CharacterAbilityProfile | undefined =>
-  matrix.character_abilities.find(profile => profile.character_id === characterId)
+  matrix.character_abilities.find((profile) => profile.character_id === characterId)
 
-const findSceneConstraints = (
-  matrix: CompatibilityMatrix,
-  momentId: string
-): SceneConstraintProfile | undefined =>
-  matrix.scene_constraints.find(profile => profile.moment_id === momentId)
+const findSceneConstraints = (matrix: CompatibilityMatrix, momentId: string): SceneConstraintProfile | undefined =>
+  matrix.scene_constraints.find((profile) => profile.moment_id === momentId)
 
 const findConflictDifficulty = (
   matrix: CompatibilityMatrix,
-  conflictType: string
+  conflictType: string,
 ): ConflictDifficultyProfile | undefined =>
-  matrix.conflict_difficulties.find(profile => profile.conflict_type === conflictType)
+  matrix.conflict_difficulties.find((profile) => profile.conflict_type === conflictType)
 
-const findAbilityFits = (
-  matrix: CompatibilityMatrix,
-  conflictType: string
-): AbilityConflictFit[] =>
-  matrix.ability_conflict_fits.filter(fit => fit.conflict_type === conflictType)
+const findAbilityFits = (matrix: CompatibilityMatrix, conflictType: string): AbilityConflictFit[] =>
+  matrix.ability_conflict_fits.filter((fit) => fit.conflict_type === conflictType)
 
 const average = (values: number[]): number =>
   values.length === 0 ? 0 : values.reduce((sum, value) => sum + value, 0) / values.length
@@ -71,12 +65,9 @@ const average = (values: number[]): number =>
  * 取角色各能力维度分值与对应冲突适配分值的乘积加权平均。
  * 无适配规则时回退到 0.5（中等），不直接判定为低兼容。
  */
-const computeCharacterConflictFit = (
-  abilities: CharacterAbilityProfile,
-  fits: AbilityConflictFit[]
-): number => {
+const computeCharacterConflictFit = (abilities: CharacterAbilityProfile, fits: AbilityConflictFit[]): number => {
   if (fits.length === 0) return 0.5
-  const weighted = fits.map(fit => fit.fit * (abilities.abilities[fit.ability] ?? 0.5))
+  const weighted = fits.map((fit) => fit.fit * (abilities.abilities[fit.ability] ?? 0.5))
   return average(weighted)
 }
 
@@ -89,7 +80,7 @@ export const computeCompatibility = (
   characterB: KnownCharacter,
   moment: IconicMoment,
   duration: RemixDuration,
-  matrix: CompatibilityMatrix
+  matrix: CompatibilityMatrix,
 ): CompatibilityResult => {
   const reasons: string[] = []
   let score = 1.0
@@ -103,7 +94,9 @@ export const computeCompatibility = (
     const fitA = computeCharacterConflictFit(abilityA, fits)
     if (fitA < 0.35) {
       score -= 0.3
-      reasons.push(`角色 ${characterA.name} 的能力档案与"${moment.conflict_type}"冲突类型适配较低（${fitA.toFixed(2)}）`)
+      reasons.push(
+        `角色 ${characterA.name} 的能力档案与"${moment.conflict_type}"冲突类型适配较低（${fitA.toFixed(2)}）`,
+      )
     }
   }
 
@@ -111,7 +104,9 @@ export const computeCompatibility = (
     const fitB = computeCharacterConflictFit(abilityB, fits)
     if (fitB < 0.35) {
       score -= 0.3
-      reasons.push(`角色 ${characterB.name} 的能力档案与"${moment.conflict_type}"冲突类型适配较低（${fitB.toFixed(2)}）`)
+      reasons.push(
+        `角色 ${characterB.name} 的能力档案与"${moment.conflict_type}"冲突类型适配较低（${fitB.toFixed(2)}）`,
+      )
     }
   }
 
@@ -167,17 +162,11 @@ export const computeCompatibility = (
 export const filterCompatibleCombinations = <T extends RemixCombination>(
   combinations: readonly T[],
   matrix: CompatibilityMatrix,
-  options?: CompatibilityFilterOptions
+  options?: CompatibilityFilterOptions,
 ): T[] => {
   const threshold = options?.threshold ?? 0.5
-  return combinations.filter(input => {
-    const { score } = computeCompatibility(
-      input.characterA,
-      input.characterB,
-      input.moment,
-      input.duration,
-      matrix
-    )
+  return combinations.filter((input) => {
+    const { score } = computeCompatibility(input.characterA, input.characterB, input.moment, input.duration, matrix)
     return score >= threshold
   })
 }

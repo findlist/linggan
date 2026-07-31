@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises'
 import {
   WikipediaMostReadResponseSchema,
   fetchWikipediaMostRead,
-  transformWikipediaMostRead
+  transformWikipediaMostRead,
 } from '../src/collectors/wikipedia-adapter.ts'
 import { createTaskRunLogger } from '../src/observability/task-run-logger.ts'
 
@@ -31,7 +31,7 @@ const dryRun = args.has('dry-run')
 const logger = createTaskRunLogger({
   taskName: 'collect:wikipedia',
   logDirectory: resolve(args.get('logs') ?? 'data/run-logs'),
-  metadata: { language, date, fixture: fixturePath ?? null, dry_run: dryRun }
+  metadata: { language, date, fixture: fixturePath ?? null, dry_run: dryRun },
 })
 
 try {
@@ -66,14 +66,14 @@ try {
     await logger.succeed({
       processedCount: batch.items.length,
       successCount: batch.items.length,
-      failureCount: 0
+      failureCount: 0,
     })
   } else {
     await logger.partial({
       processedCount: batch.items.length,
       successCount: batch.items.length,
       failureCount: batch.run.errors.length,
-      errors: batch.run.errors
+      errors: batch.run.errors,
     })
   }
 } catch (error) {

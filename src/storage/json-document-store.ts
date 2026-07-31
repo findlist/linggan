@@ -7,11 +7,7 @@ export class JsonDocumentStore<T> {
   private readonly schema: ZodType<T>
   private readonly createEmpty: () => T
 
-  constructor(
-    filePath: string,
-    schema: ZodType<T>,
-    createEmpty: () => T
-  ) {
+  constructor(filePath: string, schema: ZodType<T>, createEmpty: () => T) {
     this.filePath = filePath
     this.schema = schema
     this.createEmpty = createEmpty
@@ -37,7 +33,7 @@ export class JsonDocumentStore<T> {
     try {
       await writeFile(temporaryPath, `${JSON.stringify(validated, null, 2)}\n`, {
         encoding: 'utf8',
-        flag: 'wx'
+        flag: 'wx',
       })
       await rename(temporaryPath, this.filePath)
     } catch (error) {

@@ -22,16 +22,17 @@ export interface MigrationReport {
 
 const listJsonFiles = async (directory: string): Promise<string[]> => {
   const entries = await readdir(directory, { withFileTypes: true })
-  const nested = await Promise.all(entries.map(async entry => {
-    const path = join(directory, entry.name)
-    if (entry.isDirectory()) return listJsonFiles(path)
-    return entry.isFile() && extname(entry.name).toLowerCase() === '.json' ? [path] : []
-  }))
+  const nested = await Promise.all(
+    entries.map(async (entry) => {
+      const path = join(directory, entry.name)
+      if (entry.isDirectory()) return listJsonFiles(path)
+      return entry.isFile() && extname(entry.name).toLowerCase() === '.json' ? [path] : []
+    }),
+  )
   return nested.flat().sort()
 }
 
-const formatError = (error: unknown): string =>
-  error instanceof Error ? error.message : String(error)
+const formatError = (error: unknown): string => (error instanceof Error ? error.message : String(error))
 
 export const migrateCollectionInbox = async (input: {
   inboxDirectory: string
@@ -52,7 +53,7 @@ export const migrateCollectionInbox = async (input: {
     try {
       const raw = await readFile(file, 'utf8')
       const batch = CollectionBatchSchema.parse(JSON.parse(raw) as unknown)
-      entries.push(...batch.items.map(item => ({ item, batchId: batch.run.id })))
+      entries.push(...batch.items.map((item) => ({ item, batchId: batch.run.id })))
       filesProcessed += 1
     } catch (error) {
       failures.push({ file, error: formatError(error) })
@@ -69,6 +70,6 @@ export const migrateCollectionInbox = async (input: {
     updated: result.updated,
     deduplicated: result.deduplicated,
     total_trends: result.total,
-    failures
+    failures,
   }
 }

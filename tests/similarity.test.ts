@@ -1,41 +1,30 @@
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { test } from 'node:test'
-import {
-  CompatibilityMatrixSchema,
-  KnowledgeBaseSchema
-} from '../src/data/contracts.ts'
-import type {
-  CompatibilityMatrix,
-  KnownCharacter,
-  Work
-} from '../src/data/contracts.ts'
+import { CompatibilityMatrixSchema, KnowledgeBaseSchema } from '../src/data/contracts.ts'
+import type { KnownCharacter, Work } from '../src/data/contracts.ts'
 import {
   buildProductionPlans,
   buildRemixPlan,
   type ProductionPlanInput,
   type RemixPlan,
-  type RemixStyle
+  type RemixStyle,
 } from '../src/generation/remix-engine.ts'
-import {
-  computePlanSimilarity,
-  detectDuplicates,
-  filterUniquePlans
-} from '../src/generation/similarity.ts'
+import { computePlanSimilarity, detectDuplicates, filterUniquePlans } from '../src/generation/similarity.ts'
 
 const root = new URL('../', import.meta.url)
 const knowledge = KnowledgeBaseSchema.parse(
-  JSON.parse(await readFile(new URL('data/knowledge-base.json', root), 'utf8')) as unknown
+  JSON.parse(await readFile(new URL('data/knowledge-base.json', root), 'utf8')) as unknown,
 )
 const matrix = CompatibilityMatrixSchema.parse(
-  JSON.parse(await readFile(new URL('data/compatibility-matrix.json', root), 'utf8')) as unknown
+  JSON.parse(await readFile(new URL('data/compatibility-matrix.json', root), 'utf8')) as unknown,
 )
 
 const workById = new Map(knowledge.works.map((w: Work) => [w.id, w]))
 const style: RemixStyle = { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图' }
 
 const findCharacter = (id: string): KnownCharacter => {
-  const c = knowledge.known_characters.find(item => item.id === id)
+  const c = knowledge.known_characters.find((item) => item.id === id)
   assert.ok(c, `character ${id} must exist`)
   return c
 }
@@ -45,32 +34,38 @@ const buildInput = (
   characterB: KnownCharacter,
   momentId: string,
   duration: 15 | 30 | 60,
-  seed: string
+  seed: string,
 ): ProductionPlanInput => {
-  const moment = knowledge.iconic_moments.find(m => m.id === momentId)
+  const moment = knowledge.iconic_moments.find((m) => m.id === momentId)
   assert.ok(moment, `moment ${momentId} must exist`)
   return {
-    characterA, characterB, moment, duration,
+    characterA,
+    characterB,
+    moment,
+    duration,
     workA: workById.get(characterA.work_id)!,
     workB: workById.get(characterB.work_id)!,
     momentWork: workById.get(moment.work_id)!,
-    style, seed
+    style,
+    seed,
   }
 }
 
 // 基础方案：王林 × 李慕婉 × 第一个名场面 × 30s
-const basePlan = buildRemixPlan(buildInput(
-  findCharacter('known_wang_lin'),
-  findCharacter('known_li_muwan'),
-  knowledge.iconic_moments[0].id,
-  30,
-  'c3-base'
-))
+const basePlan = buildRemixPlan(
+  buildInput(
+    findCharacter('known_wang_lin'),
+    findCharacter('known_li_muwan'),
+    knowledge.iconic_moments[0].id,
+    30,
+    'c3-base',
+  ),
+)
 
 // 构造与 basePlan 仅指定字段不同的 mock plan，用于精确控制相似度维度
 const mockPlan = (overrides: Partial<RemixPlan> & { id: string }): RemixPlan => ({
   ...basePlan,
-  ...overrides
+  ...overrides,
 })
 
 /* ----------------------- 验收条件 1：相同方案相似度 = 1 ----------------------- */
@@ -88,20 +83,24 @@ test('identical plans have similarity score of 1', () => {
 
 test('completely different plans have low similarity below 0.5', () => {
   // 用不同角色、不同场面、不同时长、不同种子生成两个方案
-  const planA = buildRemixPlan(buildInput(
-    findCharacter('known_wang_lin'),
-    findCharacter('known_li_muwan'),
-    knowledge.iconic_moments[0].id,
-    15,
-    'c3-diff-A'
-  ))
-  const planB = buildRemixPlan(buildInput(
-    findCharacter('known_zhen_huan'),
-    findCharacter('known_li_yunlong'),
-    knowledge.iconic_moments[3].id,
-    60,
-    'c3-diff-B'
-  ))
+  const planA = buildRemixPlan(
+    buildInput(
+      findCharacter('known_wang_lin'),
+      findCharacter('known_li_muwan'),
+      knowledge.iconic_moments[0].id,
+      15,
+      'c3-diff-A',
+    ),
+  )
+  const planB = buildRemixPlan(
+    buildInput(
+      findCharacter('known_zhen_huan'),
+      findCharacter('known_li_yunlong'),
+      knowledge.iconic_moments[3].id,
+      60,
+      'c3-diff-B',
+    ),
+  )
   const { score, breakdown } = computePlanSimilarity(planA, planB)
   assert.ok(score < 0.5, `completely different plans should have score < 0.5, got ${score}`)
   // 时长不同 → duration 维度 = 0
@@ -121,9 +120,9 @@ test('same hook but different other fields yields hook dimension 1 but score bel
       ...basePlan.production,
       prompts: {
         ...basePlan.production.prompts,
-        positive: '完全不同的正向提示词，描述另一个场景'
-      }
-    }
+        positive: '完全不同的正向提示词，描述另一个场景',
+      },
+    },
   })
   const { score, breakdown } = computePlanSimilarity(basePlan, planWithSameHook)
   assert.equal(breakdown.hook, 1, 'hook dimension must be 1 when hooks are identical')
@@ -137,13 +136,15 @@ test('same hook but different other fields yields hook dimension 1 but score bel
 
 test('same character pair with different seeds keeps title/concept similarity but varies hook', () => {
   // 相同角色+场面+时长，仅种子不同：title/concept 包含角色名和场面名应保持相同
-  const planSameCombo = buildRemixPlan(buildInput(
-    findCharacter('known_wang_lin'),
-    findCharacter('known_li_muwan'),
-    knowledge.iconic_moments[0].id,
-    30,
-    'c3-same-combo-diff-seed'
-  ))
+  const planSameCombo = buildRemixPlan(
+    buildInput(
+      findCharacter('known_wang_lin'),
+      findCharacter('known_li_muwan'),
+      knowledge.iconic_moments[0].id,
+      30,
+      'c3-same-combo-diff-seed',
+    ),
+  )
   const { breakdown } = computePlanSimilarity(basePlan, planSameCombo)
   // title 和 concept 都包含角色名和场面名，应完全相同
   assert.equal(breakdown.title, 1, 'title must be identical for same character pair')
@@ -161,27 +162,29 @@ test('same character pair with different seeds keeps title/concept similarity bu
 test('detectDuplicates flags duplicate plans above threshold', () => {
   // 构造 [basePlan, basePlan 副本（不同 id）, 完全不同的 plan]
   const duplicatePlan = mockPlan({ id: 'c3-duplicate' })
-  const differentPlan = buildRemixPlan(buildInput(
-    findCharacter('known_zhen_huan'),
-    findCharacter('known_li_yunlong'),
-    knowledge.iconic_moments[3].id,
-    60,
-    'c3-unique'
-  ))
+  const differentPlan = buildRemixPlan(
+    buildInput(
+      findCharacter('known_zhen_huan'),
+      findCharacter('known_li_yunlong'),
+      knowledge.iconic_moments[3].id,
+      60,
+      'c3-unique',
+    ),
+  )
   const plans = [basePlan, duplicatePlan, differentPlan]
   const result = detectDuplicates(plans, { threshold: 0.7 })
 
   assert.equal(result.stats.total, 3)
   // basePlan 和 duplicatePlan 完全相同（除 id），应被判为重复
-  const baseFlag = result.flags.find(f => f.plan.id === basePlan.id)
-  const dupFlag = result.flags.find(f => f.plan.id === 'c3-duplicate')
+  const baseFlag = result.flags.find((f) => f.plan.id === basePlan.id)
+  const dupFlag = result.flags.find((f) => f.plan.id === 'c3-duplicate')
   assert.ok(baseFlag, 'basePlan flag must exist')
   assert.ok(dupFlag, 'duplicate flag must exist')
   assert.ok(baseFlag!.is_duplicate, 'basePlan should be flagged as duplicate')
   assert.ok(dupFlag!.is_duplicate, 'duplicate should be flagged as duplicate')
   assert.ok(baseFlag!.max_similarity >= 0.7, 'basePlan max_similarity should be >= threshold')
   // differentPlan 与其他方案相似度低，不应被判为重复
-  const diffFlag = result.flags.find(f => f.plan.id === differentPlan.id)
+  const diffFlag = result.flags.find((f) => f.plan.id === differentPlan.id)
   assert.ok(!diffFlag!.is_duplicate, 'different plan should not be flagged as duplicate')
   assert.ok(diffFlag!.max_similarity < 0.7, 'different plan max_similarity should be < threshold')
 })
@@ -190,13 +193,15 @@ test('detectDuplicates flags duplicate plans above threshold', () => {
 
 test('filterUniquePlans keeps first occurrence and removes later duplicates', () => {
   const duplicatePlan = mockPlan({ id: 'c3-dup-2' })
-  const differentPlan = buildRemixPlan(buildInput(
-    findCharacter('known_zhen_huan'),
-    findCharacter('known_li_yunlong'),
-    knowledge.iconic_moments[3].id,
-    60,
-    'c3-unique-2'
-  ))
+  const differentPlan = buildRemixPlan(
+    buildInput(
+      findCharacter('known_zhen_huan'),
+      findCharacter('known_li_yunlong'),
+      knowledge.iconic_moments[3].id,
+      60,
+      'c3-unique-2',
+    ),
+  )
   const plans = [basePlan, duplicatePlan, differentPlan]
   const result = filterUniquePlans(plans, { threshold: 0.7 })
 
@@ -214,11 +219,7 @@ test('filterUniquePlans keeps first occurrence and removes later duplicates', ()
 /* ----------------------- 验收条件 7：确定性（同输入同结果） ----------------------- */
 
 test('detection and filtering are deterministic', () => {
-  const plans = [
-    basePlan,
-    mockPlan({ id: 'c3-det-1' }),
-    mockPlan({ id: 'c3-det-2', hook: '不同的钩子文本内容' })
-  ]
+  const plans = [basePlan, mockPlan({ id: 'c3-det-1' }), mockPlan({ id: 'c3-det-2', hook: '不同的钩子文本内容' })]
   const detect1 = detectDuplicates(plans, { threshold: 0.7 })
   const detect2 = detectDuplicates(plans, { threshold: 0.7 })
   assert.deepEqual(detect1, detect2, 'detectDuplicates must be deterministic')
@@ -254,13 +255,10 @@ test('real production plans from buildProductionPlans produce reasonable duplica
   // avg_max_similarity 也必须在 [0, 1]
   assert.ok(
     detection.stats.avg_max_similarity >= 0 && detection.stats.avg_max_similarity <= 1,
-    'avg_max_similarity must be in [0,1]'
+    'avg_max_similarity must be in [0,1]',
   )
   // 真实数据集不应全部被判为重复（否则阈值过低或方案过于雷同）
-  assert.ok(
-    detection.stats.unique >= 1,
-    'at least one plan should be unique in real dataset'
-  )
+  assert.ok(detection.stats.unique >= 1, 'at least one plan should be unique in real dataset')
   // 也不应全部唯一（不同角色组合的 title/concept 不同，但同一组合的 plans 可能相似）
   // 这里只验证检测能正常运行并产出合理结构，不强制 duplicates 数量
 })

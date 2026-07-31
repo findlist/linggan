@@ -4,14 +4,9 @@ import type { Candidate } from '../data/contracts.ts'
  * Valid candidate statuses following the state machine:
  * pending_review → approved | rejected → archived
  */
-export const CANDIDATE_STATUSES = [
-  'pending_review',
-  'approved',
-  'rejected',
-  'archived'
-] as const
+export const CANDIDATE_STATUSES = ['pending_review', 'approved', 'rejected', 'archived'] as const
 
-export type CandidateStatus = typeof CANDIDATE_STATUSES[number]
+export type CandidateStatus = (typeof CANDIDATE_STATUSES)[number]
 
 /**
  * Legal state transitions. Any transition not listed here is illegal.
@@ -20,16 +15,14 @@ export const LEGAL_TRANSITIONS: Record<CandidateStatus, CandidateStatus[]> = {
   pending_review: ['approved', 'rejected', 'archived'],
   approved: ['archived'],
   rejected: ['archived'],
-  archived: []
+  archived: [],
 }
 
 /**
  * Check if a status transition is legal.
  */
-export const isLegalTransition = (
-  from: CandidateStatus,
-  to: CandidateStatus
-): boolean => LEGAL_TRANSITIONS[from].includes(to)
+export const isLegalTransition = (from: CandidateStatus, to: CandidateStatus): boolean =>
+  LEGAL_TRANSITIONS[from].includes(to)
 
 /**
  * Result of inserting candidates.
@@ -72,11 +65,7 @@ export interface CandidateStore {
   /**
    * Transition a candidate's status. Throws on illegal transition.
    */
-  transition(
-    id: string,
-    to: CandidateStatus,
-    reason?: string
-  ): Promise<CandidateTransitionResult>
+  transition(id: string, to: CandidateStatus, reason?: string): Promise<CandidateTransitionResult>
 
   /**
    * Count candidates by status.
@@ -115,10 +104,7 @@ export class CandidateNotFoundError extends Error {
 /**
  * Generate an idempotency key from a prefix and candidate content.
  */
-export const generateIdempotencyKey = (
-  prefix: string,
-  candidate: Candidate
-): string => {
+export const generateIdempotencyKey = (prefix: string, candidate: Candidate): string => {
   const content = `${candidate.source_trend}:${candidate.entities.join(',')}:${candidate.generated_at}`
   return `${prefix}:${content}`
 }

@@ -4,10 +4,7 @@
 
 import { icon } from './ui/icons.js'
 import { setSaved } from './data/store.js'
-import {
-  knowledge, workById, characterById,
-  mediaNames, rightsLabels, riskLabels
-} from './data/knowledge.js'
+import { knowledge, workById, characterById, mediaNames, rightsLabels, riskLabels } from './data/knowledge.js'
 import { escapeHtml } from './ui/dom.js'
 import { createDetailView } from './detail-view.js'
 import { renderHero } from './sections/Hero.js'
@@ -48,7 +45,7 @@ app.innerHTML = `
 `
 
 // 移动端菜单按钮：点击展开 / 收起导航链接
-document.querySelector('.menu-button').addEventListener('click', event => {
+document.querySelector('.menu-button').addEventListener('click', (event) => {
   const links = document.querySelector('.nav-links')
   links.classList.toggle('open')
   const open = links.classList.contains('open')
@@ -62,7 +59,7 @@ const savedListApi = mountSavedList({})
 // 工作台 ctx：setSaved 用于收藏写入并同步 localStorage；renderSaved 通知列表刷新
 const workbenchApi = mountRemixWorkbench({
   setSaved,
-  renderSaved: () => savedListApi.renderSaved()
+  renderSaved: () => savedListApi.renderSaved(),
 })
 
 // 详情视图：在 body 末尾挂载弹窗；点击素材库卡片后打开，提供"开始创作"入口
@@ -77,7 +74,7 @@ const detailView = createDetailView({
   riskLabels,
   icon,
   escapeHtml,
-  onApplyToRemix: workbenchApi.applyToRemix
+  onApplyToRemix: workbenchApi.applyToRemix,
 })
 
 // 素材库 ctx：detailView 是详情视图实例，卡片点击时调用 detailView.open 打开弹窗

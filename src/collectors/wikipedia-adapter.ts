@@ -7,7 +7,7 @@ import type {
   ObservedMetric,
   RiskLevel,
   SourceEvidence,
-  TrendCategory
+  TrendCategory,
 } from '../data/contracts.ts'
 
 /**
@@ -22,12 +22,12 @@ const WikipediaArticleSchema = z.object({
   views: z.number().int().nonnegative().optional(),
   extract: z.string().optional(),
   lang: z.string().optional(),
-  rank_previous: z.number().int().positive().nullable().optional()
+  rank_previous: z.number().int().positive().nullable().optional(),
 })
 
 export const WikipediaMostReadResponseSchema = z.object({
   date: z.string(),
-  articles: z.array(WikipediaArticleSchema)
+  articles: z.array(WikipediaArticleSchema),
 })
 
 export type WikipediaArticle = z.infer<typeof WikipediaArticleSchema>
@@ -89,7 +89,7 @@ const buildSourceEvidence = (article: WikipediaArticle, language: string, collec
   source_name: language === 'zh' ? '维基百科' : 'Wikipedia',
   page_title: article.normalizedtitle ?? article.title.replace(/_/gu, ' '),
   published_at: null,
-  collected_at: collectedAt
+  collected_at: collectedAt,
 })
 
 /** 构造可观测指标：浏览量和排名 */
@@ -115,7 +115,7 @@ const transformArticle = (
   article: WikipediaArticle,
   language: string,
   dateSlug: string,
-  collectedAt: string
+  collectedAt: string,
 ): CollectionItem | null => {
   if (!article.title.trim()) return null
 
@@ -139,7 +139,7 @@ const transformArticle = (
     visual_actions: [],
     risk_level: riskLevel,
     rights_status: 'reference_only',
-    notes: `来自维基百科 ${language} 版最热词条 REST API，仅记录排名与浏览量等公开指标；未保存正文、图片或其他受保护媒体。`
+    notes: `来自维基百科 ${language} 版最热词条 REST API，仅记录排名与浏览量等公开指标；未保存正文、图片或其他受保护媒体。`,
   }
 }
 
@@ -177,9 +177,9 @@ export const transformWikipediaMostRead = (input: TransformWikipediaInput): Coll
       source_count: 1,
       item_count: items.length,
       deduplicated_count: 0,
-      errors
+      errors,
     },
-    items
+    items,
   }
 
   // 最终用 CollectionBatchSchema 校验输出，确保下游 migrate:trends 可消费
@@ -197,10 +197,10 @@ export const fetchWikipediaMostRead = async (options: FetchWikipediaOptions): Pr
   const [year, month, day] = options.date.split('-')
   const url = `https://${options.language}.wikipedia.org/api/rest_v1/page/most-read/${year}/${month}/${day}`
   const response = await fetch(url, {
-    headers: { 'User-Agent': options.userAgent ?? 'LingganTrendCollector/0.1 (local development)' }
+    headers: { 'User-Agent': options.userAgent ?? 'LingganTrendCollector/0.1 (local development)' },
   })
   if (!response.ok) {
     throw new Error(`Wikipedia most-read API returned HTTP ${response.status} for ${url}`)
   }
-  return WikipediaMostReadResponseSchema.parse(await response.json() as unknown)
+  return WikipediaMostReadResponseSchema.parse((await response.json()) as unknown)
 }

@@ -13,8 +13,10 @@ export interface ExportOptions {
 }
 
 export const exportTrends = async (options: ExportOptions): Promise<TrendExportDocument> => {
-  const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname
-    .replace(/^\/(?:[A-Za-z]:)/u, value => value.slice(1))
+  const migrationsDirectory = new URL('../database/migrations', import.meta.url).pathname.replace(
+    /^\/(?:[A-Za-z]:)/u,
+    (value) => value.slice(1),
+  )
 
   const dbConfig = options.databaseUrl
     ? { url: options.databaseUrl, filePath: parseSqliteUrl(options.databaseUrl), migrationsDirectory }
@@ -22,7 +24,7 @@ export const exportTrends = async (options: ExportOptions): Promise<TrendExportD
 
   const { database } = await migrateDatabase({
     filePath: dbConfig.filePath,
-    migrationsDirectory: dbConfig.migrationsDirectory
+    migrationsDirectory: dbConfig.migrationsDirectory,
   })
 
   try {
@@ -33,7 +35,7 @@ export const exportTrends = async (options: ExportOptions): Promise<TrendExportD
       schema_version: 1,
       exported_at: new Date().toISOString(),
       trend_count: trends.length,
-      trends
+      trends,
     }
 
     // Validate before writing
@@ -46,7 +48,7 @@ export const exportTrends = async (options: ExportOptions): Promise<TrendExportD
     try {
       await writeFile(tempPath, `${JSON.stringify(validated, null, 2)}\n`, {
         encoding: 'utf8',
-        flag: 'wx'
+        flag: 'wx',
       })
       await rename(tempPath, options.outputPath)
     } catch (error) {
@@ -65,7 +67,7 @@ const outputPath = process.argv[2] ?? 'public/data/trend-export.json'
 const logger = createTaskRunLogger({
   taskName: 'export:trends',
   logDirectory: 'data/run-logs',
-  metadata: { output: outputPath }
+  metadata: { output: outputPath },
 })
 
 try {
@@ -75,7 +77,7 @@ try {
     processedCount: result.trend_count,
     successCount: result.trend_count,
     failureCount: 0,
-    metadata: { trend_count: result.trend_count }
+    metadata: { trend_count: result.trend_count },
   })
 } catch (error) {
   await logger.fail(error)

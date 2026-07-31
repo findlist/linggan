@@ -16,11 +16,19 @@
     "merge:knowledge": "node --experimental-strip-types scripts/merge-knowledge.ts",
     "export:trends": "node --experimental-strip-types scripts/export-trends.ts",
     "export:candidates": "node --experimental-strip-types scripts/export-candidates.ts",
-    "collect:wikipedia": "node --experimental-strip-types scripts/collect-wikipedia.ts"
+    "collect:wikipedia": "node --experimental-strip-types scripts/collect-wikipedia.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@types/node": "^26.1.2",
-    "typescript": "^7.0.2",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^9.1.2",
+    "prettier": "^3.9.6",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.65.0",
     "vite": "^7.0.0"
   },
   "dependencies": {
