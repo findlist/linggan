@@ -14,6 +14,7 @@ import {
   type ProductionPlanInput,
   type RemixStyle
 } from '../src/generation/remix-engine.ts'
+import { detectDuplicates } from '../src/generation/similarity.ts'
 import { loadDatabaseConfig, parseSqliteUrl } from '../src/config/database.ts'
 import { migrateDatabase } from '../src/database/migrate.ts'
 import { SqliteTrendStore } from '../src/storage/sqlite-trend-store.ts'
@@ -96,6 +97,7 @@ try {
   // C2: 集成 C1 兼容矩阵过滤，生成完整制作包并记录统计
   // 在候选生成后，读取知识库和兼容矩阵，构建跨作品组合并用 C1 过滤
   let productionStats: { total: number; filtered_out: number; remaining: number; threshold: number } | null = null
+  let similarityStats: { total: number; duplicates: number; unique: number; avg_max_similarity: number; threshold: number } | null = null
   try {
     const [rawKnowledge, rawMatrix] = await Promise.all([
       readJson('data/knowledge-base.json'),
@@ -142,6 +144,19 @@ try {
     process.stderr.write(
       `Production plans: ${productionResult.stats.remaining}/${productionResult.stats.total_combinations} combinations passed C1 filter (threshold ${productionResult.stats.threshold}, ${productionResult.stats.filtered_out} filtered out)\n`
     )
+
+    // C3: 对生成的制作包做近似度检测，标记重复/高度相似方案，避免连续发布换皮创意
+    const detection = detectDuplicates(productionResult.plans)
+    similarityStats = {
+      total: detection.stats.total,
+      duplicates: detection.stats.duplicates,
+      unique: detection.stats.unique,
+      avg_max_similarity: detection.stats.avg_max_similarity,
+      threshold: detection.stats.threshold
+    }
+    process.stderr.write(
+      `Duplicate detection: ${detection.stats.duplicates}/${detection.stats.total} plans flagged as duplicates (threshold ${detection.stats.threshold}, avg max_similarity ${detection.stats.avg_max_similarity.toFixed(3)})\n`
+    )
   } catch (productionError) {
     // 知识库或兼容矩阵不可用时不阻塞候选生成流程
     process.stderr.write(`C1 production filter skipped: ${(productionError as Error).message}\n`)
@@ -162,7 +177,12 @@ try {
       production_total: productionStats?.total ?? 0,
       production_filtered_out: productionStats?.filtered_out ?? 0,
       production_remaining: productionStats?.remaining ?? 0,
-      production_threshold: productionStats?.threshold ?? 0
+      production_threshold: productionStats?.threshold ?? 0,
+      similarity_total: similarityStats?.total ?? 0,
+      similarity_duplicates: similarityStats?.duplicates ?? 0,
+      similarity_unique: similarityStats?.unique ?? 0,
+      similarity_avg_max_similarity: similarityStats?.avg_max_similarity ?? 0,
+      similarity_threshold: similarityStats?.threshold ?? 0
     }
   })
 } catch (error) {

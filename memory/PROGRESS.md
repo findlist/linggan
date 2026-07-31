@@ -1,9 +1,76 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：C2 完整制作包轮
-当前阶段：Phase 2 进行中（C1、C2、C8 已完成，剩余 C3—C7）
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；尚无自动发布闭环
+当前轮次：C3 近似度检测轮
+当前阶段：Phase 2 进行中（C1、C2、C3、C8 已完成，剩余 C4—C7）
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；尚无自动发布闭环
+
+### C3 近似度检测轮 — 2026-07-31
+
+本轮目标：消费 C2 完整制作包的生成输出，建立近似度检测能力，让重复或高度相似的 RemixPlan 在生成后被标记或过滤，避免连续发布换皮创意。这是 Phase 2 创意引擎的质量保障环节，对应 DEVELOPMENT_PLAN.md 阶段 C"增加近似度检测，避免连续发布换皮创意"。
+
+完成：
+
+- 新增 `src/generation/similarity.ts`，导出三个公共 API 和配套类型：
+  - `SimilarityBreakdown`：10 个维度的相似度分项（hook/title/concept/dialogue/description/positive_prompt/personality_pair/hook_category/storyboard_sequence/duration），全部 0-1；
+  - `PlanSimilarity`：{ score: 0-1 加权综合, breakdown }；
+  - `DuplicateFlag`：{ plan, max_similarity, is_duplicate, similar_to[] }，单个方案在重复检测中的结果；
+  - `DuplicateDetectionResult`：{ flags[], stats: { total, duplicates, unique, threshold, avg_max_similarity } }；
+  - `UniqueFilterResult`：{ unique_plans[], removed[], stats }，过滤结果含被移除方案与哪个已保留方案相似的审计信息；
+  - `SimilarityOptions`：{ threshold? }，默认 0.7；
+  - `computePlanSimilarity(planA, planB)`：计算两个方案的加权相似度，返回分数和各维度分项；
+  - `detectDuplicates(plans, options?)`：两两比较 O(n²)，每个 plan 的 max_similarity 是与其他方案的最大相似度，超过阈值标记 is_duplicate=true 并记录 similar_to 列表；
+  - `filterUniquePlans(plans, options?)`：过滤重复方案，保留每组相似方案中首个出现的，被过滤方案记录 removed_at/similar_to/similarity 便于审计；
+- 文本相似度采用字符 bigram Jaccard（不引入外部 NLP 依赖）：
+  - `buildBigrams(text)`：去除空白和中文标点后拆为相邻字符对集合，bigram 对中文友好（能捕捉"冷静"vs"冷酷"的部分相似），无需分词依赖；
+  - `textJaccardSimilarity(a, b)`：交集/并集，空对空=1、空对非空=0；
+- 结构相似度采用精确匹配或序列匹配率：
+  - `enumSimilarity(a, b)`：相同=1，不同=0，用于 hook_category/duration；
+  - `sequenceSimilarity(a, b)`：逐位比较，相同位置数/最大长度，用于分镜的 shot_type/camera_movement/transition 序列；
+  - `personalityPairSimilarity`：性格对排序后比较，(cold,hot) 与 (hot,cold) 视为相同组合；
+  - `storyboardSequenceSimilarity`：景别、运镜、转场三个序列匹配率的平均；
+- 权重配置（和为 1.0）：钩子 0.25（最影响用户前三秒感知）、标题 0.10、概念 0.10、对白 0.10、描述 0.05、正向提示词 0.10、性格对 0.08、钩子类别 0.05、分镜序列 0.12、时长 0.05；结构字段权重最低，避免两个文本不同但结构相同的方案被误判为重复；
+- 修改 `scripts/daily-pipeline.ts` 集成 C3 检测：
+  - import `detectDuplicates` from `../src/generation/similarity.ts`；
+  - 在 C2 `buildProductionPlans` 生成后调用 `detectDuplicates(productionResult.plans)`；
+  - 新增 `similarityStats` 变量记录 { total, duplicates, unique, avg_max_similarity, threshold }；
+  - 统计写入 stderr（如 "Duplicate detection: 4/30 plans flagged as duplicates (threshold 0.7, avg max_similarity 0.559)"）；
+  - logger metadata 新增 similarity_total/similarity_duplicates/similarity_unique/similarity_avg_max_similarity/similarity_threshold 五个字段；
+  - 检测只标记不删除，保留可追溯性；知识库或兼容矩阵不可用时 try/catch 跳过，不阻塞候选生成流程；
+- 新增 `tests/similarity.test.ts` 共 8 项测试，覆盖验收条件：
+  1. 相同方案相似度 = 1（所有维度分项也为 1）；
+  2. 完全不同方案相似度 < 0.5（不同角色/场面/时长，duration 维度 = 0）；
+  3. 钩子相同其他不同 → hook 维度 = 1 但 score < 1（验证加权综合不被单维度主导）；
+  4. 相同角色组合不同种子 → title/concept/duration/personality_pair 维度 = 1 但 score 在 [0.5, 1)（title/concept 含角色名和场面名保持相同，钩子来自模板池随机选择大概率不同）；
+  5. detectDuplicates 检测重复方案列表（basePlan 与其副本判为重复，完全不同的 plan 不判为重复）；
+  6. filterUniquePlans 过滤保留首个（被移除方案记录与哪个已保留方案相似及相似度）；
+  7. 确定性（detectDuplicates 和 filterUniquePlans 同输入同结果，deepEqual 通过）；
+  8. 真实数据集验证（buildProductionPlans 生成 60 组合经 C1 过滤后剩余 ≥10 个 plans，所有 max_similarity 在 [0,1]，avg_max_similarity 在 [0,1]，至少 1 个 unique）；
+- 修改 `package.json` 的 test 脚本加入 `tests/similarity.test.ts`。
+
+验证：
+
+- `npm run typecheck`：通过；
+- `npm run validate:data`：通过，5 份 JSON 有效，跨文件外键校验通过；
+- `npm test`：通过，169/169（新增 8 项 C3 测试，原有 161 项不变）；
+- `npm run build`：通过，10 modules transformed（C3 为数据轨道，未新增前端模块），CSS 26.35 kB、JS 78.11 kB（不变）；
+- `npm run pipeline:daily -- --example --no-persist`：通过，C1 过滤 30/30，C3 检测输出 "Duplicate detection: 4/30 plans flagged as duplicates (threshold 0.7, avg max_similarity 0.559)"，30 个方案中检测出 4 个重复，平均最大相似度 0.559，符合预期（不同角色组合的 title/concept 不同，但同角色对的 plans 可能因相同模板选择而相似）；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 选择字符 bigram Jaccard 而非词向量或编辑距离：项目规范"不引入与当前目标无关的大型依赖"，bigram 是轻量且对中文有效的文本相似度方法（中文无空格分词，bigram 能捕捉部分字符顺序和语义相似性）；未来若需更精确可替换为分词 + 词向量，API 接口不变；
+- 权重配置以钩子最高（0.25）：钩子最影响用户前三秒感知，是"换皮"最直接的信号；标题/概念/对白/提示词各 0.10-0.05，结构字段（性格对/钩子类别/分镜序列/时长）权重最低 0.05-0.12，避免两个文本不同但结构相同的方案被误判为重复（如不同角色但同性格+同时长）；
+- detectDuplicates 只标记不删除：保留可追溯性，被标记的方案仍可用于分析重复原因；filterUniquePlans 单独提供过滤能力，被过滤方案记录与哪个已保留方案相似及相似度，便于审计；
+- 默认阈值 0.7：基于测试验证，相同方案 = 1.0，完全不同方案 < 0.5，相同角色组合不同种子在 [0.5, 1)；0.7 能清晰区分"换皮"（≥0.7）和"同主题不同表达"（< 0.7）；阈值可通过 options.threshold 覆盖；
+- O(n²) 两两比较复杂度：daily-pipeline 单轮规模 ≤ 几十（30 个组合），O(n²) 完全可接受；未来若规模扩大到数百可考虑 BK-tree 或 LSH；
+- 性格对相似度排序后比较：(cold,hot) 与 (hot,cold) 视为相同组合，因为 A/B 角色顺序不影响创意相似性；
+- 分镜序列相似度用三个序列（景别/运镜/转场）匹配率的平均：单一序列不够全面，三个序列综合能更好反映分镜结构相似性；长度不同时未对齐位置算不匹配，避免短序列与长序列的高匹配率误判；
+- daily-pipeline 的 C3 检测不持久化标记结果：本轮只验证检测行为，标记结果持久化和前端展示留待后续任务（如 C4 工作台三栏布局或 D5 创作历史）；
+- 本轮未修改 main.js 前端展示重复标记：C3 聚焦数据轨道，前端展示升级（重复标记可视化）留待 C4 三栏布局任务；
+- 环境注意：本机默认 node 为 v14，需用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；通过 `set PATH=D:\development\nodejs;%PATH%` 解决；PowerShell 不支持 `&&`，需用 `cmd /d /c "..."` 或 `;` 分隔命令。
+
+下一轮：Phase 2 剩余 C4—C7。首选 C4 工作台三栏布局，直接消费 C2 完整制作包和 C3 重复标记，让前端展示制作包新字段（景别/运镜/转场、封面文案、结构化提示词、版权边界）和重复检测结果，提升创作工作台的可读性和可用性。
 
 ### C2 完整制作包轮 — 2026-07-31
 
@@ -616,6 +683,8 @@
 - [x] A6 统一任务运行日志。
 - [x] C8 桌面与移动端浏览器回归。
 - [x] C1 兼容矩阵（角色能力 × 场景约束 × 生成难度）。
+- [x] C2 完整制作包（自动生成分镜/提示词/发布文案）。
+- [x] C3 近似度检测（避免换皮创意）。
 
 ### Phase 1 已完成
 
@@ -623,11 +692,11 @@ Phase 1 全部任务已完成。本地内容数据基础验证里程碑（M1）�
 
 ### Phase 2 进行中
 
-C1、C8 已完成。剩余按依赖顺序：
+C1、C2、C3、C8 已完成。剩余按依赖顺序：
 
-1. C2 完整制作包（自动生成分镜/提示词/发布文案）— 消费 C1 兼容矩阵过滤结果，让输出可直接用于制作；
-2. C3 近似度检测（避免换皮创意）；
-3. C4 工作台三栏布局；C5 多维筛选；C6 前端模块化；
+1. C4 工作台三栏布局 — 消费 C2 完整制作包和 C3 重复标记，让前端展示制作包新字段；
+2. C5 多维筛选；
+3. C6 前端模块化；
 4. C7 lint/format。
 
 ### Phase 3 待完成
@@ -641,18 +710,19 @@ E1—E5 仅在 `docs/DEVELOPMENT_DIRECTION.md` 的外部依赖和触发条件满
 
 ## 5. 下一轮唯一首选任务
 
-**任务 C1：兼容矩阵（已完成）。**
+**任务 C3：近似度检测（已完成）。**
 
-**下一轮任务：C2 — 完整制作包（自动生成分镜/提示词/发布文案）（Phase 2 生成轨道）。**
+**下一轮任务：C4 — 工作台三栏布局（Phase 2 前端轨道）。**
 
-选择理由：C1 兼容矩阵已完成，提供了"角色能力 × 场景约束 × 生成难度 × 冲突类型适配"的过滤能力（computeCompatibility/filterCompatibleCombinations），C2 是其直接下游消费者。C2 的目标是让混搭方案的输出从"创意草稿"升级为"可直接用于制作的完整包"：在现有 RemixPlan（钩子/对白/分镜/文案/提示词）基础上，补齐制作所需的字段（如分镜的镜号/景别/运镜/时长/转场、提示词的负面提示/比例/风格强度、文案的封面文案/话题标签策略、版权边界声明等），并在 daily-pipeline 中集成 C1 兼容矩阵过滤（先 filterCompatibleCombinations 再 buildRemixPlan）。C2 只依赖 C1（已完成）和现有 remix-engine/B5 exporters，不需要外部账号、密钥或公网访问，可在本地独立验收。DEVELOPMENT_PLAN.md 阶段 C 已明确"完整制作包：自动生成分镜/提示词/发布文案"。
+选择理由：C2 完整制作包和 C3 近似度检测已完成数据轨道，RemixPlan 已包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明、分镜景别/运镜/转场、封面文案、重复检测标记等制作所需字段，但 main.js 前端仍只展示原 prompt/storyboard/copywriting 字段，新字段未在 UI 呈现。C4 的目标是把创作工作台升级为三栏布局（左：素材库/筛选；中：方案预览含完整制作包字段；右：收藏/历史），让用户能直接看到制作包的全部字段（景别/运镜/转场列、封面文案、结构化提示词、版权边界声明）和 C3 重复检测的可视化标记，提升创作工作台的可读性和可用性。C4 只依赖已完成的 C2/C3 数据轨道和现有 main.js/style.css，不需要外部账号、密钥或公网访问，可在本地独立验收。DEVELOPMENT_PLAN.md 阶段 C 后续已隐含工作台升级需求，B5 已建立的导出与收藏升级为 C4 提供了布局基础。
 
 验收条件：
 
-- 扩展 RemixPlan 或新增 ProductionPackage 结构，补齐制作所需字段：分镜表（镜号/景别/运镜/时长/画面/动作/情绪/转场）、画面提示词（正向 + 负面 + 比例 + 风格强度）、发布文案（标题候选 + 描述 + 话题标签 + 封面文案）、版权边界声明；
-- 在 daily-pipeline 或 remix-engine 调用链中集成 C1 兼容矩阵：生成前调用 filterCompatibleCombinations 过滤低兼容组合（默认阈值 0.5），过滤后组合数减少且剩余组合兼容性得分 ≥ 阈值；
-- 新增至少 8 项单元测试覆盖：制作包 Schema 校验、分镜表字段完整性、提示词含正向/负面/比例、文案含封面文案和标签策略、版权边界声明存在、daily-pipeline 集成 C1 过滤后低兼容组合被剔除、过滤后剩余组合可成功生成完整制作包、确定性（同种子复现）；
-- 类型检查、全部测试、数据校验和生产构建通过。
+- 创作工作台升级为三栏布局（桌面端）：左栏素材库/筛选、中栏方案预览、右栏收藏/历史；移动端可降级为单栏或双栏；
+- 中栏方案预览展示 C2 完整制作包新字段：分镜表含景别/运镜/转场三列、封面文案、结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明三字段；
+- 保留现有功能：随机生成、复制方案、导出 Markdown/JSON、收藏到工作台、收藏列表展开/重新加载/单条导出/删除；
+- 类型检查、全部测试、数据校验和生产构建通过；
+- 桌面端 1440px 和移动端 375/640/768/1024px 响应式断点可用（CSS 媒体规则校验或浏览器回归）。
 
 ## 6. 已知限制与阻塞
 
