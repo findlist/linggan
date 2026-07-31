@@ -624,7 +624,8 @@ export const TaskRunLogSchema = z.object({
     'pipeline:daily',
     'export:trends',
     'export:candidates',
-    'sync:events'
+    'sync:events',
+    'update:weekly-weights'
   ]),
   started_at: z.iso.datetime({ offset: true }),
   finished_at: z.iso.datetime({ offset: true }),
@@ -719,3 +720,119 @@ export const EventQueueExportSchema = z
   .strict()
 
 export type EventQueueExport = z.infer<typeof EventQueueExportSchema>
+
+/* ----------------------- 偏好画像与个性化排序（D2b） ----------------------- */
+// 偏好画像按 session_id 聚合产品事件，结合候选 entities/source_trend/risk_level
+// 扩散到维度权重，供 personalized-rank 对候选列表重排。
+// 画像只描述"该 session 偏好什么"，不持久化到 SQLite；前端从 localStorage 事件队列
+// 实时聚合，后端测试可用模拟事件流验证。D3 排序权重周更新会基于画像聚合表。
+
+/** 画像维度：候选 entity / 来源趋势 / 风险等级 三类偏好权重 */
+export const PreferenceDimensionSchema = z
+  .record(z.string(), z.number().finite())
+  .superRefine((weights, ctx) => {
+    for (const key of Object.keys(weights)) {
+      if (key.trim() === '') {
+        ctx.addIssue({ code: 'custom', path: [key], message: 'dimension key must be non-empty' })
+      }
+    }
+  })
+
+/** 偏好画像：单一 session 的维度偏好权重快照 */
+export const PreferenceProfileSchema = z
+  .object({
+    schema_version: z.literal(1),
+    session_id: NonEmptyTextSchema,
+    model_version: z.literal(1),
+    built_at: z.iso.datetime({ offset: true }),
+    event_count: z.number().int().nonnegative(),
+    idea_scores: z.record(z.string(), z.number().finite()),
+    dimension_weights: z
+      .object({
+        entity: PreferenceDimensionSchema,
+        source_trend: PreferenceDimensionSchema,
+        risk_level: PreferenceDimensionSchema
+      })
+      .strict(),
+    top_ideas: z.array(NonEmptyTextSchema)
+  })
+  .strict()
+
+export type PreferenceProfile = z.infer<typeof PreferenceProfileSchema>
+
+/** 个性化排序原因：画像命中 / 探索保留 / 冷启动无画像 */
+export const RankReasonSchema = z.enum(['profiled', 'explore', 'cold'])
+
+/** 候选个性化排序结果：携带基础分、匹配分和最终个性化分 */
+export const RankedCandidateSchema = z
+  .object({
+    candidate_id: StableIdSchema,
+    personalized_score: ScoreValueSchema,
+    base_score: ScoreValueSchema,
+    match_score: ScoreValueSchema,
+    reason: RankReasonSchema
+  })
+  .strict()
+
+export type RankReason = z.infer<typeof RankReasonSchema>
+
+/* ----------------------- 排序权重周更新（D3） ----------------------- */
+// 周权重快照：每周从 product_events 按 ISO 周聚合全局事件，计算影响排序的权重参数
+// （base_ratio / match_ratio / explore_ratio / event_weights），生成可回滚、可解释的快照序列。
+// - 可回滚：保留 previous_week_id 链接，支持查询任意历史周快照；
+// - 可解释：记录 rule_version（算法版本）和 input_stats（输入事件统计）；
+// - 安全：单次变化不超过 10%（DEVELOPMENT_STANDARD.md 第 10 节），样本不足时保持原权重。
+
+/** ISO 周标识：格式 YYYY-Www，如 2026-W31 */
+export const WeekIdSchema = z
+  .string()
+  .regex(/^\d{4}-W(0[1-9]|[1-4]\d|5[0-3])$/u, 'week_id must be ISO 8601 week format like 2026-W31')
+
+/** 周权重输入统计：记录本周事件数、会话数、创意数和按事件类型分布，用于可解释性 */
+export const WeightInputStatsSchema = z
+  .object({
+    event_count: z.number().int().nonnegative(),
+    session_count: z.number().int().nonnegative(),
+    idea_count: z.number().int().nonnegative(),
+    by_type: z.record(z.string(), z.number().int().nonnegative()),
+  })
+  .strict()
+
+/** 周权重值：影响个性化排序的参数集合 */
+export const RankingWeightsSchema = z
+  .object({
+    base_ratio: z.number().min(0).max(1),
+    match_ratio: z.number().min(0).max(1),
+    explore_ratio: z.number().min(0).max(1),
+    event_weights: z.record(z.string(), z.number().finite()),
+  })
+  .strict()
+
+/** 周权重变化量：相对于上周的差值，用于审计和可解释性 */
+export const WeightChangesSchema = z
+  .object({
+    base_ratio: z.number().finite(),
+    match_ratio: z.number().finite(),
+    explore_ratio: z.number().finite(),
+    event_weights: z.record(z.string(), z.number().finite()),
+  })
+  .strict()
+
+/** 排序权重周快照：单周的权重值、变化量、规则版本和输入统计 */
+export const RankingWeightSnapshotSchema = z
+  .object({
+    schema_version: z.literal(1),
+    week_id: WeekIdSchema,
+    rule_version: z.literal(1),
+    computed_at: z.iso.datetime({ offset: true }),
+    previous_week_id: WeekIdSchema.nullable(),
+    input_stats: WeightInputStatsSchema,
+    weights: RankingWeightsSchema,
+    changes: WeightChangesSchema,
+  })
+  .strict()
+
+export type RankingWeightSnapshot = z.infer<typeof RankingWeightSnapshotSchema>
+export type RankingWeights = z.infer<typeof RankingWeightsSchema>
+export type WeightChanges = z.infer<typeof WeightChangesSchema>
+export type WeightInputStats = z.infer<typeof WeightInputStatsSchema>

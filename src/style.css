@@ -1322,6 +1322,28 @@ footer {
   color: var(--lime);
   font: 800 13px Manrope;
 }
+/* D2b 个性化排序徽章：已关注（画像命中）/ 探索（保留原顺序的未交互候选） */
+.feed-reason {
+  position: absolute;
+  right: 15px;
+  top: 38px;
+  border-radius: 99px;
+  padding: 3px 7px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border: 1px solid transparent;
+}
+.feed-reason-profiled {
+  color: var(--lime);
+  border-color: rgba(166, 255, 77, 0.35);
+  background: rgba(166, 255, 77, 0.08);
+}
+.feed-reason-explore {
+  color: #9ba3b2;
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.03);
+}
 .feed-empty {
   grid-column: 1/-1;
   display: flex;

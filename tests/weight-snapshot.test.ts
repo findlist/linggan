@@ -1,0 +1,274 @@
+import assert from 'node:assert/strict'
+import { test } from 'node:test'
+import { RankingWeightSnapshotSchema } from '../src/data/contracts.ts'
+import type { RankingWeightSnapshot } from '../src/data/contracts.ts'
+import {
+  buildWeeklyWeightSnapshot,
+  getIsoWeekId,
+  DEFAULT_WEIGHTS,
+  MIN_SAMPLE_SIZE,
+  MAX_CHANGE_RATIO,
+  type WeightEvent,
+} from '../src/analytics/weight-snapshot.ts'
+
+const FIXED_TIME = '2026-07-31T12:00:00.000Z'
+const WEEK_ID = '2026-W31'
+
+// 构造一个合法的权重事件，允许覆盖字段
+const buildEvent = (overrides: Partial<WeightEvent> = {}): WeightEvent => ({
+  event_type: 'idea_impression',
+  idea_id: 'idea_001',
+  session_id: 'sess_001',
+  occurred_at: FIXED_TIME,
+  ...overrides,
+})
+
+// 构造充足样本（>= MIN_SAMPLE_SIZE）的事件流，默认 10 个 idea 分布在 5 个 session
+const buildSufficientEvents = (count = MIN_SAMPLE_SIZE + 10): WeightEvent[] =>
+  Array.from({ length: count }, (_, i) =>
+    buildEvent({
+      event_type: 'idea_impression',
+      idea_id: `idea_${i % 10}`,
+      session_id: `sess_${i % 5}`,
+    }),
+  )
+
+// 构造一个合法的上周快照，允许覆盖 weights
+const buildPreviousSnapshot = (overrides: Partial<RankingWeightSnapshot> = {}): RankingWeightSnapshot => ({
+  schema_version: 1,
+  week_id: '2026-W30',
+  rule_version: 1,
+  computed_at: '2026-07-24T12:00:00.000Z',
+  previous_week_id: null,
+  input_stats: {
+    event_count: 100,
+    session_count: 10,
+    idea_count: 20,
+    by_type: { idea_impression: 60, idea_opened: 20, idea_saved: 10, prompt_copied: 5, idea_exported: 5 },
+  },
+  weights: { ...DEFAULT_WEIGHTS },
+  changes: { base_ratio: 0, match_ratio: 0, explore_ratio: 0, event_weights: {} },
+  ...overrides,
+})
+
+/* ----------------------- getIsoWeekId ----------------------- */
+
+test('getIsoWeekId 返回 ISO 8601 周标识格式 YYYY-Www', () => {
+  // 2026-07-31 是周四，属于 2026-W31
+  const weekId = getIsoWeekId(new Date('2026-07-31T12:00:00.000Z'))
+  assert.match(weekId, /^\d{4}-W\d{2}$/u)
+  assert.equal(weekId, '2026-W31')
+})
+
+test('getIsoWeekId 周一和周日属于同一 ISO 周', () => {
+  // 2026-W31: 周一 2026-07-27 ~ 周日 2026-08-02
+  assert.equal(getIsoWeekId(new Date('2026-07-27T00:00:00.000Z')), '2026-W31')
+  assert.equal(getIsoWeekId(new Date('2026-08-02T23:59:59.000Z')), '2026-W31')
+})
+
+test('getIsoWeekId 跨年时归属正确的 ISO 周', () => {
+  // 2025-12-29 周一属于 2026-W01（ISO 周第一周包含该年第一个周四）
+  assert.equal(getIsoWeekId(new Date('2025-12-29T00:00:00.000Z')), '2026-W01')
+})
+
+/* ----------------------- DEFAULT_WEIGHTS ----------------------- */
+
+test('DEFAULT_WEIGHTS 与 personalized-rank 默认值一致', () => {
+  assert.equal(DEFAULT_WEIGHTS.base_ratio, 0.6)
+  assert.equal(DEFAULT_WEIGHTS.match_ratio, 0.4)
+  assert.equal(DEFAULT_WEIGHTS.explore_ratio, 0.15)
+  // 9 类事件权重全覆盖
+  assert.equal(Object.keys(DEFAULT_WEIGHTS.event_weights).length, 9)
+  assert.equal(DEFAULT_WEIGHTS.event_weights.idea_saved, 5)
+  assert.equal(DEFAULT_WEIGHTS.event_weights.idea_hidden, -3)
+})
+
+/* ----------------------- 首次运行 ----------------------- */
+
+test('首次运行（previous=null）使用 DEFAULT_WEIGHTS 作为基准', () => {
+  const events = buildSufficientEvents()
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, null, FIXED_TIME)
+  assert.equal(snapshot.previous_week_id, null)
+  assert.equal(snapshot.week_id, WEEK_ID)
+  // 首次运行时 weights 可能因调整而变化，但基准是 DEFAULT_WEIGHTS
+  assert.equal(snapshot.rule_version, 1)
+})
+
+/* ----------------------- 样本不足 ----------------------- */
+
+test('样本不足（< MIN_SAMPLE_SIZE）时保持原权重，changes 全 0', () => {
+  const previous = buildPreviousSnapshot()
+  const insufficientEvents = Array.from({ length: MIN_SAMPLE_SIZE - 1 }, (_, i) => buildEvent({ idea_id: `idea_${i}` }))
+  const snapshot = buildWeeklyWeightSnapshot(insufficientEvents, WEEK_ID, previous, FIXED_TIME)
+  assert.equal(snapshot.input_stats.event_count, MIN_SAMPLE_SIZE - 1)
+  assert.equal(snapshot.changes.base_ratio, 0)
+  assert.equal(snapshot.changes.match_ratio, 0)
+  assert.equal(snapshot.changes.explore_ratio, 0)
+  // weights 与 previous 一致
+  assert.deepEqual(snapshot.weights, previous.weights)
+})
+
+test('空事件流时样本不足降级，保持原权重', () => {
+  const previous = buildPreviousSnapshot()
+  const snapshot = buildWeeklyWeightSnapshot([], WEEK_ID, previous, FIXED_TIME)
+  assert.equal(snapshot.input_stats.event_count, 0)
+  assert.equal(snapshot.input_stats.session_count, 0)
+  assert.equal(snapshot.input_stats.idea_count, 0)
+  assert.deepEqual(snapshot.changes, { base_ratio: 0, match_ratio: 0, explore_ratio: 0, event_weights: {} })
+  assert.deepEqual(snapshot.weights, previous.weights)
+})
+
+test('样本不足时 previous_week_id 仍正确链接上周', () => {
+  const previous = buildPreviousSnapshot()
+  const snapshot = buildWeeklyWeightSnapshot([], WEEK_ID, previous, FIXED_TIME)
+  assert.equal(snapshot.previous_week_id, '2026-W30')
+})
+
+/* ----------------------- 单次变化不超过 10% ----------------------- */
+
+test('单次权重变化不超过 MAX_CHANGE_RATIO（10%）', () => {
+  const previous = buildPreviousSnapshot({
+    weights: { ...DEFAULT_WEIGHTS, base_ratio: 0.5, match_ratio: 0.5, explore_ratio: 0.2 },
+  })
+  // 构造极端正向交互率事件流，试图让 base_ratio 大幅增加
+  const events = Array.from({ length: 100 }, (_, i) =>
+    buildEvent({
+      event_type: 'idea_saved',
+      idea_id: `idea_${i % 3}`, // 低多样性，只有 3 个 idea
+      session_id: `sess_${i % 2}`,
+    }),
+  )
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, previous, FIXED_TIME)
+  // base_ratio 变化量绝对值不超过 0.5 * 0.1 = 0.05
+  const maxChange = 0.5 * MAX_CHANGE_RATIO
+  assert.ok(Math.abs(snapshot.changes.base_ratio) <= maxChange + 1e-9)
+  assert.ok(Math.abs(snapshot.changes.match_ratio) <= maxChange + 1e-9)
+  // explore_ratio 基准 0.2，最大变化 0.02
+  const exploreMaxChange = 0.2 * MAX_CHANGE_RATIO
+  assert.ok(Math.abs(snapshot.changes.explore_ratio) <= exploreMaxChange + 1e-9)
+})
+
+test('连续多周更新权重逐步收敛不发散', () => {
+  // 模拟 4 周持续高正向交互，验证 base_ratio 每周最多增 10%，不会跳变
+  let previous: RankingWeightSnapshot | null = null
+  const events = Array.from({ length: 100 }, (_, i) =>
+    buildEvent({
+      event_type: 'idea_saved',
+      idea_id: `idea_${i % 5}`,
+      session_id: `sess_${i % 3}`,
+    }),
+  )
+  for (let week = 1; week <= 4; week++) {
+    const weekId = `2026-W${String(30 + week).padStart(2, '0')}`
+    const snapshot = buildWeeklyWeightSnapshot(events, weekId, previous, FIXED_TIME)
+    if (previous) {
+      const maxChange: number = previous.weights.base_ratio * MAX_CHANGE_RATIO
+      assert.ok(Math.abs(snapshot.changes.base_ratio) <= maxChange + 1e-9)
+    }
+    previous = snapshot
+  }
+  // 4 周后 base_ratio 应该有所增加（持续高正向），但不超过 0.6 * (1.1)^4 ≈ 0.878
+  if (!previous) throw new Error('previous should not be null after 4 weeks')
+  assert.ok(previous.weights.base_ratio > DEFAULT_WEIGHTS.base_ratio)
+  assert.ok(previous.weights.base_ratio <= 0.88)
+})
+
+/* ----------------------- 权重调整方向 ----------------------- */
+
+test('正向交互率高（>30%）时 base_ratio 增、match_ratio 减', () => {
+  const previous = buildPreviousSnapshot()
+  // 60 事件中 30 个 saved（50% 正向交互率 > 30%）
+  const events = [
+    ...Array.from({ length: 30 }, () => buildEvent({ event_type: 'idea_saved', idea_id: 'idea_a' })),
+    ...Array.from({ length: 30 }, () => buildEvent({ event_type: 'idea_impression', idea_id: 'idea_b' })),
+  ]
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, previous, FIXED_TIME)
+  assert.ok(snapshot.changes.base_ratio > 0, 'base_ratio should increase when positive rate is high')
+  assert.ok(snapshot.changes.match_ratio < 0, 'match_ratio should decrease (complement of base_ratio)')
+})
+
+test('正向交互率低（<10%）时 match_ratio 增、base_ratio 减', () => {
+  const previous = buildPreviousSnapshot()
+  // 60 事件中只有 3 个 saved（5% 正向交互率 < 10%）
+  const events = [
+    ...Array.from({ length: 3 }, () => buildEvent({ event_type: 'idea_saved', idea_id: 'idea_a' })),
+    ...Array.from({ length: 57 }, () => buildEvent({ event_type: 'idea_impression', idea_id: 'idea_b' })),
+  ]
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, previous, FIXED_TIME)
+  assert.ok(snapshot.changes.match_ratio > 0, 'match_ratio should increase when positive rate is low')
+  assert.ok(snapshot.changes.base_ratio < 0, 'base_ratio should decrease (complement of match_ratio)')
+})
+
+test('idea 多样性低（<0.3）时 explore_ratio 增', () => {
+  const previous = buildPreviousSnapshot()
+  // 60 事件但只有 10 个不同 idea，diversity = 10/60 ≈ 0.167 < 0.3
+  const events = Array.from({ length: 60 }, (_, i) =>
+    buildEvent({
+      event_type: 'idea_impression',
+      idea_id: `idea_${i % 10}`,
+    }),
+  )
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, previous, FIXED_TIME)
+  assert.ok(snapshot.changes.explore_ratio > 0, 'explore_ratio should increase when diversity is low')
+})
+
+test('idea 多样性高（>0.6）时 explore_ratio 减', () => {
+  const previous = buildPreviousSnapshot()
+  // 60 事件有 50 个不同 idea，diversity = 50/60 ≈ 0.83 > 0.6
+  const events = Array.from({ length: 60 }, (_, i) =>
+    buildEvent({
+      event_type: 'idea_impression',
+      idea_id: `idea_${i % 50}`,
+    }),
+  )
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, previous, FIXED_TIME)
+  assert.ok(snapshot.changes.explore_ratio < 0, 'explore_ratio should decrease when diversity is high')
+})
+
+/* ----------------------- 可解释性 ----------------------- */
+
+test('input_stats 正确统计事件数、会话数、创意数和按类型分布', () => {
+  const events = [
+    buildEvent({ event_type: 'idea_saved', idea_id: 'idea_1', session_id: 'sess_a' }),
+    buildEvent({ event_type: 'idea_saved', idea_id: 'idea_2', session_id: 'sess_a' }),
+    buildEvent({ event_type: 'idea_opened', idea_id: 'idea_1', session_id: 'sess_b' }),
+    buildEvent({ event_type: 'idea_impression', idea_id: null, session_id: 'sess_b' }),
+  ]
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, null, FIXED_TIME)
+  assert.equal(snapshot.input_stats.event_count, 4)
+  assert.equal(snapshot.input_stats.session_count, 2)
+  assert.equal(snapshot.input_stats.idea_count, 2) // idea_1, idea_2（null 不计入）
+  assert.equal(snapshot.input_stats.by_type.idea_saved, 2)
+  assert.equal(snapshot.input_stats.by_type.idea_opened, 1)
+  assert.equal(snapshot.input_stats.by_type.idea_impression, 1)
+})
+
+test('null idea_id 事件不计入 idea_count 但计入 event_count', () => {
+  const events = [
+    buildEvent({ event_type: 'risk_reported', idea_id: null, session_id: 'sess_a' }),
+    buildEvent({ event_type: 'idea_impression', idea_id: 'idea_1', session_id: 'sess_a' }),
+  ]
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, null, FIXED_TIME)
+  assert.equal(snapshot.input_stats.event_count, 2)
+  assert.equal(snapshot.input_stats.idea_count, 1)
+  assert.equal(snapshot.input_stats.by_type.risk_reported, 1)
+})
+
+/* ----------------------- Schema 校验 ----------------------- */
+
+test('快照通过 RankingWeightSnapshotSchema 严格校验', () => {
+  const events = buildSufficientEvents()
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, null, FIXED_TIME)
+  const result = RankingWeightSnapshotSchema.safeParse(snapshot)
+  assert.equal(result.success, true)
+})
+
+test('WeekIdSchema 拒绝非法周标识格式', () => {
+  const events = buildSufficientEvents()
+  // 直接构造非法 week_id 的快照对象，验证 Schema 拒绝
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, null, FIXED_TIME)
+  const badSnapshot = { ...snapshot, week_id: '2026-W99' }
+  assert.equal(RankingWeightSnapshotSchema.safeParse(badSnapshot).success, false)
+  const badSnapshot2 = { ...snapshot, week_id: '2026-31' }
+  assert.equal(RankingWeightSnapshotSchema.safeParse(badSnapshot2).success, false)
+})

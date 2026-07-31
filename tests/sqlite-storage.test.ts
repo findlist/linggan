@@ -73,6 +73,7 @@ test('database migrations initialize all baseline tables and are idempotent', as
       { version: 1, name: 'initial' },
       { version: 2, name: 'candidate_state_machine' },
       { version: 3, name: 'product_events' },
+      { version: 4, name: 'ranking_weight_snapshots' },
     ])
     const tables = (
       database
@@ -93,6 +94,7 @@ test('database migrations initialize all baseline tables and are idempotent', as
       'collection_items',
       'candidates',
       'product_events',
+      'ranking_weight_snapshots',
     ])
       assert.equal(tables.includes(name), true, `missing table ${name}`)
   })
