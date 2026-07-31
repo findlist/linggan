@@ -1,6 +1,8 @@
 import knowledge from '../data/knowledge-base.json'
 import { buildRemixPlan } from './generation/remix-engine.ts'
 import { buildRemixFileName, buildRemixJson, buildRemixMarkdown } from './generation/exporters.ts'
+// C4：引入 C3 近似度检测，在前端把当前方案与已收藏方案对比，标记换皮创意
+import { detectDuplicates } from './generation/similarity.ts'
 import { createDetailView } from './detail-view.js'
 import './radar.css'
 
@@ -223,6 +225,7 @@ app.innerHTML = `
           <div class="duration"><span>时长</span><button type="button" data-duration="15">15s</button><button type="button" class="active" data-duration="30">30s</button><button type="button" data-duration="60">60s</button></div>
           <button class="btn primary generate-remix" type="submit">${icon('sparkles', 18)} 生成混搭方案</button>
         </form>
+        <article class="preview-card" id="preview-card" aria-live="polite"></article>
         <article class="result-card" id="result-card" aria-live="polite"></article>
       </div>
     </section>
@@ -274,6 +277,35 @@ const updateHints = () => {
 
 const personalityLabels = { cold: '冷酷型', hot: '热血型', cunning: '腹黑型', gentle: '温柔型' }
 const hookCategoryLabels = { suspense: '悬念', contrast: '反差', question: '提问', action: '行动' }
+// C2 分镜新字段的中文标签：景别 / 运镜 / 转场，用于右栏完整制作包展示
+const shotTypeLabels = { extreme_close_up: '大特写', close_up: '特写', medium: '中景', full: '全景', wide: '远景' }
+const cameraMovementLabels = { fixed: '固定', push: '推', pull: '拉', pan: '摇', tilt: '俯仰', tracking: '跟拍' }
+const transitionLabels = { cut: '切', dissolve: '溶', fade: '淡变', match_cut: '匹配剪辑' }
+
+/**
+ * C3 近似度检测：把当前生成的 plan 与已收藏 plans 合并后调用 detectDuplicates，
+ * 找出当前 plan 是否与某个已收藏方案相似度超过阈值（默认 0.7），用于在前端标记换皮创意。
+ * 返回 { isDuplicate, maxSimilarity, similarTitle } 供中栏预览展示警告。
+ */
+const checkDuplicateAgainstSaved = (plan) => {
+  // 排除与当前 plan 相同 id 的已收藏方案，避免收藏后自比导致相似度恒为 1
+  const savedPlans = saved.filter(item => item.plan && item.plan.id !== plan.id).map(item => item.plan)
+  if (savedPlans.length === 0) return { isDuplicate: false, maxSimilarity: 0, similarTitle: null }
+  // 把当前 plan 放在数组末尾，检测时能拿到它与其他方案的相似度
+  const detection = detectDuplicates([...savedPlans, plan])
+  const currentFlag = detection.flags[detection.flags.length - 1]
+  if (!currentFlag || !currentFlag.is_duplicate) {
+    return { isDuplicate: false, maxSimilarity: currentFlag?.max_similarity ?? 0, similarTitle: null }
+  }
+  // 找出最相似的已收藏方案标题，用于提示用户
+  const similarId = currentFlag.similar_to[0]
+  const similarSaved = saved.find(item => item.plan?.id === similarId)
+  return {
+    isDuplicate: true,
+    maxSimilarity: currentFlag.max_similarity,
+    similarTitle: similarSaved?.title ?? '已收藏方案'
+  }
+}
 
 const buildRemix = () => {
   const a = characterById.get(document.querySelector('#character-a').value)
@@ -298,21 +330,20 @@ const buildRemix = () => {
 
 const renderResult = result => {
   const { plan } = result
+  renderPreview(result)
   const card = document.querySelector('#result-card')
+  // C2 完整制作包：分镜表含景别/运镜/转场，结构化提示词，版权边界三字段
   card.innerHTML = `
-    <div class="result-top"><span class="result-label">生成完成 · ${plan.duration}s · ${hookCategoryLabels[plan.hookCategory]}钩子</span><span class="risk-badge">REFERENCE ONLY</span></div>
-    <h3>${escapeHtml(plan.title)}</h3><p class="concept">${escapeHtml(plan.concept)}</p>
-    <div class="hook"><span>前三秒钩子</span><b>${escapeHtml(plan.hook)}</b></div>
-    <div class="result-tags"><span>${icon('shield', 13)} ${escapeHtml(result.a.name)}：${personalityLabels[plan.personalityA]}</span><span>${escapeHtml(result.b.name)}：${personalityLabels[plan.personalityB]}</span></div>
-    <div class="beat-list storyboard-list">${plan.storyboard.map(shot => `<div class="shot"><span>${String(shot.index).padStart(2, '0')} · ${shot.duration}s</span><p class="shot-visual">${escapeHtml(shot.visual)}</p><small>动作：${escapeHtml(shot.action)} · 情绪：${escapeHtml(shot.emotion)}</small></div>`).join('')}</div>
+    <div class="result-top"><span class="result-label">完整制作包 · ${plan.duration}s · ${hookCategoryLabels[plan.hookCategory]}钩子</span></div>
+    <div class="storyboard-section">
+      <h4>分镜表（${plan.storyboard.length} 镜头）</h4>
+      <div class="beat-list storyboard-list">${plan.storyboard.map(shot => `<div class="shot"><div class="shot-head"><span>#${String(shot.index).padStart(2, '0')} · ${shot.duration}s</span><small>${shotTypeLabels[shot.shot_type]} · ${cameraMovementLabels[shot.camera_movement]} · 转${transitionLabels[shot.transition]}</small></div><p class="shot-visual">${escapeHtml(shot.visual)}</p><small>动作：${escapeHtml(shot.action)} · 情绪：${escapeHtml(shot.emotion)}</small></div>`).join('')}</div>
+    </div>
     <div class="dialogues"><div><span>${escapeHtml(result.a.name)} · 原创改写</span><p>${escapeHtml(plan.dialogueA)}</p></div><div><span>${escapeHtml(result.b.name)} · 原创改写</span><p>${escapeHtml(plan.dialogueB)}</p></div></div>
-    <details class="copywriting-block"><summary>发布文案候选（3 标题 · 描述 · 标签）</summary><div class="copy-titles"><span>标题候选</span><ul>${plan.copywriting.titles.map(title => `<li>${escapeHtml(title)}</li>`).join('')}</ul></div><p class="copy-desc">${escapeHtml(plan.copywriting.description)}</p><div class="copy-tags">${plan.copywriting.hashtags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div></details>
-    <details><summary>画面提示词与版权边界</summary><p>${escapeHtml(plan.prompt)}</p><small>${icon('shield', 14)} 参考角色和名场面不包含精确复刻素材；商业发布前需替换为原创或已授权资产。</small></details>
-    <div class="result-actions"><button class="btn ghost copy-result">${icon('copy', 16)} 复制方案</button><button class="btn ghost export-md">${icon('arrow', 16)} 导出 Markdown</button><button class="btn ghost export-json">${icon('database', 16)} 导出 JSON</button><button class="btn primary save-result">${icon('bookmark', 16)} 收藏混搭</button></div>`
-  card.querySelector('.copy-result').addEventListener('click', async () => {
-    await navigator.clipboard?.writeText(card.innerText)
-    toast('方案已复制')
-  })
+    <details class="copywriting-block"><summary>发布文案（3 标题 · 描述 · 标签 · 封面文案）</summary><div class="copy-titles"><span>标题候选</span><ul>${plan.copywriting.titles.map(title => `<li>${escapeHtml(title)}</li>`).join('')}</ul></div><p class="copy-desc">${escapeHtml(plan.copywriting.description)}</p><div class="copy-tags">${plan.copywriting.hashtags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div><div class="cover-copy-row"><span>封面文案</span><b>${escapeHtml(plan.copywriting.cover_copy)}</b></div></details>
+    <details class="prompt-block"><summary>结构化画面提示词</summary><div class="prompt-grid"><div><span>正向提示词</span><p>${escapeHtml(plan.production.prompts.positive)}</p></div><div><span>负面提示词</span><p>${escapeHtml(plan.production.prompts.negative)}</p></div><div class="prompt-meta"><span>比例</span><b>${escapeHtml(plan.production.prompts.aspect_ratio)}</b><span>风格强度</span><b>${(plan.production.prompts.style_strength * 100).toFixed(0)}%</b></div></div></details>
+    <details class="copyright-block"><summary>版权边界声明</summary><div class="copyright-grid"><div><span>参考状态</span><p>${escapeHtml(plan.production.copyright_boundary.reference_status)}</p></div><div><span>商用限制</span><p>${escapeHtml(plan.production.copyright_boundary.commercial_use)}</p></div><div><span>改写范围</span><p>${escapeHtml(plan.production.copyright_boundary.rewrite_scope)}</p></div></div></details>
+    <div class="result-actions"><button class="btn ghost export-md">${icon('arrow', 16)} 导出 Markdown</button><button class="btn ghost export-json">${icon('database', 16)} 导出 JSON</button></div>`
   // 导出 Markdown：人类可读，含完整字段和版权边界
   card.querySelector('.export-md').addEventListener('click', () => {
     try {
@@ -331,7 +362,33 @@ const renderResult = result => {
       toast('导出失败：' + (error?.message ?? error))
     }
   })
-  card.querySelector('.save-result').addEventListener('click', () => {
+}
+
+// 中栏预览：核心信息 + C3 重复标记 + 快速操作（复制/收藏）
+const renderPreview = result => {
+  const { plan } = result
+  const preview = document.querySelector('#preview-card')
+  // C3 近似度检测：与已收藏方案对比，标记换皮创意（排除自身 id 避免收藏后自比）
+  const dup = checkDuplicateAgainstSaved(plan)
+  const dupBanner = dup.isDuplicate
+    ? `<div class="dup-warning">${icon('shield', 14)}<span>近似度 ${(dup.maxSimilarity * 100).toFixed(0)}% · 与《${escapeHtml(dup.similarTitle)}》高度相似，可能是换皮创意</span></div>`
+    : dup.maxSimilarity > 0
+      ? `<div class="dup-info">${icon('check', 14)}<span>与已收藏方案最大相似度 ${(dup.maxSimilarity * 100).toFixed(0)}%，未达换皮阈值</span></div>`
+      : ''
+  preview.innerHTML = `
+    <div class="preview-top"><span class="preview-label">核心预览</span><span class="risk-badge">REFERENCE ONLY</span></div>
+    <h3>${escapeHtml(plan.title)}</h3>
+    <p class="concept">${escapeHtml(plan.concept)}</p>
+    <div class="hook"><span>前三秒钩子</span><b>${escapeHtml(plan.hook)}</b></div>
+    <div class="cover-copy"><span>封面文案</span><b>${escapeHtml(plan.copywriting.cover_copy)}</b></div>
+    <div class="preview-tags"><span>${plan.duration}s</span><span>${hookCategoryLabels[plan.hookCategory]}钩子</span><span>${personalityLabels[plan.personalityA]} × ${personalityLabels[plan.personalityB]}</span><span>${plan.storyboard.length} 镜头</span></div>
+    ${dupBanner}
+    <div class="preview-actions"><button class="btn ghost copy-result">${icon('copy', 16)} 复制</button><button class="btn primary save-result">${icon('bookmark', 16)} 收藏</button></div>`
+  preview.querySelector('.copy-result').addEventListener('click', async () => {
+    await navigator.clipboard?.writeText(preview.innerText)
+    toast('方案已复制')
+  })
+  preview.querySelector('.save-result').addEventListener('click', () => {
     // 收藏保存完整方案和上下文，支持后续展开、重新加载和单条导出；按 plan.id 去重
     if (!saved.some(item => item.id === plan.id)) {
       saved.unshift({
@@ -351,6 +408,8 @@ const renderResult = result => {
     saved = saved.slice(0, 8)
     localStorage.setItem('linggan-saved-remixes', JSON.stringify(saved))
     renderSaved()
+    // 收藏后重新渲染预览，更新 C3 标记状态
+    renderPreview(result)
     toast('已收藏到工作台')
   })
 }

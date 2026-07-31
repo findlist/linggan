@@ -1,9 +1,72 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：C3 近似度检测轮
-当前阶段：Phase 2 进行中（C1、C2、C3、C8 已完成，剩余 C4—C7）
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；尚无自动发布闭环
+当前轮次：C4 工作台三栏布局轮
+当前阶段：Phase 2 进行中（C1、C2、C3、C4、C8 已完成，剩余 C5—C7）
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；C4 创作工作台已升级为三栏布局（左素材选择/中核心预览/右完整制作包），中栏预览展示标题/钩子/封面文案/C3 重复检测标记/复制收藏快捷操作，右栏展示完整分镜表（含景别/运镜/转场中文标签）、结构化画面提示词（正向/负面/比例/风格强度）、版权边界三字段声明和导出按钮，前端集成 detectDuplicates 把当前方案与已收藏方案对比并在相似度≥0.7 时显示换皮警告，桌面端三栏在 ≤980px 堆叠为单栏；尚无自动发布闭环
+
+### C4 工作台三栏布局轮 — 2026-07-31
+
+本轮目标：将跨作品混搭工作台从两栏（表单+结果）升级为三栏（左素材/中预览/右结果），让前端直接消费 C2 完整制作包新字段（景别/运镜/转场、封面文案、结构化提示词、版权边界）和 C3 重复检测结果，提升创作工作台的可读性和可用性。对应 DEVELOPMENT_DIRECTION.md 阶段 C"创作工作台三栏布局升级"。
+
+完成：
+
+- 修改 `src/main.js` 把 `.remix-workspace` 从两栏改为三栏，新增中栏 `#preview-card`：
+  - HTML 模板在 `#remix-form` 和 `#result-card` 之间插入 `<article class="preview-card" id="preview-card">`；
+  - 拆分原 `renderResult` 为 `renderPreview`（中栏核心预览）和 `renderResult`（右栏完整制作包），`renderResult` 内部调用 `renderPreview` 保证两栏同步；
+- 中栏预览（`renderPreview`）展示核心信息：
+  - 标题、概念、前三秒钩子、封面文案（C2 新字段）；
+  - 标签行：时长、钩子类别、性格对、镜头数；
+  - C3 重复检测标记：调用 `checkDuplicateAgainstSaved(plan)` 把当前 plan 与已收藏 plans 对比，相似度 ≥0.7 显示红色 `.dup-warning`（含近似度百分比和相似方案标题），0<相似度<0.7 显示绿色 `.dup-info`，无收藏时不显示；
+  - 快速操作：复制（复制预览文本）、收藏（保存完整 plan+context，收藏后重新渲染预览以更新 C3 标记）；
+- 右栏完整制作包（`renderResult`）扩展 C2 新字段：
+  - 分镜表每个镜头增加 `.shot-head` 显示景别/运镜/转场中文标签（如"特写 · 推 · 转切"），通过 `shotTypeLabels`/`cameraMovementLabels`/`transitionLabels` 映射；
+  - 发布文案区增加封面文案行 `.cover-copy-row`；
+  - 新增"结构化画面提示词"折叠区 `.prompt-block`，展示正向/负面提示词、比例（9:16）、风格强度（百分比）；
+  - 新增"版权边界声明"折叠区 `.copyright-block`，展示参考状态/商用限制/改写范围三字段；
+  - 导出操作保留 Markdown/JSON 按钮；
+- 新增 `checkDuplicateAgainstSaved(plan)` 辅助函数：
+  - 从 `saved` 收藏列表提取 plans（排除与当前 plan 相同 id 的方案，避免收藏后自比）；
+  - 调用 `detectDuplicates([...savedPlans, plan])`，取当前 plan（数组末尾）的 flag；
+  - 返回 `{ isDuplicate, maxSimilarity, similarTitle }` 供预览展示；
+- 修改 `src/style.css`：
+  - `.remix-workspace` grid-template-columns 从 `.82fr 1.18fr`（两栏）改为 `.72fr 1fr 1.12fr`（三栏）；
+  - `.preview-card` 加入 `.composer,.result-card` 共同样式（边框/圆角/背景/阴影）；
+  - 新增 `.preview-card` 独立样式（sticky top:92px、flex 列布局、min-height:520px、渐变背景）；
+  - 新增 `.preview-top`/`.preview-label`/`.preview-tags`/`.preview-actions`/`.cover-copy`/`.cover-copy-row` 样式；
+  - 新增 `.dup-warning`（红色警告）/`.dup-info`（绿色提示）样式，用颜色+图标区分状态，不仅靠颜色（符合无障碍规范）；
+  - 新增 `.shot-head`/`.storyboard-section h4`/`.prompt-block`/`.prompt-grid`/`.prompt-meta`/`.copyright-block`/`.copyright-grid` 样式；
+  - 响应式：`@media(max-width:980px)` 下 `.remix-workspace` 改为 `1fr` 单栏，`.preview-card` 和 `.result-card` 取消 sticky 和 min-height；`@media(max-width:640px)` 下 `.preview-actions` 也改为纵向排列；
+- import `detectDuplicates` from `./generation/similarity.ts`，Vite 构建时 `import type` 被擦除，无运行时循环依赖。
+
+验证：
+
+- `npm run typecheck`：通过；
+- `npm run validate:data`：通过，5 份 JSON 有效，跨文件外键校验通过；
+- `npm test`：通过，169/169（C4 为前端改造，未新增单元测试，原有 169 项不变）；
+- `npm run build`：通过，11 modules transformed（从 10 增至 11，新增 similarity.ts 模块），CSS 29.46 kB（+3.11 kB）、JS 82.92 kB（+4.81 kB）；
+- 浏览器验证（browser_evaluate DOM 检查）：
+  - 桌面端 1440px：`.remix-workspace` gridTemplateColumns 为三列（237px/325px/364px），`#remix-form`/`#preview-card`/`#result-card` 三栏均存在；中栏预览含标题/钩子/封面文案/标签/复制收藏按钮；右栏含 5 个 `.shot-head`（景别/运镜/转场）、结构化提示词区、版权边界区、导出按钮；
+  - 生成交互：提交表单后 previewTitle 非空、resultStoryboardCount=5（30s 时长）、hasExportMd=true；
+  - C3 重复检测：收藏后再次生成，`.dup-warning` 显示"近似度 72% · 与《...》高度相似，可能是换皮创意"，C3 在前端真实生效；
+  - 响应式：CSS 文件中存在 `@media(max-width:980px){.remix-workspace{grid-template-columns:1fr}}` 规则（browser 工具读取 cssRules 受 Vite 样式注入限制，但规则确实存在）；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 三栏比例 `.72fr 1fr 1.12fr`：左栏表单较窄（选择器+按钮），中栏预览适中，右栏完整制作包最宽（分镜表+折叠区需要空间）；桌面端 1440px 下实测 237/325/364px，三栏均可用；
+- 中栏预览 sticky top:92px：与左栏 composer 同高度 sticky，滚动时三栏保持视口内可见，但右栏 result-card 不 sticky（内容较长，sticky 会遮挡）；
+- C3 在前端的应用场景：把当前生成的 plan 与已收藏 plans 对比，而非与历史生成对比。因为前端单次生成一个 plan，与已收藏方案对比能直接提示用户"这个新方案和你之前收藏的方案太像了"，是最有用户价值的重复检测场景；
+- 排除自身 id：`checkDuplicateAgainstSaved` 过滤 `item.plan.id === plan.id` 的已收藏方案，避免收藏后不重新生成直接检测时自比导致相似度恒为 1；
+- 收藏后重新渲染预览：`renderPreview` 的收藏按钮点击后调用 `renderPreview(result)` 重新渲染，更新 C3 标记状态（收藏后该 plan 已在 saved 中，后续生成的新 plan 会与它对比）；
+- 复制和收藏移到中栏，导出留在右栏：复制和收藏是高频快速操作放中栏预览，导出是低频操作放右栏完整制作包，操作分层符合用户流；
+- C2 新字段中文标签：景别/运镜/转场用中文标签（如"特写 · 推 · 转切"）而非英文枚举值，提升可读性；提示词和版权边界保留原文（这些字段本身就是中文描述）；
+- 移动端单栏堆叠：≤980px 三栏堆叠为单栏，composer→preview-card→result-card 顺序符合移动端从选择到预览到详情的自然流；preview-card 和 result-card 取消 sticky 和 min-height 避免移动端空白；
+- 本轮未拆分 main.js 为模块：C6 前端模块化是独立任务，C4 聚焦布局和字段展示，在现有 main.js 内增量改造；
+- 浏览器验证未产出截图：browser_use 截图工具因标签页可见性限制未产出截图文件，但 DOM 检查和交互验证通过 browser_evaluate 全部 PASS；
+- 环境注意：本机默认 node 为 v14，需用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；通过 `cmd /d /c "set PATH=D:\development\nodejs;%PATH% && ..."` 解决；PowerShell 不支持 `&&`，需用 `cmd /d /c` 包装或 `;` 分隔。
+
+下一轮：Phase 2 剩余 C5—C7。首选 C5 多维筛选升级，在素材库和工作台增加按类型/情绪/版权/时长等多维度组合筛选，验收条件为 3 种以上筛选维度，对应 DEVELOPMENT_DIRECTION.md 阶段 C"筛选与搜索升级（多维度组合）"。
 
 ### C3 近似度检测轮 — 2026-07-31
 
