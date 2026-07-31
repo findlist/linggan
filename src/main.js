@@ -1,5 +1,6 @@
 import knowledge from '../data/knowledge-base.json'
 import { buildRemixPlan } from './generation/remix-engine.ts'
+import { buildRemixFileName, buildRemixJson, buildRemixMarkdown } from './generation/exporters.ts'
 import { createDetailView } from './detail-view.js'
 import './radar.css'
 
@@ -86,6 +87,19 @@ const workById = new Map(knowledge.works.map(work => [work.id, work]))
 const characterById = new Map(knowledge.known_characters.map(character => [character.id, character]))
 const mediaNames = { television: '电视剧', anime: '动漫', film: '电影', game: '游戏', variety: '综艺' }
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char])
+
+// 触发浏览器下载文本文件：用 Blob + 临时 a 标签 + URL.revokeObjectURL 释放
+const downloadText = (filename, content, mime) => {
+  const blob = new Blob([content], { type: mime })
+  const url = URL.createObjectURL(blob)
+  const anchor = document.createElement('a')
+  anchor.href = url
+  anchor.download = filename
+  document.body.appendChild(anchor)
+  anchor.click()
+  document.body.removeChild(anchor)
+  URL.revokeObjectURL(url)
+}
 
 const radarChannels = [
   { name: '公开热点', detail: '热搜、赛事与文化事件', state: '每 6 小时', tone: 'pink' },
@@ -231,7 +245,15 @@ let duration = 30
 let generation = 0
 let currentResult = null
 let activeTab = 'characters'
-let saved = JSON.parse(localStorage.getItem('linggan-saved-remixes') ?? '[]')
+// 收藏结构：{id, title, hook, plan, context, savedAt}；旧数据缺少 plan/context/savedAt，降级显示
+let saved = JSON.parse(localStorage.getItem('linggan-saved-remixes') ?? '[]').map(item => ({
+  id: item.id,
+  title: item.title,
+  hook: item.hook,
+  plan: item.plan ?? null,
+  context: item.context ?? null,
+  savedAt: item.savedAt ?? null
+}))
 
 const toast = message => {
   const element = document.querySelector('.toast')
@@ -286,13 +308,46 @@ const renderResult = result => {
     <div class="dialogues"><div><span>${escapeHtml(result.a.name)} · 原创改写</span><p>${escapeHtml(plan.dialogueA)}</p></div><div><span>${escapeHtml(result.b.name)} · 原创改写</span><p>${escapeHtml(plan.dialogueB)}</p></div></div>
     <details class="copywriting-block"><summary>发布文案候选（3 标题 · 描述 · 标签）</summary><div class="copy-titles"><span>标题候选</span><ul>${plan.copywriting.titles.map(title => `<li>${escapeHtml(title)}</li>`).join('')}</ul></div><p class="copy-desc">${escapeHtml(plan.copywriting.description)}</p><div class="copy-tags">${plan.copywriting.hashtags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div></details>
     <details><summary>画面提示词与版权边界</summary><p>${escapeHtml(plan.prompt)}</p><small>${icon('shield', 14)} 参考角色和名场面不包含精确复刻素材；商业发布前需替换为原创或已授权资产。</small></details>
-    <div class="result-actions"><button class="btn ghost copy-result">${icon('copy', 16)} 复制方案</button><button class="btn primary save-result">${icon('bookmark', 16)} 收藏混搭</button></div>`
+    <div class="result-actions"><button class="btn ghost copy-result">${icon('copy', 16)} 复制方案</button><button class="btn ghost export-md">${icon('arrow', 16)} 导出 Markdown</button><button class="btn ghost export-json">${icon('database', 16)} 导出 JSON</button><button class="btn primary save-result">${icon('bookmark', 16)} 收藏混搭</button></div>`
   card.querySelector('.copy-result').addEventListener('click', async () => {
     await navigator.clipboard?.writeText(card.innerText)
     toast('方案已复制')
   })
+  // 导出 Markdown：人类可读，含完整字段和版权边界
+  card.querySelector('.export-md').addEventListener('click', () => {
+    try {
+      downloadText(`${buildRemixFileName(plan)}.md`, buildRemixMarkdown(plan), 'text/markdown;charset=utf-8')
+      toast('Markdown 已导出')
+    } catch (error) {
+      toast('导出失败：' + (error?.message ?? error))
+    }
+  })
+  // 导出 JSON：机器可读，保存完整 RemixPlan 字段
+  card.querySelector('.export-json').addEventListener('click', () => {
+    try {
+      downloadText(`${buildRemixFileName(plan)}.json`, buildRemixJson(plan), 'application/json;charset=utf-8')
+      toast('JSON 已导出')
+    } catch (error) {
+      toast('导出失败：' + (error?.message ?? error))
+    }
+  })
   card.querySelector('.save-result').addEventListener('click', () => {
-    if (!saved.some(item => item.title === plan.title)) saved.unshift({ id: plan.id, title: plan.title, hook: plan.hook })
+    // 收藏保存完整方案和上下文，支持后续展开、重新加载和单条导出；按 plan.id 去重
+    if (!saved.some(item => item.id === plan.id)) {
+      saved.unshift({
+        id: plan.id,
+        title: plan.title,
+        hook: plan.hook,
+        plan,
+        context: {
+          characterAId: result.a.id,
+          characterBId: result.b.id,
+          momentId: result.moment.id,
+          styleId: result.style.id
+        },
+        savedAt: new Date().toISOString()
+      })
+    }
     saved = saved.slice(0, 8)
     localStorage.setItem('linggan-saved-remixes', JSON.stringify(saved))
     renderSaved()
@@ -302,12 +357,109 @@ const renderResult = result => {
 
 const renderSaved = () => {
   const list = document.querySelector('#saved-list')
-  list.innerHTML = saved.length ? saved.map(item => `<article><span>${icon('bookmark', 16)}</span><div><b>${escapeHtml(item.title)}</b><p>${escapeHtml(item.hook)}</p></div><button data-remove="${escapeHtml(item.id)}" aria-label="删除收藏">${icon('close', 16)}</button></article>`).join('') : '<p class="empty">还没有收藏方案。先生成一次意外碰撞。</p>'
-  list.querySelectorAll('[data-remove]').forEach(button => button.addEventListener('click', () => {
-    saved = saved.filter(item => item.id !== button.dataset.remove)
+  if (!saved.length) {
+    list.innerHTML = '<p class="empty">还没有收藏方案。先生成一次意外碰撞。</p>'
+    return
+  }
+  // 每条收藏可展开查看完整方案；旧收藏无 plan 字段时降级显示，仅保留删除
+  list.innerHTML = saved.map(item => {
+    const hasPlan = !!item.plan
+    const meta = item.savedAt ? `收藏于 ${new Date(item.savedAt).toLocaleString('zh-CN')}` : '旧格式收藏'
+    const body = hasPlan
+      ? `<div class="saved-body" hidden>
+          <div class="saved-meta"><span>${icon('shield', 13)} ${item.plan.duration}s · ${hookCategoryLabels[item.plan.hookCategory]}钩子</span><span>${personalityLabels[item.plan.personalityA]} × ${personalityLabels[item.plan.personalityB]}</span></div>
+          <div class="saved-dialogues"><div><span>A · 原创改写</span><p>${escapeHtml(item.plan.dialogueA)}</p></div><div><span>B · 原创改写</span><p>${escapeHtml(item.plan.dialogueB)}</p></div></div>
+          <details><summary>分镜（${item.plan.storyboard.length} 镜头）</summary><ol class="saved-shots">${item.plan.storyboard.map(shot => `<li><b>${shot.duration}s</b> ${escapeHtml(shot.visual)} <small>动作：${escapeHtml(shot.action)} · 情绪：${escapeHtml(shot.emotion)}</small></li>`).join('')}</ol></details>
+          <div class="saved-actions">
+            <button class="btn ghost saved-reload" data-id="${escapeHtml(item.id)}">${icon('play', 14)} 重新加载</button>
+            <button class="btn ghost saved-md" data-id="${escapeHtml(item.id)}">${icon('arrow', 14)} 导出 MD</button>
+            <button class="btn ghost saved-json" data-id="${escapeHtml(item.id)}">${icon('database', 14)} 导出 JSON</button>
+            <button class="btn ghost saved-remove" data-id="${escapeHtml(item.id)}" aria-label="删除收藏">${icon('close', 14)} 删除</button>
+          </div>
+        </div>`
+      : `<div class="saved-body saved-old" hidden><p>该收藏为旧格式，仅保存了标题和钩子，无法展开或重新加载。请重新生成并收藏以使用完整功能。</p><div class="saved-actions"><button class="btn ghost saved-remove" data-id="${escapeHtml(item.id)}" aria-label="删除收藏">${icon('close', 14)} 删除</button></div></div>`
+    return `<article class="saved-card">
+      <header class="saved-head" role="button" tabindex="0" aria-expanded="false">
+        <span class="saved-icon">${icon('bookmark', 16)}</span>
+        <div class="saved-title"><b>${escapeHtml(item.title)}</b><p>${escapeHtml(item.hook)}</p><small>${meta}</small></div>
+        <span class="saved-toggle">${icon('arrow', 14)}</span>
+      </header>
+      ${body}
+    </article>`
+  }).join('')
+  // 展开/折叠：点击头部或 Enter/Space 切换
+  list.querySelectorAll('.saved-head').forEach(head => {
+    const toggle = () => {
+      const body = head.nextElementSibling
+      const expanded = head.getAttribute('aria-expanded') === 'true'
+      head.setAttribute('aria-expanded', String(!expanded))
+      if (body) body.hidden = expanded
+    }
+    head.addEventListener('click', toggle)
+    head.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggle() }
+    })
+  })
+  // 操作按钮：stopPropagation 避免触发头部 toggle
+  list.querySelectorAll('.saved-reload').forEach(btn => btn.addEventListener('click', event => { event.stopPropagation(); loadSavedRemix(btn.dataset.id) }))
+  list.querySelectorAll('.saved-md').forEach(btn => btn.addEventListener('click', event => {
+    event.stopPropagation()
+    const item = saved.find(s => s.id === btn.dataset.id)
+    if (!item?.plan) { toast('该收藏无法导出'); return }
+    try {
+      downloadText(`${buildRemixFileName(item.plan)}.md`, buildRemixMarkdown(item.plan), 'text/markdown;charset=utf-8')
+      toast('Markdown 已导出')
+    } catch (error) { toast('导出失败：' + (error?.message ?? error)) }
+  }))
+  list.querySelectorAll('.saved-json').forEach(btn => btn.addEventListener('click', event => {
+    event.stopPropagation()
+    const item = saved.find(s => s.id === btn.dataset.id)
+    if (!item?.plan) { toast('该收藏无法导出'); return }
+    try {
+      downloadText(`${buildRemixFileName(item.plan)}.json`, buildRemixJson(item.plan), 'application/json;charset=utf-8')
+      toast('JSON 已导出')
+    } catch (error) { toast('导出失败：' + (error?.message ?? error)) }
+  }))
+  list.querySelectorAll('.saved-remove').forEach(btn => btn.addEventListener('click', event => {
+    event.stopPropagation()
+    saved = saved.filter(s => s.id !== btn.dataset.id)
     localStorage.setItem('linggan-saved-remixes', JSON.stringify(saved))
     renderSaved()
+    toast('已删除收藏')
   }))
+}
+
+// 把已收藏的方案重新加载到工作台：恢复选择器状态并直接渲染保存的 plan，避免 seed 变化产生不同方案
+const loadSavedRemix = id => {
+  const item = saved.find(s => s.id === id)
+  if (!item?.plan || !item.context) { toast('该收藏无法重新加载'); return }
+  const { characterAId, characterBId, momentId, styleId } = item.context
+  const selectA = document.querySelector('#character-a')
+  const selectB = document.querySelector('#character-b')
+  const momentSelect = document.querySelector('#moment')
+  const styleSelect = document.querySelector('#style')
+  selectA.value = characterAId
+  selectB.value = characterBId
+  momentSelect.value = momentId
+  styleSelect.value = styleId
+  // 知识库变更后，收藏中的实体可能已被删除；任一选择器为空时拒绝加载
+  if (!selectA.value || !selectB.value || !momentSelect.value || !styleSelect.value) {
+    toast('收藏中的角色或场面已不在知识库中')
+    return
+  }
+  document.querySelectorAll('[data-duration]').forEach(btn => {
+    btn.classList.toggle('active', Number(btn.dataset.duration) === item.plan.duration)
+  })
+  duration = item.plan.duration
+  const a = characterById.get(characterAId)
+  const b = characterById.get(characterBId)
+  const moment = knowledge.iconic_moments.find(m => m.id === momentId)
+  const style = remixStyles.find(s => s.id === styleId)
+  currentResult = { plan: item.plan, a, b, moment, style }
+  renderResult(currentResult)
+  updateHints()
+  document.querySelector('#remix').scrollIntoView({ behavior: 'smooth', block: 'start' })
+  toast(`已重新加载：${item.title}`)
 }
 
 const libraryItems = tab => {

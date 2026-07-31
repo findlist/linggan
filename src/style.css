@@ -78,3 +78,37 @@
 .detail-actions{padding:18px 28px;border-top:1px solid var(--line);display:flex;gap:8px;background:var(--panel-2)}
 .detail-actions .btn{flex:1}
 @media(max-width:640px){.detail-modal{padding:0}.detail-panel{max-height:100vh;border-radius:0;min-height:100vh}.detail-header{padding:22px 18px 14px}.detail-header h2{font-size:24px}.detail-body{padding:18px;gap:14px}.detail-field{grid-template-columns:1fr;gap:4px}.detail-field-label{padding-top:0}.detail-actions{padding:14px 18px;flex-direction:column}.library-cta{opacity:1;transform:translateX(0)}}
+/* B5 导出与收藏升级：结果卡片 4 按钮可换行，收藏卡片可展开查看完整方案 */
+.result-actions{flex-wrap:wrap}
+.result-actions .btn{min-width:118px}
+.saved-list article.saved-card{display:flex;flex-direction:column;gap:0;padding:0;overflow:hidden}
+.saved-head{display:flex;gap:11px;align-items:flex-start;padding:16px;cursor:pointer;transition:background .15s;border:0;background:transparent;text-align:left;width:100%}
+.saved-head:hover{background:#171c26}
+.saved-head:focus-visible{outline:3px solid var(--lime);outline-offset:-3px}
+.saved-icon{color:var(--lime);flex:none;display:flex;align-items:center}
+.saved-title{flex:1;min-width:0}
+.saved-title b{font-size:13px;display:block}
+.saved-title p{margin:4px 0 0;color:#7d8595;font-size:11px;line-height:1.5}
+.saved-title small{display:block;color:#616a79;font:600 9px Manrope;letter-spacing:.3px;margin-top:6px}
+.saved-toggle{flex:none;width:28px;height:28px;display:grid;place-items:center;color:#7c8493;background:#171c26;border-radius:9px;transition:transform .2s}
+.saved-head[aria-expanded="true"] .saved-toggle{transform:rotate(90deg)}
+.saved-body{padding:14px 16px 16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:11px}
+.saved-body[hidden]{display:none}
+.saved-old p{color:#838b9a;font-size:12px;margin:0;line-height:1.6}
+.saved-meta{display:flex;flex-wrap:wrap;gap:7px}
+.saved-meta span{font-size:10px;color:#aeb5c2;background:#171c27;border:1px solid var(--line);border-radius:99px;padding:5px 10px;display:inline-flex;align-items:center;gap:5px}
+.saved-dialogues{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.saved-dialogues div{padding:12px;background:#191724;border:1px solid rgba(155,124,255,.12);border-radius:11px}
+.saved-dialogues span{display:block;color:#777f8e;font-size:9px;text-transform:uppercase;letter-spacing:1px}
+.saved-dialogues p{margin:6px 0 0;font-size:11px;color:#d5d2df;line-height:1.55}
+.saved-body details{padding:11px 13px;background:#131822;border-radius:11px}
+.saved-body summary{cursor:pointer;font-size:11px;color:#aeb5c2;font-weight:700}
+.saved-shots{margin:9px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:7px}
+.saved-shots li{font-size:11px;color:#cdd4df;line-height:1.5}
+.saved-shots b{color:var(--violet);font:800 10px Manrope;margin-right:5px}
+.saved-shots small{display:block;color:#7d8595;font-size:10px;margin-top:2px}
+.saved-actions{display:flex;flex-wrap:wrap;gap:7px;padding-top:4px}
+.saved-actions .btn{min-height:36px;padding:0 12px;font-size:11px;flex:none}
+.saved-actions .saved-remove{margin-left:auto;color:#ff9370;border-color:rgba(255,147,112,.25)}
+.saved-actions .saved-remove:hover{background:rgba(255,147,112,.08)}
+@media(max-width:640px){.saved-dialogues{grid-template-columns:1fr}.saved-actions{flex-direction:column}.saved-actions .btn{width:100%}.saved-actions .saved-remove{margin-left:0}}
