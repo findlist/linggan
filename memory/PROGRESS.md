@@ -1,9 +1,68 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：C8 桌面与移动端浏览器回归轮
-当前阶段：Phase 2 进行中（C8 已完成，剩余 C1—C7）
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；尚无自动发布闭环
+当前轮次：C1 兼容矩阵轮
+当前阶段：Phase 2 进行中（C1、C8 已完成，剩余 C2—C7）
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；尚无自动发布闭环
+
+### C1 兼容矩阵轮 — 2026-07-31
+
+本轮目标：建立兼容矩阵数据结构与计算能力，覆盖角色能力 × 场景约束 × 生成难度 × 冲突类型适配四个维度，让 remix-engine 在生成前能过滤不合理组合或调整难度权重，为 C2 完整制作包和 C3 近似度检测提供约束基础。
+
+完成：
+
+- 新增 `src/data/contracts.ts` 的 C1 兼容矩阵 Schema 与类型：
+  - `CharacterAbilityDimensionSchema`：角色能力五维枚举（combat/strategy/social/tech/emotional_control）；
+  - `SceneConstraintDimensionSchema`：场景约束四维枚举（time_pressure/participant_scale/spatial_complexity/prop_dependency）；
+  - `GenerationDifficultyDimensionSchema`：生成难度四维枚举（shot_complexity/dialogue_density/vfx_burden/action_choreography）；
+  - `CharacterAbilityProfileSchema`：按角色 ID 记录五维能力分值（0-1）+ 备注；
+  - `SceneConstraintProfileSchema`：按名场面 ID 记录四维约束强度（0-1）+ 备注；
+  - `ConflictDifficultyProfileSchema`：按冲突类型记录四维难度（0-1）+ min_duration（15/30/60）+ 备注；
+  - `AbilityConflictFitSchema`：能力维度 × 冲突类型 → 适配分值（0-1）；
+  - `CompatibilityMatrixSchema`：组合上述四个集合，superRefine 校验 ID 唯一、冲突类型唯一、能力-冲突组合唯一；
+  - `validateMatrixWithKnowledge(matrix, knowledge)`：跨文件外键校验，检查角色 ID、名场面 ID 和冲突类型是否在知识库中存在，返回问题数组；
+- 新增 `data/compatibility-matrix.json`，初始数据覆盖：
+  - 19 个角色能力档案（对齐知识库全部 19 个已知角色）：甄嬛/宜修皇后策略型，鸣人/佐助战斗型，尼奥/墨菲斯觉醒型，韩立/王林/李慕婉修仙型，李云龙军事型，叶文洁/史强/罗辑科幻型，刘培强/刘启/MOSS 流浪地球型，虎杖悠仁/伏黑惠/五条悟咒术型；
+  - 11 个场景约束档案（对齐知识库全部 11 个名场面）：按 time_pressure/participant_scale/spatial_complexity/prop_dependency 四维标注；
+  - 11 个冲突难度档案（对齐知识库全部 11 种 conflict_type）：标注四维难度和最小时长（如"救援压力与强攻代价"min_duration=30，"精密计划静默执行"min_duration=60）；
+  - 55 个能力-冲突适配规则（5 能力维度 × 11 冲突类型 = 55 条），覆盖战斗型冲突对 combat 高适配、谋略型冲突对 strategy 高适配等映射；
+- 新增 `src/generation/compatibility.ts`，导出兼容性计算与过滤能力：
+  - `CompatibilityResult`：score（0-1）+ reasons（扣分原因数组）；
+  - `RemixCombination`：适配 remix-engine 的组合输入结构（characterA × characterB × moment × duration）；
+  - `computeCompatibility(characterA, characterB, moment, duration, matrix)`：从满分 1.0 起按三大维度逐项扣分，最低 0、最高 1：
+    1. 角色能力与冲突类型适配：低适配（< 0.35）扣 0.3；
+    2. 场景约束与时长：高时间压力（> 0.7）+ 15s 扣 0.2、高空间复杂度 + 15s 扣 0.15、高参与人数 + 15s 扣 0.15；
+    3. 生成难度与时长：低于 min_duration 扣 0.4、高视觉特效 + 15s 扣 0.2、高动作编排 + 15s 扣 0.15；
+  - `filterCompatibleCombinations(combinations, matrix, options?)`：默认阈值 0.5，过滤掉低于阈值的组合；
+- 修改 `scripts/validate-data.ts`：
+  - inputs 数组新增 `data/compatibility-matrix.json` 使用 `CompatibilityMatrixSchema`；
+  - 主校验循环结束后，调用 `validateMatrixWithKnowledge(matrix, knowledge)` 进行跨文件外键校验，问题写入 stderr 并标记失败；
+- 新增 `tests/compatibility-matrix.test.ts` 共 12 项测试，覆盖：
+  - Schema 校验：合法矩阵通过、缺失能力维度字段被拒绝、维度分值越界（>1）被拒绝、重复角色 ID 被拒绝、重复冲突类型被拒绝；
+  - 外键一致性：validateMatrixWithKnowledge 检测到未知角色 ID、真实矩阵与真实知识库外键一致（0 issues）、检测到未知冲突类型；
+  - 引擎过滤行为：合理组合（甄嬛 × 宜修皇后 × 权力重排 × 30s）得到高分且无扣分原因、不合理组合（李慕婉 × MOSS × 强攻场景 × 15s）得到低分（< 0.5）且有多条扣分原因含 min_duration 违规、filterCompatibleCombinations 过滤掉低兼容组合保留高兼容组合、矩阵可被 remix-engine 生态读取（过滤后组合可成功调用 buildRemixPlan 生成 5 镜头方案）；
+- 修改 `package.json` 的 test 脚本加入 `tests/compatibility-matrix.test.ts`。
+
+验证：
+
+- `npm run typecheck`：通过；
+- `npm run validate:data`：通过，5 份 JSON 有效（含 compatibility-matrix.json），跨文件外键校验通过（compatibility-matrix.json ↔ knowledge-base.json）；
+- `npm test`：通过，153/153（新增 12 项 C1 测试，原有 141 项不变）；
+- `npm run build`：通过，9 modules transformed、CSS 26.35 kB、JS 75.93 kB（C1 为数据轨道，未新增前端模块）；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 兼容矩阵拆为四个独立集合（character_abilities/scene_constraints/conflict_difficulties/ability_conflict_fits）而非单一大表，便于按维度独立扩展和维护；每个集合内部通过 superRefine 保证 ID/类型唯一；
+- Schema 校验只覆盖矩阵内部一致性，跨文件外键一致性通过独立的 `validateMatrixWithKnowledge` 函数实现，原因：Zod Schema 无法直接引用另一个 JSON 文件的内容，函数式跨文件校验更清晰且可在 validate:data 和测试中复用；
+- 角色能力分值基于知识库角色的 character_types/traits/dialogue_style 推断，标注为 0-1 的连续值而非离散标签，便于在 computeCompatibility 中做加权平均；分值含义记录在 notes 字段，便于未来人工校准；
+- 冲突难度档案的 min_duration 字段限制为 15/30/60 三档（与 RemixDuration 类型对齐），低于 min_duration 的组合扣 0.4（最重扣分），确保生成器不会产出节奏无法展开的方案；
+- computeCompatibility 采用"扣分制"而非"加分制"：从满分 1.0 起逐项扣分，最低 0；理由是扣分原因可枚举且易于解释（每条 reason 对应一个具体违规），加分制需要定义所有正向维度且难以解释为何某组合得到满分；
+- 兼容性阈值默认 0.5，可通过 options.threshold 覆盖；0.5 的选择基于测试用例验证：合理组合（甄嬛 × 宜修皇后 × 权力重排 × 30s）得 1.0，不合理组合（李慕婉 × MOSS × 强攻 × 15s）得 0.05（触发 min_duration 违规 -0.4 + 高时间压力 -0.2 + 高参与人数 -0.15 + 高空间复杂度 -0.15 + 角色能力低适配 -0.3×2 = -1.5，clamp 到 0.05 实际为 0），0.5 阈值能清晰区分两类；
+- 本轮未修改 remix-engine.ts 让 buildRemixPlan 内部自动调用 computeCompatibility：理由是 remix-engine 当前是"给定输入生成方案"的纯函数，是否过滤组合应由调用方（CLI/UI）决定；矩阵 API 已通过测试验证可被 remix-engine 生态读取（filterCompatibleCombinations 后的组合可成功传入 buildRemixPlan），C2/C3 任务再决定具体集成方式（如在 daily-pipeline 中先过滤再生成）；
+- 环境注意：本机默认 node 为 v14，需用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；通过 `set PATH=D:\development\nodejs;%PATH%` 解决；PowerShell 不支持 `&&`，需用 `cmd /d /c "..."` 或 `;` 分隔命令。
+
+下一轮：Phase 2 剩余 C2—C7。首选 C2 完整制作包（自动生成分镜/提示词/发布文案），直接消费 C1 兼容矩阵的过滤结果，让输出可直接用于制作。
 
 ### C8 桌面与移动端浏览器回归轮 — 2026-07-31
 
@@ -496,6 +555,7 @@
 - [x] A4 固定公开来源适配器。
 - [x] A6 统一任务运行日志。
 - [x] C8 桌面与移动端浏览器回归。
+- [x] C1 兼容矩阵（角色能力 × 场景约束 × 生成难度）。
 
 ### Phase 1 已完成
 
@@ -503,10 +563,10 @@ Phase 1 全部任务已完成。本地内容数据基础验证里程碑（M1）�
 
 ### Phase 2 进行中
 
-C8 已完成。剩余按依赖顺序：
+C1、C8 已完成。剩余按依赖顺序：
 
-1. C1 兼容矩阵（角色能力 × 场景约束 × 生成难度）— 数据轨道，为 C2/C3 提供约束基础；
-2. C2 完整制作包（自动生成分镜/提示词/发布文案）；C3 近似度检测；
+1. C2 完整制作包（自动生成分镜/提示词/发布文案）— 消费 C1 兼容矩阵过滤结果，让输出可直接用于制作；
+2. C3 近似度检测（避免换皮创意）；
 3. C4 工作台三栏布局；C5 多维筛选；C6 前端模块化；
 4. C7 lint/format。
 
@@ -521,18 +581,17 @@ E1—E5 仅在 `docs/DEVELOPMENT_DIRECTION.md` 的外部依赖和触发条件满
 
 ## 5. 下一轮唯一首选任务
 
-**任务 C8：桌面与移动端浏览器回归（已完成）。**
+**任务 C1：兼容矩阵（已完成）。**
 
-**下一轮任务：C1 — 兼容矩阵（角色能力 × 场景约束 × 生成难度）（Phase 2 数据轨道）。**
+**下一轮任务：C2 — 完整制作包（自动生成分镜/提示词/发布文案）（Phase 2 生成轨道）。**
 
-选择理由：Phase 1 全部任务和 Phase 2 的 C8 浏览器回归均已完成。C1 是 Phase 2 剩余任务中优先级最高（P1）、依赖最少且对后续任务解锁最多的切片：C1 产出的约束矩阵是 C2 完整制作包（让输出可直接用于制作）和 C3 近似度检测（避免换皮创意）的直接输入，也是 B2 生成引擎从纯随机组合升级为"关系合理性 + 反差 + 可视化"约束组合的基础。C1 只依赖现有知识库（9 部作品/19 角色/11 名场面），不需要外部账号、密钥或公网访问，可在本地独立验收。DEVELOPMENT_DIRECTION.md 第 5 节"生成引擎升级方案"和 DEVELOPMENT_PLAN.md 阶段 C 已明确"使用关系合理性 + 反差 + 可视化约束组合，不做纯随机拼接"。
+选择理由：C1 兼容矩阵已完成，提供了"角色能力 × 场景约束 × 生成难度 × 冲突类型适配"的过滤能力（computeCompatibility/filterCompatibleCombinations），C2 是其直接下游消费者。C2 的目标是让混搭方案的输出从"创意草稿"升级为"可直接用于制作的完整包"：在现有 RemixPlan（钩子/对白/分镜/文案/提示词）基础上，补齐制作所需的字段（如分镜的镜号/景别/运镜/时长/转场、提示词的负面提示/比例/风格强度、文案的封面文案/话题标签策略、版权边界声明等），并在 daily-pipeline 中集成 C1 兼容矩阵过滤（先 filterCompatibleCombinations 再 buildRemixPlan）。C2 只依赖 C1（已完成）和现有 remix-engine/B5 exporters，不需要外部账号、密钥或公网访问，可在本地独立验收。DEVELOPMENT_PLAN.md 阶段 C 已明确"完整制作包：自动生成分镜/提示词/发布文案"。
 
 验收条件：
 
-- 新增兼容矩阵数据结构（Schema + 类型）：覆盖角色能力（如战斗/智谋/社交/技术等维度）、场景约束（如时空/人数/道具限制）、生成难度（如镜头复杂度/对白密度/视觉特效负担）和冲突类型适配；
-- 矩阵字段设计可被 remix-engine 读取，用于在生成时过滤掉不合理组合（如"温柔型角色 × 高强度战斗场景 × 60s"标记为低兼容）或调整生成难度权重；
-- 矩阵数据可通过 Schema 校验（与现有 KnowledgeBaseSchema 风格一致），并加入 `validate:data` 校验范围；
-- 至少 8 项单元测试覆盖：合法矩阵通过、缺失字段拒绝、维度越界拒绝、角色/场景/冲突类型外键有效、与现有知识库实体一致、矩阵可被 remix-engine 读取并影响候选过滤（伪随机种子下不合理的组合被过滤）；
+- 扩展 RemixPlan 或新增 ProductionPackage 结构，补齐制作所需字段：分镜表（镜号/景别/运镜/时长/画面/动作/情绪/转场）、画面提示词（正向 + 负面 + 比例 + 风格强度）、发布文案（标题候选 + 描述 + 话题标签 + 封面文案）、版权边界声明；
+- 在 daily-pipeline 或 remix-engine 调用链中集成 C1 兼容矩阵：生成前调用 filterCompatibleCombinations 过滤低兼容组合（默认阈值 0.5），过滤后组合数减少且剩余组合兼容性得分 ≥ 阈值；
+- 新增至少 8 项单元测试覆盖：制作包 Schema 校验、分镜表字段完整性、提示词含正向/负面/比例、文案含封面文案和标签策略、版权边界声明存在、daily-pipeline 集成 C1 过滤后低兼容组合被剔除、过滤后剩余组合可成功生成完整制作包、确定性（同种子复现）；
 - 类型检查、全部测试、数据校验和生产构建通过。
 
 ## 6. 已知限制与阻塞

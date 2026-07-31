@@ -1,0 +1,506 @@
+{
+  "schema_version": 1,
+  "character_abilities": [
+    {
+      "character_id": "known_zhen_huan",
+      "abilities": {
+        "combat": 0.2,
+        "strategy": 0.9,
+        "social": 0.85,
+        "tech": 0.3,
+        "emotional_control": 0.8
+      },
+      "notes": "成长型谋略者，擅长权力博弈与情感试探"
+    },
+    {
+      "character_id": "known_empress_yixiu",
+      "abilities": {
+        "combat": 0.2,
+        "strategy": 0.85,
+        "social": 0.8,
+        "tech": 0.3,
+        "emotional_control": 0.85
+      },
+      "notes": "守序型掌权者，克制善谋"
+    },
+    {
+      "character_id": "known_naruto",
+      "abilities": {
+        "combat": 0.85,
+        "strategy": 0.5,
+        "social": 0.75,
+        "tech": 0.3,
+        "emotional_control": 0.5
+      },
+      "notes": "热血追梦者，行动力强但情绪外露"
+    },
+    {
+      "character_id": "known_sasuke",
+      "abilities": {
+        "combat": 0.9,
+        "strategy": 0.6,
+        "social": 0.3,
+        "tech": 0.4,
+        "emotional_control": 0.5
+      },
+      "notes": "孤高复仇者，战斗力高但社交弱"
+    },
+    {
+      "character_id": "known_neo",
+      "abilities": {
+        "combat": 0.7,
+        "strategy": 0.6,
+        "social": 0.5,
+        "tech": 0.8,
+        "emotional_control": 0.7
+      },
+      "notes": "怀疑型觉醒者，技术能力突出"
+    },
+    {
+      "character_id": "known_morpheus",
+      "abilities": {
+        "combat": 0.6,
+        "strategy": 0.7,
+        "social": 0.85,
+        "tech": 0.7,
+        "emotional_control": 0.8
+      },
+      "notes": "信念型导师，社交与技术均衡"
+    },
+    {
+      "character_id": "known_han_li",
+      "abilities": {
+        "combat": 0.6,
+        "strategy": 0.85,
+        "social": 0.4,
+        "tech": 0.6,
+        "emotional_control": 0.85
+      },
+      "notes": "谨慎成长者，资源规划与风险控制强"
+    },
+    {
+      "character_id": "known_wang_lin",
+      "abilities": {
+        "combat": 0.8,
+        "strategy": 0.7,
+        "social": 0.4,
+        "tech": 0.5,
+        "emotional_control": 0.7
+      },
+      "notes": "孤绝复仇者，战斗与情绪控制尚可"
+    },
+    {
+      "character_id": "known_li_muwan",
+      "abilities": {
+        "combat": 0.3,
+        "strategy": 0.6,
+        "social": 0.8,
+        "tech": 0.7,
+        "emotional_control": 0.85
+      },
+      "notes": "温柔智者，社交与情绪控制强，战斗弱"
+    },
+    {
+      "character_id": "known_li_yunlong",
+      "abilities": {
+        "combat": 0.8,
+        "strategy": 0.75,
+        "social": 0.7,
+        "tech": 0.3,
+        "emotional_control": 0.6
+      },
+      "notes": "草根统帅，战斗与决策强"
+    },
+    {
+      "character_id": "known_itadori_yuji",
+      "abilities": {
+        "combat": 0.85,
+        "strategy": 0.5,
+        "social": 0.7,
+        "tech": 0.3,
+        "emotional_control": 0.55
+      },
+      "notes": "热血型主角，战斗强但策略偏弱"
+    },
+    {
+      "character_id": "known_fushiguro_megumi",
+      "abilities": {
+        "combat": 0.8,
+        "strategy": 0.75,
+        "social": 0.5,
+        "tech": 0.4,
+        "emotional_control": 0.75
+      },
+      "notes": "冷静型战术者，战斗与策略均衡"
+    },
+    {
+      "character_id": "known_gojo_satoru",
+      "abilities": {
+        "combat": 0.95,
+        "strategy": 0.8,
+        "social": 0.75,
+        "tech": 0.6,
+        "emotional_control": 0.8
+      },
+      "notes": "傲然型强者，全维度高位"
+    },
+    {
+      "character_id": "known_ye_wenjie",
+      "abilities": {
+        "combat": 0.2,
+        "strategy": 0.9,
+        "social": 0.6,
+        "tech": 0.85,
+        "emotional_control": 0.9
+      },
+      "notes": "幻灭型智者，策略与技术强"
+    },
+    {
+      "character_id": "known_shi_qiang",
+      "abilities": {
+        "combat": 0.7,
+        "strategy": 0.6,
+        "social": 0.75,
+        "tech": 0.4,
+        "emotional_control": 0.7
+      },
+      "notes": "务实型调查者，社交与行动均衡"
+    },
+    {
+      "character_id": "known_luo_ji",
+      "abilities": {
+        "combat": 0.3,
+        "strategy": 0.85,
+        "social": 0.65,
+        "tech": 0.6,
+        "emotional_control": 0.75
+      },
+      "notes": "玩世不恭型觉醒者，策略强"
+    },
+    {
+      "character_id": "known_liu_peiqiang",
+      "abilities": {
+        "combat": 0.7,
+        "strategy": 0.7,
+        "social": 0.6,
+        "tech": 0.85,
+        "emotional_control": 0.85
+      },
+      "notes": "责任型守护者，技术与情绪控制强"
+    },
+    {
+      "character_id": "known_liu_qi",
+      "abilities": {
+        "combat": 0.7,
+        "strategy": 0.5,
+        "social": 0.6,
+        "tech": 0.4,
+        "emotional_control": 0.5
+      },
+      "notes": "冲动型成长者，战斗尚可但情绪控制弱"
+    },
+    {
+      "character_id": "known_moss",
+      "abilities": {
+        "combat": 0.3,
+        "strategy": 0.95,
+        "social": 0.3,
+        "tech": 0.95,
+        "emotional_control": 0.95
+      },
+      "notes": "绝对理性型 AI，策略与技术极高但社交弱"
+    }
+  ],
+  "scene_constraints": [
+    {
+      "moment_id": "moment_return_power_shift",
+      "constraints": {
+        "time_pressure": 0.3,
+        "participant_scale": 0.6,
+        "spatial_complexity": 0.4,
+        "prop_dependency": 0.3
+      },
+      "notes": "封闭权力场，群像反应为主，节奏较缓"
+    },
+    {
+      "moment_id": "moment_rivals_final_confrontation",
+      "constraints": {
+        "time_pressure": 0.6,
+        "participant_scale": 0.3,
+        "spatial_complexity": 0.7,
+        "prop_dependency": 0.4
+      },
+      "notes": "开阔决战地，双人对决，空间复杂度高"
+    },
+    {
+      "moment_id": "moment_reality_choice",
+      "constraints": {
+        "time_pressure": 0.4,
+        "participant_scale": 0.2,
+        "spatial_complexity": 0.3,
+        "prop_dependency": 0.6
+      },
+      "notes": "封闭谈话空间，道具象征性强"
+    },
+    {
+      "moment_id": "moment_cautious_breakout",
+      "constraints": {
+        "time_pressure": 0.7,
+        "participant_scale": 0.3,
+        "spatial_complexity": 0.6,
+        "prop_dependency": 0.5
+      },
+      "notes": "封闭险地，信息不对称，时间压力大"
+    },
+    {
+      "moment_id": "moment_guarding_promise",
+      "constraints": {
+        "time_pressure": 0.8,
+        "participant_scale": 0.3,
+        "spatial_complexity": 0.5,
+        "prop_dependency": 0.6
+      },
+      "notes": "临时阵地，倒计时压力，道具依赖高"
+    },
+    {
+      "moment_id": "moment_mass_assault",
+      "constraints": {
+        "time_pressure": 0.85,
+        "participant_scale": 0.8,
+        "spatial_complexity": 0.7,
+        "prop_dependency": 0.5
+      },
+      "notes": "城镇据点攻坚，人数多且时间紧迫"
+    },
+    {
+      "moment_id": "moment_domain_rule_clash",
+      "constraints": {
+        "time_pressure": 0.6,
+        "participant_scale": 0.2,
+        "spatial_complexity": 0.8,
+        "prop_dependency": 0.7
+      },
+      "notes": "规则构建的封闭空间，视觉符号密集"
+    },
+    {
+      "moment_id": "moment_mentor_burden_handover",
+      "constraints": {
+        "time_pressure": 0.5,
+        "participant_scale": 0.3,
+        "spatial_complexity": 0.5,
+        "prop_dependency": 0.4
+      },
+      "notes": "战场尾声，师生对视，节奏中等"
+    },
+    {
+      "moment_id": "moment_silent_precision_strike",
+      "constraints": {
+        "time_pressure": 0.85,
+        "participant_scale": 0.7,
+        "spatial_complexity": 0.6,
+        "prop_dependency": 0.5
+      },
+      "notes": "宽阔水域编队行动，时间窗口极窄"
+    },
+    {
+      "moment_id": "moment_ai_human_final_choice",
+      "constraints": {
+        "time_pressure": 0.9,
+        "participant_scale": 0.2,
+        "spatial_complexity": 0.4,
+        "prop_dependency": 0.6
+      },
+      "notes": "孤立空间站，倒计时极限压力"
+    },
+    {
+      "moment_id": "moment_collective_engine_push",
+      "constraints": {
+        "time_pressure": 0.9,
+        "participant_scale": 0.9,
+        "spatial_complexity": 0.6,
+        "prop_dependency": 0.7
+      },
+      "notes": "户外极端环境，群体合力，人数与时间双高"
+    }
+  ],
+  "conflict_difficulties": [
+    {
+      "conflict_type": "身份回归与秩序挑战",
+      "difficulty": {
+        "shot_complexity": 0.4,
+        "dialogue_density": 0.7,
+        "vfx_burden": 0.2,
+        "action_choreography": 0.3
+      },
+      "min_duration": 30,
+      "notes": "权力博弈以对话和空间位置为主，特效负担低"
+    },
+    {
+      "conflict_type": "理念分歧与关系挽回",
+      "difficulty": {
+        "shot_complexity": 0.6,
+        "dialogue_density": 0.5,
+        "vfx_burden": 0.6,
+        "action_choreography": 0.7
+      },
+      "min_duration": 30,
+      "notes": "终局对抗兼顾动作与情感，镜头与特效要求中高"
+    },
+    {
+      "conflict_type": "安全幻觉与危险真相",
+      "difficulty": {
+        "shot_complexity": 0.5,
+        "dialogue_density": 0.7,
+        "vfx_burden": 0.4,
+        "action_choreography": 0.3
+      },
+      "min_duration": 15,
+      "notes": "认知觉醒以对话和象征物为主，可压缩到 15s"
+    },
+    {
+      "conflict_type": "弱势求生与信息博弈",
+      "difficulty": {
+        "shot_complexity": 0.6,
+        "dialogue_density": 0.6,
+        "vfx_burden": 0.4,
+        "action_choreography": 0.5
+      },
+      "min_duration": 30,
+      "notes": "求生博弈需要铺垫信息差，最短 30s"
+    },
+    {
+      "conflict_type": "撤离理性与守护承诺",
+      "difficulty": {
+        "shot_complexity": 0.6,
+        "dialogue_density": 0.6,
+        "vfx_burden": 0.5,
+        "action_choreography": 0.6
+      },
+      "min_duration": 30,
+      "notes": "危局协作需要展现分歧与协作过程"
+    },
+    {
+      "conflict_type": "救援压力与强攻代价",
+      "difficulty": {
+        "shot_complexity": 0.7,
+        "dialogue_density": 0.5,
+        "vfx_burden": 0.6,
+        "action_choreography": 0.8
+      },
+      "min_duration": 30,
+      "notes": "攻坚场面动作编排重，特效负担中高"
+    },
+    {
+      "conflict_type": "规则掌控与反制",
+      "difficulty": {
+        "shot_complexity": 0.8,
+        "dialogue_density": 0.5,
+        "vfx_burden": 0.8,
+        "action_choreography": 0.7
+      },
+      "min_duration": 30,
+      "notes": "规则空间视觉符号密集，镜头与特效负担高"
+    },
+    {
+      "conflict_type": "强者退场与传承",
+      "difficulty": {
+        "shot_complexity": 0.5,
+        "dialogue_density": 0.6,
+        "vfx_burden": 0.4,
+        "action_choreography": 0.4
+      },
+      "min_duration": 30,
+      "notes": "传承场景以情绪和对话为主，难度中等"
+    },
+    {
+      "conflict_type": "技术精确性与执行风险",
+      "difficulty": {
+        "shot_complexity": 0.7,
+        "dialogue_density": 0.4,
+        "vfx_burden": 0.5,
+        "action_choreography": 0.6
+      },
+      "min_duration": 30,
+      "notes": "精密执行需要多视角切换和编队动作"
+    },
+    {
+      "conflict_type": "系统最优解与人类情感底线",
+      "difficulty": {
+        "shot_complexity": 0.5,
+        "dialogue_density": 0.8,
+        "vfx_burden": 0.5,
+        "action_choreography": 0.3
+      },
+      "min_duration": 30,
+      "notes": "AI 与人类对峙以对话和倒计时为主"
+    },
+    {
+      "conflict_type": "个体极限与集体协作",
+      "difficulty": {
+        "shot_complexity": 0.7,
+        "dialogue_density": 0.5,
+        "vfx_burden": 0.6,
+        "action_choreography": 0.8
+      },
+      "min_duration": 30,
+      "notes": "群体合力需要动作编排和特效支撑"
+    }
+  ],
+  "ability_conflict_fits": [
+    { "ability": "combat", "conflict_type": "身份回归与秩序挑战", "fit": 0.3 },
+    { "ability": "combat", "conflict_type": "理念分歧与关系挽回", "fit": 0.8 },
+    { "ability": "combat", "conflict_type": "安全幻觉与危险真相", "fit": 0.4 },
+    { "ability": "combat", "conflict_type": "弱势求生与信息博弈", "fit": 0.6 },
+    { "ability": "combat", "conflict_type": "撤离理性与守护承诺", "fit": 0.65 },
+    { "ability": "combat", "conflict_type": "救援压力与强攻代价", "fit": 0.85 },
+    { "ability": "combat", "conflict_type": "规则掌控与反制", "fit": 0.7 },
+    { "ability": "combat", "conflict_type": "强者退场与传承", "fit": 0.5 },
+    { "ability": "combat", "conflict_type": "技术精确性与执行风险", "fit": 0.4 },
+    { "ability": "combat", "conflict_type": "系统最优解与人类情感底线", "fit": 0.3 },
+    { "ability": "combat", "conflict_type": "个体极限与集体协作", "fit": 0.75 },
+    { "ability": "strategy", "conflict_type": "身份回归与秩序挑战", "fit": 0.9 },
+    { "ability": "strategy", "conflict_type": "理念分歧与关系挽回", "fit": 0.6 },
+    { "ability": "strategy", "conflict_type": "安全幻觉与危险真相", "fit": 0.8 },
+    { "ability": "strategy", "conflict_type": "弱势求生与信息博弈", "fit": 0.9 },
+    { "ability": "strategy", "conflict_type": "撤离理性与守护承诺", "fit": 0.75 },
+    { "ability": "strategy", "conflict_type": "救援压力与强攻代价", "fit": 0.7 },
+    { "ability": "strategy", "conflict_type": "规则掌控与反制", "fit": 0.8 },
+    { "ability": "strategy", "conflict_type": "强者退场与传承", "fit": 0.7 },
+    { "ability": "strategy", "conflict_type": "技术精确性与执行风险", "fit": 0.85 },
+    { "ability": "strategy", "conflict_type": "系统最优解与人类情感底线", "fit": 0.85 },
+    { "ability": "strategy", "conflict_type": "个体极限与集体协作", "fit": 0.6 },
+    { "ability": "social", "conflict_type": "身份回归与秩序挑战", "fit": 0.85 },
+    { "ability": "social", "conflict_type": "理念分歧与关系挽回", "fit": 0.75 },
+    { "ability": "social", "conflict_type": "安全幻觉与危险真相", "fit": 0.7 },
+    { "ability": "social", "conflict_type": "弱势求生与信息博弈", "fit": 0.5 },
+    { "ability": "social", "conflict_type": "撤离理性与守护承诺", "fit": 0.7 },
+    { "ability": "social", "conflict_type": "救援压力与强攻代价", "fit": 0.6 },
+    { "ability": "social", "conflict_type": "规则掌控与反制", "fit": 0.5 },
+    { "ability": "social", "conflict_type": "强者退场与传承", "fit": 0.8 },
+    { "ability": "social", "conflict_type": "技术精确性与执行风险", "fit": 0.4 },
+    { "ability": "social", "conflict_type": "系统最优解与人类情感底线", "fit": 0.7 },
+    { "ability": "social", "conflict_type": "个体极限与集体协作", "fit": 0.75 },
+    { "ability": "tech", "conflict_type": "身份回归与秩序挑战", "fit": 0.2 },
+    { "ability": "tech", "conflict_type": "理念分歧与关系挽回", "fit": 0.3 },
+    { "ability": "tech", "conflict_type": "安全幻觉与危险真相", "fit": 0.7 },
+    { "ability": "tech", "conflict_type": "弱势求生与信息博弈", "fit": 0.5 },
+    { "ability": "tech", "conflict_type": "撤离理性与守护承诺", "fit": 0.5 },
+    { "ability": "tech", "conflict_type": "救援压力与强攻代价", "fit": 0.4 },
+    { "ability": "tech", "conflict_type": "规则掌控与反制", "fit": 0.7 },
+    { "ability": "tech", "conflict_type": "强者退场与传承", "fit": 0.3 },
+    { "ability": "tech", "conflict_type": "技术精确性与执行风险", "fit": 0.9 },
+    { "ability": "tech", "conflict_type": "系统最优解与人类情感底线", "fit": 0.85 },
+    { "ability": "tech", "conflict_type": "个体极限与集体协作", "fit": 0.5 },
+    { "ability": "emotional_control", "conflict_type": "身份回归与秩序挑战", "fit": 0.85 },
+    { "ability": "emotional_control", "conflict_type": "理念分歧与关系挽回", "fit": 0.6 },
+    { "ability": "emotional_control", "conflict_type": "安全幻觉与危险真相", "fit": 0.8 },
+    { "ability": "emotional_control", "conflict_type": "弱势求生与信息博弈", "fit": 0.8 },
+    { "ability": "emotional_control", "conflict_type": "撤离理性与守护承诺", "fit": 0.8 },
+    { "ability": "emotional_control", "conflict_type": "救援压力与强攻代价", "fit": 0.65 },
+    { "ability": "emotional_control", "conflict_type": "规则掌控与反制", "fit": 0.75 },
+    { "ability": "emotional_control", "conflict_type": "强者退场与传承", "fit": 0.85 },
+    { "ability": "emotional_control", "conflict_type": "技术精确性与执行风险", "fit": 0.8 },
+    { "ability": "emotional_control", "conflict_type": "系统最优解与人类情感底线", "fit": 0.9 },
+    { "ability": "emotional_control", "conflict_type": "个体极限与集体协作", "fit": 0.6 }
+  ]
+}

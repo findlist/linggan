@@ -154,6 +154,156 @@ export const KnowledgeBaseSchema = z.object({
   })
 })
 
+/* ----------------------- 兼容矩阵（C1） ----------------------- */
+// 兼容矩阵把角色能力、场景约束、生成难度和冲突类型适配编码为可校验数据，
+// 供 remix-engine 在生成时过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重。
+
+/** 角色能力维度：战斗 / 智谋 / 社交 / 技术 / 情绪控制 */
+export const CharacterAbilityDimensionSchema = z.enum([
+  'combat',
+  'strategy',
+  'social',
+  'tech',
+  'emotional_control'
+])
+
+/** 场景约束维度：时间压力 / 参与人数规模 / 空间复杂度 / 道具依赖度 */
+export const SceneConstraintDimensionSchema = z.enum([
+  'time_pressure',
+  'participant_scale',
+  'spatial_complexity',
+  'prop_dependency'
+])
+
+/** 生成难度维度：镜头复杂度 / 对白密度 / 视觉特效负担 / 动作编排难度 */
+export const GenerationDifficultyDimensionSchema = z.enum([
+  'shot_complexity',
+  'dialogue_density',
+  'vfx_burden',
+  'action_choreography'
+])
+
+const DimensionScoreSchema = z.number().finite().min(0).max(1)
+
+/** 角色能力档案：按角色 ID 记录五维能力分值（0-1） */
+export const CharacterAbilityProfileSchema = z.object({
+  character_id: StableIdSchema,
+  abilities: z.object({
+    combat: DimensionScoreSchema,
+    strategy: DimensionScoreSchema,
+    social: DimensionScoreSchema,
+    tech: DimensionScoreSchema,
+    emotional_control: DimensionScoreSchema
+  }).strict(),
+  notes: NonEmptyTextSchema.nullable()
+}).strict()
+
+/** 场景约束档案：按名场面 ID 记录四维约束强度（0-1） */
+export const SceneConstraintProfileSchema = z.object({
+  moment_id: StableIdSchema,
+  constraints: z.object({
+    time_pressure: DimensionScoreSchema,
+    participant_scale: DimensionScoreSchema,
+    spatial_complexity: DimensionScoreSchema,
+    prop_dependency: DimensionScoreSchema
+  }).strict(),
+  notes: NonEmptyTextSchema.nullable()
+}).strict()
+
+/** 冲突类型生成难度档案：按冲突类型记录四维难度（0-1）和最小时长 */
+export const ConflictDifficultyProfileSchema = z.object({
+  conflict_type: NonEmptyTextSchema,
+  difficulty: z.object({
+    shot_complexity: DimensionScoreSchema,
+    dialogue_density: DimensionScoreSchema,
+    vfx_burden: DimensionScoreSchema,
+    action_choreography: DimensionScoreSchema
+  }).strict(),
+  min_duration: z.union([z.literal(15), z.literal(30), z.literal(60)]),
+  notes: NonEmptyTextSchema.nullable()
+}).strict()
+
+/** 能力-冲突适配规则：某能力维度对某冲突类型的适配分值（0-1） */
+export const AbilityConflictFitSchema = z.object({
+  ability: CharacterAbilityDimensionSchema,
+  conflict_type: NonEmptyTextSchema,
+  fit: DimensionScoreSchema
+}).strict()
+
+/**
+ * 兼容矩阵文档：角色能力 × 场景约束 × 生成难度 × 冲突类型适配。
+ * 内部校验：ID 唯一、冲突类型唯一、能力-冲突组合唯一。
+ * 与知识库的外键一致性通过 validateMatrixWithKnowledge 函数校验。
+ */
+export const CompatibilityMatrixSchema = z.object({
+  schema_version: z.literal(1),
+  character_abilities: z.array(CharacterAbilityProfileSchema),
+  scene_constraints: z.array(SceneConstraintProfileSchema),
+  conflict_difficulties: z.array(ConflictDifficultyProfileSchema),
+  ability_conflict_fits: z.array(AbilityConflictFitSchema)
+}).strict().superRefine((matrix, context) => {
+  const characterIds = matrix.character_abilities.map(item => item.character_id)
+  if (new Set(characterIds).size !== characterIds.length) {
+    context.addIssue({ code: 'custom', path: ['character_abilities'], message: 'duplicate character_id in ability profiles' })
+  }
+
+  const momentIds = matrix.scene_constraints.map(item => item.moment_id)
+  if (new Set(momentIds).size !== momentIds.length) {
+    context.addIssue({ code: 'custom', path: ['scene_constraints'], message: 'duplicate moment_id in scene constraints' })
+  }
+
+  const conflictTypes = matrix.conflict_difficulties.map(item => item.conflict_type)
+  if (new Set(conflictTypes).size !== conflictTypes.length) {
+    context.addIssue({ code: 'custom', path: ['conflict_difficulties'], message: 'duplicate conflict_type in difficulty profiles' })
+  }
+
+  const fitKeys = matrix.ability_conflict_fits.map(item => `${item.ability}|${item.conflict_type}`)
+  if (new Set(fitKeys).size !== fitKeys.length) {
+    context.addIssue({ code: 'custom', path: ['ability_conflict_fits'], message: 'duplicate ability-conflict_type combination' })
+  }
+})
+
+/**
+ * 校验兼容矩阵与知识库的外键一致性。
+ * 检查角色 ID、名场面 ID 和冲突类型是否在知识库中存在。
+ * 返回问题数组；空数组表示通过。
+ */
+export const validateMatrixWithKnowledge = (
+  matrix: CompatibilityMatrix,
+  knowledge: KnowledgeBase
+): Array<{ path: string; message: string }> => {
+  const issues: Array<{ path: string; message: string }> = []
+  const characterIds = new Set(knowledge.known_characters.map(c => c.id))
+  const momentIds = new Set(knowledge.iconic_moments.map(m => m.id))
+  const conflictTypes = new Set(knowledge.iconic_moments.map(m => m.conflict_type))
+
+  matrix.character_abilities.forEach((profile, index) => {
+    if (!characterIds.has(profile.character_id)) {
+      issues.push({ path: `character_abilities[${index}].character_id`, message: `unknown character id: ${profile.character_id}` })
+    }
+  })
+
+  matrix.scene_constraints.forEach((profile, index) => {
+    if (!momentIds.has(profile.moment_id)) {
+      issues.push({ path: `scene_constraints[${index}].moment_id`, message: `unknown moment id: ${profile.moment_id}` })
+    }
+  })
+
+  matrix.conflict_difficulties.forEach((profile, index) => {
+    if (!conflictTypes.has(profile.conflict_type)) {
+      issues.push({ path: `conflict_difficulties[${index}].conflict_type`, message: `conflict_type not found in knowledge base: ${profile.conflict_type}` })
+    }
+  })
+
+  matrix.ability_conflict_fits.forEach((fit, index) => {
+    if (!conflictTypes.has(fit.conflict_type)) {
+      issues.push({ path: `ability_conflict_fits[${index}].conflict_type`, message: `conflict_type not found in knowledge base: ${fit.conflict_type}` })
+    }
+  })
+
+  return issues
+}
+
 export const TrendCategorySchema = z.enum([
   'meme',
   'expression',
@@ -385,6 +535,14 @@ export type CollectionBatch = z.infer<typeof CollectionBatchSchema>
 export type CollectionItem = z.infer<typeof CollectionItemSchema>
 export type ObservedMetric = z.infer<typeof ObservedMetricSchema>
 export type TrendCategory = z.infer<typeof TrendCategorySchema>
+export type CharacterAbilityDimension = z.infer<typeof CharacterAbilityDimensionSchema>
+export type SceneConstraintDimension = z.infer<typeof SceneConstraintDimensionSchema>
+export type GenerationDifficultyDimension = z.infer<typeof GenerationDifficultyDimensionSchema>
+export type CharacterAbilityProfile = z.infer<typeof CharacterAbilityProfileSchema>
+export type SceneConstraintProfile = z.infer<typeof SceneConstraintProfileSchema>
+export type ConflictDifficultyProfile = z.infer<typeof ConflictDifficultyProfileSchema>
+export type AbilityConflictFit = z.infer<typeof AbilityConflictFitSchema>
+export type CompatibilityMatrix = z.infer<typeof CompatibilityMatrixSchema>
 /**
  * Read-only export document for static site consumption.
  * The frontend reads this file instead of accessing SQLite directly.
