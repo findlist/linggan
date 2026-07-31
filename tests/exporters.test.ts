@@ -69,7 +69,7 @@ test('buildRemixMarkdown escapes pipe characters in table cells to preserve stru
   const planWithPipe = {
     ...plan,
     storyboard: [
-      { index: 1, duration: 4, visual: '场景|带管道符', action: '动作|管道', emotion: '情绪' }
+      { index: 1, duration: 4, shot_type: 'medium' as const, camera_movement: 'fixed' as const, visual: '场景|带管道符', action: '动作|管道', emotion: '情绪', transition: 'cut' as const }
     ]
   }
   const md = buildRemixMarkdown(planWithPipe)

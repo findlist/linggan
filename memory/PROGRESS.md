@@ -1,9 +1,69 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：C1 兼容矩阵轮
-当前阶段：Phase 2 进行中（C1、C8 已完成，剩余 C2—C7）
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；尚无自动发布闭环
+当前轮次：C2 完整制作包轮
+当前阶段：Phase 2 进行中（C1、C2、C8 已完成，剩余 C3—C7）
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；尚无自动发布闭环
+
+### C2 完整制作包轮 — 2026-07-31
+
+本轮目标：将 RemixPlan 从"创意草稿"升级为"可直接用于制作的完整包"，补齐制作所需字段（分镜表景别/运镜/转场、结构化画面提示词正向/负面/比例/风格强度、封面文案、版权边界声明），并在 daily-pipeline 调用链中集成 C1 兼容矩阵过滤（生成前 filterCompatibleCombinations 再 buildRemixPlan）。
+
+完成：
+
+- 扩展 `src/generation/remix-engine.ts` 的类型与生成逻辑：
+  - 新增 `ShotType`（extreme_close_up/close_up/medium/full/wide）、`CameraMovement`（fixed/push/pull/pan/tilt/tracking）、`TransitionType`（cut/dissolve/fade/match_cut）三个枚举；
+  - `StoryboardShot` 增加 `shot_type`、`camera_movement`、`transition` 三字段；`buildStoryboard` 按节拍角色（开场/铺垫/高潮/转折/收尾）从对应候选池用 PRNG 选择，保证确定性；
+  - `RemixCopywriting` 增加 `cover_copy`（封面文案，≤20 字吸睛短句）；`buildCopywriting` 从 3 个模板中用 PRNG 选择；
+  - 新增 `ProductionPrompt`（positive/negative/aspect_ratio/style_strength）、`CopyrightBoundary`（reference_status/commercial_use/rewrite_scope）、`ProductionPackage` 三接口；`buildProduction` 生成结构化提示词（正向含风格关键词+原创声明，负面含版权风险+低质量排除，比例 9:16 竖屏，风格强度按风格映射 0.55-0.85）和版权边界声明（明确 reference_only、商用需替换为原创或已授权、改写范围不含原作精确素材）；
+  - `RemixPlan` 增加 `production: ProductionPackage` 字段；`buildRemixPlan` 调用 `buildProduction` 填充；保留 `prompt` 字段为人类可读摘要，向后兼容；
+  - 新增 `ProductionPlanInput`（extends RemixCombination，补齐 workA/workB/momentWork/style/seed）、`ProductionPlanStats`、`ProductionPlanResult` 三接口；
+  - 新增 `buildProductionPlans(inputs, matrix, options?)` 函数：先调用 `filterCompatibleCombinations` 过滤低兼容组合（默认阈值 0.5），再对剩余组合调用 `buildRemixPlan` 生成完整制作包，返回 plans + stats（total_combinations/filtered_out/remaining/threshold）；
+- 修改 `scripts/daily-pipeline.ts` 集成 C1 兼容矩阵过滤：
+  - 在候选生成和持久化后，读取 `data/knowledge-base.json` 和 `data/compatibility-matrix.json`；
+  - 构建有限组合列表（前 5 个角色两两配对 × 前 3 个名场面 × 30s，共 30 组合）；
+  - 调用 `buildProductionPlans` 过滤并生成制作包，统计写入 stderr（如 "Production plans: 30/30 combinations passed C1 filter"）；
+  - 过滤统计写入 logger metadata（production_total/filtered_out/remaining/threshold）；
+  - 知识库或兼容矩阵不可用时 try/catch 跳过，不阻塞候选生成流程；
+- 修改 `src/generation/exporters.ts` 的 `buildRemixMarkdown`：
+  - 分镜表格从 5 列扩展为 8 列（#/时长/景别/运镜/画面/动作/情绪/转场）；
+  - 发布文案增加"封面文案"小节；
+  - 画面提示词拆为正向/负面/比例·风格强度三行，保留提示词摘要；
+  - 版权边界从硬编码一句话改为结构化三字段（参考状态/商用限制/改写范围）；
+- 修改 `tests/exporters.test.ts`：手动构造的管道符转义测试对象补齐 `shot_type`/`camera_movement`/`transition` 字段（用 `as const` 保证字面量类型）；
+- 新增 `tests/production-package.test.ts` 共 8 项测试，覆盖验收条件：
+  1. 制作包结构校验（production 含 prompts + copyright_boundary，各字段非空）；
+  2. 分镜表字段完整性（每个 shot 的 shot_type/camera_movement/transition 为合法枚举值）；
+  3. 提示词含正向/负面/比例/风格强度（正向含"原创"和风格 prompt，负面含"复刻"和"低质量"，比例 9:16，强度 0-1）；
+  4. 文案含封面文案和标签策略（cover_copy ≤20 字，3 个 # 标签，3 个标题）；
+  5. 版权边界声明存在（reference_status 含 reference_only，commercial_use 含"原创或已授权"，rewrite_scope 含"原创改写"）；
+  6. C1 过滤后低兼容组合被剔除（15s 时长组合，filtered_out > 0，remaining < total，剩余组合得分 ≥ 0.5）；
+  7. 过滤后剩余组合可生成完整制作包（30s 时长，每个 plan 含完整 production + 分镜新字段 + 封面文案）；
+  8. 确定性（同种子复现，deepEqual 通过）；
+- 修改 `package.json` 的 test 脚本加入 `tests/production-package.test.ts`。
+
+验证：
+
+- `npm run typecheck`：通过；
+- `npm run validate:data`：通过，5 份 JSON 有效，跨文件外键校验通过（compatibility-matrix.json ↔ knowledge-base.json）；
+- `npm test`：通过，161/161（新增 8 项 C2 测试，原有 153 项不变）；
+- `npm run build`：通过，10 modules transformed（从 9 增至 10，新增 production-package 测试引用的模块），CSS 26.35 kB、JS 78.11 kB（+2.18 kB）；
+- `npm run pipeline:daily -- --example --no-persist`：通过，C1 过滤步骤正常运行（"Production plans: 30/30 combinations passed C1 filter (threshold 0.5, 0 filtered out)"），30s 时长下兼容性高无过滤，候选生成不受影响；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 选择扩展现有 RemixPlan 而非新增独立 ProductionPackage 结构：制作包是 RemixPlan 的增强，不是独立概念；避免两套结构带来的维护负担；现有测试调用 buildRemixPlan 自动获得新字段；收藏功能自动保存完整制作包；
+- 保留 `plan.prompt` 为 string 字段：向后兼容 main.js 前端展示和现有测试；结构化提示词放在 `plan.production.prompts` 中，前端展示升级留待 C4 三栏布局任务；
+- 景别/运镜/转场选择基于节拍角色（开场/铺垫/高潮/转折/收尾）的候选池：不同节拍有不同候选池（如开场用远景/全景建立场景，高潮用特写强化情绪），用 PRNG 在候选中选择保证确定性；转场首镜固定 cut（无前置转场），结尾用 fade 留余韵；
+- 风格强度按风格 ID 映射（cinematic 0.85、animation 0.75、absurd 0.6、mockumentary 0.55），未知风格回退 0.7：不同风格需要不同程度的风格化处理，电影感最强，伪纪录片最弱；
+- daily-pipeline 用 30s 作为默认时长：30s 是标准短视频时长，是大多数冲突类型的 min_duration 或更高，兼容性高；15s 会被 C1 过滤（min_duration 违规），60s 单轮组合数过多；测试中用 15s 验证过滤行为，daily-pipeline 用 30s 验证集成；
+- daily-pipeline 的 C1 过滤步骤不持久化制作包：本轮只验证过滤和生成行为，制作包持久化和消费留待后续任务（如 C4 工作台三栏布局或 D5 创作历史）；
+- remix-engine.ts 值导入 compatibility.ts 的 `filterCompatibleCombinations`，compatibility.ts 类型导入 remix-engine.ts 的 `RemixDuration`：`import type` 在编译时擦除，不产生运行时循环依赖；
+- 本轮未更新 main.js 前端展示新字段：C2 聚焦数据轨道，前端展示升级（景别/运镜/转场列、封面文案、结构化提示词）留待 C4 三栏布局任务；现有 main.js 展示的 plan.prompt/storyboard/copywriting 字段保持向后兼容，新字段不影响现有展示；
+- 环境注意：本机默认 node 为 v14，需用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；通过 `set PATH=D:\development\nodejs;%PATH%` 解决；PowerShell 不支持 `&&`，需用 `cmd /d /c "..."` 或 `;` 分隔命令。
+
+下一轮：Phase 2 剩余 C3—C7。首选 C3 近似度检测（避免换皮创意），直接消费 C2 完整制作包的生成输出，让重复或高度相似的方案在生成后被标记或过滤。
 
 ### C1 兼容矩阵轮 — 2026-07-31
 

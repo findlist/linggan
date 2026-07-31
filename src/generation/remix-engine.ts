@@ -1,8 +1,14 @@
 import type {
+  CompatibilityMatrix,
   IconicMoment,
   KnownCharacter,
   Work
 } from '../data/contracts.ts'
+import {
+  filterCompatibleCombinations,
+  type CompatibilityFilterOptions,
+  type RemixCombination
+} from './compatibility.ts'
 
 /**
  * 生成引擎负责把跨作品角色 × 名场面 × 风格 × 时长组合成完整创意方案。
@@ -33,18 +39,52 @@ export interface RemixPlanInput {
   seed: string
 }
 
+/** 景别：控制镜头取景范围，影响叙事节奏与信息密度 */
+export type ShotType = 'extreme_close_up' | 'close_up' | 'medium' | 'full' | 'wide'
+/** 运镜：摄像机运动方式，影响画面张力与观众代入感 */
+export type CameraMovement = 'fixed' | 'push' | 'pull' | 'pan' | 'tilt' | 'tracking'
+/** 转场：镜头间衔接方式，影响节奏连续性 */
+export type TransitionType = 'cut' | 'dissolve' | 'fade' | 'match_cut'
+
 export interface StoryboardShot {
   index: number
   duration: number
+  shot_type: ShotType
+  camera_movement: CameraMovement
   visual: string
   action: string
   emotion: string
+  transition: TransitionType
 }
 
 export interface RemixCopywriting {
   titles: string[]
   description: string
   hashtags: string[]
+  /** 封面文案：用于视频封面图上的吸睛短句，区别于标题候选 */
+  cover_copy: string
+}
+
+/** 结构化画面提示词：正向/负面/比例/风格强度，可直接喂给图像或视频生成模型 */
+export interface ProductionPrompt {
+  positive: string
+  negative: string
+  aspect_ratio: string
+  /** 风格强度 0-1，控制风格化程度 */
+  style_strength: number
+}
+
+/** 版权边界声明：明确参考范围、商用限制和原创改写范围 */
+export interface CopyrightBoundary {
+  reference_status: string
+  commercial_use: string
+  rewrite_scope: string
+}
+
+/** 制作包：包含结构化提示词和版权边界，补齐制作所需字段 */
+export interface ProductionPackage {
+  prompts: ProductionPrompt
+  copyright_boundary: CopyrightBoundary
 }
 
 export interface RemixPlan {
@@ -59,8 +99,11 @@ export interface RemixPlan {
   dialogueB: string
   storyboard: StoryboardShot[]
   copywriting: RemixCopywriting
+  /** 人类可读的提示词摘要，保留向后兼容；详细字段见 production.prompts */
   prompt: string
   duration: RemixDuration
+  /** C2 完整制作包：结构化提示词与版权边界声明 */
+  production: ProductionPackage
 }
 
 /* ----------------------------- 确定性随机工具 ----------------------------- */
@@ -275,6 +318,44 @@ const SHOT_DURATION_PLAN: Record<RemixDuration, number[]> = {
   60: [5, 6, 8, 10, 9, 9, 8, 5]
 }
 
+// 节拍 → 镜头角色：开场/铺垫/高潮/转折/收尾，决定景别、运镜和转场候选池
+type BeatRole = 'opening' | 'buildup' | 'climax' | 'turning' | 'ending'
+
+const classifyBeat = (beat: string): BeatRole => {
+  if (beat === '钩子') return 'opening'
+  if (beat === '铺垫' || beat === '升级') return 'buildup'
+  if (beat === '冲突' || beat === '受阻') return 'climax'
+  if (beat === '转折' || beat === '破局' || beat === '反转') return 'turning'
+  return 'ending'
+}
+
+// 按镜头角色分组的景别候选：开场用远景建立场景，高潮用特写强化情绪
+const SHOT_TYPE_POOL: Record<BeatRole, ShotType[]> = {
+  opening: ['wide', 'full'],
+  buildup: ['medium', 'full'],
+  climax: ['close_up', 'extreme_close_up'],
+  turning: ['close_up', 'medium'],
+  ending: ['full', 'wide']
+}
+
+// 按镜头角色分组的运镜候选：开场推入建立代入，收尾拉出留白
+const CAMERA_MOVEMENT_POOL: Record<BeatRole, CameraMovement[]> = {
+  opening: ['push', 'tracking'],
+  buildup: ['fixed', 'pan'],
+  climax: ['tracking', 'push'],
+  turning: ['tilt', 'push'],
+  ending: ['fixed', 'pull']
+}
+
+// 按镜头角色分组的转场候选：首镜无前置转场用 cut，结尾用 fade 留余韵
+const TRANSITION_POOL: Record<BeatRole, TransitionType[]> = {
+  opening: ['cut'],
+  buildup: ['cut', 'dissolve'],
+  climax: ['cut', 'match_cut'],
+  turning: ['match_cut', 'dissolve'],
+  ending: ['fade', 'dissolve']
+}
+
 const buildStoryboard = (
   duration: RemixDuration,
   moment: IconicMoment,
@@ -288,6 +369,7 @@ const buildStoryboard = (
   const reusableBeats = moment.reusable_beats
 
   return beats.map((beat, index) => {
+    const role = classifyBeat(beat)
     const emotion = emotions[index % emotions.length]
     const action = actions[index % actions.length]
     // 镜头画面由名场面 setting + 节拍描述 + 风格 prompt 组合，保证原创改写
@@ -296,9 +378,12 @@ const buildStoryboard = (
     return {
       index: index + 1,
       duration: durations[index] ?? Math.floor(duration / beats.length),
+      shot_type: pick(SHOT_TYPE_POOL[role], rng),
+      camera_movement: pick(CAMERA_MOVEMENT_POOL[role], rng),
       visual,
       action,
-      emotion
+      emotion,
+      transition: pick(TRANSITION_POOL[role], rng)
     }
   })
 }
@@ -340,7 +425,66 @@ const buildCopywriting = (
     `#${input.style.label}`
   ]
 
-  return { titles, description, hashtags }
+  // 封面文案：用于视频封面图的吸睛短句，区别于标题候选，控制在 12 字以内
+  const coverTemplates = [
+    `${characterA.name}的${moment.conflict_type}`,
+    `${characterA.name} × ${characterB.name}`,
+    `${moment.conflict_type}·${characterA.name}`
+  ]
+  const cover_copy = pick(coverTemplates, rng)
+
+  return { titles, description, hashtags, cover_copy }
+}
+
+/* --------------------------- 制作包生成 --------------------------- */
+// C2 完整制作包：结构化画面提示词（正向/负面/比例/风格强度）+ 版权边界声明。
+// 提示词可直接喂给图像或视频生成模型；版权边界确保输出可追溯、可商用判断。
+
+// 风格 → 风格强度：电影感最高（0.85），伪纪录片最低（0.55），其余居中
+const STYLE_STRENGTH: Record<string, number> = {
+  cinematic: 0.85,
+  absurd: 0.6,
+  animation: 0.75,
+  mockumentary: 0.55
+}
+
+const buildProduction = (
+  input: RemixPlanInput,
+  prompt: string
+): ProductionPackage => {
+  const { style, characterA, characterB, moment } = input
+
+  // 正向提示词：在人类可读摘要基础上补充制作关键词
+  const positive =
+    `${prompt} 画面比例 9:16 竖屏，${style.prompt}，` +
+    `原创角色造型，高对比度光影，电影级质感。`
+
+  // 负面提示词：排除低质量输出和版权风险
+  const negative =
+    '低质量, 模糊, 变形, 水印, 文字, ' +
+    '复刻具体演员形象, 复刻动画角色造型, 复刻原作场景, ' +
+    '暴力血腥, 色情, 真人肖像, 未成年人'
+
+  // 短视频统一用 9:16 竖屏
+  const aspect_ratio = '9:16'
+
+  const style_strength = STYLE_STRENGTH[style.id] ?? 0.7
+
+  // 版权边界声明：明确参考范围、商用限制和改写范围
+  const copyright_boundary: CopyrightBoundary = {
+    reference_status:
+      `参考角色（${characterA.name}、${characterB.name}）和名场面（${moment.name}）` +
+      `仅作结构与性格参考，rights_status 为 reference_only。`,
+    commercial_use:
+      '商业发布前必须替换为原创或已授权资产，不得直接使用参考角色形象。',
+    rewrite_scope:
+      '台词、镜头、世界观、角色造型全部原创改写，不包含原作精确台词、截图或视频片段。'
+  }
+
+  return {
+    prompts: { positive, negative, aspect_ratio, style_strength },
+    copyright_boundary
+  }
 }
 
 /* ------------------------------ 主入口 ------------------------------ */
@@ -381,6 +525,8 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
     `场景：${moment.setting}。动作：${moment.visual_actions.join('、')}。` +
     `情绪：${moment.emotional_arc.join(' → ')}。`
 
+  const production = buildProduction(input, prompt)
+
   return {
     id: `remix-${hashStringToSeed(seed).toString(36)}`,
     title,
@@ -394,7 +540,8 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
     storyboard,
     copywriting,
     prompt,
-    duration
+    duration,
+    production
   }
 }
 
@@ -409,3 +556,63 @@ export const countHookTemplates = (): Record<HookCategory, number> =>
       HOOK_TEMPLATES[category].length
     ])
   ) as Record<HookCategory, number>)
+
+/* --------------------- C2 批量制作包与 C1 过滤集成 --------------------- */
+// buildProductionPlans 在生成前调用 filterCompatibleCombinations 过滤低兼容组合，
+// 确保只有通过 C1 兼容矩阵检查的组合才会生成完整制作包。
+
+/** 单个制作包输入：在 RemixCombination 基础上补齐 buildRemixPlan 所需的 work/style/seed */
+export interface ProductionPlanInput extends RemixCombination {
+  workA: Work
+  workB: Work
+  momentWork: Work
+  style: RemixStyle
+  seed: string
+}
+
+export interface ProductionPlanStats {
+  total_combinations: number
+  filtered_out: number
+  remaining: number
+  threshold: number
+}
+
+export interface ProductionPlanResult {
+  plans: RemixPlan[]
+  stats: ProductionPlanStats
+}
+
+/**
+ * 批量生成完整制作包，生成前用 C1 兼容矩阵过滤低兼容组合。
+ * 默认阈值 0.5，低于阈值的组合不会进入 buildRemixPlan。
+ */
+export const buildProductionPlans = (
+  inputs: readonly ProductionPlanInput[],
+  matrix: CompatibilityMatrix,
+  options?: CompatibilityFilterOptions
+): ProductionPlanResult => {
+  const threshold = options?.threshold ?? 0.5
+  // filterCompatibleCombinations 的泛型约束为 T extends RemixCombination，
+  // ProductionPlanInput 继承 RemixCombination，因此可以整体传入并保留额外字段
+  const filtered = filterCompatibleCombinations(inputs, matrix, { threshold })
+  const plans = filtered.map(input => buildRemixPlan({
+    characterA: input.characterA,
+    characterB: input.characterB,
+    moment: input.moment,
+    workA: input.workA,
+    workB: input.workB,
+    momentWork: input.momentWork,
+    style: input.style,
+    duration: input.duration,
+    seed: input.seed
+  }))
+  return {
+    plans,
+    stats: {
+      total_combinations: inputs.length,
+      filtered_out: inputs.length - filtered.length,
+      remaining: filtered.length,
+      threshold
+    }
+  }
+}

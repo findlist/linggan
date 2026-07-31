@@ -1,9 +1,19 @@
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
-import { SeedEntitiesSchema, TrendInboxSchema } from '../src/data/contracts.ts'
+import {
+  CompatibilityMatrixSchema,
+  KnowledgeBaseSchema,
+  SeedEntitiesSchema,
+  TrendInboxSchema
+} from '../src/data/contracts.ts'
 import type { CandidateGenerationConfig } from '../src/generation/candidate-generator.ts'
 import { generateDailyCandidates } from '../src/generation/candidate-generator.ts'
 import { storedTrendsToTrends } from '../src/generation/trend-adapter.ts'
+import {
+  buildProductionPlans,
+  type ProductionPlanInput,
+  type RemixStyle
+} from '../src/generation/remix-engine.ts'
 import { loadDatabaseConfig, parseSqliteUrl } from '../src/config/database.ts'
 import { migrateDatabase } from '../src/database/migrate.ts'
 import { SqliteTrendStore } from '../src/storage/sqlite-trend-store.ts'
@@ -83,6 +93,60 @@ try {
     database.close()
   }
 
+  // C2: 集成 C1 兼容矩阵过滤，生成完整制作包并记录统计
+  // 在候选生成后，读取知识库和兼容矩阵，构建跨作品组合并用 C1 过滤
+  let productionStats: { total: number; filtered_out: number; remaining: number; threshold: number } | null = null
+  try {
+    const [rawKnowledge, rawMatrix] = await Promise.all([
+      readJson('data/knowledge-base.json'),
+      readJson('data/compatibility-matrix.json')
+    ])
+    const knowledge = KnowledgeBaseSchema.parse(rawKnowledge)
+    const matrix = CompatibilityMatrixSchema.parse(rawMatrix)
+    const workById = new Map(knowledge.works.map(w => [w.id, w]))
+    const style: RemixStyle = { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图' }
+
+    // 构建有限组合列表：前 5 个角色两两配对 × 前 3 个名场面 × 30s，控制单轮规模
+    const characters = knowledge.known_characters.slice(0, 5)
+    const moments = knowledge.iconic_moments.slice(0, 3)
+    const inputs: ProductionPlanInput[] = []
+    for (let i = 0; i < characters.length; i++) {
+      for (let j = i + 1; j < characters.length; j++) {
+        for (const moment of moments) {
+          const workA = workById.get(characters[i].work_id)
+          const workB = workById.get(characters[j].work_id)
+          const momentWork = workById.get(moment.work_id)
+          if (!workA || !workB || !momentWork) continue
+          inputs.push({
+            characterA: characters[i],
+            characterB: characters[j],
+            moment,
+            duration: 30,
+            workA,
+            workB,
+            momentWork,
+            style,
+            seed: `pipeline-${report.date}-${i}-${j}-${moment.id}`
+          })
+        }
+      }
+    }
+
+    const productionResult = buildProductionPlans(inputs, matrix)
+    productionStats = {
+      total: productionResult.stats.total_combinations,
+      filtered_out: productionResult.stats.filtered_out,
+      remaining: productionResult.stats.remaining,
+      threshold: productionResult.stats.threshold
+    }
+    process.stderr.write(
+      `Production plans: ${productionResult.stats.remaining}/${productionResult.stats.total_combinations} combinations passed C1 filter (threshold ${productionResult.stats.threshold}, ${productionResult.stats.filtered_out} filtered out)\n`
+    )
+  } catch (productionError) {
+    // 知识库或兼容矩阵不可用时不阻塞候选生成流程
+    process.stderr.write(`C1 production filter skipped: ${(productionError as Error).message}\n`)
+  }
+
   process.stdout.write(`${JSON.stringify(report, null, 2)}\n`)
 
   await logger.succeed({
@@ -94,7 +158,11 @@ try {
       candidates: report.candidates.length,
       inserted,
       skipped,
-      total
+      total,
+      production_total: productionStats?.total ?? 0,
+      production_filtered_out: productionStats?.filtered_out ?? 0,
+      production_remaining: productionStats?.remaining ?? 0,
+      production_threshold: productionStats?.threshold ?? 0
     }
   })
 } catch (error) {
