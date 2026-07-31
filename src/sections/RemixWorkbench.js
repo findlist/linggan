@@ -23,6 +23,8 @@ import { buildRemixPlan } from '../generation/remix-engine.ts'
 import { buildRemixFileName, buildRemixJson, buildRemixMarkdown } from '../generation/exporters.ts'
 // C4：引入 C3 近似度检测，在前端把当前方案与已收藏方案对比，标记换皮创意
 import { detectDuplicates } from '../generation/similarity.ts'
+// D2：前端事件采集，记录方案曝光、复制、收藏和导出行为
+import { track } from '../data/tracker.ts'
 
 // 渲染角色 A / B 下拉选项；selected 用于初始默认值（来自原 main.js）
 const renderCharacterOptions = (selected) =>
@@ -126,6 +128,17 @@ const buildRemix = () => {
 const renderPreview = (result, ctx) => {
   const { plan } = result
   const preview = document.querySelector('#preview-card')
+  // D2 埋点：方案渲染即曝光，记录 duration/hook/personality 供 D2 偏好画像聚合
+  track('idea_impression', {
+    ideaId: plan.id,
+    payload: {
+      source: 'remix_workbench',
+      duration: plan.duration,
+      hook_category: plan.hookCategory,
+      personality_a: plan.personalityA,
+      personality_b: plan.personalityB,
+    },
+  })
   // C3 近似度检测：与已收藏方案对比，标记换皮创意（排除自身 id 避免收藏后自比）
   const dup = checkDuplicateAgainstSaved(plan)
   const dupBanner = dup.isDuplicate
@@ -144,6 +157,8 @@ const renderPreview = (result, ctx) => {
     <div class="preview-actions"><button class="btn ghost copy-result">${icon('copy', 16)} 复制</button><button class="btn primary save-result">${icon('bookmark', 16)} 收藏</button></div>`
   preview.querySelector('.copy-result').addEventListener('click', async () => {
     await navigator.clipboard?.writeText(preview.innerText)
+    // D2 埋点：复制方案视为可执行意图，记录钩子文本供后续转化漏斗分析
+    track('prompt_copied', { ideaId: plan.id, payload: { hook: plan.hook, source: 'preview' } })
     toast('方案已复制')
   })
   preview.querySelector('.save-result').addEventListener('click', () => {
@@ -167,6 +182,11 @@ const renderPreview = (result, ctx) => {
         ...saved,
       ].slice(0, 8)
       ctx.setSaved(nextSaved)
+      // D2 埋点：收藏视为长期价值信号，记录 duration 和风格供偏好画像
+      track('idea_saved', {
+        ideaId: plan.id,
+        payload: { duration: plan.duration, style: result.style.id, source: 'workbench' },
+      })
       // 收藏后重新渲染预览，更新 C3 标记状态；同步刷新 SavedList
       renderPreview(result, ctx)
       ctx.renderSaved()
@@ -196,6 +216,8 @@ const renderResult = (result, ctx) => {
   card.querySelector('.export-md').addEventListener('click', () => {
     try {
       downloadText(`${buildRemixFileName(plan)}.md`, buildRemixMarkdown(plan), 'text/markdown;charset=utf-8')
+      // D2 埋点：导出视为专业使用意图，记录格式和方案特征
+      track('idea_exported', { ideaId: plan.id, payload: { format: 'markdown', duration: plan.duration } })
       toast('Markdown 已导出')
     } catch (error) {
       toast('导出失败：' + (error?.message ?? error))
@@ -205,6 +227,7 @@ const renderResult = (result, ctx) => {
   card.querySelector('.export-json').addEventListener('click', () => {
     try {
       downloadText(`${buildRemixFileName(plan)}.json`, buildRemixJson(plan), 'application/json;charset=utf-8')
+      track('idea_exported', { ideaId: plan.id, payload: { format: 'json', duration: plan.duration } })
       toast('JSON 已导出')
     } catch (error) {
       toast('导出失败：' + (error?.message ?? error))

@@ -1,9 +1,76 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：D1 事件采集轮
-当前阶段：Phase 3 反馈学习轨道已启动，D1 事件采集已完成
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；C4 创作工作台已升级为三栏布局（左素材选择/中核心预览/右完整制作包），中栏预览展示标题/钩子/封面文案/C3 重复检测标记/复制收藏快捷操作，右栏展示完整分镜表（含景别/运镜/转场中文标签）、结构化画面提示词（正向/负面/比例/风格强度）、版权边界三字段声明和导出按钮，前端集成 detectDuplicates 把当前方案与已收藏方案对比并在相似度≥0.7 时显示换皮警告，桌面端三栏在 ≤980px 堆叠为单栏；C5 素材库多维筛选已建立，业务规则与 UI 分离为 src/library/filter.ts 纯函数（filterLibraryItems/collectFilterOptions），素材库三个 tab 各配置 3 个筛选维度（角色：类型/作品/版权；名场面：冲突/情绪/作品；作品：媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与所有维度 AND，chip 动态收集可选项避免死选项，切换 tab 自动重置筛选，有选中时显示清空按钮和"显示 N / 共 M 项"计数；C6 前端模块化已完成，main.js 从 730 行减至 78 行（-92%），按行为边界拆分为 6 个 section 组件（Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList/FeedSection）和 4 个基础模块（data/knowledge.js 知识库读取层、data/store.js 状态管理、ui/icons.js 图标库、ui/dom.js DOM 工具），原 main.js 顶层 6 个可变 let（duration/generation/currentResult/activeTab/libraryFilters/saved）全部收敛到 store.js，跨 section 调用通过 ctx 注入回调避免循环依赖，浏览器 DOM 检查 6/7 项 PASS（唯一 FAIL 是验证脚本查询方式问题，代码正确）；C7 lint/format 配置已完成，ESLint 9 flat config + Prettier 3 覆盖全部 .ts/.js 源码，lint 与 format:check 全部通过，TypeScript 降级至 6.0.3 以兼容 typescript-eslint v8，Phase 2 全部任务结束；D1 事件采集已建立，9 类核心产品事件（idea_impression/idea_opened/idea_saved/prompt_copied/idea_exported/video_created/video_published/idea_hidden/risk_reported）可通过 ProductEventSchema 校验并经 EventTracker 记录到 SQLite product_events 表（INSERT OR IGNORE 幂等），EventStore 接口 + InMemoryEventStore/SqliteEventStore 双实现支持按 event_type/session_id/idea_id/日期范围查询和 countByType 九类计数，003 迁移建表含 3 索引（type+occurred/session+occurred/idea_id）；尚无自动发布闭环
+当前轮次：D2a 前端埋点采集闭环轮
+当前阶段：Phase 3 反馈学习轨道进行中，D2a 前端埋点采集闭环已完成
+整体状态：本地数据闭环可验证；前端埋点采集闭环已建立（session 管理 + localStorage 事件队列 + 导出按钮 + sync:events 回收入库）；前端 6 类核心交互事件（impression/opened/saved/copied/exported/hidden）已在 FeedSection/RemixWorkbench/SavedList 接入 track()，事件暂存 localStorage 后可通过"导出事件"按钮下载 event-inbox 兼容 JSON，再由 npm run sync:events 经 ProductEventSchema 校验后幂等写入 SQLite product_events 表；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成、导出和事件同步六个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；C4 创作工作台已升级为三栏布局（左素材选择/中核心预览/右完整制作包），中栏预览展示标题/钩子/封面文案/C3 重复检测标记/复制收藏快捷操作，右栏展示完整分镜表（含景别/运镜/转场中文标签）、结构化画面提示词（正向/负面/比例/风格强度）、版权边界三字段声明和导出按钮，前端集成 detectDuplicates 把当前方案与已收藏方案对比并在相似度≥0.7 时显示换皮警告，桌面端三栏在 ≤980px 堆叠为单栏；C5 素材库多维筛选已建立，业务规则与 UI 分离为 src/library/filter.ts 纯函数（filterLibraryItems/collectFilterOptions），素材库三个 tab 各配置 3 个筛选维度（角色：类型/作品/版权；名场面：冲突/情绪/作品；作品：媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与所有维度 AND，chip 动态收集可选项避免死选项，切换 tab 自动重置筛选，有选中时显示清空按钮和"显示 N / 共 M 项"计数；C6 前端模块化已完成，main.js 从 730 行减至 78 行（-92%），按行为边界拆分为 6 个 section 组件（Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList/FeedSection）和 4 个基础模块（data/knowledge.js 知识库读取层、data/store.js 状态管理、ui/icons.js 图标库、ui/dom.js DOM 工具），原 main.js 顶层 6 个可变 let（duration/generation/currentResult/activeTab/libraryFilters/saved）全部收敛到 store.js，跨 section 调用通过 ctx 注入回调避免循环依赖，浏览器 DOM 检查 6/7 项 PASS（唯一 FAIL 是验证脚本查询方式问题，代码正确）；C7 lint/format 配置已完成，ESLint 9 flat config + Prettier 3 覆盖全部 .ts/.js 源码，lint 与 format:check 全部通过，TypeScript 降级至 6.0.3 以兼容 typescript-eslint v8，Phase 2 全部任务结束；D1 事件采集已建立，9 类核心产品事件（idea_impression/idea_opened/idea_saved/prompt_copied/idea_exported/video_created/video_published/idea_hidden/risk_reported）可通过 ProductEventSchema 校验并经 EventTracker 记录到 SQLite product_events 表（INSERT OR IGNORE 幂等），EventStore 接口 + InMemoryEventStore/SqliteEventStore 双实现支持按 event_type/session_id/idea_id/日期范围查询和 countByType 九类计数，003 迁移建表含 3 索引（type+occurred/session+occurred/idea_id）；D2a 前端埋点采集闭环已建立，前端 session 管理（localStorage 持久化 + 30 分钟超时新建会话）+ 事件队列（track 接口暂存 localStorage，上限 200 丢弃最旧）+ 导出按钮（EventSyncBar 渲染计数轮询和下载 event-inbox 兼容 JSON）+ sync:events 脚本（递归扫描 event-inbox，逐事件 Schema 校验后幂等写入 SQLite）完整接通前端行为到后端 product_events 表的闭环，6 类核心交互事件（impression/opened/saved/copied/exported/hidden）已在 FeedSection/RemixWorkbench/SavedList 接入埋点；尚无自动发布闭环
+
+### D2a 前端埋点采集闭环轮 — 2026-07-31
+
+本轮目标：建立前端 session 管理和事件队列，接入 6 类核心交互事件埋点，并提供"导出事件 → sync:events 回收入库"的完整闭环，为 D2 偏好画像提供按 session_id 聚合的真实事件流。对应 DEVELOPMENT_DIRECTION.md 阶段 D"D2 创作者偏好画像"的前置数据采集部分和 D1 轮遗留的"前端埋点未接入"问题。验收条件为前端 6 类核心交互事件可记录到 localStorage 队列并导出为 event-inbox 兼容 JSON，sync:events 脚本可幂等回收到 SQLite。
+
+完成：
+
+- 新增 `src/data/session.ts` 前端会话管理（65 行）：
+  - `SESSION_KEY='linggan-session'` + `SESSION_TIMEOUT_MS=30*60*1000`（30 分钟无活动新建会话，与常见分析工具默认值一致）；
+  - `buildSessionId`：生成符合 StableIdSchema 的 `sess_{YYYYMMDDhhmmss}_{6hex}`，浏览器端用 Math.random 生成后缀（无 node:crypto），event_id 幂等兜底冲突概率；
+  - `getSession`：读取 localStorage，已存在且未过期则复用并 touch last_active，过期或不存在则新建并持久化；localStorage 不可用或损坏时降级返回内存会话不抛错；
+  - `getSessionId`：便捷方法，自动 touch；
+- 新增 `src/data/tracker.ts` 前端事件采集器（121 行）：
+  - `QUEUE_KEY='linggan-event-queue'` + `MAX_QUEUE_SIZE=200`（超限丢弃最旧事件，避免 localStorage 爆满）；
+  - 不 import zod 避免把 zod 带入前端 bundle，类型用 `import type` 编译时擦除零运行时开销，运行时校验交给后端 sync 脚本；
+  - `track(eventType, options, now)`：自动生成 event_id（与后端 buildEventId 同格式）、occurred_at、session_id，组装 ProductEvent 后追加队列；
+  - `getQueuedEvents`（只读副本）、`clearQueue`、`getQueueSize`（供按钮计数）、`exportQueue(now, keepQueue)`（导出 event-inbox 兼容 JSON，默认清空队列）；
+- 新增 `src/sections/EventSyncBar.js` 事件同步条（64 行）：
+  - `renderEventSyncButton`：渲染带计数徽章的"导出事件"按钮，队列为空时 disabled；
+  - `mountEventSyncBar`：每 2 秒轮询 getQueueSize 刷新计数，点击调用 exportQueue 下载 JSON（文件名 `events_{session_id}_{stamp}.json`），toast 提示放入 data/event-inbox/ 后运行 sync:events，beforeunload 清理定时器；
+- 新增 `src/ingestion/sync-events.ts` 事件回收入库（100 行）：
+  - `syncEventInbox`：递归扫描 inboxDirectory 下 .json 文件，逐文件用 EventQueueExportSchema 校验结构，逐事件 store.record（内部 ProductEventSchema 校验 + INSERT OR IGNORE 幂等）；
+  - 坏文件隔离报告（failures 数组），单条坏事件不阻止同文件其他事件入库（events_failed 计数）；
+  - 目录不存在（ENOENT）时返回零计数不抛错；
+- 新增 `scripts/sync-events.ts` CLI 入口（79 行）：
+  - 解析 `--inbox <dir> --database <URL> --logs <dir>` 参数，默认 inbox=data/event-inbox、database=DATABASE_URL、logs=data/run-logs；
+  - 先 migrateDatabase 确保 product_events 表存在，再 syncEventInbox，输出 JSON 报告；
+  - 用 createTaskRunLogger 记录 succeed/partial/fail 三态日志，task_name='sync:events'，有文件或事件失败时 exitCode=2；
+- 新增 `data/event-inbox/README.md`：说明文件规则（schema_version/session_id/exported_at/events）、文件名格式、9 类 event_type、event_id 幂等和 sync:events 命令用法；
+- 修改 `src/data/contracts.ts`：新增 `EventQueueExportSchema`（strict 对象：schema_version(1)/session_id/exported_at/events array）和 `EventQueueExport` 类型，供 sync-events 校验前端导出文件结构；
+- 修改 `src/main.js`：import renderEventSyncButton/mountEventSyncBar，在 nav 模板插入按钮，初始化末尾调用 mountEventSyncBar()；
+- 修改 `src/sections/FeedSection.js`：候选卡片渲染时 track('idea_impression', { ideaId, payload: { position, source: 'feed' } })；
+- 修改 `src/sections/RemixWorkbench.js`：5 处埋点——生成时 track('idea_impression')、复制钩子 track('prompt_copied')、收藏 track('idea_saved')、导出 MD track('idea_exported' format:markdown)、导出 JSON track('idea_exported' format:json)；
+- 修改 `src/sections/SavedList.js`：6 处埋点——展开 track('idea_opened' source:saved_list_expand)、重新加载 track('idea_opened' source:saved_list_reload)、导出 MD/JSON track('idea_exported')、删除 track('idea_hidden')；
+- 修改 `src/style.css`：新增 `.nav-sync` 按钮样式（与 nav-status 并列，hover 高亮 lime 色，disabled 半透明）和 `.sync-count` 徽章样式；
+- 修改 `package.json`：test 脚本加入 `tests/client-tracker.test.ts tests/sync-events.test.ts`，新增 `sync:events` 脚本；
+- 新增 `tests/client-tracker.test.ts` 共 14 项测试：
+  - session 5 项：首次新建并持久化、超时内复用、超时后新建、getSessionId 格式、localStorage 不可用降级；
+  - tracker 9 项：track 生成合法事件并追加队列、**track records all 9 core event types (D2 acceptance)**、null idea_id 支持、重复调用生成不同 event_id、队列上限 200 丢弃最旧、getQueuedEvents 只读副本、clearQueue 清空、exportQueue 空队列返回 null、exportQueue 生成兼容文档并默认清空、keepQueue=true 保留队列；
+- 新增 `tests/sync-events.test.ts` 共 9 项测试：
+  - 空目录返回零计数、目录不存在返回零计数、合法文件全部入库、重复 sync 幂等跳过、坏文件隔离继续处理好文件、单条坏事件不阻止同文件其他事件、多文件按排序处理、嵌套子目录递归扫描、非 JSON 文件忽略。
+
+验证：
+
+- `npm run lint`：通过（无报错、无警告）；
+- `npm run format:check`：通过（All matched files use Prettier code style!）；
+- `npm run typecheck`：通过；
+- `npm run validate:data`：通过，5 份 JSON 有效，跨文件外键校验通过；
+- `npm test`：通过，232/232（新增 23 项 D2a 测试：14 项 client-tracker + 9 项 sync-events，原有 209 项不变）；
+- `npm run build`：通过，25 modules transformed（从 D1 的 22 增至 25，新增 3 个前端模块：session.ts/tracker.ts/EventSyncBar.js），CSS 31.11 kB（+0.55 kB，nav-sync 按钮样式）、JS 89.92 kB（+3.61 kB，session+tracker+EventSyncBar+6 处 track 调用）；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 前端 session 用 localStorage 而非 cookie：项目是静态站点 + CLI 模式无后端会话，localStorage 跨刷新保持且无网络开销；30 分钟超时与常见分析工具默认值一致，避免把不同访问阶段的偏好混入同一画像；
+- 事件队列暂存 localStorage 而非直接写 SQLite：浏览器端无法直接写 SQLite（无 Node API），暂存 localStorage 让用户离线操作不丢失事件，通过"导出 → sync"两步完成回收；这种异步回收模式适合当前无后端的架构，D3/D4 引入排序权重时已有真实事件流可用；
+- 队列上限 200：正常使用不会触及，避免 localStorage 配额满（5-10MB）导致写入失败；超限丢弃最旧事件保留最新行为，用户应定期导出清空；
+- tracker 不 import zod：zod 会显著增加前端 bundle（zod minified ~50KB），运行时校验交给后端 sync 脚本（ProductEventSchema.parse）更合适；前端只用 `import type` 引入类型，编译时擦除零开销；
+- event_id 用 Math.random 而非 crypto.randomUUID：浏览器端 crypto.randomUUID 需 secure context（HTTPS 或 localhost），开发环境 http 访问可能不可用；Math.random 6 位 hex 后缀冲突概率极低（1/16^6），且后端 event_id 幂等兜底；
+- EventSyncBar 用 .js 而非 .ts：尝试 .ts 时 ESLint/Prettier 报"找不到 ../ui/dom.js 和 ../ui/icons.js 的声明文件"和"error?.message 类型不存在"；项目前端模块（sections/*.js、ui/*.js、data/store.js、data/knowledge.js）均为 .js，保持一致避免混用类型声明问题；
+- 6 类事件埋点选择（impression/opened/saved/copied/exported/hidden）：这 6 类是用户与创意方案的核心交互，video_created/video_published/risk_reported 暂未接入——video_created 需要视频生成功能（Phase 4），video_published 需要发布闭环（未建立），risk_reported 需要风险举报 UI（当前无）；这 3 类事件的数据层（Schema + 存储 + 测试）已在 D1 完成，待对应功能上线时接入；
+- sync:events 不删除原始文件：保留可追溯性，用户可在 sync 成功后手动清理；与 migrate:trends 一致的处理策略；
+- D2a 是 D2 偏好画像的前置数据采集部分：D2 验收条件是"个性化排序"，需要先有真实事件流才能构建画像；D2a 完成前端采集闭环后，D2b 将基于 product_events 表按 session_id 聚合事件构建偏好画像（偏好的角色类型/作品/风格/时长），再实现个性化排序；
+- DEVELOPMENT_DIRECTION.md 状态矩阵未更新：该文档第 3 节状态表仍显示"下一项 C8"和"Phase 2 待完成 C1-C8"、"Phase 3 待完成 D1-D5"，与 PROGRESS.md 的"Phase 2 全部完成、D1-D2a 已完成"不一致；以可验证的代码和测试为准，文档偏差不阻塞 D2a，留待后续修正；
+- 环境注意：本机默认 node 为 v14，需用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；通过 `cmd /d /c "set PATH=D:\development\nodejs;%PATH% && ..."` 解决；PowerShell 不支持 `&&`，需用 `cmd /d /c` 包装或 `;` 分隔。
+
+下一轮：D2a 已完成前端埋点采集闭环。首选 D2b 创作者偏好画像，基于 product_events 表按 session_id 聚合事件流构建用户偏好画像（如偏好的角色类型/作品/风格/时长），实现个性化排序基础。对应 DEVELOPMENT_DIRECTION.md 阶段 D"D2 创作者偏好画像"和 DEVELOPMENT_PLAN.md 阶段 D"为不同创作者建立偏好画像"，验收条件为个性化排序。D2b 需要：1）建立偏好画像数据结构和聚合算法（从 product_events 按 session_id 聚合 idea_impression/idea_opened/idea_saved 等事件，统计角色类型/作品/风格/时长偏好权重）；2）把画像接入推荐流或工作台生成排序（如按偏好权重调整候选排序或生成时的角色/风格选择概率）；3）用模拟事件流验证画像聚合和排序效果。
 
 ### D1 事件采集轮 — 2026-07-31
 

@@ -623,7 +623,8 @@ export const TaskRunLogSchema = z.object({
     'migrate:trends',
     'pipeline:daily',
     'export:trends',
-    'export:candidates'
+    'export:candidates',
+    'sync:events'
   ]),
   started_at: z.iso.datetime({ offset: true }),
   finished_at: z.iso.datetime({ offset: true }),
@@ -701,3 +702,20 @@ export type ProductEvent = z.infer<typeof ProductEventSchema>
 
 /** 9 类核心事件列表，供采集器和测试枚举使用 */
 export const PRODUCT_EVENT_TYPES = ProductEventTypeSchema.options
+
+/**
+ * 前端事件队列导出文档：前端 localStorage 队列导出为 JSON 文件，
+ * 放入 data/event-inbox/ 由 scripts/sync-events.ts 回收到 SQLite。
+ * 文件级只校验结构和元数据；events 数组逐个由 ProductEventSchema 校验，
+ * 单个坏事件不阻止同文件其他事件入库。
+ */
+export const EventQueueExportSchema = z
+  .object({
+    schema_version: z.literal(1),
+    session_id: NonEmptyTextSchema,
+    exported_at: z.iso.datetime({ offset: true }),
+    events: z.array(z.unknown())
+  })
+  .strict()
+
+export type EventQueueExport = z.infer<typeof EventQueueExportSchema>

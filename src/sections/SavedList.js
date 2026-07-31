@@ -9,6 +9,8 @@ import { escapeHtml, downloadText, toast } from '../ui/dom.js'
 import { personalityLabels, hookCategoryLabels } from '../data/knowledge.js'
 import { getState, setSaved } from '../data/store.js'
 import { buildRemixFileName, buildRemixJson, buildRemixMarkdown } from '../generation/exporters.ts'
+// D2：前端事件采集，记录收藏方案的展开、重新加载、导出和删除行为
+import { track } from '../data/tracker.ts'
 
 // 渲染收藏列表 section 初始 HTML：标题 + 列表容器，默认显示空状态文案
 export const renderSavedSection = () => `
@@ -42,7 +44,7 @@ export const renderSaved = (ctx) => {
         </div>`
         : `<div class="saved-body saved-old" hidden><p>该收藏为旧格式，仅保存了标题和钩子，无法展开或重新加载。请重新生成并收藏以使用完整功能。</p><div class="saved-actions"><button class="btn ghost saved-remove" data-id="${escapeHtml(item.id)}" aria-label="删除收藏">${icon('close', 14)} 删除</button></div></div>`
       return `<article class="saved-card">
-      <header class="saved-head" role="button" tabindex="0" aria-expanded="false">
+      <header class="saved-head" role="button" tabindex="0" aria-expanded="false" data-id="${escapeHtml(item.id)}">
         <span class="saved-icon">${icon('bookmark', 16)}</span>
         <div class="saved-title"><b>${escapeHtml(item.title)}</b><p>${escapeHtml(item.hook)}</p><small>${meta}</small></div>
         <span class="saved-toggle">${icon('arrow', 14)}</span>
@@ -58,6 +60,10 @@ export const renderSaved = (ctx) => {
       const expanded = head.getAttribute('aria-expanded') === 'true'
       head.setAttribute('aria-expanded', String(!expanded))
       if (body) body.hidden = expanded
+      // D2 埋点：展开收藏视为对方案的深度兴趣，记录 opened；折叠不记录
+      if (!expanded) {
+        track('idea_opened', { ideaId: head.dataset.id, payload: { source: 'saved_list_expand' } })
+      }
     }
     head.addEventListener('click', toggle)
     head.addEventListener('keydown', (event) => {
@@ -71,6 +77,8 @@ export const renderSaved = (ctx) => {
   list.querySelectorAll('.saved-reload').forEach((btn) =>
     btn.addEventListener('click', (event) => {
       event.stopPropagation()
+      // D2 埋点：重新加载到工作台视为再次打开方案
+      track('idea_opened', { ideaId: btn.dataset.id, payload: { source: 'saved_list_reload' } })
       ctx.loadSavedRemix(btn.dataset.id)
     }),
   )
@@ -88,6 +96,11 @@ export const renderSaved = (ctx) => {
           buildRemixMarkdown(item.plan),
           'text/markdown;charset=utf-8',
         )
+        // D2 埋点：从收藏列表导出视为专业使用意图
+        track('idea_exported', {
+          ideaId: item.id,
+          payload: { format: 'markdown', source: 'saved_list', duration: item.plan.duration },
+        })
         toast('Markdown 已导出')
       } catch (error) {
         toast('导出失败：' + (error?.message ?? error))
@@ -108,6 +121,10 @@ export const renderSaved = (ctx) => {
           buildRemixJson(item.plan),
           'application/json;charset=utf-8',
         )
+        track('idea_exported', {
+          ideaId: item.id,
+          payload: { format: 'json', source: 'saved_list', duration: item.plan.duration },
+        })
         toast('JSON 已导出')
       } catch (error) {
         toast('导出失败：' + (error?.message ?? error))
@@ -120,6 +137,8 @@ export const renderSaved = (ctx) => {
       const { saved } = getState()
       const next = saved.filter((s) => s.id !== btn.dataset.id)
       setSaved(next)
+      // D2 埋点：删除收藏视为反感或重复信号，记录 hidden 供偏好画像降低同类权重
+      track('idea_hidden', { ideaId: btn.dataset.id, payload: { source: 'saved_list_remove' } })
       renderSaved(ctx)
       toast('已删除收藏')
     }),

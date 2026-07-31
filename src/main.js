@@ -13,6 +13,7 @@ import { mountFeedSection } from './sections/FeedSection.js'
 import { renderRemixWorkbench, mountRemixWorkbench } from './sections/RemixWorkbench.js'
 import { renderLibrarySection, mountLibrarySection } from './sections/LibrarySection.js'
 import { renderSavedSection, mountSavedList } from './sections/SavedList.js'
+import { renderEventSyncButton, mountEventSyncBar } from './sections/EventSyncBar.js'
 import './radar.css'
 
 const app = document.querySelector('#app')
@@ -24,6 +25,7 @@ app.innerHTML = `
       <a class="brand" href="#top"><span class="brand-mark">${icon('sparkles', 21)}</span><span>灵感</span><small>LINGGAN LAB</small></a>
       <div class="nav-links"><a href="#feed">今日推荐</a><a href="#radar">热点雷达</a><a href="#remix">跨界混搭</a><a href="#library">素材库</a></div>
       <div class="nav-status"><i></i><span>采集与 SQLite 入库已连接</span></div>
+      ${renderEventSyncButton()}
       <button class="menu-button" aria-label="打开导航" aria-expanded="false">${icon('menu')}</button>
     </nav>
   </header>
@@ -85,3 +87,6 @@ mountRadarSection()
 
 // 今日推荐流：异步加载 approved 候选导出文档并渲染
 mountFeedSection()
+
+// D2 事件同步条：挂载"导出事件"按钮，把 localStorage 事件队列导出为 event-inbox 兼容 JSON
+mountEventSyncBar()

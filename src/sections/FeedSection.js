@@ -5,6 +5,7 @@
 import { icon } from '../ui/icons.js'
 import { escapeHtml, formatScore } from '../ui/dom.js'
 import { rightsLabels, riskLabels } from '../data/knowledge.js'
+import { track } from '../data/tracker.ts'
 
 // 加载已批准候选导出文档：双重路径兜底，避免 Vite dev 与 preview 路径差异导致读取失败
 const loadCandidateExport = async () => {
@@ -49,6 +50,13 @@ const renderCandidateFeed = (data) => {
   }
   if (pill) pill.innerHTML = `${icon('check', 16)} ${data.candidate_count} 条已批准候选`
   feed.innerHTML = data.candidates.map(renderCandidateCard).join('')
+  // D2 埋点：候选卡片渲染即曝光，记录 position 供后续漏斗分析（impression → opened → saved/copied）
+  data.candidates.forEach((candidate, index) => {
+    track('idea_impression', {
+      ideaId: candidate.id,
+      payload: { position: index + 1, source: 'feed', score: candidate.score.total },
+    })
+  })
 }
 
 // 挂载今日推荐流 section：异步加载导出文档并渲染，失败时显示空状态
