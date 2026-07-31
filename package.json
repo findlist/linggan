@@ -8,14 +8,15 @@
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
     "pipeline:daily": "node --experimental-strip-types scripts/daily-pipeline.ts",
-    "test": "node --experimental-strip-types --test tests/data-contracts.test.ts tests/candidate-generator.test.ts tests/trend-ingestion.test.ts tests/sqlite-storage.test.ts tests/trend-adapter.test.ts tests/trend-export.test.ts tests/candidate-store.test.ts tests/candidate-export.test.ts tests/merge-knowledge.test.ts tests/remix-engine.test.ts tests/exporters.test.ts",
+    "test": "node --experimental-strip-types --test tests/data-contracts.test.ts tests/candidate-generator.test.ts tests/trend-ingestion.test.ts tests/sqlite-storage.test.ts tests/trend-adapter.test.ts tests/trend-export.test.ts tests/candidate-store.test.ts tests/candidate-export.test.ts tests/merge-knowledge.test.ts tests/remix-engine.test.ts tests/exporters.test.ts tests/wikipedia-adapter.test.ts",
     "typecheck": "tsc --noEmit",
     "validate:data": "node --experimental-strip-types scripts/validate-data.ts",
     "database:init": "node --experimental-strip-types scripts/database/init.ts",
     "migrate:trends": "node --experimental-strip-types scripts/migrate-trends.ts",
     "merge:knowledge": "node --experimental-strip-types scripts/merge-knowledge.ts",
     "export:trends": "node --experimental-strip-types scripts/export-trends.ts",
-    "export:candidates": "node --experimental-strip-types scripts/export-candidates.ts"
+    "export:candidates": "node --experimental-strip-types scripts/export-candidates.ts",
+    "collect:wikipedia": "node --experimental-strip-types scripts/collect-wikipedia.ts"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",

@@ -1,0 +1,39 @@
+{
+  "date": "2026-07-30Z",
+  "articles": [
+    {
+      "rank": 1,
+      "title": "Valid_Article_One",
+      "normalizedtitle": "Valid Article One",
+      "views": 500000,
+      "rank_previous": 1,
+      "lang": "en",
+      "extract": "The first valid article that should be processed normally."
+    },
+    {
+      "rank": 2,
+      "title": "",
+      "normalizedtitle": "Empty Title",
+      "views": 200000,
+      "rank_previous": 2,
+      "lang": "en",
+      "extract": "This article has an empty title and should be skipped by the adapter."
+    },
+    {
+      "rank": 3,
+      "title": "   ",
+      "views": 100000,
+      "lang": "en",
+      "extract": "This article has only whitespace in the title and should also be skipped."
+    },
+    {
+      "rank": 4,
+      "title": "Valid_Article_Two",
+      "normalizedtitle": "Valid Article Two",
+      "views": 400000,
+      "rank_previous": null,
+      "lang": "en",
+      "extract": "The second valid article after skipped entries."
+    }
+  ]
+}

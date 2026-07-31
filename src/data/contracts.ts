@@ -383,6 +383,8 @@ export type CharacterRelationship = z.infer<typeof CharacterRelationshipSchema>
 export type IconicMoment = z.infer<typeof IconicMomentSchema>
 export type CollectionBatch = z.infer<typeof CollectionBatchSchema>
 export type CollectionItem = z.infer<typeof CollectionItemSchema>
+export type ObservedMetric = z.infer<typeof ObservedMetricSchema>
+export type TrendCategory = z.infer<typeof TrendCategorySchema>
 /**
  * Read-only export document for static site consumption.
  * The frontend reads this file instead of accessing SQLite directly.

@@ -1,9 +1,56 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：B5 导出与收藏升级轮
+当前轮次：A4 固定公开来源适配器轮
 当前阶段：Phase 1 — 本地内容数据基础验证
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/发布文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；尚无真实来源适配器和自动发布闭环
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；尚无自动发布闭环
+
+### A4 固定公开来源适配器轮 — 2026-07-31
+
+本轮目标：建立第一个针对稳定结构化来源的可测试连接器，把维基百科最热词条 REST API 响应映射为 CollectionBatchSchema 兼容批次，使用本地保存的响应样本驱动测试，输出的批次能被现有 migrate:trends 命令消费并写入 SQLite。
+
+完成：
+
+- 新增 `src/collectors/wikipedia-adapter.ts`，实现维基百科最热词条适配器：
+  - `WikipediaMostReadResponseSchema`：Zod 运行时校验维基百科 REST API 响应（`/api/rest_v1/page/most-read/{year}/{month}/{day}`），宽松模式剥离未知字段，避免 API 新增字段导致适配器失效；
+  - `transformWikipediaMostRead(input)`：纯函数，不访问网络或文件系统，把 API 响应转换为 CollectionBatchSchema 兼容批次；最终输出通过 `CollectionBatchSchema.parse` 校验，确保下游 migrate:trends 可消费；
+  - `fetchWikipediaMostRead(options)`：网络函数，设置描述性 User-Agent，处理 HTTP 错误；测试时不调用此函数；
+  - 关键词分类映射：根据标题和摘要关键词推断 TrendCategory（sports/film/game/variety/festival/television/anime/cultural_event）；
+  - 生命周期推断：`rank_previous` 为 null → emerging（新进榜），有值 → rising；
+  - 标题为空或纯空白时跳过该条目并记录到 run.errors，状态标为 partial；
+  - 语言代码校验（2-3 位小写字母），防止 URL 子域注入；
+  - 所有条目标记 `rights_status: reference_only`、`risk_level: low`，heat 和 velocity 保持 null（缺少跨来源归一化），notes 说明仅记录公开指标；
+- 新增 `data/fixtures/wikipedia-most-read/` 目录与 4 个保存的响应样本：
+  - `normal.json`：5 篇覆盖 sports/film/game/festival/cultural_event 五类的正常响应；
+  - `empty.json`：空 articles 数组；
+  - `missing-fields.json`：缺少 extract/views/rank_previous 的条目；
+  - `bad-titles.json`：含空标题和纯空白标题的条目（应被跳过）；
+- 新增 `tests/wikipedia-adapter.test.ts` 共 11 项测试，覆盖：正常样本生成 5 条有效批次、分类映射覆盖 5 类、所有来源 URL 为合法 HTTPS 维基百科链接、ID 稳定且批次内唯一、生命周期推断、空样本生成 0 条有效批次、字段缺失用默认值兜底、空/空白标题跳过且状态为 partial、非法语言代码拒绝、转换批次可被 migrateCollectionInbox 消费并写入 JsonTrendStore（5 条趋势）、重复迁移幂等；
+- 新增 `scripts/collect-wikipedia.ts` CLI，支持 `--language`（默认 zh）、`--date`（默认今天）、`--output`（默认 data/collection-inbox）、`--fixture`（离线样本）、`--dry-run`（输出到 stdout 不写文件）参数；支持 `--key value` 和 `--flag` 两种参数形式；
+- 修改 `src/data/contracts.ts` 导出 `ObservedMetric` 和 `TrendCategory` 类型，供适配器使用；
+- 修改 `package.json` 添加 `collect:wikipedia` 脚本和测试入口。
+
+验证：
+
+- `npm run typecheck`：通过；
+- `npm test`：通过，122/122（新增 11 项 A4 测试，原有 111 项不变）；
+- `npm run validate:data`：通过，4 份 JSON 有效；
+- `npm run build`：通过，9 modules transformed，CSS 26.35 kB、JS 75.93 kB；
+- CLI dry-run 用本地 fixture 验证：退出码 0，输出有效 CollectionBatch JSON；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 适配器拆分为纯转换函数 `transformWikipediaMostRead` 和网络函数 `fetchWikipediaMostRead`，测试只调用转换函数 + 本地 fixture，不依赖公网访问；
+- 维基百科 REST API 返回结构化 JSON（rank/views/title/extract/rank_previous），比 HTML 抓取更稳定，适合作为首个固定来源适配器；
+- 转换函数最终通过 `CollectionBatchSchema.parse` 校验输出，保证下游 migrate:trends 可直接消费，无需额外适配层；
+- 标题为空或纯空白时跳过条目而非抛出异常，保证单条坏数据不阻止整批入库（与现有 migrate 的坏批次隔离策略一致）；
+- 语言代码校验为 2-3 位小写字母，防止通过 language 参数注入非法 URL 子域；
+- heat 和 velocity 保持 null，与现有采集批次一致（缺少跨来源归一化基线，不推测或编造）；
+- 本轮未实际调用 fetchWikipediaMostRead 访问公网，未向 collection-inbox 写入真实批次；CLI 已就绪，用户可手动运行 `npm run collect:wikipedia` 拉取当日数据；
+- 环境注意：本机默认 node 为 v14，需用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；通过 `set PATH=D:\development\nodejs;%PATH%` 解决。
+
+下一轮：按第 5 节执行 A6 统一任务运行日志，为采集、迁移、生成和导出各环节建立结构化运行记录。
 
 ### B5 导出与收藏升级轮 — 2026-07-31
 
@@ -304,6 +351,7 @@
 | 素材库详情视图 | 基础闭环通过 | 角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段（角色类型、对白风格、关系、情绪弧、视觉动作、可复用节拍、来源证据等）；每个详情页有"开始创作"入口带入混搭工作台；键盘可访问，移动端有适配；尚缺自动化浏览器回归 |
 | 导出与收藏 | 基础闭环通过 | 混搭方案可导出 Markdown（人类可读，含分镜表格/对白/文案/版权边界）和 JSON（机器可读，完整 RemixPlan）；收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除；旧格式收藏降级显示；导出/收藏操作有 toast 反馈；尚缺浏览器交互回归 |
 | 热点采集 | SQLite 入库闭环完成，任务启用 | 每天 07:30、13:30、19:30 采集；已有公开批次经 Schema、跨批次去重和事务迁移进入 SQLite |
+| 来源适配器 | 首个固定适配器已建立 | 维基百科最热词条 REST API 适配器已建立，纯转换函数 + 本地 fixture 测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；CLI 已就绪但未实际拉取公网数据 |
 | 本地持久化 | SQLite 通过 | 默认 `data/linggan.sqlite`；版本化迁移、知识种子、事务回滚、幂等和多来源合并测试通过 |
 | 候选审核 | 基础状态机通过 | candidates 已持久化，支持 pending_review、approved、rejected、archived 合法流转；approved 候选可导出供推荐流消费；尚无自动发布目标 |
 | 今日推荐 | 基础闭环通过 | 首页读取 approved 候选导出，无数据时显示空状态；当前无 approved 候选 |
@@ -337,6 +385,7 @@
 - [x] 将基础知识库幂等写入 SQLite；
 - [x] 实现 `SqliteTrendStore` 并将热点迁移默认存储切换到 SQLite；
 - [x] 保留原始采集 JSON 作为可提交、可重建数据库的事实来源。
+- [x] A4 建立首个固定公开来源适配器（维基百科最热词条 REST API），纯转换函数 + 本地 fixture 测试，输出 CollectionBatchSchema 兼容批次。
 
 ## 3. 当前里程碑
 
@@ -367,11 +416,11 @@
 - [x] B2 生成引擎质量升级。
 - [x] B4 角色、作品和名场面详情。
 - [x] B5 导出与收藏升级。
+- [x] A4 固定公开来源适配器。
 
 ### Phase 1 待完成
 
-1. A4 固定公开来源适配器；
-2. A6 统一任务运行日志。
+1. A6 统一任务运行日志。
 
 ### Phase 2 待完成
 
@@ -390,18 +439,18 @@ E1—E5 仅在 `docs/DEVELOPMENT_DIRECTION.md` 的外部依赖和触发条件满
 
 ## 5. 下一轮唯一首选任务
 
-**任务 B5：导出与收藏升级（已完成）。**
+**任务 A4：固定公开来源适配器（已完成）。**
 
-**下一轮任务：A4 — 固定公开来源适配器。**
+**下一轮任务：A6 — 统一任务运行日志。**
 
-选择理由：B5 已让用户能把混搭方案导出为可分享、可归档的 Markdown/JSON 文档并管理本地收藏，Phase 1 的页面体验侧（B1—B5、B6）全部完成。剩余 Phase 1 任务 A4 和 A6 都属数据侧。A4 优先于 A6，因为 A6 统一任务运行日志的价值依赖各任务实际产生结构化运行记录，而 A4 是采集轨道上唯一仍未接通的"固定结构化来源"断点——独立采集 Agent 产生的批次虽已能入库，但缺少针对稳定结构化来源的可测试连接器，来源覆盖和字段稳定性不足。按 `docs/DEVELOPMENT_DIRECTION.md` 第 11 轮"A4 固定公开来源适配器"和验收条件"使用保存的响应样本测试，不依赖测试时访问公网；输出 CollectionBatchSchema"，建立第一个固定公开来源适配器，用本地保存的响应样本驱动测试，输出符合 `CollectionBatchSchema` 的批次供迁移命令消费。本任务不依赖外部账号或实时公网访问，可在现有采集批次 Schema 和迁移命令基础上独立验收。
+选择理由：A4 已建立维基百科最热词条适配器，Phase 1 仅剩 A6 一项。A6 为采集、迁移、生成和导出各环节建立结构化运行记录，是 Phase 1 的最后一个数据侧任务，也为 Phase 2 的质量评估和可观测性提供基础。按 `docs/DEVELOPMENT_DIRECTION.md` A6 验收条件"采集、迁移、生成、导出各环节有结构化运行记录"，建立统一的任务运行日志 Schema 和记录机制，让各环节的运行结果（成功/失败/部分失败、处理数量、耗时和错误）可追溯、可查询。本任务不依赖外部账号或公网访问，可在现有 CLI 脚本基础上独立验收。
 
 验收条件：
 
-- 新增至少一个固定公开来源适配器（如 Wikipedia 热点或类似公开结构化来源），把来源响应映射为 `CollectionBatchSchema` 兼容的批次；
-- 适配器使用本地保存的响应样本测试，测试时不访问公网；
-- 输出的批次能被现有 `migrate:trends` 命令消费并写入 SQLite，通过 Schema、去重和风险标记校验；
-- 覆盖正常样本、空样本、字段缺失和非法 URL 的测试；
+- 新增任务运行日志 Schema（含任务名、开始/结束时间、状态、处理数量、错误列表等字段）；
+- 采集（collect:wikipedia）、迁移（migrate:trends）、生成（pipeline:daily）和导出（export:trends、export:candidates）各环节产生结构化运行记录；
+- 运行记录持久化到本地文件或 SQLite，可查询和回溯；
+- 覆盖正常运行、部分失败和完全失败的测试；
 - 类型检查、全部测试、数据校验和生产构建通过。
 
 ## 6. 已知限制与阻塞

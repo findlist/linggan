@@ -1,0 +1,50 @@
+{
+  "date": "2026-07-30Z",
+  "articles": [
+    {
+      "rank": 1,
+      "title": "2026_Asian_Games",
+      "normalizedtitle": "2026 Asian Games",
+      "views": 8945231,
+      "rank_previous": 1,
+      "lang": "en",
+      "extract": "The 2026 Asian Games is a continental multi-sport event scheduled to be held in Aichi and Nagoya, Japan."
+    },
+    {
+      "rank": 2,
+      "title": "Dune_Part_Three",
+      "normalizedtitle": "Dune Part Three",
+      "views": 7234567,
+      "rank_previous": 3,
+      "lang": "en",
+      "extract": "Dune Part Three is an upcoming American epic science fiction film directed by Denis Villeneuve."
+    },
+    {
+      "rank": 3,
+      "title": "Black_Myth_Wukong",
+      "normalizedtitle": "Black Myth: Wukong",
+      "views": 6890123,
+      "rank_previous": null,
+      "lang": "en",
+      "extract": "Black Myth: Wukong is an action role-playing video game developed by Game Science."
+    },
+    {
+      "rank": 4,
+      "title": "Mid-Autumn_Festival",
+      "normalizedtitle": "Mid-Autumn Festival",
+      "views": 5456789,
+      "rank_previous": 5,
+      "lang": "en",
+      "extract": "The Mid-Autumn Festival is a traditional festival celebrated in Chinese and Vietnamese cultures."
+    },
+    {
+      "rank": 5,
+      "title": "Artificial_intelligence",
+      "normalizedtitle": "Artificial intelligence",
+      "views": 4987654,
+      "rank_previous": 4,
+      "lang": "en",
+      "extract": "Artificial intelligence (AI) is the intelligence of machines or software, as opposed to the intelligence of humans or animals."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "date": "2026-07-30Z",
+  "articles": [
+    {
+      "rank": 1,
+      "title": "Missing_Extract_Article",
+      "views": 100000,
+      "rank_previous": 2,
+      "lang": "en"
+    },
+    {
+      "rank": 2,
+      "title": "Missing_Views_Article",
+      "normalizedtitle": "Missing Views Article",
+      "extract": "This article has no views field and should default to zero-view metrics.",
+      "rank_previous": null,
+      "lang": "en"
+    },
+    {
+      "rank": 3,
+      "title": "Missing_Rank_Previous_Article",
+      "normalizedtitle": "Missing Rank Previous Article",
+      "views": 300000,
+      "extract": "This article lacks rank_previous, so it should be treated as newly emerging."
+    }
+  ]
+}
