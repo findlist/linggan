@@ -1,9 +1,51 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：A4 固定公开来源适配器轮
-当前阶段：Phase 1 — 本地内容数据基础验证
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；尚无自动发布闭环
+当前轮次：A6 统一任务运行日志轮
+当前阶段：Phase 1 已完成，准备进入 Phase 2
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；尚无自动发布闭环
+
+### A6 统一任务运行日志轮 — 2026-07-31
+
+本轮目标：为采集、迁移、生成和导出各环节建立结构化运行记录，让每次 CLI 运行的结果（成功/失败/部分失败、处理数量、耗时和错误）可追溯、可查询。这是 Phase 1 的最后一个任务。
+
+完成：
+
+- 新增 `src/data/contracts.ts` 的 `TaskRunLogSchema`，字段包括：schema_version、id（StableIdSchema）、task_name（枚举 5 个 CLI 任务）、started_at、finished_at、duration_ms、status（success/partial/failed）、processed_count、success_count、failure_count、errors、metadata（string|number|boolean|null 值记录）、environment（node_version + command）；superRefine 校验状态与错误一致性（success 不能有错误、partial/failed 必须有错误）和 finished_at 不早于 started_at；
+- 新增 `src/observability/task-run-logger.ts`，导出：
+  - `TaskRunLogger` 类：构造时注入 taskName、logDirectory、clock 和 baseMetadata；`succeed()`/`partial()`/`fail()` 三个快捷方法；`finish()` 写入经 Schema 校验的日志到按日期分目录的 JSON 文件（`data/run-logs/YYYY/MM/DD/{id}.json`）；ID 格式 `task_run_{slug}_{timestamp}_{random_hex}` 符合 StableIdSchema；fail 自动从 Error 提取 message；
+  - `createTaskRunLogger` 工厂函数；
+  - `listTaskRunLogs` 查询接口：按 taskName、status、startDate、endDate 过滤，按 started_at 降序返回，跳过损坏日志文件，目录不存在时返回空数组；
+- 修改 5 个 CLI 脚本接入日志记录器：
+  - `scripts/collect-wikipedia.ts`：包裹核心逻辑，根据 batch.run.status 记录 success 或 partial；
+  - `scripts/migrate-trends.ts`：根据 report.files_failed 记录 success 或 partial，metadata 含 inserted/updated/deduplicated/total_trends；
+  - `scripts/daily-pipeline.ts`：记录 success，metadata 含 date/candidates/inserted/skipped/total；
+  - `scripts/export-trends.ts`：CLI 入口记录 success，metadata 含 trend_count；
+  - `scripts/export-candidates.ts`：CLI 入口记录 success，metadata 含 candidate_count；
+  - 所有脚本在 catch 块中调用 `logger.fail(error)` 后重新抛出，确保异常也被记录；
+- 新增 `tests/task-run-logger.test.ts` 共 19 项测试，覆盖：Schema 接受合法日志、拒绝缺失字段、拒绝未知任务名、拒绝非法状态、拒绝状态与错误不一致、拒绝结束时间早于开始时间；succeed 写入按日期分目录的有效日志、partial 记录错误列表、fail 从异常提取错误信息、处理非 Error 抛出；listTaskRunLogs 按任务名/状态/日期范围过滤、目录不存在返回空数组、每次运行产生唯一 ID、跳过损坏日志、按 started_at 降序排列、metadata 合并、environment 记录 node 版本和命令；
+- 修改 `package.json` 测试入口加入 `tests/task-run-logger.test.ts`；
+- 修改 `.gitignore` 添加 `data/run-logs/`（运行日志为运行时产物，不提交）。
+
+验证：
+
+- `npm run typecheck`：通过；
+- `npm test`：通过，141/141（新增 19 项 A6 测试，原有 122 项不变）；
+- `npm run validate:data`：通过，4 份 JSON 有效；
+- `npm run build`：通过，9 modules transformed，CSS 26.35 kB、JS 75.93 kB；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 日志持久化选择 JSON 文件而非 SQLite，理由：(1) 与 collection-inbox 的不可覆盖批次规则一致；(2) 不需要新建 SQLite 迁移；(3) 按日期分目录可追溯；(4) 未来可通过同一 `listTaskRunLogs` 接口替换为 SQLite 实现；
+- 日志文件名使用日志 ID（含任务名、时间戳和 6 位随机 hex），保证同秒多次运行不冲突，文件不可覆盖；
+- `listTaskRunLogs` 跳过损坏的日志文件而非抛出异常，与 migrate-collection-inbox 的坏批次隔离策略一致，确保单个损坏日志不阻止其他日志读取；
+- metadata 值类型限制为 string|number|boolean|null，避免不可序列化对象进入日志；构造时传入的 baseMetadata 和 finish 时的 summary.metadata 合并，summary 覆盖同名键；
+- environment.command 记录 `process.argv.slice(1).join(' ')`，便于回溯实际调用命令；项目规范禁止在命令行传入密钥，因此不构成安全风险；
+- 日志目录默认为 `data/run-logs/`，collect-wikipedia 和 migrate-trends 支持 `--logs` 参数自定义；daily-pipeline、export-trends 和 export-candidates 使用固定相对路径，与现有脚本的 `data/collection-inbox` 用法一致；
+- 环境注意：本机默认 node 为 v14，需用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；通过 `set PATH=D:\development\nodejs;%PATH%` 解决。
+
+下一轮：Phase 1 全部任务已完成，按第 5 节进入 Phase 2。首选 C8 桌面与移动端浏览器回归，补齐 B4/B5 轮遗留的浏览器交互验证缺口。
 
 ### A4 固定公开来源适配器轮 — 2026-07-31
 
@@ -352,6 +394,7 @@
 | 导出与收藏 | 基础闭环通过 | 混搭方案可导出 Markdown（人类可读，含分镜表格/对白/文案/版权边界）和 JSON（机器可读，完整 RemixPlan）；收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除；旧格式收藏降级显示；导出/收藏操作有 toast 反馈；尚缺浏览器交互回归 |
 | 热点采集 | SQLite 入库闭环完成，任务启用 | 每天 07:30、13:30、19:30 采集；已有公开批次经 Schema、跨批次去重和事务迁移进入 SQLite |
 | 来源适配器 | 首个固定适配器已建立 | 维基百科最热词条 REST API 适配器已建立，纯转换函数 + 本地 fixture 测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；CLI 已就绪但未实际拉取公网数据 |
+| 运行日志 | 基础闭环通过 | 采集、迁移、生成和导出 5 个 CLI 环节均产生结构化运行记录；日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询；覆盖正常运行、部分失败和完全失败 |
 | 本地持久化 | SQLite 通过 | 默认 `data/linggan.sqlite`；版本化迁移、知识种子、事务回滚、幂等和多来源合并测试通过 |
 | 候选审核 | 基础状态机通过 | candidates 已持久化，支持 pending_review、approved、rejected、archived 合法流转；approved 候选可导出供推荐流消费；尚无自动发布目标 |
 | 今日推荐 | 基础闭环通过 | 首页读取 approved 候选导出，无数据时显示空状态；当前无 approved 候选 |
@@ -386,6 +429,7 @@
 - [x] 实现 `SqliteTrendStore` 并将热点迁移默认存储切换到 SQLite；
 - [x] 保留原始采集 JSON 作为可提交、可重建数据库的事实来源。
 - [x] A4 建立首个固定公开来源适配器（维基百科最热词条 REST API），纯转换函数 + 本地 fixture 测试，输出 CollectionBatchSchema 兼容批次。
+- [x] A6 建立统一任务运行日志 Schema 和记录机制，覆盖采集、迁移、生成和导出 5 个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯。
 
 ## 3. 当前里程碑
 
@@ -417,10 +461,11 @@
 - [x] B4 角色、作品和名场面详情。
 - [x] B5 导出与收藏升级。
 - [x] A4 固定公开来源适配器。
+- [x] A6 统一任务运行日志。
 
-### Phase 1 待完成
+### Phase 1 已完成
 
-1. A6 统一任务运行日志。
+Phase 1 全部任务已完成。本地内容数据基础验证里程碑（M1）达成：公开来源 → 采集批次 → Schema 与去重 → SQLite → 候选生成与持久化 → 只读导出 → 网站展示形成完整闭环。
 
 ### Phase 2 待完成
 
@@ -439,18 +484,22 @@ E1—E5 仅在 `docs/DEVELOPMENT_DIRECTION.md` 的外部依赖和触发条件满
 
 ## 5. 下一轮唯一首选任务
 
-**任务 A4：固定公开来源适配器（已完成）。**
+**任务 A6：统一任务运行日志（已完成）。**
 
-**下一轮任务：A6 — 统一任务运行日志。**
+**下一轮任务：C8 — 桌面与移动端浏览器回归（Phase 2）。**
 
-选择理由：A4 已建立维基百科最热词条适配器，Phase 1 仅剩 A6 一项。A6 为采集、迁移、生成和导出各环节建立结构化运行记录，是 Phase 1 的最后一个数据侧任务，也为 Phase 2 的质量评估和可观测性提供基础。按 `docs/DEVELOPMENT_DIRECTION.md` A6 验收条件"采集、迁移、生成、导出各环节有结构化运行记录"，建立统一的任务运行日志 Schema 和记录机制，让各环节的运行结果（成功/失败/部分失败、处理数量、耗时和错误）可追溯、可查询。本任务不依赖外部账号或公网访问，可在现有 CLI 脚本基础上独立验收。
+选择理由：Phase 1 全部任务已完成，进入 Phase 2。C8 是 B4（素材库详情）和 B5（导出与收藏升级）两轮遗留的浏览器交互验证缺口的直接补齐任务。B4 和 B5 均因项目当前测试体系（node --test）无 jsdom 环境而未做浏览器交互回归，详情弹窗的点击/跳转/键盘操作、导出按钮的下载行为、收藏列表的展开/重新加载/删除操作均需要浏览器回归验证。C8 不依赖外部账号或公网访问，可在本地 vite preview + browser-use 环境下独立验收。
 
 验收条件：
 
-- 新增任务运行日志 Schema（含任务名、开始/结束时间、状态、处理数量、错误列表等字段）；
-- 采集（collect:wikipedia）、迁移（migrate:trends）、生成（pipeline:daily）和导出（export:trends、export:candidates）各环节产生结构化运行记录；
-- 运行记录持久化到本地文件或 SQLite，可查询和回溯；
-- 覆盖正常运行、部分失败和完全失败的测试；
+- 使用浏览器自动化工具（browser-use 或等价工具）覆盖以下关键流程：
+  - 素材库卡片点击进入详情弹窗，弹窗内实体间跳转，Esc 关闭，"开始创作"入口带入混搭工作台；
+  - 混搭工作台随机生成、复制方案、导出 Markdown、导出 JSON、收藏混搭；
+  - 收藏列表展开查看、重新加载到工作台、单条导出、删除；
+  - 热点雷达展示正式趋势数据或明确空状态；
+  - 今日推荐流展示 approved 候选或明确空状态；
+- 覆盖桌面端（1440px/1024px）和移动端（768px/375px）布局；
+- 记录每个流程的截图或 DOM 检查结果；
 - 类型检查、全部测试、数据校验和生产构建通过。
 
 ## 6. 已知限制与阻塞

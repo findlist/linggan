@@ -451,3 +451,58 @@ export type CandidateExportDocument = z.infer<typeof CandidateExportDocumentSche
 
 export type StoredTrend = z.infer<typeof StoredTrendSchema>
 export type TrendStoreDocument = z.infer<typeof TrendStoreDocumentSchema>
+
+/**
+ * 统一任务运行日志 Schema。
+ * 采集、迁移、生成和导出各环节产生结构化运行记录，
+ * 持久化到 data/run-logs/ 目录，可查询和回溯。
+ */
+export const TaskRunLogSchema = z.object({
+  schema_version: z.literal(1),
+  id: StableIdSchema,
+  task_name: z.enum([
+    'collect:wikipedia',
+    'migrate:trends',
+    'pipeline:daily',
+    'export:trends',
+    'export:candidates'
+  ]),
+  started_at: z.iso.datetime({ offset: true }),
+  finished_at: z.iso.datetime({ offset: true }),
+  duration_ms: z.number().int().nonnegative(),
+  status: z.enum(['success', 'partial', 'failed']),
+  processed_count: z.number().int().nonnegative(),
+  success_count: z.number().int().nonnegative(),
+  failure_count: z.number().int().nonnegative(),
+  errors: z.array(NonEmptyTextSchema),
+  metadata: z.record(z.string(), z.union([z.string(), z.number(), z.boolean(), z.null()])),
+  environment: z.object({
+    node_version: NonEmptyTextSchema,
+    command: NonEmptyTextSchema
+  }).strict()
+}).strict().superRefine((log, context) => {
+  // 结束时间不得早于开始时间
+  if (log.finished_at < log.started_at) {
+    context.addIssue({ code: 'custom', path: ['finished_at'], message: 'must not precede started_at' })
+  }
+  // 部分失败或完全失败必须记录至少一条错误
+  if ((log.status === 'partial' || log.status === 'failed') && log.errors.length === 0) {
+    context.addIssue({
+      code: 'custom',
+      path: ['errors'],
+      message: `${log.status} status requires at least one error`
+    })
+  }
+  // 成功状态下不应有错误条目
+  if (log.status === 'success' && log.errors.length > 0) {
+    context.addIssue({
+      code: 'custom',
+      path: ['errors'],
+      message: 'success status must not contain errors'
+    })
+  }
+})
+
+export type TaskRunLog = z.infer<typeof TaskRunLogSchema>
+export type TaskRunLogStatus = TaskRunLog['status']
+export type TaskRunLogTaskName = TaskRunLog['task_name']

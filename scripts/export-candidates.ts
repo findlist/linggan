@@ -5,6 +5,7 @@ import type { CandidateExportDocument } from '../src/data/contracts.ts'
 import { loadDatabaseConfig, parseSqliteUrl } from '../src/config/database.ts'
 import { migrateDatabase } from '../src/database/migrate.ts'
 import { SqliteCandidateStore } from '../src/storage/sqlite-candidate-store.ts'
+import { createTaskRunLogger } from '../src/observability/task-run-logger.ts'
 
 // 首页今日推荐流最多展示 10 条已批准候选
 const MAX_PUBLISHED_CANDIDATES = 10
@@ -70,5 +71,22 @@ export const exportCandidates = async (
 
 // CLI 入口
 const outputPath = process.argv[2] ?? 'public/data/candidate-export.json'
-const result = await exportCandidates({ outputPath })
-process.stdout.write(`Exported ${result.candidate_count} approved candidates to ${outputPath}\n`)
+const logger = createTaskRunLogger({
+  taskName: 'export:candidates',
+  logDirectory: 'data/run-logs',
+  metadata: { output: outputPath }
+})
+
+try {
+  const result = await exportCandidates({ outputPath })
+  process.stdout.write(`Exported ${result.candidate_count} approved candidates to ${outputPath}\n`)
+  await logger.succeed({
+    processedCount: result.candidate_count,
+    successCount: result.candidate_count,
+    failureCount: 0,
+    metadata: { candidate_count: result.candidate_count }
+  })
+} catch (error) {
+  await logger.fail(error)
+  throw error
+}

@@ -5,6 +5,7 @@ import type { TrendExportDocument } from '../src/data/contracts.ts'
 import { loadDatabaseConfig, parseSqliteUrl } from '../src/config/database.ts'
 import { migrateDatabase } from '../src/database/migrate.ts'
 import { SqliteTrendStore } from '../src/storage/sqlite-trend-store.ts'
+import { createTaskRunLogger } from '../src/observability/task-run-logger.ts'
 
 export interface ExportOptions {
   outputPath: string
@@ -61,5 +62,22 @@ export const exportTrends = async (options: ExportOptions): Promise<TrendExportD
 
 // CLI entry point
 const outputPath = process.argv[2] ?? 'public/data/trend-export.json'
-const result = await exportTrends({ outputPath })
-process.stdout.write(`Exported ${result.trend_count} trends to ${outputPath}\n`)
+const logger = createTaskRunLogger({
+  taskName: 'export:trends',
+  logDirectory: 'data/run-logs',
+  metadata: { output: outputPath }
+})
+
+try {
+  const result = await exportTrends({ outputPath })
+  process.stdout.write(`Exported ${result.trend_count} trends to ${outputPath}\n`)
+  await logger.succeed({
+    processedCount: result.trend_count,
+    successCount: result.trend_count,
+    failureCount: 0,
+    metadata: { trend_count: result.trend_count }
+  })
+} catch (error) {
+  await logger.fail(error)
+  throw error
+}
