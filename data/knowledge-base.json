@@ -5,111 +5,902 @@
       "id": "work_empresses_palace",
       "title": "甄嬛传",
       "original_title": "后宫·甄嬛传",
-      "aliases": ["Empresses in the Palace"],
+      "aliases": [
+        "Empresses in the Palace"
+      ],
       "media_type": "television",
-      "regions": ["中国大陆"],
+      "regions": [
+        "中国大陆"
+      ],
       "release_year": 2011,
-      "genres": ["古装", "剧情"],
+      "genres": [
+        "古装",
+        "剧情"
+      ],
       "rights_status": "reference_only",
       "risk_level": "medium",
-      "sources": [{"url":"https://en.wikipedia.org/wiki/Empresses_in_the_Palace","source_name":"Wikipedia","page_title":"Empresses in the Palace","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Empresses_in_the_Palace",
+          "source_name": "Wikipedia",
+          "page_title": "Empresses in the Palace",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
       "last_verified_at": "2026-07-29T03:00:00.000Z"
     },
     {
       "id": "work_naruto",
       "title": "火影忍者",
       "original_title": "NARUTO -ナルト-",
-      "aliases": ["Naruto"],
+      "aliases": [
+        "Naruto"
+      ],
       "media_type": "anime",
-      "regions": ["日本"],
+      "regions": [
+        "日本"
+      ],
       "release_year": 2002,
-      "genres": ["冒险", "成长"],
+      "genres": [
+        "冒险",
+        "成长"
+      ],
       "rights_status": "reference_only",
       "risk_level": "medium",
-      "sources": [{"url":"https://en.wikipedia.org/wiki/Naruto","source_name":"Wikipedia","page_title":"Naruto","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Naruto",
+          "source_name": "Wikipedia",
+          "page_title": "Naruto",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
       "last_verified_at": "2026-07-29T03:00:00.000Z"
     },
     {
       "id": "work_matrix",
       "title": "黑客帝国",
       "original_title": "The Matrix",
-      "aliases": ["矩阵"],
+      "aliases": [
+        "矩阵"
+      ],
       "media_type": "film",
-      "regions": ["美国"],
+      "regions": [
+        "美国"
+      ],
       "release_year": 1999,
-      "genres": ["科幻", "动作"],
+      "genres": [
+        "科幻",
+        "动作"
+      ],
       "rights_status": "reference_only",
       "risk_level": "medium",
-      "sources": [{"url":"https://en.wikipedia.org/wiki/The_Matrix","source_name":"Wikipedia","page_title":"The Matrix","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Matrix",
+          "source_name": "Wikipedia",
+          "page_title": "The Matrix",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
       "last_verified_at": "2026-07-29T03:00:00.000Z"
     },
     {
       "id": "work_fanren",
       "title": "凡人修仙传",
       "original_title": "凡人修仙传",
-      "aliases": ["A Record of a Mortal's Journey to Immortality"],
+      "aliases": [
+        "A Record of a Mortal's Journey to Immortality"
+      ],
       "media_type": "anime",
-      "regions": ["中国大陆"],
+      "regions": [
+        "中国大陆"
+      ],
       "release_year": 2020,
-      "genres": ["修仙", "成长", "冒险"],
+      "genres": [
+        "修仙",
+        "成长",
+        "冒险"
+      ],
       "rights_status": "reference_only",
       "risk_level": "medium",
-      "sources": [{"url":"https://zh.wikipedia.org/wiki/%E5%87%A1%E4%BA%BA%E4%BF%AE%E4%BB%99%E4%BC%A0","source_name":"Wikipedia","page_title":"凡人修仙传","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/%E5%87%A1%E4%BA%BA%E4%BF%AE%E4%BB%99%E4%BC%A0",
+          "source_name": "Wikipedia",
+          "page_title": "凡人修仙传",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
       "last_verified_at": "2026-07-29T04:00:00.000Z"
     },
     {
       "id": "work_xian_ni",
       "title": "仙逆",
       "original_title": "仙逆",
-      "aliases": ["Renegade Immortal"],
+      "aliases": [
+        "Renegade Immortal"
+      ],
       "media_type": "anime",
-      "regions": ["中国大陆"],
+      "regions": [
+        "中国大陆"
+      ],
       "release_year": 2023,
-      "genres": ["修仙", "成长", "情感"],
+      "genres": [
+        "修仙",
+        "成长",
+        "情感"
+      ],
       "rights_status": "reference_only",
       "risk_level": "medium",
-      "sources": [{"url":"https://baike.baidu.com/item/%E4%BB%99%E9%80%86","source_name":"百度百科","page_title":"仙逆","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],
+      "sources": [
+        {
+          "url": "https://baike.baidu.com/item/%E4%BB%99%E9%80%86",
+          "source_name": "百度百科",
+          "page_title": "仙逆",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
       "last_verified_at": "2026-07-29T04:00:00.000Z"
     },
     {
       "id": "work_liangjian",
       "title": "亮剑",
       "original_title": "亮剑",
-      "aliases": ["Drawing Sword"],
+      "aliases": [
+        "Drawing Sword"
+      ],
       "media_type": "television",
-      "regions": ["中国大陆"],
+      "regions": [
+        "中国大陆"
+      ],
       "release_year": 2005,
-      "genres": ["战争", "剧情"],
+      "genres": [
+        "战争",
+        "剧情"
+      ],
       "rights_status": "reference_only",
       "risk_level": "medium",
-      "sources": [{"url":"https://zh.wikipedia.org/wiki/%E4%BA%AE%E5%89%91","source_name":"Wikipedia","page_title":"亮剑","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/%E4%BA%AE%E5%89%91",
+          "source_name": "Wikipedia",
+          "page_title": "亮剑",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
       "last_verified_at": "2026-07-29T04:00:00.000Z"
     }
   ],
   "known_characters": [
-    {"id":"known_zhen_huan","work_id":"work_empresses_palace","name":"甄嬛","aliases":[],"roles":["核心人物"],"character_types":["成长型谋略者","秩序挑战者"],"traits":["审慎","坚韧"],"dialogue_style":["含蓄试探","用生活细节暗示权力变化"],"relationships":["known_empress_yixiu"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Empresses_in_the_Palace","source_name":"Wikipedia","page_title":"Empresses in the Palace","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"known_empress_yixiu","work_id":"work_empresses_palace","name":"宜修皇后","aliases":["皇后"],"roles":["权力对手"],"character_types":["守序型掌权者","隐忍反派"],"traits":["克制","善谋"],"dialogue_style":["礼貌施压","先肯定再设置限制"],"relationships":["known_zhen_huan"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Empresses_in_the_Palace","source_name":"Wikipedia","page_title":"Empresses in the Palace","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"known_naruto","work_id":"work_naruto","name":"漩涡鸣人","aliases":["Naruto Uzumaki"],"roles":["成长型主角"],"character_types":["热血追梦者","关系修复者"],"traits":["乐观","执着"],"dialogue_style":["直接表达承诺","用行动回应质疑"],"relationships":["known_sasuke"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Naruto","source_name":"Wikipedia","page_title":"Naruto","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"known_sasuke","work_id":"work_naruto","name":"宇智波佐助","aliases":["Sasuke Uchiha"],"roles":["宿敌与同伴"],"character_types":["孤高复仇者","理念对手"],"traits":["冷静","执着"],"dialogue_style":["短句判断","先划清界限再暴露真实动机"],"relationships":["known_naruto"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Naruto","source_name":"Wikipedia","page_title":"Naruto","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"known_neo","work_id":"work_matrix","name":"尼奥","aliases":["Neo"],"roles":["觉醒者"],"character_types":["怀疑型觉醒者","规则突破者"],"traits":["怀疑","勇敢"],"dialogue_style":["以问题推进认知","觉醒后表达简洁确定"],"relationships":["known_morpheus"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/The_Matrix","source_name":"Wikipedia","page_title":"The Matrix","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"known_morpheus","work_id":"work_matrix","name":"墨菲斯","aliases":["Morpheus"],"roles":["引路人"],"character_types":["信念型导师","世界观揭示者"],"traits":["坚定","启发"],"dialogue_style":["用选择代替说教","通过象征物提出问题"],"relationships":["known_neo"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/The_Matrix","source_name":"Wikipedia","page_title":"The Matrix","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"known_han_li","work_id":"work_fanren","name":"韩立","aliases":[],"roles":["修行者","生存型主角"],"character_types":["谨慎成长者","资源规划者"],"traits":["克制","谨慎","务实"],"dialogue_style":["先判断风险再给结论","用冷静短句拆解困局"],"relationships":[],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://zh.wikipedia.org/wiki/%E5%87%A1%E4%BA%BA%E4%BF%AE%E4%BB%99%E4%BC%A0","source_name":"Wikipedia","page_title":"凡人修仙传","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],"last_verified_at":"2026-07-29T04:00:00.000Z"},
-    {"id":"known_wang_lin","work_id":"work_xian_ni","name":"王林","aliases":[],"roles":["修行者","执念型主角"],"character_types":["孤绝复仇者","情感守护者"],"traits":["坚忍","果决","念旧"],"dialogue_style":["冷静陈述代价","在关键处暴露深层执念"],"relationships":["known_li_muwan"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://baike.baidu.com/item/%E4%BB%99%E9%80%86","source_name":"百度百科","page_title":"仙逆","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],"last_verified_at":"2026-07-29T04:00:00.000Z"},
-    {"id":"known_li_muwan","work_id":"work_xian_ni","name":"李慕婉","aliases":[],"roles":["阵法师","情感纽带"],"character_types":["温柔智者","稳定支点"],"traits":["温和","坚定","细致"],"dialogue_style":["用平静语气给出行动判断","在危机中先安定同伴"],"relationships":["known_wang_lin"],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://baike.baidu.com/item/%E4%BB%99%E9%80%86","source_name":"百度百科","page_title":"仙逆","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],"last_verified_at":"2026-07-29T04:00:00.000Z"},
-    {"id":"known_li_yunlong","work_id":"work_liangjian","name":"李云龙","aliases":[],"roles":["指挥者","破局者"],"character_types":["草根统帅","高压决策者"],"traits":["果断","强硬","机敏"],"dialogue_style":["用目标压缩争论","以粗粝原创短句推动集体行动"],"relationships":[],"rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://zh.wikipedia.org/wiki/%E4%BA%AE%E5%89%91","source_name":"Wikipedia","page_title":"亮剑","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],"last_verified_at":"2026-07-29T04:00:00.000Z"}
+    {
+      "id": "known_zhen_huan",
+      "work_id": "work_empresses_palace",
+      "name": "甄嬛",
+      "aliases": [],
+      "roles": [
+        "核心人物"
+      ],
+      "character_types": [
+        "成长型谋略者",
+        "秩序挑战者"
+      ],
+      "traits": [
+        "审慎",
+        "坚韧"
+      ],
+      "dialogue_style": [
+        "含蓄试探",
+        "用生活细节暗示权力变化"
+      ],
+      "relationships": [
+        "known_empress_yixiu"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Empresses_in_the_Palace",
+          "source_name": "Wikipedia",
+          "page_title": "Empresses in the Palace",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "known_empress_yixiu",
+      "work_id": "work_empresses_palace",
+      "name": "宜修皇后",
+      "aliases": [
+        "皇后"
+      ],
+      "roles": [
+        "权力对手"
+      ],
+      "character_types": [
+        "守序型掌权者",
+        "隐忍反派"
+      ],
+      "traits": [
+        "克制",
+        "善谋"
+      ],
+      "dialogue_style": [
+        "礼貌施压",
+        "先肯定再设置限制"
+      ],
+      "relationships": [
+        "known_zhen_huan"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Empresses_in_the_Palace",
+          "source_name": "Wikipedia",
+          "page_title": "Empresses in the Palace",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "known_naruto",
+      "work_id": "work_naruto",
+      "name": "漩涡鸣人",
+      "aliases": [
+        "Naruto Uzumaki"
+      ],
+      "roles": [
+        "成长型主角"
+      ],
+      "character_types": [
+        "热血追梦者",
+        "关系修复者"
+      ],
+      "traits": [
+        "乐观",
+        "执着"
+      ],
+      "dialogue_style": [
+        "直接表达承诺",
+        "用行动回应质疑"
+      ],
+      "relationships": [
+        "known_sasuke"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Naruto",
+          "source_name": "Wikipedia",
+          "page_title": "Naruto",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "known_sasuke",
+      "work_id": "work_naruto",
+      "name": "宇智波佐助",
+      "aliases": [
+        "Sasuke Uchiha"
+      ],
+      "roles": [
+        "宿敌与同伴"
+      ],
+      "character_types": [
+        "孤高复仇者",
+        "理念对手"
+      ],
+      "traits": [
+        "冷静",
+        "执着"
+      ],
+      "dialogue_style": [
+        "短句判断",
+        "先划清界限再暴露真实动机"
+      ],
+      "relationships": [
+        "known_naruto"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Naruto",
+          "source_name": "Wikipedia",
+          "page_title": "Naruto",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "known_neo",
+      "work_id": "work_matrix",
+      "name": "尼奥",
+      "aliases": [
+        "Neo"
+      ],
+      "roles": [
+        "觉醒者"
+      ],
+      "character_types": [
+        "怀疑型觉醒者",
+        "规则突破者"
+      ],
+      "traits": [
+        "怀疑",
+        "勇敢"
+      ],
+      "dialogue_style": [
+        "以问题推进认知",
+        "觉醒后表达简洁确定"
+      ],
+      "relationships": [
+        "known_morpheus"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Matrix",
+          "source_name": "Wikipedia",
+          "page_title": "The Matrix",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "known_morpheus",
+      "work_id": "work_matrix",
+      "name": "墨菲斯",
+      "aliases": [
+        "Morpheus"
+      ],
+      "roles": [
+        "引路人"
+      ],
+      "character_types": [
+        "信念型导师",
+        "世界观揭示者"
+      ],
+      "traits": [
+        "坚定",
+        "启发"
+      ],
+      "dialogue_style": [
+        "用选择代替说教",
+        "通过象征物提出问题"
+      ],
+      "relationships": [
+        "known_neo"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Matrix",
+          "source_name": "Wikipedia",
+          "page_title": "The Matrix",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "known_han_li",
+      "work_id": "work_fanren",
+      "name": "韩立",
+      "aliases": [],
+      "roles": [
+        "修行者",
+        "生存型主角"
+      ],
+      "character_types": [
+        "谨慎成长者",
+        "资源规划者"
+      ],
+      "traits": [
+        "克制",
+        "谨慎",
+        "务实"
+      ],
+      "dialogue_style": [
+        "先判断风险再给结论",
+        "用冷静短句拆解困局"
+      ],
+      "relationships": [],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/%E5%87%A1%E4%BA%BA%E4%BF%AE%E4%BB%99%E4%BC%A0",
+          "source_name": "Wikipedia",
+          "page_title": "凡人修仙传",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T04:00:00.000Z"
+    },
+    {
+      "id": "known_wang_lin",
+      "work_id": "work_xian_ni",
+      "name": "王林",
+      "aliases": [],
+      "roles": [
+        "修行者",
+        "执念型主角"
+      ],
+      "character_types": [
+        "孤绝复仇者",
+        "情感守护者"
+      ],
+      "traits": [
+        "坚忍",
+        "果决",
+        "念旧"
+      ],
+      "dialogue_style": [
+        "冷静陈述代价",
+        "在关键处暴露深层执念"
+      ],
+      "relationships": [
+        "known_li_muwan"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://baike.baidu.com/item/%E4%BB%99%E9%80%86",
+          "source_name": "百度百科",
+          "page_title": "仙逆",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T04:00:00.000Z"
+    },
+    {
+      "id": "known_li_muwan",
+      "work_id": "work_xian_ni",
+      "name": "李慕婉",
+      "aliases": [],
+      "roles": [
+        "阵法师",
+        "情感纽带"
+      ],
+      "character_types": [
+        "温柔智者",
+        "稳定支点"
+      ],
+      "traits": [
+        "温和",
+        "坚定",
+        "细致"
+      ],
+      "dialogue_style": [
+        "用平静语气给出行动判断",
+        "在危机中先安定同伴"
+      ],
+      "relationships": [
+        "known_wang_lin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://baike.baidu.com/item/%E4%BB%99%E9%80%86",
+          "source_name": "百度百科",
+          "page_title": "仙逆",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T04:00:00.000Z"
+    },
+    {
+      "id": "known_li_yunlong",
+      "work_id": "work_liangjian",
+      "name": "李云龙",
+      "aliases": [],
+      "roles": [
+        "指挥者",
+        "破局者"
+      ],
+      "character_types": [
+        "草根统帅",
+        "高压决策者"
+      ],
+      "traits": [
+        "果断",
+        "强硬",
+        "机敏"
+      ],
+      "dialogue_style": [
+        "用目标压缩争论",
+        "以粗粝原创短句推动集体行动"
+      ],
+      "relationships": [],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/%E4%BA%AE%E5%89%91",
+          "source_name": "Wikipedia",
+          "page_title": "亮剑",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T04:00:00.000Z"
+    }
   ],
   "relationships": [
-    {"id":"relation_zhen_huan_yixiu","work_id":"work_empresses_palace","from_character_id":"known_zhen_huan","to_character_id":"known_empress_yixiu","relation":"权力对手","description":"双方围绕宫廷秩序与生存空间形成持续博弈。","sources":[{"url":"https://en.wikipedia.org/wiki/Empresses_in_the_Palace","source_name":"Wikipedia","page_title":"Empresses in the Palace","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"relation_naruto_sasuke","work_id":"work_naruto","from_character_id":"known_naruto","to_character_id":"known_sasuke","relation":"同伴与宿敌","description":"竞争、分离和追寻共同构成长线关系张力。","sources":[{"url":"https://en.wikipedia.org/wiki/Naruto","source_name":"Wikipedia","page_title":"Naruto","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"relation_neo_morpheus","work_id":"work_matrix","from_character_id":"known_morpheus","to_character_id":"known_neo","relation":"导师与觉醒者","description":"引路人提供选择，主角通过亲自验证完成认知转变。","sources":[{"url":"https://en.wikipedia.org/wiki/The_Matrix","source_name":"Wikipedia","page_title":"The Matrix","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"relation_wang_lin_li_muwan","work_id":"work_xian_ni","from_character_id":"known_wang_lin","to_character_id":"known_li_muwan","relation":"守护与情感支点","description":"一方以长期行动守护承诺，另一方在高压旅途中提供稳定和理解。","sources":[{"url":"https://baike.baidu.com/item/%E4%BB%99%E9%80%86","source_name":"百度百科","page_title":"仙逆","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],"last_verified_at":"2026-07-29T04:00:00.000Z"}
+    {
+      "id": "relation_zhen_huan_yixiu",
+      "work_id": "work_empresses_palace",
+      "from_character_id": "known_zhen_huan",
+      "to_character_id": "known_empress_yixiu",
+      "relation": "权力对手",
+      "description": "双方围绕宫廷秩序与生存空间形成持续博弈。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Empresses_in_the_Palace",
+          "source_name": "Wikipedia",
+          "page_title": "Empresses in the Palace",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "relation_naruto_sasuke",
+      "work_id": "work_naruto",
+      "from_character_id": "known_naruto",
+      "to_character_id": "known_sasuke",
+      "relation": "同伴与宿敌",
+      "description": "竞争、分离和追寻共同构成长线关系张力。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Naruto",
+          "source_name": "Wikipedia",
+          "page_title": "Naruto",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "relation_neo_morpheus",
+      "work_id": "work_matrix",
+      "from_character_id": "known_morpheus",
+      "to_character_id": "known_neo",
+      "relation": "导师与觉醒者",
+      "description": "引路人提供选择，主角通过亲自验证完成认知转变。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Matrix",
+          "source_name": "Wikipedia",
+          "page_title": "The Matrix",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "relation_wang_lin_li_muwan",
+      "work_id": "work_xian_ni",
+      "from_character_id": "known_wang_lin",
+      "to_character_id": "known_li_muwan",
+      "relation": "守护与情感支点",
+      "description": "一方以长期行动守护承诺，另一方在高压旅途中提供稳定和理解。",
+      "sources": [
+        {
+          "url": "https://baike.baidu.com/item/%E4%BB%99%E9%80%86",
+          "source_name": "百度百科",
+          "page_title": "仙逆",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T04:00:00.000Z"
+    }
   ],
   "iconic_moments": [
-    {"id":"moment_return_power_shift","work_id":"work_empresses_palace","name":"旧人物回归引发权力重排","participant_ids":["known_zhen_huan","known_empress_yixiu"],"setting":"等级森严的封闭权力场","conflict_type":"身份回归与秩序挑战","emotional_arc":["压抑","试探","反制","格局重置"],"visual_actions":["缓慢入场","群体反应切换","位置对比"],"reusable_beats":["缺席者被谈论","人物以新身份出现","对手表面欢迎","座次或站位暗示权力变化"],"dialogue_patterns":["表面寒暄中交换试探","用位置与称谓暗示权力变化"],"abstraction":"用回归、群像反应和空间位置变化表现权力格局重置，不复刻原作台词、服装或镜头。","rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Empresses_in_the_Palace","source_name":"Wikipedia","page_title":"Empresses in the Palace","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"moment_rivals_final_confrontation","work_id":"work_naruto","name":"长期宿敌在终局正面对抗","participant_ids":["known_naruto","known_sasuke"],"setting":"与共同记忆相关的开阔决战地","conflict_type":"理念分歧与关系挽回","emotional_arc":["决绝","对抗","耗尽","理解"],"visual_actions":["远景对峙","能力逐级升级","近身消耗","并置收尾"],"reusable_beats":["重申无法调和的目标","用行动回应共同历史","双方能力逐步耗尽","冲突结果改变关系定义"],"dialogue_patterns":["一方要求留下，另一方坚持离开","耗尽之后才说出真实在意的关系"],"abstraction":"将长线关系矛盾压缩成由远及近、由宏大到朴素的终局对抗节奏，不使用专属招式或原作画面。","rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/Naruto","source_name":"Wikipedia","page_title":"Naruto","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"moment_reality_choice","work_id":"work_matrix","name":"主角在两种认知之间作出不可逆选择","participant_ids":["known_neo","known_morpheus"],"setting":"安静、封闭且带有象征物的谈话空间","conflict_type":"安全幻觉与危险真相","emotional_arc":["怀疑","诱导","选择","觉醒"],"visual_actions":["展示两个选项","手部特写","短暂停顿","环境突变"],"reusable_beats":["导师指出现实存在裂缝","给出清晰但代价不同的选择","主角主动选择未知","世界规则立即改变"],"dialogue_patterns":["导师只说明代价，不替主角决定","主角用一个短句确认不可逆选择"],"abstraction":"用二选一象征物和选择后的环境变化表现认知觉醒，避免复刻原作道具造型、台词和构图。","rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://en.wikipedia.org/wiki/The_Matrix","source_name":"Wikipedia","page_title":"The Matrix","published_at":null,"collected_at":"2026-07-29T03:00:00.000Z"}],"last_verified_at":"2026-07-29T03:00:00.000Z"},
-    {"id":"moment_cautious_breakout","work_id":"work_fanren","name":"谨慎修行者以有限资源脱离围困","participant_ids":["known_han_li"],"setting":"退路受限、敌我信息不对称的封闭险地","conflict_type":"弱势求生与信息博弈","emotional_arc":["观察","试探","误导","脱身"],"visual_actions":["检查环境","布置替身","诱导追击","反向撤离"],"reusable_beats":["主角先隐藏真实底牌","用低成本动作测试规则","制造一个可信的错误目标","在对手确认胜利时完成撤离"],"dialogue_patterns":["先说最坏结果，再提出最稳方案","不解释全部计划，只分配当前一步"],"abstraction":"提取谨慎、试探和资源差打法，不使用原作法宝、招式、台词或角色外观。","rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://zh.wikipedia.org/wiki/%E5%87%A1%E4%BA%BA%E4%BF%AE%E4%BB%99%E4%BC%A0","source_name":"Wikipedia","page_title":"凡人修仙传","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],"last_verified_at":"2026-07-29T04:00:00.000Z"},
-    {"id":"moment_guarding_promise","work_id":"work_xian_ni","name":"危局中以守护承诺稳定同伴","participant_ids":["known_wang_lin","known_li_muwan"],"setting":"防护即将失效的临时阵地","conflict_type":"撤离理性与守护承诺","emotional_arc":["紧张","分歧","协作","安定"],"visual_actions":["阵纹闪烁","交换位置","共同加固","安静对视"],"reusable_beats":["倒计时显示防线将破","两人对撤离顺序产生分歧","一人负责计算一人负责承压","用共同完成的小动作代替煽情表白"],"dialogue_patterns":["一人报出精确剩余时间","另一人用行动确认不会独自离开"],"abstraction":"保留危局中的互补协作和含蓄情感，不复刻原作人物造型、台词、法术与镜头。","rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://baike.baidu.com/item/%E4%BB%99%E9%80%86","source_name":"百度百科","page_title":"仙逆","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],"last_verified_at":"2026-07-29T04:00:00.000Z"},
-    {"id":"moment_mass_assault","work_id":"work_liangjian","name":"目标受困后临时集结力量发起攻坚","participant_ids":["known_li_yunlong"],"setting":"时间紧迫、正面防守严密的城镇据点","conflict_type":"救援压力与强攻代价","emotional_arc":["震怒","集结","受阻","破局"],"visual_actions":["地图拍桌","多路集结","火力受阻","侧翼打开缺口"],"reusable_beats":["重要目标被困让行动突然升级","指挥者压缩争论迅速集结资源","正面进攻受阻暴露隐藏代价","小队从意外方向打开缺口"],"dialogue_patterns":["指挥者用原创短句明确唯一目标","副手指出风险后立刻转入执行分工"],"abstraction":"只使用集结攻坚、时间压力和侧翼破局的通用结构，不复刻原作台词、军服、镜头或具体战斗部署。","rights_status":"reference_only","risk_level":"medium","sources":[{"url":"https://zh.wikipedia.org/wiki/%E4%BA%AE%E5%89%91","source_name":"Wikipedia","page_title":"亮剑","published_at":null,"collected_at":"2026-07-29T04:00:00.000Z"}],"last_verified_at":"2026-07-29T04:00:00.000Z"}
+    {
+      "id": "moment_return_power_shift",
+      "work_id": "work_empresses_palace",
+      "name": "旧人物回归引发权力重排",
+      "participant_ids": [
+        "known_zhen_huan",
+        "known_empress_yixiu"
+      ],
+      "setting": "等级森严的封闭权力场",
+      "conflict_type": "身份回归与秩序挑战",
+      "emotional_arc": [
+        "压抑",
+        "试探",
+        "反制",
+        "格局重置"
+      ],
+      "visual_actions": [
+        "缓慢入场",
+        "群体反应切换",
+        "位置对比"
+      ],
+      "reusable_beats": [
+        "缺席者被谈论",
+        "人物以新身份出现",
+        "对手表面欢迎",
+        "座次或站位暗示权力变化"
+      ],
+      "dialogue_patterns": [
+        "表面寒暄中交换试探",
+        "用位置与称谓暗示权力变化"
+      ],
+      "abstraction": "用回归、群像反应和空间位置变化表现权力格局重置，不复刻原作台词、服装或镜头。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Empresses_in_the_Palace",
+          "source_name": "Wikipedia",
+          "page_title": "Empresses in the Palace",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "moment_rivals_final_confrontation",
+      "work_id": "work_naruto",
+      "name": "长期宿敌在终局正面对抗",
+      "participant_ids": [
+        "known_naruto",
+        "known_sasuke"
+      ],
+      "setting": "与共同记忆相关的开阔决战地",
+      "conflict_type": "理念分歧与关系挽回",
+      "emotional_arc": [
+        "决绝",
+        "对抗",
+        "耗尽",
+        "理解"
+      ],
+      "visual_actions": [
+        "远景对峙",
+        "能力逐级升级",
+        "近身消耗",
+        "并置收尾"
+      ],
+      "reusable_beats": [
+        "重申无法调和的目标",
+        "用行动回应共同历史",
+        "双方能力逐步耗尽",
+        "冲突结果改变关系定义"
+      ],
+      "dialogue_patterns": [
+        "一方要求留下，另一方坚持离开",
+        "耗尽之后才说出真实在意的关系"
+      ],
+      "abstraction": "将长线关系矛盾压缩成由远及近、由宏大到朴素的终局对抗节奏，不使用专属招式或原作画面。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Naruto",
+          "source_name": "Wikipedia",
+          "page_title": "Naruto",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "moment_reality_choice",
+      "work_id": "work_matrix",
+      "name": "主角在两种认知之间作出不可逆选择",
+      "participant_ids": [
+        "known_neo",
+        "known_morpheus"
+      ],
+      "setting": "安静、封闭且带有象征物的谈话空间",
+      "conflict_type": "安全幻觉与危险真相",
+      "emotional_arc": [
+        "怀疑",
+        "诱导",
+        "选择",
+        "觉醒"
+      ],
+      "visual_actions": [
+        "展示两个选项",
+        "手部特写",
+        "短暂停顿",
+        "环境突变"
+      ],
+      "reusable_beats": [
+        "导师指出现实存在裂缝",
+        "给出清晰但代价不同的选择",
+        "主角主动选择未知",
+        "世界规则立即改变"
+      ],
+      "dialogue_patterns": [
+        "导师只说明代价，不替主角决定",
+        "主角用一个短句确认不可逆选择"
+      ],
+      "abstraction": "用二选一象征物和选择后的环境变化表现认知觉醒，避免复刻原作道具造型、台词和构图。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Matrix",
+          "source_name": "Wikipedia",
+          "page_title": "The Matrix",
+          "published_at": null,
+          "collected_at": "2026-07-29T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T03:00:00.000Z"
+    },
+    {
+      "id": "moment_cautious_breakout",
+      "work_id": "work_fanren",
+      "name": "谨慎修行者以有限资源脱离围困",
+      "participant_ids": [
+        "known_han_li"
+      ],
+      "setting": "退路受限、敌我信息不对称的封闭险地",
+      "conflict_type": "弱势求生与信息博弈",
+      "emotional_arc": [
+        "观察",
+        "试探",
+        "误导",
+        "脱身"
+      ],
+      "visual_actions": [
+        "检查环境",
+        "布置替身",
+        "诱导追击",
+        "反向撤离"
+      ],
+      "reusable_beats": [
+        "主角先隐藏真实底牌",
+        "用低成本动作测试规则",
+        "制造一个可信的错误目标",
+        "在对手确认胜利时完成撤离"
+      ],
+      "dialogue_patterns": [
+        "先说最坏结果，再提出最稳方案",
+        "不解释全部计划，只分配当前一步"
+      ],
+      "abstraction": "提取谨慎、试探和资源差打法，不使用原作法宝、招式、台词或角色外观。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/%E5%87%A1%E4%BA%BA%E4%BF%AE%E4%BB%99%E4%BC%A0",
+          "source_name": "Wikipedia",
+          "page_title": "凡人修仙传",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T04:00:00.000Z"
+    },
+    {
+      "id": "moment_guarding_promise",
+      "work_id": "work_xian_ni",
+      "name": "危局中以守护承诺稳定同伴",
+      "participant_ids": [
+        "known_wang_lin",
+        "known_li_muwan"
+      ],
+      "setting": "防护即将失效的临时阵地",
+      "conflict_type": "撤离理性与守护承诺",
+      "emotional_arc": [
+        "紧张",
+        "分歧",
+        "协作",
+        "安定"
+      ],
+      "visual_actions": [
+        "阵纹闪烁",
+        "交换位置",
+        "共同加固",
+        "安静对视"
+      ],
+      "reusable_beats": [
+        "倒计时显示防线将破",
+        "两人对撤离顺序产生分歧",
+        "一人负责计算一人负责承压",
+        "用共同完成的小动作代替煽情表白"
+      ],
+      "dialogue_patterns": [
+        "一人报出精确剩余时间",
+        "另一人用行动确认不会独自离开"
+      ],
+      "abstraction": "保留危局中的互补协作和含蓄情感，不复刻原作人物造型、台词、法术与镜头。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://baike.baidu.com/item/%E4%BB%99%E9%80%86",
+          "source_name": "百度百科",
+          "page_title": "仙逆",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T04:00:00.000Z"
+    },
+    {
+      "id": "moment_mass_assault",
+      "work_id": "work_liangjian",
+      "name": "目标受困后临时集结力量发起攻坚",
+      "participant_ids": [
+        "known_li_yunlong"
+      ],
+      "setting": "时间紧迫、正面防守严密的城镇据点",
+      "conflict_type": "救援压力与强攻代价",
+      "emotional_arc": [
+        "震怒",
+        "集结",
+        "受阻",
+        "破局"
+      ],
+      "visual_actions": [
+        "地图拍桌",
+        "多路集结",
+        "火力受阻",
+        "侧翼打开缺口"
+      ],
+      "reusable_beats": [
+        "重要目标被困让行动突然升级",
+        "指挥者压缩争论迅速集结资源",
+        "正面进攻受阻暴露隐藏代价",
+        "小队从意外方向打开缺口"
+      ],
+      "dialogue_patterns": [
+        "指挥者用原创短句明确唯一目标",
+        "副手指出风险后立刻转入执行分工"
+      ],
+      "abstraction": "只使用集结攻坚、时间压力和侧翼破局的通用结构，不复刻原作台词、军服、镜头或具体战斗部署。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/%E4%BA%AE%E5%89%91",
+          "source_name": "Wikipedia",
+          "page_title": "亮剑",
+          "published_at": null,
+          "collected_at": "2026-07-29T04:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-29T04:00:00.000Z"
+    }
   ]
 }

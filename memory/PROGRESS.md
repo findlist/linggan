@@ -1,9 +1,48 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：B3 今日推荐流读取持久化候选轮
+当前轮次：A3 知识库增量合并与去重命令轮
 当前阶段：Phase 1 — 本地内容数据基础验证
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选，无已批准候选时显示明确空状态，禁止展示待审内容；尚无真实来源适配器和自动发布闭环
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立，支持分批填充、跨批次幂等、别名归一和来源合并；尚无真实来源适配器和自动发布闭环
+
+### A3 知识库增量合并与去重命令轮 — 2026-07-31
+
+本轮目标：建立可维护、可回滚的知识库扩充入口，支持分批填充、跨批次幂等、别名归一和来源合并，为后续 B1 素材扩充提供增量合并能力。
+
+完成：
+
+- 新增 `data/knowledge-inbox/` 目录与 README 规则，定义增量批次文件格式与合并流程；
+- 新增 `src/knowledge/merge-knowledge.ts`，实现 `KnowledgeBatchSchema`（四个集合可选）和 `mergeKnowledgeBatches` 合并器：
+  - 按 ID 跨批次合并：别名、角色、特征、对白风格等数组合并去重；来源按 URL 去重合并；风险等级取更保守值（blocked > high > medium > low）；`last_verified_at` 取较新者；
+  - 别名归一：`UniqueStringListSchema` 在解析时拒绝同实体重复别名；合并后检测跨实体别名冲突（同一别名指向不同实体 ID 时失败，不写入）；
+  - 合并结果整体通过 `KnowledgeBaseSchema` 校验（全局 ID 唯一、外键有效）；
+  - 原子写入：通过 `JsonDocumentStore` 先写临时文件再 rename，校验或冲突失败时旧文件不变；
+  - 合并器内部读取现有 outputPath 作为基础（未显式传入 baseDocument 时），CLI 与测试均支持幂等重复运行；
+- 新增 `scripts/merge-knowledge.ts` CLI，支持 `--inbox <dir> --output <file>` 参数，默认 `data/knowledge-inbox` 和 `data/knowledge-base.json`；
+- 新增 `npm run merge:knowledge` 命令；
+- 新增 14 项 A3 测试，覆盖：分批填充、跨批次幂等、来源合并、别名归一、别名冲突检测、风险保守值、坏批次跳过、原子写入、空 inbox、baseDocument 合并、外键校验、Schema 拒绝重复别名和未知字段；
+- `data/knowledge-base.json` 经 merge:knowledge 重新序列化为统一多行展开格式，内容不变，后续合并 diff 更清晰。
+
+验证：
+
+- `npm run typecheck`：通过；
+- `npm run validate:data`：通过，4 份 JSON 有效；
+- `npm test`：通过，94/94（新增 14 项 A3 测试）；
+- `npm run build`：通过；
+- `npm run merge:knowledge`：成功，inbox 为空时读取现有 knowledge-base.json，输出 6 作品/10 角色/4 关系/6 名场面，无重复；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 合并策略：标量字段取后处理者（按文件排序），数组字段合并去重，风险取更保守值，时间取较新者；同批次重复运行结果不变；
+- 合并器内部读取 outputPath 作为基础，CLI 无需手动传入 baseDocument；测试时可显式传入 baseDocument 隔离基础文档；
+- 坏批次被报告并跳过，不阻止其他有效批次合并；但合并结果为空库时仍会原子写入（空库合法）；
+- 跨实体别名冲突会导致合并失败且不写入，避免歧义别名进入知识库；
+- 知识库 JSON 重新序列化为多行展开格式，内容不变，已通过 validate:data 确认；
+- 环境注意：本机默认 node 为 v14，需使用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；
+- `--experimental-strip-types` 不支持 TypeScript 参数属性语法，`KnowledgeMergeError` 改用显式字段赋值。
+
+下一轮：按第 5 节执行 B1 首批小规模素材扩充，用真实批次验证增量合并命令并增加组合空间。
 
 ### B3 今日推荐流读取持久化候选轮 — 2026-07-31
 
@@ -93,7 +132,7 @@
 | 响应式 UI | 已实现基础版 | 完成桌面和移动端视觉检查，尚缺自动化浏览器回归测试 |
 | 示例内容 | 已有 | 4 条首页创意和结构化种子数据 |
 | 每日候选脚本 | SQLite 闭环通过 | 默认读取正式趋势、生成候选并幂等持久化；显式示例输入仅用于测试和演示 |
-| 内容图谱 | 基础库可校验 | 已有 6 部作品、10 个知名人物、4 组关系和 6 个抽象名场面；具体知名内容均为 `reference_only` |
+| 内容图谱 | 基础库可校验，增量合并可用 | 已有 6 部作品、10 个知名人物、4 组关系和 6 个抽象名场面；具体知名内容均为 `reference_only`；增量批次可通过 `merge:knowledge` 合并入库 |
 | 热点采集 | SQLite 入库闭环完成，任务启用 | 每天 07:30、13:30、19:30 采集；已有公开批次经 Schema、跨批次去重和事务迁移进入 SQLite |
 | 本地持久化 | SQLite 通过 | 默认 `data/linggan.sqlite`；版本化迁移、知识种子、事务回滚、幂等和多来源合并测试通过 |
 | 候选审核 | 基础状态机通过 | candidates 已持久化，支持 pending_review、approved、rejected、archived 合法流转；approved 候选可导出供推荐流消费；尚无自动发布目标 |
@@ -152,17 +191,17 @@
 - [x] A2 正式趋势查询与原子 JSON 导出；
 - [x] B6 网站热点雷达消费正式趋势导出；
 - [x] A5 候选持久化与审核状态机；
-- [x] B3 今日推荐流读取 approved 候选导出。
+- [x] B3 今日推荐流读取 approved 候选导出；
+- [x] A3 知识库增量合并与去重命令。
 
 ### Phase 1 待完成
 
-1. A3 知识库增量合并与去重命令；
-2. B1 分批扩充参考素材和原创角色原型；
-3. B2 生成引擎质量升级；
-4. B4 角色、作品和名场面详情；
-5. B5 Markdown/JSON 导出与收藏管理；
-6. A4 固定公开来源适配器；
-7. A6 统一任务运行日志。
+1. B1 分批扩充参考素材和原创角色原型；
+2. B2 生成引擎质量升级；
+3. B4 角色、作品和名场面详情；
+4. B5 Markdown/JSON 导出与收藏管理；
+5. A4 固定公开来源适配器；
+6. A6 统一任务运行日志。
 
 ### Phase 2 待完成
 
@@ -181,11 +220,19 @@ E1—E5 仅在 `docs/DEVELOPMENT_DIRECTION.md` 的外部依赖和触发条件满
 
 ## 5. 下一轮唯一首选任务
 
-**任务 B3：今日推荐流读取持久化候选（已完成）。**
+**任务 A3：知识库增量合并与去重命令（已完成）。**
 
-**下一轮任务：A3 — 知识库增量合并与去重命令。**
+**下一轮任务：B1 — 首批小规模素材扩充。**
 
-选择理由：推荐流已接通 approved 候选导出，内容消费闭环已形成；下一步建立可维护、可回滚的知识库扩充入口，为后续 B1 素材扩充提供增量合并与去重能力，避免手工编辑 JSON 造成的重复和冲突。
+选择理由：A3 增量合并命令已建立并经过 14 项测试验证；下一步用真实批次验证命令并增加组合空间。按 `docs/DEVELOPMENT_DIRECTION.md` 4.1 节，首批扩充 3 部作品（每部 2—3 个角色、1—2 个抽象名场面），所有知名实体保持 `reference_only`，不保存精确台词、镜头或受保护素材。
+
+验收条件：
+
+- 新增 3 部作品、6—9 个角色、3—6 个抽象名场面的增量批次文件放入 `data/knowledge-inbox/`；
+- 运行 `npm run merge:knowledge` 后 `data/knowledge-base.json` 合并成功，无重复实体、无别名冲突；
+- 合并后 `npm run validate:data` 通过；
+- `npm run database:init` 可将合并后的知识库幂等写入 SQLite；
+- 类型检查、全部测试和生产构建通过。
 
 ## 6. 已知限制与阻塞
 
