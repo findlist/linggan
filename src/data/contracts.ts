@@ -377,6 +377,10 @@ export type Trend = z.infer<typeof TrendSchema>
 export type Candidate = z.infer<typeof CandidateSchema>
 export type SourceEvidence = z.infer<typeof SourceEvidenceSchema>
 export type KnowledgeBase = z.infer<typeof KnowledgeBaseSchema>
+export type Work = z.infer<typeof WorkSchema>
+export type KnownCharacter = z.infer<typeof KnownCharacterSchema>
+export type CharacterRelationship = z.infer<typeof CharacterRelationshipSchema>
+export type IconicMoment = z.infer<typeof IconicMomentSchema>
 export type CollectionBatch = z.infer<typeof CollectionBatchSchema>
 export type CollectionItem = z.infer<typeof CollectionItemSchema>
 /**

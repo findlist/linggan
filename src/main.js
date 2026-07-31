@@ -1,4 +1,5 @@
 import knowledge from '../data/knowledge-base.json'
+import { buildRemixPlan } from './generation/remix-engine.ts'
 import './radar.css'
 
 let trendExport = null
@@ -84,8 +85,6 @@ const workById = new Map(knowledge.works.map(work => [work.id, work]))
 const characterById = new Map(knowledge.known_characters.map(character => [character.id, character]))
 const mediaNames = { television: '电视剧', anime: '动漫', film: '电影', game: '游戏', variety: '综艺' }
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char])
-const hash = value => [...value].reduce((total, char) => ((total << 5) - total + char.charCodeAt(0)) | 0, 0)
-const pick = (items, seed) => items[Math.abs(seed) % items.length]
 
 const radarChannels = [
   { name: '公开热点', detail: '热搜、赛事与文化事件', state: '每 6 小时', tone: 'pink' },
@@ -250,47 +249,49 @@ const updateHints = () => {
   document.querySelector('#hint-moment').textContent = `${moment.conflict_type}｜${moment.reusable_beats.slice(0, 2).join(' → ')}`
 }
 
+const personalityLabels = { cold: '冷酷型', hot: '热血型', cunning: '腹黑型', gentle: '温柔型' }
+const hookCategoryLabels = { suspense: '悬念', contrast: '反差', question: '提问', action: '行动' }
+
 const buildRemix = () => {
   const a = characterById.get(document.querySelector('#character-a').value)
   const b = characterById.get(document.querySelector('#character-b').value)
   const moment = knowledge.iconic_moments.find(item => item.id === document.querySelector('#moment').value)
   const style = remixStyles.find(item => item.id === document.querySelector('#style').value)
-  const sourceWork = workById.get(moment.work_id)
-  const seed = hash(`${a.id}${b.id}${moment.id}${style.id}${generation}`)
-  const hooks = [
-    `${a.name}还在计算退路，${b.name}已经把最后一道防线点亮。`,
-    `所有人都在等一次正面强攻，${a.name}却先问：谁规定缺口一定在城门？`,
-    `${b.name}报出最后 ${pick(['十息', '三分钟', '一盏茶'], seed)}，${a.name}把整张地图倒了过来。`
-  ]
-  const dialogueA = `“${pick(['先别急着冲。', '把能用的都列出来。', '正面只是给他们看的。'], seed + 2)} ${pick(a.dialogue_style, seed + 3)}，我们只做胜算最高的那一步。”`
-  const dialogueB = `“${pick(['阵线还能撑住。', '退路我来守。', '你只管打开缺口。'], seed + 5)} ${pick(b.dialogue_style, seed + 7)}，剩下的交给我。”`
-  const beats = moment.reusable_beats.slice(0, duration === 15 ? 3 : duration === 60 ? 4 : 4)
-  return {
-    id: `remix-${Date.now()}`,
-    title: `${a.name} × ${b.name}：${moment.name}`,
-    concept: `让《${workById.get(a.work_id).title}》的${a.character_types[0]}与《${workById.get(b.work_id).title}》的${b.character_types[0]}，进入《${sourceWork.title}》启发的“${moment.conflict_type}”结构。保留性格与关系张力，人物造型、台词、镜头和世界观全部原创改写。`,
-    hook: pick(hooks, seed),
-    a, b, moment, style, duration, dialogueA, dialogueB, beats,
-    prompt: `${style.prompt}。原创角色造型，不复刻任何具体演员或动画形象。场景：${moment.setting}。动作：${moment.visual_actions.join('、')}。情绪：${moment.emotional_arc.join(' → ')}。`
-  }
+  // 种子加入 generation 计数器，使每次点击“生成”都能产生不同方案；同一 seed 字符串在引擎内确定性展开
+  const seed = `${a.id}${b.id}${moment.id}${style.id}${generation}`
+  const plan = buildRemixPlan({
+    characterA: a,
+    characterB: b,
+    moment,
+    workA: workById.get(a.work_id),
+    workB: workById.get(b.work_id),
+    momentWork: workById.get(moment.work_id),
+    style,
+    duration,
+    seed
+  })
+  return { plan, a, b, moment, style }
 }
 
 const renderResult = result => {
+  const { plan } = result
   const card = document.querySelector('#result-card')
   card.innerHTML = `
-    <div class="result-top"><span class="result-label">生成完成 · ${result.duration}s</span><span class="risk-badge">REFERENCE ONLY</span></div>
-    <h3>${escapeHtml(result.title)}</h3><p class="concept">${escapeHtml(result.concept)}</p>
-    <div class="hook"><span>前三秒钩子</span><b>${escapeHtml(result.hook)}</b></div>
-    <div class="beat-list">${result.beats.map((beat, index) => `<div><span>${String(index + 1).padStart(2, '0')}</span><p>${escapeHtml(beat)}</p></div>`).join('')}</div>
-    <div class="dialogues"><div><span>${escapeHtml(result.a.name)} · 原创改写</span><p>${escapeHtml(result.dialogueA)}</p></div><div><span>${escapeHtml(result.b.name)} · 原创改写</span><p>${escapeHtml(result.dialogueB)}</p></div></div>
-    <details><summary>画面提示词与版权边界</summary><p>${escapeHtml(result.prompt)}</p><small>${icon('shield', 14)} 参考角色和名场面不包含精确复刻素材；商业发布前需替换为原创或已授权资产。</small></details>
+    <div class="result-top"><span class="result-label">生成完成 · ${plan.duration}s · ${hookCategoryLabels[plan.hookCategory]}钩子</span><span class="risk-badge">REFERENCE ONLY</span></div>
+    <h3>${escapeHtml(plan.title)}</h3><p class="concept">${escapeHtml(plan.concept)}</p>
+    <div class="hook"><span>前三秒钩子</span><b>${escapeHtml(plan.hook)}</b></div>
+    <div class="result-tags"><span>${icon('shield', 13)} ${escapeHtml(result.a.name)}：${personalityLabels[plan.personalityA]}</span><span>${escapeHtml(result.b.name)}：${personalityLabels[plan.personalityB]}</span></div>
+    <div class="beat-list storyboard-list">${plan.storyboard.map(shot => `<div class="shot"><span>${String(shot.index).padStart(2, '0')} · ${shot.duration}s</span><p class="shot-visual">${escapeHtml(shot.visual)}</p><small>动作：${escapeHtml(shot.action)} · 情绪：${escapeHtml(shot.emotion)}</small></div>`).join('')}</div>
+    <div class="dialogues"><div><span>${escapeHtml(result.a.name)} · 原创改写</span><p>${escapeHtml(plan.dialogueA)}</p></div><div><span>${escapeHtml(result.b.name)} · 原创改写</span><p>${escapeHtml(plan.dialogueB)}</p></div></div>
+    <details class="copywriting-block"><summary>发布文案候选（3 标题 · 描述 · 标签）</summary><div class="copy-titles"><span>标题候选</span><ul>${plan.copywriting.titles.map(title => `<li>${escapeHtml(title)}</li>`).join('')}</ul></div><p class="copy-desc">${escapeHtml(plan.copywriting.description)}</p><div class="copy-tags">${plan.copywriting.hashtags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div></details>
+    <details><summary>画面提示词与版权边界</summary><p>${escapeHtml(plan.prompt)}</p><small>${icon('shield', 14)} 参考角色和名场面不包含精确复刻素材；商业发布前需替换为原创或已授权资产。</small></details>
     <div class="result-actions"><button class="btn ghost copy-result">${icon('copy', 16)} 复制方案</button><button class="btn primary save-result">${icon('bookmark', 16)} 收藏混搭</button></div>`
   card.querySelector('.copy-result').addEventListener('click', async () => {
     await navigator.clipboard?.writeText(card.innerText)
     toast('方案已复制')
   })
   card.querySelector('.save-result').addEventListener('click', () => {
-    if (!saved.some(item => item.title === result.title)) saved.unshift({ id: result.id, title: result.title, hook: result.hook })
+    if (!saved.some(item => item.title === plan.title)) saved.unshift({ id: plan.id, title: plan.title, hook: plan.hook })
     saved = saved.slice(0, 8)
     localStorage.setItem('linggan-saved-remixes', JSON.stringify(saved))
     renderSaved()
