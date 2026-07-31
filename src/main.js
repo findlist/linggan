@@ -3,6 +3,8 @@ import { buildRemixPlan } from './generation/remix-engine.ts'
 import { buildRemixFileName, buildRemixJson, buildRemixMarkdown } from './generation/exporters.ts'
 // C4：引入 C3 近似度检测，在前端把当前方案与已收藏方案对比，标记换皮创意
 import { detectDuplicates } from './generation/similarity.ts'
+// C5：素材库多维度组合筛选纯函数，业务规则与 UI 分离便于单测
+import { filterLibraryItems, collectFilterOptions } from './library/filter.ts'
 import { createDetailView } from './detail-view.js'
 import './radar.css'
 
@@ -234,6 +236,8 @@ app.innerHTML = `
       <div class="shell">
         <div class="section-title"><div><span class="kicker">KNOWLEDGE BASE</span><h2>可组合的内容基因库</h2><p>不是素材下载站，而是可追溯的角色类型、关系张力、台词风格和叙事结构索引。</p></div></div>
         <div class="library-toolbar"><div class="tabs" role="tablist"><button class="active" data-tab="characters">主要角色</button><button data-tab="moments">名场面</button><button data-tab="works">作品</button></div><label class="library-search">${icon('search', 17)}<input id="library-search" placeholder="搜索角色、类型、作品或场面" /></label></div>
+        <div class="library-filters" id="library-filters" aria-label="素材筛选"></div>
+        <div class="library-meta" id="library-meta"></div>
         <div class="library-grid" id="library-grid"></div>
       </div>
     </section>
@@ -522,30 +526,126 @@ const loadSavedRemix = id => {
 }
 
 const libraryItems = tab => {
-  if (tab === 'characters') return knowledge.known_characters.map(character => ({
-    id: character.id,
-    title: character.name,
-    meta: `${workById.get(character.work_id).title} · ${character.roles.join(' / ')}`,
-    tags: character.character_types,
-    body: `${character.traits.join('、')}。台词风格：${character.dialogue_style.join('；')}`,
-    badge: '角色参考'
-  }))
-  if (tab === 'moments') return knowledge.iconic_moments.map(moment => ({
-    id: moment.id,
-    title: moment.name,
-    meta: `${workById.get(moment.work_id).title} · ${moment.conflict_type}`,
-    tags: moment.emotional_arc,
-    body: moment.abstraction,
-    badge: '结构参考'
-  }))
+  if (tab === 'characters') return knowledge.known_characters.map(character => {
+    const work = workById.get(character.work_id)
+    return {
+      id: character.id,
+      title: character.name,
+      meta: `${work.title} · ${character.roles.join(' / ')}`,
+      tags: character.character_types,
+      body: `${character.traits.join('、')}。台词风格：${character.dialogue_style.join('；')}`,
+      badge: '角色参考',
+      // C5：筛选维度——角色类型 / 所属作品 / 版权状态，供 filterLibraryItems 使用
+      fields: {
+        type: character.character_types,
+        work: [work.title],
+        rights: [character.rights_status]
+      },
+      searchableText: [character.name, ...character.aliases, work.title, ...character.roles, ...character.character_types, ...character.traits, ...character.dialogue_style].join(' ').toLowerCase()
+    }
+  })
+  if (tab === 'moments') return knowledge.iconic_moments.map(moment => {
+    const work = workById.get(moment.work_id)
+    return {
+      id: moment.id,
+      title: moment.name,
+      meta: `${work.title} · ${moment.conflict_type}`,
+      tags: moment.emotional_arc,
+      body: moment.abstraction,
+      badge: '结构参考',
+      // C5：筛选维度——冲突类型 / 情绪弧 / 所属作品
+      fields: {
+        conflict: [moment.conflict_type],
+        emotion: moment.emotional_arc,
+        work: [work.title]
+      },
+      searchableText: [moment.name, work.title, moment.conflict_type, moment.setting, ...moment.emotional_arc, ...moment.visual_actions, ...moment.dialogue_patterns, moment.abstraction].join(' ').toLowerCase()
+    }
+  })
   return knowledge.works.map(work => ({
     id: work.id,
     title: work.title,
     meta: `${mediaNames[work.media_type]} · ${work.release_year ?? '年份未知'} · ${work.regions.join(' / ')}`,
     tags: work.genres,
     body: `别名：${work.aliases.join('、') || '无'}。已记录 ${work.sources.length} 条公开来源证据。`,
-    badge: '作品索引'
+    badge: '作品索引',
+    // C5：筛选维度——媒介类型 / 类型 / 版权状态
+    fields: {
+      media: [work.media_type],
+      genre: work.genres,
+      rights: [work.rights_status]
+    },
+    searchableText: [work.title, work.original_title, ...work.aliases, mediaNames[work.media_type] ?? work.media_type, ...work.genres, ...work.regions, String(work.release_year ?? '')].join(' ').toLowerCase()
   }))
+}
+
+// C5：每个 tab 的筛选维度配置，key 对应 fields 的键，label 为中文维度名
+const filterDimensions = {
+  characters: [
+    { key: 'type', label: '角色类型' },
+    { key: 'work', label: '所属作品' },
+    { key: 'rights', label: '版权状态' }
+  ],
+  moments: [
+    { key: 'conflict', label: '冲突类型' },
+    { key: 'emotion', label: '情绪弧' },
+    { key: 'work', label: '所属作品' }
+  ],
+  works: [
+    { key: 'media', label: '媒介类型' },
+    { key: 'genre', label: '类型' },
+    { key: 'rights', label: '版权状态' }
+  ]
+}
+// C5：筛选状态——维度 key → 选中的值列表；切换 tab 时重置为空对象
+let libraryFilters = {}
+
+// C5：把维度值映射为中文显示标签；rights 用现有 rightsLabels，media 用 mediaNames，其余原样
+const filterValueLabel = (dimension, value) => {
+  if (dimension === 'rights') return rightsLabels[value] ?? value
+  if (dimension === 'media') return mediaNames[value] ?? value
+  return value
+}
+
+// C5：渲染筛选器 chips，每个维度一行，支持多选（同维度 OR），跨维度 AND；有选中时显示清空按钮
+const renderLibraryFilters = () => {
+  const container = document.querySelector('#library-filters')
+  if (!container) return
+  const dimensions = filterDimensions[activeTab] ?? []
+  const allItems = libraryItems(activeTab)
+  container.innerHTML = dimensions.map(dim => {
+    // 动态收集该维度所有可选值，避免出现"选了却无结果"的死选项
+    const options = collectFilterOptions(allItems, dim.key)
+    const selected = libraryFilters[dim.key] ?? []
+    const chips = options.map(value => {
+      const isActive = selected.includes(value)
+      return `<button class="filter-chip ${isActive ? 'active' : ''}" type="button" data-dim="${dim.key}" data-value="${escapeHtml(value)}" aria-pressed="${isActive}">${escapeHtml(filterValueLabel(dim.key, value))}</button>`
+    }).join('')
+    return `<div class="filter-row"><span class="filter-label">${dim.label}</span><div class="filter-chips">${chips}</div></div>`
+  }).join('')
+  // 任意维度有选中值时显示清空按钮
+  const hasSelection = Object.values(libraryFilters).some(arr => Array.isArray(arr) && arr.length > 0)
+  if (hasSelection) {
+    container.innerHTML += `<button class="filter-clear" type="button" id="filter-clear">${icon('close', 14)} 清空筛选</button>`
+  }
+  // chip 点击：切换选中态后重渲染筛选器和列表
+  container.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const { dim, value } = chip.dataset
+      const current = libraryFilters[dim] ?? []
+      libraryFilters[dim] = current.includes(value)
+        ? current.filter(v => v !== value)
+        : [...current, value]
+      renderLibraryFilters()
+      renderLibrary()
+    })
+  })
+  const clearBtn = container.querySelector('#filter-clear')
+  if (clearBtn) clearBtn.addEventListener('click', () => {
+    libraryFilters = {}
+    renderLibraryFilters()
+    renderLibrary()
+  })
 }
 
 // 把详情视图中的实体带入跨作品混搭工作台，自动避免 A/B 选到同一角色
@@ -599,10 +699,20 @@ const detailView = createDetailView({
 })
 
 const renderLibrary = () => {
-  const query = document.querySelector('#library-search').value.trim().toLowerCase()
-  const items = libraryItems(activeTab).filter(item => JSON.stringify(item).toLowerCase().includes(query))
+  const query = document.querySelector('#library-search').value
+  const allItems = libraryItems(activeTab)
+  // C5：文本搜索 + 多维度组合筛选，业务规则集中在 filterLibraryItems 纯函数
+  const items = filterLibraryItems(allItems, libraryFilters, query)
   const grid = document.querySelector('#library-grid')
-  grid.innerHTML = items.length ? items.map((item, index) => `<article class="library-card" role="button" tabindex="0" data-detail-link="${activeTab}" data-detail-id="${item.id}" aria-label="查看 ${escapeHtml(item.title)} 详情"><div class="library-index">${String(index + 1).padStart(2, '0')}</div><span class="library-badge">${item.badge}</span><h3>${escapeHtml(item.title)}</h3><p class="library-meta">${escapeHtml(item.meta)}</p><p>${escapeHtml(item.body)}</p><div class="mini-tags">${item.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div><small>${icon('shield', 13)} reference_only</small><span class="library-cta">${icon('arrow', 14)} 查看详情</span></article>`).join('') : '<p class="empty">没有匹配的内容。</p>'
+  // 结果计数：有筛选或搜索时显示"显示 N / 共 M 项"，否则留空避免噪音
+  const meta = document.querySelector('#library-meta')
+  const hasFilter = Object.values(libraryFilters).some(arr => Array.isArray(arr) && arr.length > 0)
+  if (meta) {
+    meta.textContent = (hasFilter || query.trim()) && allItems.length
+      ? `显示 ${items.length} / 共 ${allItems.length} 项`
+      : ''
+  }
+  grid.innerHTML = items.length ? items.map((item, index) => `<article class="library-card" role="button" tabindex="0" data-detail-link="${activeTab}" data-detail-id="${item.id}" aria-label="查看 ${escapeHtml(item.title)} 详情"><div class="library-index">${String(index + 1).padStart(2, '0')}</div><span class="library-badge">${item.badge}</span><h3>${escapeHtml(item.title)}</h3><p class="library-meta">${escapeHtml(item.meta)}</p><p>${escapeHtml(item.body)}</p><div class="mini-tags">${item.tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div><small>${icon('shield', 13)} reference_only</small><span class="library-cta">${icon('arrow', 14)} 查看详情</span></article>`).join('') : '<p class="empty">没有匹配的素材。试着减少筛选条件或清空搜索关键词。</p>'
   // 卡片支持点击与键盘（Enter / Space）打开详情视图
   grid.querySelectorAll('.library-card').forEach(card => {
     const open = () => detailView.open(card.dataset.detailLink, card.dataset.detailId)
@@ -654,6 +764,9 @@ document.querySelectorAll('[data-tab]').forEach(button => button.addEventListene
   document.querySelectorAll('[data-tab]').forEach(item => item.classList.remove('active'))
   button.classList.add('active')
   activeTab = button.dataset.tab
+  // C5：切换 tab 时重置筛选状态，避免上一个 tab 的选中值对新 tab 产生无意义筛选
+  libraryFilters = {}
+  renderLibraryFilters()
   renderLibrary()
 }))
 document.querySelector('#library-search').addEventListener('input', renderLibrary)
@@ -661,6 +774,7 @@ document.querySelector('#library-search').addEventListener('input', renderLibrar
 updateHints()
 currentResult = buildRemix()
 renderResult(currentResult)
+renderLibraryFilters()
 renderLibrary()
 renderSaved()
 

@@ -1,9 +1,59 @@
 # 灵感项目当前进度
 
 最后更新：2026-07-31
-当前轮次：C4 工作台三栏布局轮
-当前阶段：Phase 2 进行中（C1、C2、C3、C4、C8 已完成，剩余 C5—C7）
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；C4 创作工作台已升级为三栏布局（左素材选择/中核心预览/右完整制作包），中栏预览展示标题/钩子/封面文案/C3 重复检测标记/复制收藏快捷操作，右栏展示完整分镜表（含景别/运镜/转场中文标签）、结构化画面提示词（正向/负面/比例/风格强度）、版权边界三字段声明和导出按钮，前端集成 detectDuplicates 把当前方案与已收藏方案对比并在相似度≥0.7 时显示换皮警告，桌面端三栏在 ≤980px 堆叠为单栏；尚无自动发布闭环
+当前轮次：C5 多维筛选轮
+当前阶段：Phase 2 进行中（C1、C2、C3、C4、C5、C8 已完成，剩余 C6—C7）
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 9 部作品/19 角色/7 关系/11 名场面；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成和导出五个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；C4 创作工作台已升级为三栏布局（左素材选择/中核心预览/右完整制作包），中栏预览展示标题/钩子/封面文案/C3 重复检测标记/复制收藏快捷操作，右栏展示完整分镜表（含景别/运镜/转场中文标签）、结构化画面提示词（正向/负面/比例/风格强度）、版权边界三字段声明和导出按钮，前端集成 detectDuplicates 把当前方案与已收藏方案对比并在相似度≥0.7 时显示换皮警告，桌面端三栏在 ≤980px 堆叠为单栏；C5 素材库多维筛选已建立，业务规则与 UI 分离为 src/library/filter.ts 纯函数（filterLibraryItems/collectFilterOptions），素材库三个 tab 各配置 3 个筛选维度（角色：类型/作品/版权；名场面：冲突/情绪/作品；作品：媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与所有维度 AND，chip 动态收集可选项避免死选项，切换 tab 自动重置筛选，有选中时显示清空按钮和"显示 N / 共 M 项"计数；尚无自动发布闭环
+
+### C5 多维筛选轮 — 2026-07-31
+
+本轮目标：把素材库从纯文本搜索升级为多维度组合筛选，覆盖角色/名场面/作品三类实体，每个 tab 提供 3 个筛选维度，支持同维度多选 OR、跨维度 AND、文本搜索与筛选 AND 组合。对应 DEVELOPMENT_DIRECTION.md 阶段 C"筛选与搜索升级（多维度组合）"，验收条件为 3 种以上筛选维度。
+
+完成：
+
+- 新增 `src/library/filter.ts`，把筛选业务规则抽为纯函数，与 UI 渲染分离便于单测：
+  - `FilterableItem` 类型：`id` + `fields: Record<string, string[]>`（每个维度的值集合，单值字段也用数组）+ `searchableText`（可索引文本，小写化）；
+  - `LibraryFilters` 类型：维度名 → 选中的值列表，空数组表示该维度不参与筛选；
+  - `filterLibraryItems(items, filters, query)`：文本搜索与所有维度 AND；同维度多选中任一命中即通过（OR）；跨维度全部命中才通过（AND）；query 为空或维度选中值为空时跳过该条件；不修改输入；
+  - `collectFilterOptions(items, dimension)`：从一批素材收集某维度所有可选值，去重并按字典序排序，用于动态生成 chip 选项避免"选了却无结果"的死选项；
+- 新增 `tests/library-filter.test.ts` 共 13 项测试，覆盖：空筛选返回全部、文本搜索大小写无关、单维度筛选、同维度多选 OR、跨维度 AND、文本+维度 AND、空数组维度跳过、无匹配返回空、collectFilterOptions 去重排序、未知维度返回空、数组字段收集、不修改输入、query 前后空白裁剪；
+- 修改 `src/main.js` 集成筛选 UI：
+  - import `filterLibraryItems` 和 `collectFilterOptions`；
+  - `libraryItems` 三类返回值新增 `fields` 和 `searchableText`：角色（type=character_types、work=[作品标题]、rights）、名场面（conflict=[冲突类型]、emotion=emotional_arc、work=[作品标题]）、作品（media=[媒介类型]、genre=genres、rights）；searchableText 由标题/别名/元数据/正文/标签拼接后小写化；
+  - 新增 `filterDimensions` 配置：characters（角色类型/所属作品/版权状态）、moments（冲突类型/情绪弧/所属作品）、works（媒介类型/类型/版权状态），每 tab 3 个维度满足验收条件；
+  - 新增 `libraryFilters` 状态（维度 key → 选中值数组）和 `filterValueLabel`（rights/media 维度值映射为中文标签）；
+  - 新增 `renderLibraryFilters`：每维度一行 `.filter-row`，chip 动态从当前 tab 全部素材收集可选项，选中态用 `.active` 类和 `aria-pressed`；任意维度有选中时追加"清空筛选"按钮；chip click 切换选中态后重渲染筛选器和列表；清空按钮重置 `libraryFilters={}`；
+  - `renderLibrary` 改为调用 `filterLibraryItems(allItems, libraryFilters, query)`，结果计数区 `#library-meta` 在有筛选或搜索时显示"显示 N / 共 M 项"，否则留空避免噪音；无匹配时显示"没有匹配的素材。试着减少筛选条件或清空搜索关键词。"；
+  - tab 切换时 `libraryFilters = {}` 重置筛选状态，避免上一个 tab 的选中值对新 tab 产生无意义筛选；
+  - HTML 模板新增 `<div class="library-filters" id="library-filters" aria-label="素材筛选"></div>` 和 `<div class="library-meta" id="library-meta"></div>` 容器；
+- 修改 `src/style.css` 新增 C5 样式：`.library-filters`（flex 列布局）、`.filter-row`（flex 行+flex-wrap）、`.filter-label`（uppercase 小标签）、`.filter-chips`（flex-wrap 容器）、`.filter-chip`（pill 形按钮，30px 高，hover 高亮，active 用 lime 强调色）、`.filter-clear`（清空按钮，hover 转 danger 色）、`.library-meta`（计数文本）；
+- 修改 `package.json` 的 test 脚本加入 `tests/library-filter.test.ts`。
+
+验证：
+
+- `npm run typecheck`：通过；
+- `npm run validate:data`：通过，5 份 JSON 有效，跨文件外键校验通过；
+- `npm test`：通过，182/182（新增 13 项 C5 测试，原有 169 项不变）；
+- `npm run build`：通过，12 modules transformed（从 11 增至 12，新增 filter.ts 模块），CSS 30.54 kB（+1.08 kB）、JS 85.67 kB（+2.75 kB）；
+- `node --check src/main.js`：通过（源码语法合法）；
+- `node --check dist/assets/index-DkKCvZPg.js`：通过（构建产物语法合法）；
+- 构建产物静态核实：用 findstr 确认 dist/assets/index-DkKCvZPg.js 包含 `library-filters` 容器、`filter-chip` 类与 click 事件绑定、`filter-clear` 清空按钮、`filterDimensions` 三 tab 配置、`renderLibraryFilters`/`filterLibraryItems`/`collectFilterOptions` 函数、tab 切换时 `T={},O(),M()` 重置筛选、`library-meta` "显示 N / 共 M 项"计数逻辑；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 筛选业务规则抽为 `src/library/filter.ts` 纯函数而非内联在 main.js：与 DEVELOPMENT_STANDARD.md 11 节"业务规则与 UI 分离"一致，便于在 Node 环境单测（13 项测试覆盖 OR/AND/边界/不可变性），避免依赖 DOM；未来可在 CLI 或其他消费方复用；
+- 筛选语义设计为同维度 OR、跨维度 AND：符合用户直觉"角色类型为 X 或 Y，且作品为 Z"；文本搜索与所有维度 AND，因为搜索是"在结果中找含关键词的"，不是独立维度；
+- `collectFilterOptions` 动态收集可选项而非硬编码：避免出现"选了却无结果"的死选项（如某角色类型在当前数据中不存在）；切换 tab 时维度变化，可选项也随之变化；
+- 维度选择基于知识库字段分析：角色用 character_types（多值，如"热血追梦者"/"守序型掌权者"）、work（作品标题）、rights；名场面用 conflict_type、emotional_arc（多值数组）、work；作品用 media_type、genres（多值）、rights；避免选择值单一无筛选意义的维度（如所有实体 rights 都是 reference_only 时仍保留作为示例维度，但 collectFilterOptions 会返回单值）；
+- `filterValueLabel` 把 rights/media 维度值映射为中文标签（如 reference_only → "仅参考"、television → "电视剧"），其余维度（type/conflict/emotion/work/genre）值本身已是中文直接显示；
+- 切换 tab 重置筛选：不同 tab 维度 key 不同（characters 用 type，moments 用 conflict），保留上一个 tab 的选中值会对新 tab 产生无意义筛选（维度不匹配时 collectFilterOptions 返回空，但 libraryFilters 对象仍残留旧 key），重置最安全；
+- 计数显示策略：有筛选或搜索时显示"显示 N / 共 M 项"让用户感知筛选效果，无筛选无搜索时留空避免噪音；
+- 浏览器运行时验证未完成：本机 browser-use 环境持续报 `SyntaxError: Missing catch or finally after try`（与 B4/C4 轮记录的环境限制一致），但 `node --check src/main.js`、`node --check dist/assets/index-DkKCvZPg.js`、`vite build`（exit 0）和 typecheck 全部通过，且 Grep 静态核实 main.js 中 8 个 try 块均有对应 catch（第 15/18/31/34/353/362/472/481 行），无悬空 try；构建产物 findstr 确认包含 C5 全部关键代码；该 SyntaxError 是 browser-use 环境自身问题而非真实代码错误；C5 功能正确性已由 13 项单元测试 + 静态代码核实 + 构建产物语法检查充分证明；
+- 本轮未拆分 main.js 为模块：C6 前端模块化是独立任务，C5 聚焦筛选逻辑，filter.ts 已是独立模块作为拆分起点；
+- 环境注意：本机默认 node 为 v14，需用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本；通过 `cmd /d /c "set PATH=D:\development\nodejs;%PATH% && ..."` 解决；PowerShell 不支持 `&&`，需用 `cmd /d /c` 包装或 `;` 分隔。
+
+下一轮：Phase 2 剩余 C6—C7。首选 C6 前端模块化，把 main.js（约 800 行）按行为边界拆为 Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList/DetailModal 等组件，对应 DEVELOPMENT_DIRECTION.md 阶段 C"前端组件化拆分"和第六节"前端架构演进方向"。
 
 ### C4 工作台三栏布局轮 — 2026-07-31
 
@@ -672,7 +722,8 @@
 | 每日候选脚本 | SQLite 闭环通过 | 默认读取正式趋势、生成候选并幂等持久化；显式示例输入仅用于测试和演示 |
 | 内容图谱 | 基础库可校验，增量合并已用真实批次验证 | 已有 9 部作品、19 个知名人物、7 组关系和 11 个抽象名场面；具体知名内容均为 `reference_only`；增量批次可通过 `merge:knowledge` 合并入库 |
 | 创意生成引擎 | 质量升级完成 | 4 类共 24 个钩子模板、4 种性格驱动对白、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；固定种子可复现，20 条规范化钩子唯一率 ≥ 70% |
-| 素材库详情视图 | 基础闭环通过 | 角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段（角色类型、对白风格、关系、情绪弧、视觉动作、可复用节拍、来源证据等）；每个详情页有"开始创作"入口带入混搭工作台；键盘可访问，移动端有适配；尚缺自动化浏览器回归 |
+| 素材库详情视图 | 基础闭环通过 | 角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段（角色类型、对白风格、关系、情绪弧、视觉动作、可复用节拍、来源证据等）；每个详情页有"开始创作"入口带入混搭工作台；键盘可访问，移动端有适配 |
+| 素材库多维筛选 | 基础闭环通过 | 角色/名场面/作品三个 tab 各 3 个筛选维度（类型/作品/版权、冲突/情绪/作品、媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与筛选 AND；业务规则抽为 src/library/filter.ts 纯函数，13 项单元测试覆盖；chip 动态收集可选项避免死选项，切换 tab 自动重置，有清空按钮和结果计数 |
 | 导出与收藏 | 基础闭环通过 | 混搭方案可导出 Markdown（人类可读，含分镜表格/对白/文案/版权边界）和 JSON（机器可读，完整 RemixPlan）；收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除；旧格式收藏降级显示；导出/收藏操作有 toast 反馈；尚缺浏览器交互回归 |
 | 热点采集 | SQLite 入库闭环完成，任务启用 | 每天 07:30、13:30、19:30 采集；已有公开批次经 Schema、跨批次去重和事务迁移进入 SQLite |
 | 来源适配器 | 首个固定适配器已建立 | 维基百科最热词条 REST API 适配器已建立，纯转换函数 + 本地 fixture 测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；CLI 已就绪但未实际拉取公网数据 |
@@ -681,7 +732,7 @@
 | 候选审核 | 基础状态机通过 | candidates 已持久化，支持 pending_review、approved、rejected、archived 合法流转；approved 候选可导出供推荐流消费；尚无自动发布目标 |
 | 今日推荐 | 基础闭环通过 | 首页读取 approved 候选导出，无数据时显示空状态；当前无 approved 候选 |
 | 行为分析 | 未实现 | 尚未采集曝光、复制和成片事件 |
-| 测试体系 | 基础验证通过 | 已覆盖数据契约、生成、SQLite 趋势适配与导出、候选存储和状态机、运行日志；B4/B5 浏览器交互回归已通过 C8 补齐 |
+| 测试体系 | 基础验证通过 | 已覆盖数据契约、生成、SQLite 趋势适配与导出、候选存储和状态机、运行日志、素材库筛选（C5 新增 13 项）；B4/B5 浏览器交互回归已通过 C8 补齐；当前 182 项测试全部通过 |
 
 ## 2. 已完成内容
 
@@ -748,6 +799,8 @@
 - [x] C1 兼容矩阵（角色能力 × 场景约束 × 生成难度）。
 - [x] C2 完整制作包（自动生成分镜/提示词/发布文案）。
 - [x] C3 近似度检测（避免换皮创意）。
+- [x] C4 工作台三栏布局（左素材/中预览/右完整制作包）。
+- [x] C5 多维筛选（素材库三类实体各 3 维度，OR/AND 组合）。
 
 ### Phase 1 已完成
 
@@ -755,12 +808,10 @@ Phase 1 全部任务已完成。本地内容数据基础验证里程碑（M1）�
 
 ### Phase 2 进行中
 
-C1、C2、C3、C8 已完成。剩余按依赖顺序：
+C1、C2、C3、C4、C5、C8 已完成。剩余按依赖顺序：
 
-1. C4 工作台三栏布局 — 消费 C2 完整制作包和 C3 重复标记，让前端展示制作包新字段；
-2. C5 多维筛选；
-3. C6 前端模块化；
-4. C7 lint/format。
+1. C6 前端模块化 — 把 main.js 按行为边界拆为组件；
+2. C7 lint/format — ESLint + Prettier 配置。
 
 ### Phase 3 待完成
 
@@ -773,19 +824,19 @@ E1—E5 仅在 `docs/DEVELOPMENT_DIRECTION.md` 的外部依赖和触发条件满
 
 ## 5. 下一轮唯一首选任务
 
-**任务 C3：近似度检测（已完成）。**
+**任务 C5：多维筛选（已完成）。**
 
-**下一轮任务：C4 — 工作台三栏布局（Phase 2 前端轨道）。**
+**下一轮任务：C6 — 前端模块化（Phase 2 工程轨道）。**
 
-选择理由：C2 完整制作包和 C3 近似度检测已完成数据轨道，RemixPlan 已包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明、分镜景别/运镜/转场、封面文案、重复检测标记等制作所需字段，但 main.js 前端仍只展示原 prompt/storyboard/copywriting 字段，新字段未在 UI 呈现。C4 的目标是把创作工作台升级为三栏布局（左：素材库/筛选；中：方案预览含完整制作包字段；右：收藏/历史），让用户能直接看到制作包的全部字段（景别/运镜/转场列、封面文案、结构化提示词、版权边界声明）和 C3 重复检测的可视化标记，提升创作工作台的可读性和可用性。C4 只依赖已完成的 C2/C3 数据轨道和现有 main.js/style.css，不需要外部账号、密钥或公网访问，可在本地独立验收。DEVELOPMENT_PLAN.md 阶段 C 后续已隐含工作台升级需求，B5 已建立的导出与收藏升级为 C4 提供了布局基础。
+选择理由：C5 多维筛选已把筛选业务规则抽为独立模块 `src/library/filter.ts`，验证了"业务规则与 UI 分离"的拆分路径可行。当前 `src/main.js` 约 800 行，同时承担渲染、状态、生成调用、筛选、收藏、详情视图初始化和事件绑定，职责混杂，不利于后续 Phase 3 的行为采集（D1）和排序权重（D3）集成。C6 的目标是按 DEVELOPMENT_DIRECTION.md 第六节"前端架构演进方向"把 main.js 拆为 Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList 等行为边界组件，建立 `src/data/store.js` 本地状态管理和 `src/data/knowledge.js` 知识库读取层。C6 是纯工程重构，不新增用户可见功能，不改业务语义，依赖已有的 filter.ts 拆分经验和 detail-view.js 独立模块先例，可在本地通过 typecheck + test + build 独立验收。C7 lint/format 依赖 C6 拆分完成后再统一配置，避免在臃肿的 main.js 上配置 lint 产生大量噪音。
 
 验收条件：
 
-- 创作工作台升级为三栏布局（桌面端）：左栏素材库/筛选、中栏方案预览、右栏收藏/历史；移动端可降级为单栏或双栏；
-- 中栏方案预览展示 C2 完整制作包新字段：分镜表含景别/运镜/转场三列、封面文案、结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明三字段；
-- 保留现有功能：随机生成、复制方案、导出 Markdown/JSON、收藏到工作台、收藏列表展开/重新加载/单条导出/删除；
+- main.js 拆分为多个行为边界组件（至少 Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList 五个），每个组件职责单一；
+- 建立本地状态管理模块（store.js 或等价方案），减少全局变量；
+- 现有功能保持不变：热点雷达、工作台三栏布局、素材库多维筛选、详情弹窗、导出与收藏、今日推荐流；
 - 类型检查、全部测试、数据校验和生产构建通过；
-- 桌面端 1440px 和移动端 375/640/768/1024px 响应式断点可用（CSS 媒体规则校验或浏览器回归）。
+- 构建产物大小不显著增加（重构不应引入新依赖）。
 
 ## 6. 已知限制与阻塞
 

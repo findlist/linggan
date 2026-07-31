@@ -39,6 +39,17 @@
 @media(max-width:980px){.nav-links{display:none;position:absolute;top:70px;left:22px;right:22px;flex-direction:column;padding:17px;background:#111620;border:1px solid var(--line);border-radius:15px}.nav-links.open{display:flex}.nav-status{display:none}.menu-button{display:grid;place-items:center}.hero{grid-template-columns:1fr;gap:35px}.hero-copy{text-align:center}.hero-copy>p{margin-inline:auto}.hero-actions,.stat-line{justify-content:center}.hero-stage{width:min(600px,100%);margin-inline:auto}.radar-layout{grid-template-columns:1fr 1fr}.radar-visual{grid-row:span 2}.remix-workspace{grid-template-columns:1fr}.composer{position:static}.preview-card{position:static;min-height:auto}.result-card{min-height:auto}.library-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.shell{width:min(100% - 28px,1220px)}.hero{min-height:auto;padding-block:55px}.hero h1{max-width:100%;font-size:clamp(36px,11vw,42px);letter-spacing:-1.8px;overflow-wrap:anywhere}.hero-actions{flex-direction:column}.stat-line{gap:18px}.hero-stage{height:450px}.role-a{left:10px;top:35px}.role-b{right:10px;top:130px}.stage-card{width:max-content;max-width:64%;padding:12px}.stage-card b{font-size:17px}.stage-card small{font-size:10px}.stage-core{width:80px;height:80px}.scene-card{width:88%;max-width:88%}.section-title{align-items:flex-start;flex-direction:column}.radar-section,.library-section,.remix-section{padding-block:70px}.radar-layout{grid-template-columns:1fr}.radar-visual{min-height:330px}.library-toolbar{align-items:stretch;flex-direction:column}.tabs{overflow:auto}.library-grid,.saved-list{grid-template-columns:1fr}.beat-list,.dialogues{grid-template-columns:1fr}.result-card{padding:20px}.result-card h3{font-size:24px}.result-actions,.preview-actions{flex-direction:column}.footer-inner{flex-direction:column;justify-content:center;gap:8px;text-align:center;padding-block:20px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+/* C5 素材库多维度筛选器：chips 多选，同维度 OR，跨维度 AND */
+.library-filters{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.filter-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.filter-label{font:700 10px Manrope,sans-serif;color:#7f8797;letter-spacing:.6px;text-transform:uppercase;min-width:64px;flex:none}
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px}
+.filter-chip{height:30px;padding:0 12px;border:1px solid var(--line);border-radius:99px;background:#121721;color:#929aa9;font-size:11px;font-weight:700;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.filter-chip:hover{border-color:rgba(201,255,99,.3);color:#cdd4df}
+.filter-chip.active{background:rgba(201,255,99,.12);border-color:var(--lime);color:var(--lime)}
+.filter-clear{align-self:flex-start;height:30px;padding:0 12px;border:1px solid var(--line);border-radius:9px;background:transparent;color:#929aa9;font-size:11px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.filter-clear:hover{color:var(--danger);border-color:rgba(255,147,112,.3)}
+.library-meta{color:#6f7888;font-size:11px;margin-bottom:12px;font-weight:700}
 /* B4 详情视图：素材库卡片可点击 + 弹窗 + 字段列表 + 实体跳转 + 开始创作 */
 .library-card{cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s}
 .library-card:hover{border-color:rgba(201,255,99,.3);transform:translateY(-3px)}
