@@ -2,6 +2,7 @@ import knowledge from '../data/knowledge-base.json'
 import './radar.css'
 
 let trendExport = null
+let candidateExport = null
 
 const loadTrendExport = async () => {
   try {
@@ -16,6 +17,47 @@ const loadTrendExport = async () => {
   } catch {
     return null
   }
+}
+
+// 加载已批准候选导出文档；前端不直接访问 SQLite，只消费只读 JSON
+const loadCandidateExport = async () => {
+  try {
+    const response = await fetch('./data/candidate-export.json')
+    if (!response.ok) {
+      try { const fallback = await fetch('/data/candidate-export.json'); if (fallback.ok) return await fallback.json() } catch {}
+      return null
+    }
+    const data = await response.json()
+    if (data.schema_version !== 1) return null
+    return data
+  } catch {
+    return null
+  }
+}
+
+const riskLabels = { low: '低风险', medium: '中风险', high: '高风险', blocked: '阻断' }
+const rightsLabels = { original: '原创', licensed: '已授权', public_domain: '公共领域', reference_only: '仅参考', unknown: '版权未知', restricted: '受限' }
+const formatScore = value => Number.isFinite(value) ? Math.round(value) : '—'
+
+// 渲染今日推荐流：无已批准候选时显示明确空状态，禁止展示待审内容
+const renderCandidateFeed = data => {
+  const feed = document.querySelector('#feed-grid')
+  const pill = document.querySelector('#feed-status-pill')
+  if (!feed) return
+  if (!data || data.candidate_count === 0) {
+    if (pill) pill.innerHTML = `${icon('database', 16)} 暂无已批准候选`
+    feed.innerHTML = `<div class="feed-empty">${icon('sparkles', 24)}<p>暂无已批准的创意候选</p><small>候选生成并审核通过后，今日推荐流会在这里展示真实方案。当前展示内容均为已审核 approved 候选，不会出现待审或驳回内容。</small></div>`
+    return
+  }
+  if (pill) pill.innerHTML = `${icon('check', 16)} ${data.candidate_count} 条已批准候选`
+  feed.innerHTML = data.candidates.map((candidate, index) => `<article class="feed-card">
+    <div class="feed-index">${String(index + 1).padStart(2, '0')}</div>
+    <span class="feed-badge">${icon('shield', 13)} ${rightsLabels[candidate.rights_status] ?? candidate.rights_status}</span>
+    <h3>${escapeHtml(candidate.title)}</h3>
+    <p class="feed-source">来源趋势 · ${escapeHtml(candidate.source_trend)}</p>
+    <div class="feed-hook"><span>前三秒钩子</span><b>${escapeHtml(candidate.hook)}</b></div>
+    <div class="feed-meta"><span>质量分 <strong>${formatScore(candidate.score.total)}</strong></span><span>${riskLabels[candidate.risk_level] ?? candidate.risk_level}</span><span>${candidate.generated_at.slice(0, 10)}</span></div>
+  </article>`).join('')
 }
 
 const icon = (name, size = 20) => {
@@ -113,7 +155,7 @@ app.innerHTML = `
   <header class="topbar">
     <nav class="nav shell" aria-label="主导航">
       <a class="brand" href="#top"><span class="brand-mark">${icon('sparkles', 21)}</span><span>灵感</span><small>LINGGAN LAB</small></a>
-      <div class="nav-links"><a href="#radar">热点雷达</a><a href="#remix">跨界混搭</a><a href="#library">素材库</a></div>
+      <div class="nav-links"><a href="#feed">今日推荐</a><a href="#radar">热点雷达</a><a href="#remix">跨界混搭</a><a href="#library">素材库</a></div>
       <div class="nav-status"><i></i><span>采集与 SQLite 入库已连接</span></div>
       <button class="menu-button" aria-label="打开导航" aria-expanded="false">${icon('menu')}</button>
     </nav>
@@ -133,6 +175,13 @@ app.innerHTML = `
         <article class="stage-card role-card role-b"><span>角色 B · 仙逆</span><b>李慕婉</b><small>温柔智者 / 稳定支点</small></article>
         <article class="stage-card scene-card"><span>名场面节奏 · 亮剑</span><b>限时集结攻坚</b><small>目标受困 → 多路集结 → 侧翼破局</small></article>
         <div class="stage-core">${icon('shuffle', 28)}<b>REMIX</b></div>
+      </div>
+    </section>
+
+    <section class="feed-section" id="feed">
+      <div class="shell">
+        <div class="section-title"><div><span class="kicker">TODAY'S PICKS</span><h2>今日推荐</h2><p>只展示已审核通过的持久化候选，待审、驳回或归档内容不会出现在这里。</p></div><span class="system-pill" id="feed-status-pill">${icon('database', 16)} 读取中</span></div>
+        <div class="feed-grid" id="feed-grid"><div class="feed-empty">${icon('sparkles', 24)}<p>正在加载今日推荐...</p></div></div>
       </div>
     </section>
 
@@ -350,3 +399,9 @@ loadTrendExport().then(data => {
     }
   }
 }).catch(() => {})
+
+// 加载已批准候选导出并渲染今日推荐流
+loadCandidateExport().then(data => {
+  candidateExport = data
+  renderCandidateFeed(data)
+}).catch(() => renderCandidateFeed(null))

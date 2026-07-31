@@ -14,3 +14,5 @@ data/*.sqlite-shm
 data/*.sqlite-wal
 data/trend-export.json
 public/data/trend-export.json
+data/candidate-export.json
+public/data/candidate-export.json

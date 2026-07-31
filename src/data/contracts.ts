@@ -405,5 +405,43 @@ export const TrendExportDocumentSchema = z.object({
 
 export type TrendExportDocument = z.infer<typeof TrendExportDocumentSchema>
 
+/**
+ * 只读候选导出文档，供静态网站今日推荐流消费。
+ * 前端读取该文件而不是直接访问 SQLite；
+ * 文档只包含 approved 候选，禁止携带待审、驳回或归档内容。
+ */
+export const CandidateExportDocumentSchema = z.object({
+  schema_version: z.literal(1),
+  exported_at: z.iso.datetime({ offset: true }),
+  candidate_count: z.number().int().nonnegative(),
+  candidates: z.array(CandidateSchema)
+}).strict().superRefine((document, context) => {
+  if (document.candidate_count !== document.candidates.length) {
+    context.addIssue({
+      code: 'custom',
+      path: ['candidate_count'],
+      message: 'must match candidates length'
+    })
+  }
+
+  const ids = document.candidates.map(candidate => candidate.id)
+  if (new Set(ids).size !== ids.length) {
+    context.addIssue({ code: 'custom', path: ['candidates'], message: 'duplicate candidate ids' })
+  }
+
+  // 导出文档只允许 approved 候选，确保前端不可能展示待审内容
+  document.candidates.forEach((candidate, index) => {
+    if (candidate.status !== 'approved') {
+      context.addIssue({
+        code: 'custom',
+        path: ['candidates', index, 'status'],
+        message: `exported candidates must be approved, got ${candidate.status}`
+      })
+    }
+  })
+})
+
+export type CandidateExportDocument = z.infer<typeof CandidateExportDocumentSchema>
+
 export type StoredTrend = z.infer<typeof StoredTrendSchema>
 export type TrendStoreDocument = z.infer<typeof TrendStoreDocumentSchema>

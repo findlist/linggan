@@ -1,9 +1,42 @@
 # 灵感项目当前进度
 
-最后更新：2026-07-29
-当前轮次：A5 候选持久化与审核状态机轮
+最后更新：2026-07-31
+当前轮次：B3 今日推荐流读取持久化候选轮
 当前阶段：Phase 1 — 本地内容数据基础验证
-整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；尚无真实来源适配器和自动发布闭环
+整体状态：本地数据闭环可验证；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived 流转和幂等键去重；今日推荐流已通过只读 JSON 导出消费 approved 候选，无已批准候选时显示明确空状态，禁止展示待审内容；尚无真实来源适配器和自动发布闭环
+
+### B3 今日推荐流读取持久化候选轮 — 2026-07-31
+
+本轮目标：让首页推荐流读取 SQLite 中 approved 候选，替换占位内容，形成“生成→持久化→审核→展示”的内容消费闭环。
+
+完成：
+
+- 新增 `CandidateExportDocumentSchema` 与类型，强制导出文档只包含 approved 候选，校验 candidate_count、唯一 ID 和状态合法性；
+- 新增 `scripts/export-candidates.ts`，从 SQLite 读取 approved 候选，最多 10 条，经 Schema 校验后原子写入 `public/data/candidate-export.json`，复用 A2 的“SQLite → Schema → 原子 JSON → 前端 fetch”边界；
+- 新增 `npm run export:candidates` 命令；
+- 新增 8 项候选导出测试，覆盖正常导出、空库、只导出 approved（不包含 pending/rejected/archived）、默认上限 10、原子替换、count 校验、非 approved 拒绝和时间戳；
+- 前端 `main.js` 新增今日推荐区域，通过 `fetch` 读取 candidate-export.json，无数据时显示明确空状态，不展示待审内容；
+- `style.css` 新增推荐流卡片和空状态样式，复用现有深色 Aurora 变量；
+- `.gitignore` 增加 `data/candidate-export.json` 和 `public/data/candidate-export.json`，与 trend-export.json 保持一致，导出产物不提交。
+
+验证：
+
+- `npm run typecheck`：通过；
+- `npm run validate:data`：通过，4 份 JSON 有效；
+- `npm test`：通过，80/80（新增 8 项 B3 测试）；
+- `npm run build`：通过；
+- `npm run export:candidates`：成功，当前 0 条 approved 候选，生成空文档（候选仍为 pending_review，符合预期）；
+- `git diff --check`：通过。
+
+关键决策与遗留问题：
+
+- 复用 A2 导出边界，前端不直接访问 SQLite；导出文档在 Schema 层强制 status === 'approved'，前端不可能拿到待审内容；
+- 当前 20 条持久化候选均为 pending_review，推荐流显示空状态是真实状态，不放宽状态或编造指标；
+- 导出产物加入 .gitignore，开发者需运行 `npm run export:candidates` 生成前端所需 JSON；
+- 推荐流默认上限 10 条，按 generated_at DESC 排序；
+- 环境注意：本机默认 node 为 v14，需使用 `D:\development\nodejs\node.exe`（v24.14.0）运行 npm 脚本。
+
+下一轮：按第 5 节执行 A3 知识库增量合并与去重命令。
 
 ### 独立自动化剩余任务同步轮 — 2026-07-29
 
@@ -63,7 +96,8 @@
 | 内容图谱 | 基础库可校验 | 已有 6 部作品、10 个知名人物、4 组关系和 6 个抽象名场面；具体知名内容均为 `reference_only` |
 | 热点采集 | SQLite 入库闭环完成，任务启用 | 每天 07:30、13:30、19:30 采集；已有公开批次经 Schema、跨批次去重和事务迁移进入 SQLite |
 | 本地持久化 | SQLite 通过 | 默认 `data/linggan.sqlite`；版本化迁移、知识种子、事务回滚、幂等和多来源合并测试通过 |
-| 候选审核 | 基础状态机通过 | candidates 已持久化，支持 pending_review、approved、rejected、archived 合法流转；尚无自动发布目标 |
+| 候选审核 | 基础状态机通过 | candidates 已持久化，支持 pending_review、approved、rejected、archived 合法流转；approved 候选可导出供推荐流消费；尚无自动发布目标 |
+| 今日推荐 | 基础闭环通过 | 首页读取 approved 候选导出，无数据时显示空状态；当前无 approved 候选 |
 | 行为分析 | 未实现 | 尚未采集曝光、复制和成片事件 |
 | 测试体系 | 基础验证通过 | 已覆盖数据契约、生成、SQLite 趋势适配与导出、候选存储和状态机；浏览器回归仍待补齐 |
 
@@ -117,18 +151,18 @@
 - [x] A1 候选流水线读取 SQLite 正式趋势；
 - [x] A2 正式趋势查询与原子 JSON 导出；
 - [x] B6 网站热点雷达消费正式趋势导出；
-- [x] A5 候选持久化与审核状态机。
+- [x] A5 候选持久化与审核状态机；
+- [x] B3 今日推荐流读取 approved 候选导出。
 
 ### Phase 1 待完成
 
-1. B3 今日推荐流读取符合展示条件的持久化候选；
-2. A3 知识库增量合并与去重命令；
-3. B1 分批扩充参考素材和原创角色原型；
-4. B2 生成引擎质量升级；
-5. B4 角色、作品和名场面详情；
-6. B5 Markdown/JSON 导出与收藏管理；
-7. A4 固定公开来源适配器；
-8. A6 统一任务运行日志。
+1. A3 知识库增量合并与去重命令；
+2. B1 分批扩充参考素材和原创角色原型；
+3. B2 生成引擎质量升级；
+4. B4 角色、作品和名场面详情；
+5. B5 Markdown/JSON 导出与收藏管理；
+6. A4 固定公开来源适配器；
+7. A6 统一任务运行日志。
 
 ### Phase 2 待完成
 
@@ -147,11 +181,11 @@ E1—E5 仅在 `docs/DEVELOPMENT_DIRECTION.md` 的外部依赖和触发条件满
 
 ## 5. 下一轮唯一首选任务
 
-**任务 A5：候选持久化与审核状态机（已完成）。**
+**任务 B3：今日推荐流读取持久化候选（已完成）。**
 
-**下一轮任务：B3 — 今日推荐流读取持久化候选。**
+**下一轮任务：A3 — 知识库增量合并与去重命令。**
 
-选择理由：候选已持久化到 SQLite 并有状态机管理，下一步让首页推荐流读取真实持久化候选，替换当前随机生成的占位内容，形成“生成→持久化→展示”的完整内容消费闭环。
+选择理由：推荐流已接通 approved 候选导出，内容消费闭环已形成；下一步建立可维护、可回滚的知识库扩充入口，为后续 B1 素材扩充提供增量合并与去重能力，避免手工编辑 JSON 造成的重复和冲突。
 
 ## 6. 已知限制与阻塞
 
