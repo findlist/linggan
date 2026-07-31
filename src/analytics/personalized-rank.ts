@@ -7,14 +7,16 @@
 //
 // 排序策略：
 // - profiled：画像 event_count > 0 时，按 personalized_score 降序排列已计算匹配分的候选；
-// - explore：未在画像中出现过且个性化分低于阈值的候选，按 explore_ratio 保留原顺序插在
-//   排序结果之后，避免热点单一化（DEVELOPMENT_PLAN.md 阶段 D"D4 探索流量"的前置实现）；
+// - explore（D4 升级）：从未交互候选中按 explore_ratio 基于"全部候选"计算探索位数量
+//   （ceil 取整保证 ≥15% 门槛），用多样性优先策略选取 entities 重叠最少的候选作为探索位，
+//   避免探索位聚集相同角色/场景；同一种子可复现，便于 A/B 对比；
 // - cold：画像为空（冷启动）时，全部候选保留原顺序，reason 标记为 cold，不破坏现有体验。
 //
 // 纯函数，只 `import type` 引入类型，运行时零依赖，前端 Vite 可直接 import。
 
 import type { PreferenceProfile, RankReason, RankingWeightSnapshot } from '../data/contracts.ts'
 import type { ProfileCandidate } from './profile-builder.ts'
+import { computeExploreSlotCount, selectExploreCandidates } from './exploration.ts'
 
 /** 排序所需的候选字段（兼容 Candidate，含 score.total 用于基础分） */
 export interface RankableCandidate extends ProfileCandidate {
@@ -42,12 +44,18 @@ export interface RankOptions {
    * 让全局周级权重影响个性化排序。null 或不传时使用 options 中的显式值或默认值。
    */
   weight_snapshot?: RankingWeightSnapshot | null
+  /**
+   * D4 探索选取种子：同一 seed + 同一候选列表产生稳定的多样性探索选取结果，
+   * 便于测试可复现和 A/B 对比。默认 0；传入时打破候选原顺序的聚集。
+   */
+  explore_seed?: number
 }
 
 const DEFAULT_OPTIONS: Required<Omit<RankOptions, 'weight_snapshot'>> = {
   base_ratio: 0.6,
   explore_ratio: 0.15,
   explore_threshold: 1,
+  explore_seed: 0,
 }
 
 const clampScore = (value: number): number => Math.max(0, Math.min(100, Math.round(value)))
@@ -137,10 +145,22 @@ export const rankCandidates = <T extends RankableCandidate>(
   // profiled 按 personalized_score 降序；同分时保留原顺序（stable sort）
   profiled.sort((a, b) => b.personalized - a.personalized)
 
-  // 探索位：从未交互候选中按 explore_ratio 取前 N 个保留原顺序
-  const exploreCount = Math.round(nonProfiled.length * opts.explore_ratio)
-  const explore = nonProfiled.slice(0, exploreCount)
-  const remaining = nonProfiled.slice(exploreCount)
+  // D4 探索位：基于"全部候选"数量按 explore_ratio 用 ceil 计算探索位数量，
+  // 保证首页探索占比 ≥ explore_ratio（旧实现基于 nonProfiled.length 用 round 会让小列表得到 0 探索位）；
+  // 探索位上限为未交互候选数，超过时全部未交互候选成为探索位。
+  const desiredSlots = computeExploreSlotCount(candidates.length, opts.explore_ratio)
+  const exploreSlotCount = Math.min(desiredSlots, nonProfiled.length)
+  // 多样性优先选取：从未交互候选中选 entities 重叠最少的，避免探索位聚集相同角色/场景；
+  // 用 explore_seed 打破原顺序聚集，同一 seed 选取稳定可复现。
+  const exploreIds = new Set(
+    selectExploreCandidates(
+      nonProfiled.map((item) => ({ id: item.candidate.id, entities: item.candidate.entities })),
+      exploreSlotCount,
+      opts.explore_seed,
+    ).map((c) => c.id),
+  )
+  const explore = nonProfiled.filter((item) => exploreIds.has(item.candidate.id))
+  const remaining = nonProfiled.filter((item) => !exploreIds.has(item.candidate.id))
 
   // 剩余未交互候选按 personalized_score 降序插入 profiled 之后、探索之前
   remaining.sort((a, b) => b.personalized - a.personalized)

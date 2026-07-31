@@ -52,6 +52,8 @@ try {
         idea_id: event.idea_id,
         session_id: event.session_id,
         occurred_at: event.occurred_at,
+        // D4：保留 payload 用于判断探索位曝光（payload.reason='explore'）和探索效果统计
+        payload: event.payload,
       }))
 
     // 读取上周快照（latest）：首次运行时为 null，使用 DEFAULT_WEIGHTS
@@ -76,6 +78,8 @@ try {
 
     process.stdout.write(`${JSON.stringify(report, null, 2)}\n`)
 
+    // D4：探索效果统计扁平化写入日志 metadata，便于回溯
+    const exploreStats = snapshot.input_stats.explore_stats ?? null
     await logger.succeed({
       processedCount: weekEvents.length,
       successCount: 1,
@@ -91,6 +95,11 @@ try {
         base_ratio_change: snapshot.changes.base_ratio,
         match_ratio_change: snapshot.changes.match_ratio,
         explore_ratio_change: snapshot.changes.explore_ratio,
+        // D4 探索效果：无探索数据时各字段为 0
+        explore_impressions: exploreStats?.explore_impressions ?? 0,
+        explore_unique_ideas: exploreStats?.unique_explore_ideas ?? 0,
+        explore_interactions: exploreStats?.explored_with_interaction ?? 0,
+        explore_interaction_rate: exploreStats?.interaction_rate ?? 0,
       },
     })
   } catch (error) {

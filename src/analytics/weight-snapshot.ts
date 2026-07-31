@@ -4,7 +4,7 @@
 // 设计要点（对应 DEVELOPMENT_STANDARD.md 第 10 节自动决策规范）：
 // - 单次变化不超过 10%：newWeight 被 clamp 到 [oldWeight*0.9, oldWeight*1.1]；
 // - 样本不足时保持原权重：event_count < MIN_SAMPLE_SIZE 时 changes 全部为 0；
-// - 可解释：input_stats 记录本周事件数、会话数、创意数和按类型分布；
+// - 可解释：input_stats 记录本周事件数、会话数、创意数、按类型分布和探索效果统计；
 // - 可回滚：previous_week_id 链接上周快照，存储层保留全部历史支持任意周回滚。
 //
 // 权重调整逻辑（基于事件分布，可解释）：
@@ -14,17 +14,24 @@
 // - idea 多样性 = unique_ideas / event_count：
 //   高 → 探索充分 → explore_ratio 略减；
 //   低 → 集中少数 → explore_ratio 略增（需要更多探索位）。
+// - D4 探索效果 = explored_with_interaction / unique_explore_ideas：
+//   高（>30%）→ 探索有效，用户在探索位找到感兴趣内容 → explore_ratio 略减（让更多优质内容浮现）；
+//   低（<10%）→ 探索无效，需要更多探索位寻找新题材 → explore_ratio 略增。
+//   两个信号叠加后再按 10% 上限 clamp，保证单次调整温和。
 //
 // 纯函数，只 `import type` 引入类型，运行时零依赖，前端和后端均可复用。
 
 import type { RankingWeightSnapshot, RankingWeights, WeightChanges, WeightInputStats } from '../data/contracts.ts'
+import { buildExploreEffectStats } from './exploration.ts'
 
-/** 周权重聚合所需的事件字段（兼容 ProductEvent，避免整体 import） */
+/** 周权重聚合所需的事件字段（兼容 ProductEvent，避免整体 import）。
+ *  D4 起新增可选 payload 字段，用于判断 impression 是否来自探索位（payload.reason='explore'）。 */
 export interface WeightEvent {
   event_type: string
   idea_id: string | null
   session_id: string
   occurred_at: string
+  payload?: Record<string, string | number | boolean | null> | null
 }
 
 /** 样本不足阈值：低于此值时保持原权重，避免小样本噪声导致权重抖动 */
@@ -87,8 +94,9 @@ const clampChange = (newValue: number, oldValue: number): number => {
 }
 
 /**
- * 构建单周的权重输入统计（事件数、会话数、创意数、按类型分布）。
+ * 构建单周的权重输入统计（事件数、会话数、创意数、按类型分布、探索效果）。
  * 用于快照的 input_stats 字段，提供可解释性。
+ * D4 起：事件携带 payload 时额外计算 explore_stats，记录探索位的后续交互率。
  */
 const buildInputStats = (events: readonly WeightEvent[]): WeightInputStats => {
   const sessions = new Set<string>()
@@ -99,11 +107,15 @@ const buildInputStats = (events: readonly WeightEvent[]): WeightInputStats => {
     if (event.idea_id !== null) ideas.add(event.idea_id)
     byType[event.event_type] = (byType[event.event_type] ?? 0) + 1
   }
+  // D4：计算探索效果统计（事件无 payload 时 explore_impressions=0，interaction_rate=0）
+  const exploreStats = buildExploreEffectStats(events)
   return {
     event_count: events.length,
     session_count: sessions.size,
     idea_count: ideas.size,
     by_type: byType,
+    // 仅在存在探索曝光时记录 explore_stats，避免无探索数据时快照膨胀
+    explore_stats: exploreStats.unique_explore_ideas > 0 ? exploreStats : null,
   }
 }
 
@@ -111,6 +123,7 @@ const buildInputStats = (events: readonly WeightEvent[]): WeightInputStats => {
  * 基于事件分布计算本周权重调整量（未 clamp 前的原始值）。
  * - positiveRate：正向交互率（saved+copied+exported 占比）
  * - diversity：idea 多样性（unique_ideas / event_count）
+ * - exploreRate（D4）：探索位交互率（explored_with_interaction / unique_explore_ideas）
  * 调整方向见文件头部说明。
  */
 const computeRawAdjustments = (
@@ -132,7 +145,16 @@ const computeRawAdjustments = (
   const matchDelta = -baseDelta
 
   // idea 多样性低 → explore_ratio 增；高 → 减
-  const exploreDelta = diversity < 0.3 ? ADJUSTMENT_STEP : diversity > 0.6 ? -ADJUSTMENT_STEP : 0
+  let exploreDelta = diversity < 0.3 ? ADJUSTMENT_STEP : diversity > 0.6 ? -ADJUSTMENT_STEP : 0
+
+  // D4 探索效果信号：仅在存在 explore_stats 且有足够探索 idea 时生效（避免小样本噪声）
+  const exploreStats = stats.explore_stats ?? null
+  if (exploreStats && exploreStats.unique_explore_ideas >= 5) {
+    // 探索交互率高 → 探索有效，可略减占比让优质内容浮现；低 → 需更多探索位寻找新题材
+    const effectDelta =
+      exploreStats.interaction_rate > 0.3 ? -ADJUSTMENT_STEP : exploreStats.interaction_rate < 0.1 ? ADJUSTMENT_STEP : 0
+    exploreDelta += effectDelta
+  }
 
   return { baseDelta, matchDelta, exploreDelta }
 }

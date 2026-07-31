@@ -788,13 +788,25 @@ export const WeekIdSchema = z
   .string()
   .regex(/^\d{4}-W(0[1-9]|[1-4]\d|5[0-3])$/u, 'week_id must be ISO 8601 week format like 2026-W31')
 
-/** 周权重输入统计：记录本周事件数、会话数、创意数和按事件类型分布，用于可解释性 */
+/** 探索效果统计（D4）：度量探索位候选的后续交互情况，反馈到 explore_ratio 调整 */
+export const ExploreEffectStatsSchema = z
+  .object({
+    explore_impressions: z.number().int().nonnegative(),
+    unique_explore_ideas: z.number().int().nonnegative(),
+    explored_with_interaction: z.number().int().nonnegative(),
+    interaction_rate: z.number().min(0).max(1),
+  })
+  .strict()
+
+/** 周权重输入统计：记录本周事件数、会话数、创意数和按事件类型分布，用于可解释性。
+ *  D4 起新增可选 explore_stats 字段，记录探索位曝光与后续交互率；旧快照无此字段时降级为 null。 */
 export const WeightInputStatsSchema = z
   .object({
     event_count: z.number().int().nonnegative(),
     session_count: z.number().int().nonnegative(),
     idea_count: z.number().int().nonnegative(),
     by_type: z.record(z.string(), z.number().int().nonnegative()),
+    explore_stats: ExploreEffectStatsSchema.nullable().optional(),
   })
   .strict()
 
@@ -836,3 +848,4 @@ export type RankingWeightSnapshot = z.infer<typeof RankingWeightSnapshotSchema>
 export type RankingWeights = z.infer<typeof RankingWeightsSchema>
 export type WeightChanges = z.infer<typeof WeightChangesSchema>
 export type WeightInputStats = z.infer<typeof WeightInputStatsSchema>
+export type ExploreEffectStats = z.infer<typeof ExploreEffectStatsSchema>

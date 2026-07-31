@@ -263,6 +263,33 @@ test('快照通过 RankingWeightSnapshotSchema 严格校验', () => {
   assert.equal(result.success, true)
 })
 
+test('D4 带探索效果的快照通过 Schema 校验', () => {
+  // 构造带探索曝光和正向交互的事件流
+  const events: WeightEvent[] = [
+    ...Array.from({ length: 50 }, (_, i) => buildEvent({ idea_id: `idea_${i % 10}`, session_id: `sess_${i % 5}` })),
+    ...Array.from({ length: 10 }, (_, i) =>
+      buildEvent({
+        event_type: 'idea_impression',
+        idea_id: `explore_${i}`,
+        payload: { reason: 'explore' },
+      }),
+    ),
+    ...Array.from({ length: 5 }, (_, i) =>
+      buildEvent({
+        event_type: 'idea_saved',
+        idea_id: `explore_${i}`,
+        payload: null,
+      }),
+    ),
+  ]
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, null, FIXED_TIME)
+  const result = RankingWeightSnapshotSchema.safeParse(snapshot)
+  assert.equal(result.success, true)
+  assert.ok(snapshot.input_stats.explore_stats, 'explore_stats 应被填充')
+  assert.equal(snapshot.input_stats.explore_stats.unique_explore_ideas, 10)
+  assert.equal(snapshot.input_stats.explore_stats.explored_with_interaction, 5)
+})
+
 test('WeekIdSchema 拒绝非法周标识格式', () => {
   const events = buildSufficientEvents()
   // 直接构造非法 week_id 的快照对象，验证 Schema 拒绝
@@ -271,4 +298,111 @@ test('WeekIdSchema 拒绝非法周标识格式', () => {
   assert.equal(RankingWeightSnapshotSchema.safeParse(badSnapshot).success, false)
   const badSnapshot2 = { ...snapshot, week_id: '2026-31' }
   assert.equal(RankingWeightSnapshotSchema.safeParse(badSnapshot2).success, false)
+})
+
+/* ----------------------- D4 探索效果统计 ----------------------- */
+
+test('D4 无探索曝光时 explore_stats 为 null', () => {
+  const events = buildSufficientEvents()
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, null, FIXED_TIME)
+  assert.equal(snapshot.input_stats.explore_stats, null)
+})
+
+test('D4 有探索曝光时 explore_stats 正确统计', () => {
+  // 60 个普通事件 + 8 个探索曝光 + 3 个正向交互
+  const events: WeightEvent[] = [
+    ...Array.from({ length: 50 }, (_, i) => buildEvent({ idea_id: `idea_${i % 10}`, session_id: `sess_${i % 5}` })),
+    ...Array.from({ length: 8 }, (_, i) =>
+      buildEvent({
+        event_type: 'idea_impression',
+        idea_id: `explore_${i}`,
+        payload: { reason: 'explore' },
+      }),
+    ),
+    ...Array.from({ length: 3 }, (_, i) =>
+      buildEvent({
+        event_type: 'idea_saved',
+        idea_id: `explore_${i}`,
+        payload: null,
+      }),
+    ),
+  ]
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, null, FIXED_TIME)
+  const exploreStats = snapshot.input_stats.explore_stats
+  assert.ok(exploreStats, 'explore_stats 应被填充')
+  assert.equal(exploreStats.explore_impressions, 8)
+  assert.equal(exploreStats.unique_explore_ideas, 8)
+  assert.equal(exploreStats.explored_with_interaction, 3)
+  assert.equal(exploreStats.interaction_rate, 3 / 8)
+})
+
+test('D4 探索交互率高（>30%）时 explore_ratio 略减', () => {
+  const previous = buildPreviousSnapshot()
+  // 60 个事件中 10 个探索 idea，7 个有正向交互（interaction_rate=0.7 > 0.3）
+  // diversity = 20/60 ≈ 0.33（在 0.3-0.6 之间，不触发 diversity 信号）
+  const events: WeightEvent[] = [
+    ...Array.from({ length: 50 }, (_, i) => buildEvent({ idea_id: `idea_${i % 20}`, session_id: `sess_${i % 5}` })),
+    ...Array.from({ length: 10 }, (_, i) =>
+      buildEvent({
+        event_type: 'idea_impression',
+        idea_id: `explore_${i}`,
+        payload: { reason: 'explore' },
+      }),
+    ),
+    ...Array.from({ length: 7 }, (_, i) =>
+      buildEvent({
+        event_type: 'idea_saved',
+        idea_id: `explore_${i}`,
+        payload: null,
+      }),
+    ),
+  ]
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, previous, FIXED_TIME)
+  // 探索交互率高 → explore_ratio 应略减（effectDelta = -ADJUSTMENT_STEP）
+  assert.ok(
+    snapshot.changes.explore_ratio < 0,
+    `探索交互率高时 explore_ratio 应略减，实际变化 ${snapshot.changes.explore_ratio}`,
+  )
+})
+
+test('D4 探索交互率低（<10%）时 explore_ratio 略增', () => {
+  const previous = buildPreviousSnapshot()
+  // 60 个事件中 10 个探索 idea，只有 0 个有正向交互（interaction_rate=0 < 0.1）
+  // unique_ideas = 20(普通) + 10(探索) = 30，diversity = 30/60 = 0.5（在 0.3-0.6 之间，不触发 diversity 信号）
+  const events: WeightEvent[] = [
+    ...Array.from({ length: 50 }, (_, i) => buildEvent({ idea_id: `idea_${i % 20}`, session_id: `sess_${i % 5}` })),
+    ...Array.from({ length: 10 }, (_, i) =>
+      buildEvent({
+        event_type: 'idea_impression',
+        idea_id: `explore_${i}`,
+        payload: { reason: 'explore' },
+      }),
+    ),
+  ]
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, previous, FIXED_TIME)
+  // 探索交互率低 → explore_ratio 应略增（effectDelta = +ADJUSTMENT_STEP）
+  assert.ok(
+    snapshot.changes.explore_ratio > 0,
+    `探索交互率低时 explore_ratio 应略增，实际变化 ${snapshot.changes.explore_ratio}`,
+  )
+})
+
+test('D4 探索 idea 不足 5 个时不触发探索效果信号', () => {
+  const previous = buildPreviousSnapshot()
+  // 60 个事件中只有 3 个探索 idea（< 5，不触发探索效果信号）
+  // diversity = 30/60 = 0.5（在 0.3-0.6 之间，不触发 diversity 信号）
+  // 两个信号都不触发 → explore_ratio 变化为 0
+  const events: WeightEvent[] = [
+    ...Array.from({ length: 57 }, (_, i) => buildEvent({ idea_id: `idea_${i % 30}`, session_id: `sess_${i % 5}` })),
+    ...Array.from({ length: 3 }, (_, i) =>
+      buildEvent({
+        event_type: 'idea_impression',
+        idea_id: `explore_${i}`,
+        payload: { reason: 'explore' },
+      }),
+    ),
+  ]
+  const snapshot = buildWeeklyWeightSnapshot(events, WEEK_ID, previous, FIXED_TIME)
+  // 探索 idea 不足 5 个，不触发效果信号；diversity 也在中间区间 → explore_ratio 不变
+  assert.equal(snapshot.changes.explore_ratio, 0)
 })

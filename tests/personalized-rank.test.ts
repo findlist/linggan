@@ -96,26 +96,87 @@ test('共享 entity 的未交互候选获得 match_score 提升', () => {
   assert.ok(ranked[1].match_score > ranked[2].match_score)
 })
 
-test('explore_ratio 保留指定比例的未交互候选作为探索内容', () => {
-  // 4 个未交互候选，explore_ratio=0.5 保留 2 个探索
+test('explore_ratio 基于"全部候选"计算探索位数量（D4 ceil 保证 ≥15%）', () => {
+  // 4 个候选，c1 已交互，3 个未交互；explore_ratio=0.5
+  // D4：desiredSlots = ceil(4 * 0.5) = 2（旧实现 round(3 * 0.5) = 2，数量一致）
   const candidates = [
     buildRankable({ id: 'c1', score: { total: 80 }, entities: ['char_a'] }),
     buildRankable({ id: 'c2', score: { total: 30 }, entities: ['char_b'] }),
     buildRankable({ id: 'c3', score: { total: 60 }, entities: ['char_c'] }),
     buildRankable({ id: 'c4', score: { total: 40 }, entities: ['char_d'] }),
   ]
-  // c1 已交互，其余 3 个未交互；explore_ratio=0.5 → 探索 1-2 个
   const profile = buildProfile(
     [{ event_type: 'idea_saved', idea_id: 'c1' }],
     candidates.map((c) => ({ id: c.id, source_trend: c.source_trend, entities: c.entities, risk_level: c.risk_level })),
   )
   const ranked = rankCandidates(candidates, profile, { explore_ratio: 0.5 })
   const exploreItems = ranked.filter((r) => r.reason === 'explore')
-  // 3 个未交互候选 * 0.5 = 1.5 → round = 2 个探索
+  // D4：ceil(4 * 0.5) = 2 个探索位
   assert.equal(exploreItems.length, 2)
-  // 探索项保留原顺序（c2 在 c3 前）
-  assert.equal(exploreItems[0].candidate.id, 'c2')
-  assert.equal(exploreItems[1].candidate.id, 'c3')
+  // 探索项来自未交互候选集合
+  const exploreIds = exploreItems.map((r) => r.candidate.id)
+  assert.ok(exploreIds.every((id) => ['c2', 'c3', 'c4'].includes(id)))
+})
+
+test('D4 小列表也能保证至少 1 个探索位（旧 round 会得到 0）', () => {
+  // 3 个候选，c1 已交互，2 个未交互；explore_ratio=0.15
+  // 旧：round(2 * 0.15) = round(0.3) = 0 → 无探索位，违反 ≥15%
+  // D4：ceil(3 * 0.15) = ceil(0.45) = 1 → 保证至少 1 个探索位
+  const candidates = [
+    buildRankable({ id: 'c1', score: { total: 80 }, entities: ['char_a'] }),
+    buildRankable({ id: 'c2', score: { total: 30 }, entities: ['char_b'] }),
+    buildRankable({ id: 'c3', score: { total: 60 }, entities: ['char_c'] }),
+  ]
+  const profile = buildProfile(
+    [{ event_type: 'idea_saved', idea_id: 'c1' }],
+    candidates.map((c) => ({ id: c.id, source_trend: c.source_trend, entities: c.entities, risk_level: c.risk_level })),
+  )
+  const ranked = rankCandidates(candidates, profile)
+  const exploreItems = ranked.filter((r) => r.reason === 'explore')
+  assert.ok(exploreItems.length >= 1, `D4 应保证至少 1 个探索位，实际 ${exploreItems.length}`)
+})
+
+test('D4 探索位多样性优先：避免聚集相同 entity', () => {
+  // 5 个候选：c1 已交互，c2/c3 共享 char_dup，c4/c5 各有独立 entity
+  // explore_ratio=0.4 → ceil(5 * 0.4) = 2 个探索位
+  // 多样性选取应避免同时选 c2 和 c3（共享 char_dup）
+  const candidates = [
+    buildRankable({ id: 'c1', score: { total: 80 }, entities: ['char_a'] }),
+    buildRankable({ id: 'c2', score: { total: 30 }, entities: ['char_dup'] }),
+    buildRankable({ id: 'c3', score: { total: 60 }, entities: ['char_dup'] }),
+    buildRankable({ id: 'c4', score: { total: 40 }, entities: ['char_b'] }),
+    buildRankable({ id: 'c5', score: { total: 50 }, entities: ['char_c'] }),
+  ]
+  const profile = buildProfile(
+    [{ event_type: 'idea_saved', idea_id: 'c1' }],
+    candidates.map((c) => ({ id: c.id, source_trend: c.source_trend, entities: c.entities, risk_level: c.risk_level })),
+  )
+  const ranked = rankCandidates(candidates, profile, { explore_ratio: 0.4 })
+  const exploreItems = ranked.filter((r) => r.reason === 'explore')
+  assert.equal(exploreItems.length, 2)
+  const exploreIds = exploreItems.map((r) => r.candidate.id)
+  // 不应同时选中 c2 和 c3（共享 char_dup）
+  const hasBothDup = exploreIds.includes('c2') && exploreIds.includes('c3')
+  assert.equal(hasBothDup, false, '探索位不应聚集相同 entity 的候选')
+})
+
+test('D4 explore_seed 同一种子选取结果稳定可复现', () => {
+  const candidates = [
+    buildRankable({ id: 'c1', score: { total: 80 }, entities: ['char_a'] }),
+    buildRankable({ id: 'c2', score: { total: 30 }, entities: ['char_b'] }),
+    buildRankable({ id: 'c3', score: { total: 60 }, entities: ['char_c'] }),
+    buildRankable({ id: 'c4', score: { total: 40 }, entities: ['char_d'] }),
+  ]
+  const profile = buildProfile(
+    [{ event_type: 'idea_saved', idea_id: 'c1' }],
+    candidates.map((c) => ({ id: c.id, source_trend: c.source_trend, entities: c.entities, risk_level: c.risk_level })),
+  )
+  // 3 个未交互候选，explore_ratio=0.5 → ceil(4*0.5)=2 个探索位
+  const ranked1 = rankCandidates(candidates, profile, { explore_ratio: 0.5, explore_seed: 42 })
+  const ranked2 = rankCandidates(candidates, profile, { explore_ratio: 0.5, explore_seed: 42 })
+  const exploreIds1 = ranked1.filter((r) => r.reason === 'explore').map((r) => r.candidate.id)
+  const exploreIds2 = ranked2.filter((r) => r.reason === 'explore').map((r) => r.candidate.id)
+  assert.deepEqual(exploreIds1, exploreIds2, '同一 seed 应产生相同探索选取')
 })
 
 test('match_score 归一化到 0-100 不溢出', () => {
