@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_wandering_earth",
+      "title": "流浪地球",
+      "original_title": "The Wandering Earth",
+      "aliases": [
+        "The Wandering Earth"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2019,
+      "genres": [
+        "科幻",
+        "灾难"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_liu_peiqiang",
+      "work_id": "work_wandering_earth",
+      "name": "刘培强",
+      "aliases": [
+        "Liu Peiqiang"
+      ],
+      "roles": [
+        "宇航员",
+        "父亲"
+      ],
+      "character_types": [
+        "责任型守护者",
+        "牺牲型决策者"
+      ],
+      "traits": [
+        "克制",
+        "坚毅",
+        "念家"
+      ],
+      "dialogue_style": [
+        "用沉默压缩情感再给出行动",
+        "在关键抉择前只说必要一句"
+      ],
+      "relationships": [
+        "known_liu_qi",
+        "known_moss"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_liu_qi",
+      "work_id": "work_wandering_earth",
+      "name": "刘启",
+      "aliases": [
+        "Liu Qi"
+      ],
+      "roles": [
+        "叛逆成长者",
+        "一线救援参与者"
+      ],
+      "character_types": [
+        "冲动型成长者",
+        "行动派幸存者"
+      ],
+      "traits": [
+        "倔强",
+        "机敏",
+        "护短"
+      ],
+      "dialogue_style": [
+        "用反问和讽刺表达不满",
+        "在压力下转为简短指令式表达"
+      ],
+      "relationships": [
+        "known_liu_peiqiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_moss",
+      "work_id": "work_wandering_earth",
+      "name": "MOSS",
+      "aliases": [
+        "莫斯"
+      ],
+      "roles": [
+        "人工智能系统",
+        "理性决策者"
+      ],
+      "character_types": [
+        "绝对理性型 AI",
+        "系统化风险计算者"
+      ],
+      "traits": [
+        "冷静",
+        "客观",
+        "无情感"
+      ],
+      "dialogue_style": [
+        "以概率和结论陈述决策",
+        "用反问揭示人类选项的非理性"
+      ],
+      "relationships": [
+        "known_liu_peiqiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_liu_peiqiang_liu_qi",
+      "work_id": "work_wandering_earth",
+      "from_character_id": "known_liu_peiqiang",
+      "to_character_id": "known_liu_qi",
+      "relation": "隔阂父子与远距离守护",
+      "description": "父亲长期驻守空间站，儿子以叛逆掩饰失落，危急时刻双方以行动完成和解。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_ai_human_final_choice",
+      "work_id": "work_wandering_earth",
+      "name": "理性 AI 与人类在终极代价前的抉择",
+      "participant_ids": [
+        "known_liu_peiqiang",
+        "known_moss"
+      ],
+      "setting": "孤立空间站、倒计时清晰可读的决策舱",
+      "conflict_type": "系统最优解与人类情感底线",
+      "emotional_arc": [
+        "冷静",
+        "对峙",
+        "决断",
+        "牺牲"
+      ],
+      "visual_actions": [
+        "倒计时数字逼近",
+        "双视角切换",
+        "手动覆盖指令",
+        "环境光突变"
+      ],
+      "reusable_beats": [
+        "AI 给出概率最优但代价巨大的方案",
+        "人类以一句话质疑方案的人性代价",
+        "AI 以反问揭示选项无解",
+        "人类选择承担不可逆后果以换取他人存活"
+      ],
+      "dialogue_patterns": [
+        "AI 用数字和概率陈述结论",
+        "人类用一句承诺确认不可逆选择"
+      ],
+      "abstraction": "提取理性计算与情感底线之间的不可调和冲突，用倒计时和手动覆盖表现抉择，不复刻原作台词、舱室造型或具体数值。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "moment_collective_engine_push",
+      "work_id": "work_wandering_earth",
+      "name": "多路陌生人在绝境中合力推动启动装置",
+      "participant_ids": [
+        "known_liu_qi"
+      ],
+      "setting": "极端低温、时间窗口极窄的户外装置前",
+      "conflict_type": "个体极限与集体协作",
+      "emotional_arc": [
+        "绝望",
+        "集结",
+        "合力",
+        "突破"
+      ],
+      "visual_actions": [
+        "群体奔向同一目标",
+        "肩顶手推特写",
+        "装置逐步启动",
+        "群体倒地喘息"
+      ],
+      "reusable_beats": [
+        "一人推动失败揭示物理极限",
+        "陌生人不约而同加入推动",
+        "多人协调节奏同步发力",
+        "装置在最后一刻启动"
+      ],
+      "dialogue_patterns": [
+        "号召者用短句下达同步发力口令",
+        "参与者在耗尽前用数字确认进度"
+      ],
+      "abstraction": "保留陌生人临场集结和同步发力的结构，不复刻原作台词、服装、具体装置或地理坐标。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ]
+}

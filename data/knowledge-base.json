@@ -176,6 +176,95 @@
         }
       ],
       "last_verified_at": "2026-07-29T04:00:00.000Z"
+    },
+    {
+      "id": "work_jujutsu_kaisen",
+      "title": "咒术回战",
+      "original_title": "呪術廻戦",
+      "aliases": [
+        "Jujutsu Kaisen"
+      ],
+      "media_type": "anime",
+      "regions": [
+        "日本"
+      ],
+      "release_year": 2020,
+      "genres": [
+        "热血",
+        "奇幻",
+        "战斗"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "work_three_body",
+      "title": "三体",
+      "original_title": "三体",
+      "aliases": [
+        "The Three-Body Problem",
+        "Three-Body"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2023,
+      "genres": [
+        "科幻",
+        "悬疑"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "work_wandering_earth",
+      "title": "流浪地球",
+      "original_title": "The Wandering Earth",
+      "aliases": [
+        "The Wandering Earth"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2019,
+      "genres": [
+        "科幻",
+        "灾难"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -552,6 +641,372 @@
         }
       ],
       "last_verified_at": "2026-07-29T04:00:00.000Z"
+    },
+    {
+      "id": "known_itadori_yuji",
+      "work_id": "work_jujutsu_kaisen",
+      "name": "虎杖悠仁",
+      "aliases": [
+        "Yuji Itadori"
+      ],
+      "roles": [
+        "高中生",
+        "咒术师新手"
+      ],
+      "character_types": [
+        "热血型主角",
+        "共情型守护者"
+      ],
+      "traits": [
+        "正直",
+        "坚韧",
+        "重情"
+      ],
+      "dialogue_style": [
+        "用直白承诺回应质疑",
+        "在愧疚时以行动承担而非解释"
+      ],
+      "relationships": [
+        "known_fushiguro_megumi",
+        "known_gojo_satoru"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_fushiguro_megumi",
+      "work_id": "work_jujutsu_kaisen",
+      "name": "伏黑惠",
+      "aliases": [
+        "Megumi Fushiguro"
+      ],
+      "roles": [
+        "咒术师新手",
+        "策略型搭档"
+      ],
+      "character_types": [
+        "冷静型战术者",
+        "不规则原则守护者"
+      ],
+      "traits": [
+        "冷静",
+        "理性",
+        "护短"
+      ],
+      "dialogue_style": [
+        "以条件判断代替情绪表达",
+        "在关键时刻用简短命令接管局面"
+      ],
+      "relationships": [
+        "known_itadori_yuji",
+        "known_gojo_satoru"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_gojo_satoru",
+      "work_id": "work_jujutsu_kaisen",
+      "name": "五条悟",
+      "aliases": [
+        "Satoru Gojo"
+      ],
+      "roles": [
+        "最强咒术师",
+        "导师"
+      ],
+      "character_types": [
+        "傲然型强者",
+        "反常规教育者"
+      ],
+      "traits": [
+        "自信",
+        "戏谑",
+        "护学生"
+      ],
+      "dialogue_style": [
+        "用戏谑口吻降低他人紧张感",
+        "在严肃时刻以一句话重塑规则"
+      ],
+      "relationships": [
+        "known_itadori_yuji",
+        "known_fushiguro_megumi"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_ye_wenjie",
+      "work_id": "work_three_body",
+      "name": "叶文洁",
+      "aliases": [
+        "Ye Wenjie"
+      ],
+      "roles": [
+        "天体物理学家",
+        "历史创伤型决策者"
+      ],
+      "character_types": [
+        "幻灭型智者",
+        "沉默的转折推动者"
+      ],
+      "traits": [
+        "冷静",
+        "隐忍",
+        "决绝"
+      ],
+      "dialogue_style": [
+        "用平静语气陈述沉重事实",
+        "以回忆中的细节代替直接表态"
+      ],
+      "relationships": [
+        "known_shi_qiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_shi_qiang",
+      "work_id": "work_three_body",
+      "name": "史强",
+      "aliases": [
+        "Shi Qiang",
+        "大史"
+      ],
+      "roles": [
+        "刑警",
+        "一线保护者"
+      ],
+      "character_types": [
+        "务实型调查者",
+        "直觉型行动者"
+      ],
+      "traits": [
+        "粗粝",
+        "机敏",
+        "可靠"
+      ],
+      "dialogue_style": [
+        "用市井比喻拆解高深概念",
+        "在威胁前用短句稳定他人情绪"
+      ],
+      "relationships": [
+        "known_ye_wenjie",
+        "known_luo_ji"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_luo_ji",
+      "work_id": "work_three_body",
+      "name": "罗辑",
+      "aliases": [
+        "Luo Ji"
+      ],
+      "roles": [
+        "社会学学者",
+        "被动型执剑人"
+      ],
+      "character_types": [
+        "玩世不恭型觉醒者",
+        "沉默威慑者"
+      ],
+      "traits": [
+        "机敏",
+        "疏懒",
+        "承担"
+      ],
+      "dialogue_style": [
+        "用调侃回避严肃问题",
+        "在决断时刻转为极简陈述"
+      ],
+      "relationships": [
+        "known_shi_qiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_liu_peiqiang",
+      "work_id": "work_wandering_earth",
+      "name": "刘培强",
+      "aliases": [
+        "Liu Peiqiang"
+      ],
+      "roles": [
+        "宇航员",
+        "父亲"
+      ],
+      "character_types": [
+        "责任型守护者",
+        "牺牲型决策者"
+      ],
+      "traits": [
+        "克制",
+        "坚毅",
+        "念家"
+      ],
+      "dialogue_style": [
+        "用沉默压缩情感再给出行动",
+        "在关键抉择前只说必要一句"
+      ],
+      "relationships": [
+        "known_liu_qi",
+        "known_moss"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_liu_qi",
+      "work_id": "work_wandering_earth",
+      "name": "刘启",
+      "aliases": [
+        "Liu Qi"
+      ],
+      "roles": [
+        "叛逆成长者",
+        "一线救援参与者"
+      ],
+      "character_types": [
+        "冲动型成长者",
+        "行动派幸存者"
+      ],
+      "traits": [
+        "倔强",
+        "机敏",
+        "护短"
+      ],
+      "dialogue_style": [
+        "用反问和讽刺表达不满",
+        "在压力下转为简短指令式表达"
+      ],
+      "relationships": [
+        "known_liu_peiqiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_moss",
+      "work_id": "work_wandering_earth",
+      "name": "MOSS",
+      "aliases": [
+        "莫斯"
+      ],
+      "roles": [
+        "人工智能系统",
+        "理性决策者"
+      ],
+      "character_types": [
+        "绝对理性型 AI",
+        "系统化风险计算者"
+      ],
+      "traits": [
+        "冷静",
+        "客观",
+        "无情感"
+      ],
+      "dialogue_style": [
+        "以概率和结论陈述决策",
+        "用反问揭示人类选项的非理性"
+      ],
+      "relationships": [
+        "known_liu_peiqiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
     }
   ],
   "relationships": [
@@ -626,6 +1081,60 @@
         }
       ],
       "last_verified_at": "2026-07-29T04:00:00.000Z"
+    },
+    {
+      "id": "relation_gojo_itadori",
+      "work_id": "work_jujutsu_kaisen",
+      "from_character_id": "known_gojo_satoru",
+      "to_character_id": "known_itadori_yuji",
+      "relation": "最强导师与共情型学生",
+      "description": "导师以非正规方式保护学生，学生在承担代价中验证自己的正义。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "relation_ye_wenjie_shi_qiang",
+      "work_id": "work_three_body",
+      "from_character_id": "known_ye_wenjie",
+      "to_character_id": "known_shi_qiang",
+      "relation": "审讯者与历史揭示者",
+      "description": "一方以沉默承受历史，另一方以市井直觉逼近真相，对话推进认知反转。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "relation_liu_peiqiang_liu_qi",
+      "work_id": "work_wandering_earth",
+      "from_character_id": "known_liu_peiqiang",
+      "to_character_id": "known_liu_qi",
+      "relation": "隔阂父子与远距离守护",
+      "description": "父亲长期驻守空间站，儿子以叛逆掩饰失落，危急时刻双方以行动完成和解。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
     }
   ],
   "iconic_moments": [
@@ -901,6 +1410,233 @@
         }
       ],
       "last_verified_at": "2026-07-29T04:00:00.000Z"
+    },
+    {
+      "id": "moment_domain_rule_clash",
+      "work_id": "work_jujutsu_kaisen",
+      "name": "高手在封闭空间内展开规则对抗",
+      "participant_ids": [
+        "known_gojo_satoru"
+      ],
+      "setting": "由规则构建、封闭且高密度的对抗空间",
+      "conflict_type": "规则掌控与反制",
+      "emotional_arc": [
+        "对峙",
+        "试探",
+        "升级",
+        "压倒"
+      ],
+      "visual_actions": [
+        "空间边界显形",
+        "规则符号铺满场景",
+        "一方动作被空间规则反制",
+        "胜负在封闭空间内瞬间决定"
+      ],
+      "reusable_beats": [
+        "强者主动展开自定义规则空间",
+        "对手尝试在规则缝隙中反击",
+        "规则升级使弱势方行动受限",
+        "最终以规则压制结束对抗"
+      ],
+      "dialogue_patterns": [
+        "展开者用一句声明宣布规则",
+        "被压制方用短句承认差距"
+      ],
+      "abstraction": "提取封闭空间内的规则对抗结构，不复刻原作招式名称、符号造型、台词或角色外观。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "moment_mentor_burden_handover",
+      "work_id": "work_jujutsu_kaisen",
+      "name": "最强者在退场前把未来托付给学生",
+      "participant_ids": [
+        "known_gojo_satoru",
+        "known_itadori_yuji"
+      ],
+      "setting": "胜负已分、时间所剩无几的战场",
+      "conflict_type": "强者退场与传承",
+      "emotional_arc": [
+        "释然",
+        "嘱托",
+        "承接",
+        "决意"
+      ],
+      "visual_actions": [
+        "强者解除防御姿态",
+        "师生短暂对视",
+        "学生握紧信物",
+        "战场灯光转暗"
+      ],
+      "reusable_beats": [
+        "强者承认自己无法见证未来",
+        "以一句嘱托定义学生的下一步",
+        "学生用行动而非语言确认承接",
+        "退场后学生独自面对更强对手"
+      ],
+      "dialogue_patterns": [
+        "导师用轻松口吻下达严肃嘱托",
+        "学生用行动回应代替口头承诺"
+      ],
+      "abstraction": "保留强者退场与传承的核心结构，不复刻原作台词、招式、信物造型或具体战场。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "moment_silent_precision_strike",
+      "work_id": "work_three_body",
+      "name": "以精密计划在静默中完成不可逆行动",
+      "participant_ids": [
+        "known_shi_qiang"
+      ],
+      "setting": "宽阔水域、目标移动轨迹已知且时间窗口极窄",
+      "conflict_type": "技术精确性与执行风险",
+      "emotional_arc": [
+        "潜伏",
+        "对齐",
+        "触发",
+        "寂静收尾"
+      ],
+      "visual_actions": [
+        "多船保持编队",
+        "无形力量逐步显形",
+        "目标被静默分割",
+        "水面恢复平静"
+      ],
+      "reusable_beats": [
+        "行动前以日常对话掩盖准备",
+        "多岗位同步对齐时间窗",
+        "触发瞬间没有爆炸与喊叫",
+        "结束后队伍迅速撤离不留痕迹"
+      ],
+      "dialogue_patterns": [
+        "指挥者用极短口令确认阶段",
+        "执行者以数字回报进度而非情绪"
+      ],
+      "abstraction": "保留精密计划与静默执行的张力，不复刻原作具体科技、船名、台词或水域坐标。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "moment_ai_human_final_choice",
+      "work_id": "work_wandering_earth",
+      "name": "理性 AI 与人类在终极代价前的抉择",
+      "participant_ids": [
+        "known_liu_peiqiang",
+        "known_moss"
+      ],
+      "setting": "孤立空间站、倒计时清晰可读的决策舱",
+      "conflict_type": "系统最优解与人类情感底线",
+      "emotional_arc": [
+        "冷静",
+        "对峙",
+        "决断",
+        "牺牲"
+      ],
+      "visual_actions": [
+        "倒计时数字逼近",
+        "双视角切换",
+        "手动覆盖指令",
+        "环境光突变"
+      ],
+      "reusable_beats": [
+        "AI 给出概率最优但代价巨大的方案",
+        "人类以一句话质疑方案的人性代价",
+        "AI 以反问揭示选项无解",
+        "人类选择承担不可逆后果以换取他人存活"
+      ],
+      "dialogue_patterns": [
+        "AI 用数字和概率陈述结论",
+        "人类用一句承诺确认不可逆选择"
+      ],
+      "abstraction": "提取理性计算与情感底线之间的不可调和冲突，用倒计时和手动覆盖表现抉择，不复刻原作台词、舱室造型或具体数值。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "moment_collective_engine_push",
+      "work_id": "work_wandering_earth",
+      "name": "多路陌生人在绝境中合力推动启动装置",
+      "participant_ids": [
+        "known_liu_qi"
+      ],
+      "setting": "极端低温、时间窗口极窄的户外装置前",
+      "conflict_type": "个体极限与集体协作",
+      "emotional_arc": [
+        "绝望",
+        "集结",
+        "合力",
+        "突破"
+      ],
+      "visual_actions": [
+        "群体奔向同一目标",
+        "肩顶手推特写",
+        "装置逐步启动",
+        "群体倒地喘息"
+      ],
+      "reusable_beats": [
+        "一人推动失败揭示物理极限",
+        "陌生人不约而同加入推动",
+        "多人协调节奏同步发力",
+        "装置在最后一刻启动"
+      ],
+      "dialogue_patterns": [
+        "号召者用短句下达同步发力口令",
+        "参与者在耗尽前用数字确认进度"
+      ],
+      "abstraction": "保留陌生人临场集结和同步发力的结构，不复刻原作台词、服装、具体装置或地理坐标。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth (film)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
     }
   ]
 }

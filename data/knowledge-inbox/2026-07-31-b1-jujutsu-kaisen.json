@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_jujutsu_kaisen",
+      "title": "咒术回战",
+      "original_title": "呪術廻戦",
+      "aliases": [
+        "Jujutsu Kaisen"
+      ],
+      "media_type": "anime",
+      "regions": [
+        "日本"
+      ],
+      "release_year": 2020,
+      "genres": [
+        "热血",
+        "奇幻",
+        "战斗"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_itadori_yuji",
+      "work_id": "work_jujutsu_kaisen",
+      "name": "虎杖悠仁",
+      "aliases": [
+        "Yuji Itadori"
+      ],
+      "roles": [
+        "高中生",
+        "咒术师新手"
+      ],
+      "character_types": [
+        "热血型主角",
+        "共情型守护者"
+      ],
+      "traits": [
+        "正直",
+        "坚韧",
+        "重情"
+      ],
+      "dialogue_style": [
+        "用直白承诺回应质疑",
+        "在愧疚时以行动承担而非解释"
+      ],
+      "relationships": [
+        "known_fushiguro_megumi",
+        "known_gojo_satoru"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_fushiguro_megumi",
+      "work_id": "work_jujutsu_kaisen",
+      "name": "伏黑惠",
+      "aliases": [
+        "Megumi Fushiguro"
+      ],
+      "roles": [
+        "咒术师新手",
+        "策略型搭档"
+      ],
+      "character_types": [
+        "冷静型战术者",
+        "不规则原则守护者"
+      ],
+      "traits": [
+        "冷静",
+        "理性",
+        "护短"
+      ],
+      "dialogue_style": [
+        "以条件判断代替情绪表达",
+        "在关键时刻用简短命令接管局面"
+      ],
+      "relationships": [
+        "known_itadori_yuji",
+        "known_gojo_satoru"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_gojo_satoru",
+      "work_id": "work_jujutsu_kaisen",
+      "name": "五条悟",
+      "aliases": [
+        "Satoru Gojo"
+      ],
+      "roles": [
+        "最强咒术师",
+        "导师"
+      ],
+      "character_types": [
+        "傲然型强者",
+        "反常规教育者"
+      ],
+      "traits": [
+        "自信",
+        "戏谑",
+        "护学生"
+      ],
+      "dialogue_style": [
+        "用戏谑口吻降低他人紧张感",
+        "在严肃时刻以一句话重塑规则"
+      ],
+      "relationships": [
+        "known_itadori_yuji",
+        "known_fushiguro_megumi"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_gojo_itadori",
+      "work_id": "work_jujutsu_kaisen",
+      "from_character_id": "known_gojo_satoru",
+      "to_character_id": "known_itadori_yuji",
+      "relation": "最强导师与共情型学生",
+      "description": "导师以非正规方式保护学生，学生在承担代价中验证自己的正义。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_domain_rule_clash",
+      "work_id": "work_jujutsu_kaisen",
+      "name": "高手在封闭空间内展开规则对抗",
+      "participant_ids": [
+        "known_gojo_satoru"
+      ],
+      "setting": "由规则构建、封闭且高密度的对抗空间",
+      "conflict_type": "规则掌控与反制",
+      "emotional_arc": [
+        "对峙",
+        "试探",
+        "升级",
+        "压倒"
+      ],
+      "visual_actions": [
+        "空间边界显形",
+        "规则符号铺满场景",
+        "一方动作被空间规则反制",
+        "胜负在封闭空间内瞬间决定"
+      ],
+      "reusable_beats": [
+        "强者主动展开自定义规则空间",
+        "对手尝试在规则缝隙中反击",
+        "规则升级使弱势方行动受限",
+        "最终以规则压制结束对抗"
+      ],
+      "dialogue_patterns": [
+        "展开者用一句声明宣布规则",
+        "被压制方用短句承认差距"
+      ],
+      "abstraction": "提取封闭空间内的规则对抗结构，不复刻原作招式名称、符号造型、台词或角色外观。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "moment_mentor_burden_handover",
+      "work_id": "work_jujutsu_kaisen",
+      "name": "最强者在退场前把未来托付给学生",
+      "participant_ids": [
+        "known_gojo_satoru",
+        "known_itadori_yuji"
+      ],
+      "setting": "胜负已分、时间所剩无几的战场",
+      "conflict_type": "强者退场与传承",
+      "emotional_arc": [
+        "释然",
+        "嘱托",
+        "承接",
+        "决意"
+      ],
+      "visual_actions": [
+        "强者解除防御姿态",
+        "师生短暂对视",
+        "学生握紧信物",
+        "战场灯光转暗"
+      ],
+      "reusable_beats": [
+        "强者承认自己无法见证未来",
+        "以一句嘱托定义学生的下一步",
+        "学生用行动而非语言确认承接",
+        "退场后学生独自面对更强对手"
+      ],
+      "dialogue_patterns": [
+        "导师用轻松口吻下达严肃嘱托",
+        "学生用行动回应代替口头承诺"
+      ],
+      "abstraction": "保留强者退场与传承的核心结构，不复刻原作台词、招式、信物造型或具体战场。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jujutsu_Kaisen",
+          "source_name": "Wikipedia",
+          "page_title": "Jujutsu Kaisen",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ]
+}

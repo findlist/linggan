@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_three_body",
+      "title": "三体",
+      "original_title": "三体",
+      "aliases": [
+        "The Three-Body Problem",
+        "Three-Body"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2023,
+      "genres": [
+        "科幻",
+        "悬疑"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_ye_wenjie",
+      "work_id": "work_three_body",
+      "name": "叶文洁",
+      "aliases": [
+        "Ye Wenjie"
+      ],
+      "roles": [
+        "天体物理学家",
+        "历史创伤型决策者"
+      ],
+      "character_types": [
+        "幻灭型智者",
+        "沉默的转折推动者"
+      ],
+      "traits": [
+        "冷静",
+        "隐忍",
+        "决绝"
+      ],
+      "dialogue_style": [
+        "用平静语气陈述沉重事实",
+        "以回忆中的细节代替直接表态"
+      ],
+      "relationships": [
+        "known_shi_qiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_shi_qiang",
+      "work_id": "work_three_body",
+      "name": "史强",
+      "aliases": [
+        "Shi Qiang",
+        "大史"
+      ],
+      "roles": [
+        "刑警",
+        "一线保护者"
+      ],
+      "character_types": [
+        "务实型调查者",
+        "直觉型行动者"
+      ],
+      "traits": [
+        "粗粝",
+        "机敏",
+        "可靠"
+      ],
+      "dialogue_style": [
+        "用市井比喻拆解高深概念",
+        "在威胁前用短句稳定他人情绪"
+      ],
+      "relationships": [
+        "known_ye_wenjie",
+        "known_luo_ji"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_luo_ji",
+      "work_id": "work_three_body",
+      "name": "罗辑",
+      "aliases": [
+        "Luo Ji"
+      ],
+      "roles": [
+        "社会学学者",
+        "被动型执剑人"
+      ],
+      "character_types": [
+        "玩世不恭型觉醒者",
+        "沉默威慑者"
+      ],
+      "traits": [
+        "机敏",
+        "疏懒",
+        "承担"
+      ],
+      "dialogue_style": [
+        "用调侃回避严肃问题",
+        "在决断时刻转为极简陈述"
+      ],
+      "relationships": [
+        "known_shi_qiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_ye_wenjie_shi_qiang",
+      "work_id": "work_three_body",
+      "from_character_id": "known_ye_wenjie",
+      "to_character_id": "known_shi_qiang",
+      "relation": "审讯者与历史揭示者",
+      "description": "一方以沉默承受历史，另一方以市井直觉逼近真相，对话推进认知反转。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_silent_precision_strike",
+      "work_id": "work_three_body",
+      "name": "以精密计划在静默中完成不可逆行动",
+      "participant_ids": [
+        "known_shi_qiang"
+      ],
+      "setting": "宽阔水域、目标移动轨迹已知且时间窗口极窄",
+      "conflict_type": "技术精确性与执行风险",
+      "emotional_arc": [
+        "潜伏",
+        "对齐",
+        "触发",
+        "寂静收尾"
+      ],
+      "visual_actions": [
+        "多船保持编队",
+        "无形力量逐步显形",
+        "目标被静默分割",
+        "水面恢复平静"
+      ],
+      "reusable_beats": [
+        "行动前以日常对话掩盖准备",
+        "多岗位同步对齐时间窗",
+        "触发瞬间没有爆炸与喊叫",
+        "结束后队伍迅速撤离不留痕迹"
+      ],
+      "dialogue_patterns": [
+        "指挥者用极短口令确认阶段",
+        "执行者以数字回报进度而非情绪"
+      ],
+      "abstraction": "保留精密计划与静默执行的张力，不复刻原作具体科技、船名、台词或水域坐标。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Three-Body_Problem_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Three-Body Problem (TV series)",
+          "published_at": null,
+          "collected_at": "2026-07-31T03:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-07-31T03:00:00.000Z"
+    }
+  ]
+}
