@@ -664,3 +664,40 @@ export const TaskRunLogSchema = z.object({
 export type TaskRunLog = z.infer<typeof TaskRunLogSchema>
 export type TaskRunLogStatus = TaskRunLog['status']
 export type TaskRunLogTaskName = TaskRunLog['task_name']
+
+/* ----------------------- 产品事件（D1） ----------------------- */
+// 9 类核心产品事件，对应 DEVELOPMENT_PLAN.md 第 5 节"必须记录的产品事件"。
+// 事件是 D2 偏好画像和 D3 排序权重的基础数据来源；
+// event_id 作为幂等键，session_id 供 D2 聚合，payload 保留事件特有数据。
+
+/** 9 类核心产品事件类型 */
+export const ProductEventTypeSchema = z.enum([
+  'idea_impression', // 判断曝光基数
+  'idea_opened', // 判断标题与封面吸引力
+  'idea_saved', // 判断长期价值
+  'prompt_copied', // 判断方案是否可执行
+  'idea_exported', // 判断专业使用意图
+  'video_created', // 核心成片转化
+  'video_published', // 北极星指标输入
+  'idea_hidden', // 识别反感和重复
+  'risk_reported' // 修正合规策略
+])
+
+/** 产品事件 Schema：统一记录用户与创意方案的交互行为 */
+export const ProductEventSchema = z
+  .object({
+    schema_version: z.literal(1),
+    event_id: StableIdSchema, // 幂等键，客户端生成，重复提交不产生多条
+    event_type: ProductEventTypeSchema, // 9 类核心事件之一
+    idea_id: StableIdSchema.nullable(), // 关联候选/创意 ID；risk_reported 等可不针对单个 idea
+    session_id: NonEmptyTextSchema, // 会话 ID，D2 偏好画像聚合基础
+    occurred_at: z.iso.datetime({ offset: true }),
+    payload: z.record(z.string(), z.union([z.string(), z.number(), z.boolean(), z.null()])) // 事件特有数据
+  })
+  .strict()
+
+export type ProductEventType = z.infer<typeof ProductEventTypeSchema>
+export type ProductEvent = z.infer<typeof ProductEventSchema>
+
+/** 9 类核心事件列表，供采集器和测试枚举使用 */
+export const PRODUCT_EVENT_TYPES = ProductEventTypeSchema.options
