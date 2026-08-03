@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_genshin_impact",
+      "title": "原神",
+      "original_title": "原神",
+      "aliases": [
+        "Genshin Impact"
+      ],
+      "media_type": "game",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2020,
+      "genres": [
+        "开放世界",
+        "动作角色扮演",
+        "奇幻"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_paimon_genshin",
+      "work_id": "work_genshin_impact",
+      "name": "派蒙",
+      "aliases": [
+        "Paimon"
+      ],
+      "roles": [
+        "向导",
+        "同伴"
+      ],
+      "character_types": [
+        "活泼型向导",
+        "信息传递者"
+      ],
+      "traits": [
+        "话多",
+        "好奇",
+        "贪吃"
+      ],
+      "dialogue_style": [
+        "用夸张语气介绍世界设定和规则",
+        "在紧张时刻用反差萌吐槽缓解气氛"
+      ],
+      "relationships": [
+        "known_zhongli_genshin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_zhongli_genshin",
+      "work_id": "work_genshin_impact",
+      "name": "钟离",
+      "aliases": [
+        "Zhongli",
+        "Morax",
+        "岩王帝君"
+      ],
+      "roles": [
+        "退休神明",
+        "契约见证者"
+      ],
+      "character_types": [
+        "沉稳型智者",
+        "契约守护者"
+      ],
+      "traits": [
+        "冷静",
+        "博学",
+        "念旧"
+      ],
+      "dialogue_style": [
+        "用古雅措辞阐述契约与秩序的意义",
+        "在 casual 场景中暴露对现代生活常识的缺失"
+      ],
+      "relationships": [
+        "known_raiden_shogun_genshin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_raiden_shogun_genshin",
+      "work_id": "work_genshin_impact",
+      "name": "雷电将军",
+      "aliases": [
+        "Raiden Shogun",
+        "Ei",
+        "Beelzebul"
+      ],
+      "roles": [
+        "统治者",
+        "武道追求者"
+      ],
+      "character_types": [
+        "威严型决策者",
+        "永恒追求者"
+      ],
+      "traits": [
+        "果断",
+        "孤独",
+        "武痴"
+      ],
+      "dialogue_style": [
+        "用简洁命令式语句宣示意志",
+        "在辩论中以武力威慑替代论证"
+      ],
+      "relationships": [
+        "known_zhongli_genshin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_paimon_traveler",
+      "work_id": "work_genshin_impact",
+      "from_character_id": "known_paimon_genshin",
+      "to_character_id": "known_zhongli_genshin",
+      "relation": "向导与退休神明的信息差",
+      "description": "一方负责以通俗语言解释世界规则，另一方拥有数千年阅历却刻意隐匿身份，两人在信息不对等中形成互补与反差。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zhongli_raiden",
+      "work_id": "work_genshin_impact",
+      "from_character_id": "known_zhongli_genshin",
+      "to_character_id": "known_raiden_shogun_genshin",
+      "relation": "旧神与新神执政理念对立",
+      "description": "一方以契约和秩序治理千年，另一方以永恒和武威维护统治，两位神明对'不变'的理解截然不同。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_genshin_archon_ideology_clash",
+      "work_id": "work_genshin_impact",
+      "name": "不同执政理念的神明正面交锋",
+      "participant_ids": [
+        "known_zhongli_genshin",
+        "known_raiden_shogun_genshin"
+      ],
+      "setting": "神明因对'永恒'理解不同而产生的对峙场合",
+      "conflict_type": "理念对立与秩序之争",
+      "emotional_arc": [
+        "冷静",
+        "试探",
+        "激化",
+        "克制"
+      ],
+      "visual_actions": [
+        "双方以言语试探对方执政理念",
+        "气场对峙中环境产生异常变化",
+        "一方以历史例证反驳另一方的永恒观",
+        "对峙在未分胜负中收场留下悬念"
+      ],
+      "reusable_beats": [
+        "两位长期执政者因理念不同正面交锋",
+        "一方以契约秩序论证变化的价值",
+        "另一方以永恒稳定反驳变化的危险",
+        "交锋不以暴力结束而以悬念收场"
+      ],
+      "dialogue_patterns": [
+        "一方用历史案例温和阐述秩序的意义",
+        "另一方用断言式命令宣示自己的执政信条"
+      ],
+      "abstraction": "提取不同执政理念的守护者正面交锋的结构，不复刻原作具体技能、台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_genshin_paimon_world_intro",
+      "work_id": "work_genshin_impact",
+      "name": "向导以反差萌方式向外来者介绍世界规则",
+      "participant_ids": [
+        "known_paimon_genshin",
+        "known_zhongli_genshin"
+      ],
+      "setting": "外来者初到陌生世界时的引导场景",
+      "conflict_type": "认知差距与信息传递",
+      "emotional_arc": [
+        "困惑",
+        "好奇",
+        "顿悟",
+        "轻松"
+      ],
+      "visual_actions": [
+        "向导飞在半空比划手势解释规则",
+        "外来者对常识缺失表现出困惑",
+        "向导用食物比喻简化复杂概念",
+        "旁观的智者微笑不语"
+      ],
+      "reusable_beats": [
+        "外来者初到陌生世界需要向导",
+        "向导用生活化比喻解释抽象规则",
+        "信息差制造自然喜剧效果",
+        "暗藏的世界观通过对话碎片化呈现"
+      ],
+      "dialogue_patterns": [
+        "向导用夸张语气和比喻介绍世界规则",
+        "智者以简短补充修正向导的不准确表述"
+      ],
+      "abstraction": "提取向导以反差萌方式向外来者介绍世界规则的结构，不复刻原作具体角色造型、台词或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ]
+}

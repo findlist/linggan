@@ -358,6 +358,66 @@
         }
       ],
       "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "work_black_myth_wukong",
+      "title": "黑神话：悟空",
+      "original_title": "黑神话：悟空",
+      "aliases": [
+        "Black Myth: Wukong"
+      ],
+      "media_type": "game",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2024,
+      "genres": [
+        "动作角色扮演",
+        "神话",
+        "黑暗奇幻"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "work_genshin_impact",
+      "title": "原神",
+      "original_title": "原神",
+      "aliases": [
+        "Genshin Impact"
+      ],
+      "media_type": "game",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2020,
+      "genres": [
+        "开放世界",
+        "动作角色扮演",
+        "奇幻"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -1469,6 +1529,256 @@
         }
       ],
       "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_destined_one_bmw",
+      "work_id": "work_black_myth_wukong",
+      "name": "天命人",
+      "aliases": [
+        "The Destined One"
+      ],
+      "roles": [
+        "沉默型主角",
+        "命运追寻者"
+      ],
+      "character_types": [
+        "行动型探索者",
+        "沉默型英雄"
+      ],
+      "traits": [
+        "沉默",
+        "坚韧",
+        "武勇"
+      ],
+      "dialogue_style": [
+        "以行动代替语言表达意志",
+        "在关键抉择时以武器选择替代对话"
+      ],
+      "relationships": [
+        "known_sun_wukong_bmw",
+        "known_zhu_bajie_bmw"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_sun_wukong_bmw",
+      "work_id": "work_black_myth_wukong",
+      "name": "孙悟空",
+      "aliases": [
+        "Sun Wukong",
+        "Monkey King",
+        "齐天大圣"
+      ],
+      "roles": [
+        "传说中的英雄",
+        "精神导师"
+      ],
+      "character_types": [
+        "桀骜型传奇",
+        "反叛型英雄"
+      ],
+      "traits": [
+        "桀骜",
+        "机智",
+        "不羁"
+      ],
+      "dialogue_style": [
+        "用戏谑语气挑战权威和规则",
+        "在危急时以自信宣言扭转士气"
+      ],
+      "relationships": [
+        "known_destined_one_bmw",
+        "known_zhu_bajie_bmw"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_zhu_bajie_bmw",
+      "work_id": "work_black_myth_wukong",
+      "name": "猪八戒",
+      "aliases": [
+        "Zhu Bajie",
+        "Pigsy"
+      ],
+      "roles": [
+        "同伴",
+        "喜剧担当"
+      ],
+      "character_types": [
+        "自嘲型同伴",
+        "贪吃型喜剧角色"
+      ],
+      "traits": [
+        "贪吃",
+        "油滑",
+        "重义"
+      ],
+      "dialogue_style": [
+        "用自嘲和抱怨化解紧张气氛",
+        "在关键时刻以义气掩盖平时的怯懦"
+      ],
+      "relationships": [
+        "known_destined_one_bmw",
+        "known_sun_wukong_bmw"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_paimon_genshin",
+      "work_id": "work_genshin_impact",
+      "name": "派蒙",
+      "aliases": [
+        "Paimon"
+      ],
+      "roles": [
+        "向导",
+        "同伴"
+      ],
+      "character_types": [
+        "活泼型向导",
+        "信息传递者"
+      ],
+      "traits": [
+        "话多",
+        "好奇",
+        "贪吃"
+      ],
+      "dialogue_style": [
+        "用夸张语气介绍世界设定和规则",
+        "在紧张时刻用反差萌吐槽缓解气氛"
+      ],
+      "relationships": [
+        "known_zhongli_genshin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_zhongli_genshin",
+      "work_id": "work_genshin_impact",
+      "name": "钟离",
+      "aliases": [
+        "Zhongli",
+        "Morax",
+        "岩王帝君"
+      ],
+      "roles": [
+        "退休神明",
+        "契约见证者"
+      ],
+      "character_types": [
+        "沉稳型智者",
+        "契约守护者"
+      ],
+      "traits": [
+        "冷静",
+        "博学",
+        "念旧"
+      ],
+      "dialogue_style": [
+        "用古雅措辞阐述契约与秩序的意义",
+        "在 casual 场景中暴露对现代生活常识的缺失"
+      ],
+      "relationships": [
+        "known_raiden_shogun_genshin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_raiden_shogun_genshin",
+      "work_id": "work_genshin_impact",
+      "name": "雷电将军",
+      "aliases": [
+        "Raiden Shogun",
+        "Ei",
+        "Beelzebul"
+      ],
+      "roles": [
+        "统治者",
+        "武道追求者"
+      ],
+      "character_types": [
+        "威严型决策者",
+        "永恒追求者"
+      ],
+      "traits": [
+        "果断",
+        "孤独",
+        "武痴"
+      ],
+      "dialogue_style": [
+        "用简洁命令式语句宣示意志",
+        "在辩论中以武力威慑替代论证"
+      ],
+      "relationships": [
+        "known_zhongli_genshin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -1700,6 +2010,78 @@
           "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
           "source_name": "Wikipedia",
           "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_destined_one_wukong",
+      "work_id": "work_black_myth_wukong",
+      "from_character_id": "known_destined_one_bmw",
+      "to_character_id": "known_sun_wukong_bmw",
+      "relation": "继承者与传奇",
+      "description": "一方踏上旅途追寻传奇的真相与遗物，另一方以残存的意志和记忆引导继承者，形成跨越时空的师徒纽带。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zhu_bajie_destined_one",
+      "work_id": "work_black_myth_wukong",
+      "from_character_id": "known_zhu_bajie_bmw",
+      "to_character_id": "known_destined_one_bmw",
+      "relation": "老油条与沉默后辈",
+      "description": "一方以油滑和抱怨掩饰真正的关心，另一方以沉默和行动回应，形成表面不和实际互助的搭档关系。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_paimon_traveler",
+      "work_id": "work_genshin_impact",
+      "from_character_id": "known_paimon_genshin",
+      "to_character_id": "known_zhongli_genshin",
+      "relation": "向导与退休神明的信息差",
+      "description": "一方负责以通俗语言解释世界规则，另一方拥有数千年阅历却刻意隐匿身份，两人在信息不对等中形成互补与反差。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zhongli_raiden",
+      "work_id": "work_genshin_impact",
+      "from_character_id": "known_zhongli_genshin",
+      "to_character_id": "known_raiden_shogun_genshin",
+      "relation": "旧神与新神执政理念对立",
+      "description": "一方以契约和秩序治理千年，另一方以永恒和武威维护统治，两位神明对'不变'的理解截然不同。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
           "published_at": null,
           "collected_at": "2026-08-04T00:00:00.000Z"
         }
@@ -2433,6 +2815,190 @@
           "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
           "source_name": "Wikipedia",
           "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_bmw_relic_truth_reveal",
+      "work_id": "work_black_myth_wukong",
+      "name": "收集遗物后揭示传说背后的隐藏真相",
+      "participant_ids": [
+        "known_destined_one_bmw",
+        "known_sun_wukong_bmw"
+      ],
+      "setting": "旅途终点收集齐遗物后真相浮现的场合",
+      "conflict_type": "传说真相与现实落差",
+      "emotional_arc": [
+        "期待",
+        "困惑",
+        "震撼",
+        "抉择"
+      ],
+      "visual_actions": [
+        "遗物汇聚后幻象浮现",
+        "主角目睹传说英雄的真实处境",
+        "真相与流传的版本截然不同",
+        "主角面临接受真相或否认的选择"
+      ],
+      "reusable_beats": [
+        "旅途以收集传奇遗物为驱动",
+        "遗物汇聚后揭示传说并非如流传所述",
+        "传奇英雄的真实处境比传说更复杂",
+        "继承者在真相面前需要做出自己的选择"
+      ],
+      "dialogue_patterns": [
+        "残存意志用平静语气陈述被隐藏的真相",
+        "继承者以沉默和行动回应真相的冲击"
+      ],
+      "abstraction": "提取收集遗物后揭示传说背后隐藏真相的结构，不复刻原作具体Boss设计、技能特效、台词或场景美术。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_bmw_bajie_comic_relief_loyalty",
+      "work_id": "work_black_myth_wukong",
+      "name": "油滑同伴在危急时刻暴露真实义气",
+      "participant_ids": [
+        "known_zhu_bajie_bmw",
+        "known_destined_one_bmw"
+      ],
+      "setting": "旅途中的危急战斗或困境场景",
+      "conflict_type": "表象与真性情的反差",
+      "emotional_arc": [
+        "轻松",
+        "紧张",
+        "意外",
+        "感动"
+      ],
+      "visual_actions": [
+        "同伴平时抱怨和逃避",
+        "危机来临时同伴突然挡在前方",
+        "同伴以笨拙方式提供关键支援",
+        "事后同伴恢复油滑态度掩饰感动"
+      ],
+      "reusable_beats": [
+        "同伴平时以贪吃和抱怨示人",
+        "危急时刻同伴出人意料地挺身而出",
+        "关键支援以笨拙但有效的方式完成",
+        "事后同伴立即恢复油滑态度否认自己的英勇"
+      ],
+      "dialogue_patterns": [
+        "同伴在危急时用简短话语暴露真实关心",
+        "事后用抱怨和借口掩饰自己的义气行为"
+      ],
+      "abstraction": "提取油滑同伴在危急时刻暴露真实义气的结构，不复刻原作具体角色造型、台词、技能或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_genshin_archon_ideology_clash",
+      "work_id": "work_genshin_impact",
+      "name": "不同执政理念的神明正面交锋",
+      "participant_ids": [
+        "known_zhongli_genshin",
+        "known_raiden_shogun_genshin"
+      ],
+      "setting": "神明因对'永恒'理解不同而产生的对峙场合",
+      "conflict_type": "理念对立与秩序之争",
+      "emotional_arc": [
+        "冷静",
+        "试探",
+        "激化",
+        "克制"
+      ],
+      "visual_actions": [
+        "双方以言语试探对方执政理念",
+        "气场对峙中环境产生异常变化",
+        "一方以历史例证反驳另一方的永恒观",
+        "对峙在未分胜负中收场留下悬念"
+      ],
+      "reusable_beats": [
+        "两位长期执政者因理念不同正面交锋",
+        "一方以契约秩序论证变化的价值",
+        "另一方以永恒稳定反驳变化的危险",
+        "交锋不以暴力结束而以悬念收场"
+      ],
+      "dialogue_patterns": [
+        "一方用历史案例温和阐述秩序的意义",
+        "另一方用断言式命令宣示自己的执政信条"
+      ],
+      "abstraction": "提取不同执政理念的守护者正面交锋的结构，不复刻原作具体技能、台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_genshin_paimon_world_intro",
+      "work_id": "work_genshin_impact",
+      "name": "向导以反差萌方式向外来者介绍世界规则",
+      "participant_ids": [
+        "known_paimon_genshin",
+        "known_zhongli_genshin"
+      ],
+      "setting": "外来者初到陌生世界时的引导场景",
+      "conflict_type": "认知差距与信息传递",
+      "emotional_arc": [
+        "困惑",
+        "好奇",
+        "顿悟",
+        "轻松"
+      ],
+      "visual_actions": [
+        "向导飞在半空比划手势解释规则",
+        "外来者对常识缺失表现出困惑",
+        "向导用食物比喻简化复杂概念",
+        "旁观的智者微笑不语"
+      ],
+      "reusable_beats": [
+        "外来者初到陌生世界需要向导",
+        "向导用生活化比喻解释抽象规则",
+        "信息差制造自然喜剧效果",
+        "暗藏的世界观通过对话碎片化呈现"
+      ],
+      "dialogue_patterns": [
+        "向导用夸张语气和比喻介绍世界规则",
+        "智者以简短补充修正向导的不准确表述"
+      ],
+      "abstraction": "提取向导以反差萌方式向外来者介绍世界规则的结构，不复刻原作具体角色造型、台词或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Genshin_Impact",
+          "source_name": "Wikipedia",
+          "page_title": "Genshin Impact",
           "published_at": null,
           "collected_at": "2026-08-04T00:00:00.000Z"
         }

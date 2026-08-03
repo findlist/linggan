@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_black_myth_wukong",
+      "title": "黑神话：悟空",
+      "original_title": "黑神话：悟空",
+      "aliases": [
+        "Black Myth: Wukong"
+      ],
+      "media_type": "game",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2024,
+      "genres": [
+        "动作角色扮演",
+        "神话",
+        "黑暗奇幻"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_destined_one_bmw",
+      "work_id": "work_black_myth_wukong",
+      "name": "天命人",
+      "aliases": [
+        "The Destined One"
+      ],
+      "roles": [
+        "沉默型主角",
+        "命运追寻者"
+      ],
+      "character_types": [
+        "行动型探索者",
+        "沉默型英雄"
+      ],
+      "traits": [
+        "沉默",
+        "坚韧",
+        "武勇"
+      ],
+      "dialogue_style": [
+        "以行动代替语言表达意志",
+        "在关键抉择时以武器选择替代对话"
+      ],
+      "relationships": [
+        "known_sun_wukong_bmw",
+        "known_zhu_bajie_bmw"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_sun_wukong_bmw",
+      "work_id": "work_black_myth_wukong",
+      "name": "孙悟空",
+      "aliases": [
+        "Sun Wukong",
+        "Monkey King",
+        "齐天大圣"
+      ],
+      "roles": [
+        "传说中的英雄",
+        "精神导师"
+      ],
+      "character_types": [
+        "桀骜型传奇",
+        "反叛型英雄"
+      ],
+      "traits": [
+        "桀骜",
+        "机智",
+        "不羁"
+      ],
+      "dialogue_style": [
+        "用戏谑语气挑战权威和规则",
+        "在危急时以自信宣言扭转士气"
+      ],
+      "relationships": [
+        "known_destined_one_bmw",
+        "known_zhu_bajie_bmw"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_zhu_bajie_bmw",
+      "work_id": "work_black_myth_wukong",
+      "name": "猪八戒",
+      "aliases": [
+        "Zhu Bajie",
+        "Pigsy"
+      ],
+      "roles": [
+        "同伴",
+        "喜剧担当"
+      ],
+      "character_types": [
+        "自嘲型同伴",
+        "贪吃型喜剧角色"
+      ],
+      "traits": [
+        "贪吃",
+        "油滑",
+        "重义"
+      ],
+      "dialogue_style": [
+        "用自嘲和抱怨化解紧张气氛",
+        "在关键时刻以义气掩盖平时的怯懦"
+      ],
+      "relationships": [
+        "known_destined_one_bmw",
+        "known_sun_wukong_bmw"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_destined_one_wukong",
+      "work_id": "work_black_myth_wukong",
+      "from_character_id": "known_destined_one_bmw",
+      "to_character_id": "known_sun_wukong_bmw",
+      "relation": "继承者与传奇",
+      "description": "一方踏上旅途追寻传奇的真相与遗物，另一方以残存的意志和记忆引导继承者，形成跨越时空的师徒纽带。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zhu_bajie_destined_one",
+      "work_id": "work_black_myth_wukong",
+      "from_character_id": "known_zhu_bajie_bmw",
+      "to_character_id": "known_destined_one_bmw",
+      "relation": "老油条与沉默后辈",
+      "description": "一方以油滑和抱怨掩饰真正的关心，另一方以沉默和行动回应，形成表面不和实际互助的搭档关系。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_bmw_relic_truth_reveal",
+      "work_id": "work_black_myth_wukong",
+      "name": "收集遗物后揭示传说背后的隐藏真相",
+      "participant_ids": [
+        "known_destined_one_bmw",
+        "known_sun_wukong_bmw"
+      ],
+      "setting": "旅途终点收集齐遗物后真相浮现的场合",
+      "conflict_type": "传说真相与现实落差",
+      "emotional_arc": [
+        "期待",
+        "困惑",
+        "震撼",
+        "抉择"
+      ],
+      "visual_actions": [
+        "遗物汇聚后幻象浮现",
+        "主角目睹传说英雄的真实处境",
+        "真相与流传的版本截然不同",
+        "主角面临接受真相或否认的选择"
+      ],
+      "reusable_beats": [
+        "旅途以收集传奇遗物为驱动",
+        "遗物汇聚后揭示传说并非如流传所述",
+        "传奇英雄的真实处境比传说更复杂",
+        "继承者在真相面前需要做出自己的选择"
+      ],
+      "dialogue_patterns": [
+        "残存意志用平静语气陈述被隐藏的真相",
+        "继承者以沉默和行动回应真相的冲击"
+      ],
+      "abstraction": "提取收集遗物后揭示传说背后隐藏真相的结构，不复刻原作具体Boss设计、技能特效、台词或场景美术。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_bmw_bajie_comic_relief_loyalty",
+      "work_id": "work_black_myth_wukong",
+      "name": "油滑同伴在危急时刻暴露真实义气",
+      "participant_ids": [
+        "known_zhu_bajie_bmw",
+        "known_destined_one_bmw"
+      ],
+      "setting": "旅途中的危急战斗或困境场景",
+      "conflict_type": "表象与真性情的反差",
+      "emotional_arc": [
+        "轻松",
+        "紧张",
+        "意外",
+        "感动"
+      ],
+      "visual_actions": [
+        "同伴平时抱怨和逃避",
+        "危机来临时同伴突然挡在前方",
+        "同伴以笨拙方式提供关键支援",
+        "事后同伴恢复油滑态度掩饰感动"
+      ],
+      "reusable_beats": [
+        "同伴平时以贪吃和抱怨示人",
+        "危急时刻同伴出人意料地挺身而出",
+        "关键支援以笨拙但有效的方式完成",
+        "事后同伴立即恢复油滑态度否认自己的英勇"
+      ],
+      "dialogue_patterns": [
+        "同伴在危急时用简短话语暴露真实关心",
+        "事后用抱怨和借口掩饰自己的义气行为"
+      ],
+      "abstraction": "提取油滑同伴在危急时刻暴露真实义气的结构，不复刻原作具体角色造型、台词、技能或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black_Myth:_Wukong",
+          "source_name": "Wikipedia",
+          "page_title": "Black Myth: Wukong",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ]
+}
