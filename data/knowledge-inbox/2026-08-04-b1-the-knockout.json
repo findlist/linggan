@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_the_knockout",
+      "title": "狂飙",
+      "original_title": "狂飙",
+      "aliases": [
+        "The Knockout",
+        "Kuang Biao"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2023,
+      "genres": [
+        "犯罪",
+        "刑侦",
+        "剧情"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_an_xin",
+      "work_id": "work_the_knockout",
+      "name": "安欣",
+      "aliases": [
+        "An Xin"
+      ],
+      "roles": [
+        "刑警",
+        "正义守护者"
+      ],
+      "character_types": [
+        "执着型调查者",
+        "孤独型正义者"
+      ],
+      "traits": [
+        "正直",
+        "坚韧",
+        "孤介"
+      ],
+      "dialogue_style": [
+        "用平静语气陈述不愿面对的事实",
+        "在威胁前以沉默和目光施压"
+      ],
+      "relationships": [
+        "known_gao_qiqiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_gao_qiqiang",
+      "work_id": "work_the_knockout",
+      "name": "高启强",
+      "aliases": [
+        "Gao Qiqiang"
+      ],
+      "roles": [
+        "黑恶势力头目",
+        "从底层崛起的野心家"
+      ],
+      "character_types": [
+        "隐忍型野心家",
+        "关系型操控者"
+      ],
+      "traits": [
+        "隐忍",
+        "精明",
+        "狠辣"
+      ],
+      "dialogue_style": [
+        "用谦卑语气降低对方警惕",
+        "在掌控局面时以轻描淡写下达命令"
+      ],
+      "relationships": [
+        "known_an_xin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_chen_shuting",
+      "work_id": "work_the_knockout",
+      "name": "陈书婷",
+      "aliases": [
+        "Chen Shuting",
+        "大嫂"
+      ],
+      "roles": [
+        "幕后决策者",
+        "关系协调者"
+      ],
+      "character_types": [
+        "隐势型操盘者",
+        "情感与利益平衡者"
+      ],
+      "traits": [
+        "沉稳",
+        "精明",
+        "念情"
+      ],
+      "dialogue_style": [
+        "用不紧不慢的语速控制谈话节奏",
+        "在关键处以一句反问让对方自省"
+      ],
+      "relationships": [
+        "known_gao_qiqiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_an_xin_gao_qiqiang",
+      "work_id": "work_the_knockout",
+      "from_character_id": "known_an_xin",
+      "to_character_id": "known_gao_qiqiang",
+      "relation": "正义与黑恶的二十年较量",
+      "description": "刑警与从鱼贩崛起的黑恶头目展开长达二十年的正邪博弈，双方在多次交锋中互相试探、利用和压制。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_gao_qiqiang_chen_shuting",
+      "work_id": "work_the_knockout",
+      "from_character_id": "known_gao_qiqiang",
+      "to_character_id": "known_chen_shuting",
+      "relation": "利益同盟与情感纽带",
+      "description": "一方以街头智慧崛起，另一方以社交手腕稳固后方，两人在权力与情感间维持脆弱平衡。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_fishstall_fateful_encounter",
+      "work_id": "work_the_knockout",
+      "name": "底层人物与执法者在困境中的初次交集",
+      "participant_ids": [
+        "known_an_xin",
+        "known_gao_qiqiang"
+      ],
+      "setting": "嘈杂拥挤的菜市场鱼摊前",
+      "conflict_type": "善意施予与命运分岔",
+      "emotional_arc": [
+        "窘迫",
+        "感激",
+        "试探",
+        "埋下伏笔"
+      ],
+      "visual_actions": [
+        "一方在寒风中整理鱼摊",
+        "另一方以日常对话掩饰关心",
+        "两人在嘈杂环境中短暂对视",
+        "一方目送另一方离去"
+      ],
+      "reusable_beats": [
+        "底层人物在困境中遇到善意执法者",
+        "执法者以非正式方式提供帮助",
+        "受助者在此刻埋下走向暗面的种子",
+        "双方均未意识到此次相遇将定义此后二十年的博弈"
+      ],
+      "dialogue_patterns": [
+        "受助者用谦卑语气表达感谢",
+        "执法者用随意口吻掩饰正式关心"
+      ],
+      "abstraction": "保留困境中的善意交集和命运分岔结构，不复刻原作具体台词、市场名称、角色服装或镜头构图。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_interrogation_mirror_truth",
+      "work_id": "work_the_knockout",
+      "name": "多年对手在审讯室中以沉默揭示真相",
+      "participant_ids": [
+        "known_an_xin",
+        "known_gao_qiqiang"
+      ],
+      "setting": "灯光集中、空间封闭的审讯室",
+      "conflict_type": "长期博弈的终局对峙",
+      "emotional_arc": [
+        "平静",
+        "试探",
+        "暴露",
+        "释然"
+      ],
+      "visual_actions": [
+        "双方隔桌对坐",
+        "一方缓慢翻动卷宗",
+        "另一方目光从回避到直视",
+        "长时间沉默后一方开口定局"
+      ],
+      "reusable_beats": [
+        "执法者以已知证据逐步压缩空间",
+        "对手以沉默和微表情对抗",
+        "关键证据出现时双方都知道终局已定",
+        "一方用一句话总结二十年关系"
+      ],
+      "dialogue_patterns": [
+        "执法者用陈述句而非提问推进",
+        "对手用沉默后的一句承认结束博弈"
+      ],
+      "abstraction": "保留审讯室中沉默与证据逐步揭示的张力结构，不复刻原作具体台词、审讯室布置或角色造型。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ]
+}

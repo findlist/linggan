@@ -265,6 +265,99 @@
         }
       ],
       "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "work_attack_on_titan",
+      "title": "进击的巨人",
+      "original_title": "進撃の巨人",
+      "aliases": [
+        "Attack on Titan",
+        "Shingeki no Kyojin"
+      ],
+      "media_type": "anime",
+      "regions": [
+        "日本"
+      ],
+      "release_year": 2013,
+      "genres": [
+        "黑暗奇幻",
+        "动作",
+        "悬疑"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "work_blossoms_shanghai",
+      "title": "繁花",
+      "original_title": "繁花",
+      "aliases": [
+        "Blossoms",
+        "Blossoms Shanghai"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2023,
+      "genres": [
+        "都市",
+        "剧情",
+        "商战"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "work_the_knockout",
+      "title": "狂飙",
+      "original_title": "狂飙",
+      "aliases": [
+        "The Knockout",
+        "Kuang Biao"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2023,
+      "genres": [
+        "犯罪",
+        "刑侦",
+        "剧情"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -1007,6 +1100,375 @@
         }
       ],
       "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "known_eren_yeager",
+      "work_id": "work_attack_on_titan",
+      "name": "艾伦·耶格尔",
+      "aliases": [
+        "Eren Yeager",
+        "Eren Jaeger"
+      ],
+      "roles": [
+        "成长型主角",
+        "秩序破坏者"
+      ],
+      "character_types": [
+        "愤怒型觉醒者",
+        "目标驱动型行动者"
+      ],
+      "traits": [
+        "冲动",
+        "执着",
+        "决绝"
+      ],
+      "dialogue_style": [
+        "用断言式短句表达不可动摇的决心",
+        "在压力下从质问转为行动宣告"
+      ],
+      "relationships": [
+        "known_mikasa_ackerman",
+        "known_armin_arlert"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_mikasa_ackerman",
+      "work_id": "work_attack_on_titan",
+      "name": "三笠·阿克曼",
+      "aliases": [
+        "Mikasa Ackerman"
+      ],
+      "roles": [
+        "战斗型同伴",
+        "守护者"
+      ],
+      "character_types": [
+        "沉默型强者",
+        "情感驱动型守护者"
+      ],
+      "traits": [
+        "冷静",
+        "忠诚",
+        "果决"
+      ],
+      "dialogue_style": [
+        "用极短句确认行动方向",
+        "在危机中以命令替代解释"
+      ],
+      "relationships": [
+        "known_eren_yeager",
+        "known_armin_arlert"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_armin_arlert",
+      "work_id": "work_attack_on_titan",
+      "name": "阿尔敏·阿诺德",
+      "aliases": [
+        "Armin Arlert"
+      ],
+      "roles": [
+        "策略型同伴",
+        "知识驱动者"
+      ],
+      "character_types": [
+        "思考型策略者",
+        "自我怀疑型成长者"
+      ],
+      "traits": [
+        "好奇",
+        "谨慎",
+        "坚韧"
+      ],
+      "dialogue_style": [
+        "用假设和推演引导团队认知",
+        "在自信不足时以提问替代断言"
+      ],
+      "relationships": [
+        "known_eren_yeager",
+        "known_mikasa_ackerman"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_baoshen_abao",
+      "work_id": "work_blossoms_shanghai",
+      "name": "阿宝",
+      "aliases": [
+        "宝总",
+        "Bao Zong",
+        "A Bao"
+      ],
+      "roles": [
+        "商界新秀",
+        "时代弄潮儿"
+      ],
+      "character_types": [
+        "机遇型成长者",
+        "情义型商人"
+      ],
+      "traits": [
+        "精明",
+        "重情",
+        "进取"
+      ],
+      "dialogue_style": [
+        "用上海式圆滑周旋化解商业冲突",
+        "在关键时刻以简洁承诺代替冗长解释"
+      ],
+      "relationships": [
+        "known_lingzi",
+        "known_wang_xiaojie"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_lingzi",
+      "work_id": "work_blossoms_shanghai",
+      "name": "玲子",
+      "aliases": [
+        "Lingzi"
+      ],
+      "roles": [
+        "餐厅老板娘",
+        "后盾型伙伴"
+      ],
+      "character_types": [
+        "精明型守护者",
+        "独立型经营者"
+      ],
+      "traits": [
+        "泼辣",
+        "务实",
+        "重义"
+      ],
+      "dialogue_style": [
+        "用市井智慧拆解商业花招",
+        "在关心他人时以抱怨语气掩饰真情"
+      ],
+      "relationships": [
+        "known_baoshen_abao"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_wang_xiaojie",
+      "work_id": "work_blossoms_shanghai",
+      "name": "汪小姐",
+      "aliases": [
+        "Wang Xiaojie",
+        "Miss Wang"
+      ],
+      "roles": [
+        "外贸职员",
+        "情感纽带"
+      ],
+      "character_types": [
+        "热血型职场人",
+        "成长型独立者"
+      ],
+      "traits": [
+        "直率",
+        "要强",
+        "善良"
+      ],
+      "dialogue_style": [
+        "用直来直去的语气表达立场",
+        "在受挫后以行动证明独立价值"
+      ],
+      "relationships": [
+        "known_baoshen_abao"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_an_xin",
+      "work_id": "work_the_knockout",
+      "name": "安欣",
+      "aliases": [
+        "An Xin"
+      ],
+      "roles": [
+        "刑警",
+        "正义守护者"
+      ],
+      "character_types": [
+        "执着型调查者",
+        "孤独型正义者"
+      ],
+      "traits": [
+        "正直",
+        "坚韧",
+        "孤介"
+      ],
+      "dialogue_style": [
+        "用平静语气陈述不愿面对的事实",
+        "在威胁前以沉默和目光施压"
+      ],
+      "relationships": [
+        "known_gao_qiqiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_gao_qiqiang",
+      "work_id": "work_the_knockout",
+      "name": "高启强",
+      "aliases": [
+        "Gao Qiqiang"
+      ],
+      "roles": [
+        "黑恶势力头目",
+        "从底层崛起的野心家"
+      ],
+      "character_types": [
+        "隐忍型野心家",
+        "关系型操控者"
+      ],
+      "traits": [
+        "隐忍",
+        "精明",
+        "狠辣"
+      ],
+      "dialogue_style": [
+        "用谦卑语气降低对方警惕",
+        "在掌控局面时以轻描淡写下达命令"
+      ],
+      "relationships": [
+        "known_an_xin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_chen_shuting",
+      "work_id": "work_the_knockout",
+      "name": "陈书婷",
+      "aliases": [
+        "Chen Shuting",
+        "大嫂"
+      ],
+      "roles": [
+        "幕后决策者",
+        "关系协调者"
+      ],
+      "character_types": [
+        "隐势型操盘者",
+        "情感与利益平衡者"
+      ],
+      "traits": [
+        "沉稳",
+        "精明",
+        "念情"
+      ],
+      "dialogue_style": [
+        "用不紧不慢的语速控制谈话节奏",
+        "在关键处以一句反问让对方自省"
+      ],
+      "relationships": [
+        "known_gao_qiqiang"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -1135,6 +1597,114 @@
         }
       ],
       "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "relation_eren_mikasa",
+      "work_id": "work_attack_on_titan",
+      "from_character_id": "known_mikasa_ackerman",
+      "to_character_id": "known_eren_yeager",
+      "relation": "守护者与被驱动者",
+      "description": "一方以绝对战力守护另一方，但被守护者的目标逐渐偏离守护者的期望，形成行动与意志的张力。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_eren_armin",
+      "work_id": "work_attack_on_titan",
+      "from_character_id": "known_eren_yeager",
+      "to_character_id": "known_armin_arlert",
+      "relation": "行动者与思考者",
+      "description": "一方以决断推动前行，另一方以策略补全路径，两人的分歧在终局成为价值观对决。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_abao_lingzi",
+      "work_id": "work_blossoms_shanghai",
+      "from_character_id": "known_baoshen_abao",
+      "to_character_id": "known_lingzi",
+      "relation": "商界伙伴与生活后盾",
+      "description": "一方在前台搏击商海，另一方在后方稳固日常阵地，两人以默契和信任形成非正式同盟。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_abao_wang",
+      "work_id": "work_blossoms_shanghai",
+      "from_character_id": "known_baoshen_abao",
+      "to_character_id": "known_wang_xiaojie",
+      "relation": "互助与成长",
+      "description": "一方在商界起步时受另一方帮助，后续关系在利益与情感之间持续摆动。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_an_xin_gao_qiqiang",
+      "work_id": "work_the_knockout",
+      "from_character_id": "known_an_xin",
+      "to_character_id": "known_gao_qiqiang",
+      "relation": "正义与黑恶的二十年较量",
+      "description": "刑警与从鱼贩崛起的黑恶头目展开长达二十年的正邪博弈，双方在多次交锋中互相试探、利用和压制。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_gao_qiqiang_chen_shuting",
+      "work_id": "work_the_knockout",
+      "from_character_id": "known_gao_qiqiang",
+      "to_character_id": "known_chen_shuting",
+      "relation": "利益同盟与情感纽带",
+      "description": "一方以街头智慧崛起，另一方以社交手腕稳固后方，两人在权力与情感间维持脆弱平衡。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
     }
   ],
   "iconic_moments": [
@@ -1637,6 +2207,237 @@
         }
       ],
       "last_verified_at": "2026-07-31T03:00:00.000Z"
+    },
+    {
+      "id": "moment_wall_truth_reveal",
+      "work_id": "work_attack_on_titan",
+      "name": "安全壁垒被击碎揭示隐藏真相",
+      "participant_ids": [
+        "known_eren_yeager",
+        "known_armin_arlert"
+      ],
+      "setting": "长期被视为绝对安全的封闭屏障边缘",
+      "conflict_type": "安全幻觉与外部真相",
+      "emotional_arc": [
+        "日常",
+        "震惊",
+        "恐惧",
+        "决意"
+      ],
+      "visual_actions": [
+        "屏障出现裂痕",
+        "群体从日常转为恐慌",
+        "主角目睹改变世界观的事实",
+        "少年以行动回应恐惧"
+      ],
+      "reusable_beats": [
+        "社区在屏障内维持长期和平",
+        "突发破坏让安全假设瞬间失效",
+        "主角亲历破坏后发现真相被隐瞒",
+        "恐惧转化为离开安全区的决心"
+      ],
+      "dialogue_patterns": [
+        "旁观者用恐惧喊叫确认现实",
+        "主角用一句简短宣告回应世界观崩塌"
+      ],
+      "abstraction": "提取安全屏障被打破后真相暴露的结构，不复刻原作具体巨人造型、台词、城墙设计或角色外观。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_friend_ideology_split",
+      "work_id": "work_attack_on_titan",
+      "name": "挚友在终局因价值观对立而对抗",
+      "participant_ids": [
+        "known_eren_yeager",
+        "known_armin_arlert",
+        "known_mikasa_ackerman"
+      ],
+      "setting": "战争已造成不可逆后果的终局战场",
+      "conflict_type": "友情与理念不可调和",
+      "emotional_arc": [
+        "痛心",
+        "对峙",
+        "辩论",
+        "诀别"
+      ],
+      "visual_actions": [
+        "昔日同伴远距离对峙",
+        "双方各自阵营列阵",
+        "对话中穿插回忆片段",
+        "一方转身离去结束关系"
+      ],
+      "reusable_beats": [
+        "一方选择牺牲多数以保护少数",
+        "另一方以不同正义观反对",
+        "双方在对抗中承认彼此影响",
+        "终局后幸存者带着对方信念继续前行"
+      ],
+      "dialogue_patterns": [
+        "一方用平静语气宣告不可逆决定",
+        "另一方用质问暴露决策的人性代价"
+      ],
+      "abstraction": "保留挚友因价值观分歧走向终局对抗的结构，不复刻原作招式、台词、具体战场或角色变身形态。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_night_banquet_negotiation",
+      "work_id": "work_blossoms_shanghai",
+      "name": "饭局中以敬酒与座次完成商业博弈",
+      "participant_ids": [
+        "known_baoshen_abao",
+        "known_lingzi"
+      ],
+      "setting": "灯光昏黄、人声交织的高档餐厅包间",
+      "conflict_type": "商业利益与人情面子",
+      "emotional_arc": [
+        "客套",
+        "试探",
+        "交锋",
+        "定局"
+      ],
+      "visual_actions": [
+        "座次安排暗示地位",
+        "敬酒顺序传递信号",
+        "关键人物沉默饮茶",
+        "一拍桌结束博弈"
+      ],
+      "reusable_beats": [
+        "东道主以座次安排传递权力信号",
+        "来客以敬酒试探对方底线",
+        "中间人以闲话掩盖核心议题",
+        "关键一句定局后众人举杯确认"
+      ],
+      "dialogue_patterns": [
+        "东道主用客气话压缩谈判空间",
+        "来客用比喻暗示自己的退让极限"
+      ],
+      "abstraction": "保留饭局博弈中的座次、敬酒和话术结构，不复刻原作具体台词、菜品、餐厅装潢或角色造型。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_fishstall_fateful_encounter",
+      "work_id": "work_the_knockout",
+      "name": "底层人物与执法者在困境中的初次交集",
+      "participant_ids": [
+        "known_an_xin",
+        "known_gao_qiqiang"
+      ],
+      "setting": "嘈杂拥挤的菜市场鱼摊前",
+      "conflict_type": "善意施予与命运分岔",
+      "emotional_arc": [
+        "窘迫",
+        "感激",
+        "试探",
+        "埋下伏笔"
+      ],
+      "visual_actions": [
+        "一方在寒风中整理鱼摊",
+        "另一方以日常对话掩饰关心",
+        "两人在嘈杂环境中短暂对视",
+        "一方目送另一方离去"
+      ],
+      "reusable_beats": [
+        "底层人物在困境中遇到善意执法者",
+        "执法者以非正式方式提供帮助",
+        "受助者在此刻埋下走向暗面的种子",
+        "双方均未意识到此次相遇将定义此后二十年的博弈"
+      ],
+      "dialogue_patterns": [
+        "受助者用谦卑语气表达感谢",
+        "执法者用随意口吻掩饰正式关心"
+      ],
+      "abstraction": "保留困境中的善意交集和命运分岔结构，不复刻原作具体台词、市场名称、角色服装或镜头构图。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_interrogation_mirror_truth",
+      "work_id": "work_the_knockout",
+      "name": "多年对手在审讯室中以沉默揭示真相",
+      "participant_ids": [
+        "known_an_xin",
+        "known_gao_qiqiang"
+      ],
+      "setting": "灯光集中、空间封闭的审讯室",
+      "conflict_type": "长期博弈的终局对峙",
+      "emotional_arc": [
+        "平静",
+        "试探",
+        "暴露",
+        "释然"
+      ],
+      "visual_actions": [
+        "双方隔桌对坐",
+        "一方缓慢翻动卷宗",
+        "另一方目光从回避到直视",
+        "长时间沉默后一方开口定局"
+      ],
+      "reusable_beats": [
+        "执法者以已知证据逐步压缩空间",
+        "对手以沉默和微表情对抗",
+        "关键证据出现时双方都知道终局已定",
+        "一方用一句话总结二十年关系"
+      ],
+      "dialogue_patterns": [
+        "执法者用陈述句而非提问推进",
+        "对手用沉默后的一句承认结束博弈"
+      ],
+      "abstraction": "保留审讯室中沉默与证据逐步揭示的张力结构，不复刻原作具体台词、审讯室布置或角色造型。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Knockout_(TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Knockout (TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
     }
   ]
 }

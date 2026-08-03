@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_attack_on_titan",
+      "title": "进击的巨人",
+      "original_title": "進撃の巨人",
+      "aliases": [
+        "Attack on Titan",
+        "Shingeki no Kyojin"
+      ],
+      "media_type": "anime",
+      "regions": [
+        "日本"
+      ],
+      "release_year": 2013,
+      "genres": [
+        "黑暗奇幻",
+        "动作",
+        "悬疑"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_eren_yeager",
+      "work_id": "work_attack_on_titan",
+      "name": "艾伦·耶格尔",
+      "aliases": [
+        "Eren Yeager",
+        "Eren Jaeger"
+      ],
+      "roles": [
+        "成长型主角",
+        "秩序破坏者"
+      ],
+      "character_types": [
+        "愤怒型觉醒者",
+        "目标驱动型行动者"
+      ],
+      "traits": [
+        "冲动",
+        "执着",
+        "决绝"
+      ],
+      "dialogue_style": [
+        "用断言式短句表达不可动摇的决心",
+        "在压力下从质问转为行动宣告"
+      ],
+      "relationships": [
+        "known_mikasa_ackerman",
+        "known_armin_arlert"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_mikasa_ackerman",
+      "work_id": "work_attack_on_titan",
+      "name": "三笠·阿克曼",
+      "aliases": [
+        "Mikasa Ackerman"
+      ],
+      "roles": [
+        "战斗型同伴",
+        "守护者"
+      ],
+      "character_types": [
+        "沉默型强者",
+        "情感驱动型守护者"
+      ],
+      "traits": [
+        "冷静",
+        "忠诚",
+        "果决"
+      ],
+      "dialogue_style": [
+        "用极短句确认行动方向",
+        "在危机中以命令替代解释"
+      ],
+      "relationships": [
+        "known_eren_yeager",
+        "known_armin_arlert"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_armin_arlert",
+      "work_id": "work_attack_on_titan",
+      "name": "阿尔敏·阿诺德",
+      "aliases": [
+        "Armin Arlert"
+      ],
+      "roles": [
+        "策略型同伴",
+        "知识驱动者"
+      ],
+      "character_types": [
+        "思考型策略者",
+        "自我怀疑型成长者"
+      ],
+      "traits": [
+        "好奇",
+        "谨慎",
+        "坚韧"
+      ],
+      "dialogue_style": [
+        "用假设和推演引导团队认知",
+        "在自信不足时以提问替代断言"
+      ],
+      "relationships": [
+        "known_eren_yeager",
+        "known_mikasa_ackerman"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_eren_mikasa",
+      "work_id": "work_attack_on_titan",
+      "from_character_id": "known_mikasa_ackerman",
+      "to_character_id": "known_eren_yeager",
+      "relation": "守护者与被驱动者",
+      "description": "一方以绝对战力守护另一方，但被守护者的目标逐渐偏离守护者的期望，形成行动与意志的张力。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_eren_armin",
+      "work_id": "work_attack_on_titan",
+      "from_character_id": "known_eren_yeager",
+      "to_character_id": "known_armin_arlert",
+      "relation": "行动者与思考者",
+      "description": "一方以决断推动前行，另一方以策略补全路径，两人的分歧在终局成为价值观对决。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_wall_truth_reveal",
+      "work_id": "work_attack_on_titan",
+      "name": "安全壁垒被击碎揭示隐藏真相",
+      "participant_ids": [
+        "known_eren_yeager",
+        "known_armin_arlert"
+      ],
+      "setting": "长期被视为绝对安全的封闭屏障边缘",
+      "conflict_type": "安全幻觉与外部真相",
+      "emotional_arc": [
+        "日常",
+        "震惊",
+        "恐惧",
+        "决意"
+      ],
+      "visual_actions": [
+        "屏障出现裂痕",
+        "群体从日常转为恐慌",
+        "主角目睹改变世界观的事实",
+        "少年以行动回应恐惧"
+      ],
+      "reusable_beats": [
+        "社区在屏障内维持长期和平",
+        "突发破坏让安全假设瞬间失效",
+        "主角亲历破坏后发现真相被隐瞒",
+        "恐惧转化为离开安全区的决心"
+      ],
+      "dialogue_patterns": [
+        "旁观者用恐惧喊叫确认现实",
+        "主角用一句简短宣告回应世界观崩塌"
+      ],
+      "abstraction": "提取安全屏障被打破后真相暴露的结构，不复刻原作具体巨人造型、台词、城墙设计或角色外观。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_friend_ideology_split",
+      "work_id": "work_attack_on_titan",
+      "name": "挚友在终局因价值观对立而对抗",
+      "participant_ids": [
+        "known_eren_yeager",
+        "known_armin_arlert",
+        "known_mikasa_ackerman"
+      ],
+      "setting": "战争已造成不可逆后果的终局战场",
+      "conflict_type": "友情与理念不可调和",
+      "emotional_arc": [
+        "痛心",
+        "对峙",
+        "辩论",
+        "诀别"
+      ],
+      "visual_actions": [
+        "昔日同伴远距离对峙",
+        "双方各自阵营列阵",
+        "对话中穿插回忆片段",
+        "一方转身离去结束关系"
+      ],
+      "reusable_beats": [
+        "一方选择牺牲多数以保护少数",
+        "另一方以不同正义观反对",
+        "双方在对抗中承认彼此影响",
+        "终局后幸存者带着对方信念继续前行"
+      ],
+      "dialogue_patterns": [
+        "一方用平静语气宣告不可逆决定",
+        "另一方用质问暴露决策的人性代价"
+      ],
+      "abstraction": "保留挚友因价值观分歧走向终局对抗的结构，不复刻原作招式、台词、具体战场或角色变身形态。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attack_on_Titan",
+          "source_name": "Wikipedia",
+          "page_title": "Attack on Titan",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_blossoms_shanghai",
+      "title": "繁花",
+      "original_title": "繁花",
+      "aliases": [
+        "Blossoms",
+        "Blossoms Shanghai"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2023,
+      "genres": [
+        "都市",
+        "剧情",
+        "商战"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_baoshen_abao",
+      "work_id": "work_blossoms_shanghai",
+      "name": "阿宝",
+      "aliases": [
+        "宝总",
+        "Bao Zong",
+        "A Bao"
+      ],
+      "roles": [
+        "商界新秀",
+        "时代弄潮儿"
+      ],
+      "character_types": [
+        "机遇型成长者",
+        "情义型商人"
+      ],
+      "traits": [
+        "精明",
+        "重情",
+        "进取"
+      ],
+      "dialogue_style": [
+        "用上海式圆滑周旋化解商业冲突",
+        "在关键时刻以简洁承诺代替冗长解释"
+      ],
+      "relationships": [
+        "known_lingzi",
+        "known_wang_xiaojie"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_lingzi",
+      "work_id": "work_blossoms_shanghai",
+      "name": "玲子",
+      "aliases": [
+        "Lingzi"
+      ],
+      "roles": [
+        "餐厅老板娘",
+        "后盾型伙伴"
+      ],
+      "character_types": [
+        "精明型守护者",
+        "独立型经营者"
+      ],
+      "traits": [
+        "泼辣",
+        "务实",
+        "重义"
+      ],
+      "dialogue_style": [
+        "用市井智慧拆解商业花招",
+        "在关心他人时以抱怨语气掩饰真情"
+      ],
+      "relationships": [
+        "known_baoshen_abao"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_wang_xiaojie",
+      "work_id": "work_blossoms_shanghai",
+      "name": "汪小姐",
+      "aliases": [
+        "Wang Xiaojie",
+        "Miss Wang"
+      ],
+      "roles": [
+        "外贸职员",
+        "情感纽带"
+      ],
+      "character_types": [
+        "热血型职场人",
+        "成长型独立者"
+      ],
+      "traits": [
+        "直率",
+        "要强",
+        "善良"
+      ],
+      "dialogue_style": [
+        "用直来直去的语气表达立场",
+        "在受挫后以行动证明独立价值"
+      ],
+      "relationships": [
+        "known_baoshen_abao"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_abao_lingzi",
+      "work_id": "work_blossoms_shanghai",
+      "from_character_id": "known_baoshen_abao",
+      "to_character_id": "known_lingzi",
+      "relation": "商界伙伴与生活后盾",
+      "description": "一方在前台搏击商海，另一方在后方稳固日常阵地，两人以默契和信任形成非正式同盟。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_abao_wang",
+      "work_id": "work_blossoms_shanghai",
+      "from_character_id": "known_baoshen_abao",
+      "to_character_id": "known_wang_xiaojie",
+      "relation": "互助与成长",
+      "description": "一方在商界起步时受另一方帮助，后续关系在利益与情感之间持续摆动。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_night_banquet_negotiation",
+      "work_id": "work_blossoms_shanghai",
+      "name": "饭局中以敬酒与座次完成商业博弈",
+      "participant_ids": [
+        "known_baoshen_abao",
+        "known_lingzi"
+      ],
+      "setting": "灯光昏黄、人声交织的高档餐厅包间",
+      "conflict_type": "商业利益与人情面子",
+      "emotional_arc": [
+        "客套",
+        "试探",
+        "交锋",
+        "定局"
+      ],
+      "visual_actions": [
+        "座次安排暗示地位",
+        "敬酒顺序传递信号",
+        "关键人物沉默饮茶",
+        "一拍桌结束博弈"
+      ],
+      "reusable_beats": [
+        "东道主以座次安排传递权力信号",
+        "来客以敬酒试探对方底线",
+        "中间人以闲话掩盖核心议题",
+        "关键一句定局后众人举杯确认"
+      ],
+      "dialogue_patterns": [
+        "东道主用客气话压缩谈判空间",
+        "来客用比喻暗示自己的退让极限"
+      ],
+      "abstraction": "保留饭局博弈中的座次、敬酒和话术结构，不复刻原作具体台词、菜品、餐厅装潢或角色造型。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blossoms_Shanghai",
+          "source_name": "Wikipedia",
+          "page_title": "Blossoms Shanghai",
+          "published_at": null,
+          "collected_at": "2026-08-04T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-04T00:00:00.000Z"
+    }
+  ]
+}
