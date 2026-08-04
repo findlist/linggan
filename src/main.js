@@ -12,6 +12,7 @@ import { renderRadarSection, mountRadarSection } from './sections/RadarSection.j
 import { mountFeedSection } from './sections/FeedSection.js'
 import { renderRemixWorkbench, mountRemixWorkbench } from './sections/RemixWorkbench.js'
 import { renderLibrarySection, mountLibrarySection } from './sections/LibrarySection.js'
+import { renderSeedSection, mountSeedSection } from './sections/SeedLibrarySection.js'
 import { renderSavedSection, mountSavedList } from './sections/SavedList.js'
 import { renderHistorySection, mountHistoryList } from './sections/HistoryList.js'
 import { renderEventSyncButton, mountEventSyncBar } from './sections/EventSyncBar.js'
@@ -24,7 +25,7 @@ app.innerHTML = `
   <header class="topbar">
     <nav class="nav shell" aria-label="主导航">
       <a class="brand" href="#top"><span class="brand-mark">${icon('sparkles', 21)}</span><span>灵感</span><small>LINGGAN LAB</small></a>
-      <div class="nav-links"><a href="#feed">今日推荐</a><a href="#radar">热点雷达</a><a href="#remix">跨界混搭</a><a href="#library">素材库</a></div>
+      <div class="nav-links"><a href="#feed">今日推荐</a><a href="#radar">热点雷达</a><a href="#remix">跨界混搭</a><a href="#library">素材库</a><a href="#seed-library">种子库</a></div>
       <div class="nav-status"><i></i><span>采集与 SQLite 入库已连接</span></div>
       ${renderEventSyncButton()}
       <button class="menu-button" aria-label="打开导航" aria-expanded="false">${icon('menu')}</button>
@@ -41,6 +42,7 @@ app.innerHTML = `
     ${renderRadarSection(null)}
     ${renderRemixWorkbench()}
     ${renderLibrarySection()}
+    ${renderSeedSection()}
     ${renderSavedSection()}
     ${renderHistorySection()}
   </main>
@@ -92,6 +94,9 @@ const detailView = createDetailView({
 
 // 素材库 ctx：detailView 是详情视图实例，卡片点击时调用 detailView.open 打开弹窗
 mountLibrarySection({ detailView })
+
+// 种子数据展示 section：渲染 seed-entities.json 中的原创角色/场景/故事模板/热门元素
+mountSeedSection()
 
 // 雷达 section：异步加载真实趋势数据后刷新状态 pill 和渠道列表
 mountRadarSection()
