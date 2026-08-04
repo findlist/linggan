@@ -3,10 +3,28 @@
 // 供所有 section 通过同一份 ctx 引用，避免重复 import 和不一致风险。
 
 import knowledge from '../../data/knowledge-base.json'
+import seedEntities from '../../data/seed-entities.json'
+import { toRemixCharacter, createOriginalWork, ORIGINAL_WORK_ID } from '../generation/original-adapter.ts'
 
 // 按 ID 查询的辅助表，构建一次供多处复用
 export const workById = new Map(knowledge.works.map(work => [work.id, work]))
-export const characterById = new Map(knowledge.known_characters.map(character => [character.id, character]))
+
+// 把原创角色原型适配为 KnownCharacter 格式后合并到统一角色表
+const originalCharacters = seedEntities.characters
+  .filter(character => character.kind === 'original')
+  .map(toRemixCharacter)
+
+// 合并已知角色和原创角色到统一查找表
+export const characterById = new Map([
+  ...knowledge.known_characters.map(character => [character.id, character]),
+  ...originalCharacters.map(character => [character.id, character]),
+])
+
+// 原创角色 ID 集合，供前端区分展示
+export const originalCharacterIds = new Set(originalCharacters.map(character => character.id))
+
+// 为原创角色注册合成作品
+workById.set(ORIGINAL_WORK_ID, createOriginalWork())
 
 // 媒介类型中文标签：用于作品卡片、详情视图、筛选器维度值显示
 export const mediaNames = {

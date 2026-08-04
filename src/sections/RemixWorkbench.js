@@ -17,6 +17,7 @@ import {
   shotTypeLabels,
   cameraMovementLabels,
   transitionLabels,
+  originalCharacterIds,
 } from '../data/knowledge.js'
 import { getState, incrementGeneration, setCurrentResult, setDuration } from '../data/store.js'
 import { buildRemixPlan } from '../generation/remix-engine.ts'
@@ -29,13 +30,20 @@ import { track } from '../data/tracker.ts'
 import { addHistory, getHistory } from '../data/history.ts'
 
 // 渲染角色 A / B 下拉选项；selected 用于初始默认值（来自原 main.js）
-const renderCharacterOptions = (selected) =>
-  knowledge.known_characters
-    .map((character) => {
-      const work = workById.get(character.work_id)
-      return `<option value="${character.id}" ${character.id === selected ? 'selected' : ''}>${escapeHtml(character.name)} · ${escapeHtml(work.title)}</option>`
-    })
-    .join('')
+// 合并知识库已知角色和原创角色原型，原创角色用「原创」标记区分
+const renderCharacterOptions = (selected) => {
+  const knownOpts = knowledge.known_characters.map((character) => {
+    const work = workById.get(character.work_id)
+    return `<option value="${character.id}" ${character.id === selected ? 'selected' : ''}>${escapeHtml(character.name)} · ${escapeHtml(work.title)}</option>`
+  })
+  const originalOpts = [...characterById.entries()]
+    .filter(([id]) => originalCharacterIds.has(id))
+    .map(
+      ([id, character]) =>
+        `<option value="${id}" ${id === selected ? 'selected' : ''}>${escapeHtml(character.name)} · 原创原型</option>`,
+    )
+  return [...knownOpts, '<option disabled>── 原创角色原型 ──</option>', ...originalOpts].join('')
+}
 
 const renderMomentOptions = (selected) =>
   knowledge.iconic_moments
@@ -335,7 +343,8 @@ const applyToRemix = (type, id, slot) => {
     const target = slot === 'b' ? selectB : selectA
     target.value = id
     if (selectA.value === selectB.value) {
-      const other = knowledge.known_characters.find((c) => c.id !== selectA.value)
+      // 在全部角色（含原创）中找一个不同的
+      const other = [...characterById.values()].find((c) => c.id !== selectA.value)
       if (other) (slot === 'b' ? selectA : selectB).value = other.id
     }
     updateHints()
@@ -355,7 +364,7 @@ const applyToRemix = (type, id, slot) => {
     }
     selectA.value = character.id
     if (selectA.value === selectB.value) {
-      const other = knowledge.known_characters.find((c) => c.id !== selectA.value)
+      const other = [...characterById.values()].find((c) => c.id !== selectA.value)
       if (other) selectB.value = other.id
     }
     updateHints()

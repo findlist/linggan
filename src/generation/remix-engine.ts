@@ -456,11 +456,17 @@ const buildProduction = (input: RemixPlanInput, prompt: string): ProductionPacka
   const style_strength = STYLE_STRENGTH[style.id] ?? 0.7
 
   // 版权边界声明：明确参考范围、商用限制和改写范围
+  // 原创角色（rights_status=original）和参考角色（rights_status=reference_only）用不同声明
+  const isOriginalA = characterA.rights_status !== 'reference_only'
+  const isOriginalB = characterB.rights_status !== 'reference_only'
+  const charADesc = isOriginalA ? `${characterA.name}（原创角色原型）` : `${characterA.name}（reference_only）`
+  const charBDesc = isOriginalB ? `${characterB.name}（原创角色原型）` : `${characterB.name}（reference_only）`
   const copyright_boundary: CopyrightBoundary = {
-    reference_status:
-      `参考角色（${characterA.name}、${characterB.name}）和名场面（${moment.name}）` +
-      `仅作结构与性格参考，rights_status 为 reference_only。`,
-    commercial_use: '商业发布前必须替换为原创或已授权资产，不得直接使用参考角色形象。',
+    reference_status: `参考角色（${charADesc}、${charBDesc}）和名场面（${moment.name}）` + `仅作结构与性格参考。`,
+    commercial_use:
+      isOriginalA && isOriginalB
+        ? '原创角色原型可直接用于商业发布，但需检查名称、造型和描述未复刻现有 IP。'
+        : '商业发布前必须替换为原创或已授权资产，不得直接使用参考角色形象。',
     rewrite_scope: '台词、镜头、世界观、角色造型全部原创改写，不包含原作精确台词、截图或视频片段。',
   }
 
