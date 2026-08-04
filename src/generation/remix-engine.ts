@@ -432,6 +432,10 @@ const STYLE_STRENGTH: Record<string, number> = {
   absurd: 0.6,
   animation: 0.75,
   mockumentary: 0.55,
+  cyberpunk_neon: 0.8,
+  ink_wash: 0.7,
+  vlog: 0.5,
+  suspense_twist: 0.75,
 }
 
 const buildProduction = (input: RemixPlanInput, prompt: string): ProductionPackage => {

@@ -64,7 +64,11 @@ export const remixStyles = [
   { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图、逐步升级的群像调度' },
   { id: 'absurd', label: '一本正经的荒诞', prompt: '严肃表演处理微小目标，反差来自角色态度而非恶搞造型' },
   { id: 'animation', label: '国风动画', prompt: '原创东方幻想视觉、粒子化气流、清晰动作轮廓与留白' },
-  { id: 'mockumentary', label: '伪纪录片', prompt: '手持跟拍、角色采访、证词冲突与监控式反转' }
+  { id: 'mockumentary', label: '伪纪录片', prompt: '手持跟拍、角色采访、证词冲突与监控式反转' },
+  { id: 'cyberpunk_neon', label: '赛博朋克霓虹', prompt: '高饱和霓虹色温、雨夜街头反光、全息投影叠层与低角度仰拍' },
+  { id: 'ink_wash', label: '古风水墨写意', prompt: '水墨晕染过渡、留白构图、毛笔笔触转场与淡彩点染' },
+  { id: 'vlog', label: 'Vlog 日常感', prompt: '自然光手持自拍视角、生活化场景调度、轻快跳切与字幕贴纸' },
+  { id: 'suspense_twist', label: '悬疑反转', prompt: '低调高对比打光、紧凑特写剪辑、信息误导构图与声画错位' }
 ]
 
 export const personalityLabels = { cold: '冷酷型', hot: '热血型', cunning: '腹黑型', gentle: '温柔型' }
