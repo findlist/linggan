@@ -418,6 +418,36 @@
         }
       ],
       "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "work_chang_an",
+      "title": "长安三万里",
+      "original_title": "长安三万里",
+      "aliases": [
+        "Chang An"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国"
+      ],
+      "release_year": 2023,
+      "genres": [
+        "animation",
+        "history",
+        "biographical"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/长安三万里",
+          "source_name": "Wikipedia",
+          "page_title": "长安三万里",
+          "published_at": null,
+          "collected_at": "2026-08-05T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-05T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -1779,6 +1809,135 @@
         }
       ],
       "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "known_libai_chang_an",
+      "work_id": "work_chang_an",
+      "name": "李白",
+      "aliases": [
+        "Li Bai",
+        "诗仙"
+      ],
+      "roles": [
+        "protagonist",
+        "诗人"
+      ],
+      "character_types": [
+        "天才型",
+        "浪漫型"
+      ],
+      "traits": [
+        "豪放",
+        "浪漫",
+        "不羁",
+        "才华横溢"
+      ],
+      "dialogue_style": [
+        "用诗意感叹表达对世界的感受",
+        "即兴吟咏回应挑衅或赞美",
+        "以豪迈宣言宣告自己的志向"
+      ],
+      "relationships": [
+        "known_gaoshi_chang_an"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/李白",
+          "source_name": "Wikipedia",
+          "page_title": "李白",
+          "published_at": null,
+          "collected_at": "2026-08-05T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-05T00:00:00.000Z"
+    },
+    {
+      "id": "known_gaoshi_chang_an",
+      "work_id": "work_chang_an",
+      "name": "高适",
+      "aliases": [
+        "Gao Shi",
+        "高常侍"
+      ],
+      "roles": [
+        "protagonist",
+        "武将"
+      ],
+      "character_types": [
+        "实干型",
+        "沉稳型"
+      ],
+      "traits": [
+        "坚韧",
+        "务实",
+        "沉稳",
+        "大器晚成"
+      ],
+      "dialogue_style": [
+        "用朴素叙述回忆往事",
+        "以冷静分析应对危机",
+        "用感慨式反思总结人生经验"
+      ],
+      "relationships": [
+        "known_libai_chang_an"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/高适",
+          "source_name": "Wikipedia",
+          "page_title": "高适",
+          "published_at": null,
+          "collected_at": "2026-08-05T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-05T00:00:00.000Z"
+    },
+    {
+      "id": "known_dufu_chang_an",
+      "work_id": "work_chang_an",
+      "name": "杜甫",
+      "aliases": [
+        "Du Fu",
+        "诗圣"
+      ],
+      "roles": [
+        "supporting",
+        "诗人"
+      ],
+      "character_types": [
+        "忧国型",
+        "细腻型"
+      ],
+      "traits": [
+        "忧国忧民",
+        "细腻",
+        "谦逊",
+        "深沉"
+      ],
+      "dialogue_style": [
+        "以沉郁顿挫的语气表达忧虑",
+        "用关怀询问了解他人处境",
+        "以含蓄批评表达对时局的看法"
+      ],
+      "relationships": [
+        "known_libai_chang_an"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/杜甫",
+          "source_name": "Wikipedia",
+          "page_title": "杜甫",
+          "published_at": null,
+          "collected_at": "2026-08-05T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-05T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -2087,6 +2246,42 @@
         }
       ],
       "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "relation_libai_gaoshi",
+      "work_id": "work_chang_an",
+      "from_character_id": "known_libai_chang_an",
+      "to_character_id": "known_gaoshi_chang_an",
+      "relation": "天才与实干家的跨半生友谊",
+      "description": "李白与高适年少相识，性格迥异却惺惺相惜。一方天赋横溢放浪形骸，另一方笨拙坚韧脚踏实地，两人交往贯穿盛唐到安史之乱。",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/长安三万里",
+          "source_name": "Wikipedia",
+          "page_title": "长安三万里",
+          "published_at": null,
+          "collected_at": "2026-08-05T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-05T00:00:00.000Z"
+    },
+    {
+      "id": "relation_libai_dufu",
+      "work_id": "work_chang_an",
+      "from_character_id": "known_dufu_chang_an",
+      "to_character_id": "known_libai_chang_an",
+      "relation": "后辈诗人对前辈的敬仰与短暂同游",
+      "description": "杜甫对李白心怀敬仰，李白以兄长姿态回应。二人曾短暂同游，后各奔东西。杜甫留下多首怀念李白的诗作。",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/杜甫",
+          "source_name": "Wikipedia",
+          "page_title": "杜甫",
+          "published_at": null,
+          "collected_at": "2026-08-05T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-05T00:00:00.000Z"
     }
   ],
   "iconic_moments": [
@@ -3004,6 +3199,100 @@
         }
       ],
       "last_verified_at": "2026-08-04T00:00:00.000Z"
+    },
+    {
+      "id": "moment_chang_an_poetry_duel",
+      "work_id": "work_chang_an",
+      "name": "诗才在宴会上即兴征服质疑者",
+      "participant_ids": [
+        "known_libai_chang_an",
+        "known_gaoshi_chang_an"
+      ],
+      "setting": "盛唐宴会场合，众人围观",
+      "conflict_type": "才华对决",
+      "emotional_arc": [
+        "轻视",
+        "惊艳",
+        "叹服",
+        "传颂"
+      ],
+      "visual_actions": [
+        "众人围观中有人出言挑衅",
+        "天才不假思索举杯回应",
+        "全场静默后掌声雷动",
+        "旁观者事后感慨回忆"
+      ],
+      "reusable_beats": [
+        "公开场合有人质疑天才能力",
+        "天才以即兴创作回应挑衅",
+        "围观者从轻视转为叹服",
+        "事后旁观者以回忆方式总结影响"
+      ],
+      "dialogue_patterns": [
+        "挑衅者以激将法邀请表演",
+        "天才不假思索直接回应",
+        "旁观者以简短感慨收尾"
+      ],
+      "abstraction": "提取天才在公开场合以即兴创作征服质疑者的结构，不复刻原作具体诗句、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/长安三万里",
+          "source_name": "Wikipedia",
+          "page_title": "长安三万里",
+          "published_at": null,
+          "collected_at": "2026-08-05T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-05T00:00:00.000Z"
+    },
+    {
+      "id": "moment_chang_an_parting",
+      "work_id": "work_chang_an",
+      "name": "盛世好友在时代转折点各奔前程",
+      "participant_ids": [
+        "known_libai_chang_an",
+        "known_gaoshi_chang_an"
+      ],
+      "setting": "城门外或渡口，时代由盛转衰",
+      "conflict_type": "人生岔路",
+      "emotional_arc": [
+        "不舍",
+        "强颜",
+        "决绝",
+        "怅惘"
+      ],
+      "visual_actions": [
+        "两人在城门外拱手告别",
+        "一方远眺另一方离去背影",
+        "转身走向截然相反的方向",
+        "独行者在途中回望已无人影"
+      ],
+      "reusable_beats": [
+        "盛世好友因理想不同走向不同道路",
+        "告别时双方强颜欢笑承诺再聚",
+        "时代变局使再聚成为奢望",
+        "回忆成为连接两人的唯一方式"
+      ],
+      "dialogue_patterns": [
+        "珍重式告别语",
+        "承诺式回应",
+        "沉默目送代替千言万语"
+      ],
+      "abstraction": "提取两人因理想不同在时代转折点走向截然相反道路的结构，核心张力来自盛世将衰的宿命感与个人选择的无从逆转，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/长安三万里",
+          "source_name": "Wikipedia",
+          "page_title": "长安三万里",
+          "published_at": null,
+          "collected_at": "2026-08-05T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-05T00:00:00.000Z"
     }
   ]
 }
