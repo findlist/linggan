@@ -4,7 +4,12 @@ import { test } from 'node:test'
 import { KnowledgeBaseSchema, KnownCharacterSchema } from '../src/data/contracts.ts'
 import type { KnownCharacter } from '../src/data/contracts.ts'
 import type { RemixPlanInput } from '../src/generation/remix-engine.ts'
-import { buildRemixPlan, countHookTemplates, detectPersonalityFromCharacter } from '../src/generation/remix-engine.ts'
+import {
+  buildRemixPlan,
+  countHookTemplates,
+  detectPersonalityFromCharacter,
+  DIALOGUE_TEMPLATES,
+} from '../src/generation/remix-engine.ts'
 
 const root = new URL('../', import.meta.url)
 const knowledge = KnowledgeBaseSchema.parse(
@@ -45,6 +50,27 @@ test('hook templates cover 4 categories with at least 4 each and 16 total', () =
     assert.ok(counts[category] >= 4, `${category} must have at least 4 templates, got ${counts[category]}`)
   }
   assert.ok(total >= 16, `total hook templates must be at least 16, got ${total}`)
+})
+
+test('hook templates expanded to at least 8 per category and 32 total', () => {
+  const counts = countHookTemplates()
+  const total = Object.values(counts).reduce((sum, value) => sum + value, 0)
+  for (const category of ['suspense', 'contrast', 'question', 'action'] as const) {
+    assert.ok(counts[category] >= 8, `${category} must have at least 8 templates, got ${counts[category]}`)
+  }
+  assert.ok(total >= 32, `total hook templates must be at least 32, got ${total}`)
+})
+
+test('dialogue templates expanded to at least 7 per personality and 28 total', () => {
+  const personalities = ['cold', 'hot', 'cunning', 'gentle'] as const
+  const total = personalities.reduce((sum, p) => sum + DIALOGUE_TEMPLATES[p].length, 0)
+  for (const p of personalities) {
+    assert.ok(
+      DIALOGUE_TEMPLATES[p].length >= 7,
+      `${p} must have at least 7 dialogue templates, got ${DIALOGUE_TEMPLATES[p].length}`,
+    )
+  }
+  assert.ok(total >= 28, `total dialogue templates must be at least 28, got ${total}`)
 })
 
 test('detectPersonality covers all 4 personality types from real knowledge base', () => {
