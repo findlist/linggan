@@ -5,8 +5,9 @@
  * 适配器从 Character 的 traits/abilities/kind 字段派生 character_types 和 dialogue_style，
  * 合成最小可用的 work_id/sources/risk_level/last_verified_at 字段。
  *
- * remix-engine 无需修改任何类型定义即可处理原创角色，
- * C1 兼容矩阵在找不到原创角色的 ability profile 时降级为 0.5 中等分（已有逻辑）。
+ * remix-engine 无需修改任何类型定义即可处理原创角色。
+ * C1 兼容矩阵已为 10 个原创角色建立 ability profile（见 data/compatibility-matrix.json），
+ * computeCompatibility 能按其真实能力分值评估，不再降级为 0.5 中等分。
  */
 
 import type { Character, KnownCharacter, SourceEvidence, Work } from '../data/contracts.ts'

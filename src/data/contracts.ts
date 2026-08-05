@@ -266,14 +266,23 @@ export const CompatibilityMatrixSchema = z.object({
 /**
  * 校验兼容矩阵与知识库的外键一致性。
  * 检查角色 ID、名场面 ID 和冲突类型是否在知识库中存在。
+ * 原创角色原型（kind=original）存在于 seed-entities.json 而非 knowledge-base.json，
+ * 可通过可选的 seedCharacters 参数一并纳入合法角色集合。
  * 返回问题数组；空数组表示通过。
  */
 export const validateMatrixWithKnowledge = (
   matrix: CompatibilityMatrix,
-  knowledge: KnowledgeBase
+  knowledge: KnowledgeBase,
+  seedCharacters?: readonly Character[]
 ): Array<{ path: string; message: string }> => {
   const issues: Array<{ path: string; message: string }> = []
   const characterIds = new Set(knowledge.known_characters.map(c => c.id))
+  // 原创角色原型也允许出现在 ability profiles 中，它们不依赖任何 IP
+  if (seedCharacters) {
+    for (const c of seedCharacters) {
+      if (c.kind === 'original') characterIds.add(c.id)
+    }
+  }
   const momentIds = new Set(knowledge.iconic_moments.map(m => m.id))
   const conflictTypes = new Set(knowledge.iconic_moments.map(m => m.conflict_type))
 

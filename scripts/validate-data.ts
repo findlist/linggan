@@ -8,6 +8,7 @@ import {
   TrendInboxSchema,
   validateMatrixWithKnowledge,
 } from '../src/data/contracts.ts'
+import type { Character } from '../src/data/contracts.ts'
 
 const root = new URL('../', import.meta.url)
 
@@ -40,13 +41,17 @@ for (const input of inputs) {
   }
 }
 
-// 跨文件外键校验：兼容矩阵的角色 ID、名场面 ID 和冲突类型必须在知识库中存在
+// 跨文件外键校验：兼容矩阵的角色 ID、名场面 ID 和冲突类型必须在知识库中存在；
+// 原创角色原型（kind=original）存在于 seed-entities.json，一并纳入合法角色集合
 const matrix = parsed['data/compatibility-matrix.json']
 const knowledge = parsed['data/knowledge-base.json']
+const seedEntities = parsed['data/seed-entities.json']
 if (matrix && knowledge) {
+  const seedCharacters = (seedEntities as { characters?: Character[] } | undefined)?.characters
   const issues = validateMatrixWithKnowledge(
     matrix as Parameters<typeof validateMatrixWithKnowledge>[0],
     knowledge as Parameters<typeof validateMatrixWithKnowledge>[1],
+    seedCharacters,
   )
   if (issues.length > 0) {
     failed = true

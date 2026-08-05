@@ -209,6 +209,116 @@
         "emotional_control": 0.95
       },
       "notes": "绝对理性型 AI，策略与技术极高但社交弱"
+    },
+    {
+      "character_id": "char_original_hardcore_coder",
+      "abilities": {
+        "combat": 0.15,
+        "strategy": 0.8,
+        "social": 0.4,
+        "tech": 0.95,
+        "emotional_control": 0.5
+      },
+      "notes": "技术极客，系统思维强但战斗与社交弱"
+    },
+    {
+      "character_id": "char_original_delivery_poet",
+      "abilities": {
+        "combat": 0.2,
+        "strategy": 0.55,
+        "social": 0.8,
+        "tech": 0.3,
+        "emotional_control": 0.6
+      },
+      "notes": "市井观察者，共情力强但战斗力弱"
+    },
+    {
+      "character_id": "char_original_esports_granny",
+      "abilities": {
+        "combat": 0.7,
+        "strategy": 0.75,
+        "social": 0.8,
+        "tech": 0.65,
+        "emotional_control": 0.6
+      },
+      "notes": "反差萌选手，游戏操作与战术分析兼具"
+    },
+    {
+      "character_id": "char_original_retired_dancer",
+      "abilities": {
+        "combat": 0.45,
+        "strategy": 0.7,
+        "social": 0.8,
+        "tech": 0.3,
+        "emotional_control": 0.8
+      },
+      "notes": "自律美学派，身体表达与品牌运营兼顾"
+    },
+    {
+      "character_id": "char_original_ai_trainer",
+      "abilities": {
+        "combat": 0.1,
+        "strategy": 0.6,
+        "social": 0.45,
+        "tech": 0.9,
+        "emotional_control": 0.75
+      },
+      "notes": "数据敏感型，技术突出且情绪稳定"
+    },
+    {
+      "character_id": "char_original_late_night_dj",
+      "abilities": {
+        "combat": 0.15,
+        "strategy": 0.5,
+        "social": 0.85,
+        "tech": 0.45,
+        "emotional_control": 0.7
+      },
+      "notes": "声音疗愈者，社交与情绪引导突出"
+    },
+    {
+      "character_id": "char_original_solo_detective",
+      "abilities": {
+        "combat": 0.5,
+        "strategy": 0.9,
+        "social": 0.4,
+        "tech": 0.7,
+        "emotional_control": 0.7
+      },
+      "notes": "缜密推理型，策略与信息检索能力突出"
+    },
+    {
+      "character_id": "char_original_wandering_chef",
+      "abilities": {
+        "combat": 0.55,
+        "strategy": 0.5,
+        "social": 0.7,
+        "tech": 0.45,
+        "emotional_control": 0.6
+      },
+      "notes": "街头生存者，即兴能力与市井社交兼具"
+    },
+    {
+      "character_id": "char_original_extreme_camerman",
+      "abilities": {
+        "combat": 0.7,
+        "strategy": 0.55,
+        "social": 0.5,
+        "tech": 0.85,
+        "emotional_control": 0.75
+      },
+      "notes": "冒险设备控，极限拍摄与技术操作突出"
+    },
+    {
+      "character_id": "char_original_community_mediator",
+      "abilities": {
+        "combat": 0.2,
+        "strategy": 0.7,
+        "social": 0.9,
+        "tech": 0.3,
+        "emotional_control": 0.85
+      },
+      "notes": "市井智慧型，社交与情绪控制极高"
     }
   ],
   "scene_constraints": [
