@@ -115,12 +115,9 @@ try {
     workById.set(originalWork.id, originalWork)
     const style: RemixStyle = { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图' }
 
-    // 构建有限组合列表：前 5 个知名角色 + 前 3 个原创角色，两两配对 × 前 3 个名场面 × 30s
+    // 构建组合列表：前 5 个知名角色 + 全部 10 个原创角色，两两配对 × 前 3 个名场面 × 30s
     const knownChars = knowledge.known_characters.slice(0, 5)
-    const originalChars = seeds.characters
-      .filter((c) => c.kind === 'original')
-      .slice(0, 3)
-      .map((c) => toRemixCharacter(c))
+    const originalChars = seeds.characters.filter((c) => c.kind === 'original').map((c) => toRemixCharacter(c))
     knownCharCount = knownChars.length
     originalCharCount = originalChars.length
     const characters = [...knownChars, ...originalChars]

@@ -238,12 +238,9 @@ describe('daily-pipeline integration with original characters', () => {
     )
     const style: RemixStyle = { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图' }
 
-    // Simulate what daily-pipeline does: mix known + original characters
+    // Simulate what daily-pipeline does: mix known + all original characters
     const knownChars = knowledge.known_characters.slice(0, 5)
-    const originalChars = seeds.characters
-      .filter((c) => c.kind === 'original')
-      .slice(0, 3)
-      .map((c) => toRemixCharacter(c))
+    const originalChars = seeds.characters.filter((c) => c.kind === 'original').map((c) => toRemixCharacter(c))
     const allChars = [...knownChars, ...originalChars]
     const moments = knowledge.iconic_moments.slice(0, 3)
 
