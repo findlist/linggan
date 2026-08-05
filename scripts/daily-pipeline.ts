@@ -11,6 +11,7 @@ import { generateDailyCandidates } from '../src/generation/candidate-generator.t
 import { storedTrendsToTrends } from '../src/generation/trend-adapter.ts'
 import { buildProductionPlans, type ProductionPlanInput, type RemixStyle } from '../src/generation/remix-engine.ts'
 import { detectDuplicates } from '../src/generation/similarity.ts'
+import { toRemixCharacter, createOriginalWork } from '../src/generation/original-adapter.ts'
 import { loadDatabaseConfig, parseSqliteUrl } from '../src/config/database.ts'
 import { migrateDatabase } from '../src/database/migrate.ts'
 import { SqliteTrendStore } from '../src/storage/sqlite-trend-store.ts'
@@ -98,6 +99,8 @@ try {
     avg_max_similarity: number
     threshold: number
   } | null = null
+  let knownCharCount = 0
+  let originalCharCount = 0
   try {
     const [rawKnowledge, rawMatrix] = await Promise.all([
       readJson('data/knowledge-base.json'),
@@ -105,11 +108,22 @@ try {
     ])
     const knowledge = KnowledgeBaseSchema.parse(rawKnowledge)
     const matrix = CompatibilityMatrixSchema.parse(rawMatrix)
+    const seeds = SeedEntitiesSchema.parse(rawSeeds)
     const workById = new Map(knowledge.works.map((w) => [w.id, w]))
+    // 注册原创角色合成作品，使原创角色可参与跨作品组合
+    const originalWork = createOriginalWork()
+    workById.set(originalWork.id, originalWork)
     const style: RemixStyle = { id: 'cinematic', label: '电影感热血', prompt: '克制写实光影、宽银幕构图' }
 
-    // 构建有限组合列表：前 5 个角色两两配对 × 前 3 个名场面 × 30s，控制单轮规模
-    const characters = knowledge.known_characters.slice(0, 5)
+    // 构建有限组合列表：前 5 个知名角色 + 前 3 个原创角色，两两配对 × 前 3 个名场面 × 30s
+    const knownChars = knowledge.known_characters.slice(0, 5)
+    const originalChars = seeds.characters
+      .filter((c) => c.kind === 'original')
+      .slice(0, 3)
+      .map((c) => toRemixCharacter(c))
+    knownCharCount = knownChars.length
+    originalCharCount = originalChars.length
+    const characters = [...knownChars, ...originalChars]
     const moments = knowledge.iconic_moments.slice(0, 3)
     const inputs: ProductionPlanInput[] = []
     for (let i = 0; i < characters.length; i++) {
@@ -142,7 +156,7 @@ try {
       threshold: productionResult.stats.threshold,
     }
     process.stderr.write(
-      `Production plans: ${productionResult.stats.remaining}/${productionResult.stats.total_combinations} combinations passed C1 filter (threshold ${productionResult.stats.threshold}, ${productionResult.stats.filtered_out} filtered out)\n`,
+      `Production plans: ${productionResult.stats.remaining}/${productionResult.stats.total_combinations} combinations passed C1 filter (threshold ${productionResult.stats.threshold}, ${productionResult.stats.filtered_out} filtered out, ${knownChars.length} known + ${originalChars.length} original characters)\n`,
     )
 
     // C3: 对生成的制作包做近似度检测，标记重复/高度相似方案，避免连续发布换皮创意
@@ -178,6 +192,8 @@ try {
       production_filtered_out: productionStats?.filtered_out ?? 0,
       production_remaining: productionStats?.remaining ?? 0,
       production_threshold: productionStats?.threshold ?? 0,
+      production_known_chars: knownCharCount,
+      production_original_chars: originalCharCount,
       similarity_total: similarityStats?.total ?? 0,
       similarity_duplicates: similarityStats?.duplicates ?? 0,
       similarity_unique: similarityStats?.unique ?? 0,
