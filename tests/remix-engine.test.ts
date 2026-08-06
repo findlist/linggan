@@ -61,16 +61,16 @@ test('hook templates expanded to at least 8 per category and 32 total', () => {
   assert.ok(total >= 32, `total hook templates must be at least 32, got ${total}`)
 })
 
-test('dialogue templates expanded to at least 7 per personality and 28 total', () => {
+test('dialogue templates expanded to at least 14 per personality and 56 total', () => {
   const personalities = ['cold', 'hot', 'cunning', 'gentle'] as const
   const total = personalities.reduce((sum, p) => sum + DIALOGUE_TEMPLATES[p].length, 0)
   for (const p of personalities) {
     assert.ok(
-      DIALOGUE_TEMPLATES[p].length >= 7,
-      `${p} must have at least 7 dialogue templates, got ${DIALOGUE_TEMPLATES[p].length}`,
+      DIALOGUE_TEMPLATES[p].length >= 14,
+      `${p} must have at least 14 dialogue templates, got ${DIALOGUE_TEMPLATES[p].length}`,
     )
   }
-  assert.ok(total >= 28, `total dialogue templates must be at least 28, got ${total}`)
+  assert.ok(total >= 56, `total dialogue templates must be at least 56, got ${total}`)
 })
 
 test('detectPersonality covers all 4 personality types from real knowledge base', () => {

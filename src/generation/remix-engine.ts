@@ -296,6 +296,13 @@ export const DIALOGUE_TEMPLATES: Record<PersonalityType, string[]> = {
     '"不需要犹豫。{style}。概率站在我们这边,但只给一次窗口。"',
     '"{style}。我不解释第二次,因为局势不会等。"',
     '"先听结论:{cost}。{style}。细节在行动中补。"',
+    '"{trait}是我的底线。{style}。越过这条线的事我不做。"',
+    '"算过了。{style}。{cost}可控,但必须在三步内收手。"',
+    '"{style}。对方比我们急,拖到第二轮他们就会出错。"',
+    '"我不赌。{style}。但如果一定要选,选不会连累后续的那条路。"',
+    '"{cost}。{style}。两个条件满足才动,缺一个都等。"',
+    '"{trait}不是优势,是约束。{style}。在这个框架里操作才安全。"',
+    '"别问我为什么。{style}。结论已经给出,执行就行。"',
   ],
   hot: [
     '"你只管打开缺口,剩下的我来扛。{style}--我说到做到。"',
@@ -305,6 +312,13 @@ export const DIALOGUE_TEMPLATES: Record<PersonalityType, string[]> = {
     '"我不退。{style}。你只要看到我冲,就跟着冲。"',
     '"他们可以怀疑结果,但不能说我没拼过。{style}。"',
     '"{style}。赢了是所有人的,输了我自己扛。走。"',
+    '"{trait}。对,就这一个字。剩下看我做。"',
+    '"别拦我。{style}。拦我的那个人,得先跑得比我快。"',
+    '"{style}。{cost}?那又怎样。疼的事情多了,不差这一件。"',
+    '"我没想那么多。{style}。想多了就不敢动了,动了就赢了。"',
+    '"{trait}不是口号,是我活到现在的唯一理由。{style}。"',
+    '"先干了再说。{style}。后悔的事以后再想,现在只管冲。"',
+    '"{style}。谁说我做不到,我就做给他看,然后头也不回。"',
   ],
   cunning: [
     '"你说的我都认。{style}。不过先把界限讲清楚,对你我都好。"',
@@ -314,6 +328,13 @@ export const DIALOGUE_TEMPLATES: Record<PersonalityType, string[]> = {
     '"别急。{style}。真正的牌,要等对方先亮。"',
     '"我尊重你的判断。{style}。但你不觉得,这步棋还有另一种走法吗?"',
     '"{style}。我不需要你同意,只需要你没话说。"',
+    '"{trait}。这是你给我的筹码,我会用好。{style}。"',
+    '"{style}。你先走,我在后面铺路。走到一半你会发现路只有一条。"',
+    '"有意思。{style}。但你想过没有,如果反着来会怎样?"',
+    '"{cost}。我帮你算过了。{style}。但真正的代价,不在账面上。"',
+    '"{style}。我不跟你争,我让事实替我说话。"',
+    '"先别亮底牌。{style}。等他自己犯错,比我们出手便宜十倍。"',
+    '"{trait}。你以为这是弱点?在我手里,它就是杠杆。{style}。"',
   ],
   gentle: [
     '"先别急。{style}。我们在,局面就不会失控。"',
@@ -323,6 +344,13 @@ export const DIALOGUE_TEMPLATES: Record<PersonalityType, string[]> = {
     '"我懂你的犹豫。{style}。但这一步,值得试。"',
     '"{style}。你做你擅长的部分,不确定的交给我。"',
     '"别扛着。{style}。有我在,至少不会更糟。"',
+    '"{trait}。这是你教会我的。{style}。所以我不会让它白白浪费。"',
+    '"慢慢来。{style}。{cost}我替你担着,你只管走稳。"',
+    '"{style}。你不需要证明什么,你只需要在。"',
+    '"我相信你。{style}。不是因为你不会错,是因为你值得信任。"',
+    '"{style}。累了就停一下,我帮你看着后面。"',
+    '"{cost}。我知道。但我不想让你一个人扛。{style}。"',
+    '"{trait}。别人看到的是软,我看到的是你最大的力量。{style}。"',
   ],
 }
 
@@ -334,7 +362,8 @@ const buildDialogue = (
 ): string => {
   const template = pick(DIALOGUE_TEMPLATES[personality], rng)
   const style = pick(character.dialogue_style, rng)
-  return template.replaceAll('{style}', style).replaceAll('{cost}', costCue)
+  const trait = character.traits.length > 0 ? pick(character.traits, rng) : '冷静'
+  return template.replaceAll('{style}', style).replaceAll('{cost}', costCue).replaceAll('{trait}', trait)
 }
 
 /* ----------------------------- 分镜生成 ----------------------------- */
