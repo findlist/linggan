@@ -136,44 +136,44 @@ const pick = <T>(items: readonly T[], rng: () => number): T => items[Math.floor(
 
 export const HOOK_TEMPLATES: Record<HookCategory, string[]> = {
   suspense: [
-    '所有人以为这只是{E},直到{A}认真起来。',
+    '所有人以为这只是{E},直到{A}在{B}面前认真起来。',
     '没人注意到,{B}早在三步之前就已经落子。',
-    '直到最后一秒,{A}才亮出真正的底牌。',
-    '谁也没想到,{E}会成为压垮秩序的最后一块拼图。',
-    '表面上是一次{X},真相却藏在{B}的沉默里。',
-    '真相在{B}开口之前就已经定局。',
-    '三个版本的说法,只有{A}知道哪个是真的。',
-    '所有人都在等{B}的答案,但问题本身就是一个陷阱。',
+    '直到最后一秒,{A}才向{B}亮出真正的底牌。',
+    '谁也没想到,{E}会成为{A}与{B}之间压垮秩序的最后一块拼图。',
+    '表面上是一次{X},真相却藏在{B}对{A}的沉默里。',
+    '真相在{B}开口之前,{A}就已经定局。',
+    '三个版本的说法,只有{A}和{B}知道哪个是真的。',
+    '所有人都在等{B}的答案,但{A}知道问题本身就是一个陷阱。',
   ],
   contrast: [
-    '还在计算退路,{B}已经把最后一道防线点亮。',
-    '本以为是硬碰硬,结果{A}用一句话改写了规则。',
+    '还在计算退路,{B}已经把{A}的最后一道防线点亮。',
+    '本以为是硬碰硬,结果{A}用一句话替{B}改写了规则。',
     '{A}不动声色,{B}却已按下整张地图的反转键。',
-    '所有人都准备正面强攻,{A}却问:谁规定缺口一定在正面?',
-    '看起来是退让,{B}其实把对手引进了自己设好的节奏。',
-    '所有人都以为{A}会妥协,{A}却把选项压缩到只剩一个。',
-    '最高调的人先退场,{B}在安静中完成全部布局。',
-    '{A}放下了所有人都以为不会放手的东西,局面瞬间反转。',
+    '所有人都准备正面强攻,{A}却问{B}:谁规定缺口一定在正面?',
+    '看起来是退让,{B}其实把{A}引进了自己设好的节奏。',
+    '所有人都以为{A}会向{B}妥协,{A}却把选项压缩到只剩一个。',
+    '最高调的人先退场,{B}在安静中替{A}完成全部布局。',
+    '{A}放下了{B}以为不会放手的东西,局面瞬间反转。',
   ],
   question: [
-    '如果{E}不再受规则约束,会怎样?',
+    '如果{E}不再受规则约束,{A}和{B}会怎样?',
     '为什么没人想过,让{A}和{B}站在同一边?',
-    '当秩序失效,谁还愿意守最后一道线?',
+    '当秩序失效,{A}和{B}谁还愿意守最后一道线?',
     '{A}凭什么相信,这一次{B}不会转身离开?',
-    '如果只剩一次机会,你会先保人还是先破局?',
+    '如果只剩一次机会,{A}会先保{B}还是先破局?',
     '当{A}选择沉默,谁还敢替{B}做决定?',
-    '{B}问了所有人都不敢问的问题,答案让全场安静。',
-    '如果把{E}反转过来看,谁才是真正的被困者?',
+    '{B}问了{A}都不敢问的问题,答案让全场安静。',
+    '如果把{E}反转过来看,{A}和{B}谁才是真正的被困者?',
   ],
   action: [
-    '第一步:把{E}变成所有人的焦点。',
-    '不废话,{A}先掀桌。',
-    '直接干。{B}已经替所有人决定了开场。',
-    '先动手再说,{A}用行动回应所有质疑。',
-    '不解释,不犹豫,{B}把退路全部封死。',
-    '不犹豫,{A}把第一步踩成整个场面的支点。',
-    '{B}没有宣布开始,因为行动本身就是宣言。',
-    '所有人都还在想,{A}已经站在了结果那一端。',
+    '第一步:{A}把{E}变成{B}的焦点。',
+    '不废话,{A}替{B}先掀桌。',
+    '直接干。{B}已经替{A}决定了开场。',
+    '先动手再说,{A}用行动替{B}回应所有质疑。',
+    '不解释,不犹豫,{B}把{A}的退路全部封死。',
+    '不犹豫,{A}把第一步踩成{B}整个场面的支点。',
+    '{B}没有向{A}宣布开始,因为行动本身就是宣言。',
+    '所有人都还在想,{A}已经替{B}站在了结果那一端。',
   ],
 }
 
@@ -224,13 +224,13 @@ const buildHook = (
   ctx: HookContext,
   rng: () => number,
 ): { text: string; category: HookCategory } => {
-  // 合并性格偏好与时长偏好，取交集优先，无交集时回退到性格偏好
+  // 合并性格偏好与时长偏好,取交集优先,无交集时回退到性格偏好
   const personalityBias = PERSONALITY_HOOK_BIAS[personalityA]
   const durationBias = durationHookBias[duration]
   const intersection = personalityBias.filter((category) => durationBias.includes(category))
   let effectiveCategories = intersection.length > 0 ? intersection : personalityBias
 
-  // 性格对扩展：互补组合增加额外类别，扩大选择空间降低碰撞率
+  // 性格对扩展:互补组合增加额外类别,扩大选择空间降低碰撞率
   const pairKey = [personalityA, personalityB].sort().join('|')
   const extraCategories = PERSONALITY_PAIR_HOOK_EXTRA[pairKey]
   if (extraCategories) {
@@ -238,7 +238,7 @@ const buildHook = (
     effectiveCategories = merged
   }
 
-  // 从候选类别的全部模板合并池中选择，扩大选择空间，避免同性格组合钩子高度雷同
+  // 从候选类别的全部模板合并池中选择,扩大选择空间,避免同性格组合钩子高度雷同
   const pool: { category: HookCategory; template: string }[] = []
   for (const category of effectiveCategories) {
     for (const template of HOOK_TEMPLATES[category]) {
@@ -552,10 +552,12 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
     `让《${input.workA.title}》的${characterA.character_types[0]}与` +
     `《${input.workB.title}》的${characterB.character_types[0]},` +
     `进入《${input.momentWork.title}》启发的"${moment.conflict_type}"结构。` +
+    `${characterA.name}的${characterA.traits[0] ?? '果决'}对上${characterB.name}的${characterB.traits[0] ?? '坚韧'},` +
     `保留性格与关系张力,人物造型、台词、镜头和世界观全部原创改写。`
 
   const prompt =
-    `${style.prompt}。原创角色造型,不复刻任何具体演员或动画形象。` +
+    `${style.prompt}。原创角色造型，不复刻任何具体演员或动画形象。` +
+    `${characterA.name}(${characterA.character_types[0]})与${characterB.name}(${characterB.character_types[0]})对峙。` +
     `场景:${moment.setting}。动作:${moment.visual_actions.join('、')}。` +
     `情绪:${moment.emotional_arc.join(' → ')}。`
 
