@@ -12,3 +12,6 @@ memory/archive/
 # 锁文件与配置自身（无需格式化）
 package-lock.json
 eslint.config.js
+
+# 临时文件
+_tmp_*

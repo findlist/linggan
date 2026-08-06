@@ -137,43 +137,43 @@ const pick = <T>(items: readonly T[], rng: () => number): T => items[Math.floor(
 export const HOOK_TEMPLATES: Record<HookCategory, string[]> = {
   suspense: [
     '所有人以为这只是{E},直到{A}在{B}面前认真起来。',
-    '没人注意到,{B}早在三步之前就已经落子。',
-    '直到最后一秒,{A}才向{B}亮出真正的底牌。',
+    '没人注意到,{B}早在三步之前就已经围绕{E}落子。',
+    '直到最后一秒,{A}才向{B}亮出关于{E}的真正底牌。',
     '谁也没想到,{E}会成为{A}与{B}之间压垮秩序的最后一块拼图。',
-    '表面上是一次{X},真相却藏在{B}对{A}的沉默里。',
-    '真相在{B}开口之前,{A}就已经定局。',
-    '三个版本的说法,只有{A}和{B}知道哪个是真的。',
-    '所有人都在等{B}的答案,但{A}知道问题本身就是一个陷阱。',
+    '表面上是一次{X},真相却藏在{B}对{A}关于{E}的沉默里。',
+    '真相在{B}开口之前,{A}就已经从{E}中定局。',
+    '三个版本的说法关于{E},只有{A}和{B}知道哪个是真的。',
+    '所有人都在等{B}对{E}的答案,但{A}知道问题本身就是一个陷阱。',
   ],
   contrast: [
-    '还在计算退路,{B}已经把{A}的最后一道防线点亮。',
-    '本以为是硬碰硬,结果{A}用一句话替{B}改写了规则。',
-    '{A}不动声色,{B}却已按下整张地图的反转键。',
-    '所有人都准备正面强攻,{A}却问{B}:谁规定缺口一定在正面?',
-    '看起来是退让,{B}其实把{A}引进了自己设好的节奏。',
-    '所有人都以为{A}会向{B}妥协,{A}却把选项压缩到只剩一个。',
-    '最高调的人先退场,{B}在安静中替{A}完成全部布局。',
-    '{A}放下了{B}以为不会放手的东西,局面瞬间反转。',
+    '还在计算{E}的退路,{B}已经把{A}的最后一道防线点亮。',
+    '本以为是硬碰硬,结果{A}用一句话替{B}改写了{E}的规则。',
+    '{A}不动声色,{B}却已按下整张地图{E}的反转键。',
+    '所有人都准备正面强攻{E},{A}却问{B}:谁规定缺口一定在正面?',
+    '看起来是退让,{B}其实把{A}引进了自己设好的{E}节奏。',
+    '所有人都以为{A}会向{B}在{E}上妥协,{A}却把选项压缩到只剩一个。',
+    '最高调的人先退场,{B}在安静中替{A}完成{E}的全部布局。',
+    '{A}放下了{B}以为不会放手的东西,{E}的局面瞬间反转。',
   ],
   question: [
     '如果{E}不再受规则约束,{A}和{B}会怎样?',
-    '为什么没人想过,让{A}和{B}站在同一边?',
-    '当秩序失效,{A}和{B}谁还愿意守最后一道线?',
-    '{A}凭什么相信,这一次{B}不会转身离开?',
-    '如果只剩一次机会,{A}会先保{B}还是先破局?',
-    '当{A}选择沉默,谁还敢替{B}做决定?',
-    '{B}问了{A}都不敢问的问题,答案让全场安静。',
+    '为什么没人想过,让{A}和{B}在{E}中站在同一边?',
+    '当{E}的秩序失效,{A}和{B}谁还愿意守最后一道线?',
+    '{A}凭什么相信,这一次{B}不会在{E}中转身离开?',
+    '如果{E}只剩一次机会,{A}会先保{B}还是先破局?',
+    '当{A}选择沉默,谁还敢替{B}在{E}中做决定?',
+    '{B}问了{A}关于{E}都不敢问的问题,答案让全场安静。',
     '如果把{E}反转过来看,{A}和{B}谁才是真正的被困者?',
   ],
   action: [
     '第一步:{A}把{E}变成{B}的焦点。',
-    '不废话,{A}替{B}先掀桌。',
-    '直接干。{B}已经替{A}决定了开场。',
-    '先动手再说,{A}用行动替{B}回应所有质疑。',
-    '不解释,不犹豫,{B}把{A}的退路全部封死。',
-    '不犹豫,{A}把第一步踩成{B}整个场面的支点。',
-    '{B}没有向{A}宣布开始,因为行动本身就是宣言。',
-    '所有人都还在想,{A}已经替{B}站在了结果那一端。',
+    '不废话,{A}替{B}先在{E}上掀桌。',
+    '直接干。{B}已经替{A}决定了{E}的开场。',
+    '先动手再说,{A}用行动替{B}回应关于{E}的所有质疑。',
+    '不解释,不犹豫,{B}把{A}在{E}中的退路全部封死。',
+    '不犹豫,{A}把第一步踩成{B}整个{E}场面的支点。',
+    '{B}没有向{A}宣布{E}的开始,因为行动本身就是宣言。',
+    '所有人都还在想{E},{A}已经替{B}站在了结果那一端。',
   ],
 }
 
@@ -440,10 +440,13 @@ const buildCopywriting = (
   ]
 
   // 约 100 字描述:交代角色来源、碰撞结构与版权边界
+  // 使用 roles 和 traits 替代 character_types 增加差异度
+  const descRoleA = characterA.roles[0] ?? '核心人物'
+  const descRoleB = characterB.roles[0] ?? '核心人物'
   const description =
-    `让《${workA.title}》的${characterA.name}与《${workB.title}》的${characterB.name},` +
+    `让《${workA.title}》的${descRoleA}${characterA.name}与《${workB.title}》的${descRoleB}${characterB.name},` +
     `进入《${momentWork.title}》启发的"${moment.conflict_type}"结构。` +
-    `保留${characterA.character_types[0]}与${characterB.character_types[0]}的性格张力,` +
+    `保留${characterA.traits[0] ?? '果决'}与${characterB.traits[0] ?? '坚韧'}的性格张力,` +
     `台词、镜头与世界观全部原创改写,` +
     `适合${input.duration}秒${input.style.label}风格的短视频制作。`
 
@@ -487,7 +490,15 @@ const buildProduction = (input: RemixPlanInput, prompt: string): ProductionPacka
   const { style, characterA, characterB, moment } = input
 
   // 正向提示词:在人类可读摘要基础上补充制作关键词
-  const positive = `${prompt} 画面比例 9:16 竖屏,${style.prompt},` + `原创角色造型,高对比度光影,电影级质感。`
+  // 使用 traits 和 dialogue_style 补充角色差异度
+  const traitA = characterA.traits[0] ?? '果决'
+  const traitB = characterB.traits[0] ?? '坚韧'
+  const dlgA = characterA.dialogue_style[0] ?? traitA
+  const dlgB = characterB.dialogue_style[0] ?? traitB
+  const positive =
+    `${prompt} 画面比例 9:16 竖屏,${style.prompt},` +
+    `原创角色造型,高对比度光影,电影级质感。` +
+    `${characterA.name}:${traitA},${dlgA};${characterB.name}:${traitB},${dlgB}。`
 
   // 负面提示词:排除低质量输出和版权风险
   const negative =
@@ -547,17 +558,27 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
   const storyboard = buildStoryboard(duration, moment, style, rng)
   const copywriting = buildCopywriting(input, personalityA, rng)
 
+  // 概念文本:使用 roles[0] 和 dialogue_style[0] 替代 character_types[0],
+  // 因同性格角色的 character_types 常相同而 roles 和 dialogue_style 差异更大,
+  // 有效降低同性格组合的 concept 维度相似度。
+  const roleA = characterA.roles[0] ?? '核心人物'
+  const roleB = characterB.roles[0] ?? '核心人物'
+  const styleA = characterA.dialogue_style[0] ?? characterA.traits[0] ?? '果决'
+  const styleB = characterB.dialogue_style[0] ?? characterB.traits[0] ?? '坚韧'
+  const traitA = characterA.traits[0] ?? '果决'
+  const traitB = characterB.traits[0] ?? '坚韧'
+
   const title = `${characterA.name} × ${characterB.name}:${moment.name}`
   const concept =
-    `让《${input.workA.title}》的${characterA.character_types[0]}与` +
-    `《${input.workB.title}》的${characterB.character_types[0]},` +
+    `让《${input.workA.title}》的${roleA}${characterA.name}与` +
+    `《${input.workB.title}》的${roleB}${characterB.name},` +
     `进入《${input.momentWork.title}》启发的"${moment.conflict_type}"结构。` +
-    `${characterA.name}的${characterA.traits[0] ?? '果决'}对上${characterB.name}的${characterB.traits[0] ?? '坚韧'},` +
+    `${characterA.name}的${traitA}与"${styleA}"对上${characterB.name}的${traitB}与"${styleB}",` +
     `保留性格与关系张力,人物造型、台词、镜头和世界观全部原创改写。`
 
   const prompt =
     `${style.prompt}。原创角色造型，不复刻任何具体演员或动画形象。` +
-    `${characterA.name}(${characterA.character_types[0]})与${characterB.name}(${characterB.character_types[0]})对峙。` +
+    `${characterA.name}(${traitA},${styleA})与${characterB.name}(${traitB},${styleB})对峙。` +
     `场景:${moment.setting}。动作:${moment.visual_actions.join('、')}。` +
     `情绪:${moment.emotional_arc.join(' → ')}。`
 
