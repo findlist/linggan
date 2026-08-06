@@ -135,7 +135,8 @@ test('same hook but different other fields yields hook dimension 1 but score bel
 /* ----------------------- 验收条件 4：相同角色组合不同种子 → 部分维度相同 ----------------------- */
 
 test('same character pair with different seeds keeps title/concept similarity but varies hook', () => {
-  // 相同角色+场面+时长，仅种子不同：title/concept 包含角色名和场面名应保持相同
+  // 相同角色+场面+时长，仅种子不同：title/concept 包含角色名和场面名应保持高相似度
+  // 注意：title 现在有多种模式按种子选取，不同种子可能选不同模式，相似度不再恒为 1
   const planSameCombo = buildRemixPlan(
     buildInput(
       findCharacter('known_wang_lin'),
@@ -146,15 +147,19 @@ test('same character pair with different seeds keeps title/concept similarity bu
     ),
   )
   const { breakdown } = computePlanSimilarity(basePlan, planSameCombo)
-  // title 和 concept 都包含角色名和场面名，应完全相同
-  assert.equal(breakdown.title, 1, 'title must be identical for same character pair')
-  assert.equal(breakdown.concept, 1, 'concept must be identical for same character pair')
+  // title 有多种模式按种子选取，不同种子可能选不同模式，相似度不再恒为 1
+  assert.ok(breakdown.title >= 0.3, 'title should still share some bigrams for same character pair')
+  // concept 尾句现在按性格A从候选池选取，不同种子可能选不同尾句，相似度不再恒为 1
+  assert.ok(breakdown.concept >= 0.5, 'concept should still be highly similar for same character pair')
   assert.equal(breakdown.duration, 1, 'duration must be identical')
   assert.equal(breakdown.personality_pair, 1, 'personality pair must be identical for same characters')
   // 钩子来自模板池随机选择，不同种子大概率不同
-  // 这里不强制 hook < 1（小概率相同），只验证 score 在合理范围
+  // 概念尾句、标题模式和提示词句式也按种子变化，分数不再接近 1
   const { score } = computePlanSimilarity(basePlan, planSameCombo)
-  assert.ok(score >= 0.5 && score < 1, 'same combo different seed should be similar but not identical')
+  assert.ok(
+    score >= 0.3 && score < 1,
+    'same combo different seed should share structure but vary in text (score should be between 0.3 and 1)',
+  )
 })
 
 /* ----------------------- 验收条件 5：detectDuplicates 检测重复方案列表 ----------------------- */

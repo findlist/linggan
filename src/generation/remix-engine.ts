@@ -423,6 +423,82 @@ const buildStoryboard = (
   })
 }
 
+/* ------------------------- 概念尾句多样化 ------------------------- */
+// 概念文本的尾句曾为固定字符串,导致所有方案的 concept 维度 bigram 相似度偏高。
+// 改为按性格A和名场面冲突类型从候选池中选取,降低同性格组合的 concept 相似度。
+
+const CONCEPT_TAIL_BY_PERSONALITY: Record<PersonalityType, string[]> = {
+  cold: [
+    '冷静与克制贯穿始终,对白和镜头拒绝复刻任何原作。',
+    '理智驱动每一个决策节点,叙事节奏紧凑不留余冗。',
+    '代价摆在台面上先讲清楚,视觉风格独立于参考素材。',
+  ],
+  hot: [
+    '情绪推着节奏走,每一帧都在燃烧但不照搬原作分毫。',
+    '热血不是冲动而是选择,台词和画面从零开始构建。',
+    '冲突升级靠行动而非口角,世界观完全独立重铸。',
+  ],
+  cunning: [
+    '布局藏在话术缝隙里,观众需要二刷才看清暗线。',
+    '每一步礼让都是筹码交换,角色造型与原作无涉。',
+    '控制信息节奏比控制人更重要,镜头语言全部原创。',
+  ],
+  gentle: [
+    '温柔不是退让而是锚点,情绪稳定后局面自然回正。',
+    '安静的力量托底,台词节奏舒缓但信息量不减。',
+    '共情先于判断,角色互动方式从零设计不复刻。',
+  ],
+}
+
+/* ------------------------- 标题模式多样化 ------------------------- */
+// 标题曾固定为"{A} × {B}:{moment}",导致 title 维度 bigram 相似度偏高。
+// 改为多种模式按种子选取,降低同性格组合的 title 相似度。
+
+const TITLE_PATTERNS: ((nameA: string, nameB: string, momentName: string, conflictType: string) => string)[] = [
+  (a, b, m, _c) => `${a} × ${b}:${m}`,
+  (a, b, _m, c) => `${a}与${b}的${c}`,
+  (a, b, m, _c) => `${m}·${a}vs${b}`,
+  (a, _b, m, c) => `${a}的${c}:${m}改写`,
+  (_a, b, m, c) => `${b}面对${c}:${m}重构`,
+  (a, b, m, _c) => `当${a}遇上${b}·${m}`,
+]
+
+/* ------------------------- 提示词句式多样化 ------------------------- */
+// 提示词曾固定句式"原创角色造型，不复刻...对峙。场景:...动作:...情绪:...",
+// 改为多种句式按种子选取,降低 prompt 维度相似度。
+
+const PROMPT_PATTERNS: (
+  stylePrompt: string,
+  nameA: string,
+  traitA: string,
+  styleA: string,
+  nameB: string,
+  traitB: string,
+  styleB: string,
+  setting: string,
+  actions: readonly string[],
+  emotions: readonly string[],
+) => string[] = (stylePrompt, nameA, traitA, styleA, nameB, traitB, styleB, setting, actions, emotions) => [
+  `${stylePrompt}。原创角色造型，不复刻任何具体演员或动画形象。` +
+    `${nameA}(${traitA},${styleA})与${nameB}(${traitB},${styleB})对峙。` +
+    `场景:${setting}。动作:${actions.join('、')}。` +
+    `情绪:${emotions.join(' → ')}。`,
+  `${stylePrompt}风格,9:16竖屏构图。` +
+    `${nameA}以${traitA}和"${styleA}"出场,` +
+    `${nameB}以${traitB}和"${styleB}"回应。` +
+    `环境:${setting};行为:${actions.join('、')};` +
+    `情绪弧线:${emotions.join('→')}。`,
+  `${stylePrompt}。不复制原作造型。` +
+    `${nameA}的${traitA}碰撞${nameB}的${traitB}。` +
+    `空间设于${setting},关键动作含${actions.join('、')}。` +
+    `情感递进:${emotions.join('→')}。`,
+  `${stylePrompt}画面,原创造型。` +
+    `${nameA}(${styleA})对${nameB}(${styleB}):` +
+    `${traitA}对${traitB}。` +
+    `地点${setting};动作${actions.join('、')};` +
+    `心路${emotions.join('→')}。`,
+]
+
 /* ----------------------------- 发布文案 ----------------------------- */
 
 const buildCopywriting = (
@@ -568,19 +644,31 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
   const traitA = characterA.traits[0] ?? '果决'
   const traitB = characterB.traits[0] ?? '坚韧'
 
-  const title = `${characterA.name} × ${characterB.name}:${moment.name}`
+  const title = pick(TITLE_PATTERNS, rng)(characterA.name, characterB.name, moment.name, moment.conflict_type)
+
+  const conceptTail = pick(CONCEPT_TAIL_BY_PERSONALITY[personalityA], rng)
   const concept =
     `让《${input.workA.title}》的${roleA}${characterA.name}与` +
     `《${input.workB.title}》的${roleB}${characterB.name},` +
     `进入《${input.momentWork.title}》启发的"${moment.conflict_type}"结构。` +
     `${characterA.name}的${traitA}与"${styleA}"对上${characterB.name}的${traitB}与"${styleB}",` +
-    `保留性格与关系张力,人物造型、台词、镜头和世界观全部原创改写。`
+    conceptTail
 
-  const prompt =
-    `${style.prompt}。原创角色造型，不复刻任何具体演员或动画形象。` +
-    `${characterA.name}(${traitA},${styleA})与${characterB.name}(${traitB},${styleB})对峙。` +
-    `场景:${moment.setting}。动作:${moment.visual_actions.join('、')}。` +
-    `情绪:${moment.emotional_arc.join(' → ')}。`
+  const prompt = pick(
+    PROMPT_PATTERNS(
+      style.prompt,
+      characterA.name,
+      traitA,
+      styleA,
+      characterB.name,
+      traitB,
+      styleB,
+      moment.setting,
+      moment.visual_actions,
+      moment.emotional_arc,
+    ),
+    rng,
+  )
 
   const production = buildProduction(input, prompt)
 
