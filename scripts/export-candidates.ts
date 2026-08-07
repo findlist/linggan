@@ -1,5 +1,6 @@
 import { mkdir, rename, writeFile, rm } from 'node:fs/promises'
 import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { CandidateExportDocumentSchema } from '../src/data/contracts.ts'
 import type { CandidateExportDocument } from '../src/data/contracts.ts'
 import { loadDatabaseConfig, parseSqliteUrl } from '../src/config/database.ts'
@@ -69,24 +70,27 @@ export const exportCandidates = async (options: CandidateExportOptions): Promise
   }
 }
 
-// CLI 入口
-const outputPath = process.argv[2] ?? 'public/data/candidate-export.json'
-const logger = createTaskRunLogger({
-  taskName: 'export:candidates',
-  logDirectory: 'data/run-logs',
-  metadata: { output: outputPath },
-})
-
-try {
-  const result = await exportCandidates({ outputPath })
-  process.stdout.write(`Exported ${result.candidate_count} approved candidates to ${outputPath}\n`)
-  await logger.succeed({
-    processedCount: result.candidate_count,
-    successCount: result.candidate_count,
-    failureCount: 0,
-    metadata: { candidate_count: result.candidate_count },
+// CLI 入口：仅在直接运行此文件时执行，被 import 时不执行
+const isMainModule = process.argv[1] && fileURLToPath(import.meta.url) === fileURLToPath(`file://${process.argv[1]}`)
+if (isMainModule) {
+  const outputPath = process.argv[2] ?? 'public/data/candidate-export.json'
+  const logger = createTaskRunLogger({
+    taskName: 'export:candidates',
+    logDirectory: 'data/run-logs',
+    metadata: { output: outputPath },
   })
-} catch (error) {
-  await logger.fail(error)
-  throw error
+
+  try {
+    const result = await exportCandidates({ outputPath })
+    process.stdout.write(`Exported ${result.candidate_count} approved candidates to ${outputPath}\n`)
+    await logger.succeed({
+      processedCount: result.candidate_count,
+      successCount: result.candidate_count,
+      failureCount: 0,
+      metadata: { candidate_count: result.candidate_count },
+    })
+  } catch (error) {
+    await logger.fail(error)
+    throw error
+  }
 }

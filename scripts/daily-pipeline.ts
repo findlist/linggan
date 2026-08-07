@@ -20,6 +20,7 @@ import { createTaskRunLogger } from '../src/observability/task-run-logger.ts'
 import { reviewCandidates } from '../src/review/auto-reviewer.ts'
 import type { AutoReviewConfig } from '../src/review/auto-reviewer.ts'
 import type { CandidateStatus } from '../src/storage/candidate-store.ts'
+import { exportCandidates } from './export-candidates.ts'
 
 const root = new URL('../', import.meta.url)
 const readJson = async (path: string): Promise<unknown> =>
@@ -28,6 +29,7 @@ const readJson = async (path: string): Promise<unknown> =>
 const useExample = process.argv.includes('--example')
 const persist = !process.argv.includes('--no-persist')
 const skipReview = process.argv.includes('--no-review')
+const skipExport = process.argv.includes('--no-export')
 
 const logger = createTaskRunLogger({
   taskName: 'pipeline:daily',
@@ -135,6 +137,23 @@ try {
     database.close()
   }
 
+  // Auto-export: 审核完成后自动导出 approved 候选到只读 JSON 供前端消费
+  // --no-export 可跳过；--example 模式下无数据库持久化，导出会输出 0 条候选
+  let exportCount = 0
+  const exportSkipped = skipExport
+  if (!skipExport && persist) {
+    try {
+      const exportResult = await exportCandidates({ outputPath: 'public/data/candidate-export.json' })
+      exportCount = exportResult.candidate_count
+      process.stderr.write(`Exported ${exportCount} approved candidates to public/data/candidate-export.json\n`)
+    } catch (exportError) {
+      // 导出失败不阻塞 pipeline 主流程，候选已在 SQLite 中持久化
+      process.stderr.write(`Auto-export failed: ${(exportError as Error).message}\n`)
+    }
+  } else if (skipExport) {
+    process.stderr.write('Auto-export skipped: --no-export flag\n')
+  }
+
   // C2: 集成 C1 兼容矩阵过滤，生成完整制作包并记录统计
   // 在候选生成后，读取知识库和兼容矩阵，构建跨作品组合并用 C1 过滤
   let productionStats: { total: number; filtered_out: number; remaining: number; threshold: number } | null = null
@@ -235,6 +254,8 @@ try {
       review_rejected: reviewRejected,
       review_errors: reviewErrors,
       review_skipped: skipReview,
+      export_count: exportCount,
+      export_skipped: exportSkipped,
       production_total: productionStats?.total ?? 0,
       production_filtered_out: productionStats?.filtered_out ?? 0,
       production_remaining: productionStats?.remaining ?? 0,
