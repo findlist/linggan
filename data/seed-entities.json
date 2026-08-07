@@ -1,19 +1,19 @@
 {
   "characters": [
-    {"id":"char_archetype_swordsman","name":"冷酷剑客","kind":"archetype","media":"原创","traits":["冷酷","守诺"],"abilities":["剑术"],"relations":["宿敌","搭档"],"rights_status":"original"},
-    {"id":"char_archetype_hotblood","name":"热血新人","kind":"archetype","media":"原创","traits":["热血","莽撞"],"abilities":["快速学习"],"relations":["导师","宿敌"],"rights_status":"original"},
-    {"id":"char_archetype_detective","name":"失眠侦探","kind":"archetype","media":"原创","traits":["理性","话痨"],"abilities":["观察推理"],"relations":["搭档","神秘来客"],"rights_status":"original"},
-    {"id":"char_archetype_villain_parent","name":"反派奶爸","kind":"archetype","media":"原创","traits":["腹黑","温柔"],"abilities":["组织管理"],"relations":["家庭","身份对立"],"rights_status":"original"},
-    {"id":"char_original_hardcore_coder","name":"硬核程序员","kind":"original","media":"原创","traits":["极客","偏执","深夜高效"],"abilities":["系统架构","快速调试","技术布道"],"relations":["产品经理","技术对手"],"rights_status":"original"},
-    {"id":"char_original_delivery_poet","name":"外卖诗人","kind":"original","media":"原创","traits":["奔波","浪漫","市井观察"],"abilities":["路线规划","即兴写作","情绪共情"],"relations":["常客","骑手同伴"],"rights_status":"original"},
-    {"id":"char_original_esports_granny","name":"电竞奶奶","kind":"original","media":"原创","traits":["不服老","潮","反差萌"],"abilities":["游戏操作","直播互动","战术分析"],"relations":["孙子","战队队友"],"rights_status":"original"},
-    {"id":"char_original_retired_dancer","name":"退役舞者转行主理人","kind":"original","media":"原创","traits":["自律","审美强迫","坚韧"],"abilities":["身体表达","空间美学","品牌运营"],"relations":["前舞伴","品牌合伙人"],"rights_status":"original"},
-    {"id":"char_original_ai_trainer","name":"AI训练师","kind":"original","media":"原创","traits":["数据敏感","耐心","伦理自觉"],"abilities":["模型微调","数据标注","prompt工程"],"relations":["AI助手","标注团队"],"rights_status":"original"},
-    {"id":"char_original_late_night_dj","name":"深夜电台主播","kind":"original","media":"原创","traits":["温暖","倾听","孤独感"],"abilities":["声音控制","情绪引导","即兴评论"],"relations":["听众","节目制作人"],"rights_status":"original"},
-    {"id":"char_original_solo_detective","name":"独立侦探","kind":"original","media":"原创","traits":["缜密","冷面","正义感"],"abilities":["现场勘查","侧写分析","信息检索"],"relations":["线人","前警方同事"],"rights_status":"original"},
-    {"id":"char_original_wandering_chef","name":"流浪厨师","kind":"original","media":"原创","traits":["随性","味觉天赋","漂泊"],"abilities":["即兴料理","食材鉴别","街头生存"],"relations":["食材供应商","老食客"],"rights_status":"original"},
-    {"id":"char_original_extreme_camerman","name":"极限运动摄影师","kind":"original","media":"原创","traits":["冒险","专注","设备控"],"abilities":["极限拍摄","无人机操作","剪辑节奏"],"relations":["运动员搭档","后期团队"],"rights_status":"original"},
-    {"id":"char_original_community_mediator","name":"社区调解员","kind":"original","media":"原创","traits":["圆滑","耐心","市井智慧"],"abilities":["冲突调解","情绪降温","资源链接"],"relations":["社区居民","居委会"],"rights_status":"original"}
+    {"id":"char_archetype_swordsman","name":"冷酷剑客","kind":"archetype","media":"原创","traits":["冷酷","守诺","惜字如金","以行动代替解释","在沉默中施压"],"abilities":["剑术"],"relations":["宿敌","搭档"],"rights_status":"original"},
+    {"id":"char_archetype_hotblood","name":"热血新人","kind":"archetype","media":"原创","traits":["热血","莽撞","大声宣告意图","用承诺绑定自己","失败后立刻卷土重来"],"abilities":["快速学习"],"relations":["导师","宿敌"],"rights_status":"original"},
+    {"id":"char_archetype_detective","name":"失眠侦探","kind":"archetype","media":"原创","traits":["理性","话痨","用推理链代替结论","在跑题中埋关键线索","以自问自答推进思考"],"abilities":["观察推理"],"relations":["搭档","神秘来客"],"rights_status":"original"},
+    {"id":"char_archetype_villain_parent","name":"反派奶爸","kind":"archetype","media":"原创","traits":["腹黑","温柔","以关爱语气设圈套","在家庭话题中暴露真实弱点","用家务事比喻权力博弈"],"abilities":["组织管理"],"relations":["家庭","身份对立"],"rights_status":"original"},
+    {"id":"char_original_hardcore_coder","name":"硬核程序员","kind":"original","media":"原创","traits":["极客","偏执","深夜高效","用代码逻辑解释一切","拒绝模糊表述要求精确","以系统类比回应情感问题"],"abilities":["系统架构","快速调试","技术布道"],"relations":["产品经理","技术对手"],"rights_status":"original"},
+    {"id":"char_original_delivery_poet","name":"外卖诗人","kind":"original","media":"原创","traits":["奔波","浪漫","市井观察","用送餐路线写诗","在琐碎中发现史诗感","以食物比喻人情冷暖"],"abilities":["路线规划","即兴写作","情绪共情"],"relations":["常客","骑手同伴"],"rights_status":"original"},
+    {"id":"char_original_esports_granny","name":"电竞奶奶","kind":"original","media":"原创","traits":["不服老","潮","反差萌","用网络梗穿插人生经验","以长辈口吻点评战局","在关键操作前念叨家常"],"abilities":["游戏操作","直播互动","战术分析"],"relations":["孙子","战队队友"],"rights_status":"original"},
+    {"id":"char_original_retired_dancer","name":"退役舞者转行主理人","kind":"original","media":"原创","traits":["自律","审美强迫","坚韧","用身体记忆解释决策","以排练态度要求团队","在压力下回到呼吸节奏"],"abilities":["身体表达","空间美学","品牌运营"],"relations":["前舞伴","品牌合伙人"],"rights_status":"original"},
+    {"id":"char_original_ai_trainer","name":"AI训练师","kind":"original","media":"原创","traits":["数据敏感","耐心","伦理自觉","用概率表达观点","以纠错心态对待分歧","在模糊性中指出风险"],"abilities":["模型微调","数据标注","prompt工程"],"relations":["AI助手","标注团队"],"rights_status":"original"},
+    {"id":"char_original_late_night_dj","name":"深夜电台主播","kind":"original","media":"原创","traits":["温暖","倾听","孤独感","用音乐串起故事","以第二人称对话独白","在沉默中留给听众思考空间"],"abilities":["声音控制","情绪引导","即兴评论"],"relations":["听众","节目制作人"],"rights_status":"original"},
+    {"id":"char_original_solo_detective","name":"独立侦探","kind":"original","media":"原创","traits":["缜密","冷面","正义感","以反问逼出真相","用细节拆解谎言","在道德灰区保持个人底线"],"abilities":["现场勘查","侧写分析","信息检索"],"relations":["线人","前警方同事"],"rights_status":"original"},
+    {"id":"char_original_wandering_chef","name":"流浪厨师","kind":"original","media":"原创","traits":["随性","味觉天赋","漂泊","用菜名讲人生道理","以 improvisation 面对一切意外","在简陋条件下追求极致味道"],"abilities":["即兴料理","食材鉴别","街头生存"],"relations":["食材供应商","老食客"],"rights_status":"original"},
+    {"id":"char_original_extreme_camerman","name":"极限运动摄影师","kind":"original","media":"原创","traits":["冒险","专注","设备控","用镜头语言替代解释","在危险中保持冷静旁白","以帧率分析情绪节奏"],"abilities":["极限拍摄","无人机操作","剪辑节奏"],"relations":["运动员搭档","后期团队"],"rights_status":"original"},
+    {"id":"char_original_community_mediator","name":"社区调解员","kind":"original","media":"原创","traits":["圆滑","耐心","市井智慧","用邻里比喻化解对立","以倾听先行再给建议","在争吵中找到共同利益点"],"abilities":["冲突调解","情绪降温","资源链接"],"relations":["社区居民","居委会"],"rights_status":"original"}
   ],
   "scenes": [
     {"id":"scene_duel_reversal","name":"弱者在公开对决中逆转","pattern":["公开对峙","遭到轻视","第一次失败","发现破绽","标志性逆转"],"lifecycle":"evergreen","rights_status":"original"},
