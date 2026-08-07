@@ -12,7 +12,7 @@
     "candidate_count": 30,
     "publish_score": 70,
     "similarity_ceiling": 0.86,
-    "automatic_publish": false
+    "automatic_publish": true
   },
   "weights": {
     "heat": 0.2,

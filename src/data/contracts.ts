@@ -631,6 +631,8 @@ export const TaskRunLogSchema = z.object({
     'collect:wikipedia',
     'migrate:trends',
     'pipeline:daily',
+    'review:auto',
+    'review:revoke',
     'export:trends',
     'export:candidates',
     'sync:events',
