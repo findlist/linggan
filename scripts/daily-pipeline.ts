@@ -17,6 +17,9 @@ import { migrateDatabase } from '../src/database/migrate.ts'
 import { SqliteTrendStore } from '../src/storage/sqlite-trend-store.ts'
 import { SqliteCandidateStore } from '../src/storage/sqlite-candidate-store.ts'
 import { createTaskRunLogger } from '../src/observability/task-run-logger.ts'
+import { reviewCandidates } from '../src/review/auto-reviewer.ts'
+import type { AutoReviewConfig } from '../src/review/auto-reviewer.ts'
+import type { CandidateStatus } from '../src/storage/candidate-store.ts'
 
 const root = new URL('../', import.meta.url)
 const readJson = async (path: string): Promise<unknown> =>
@@ -24,6 +27,7 @@ const readJson = async (path: string): Promise<unknown> =>
 
 const useExample = process.argv.includes('--example')
 const persist = !process.argv.includes('--no-persist')
+const skipReview = process.argv.includes('--no-review')
 
 const logger = createTaskRunLogger({
   taskName: 'pipeline:daily',
@@ -79,6 +83,9 @@ try {
   let total = 0
 
   // Persist candidates to SQLite if database is available
+  let reviewApproved = 0
+  let reviewRejected = 0
+  let reviewErrors = 0
   if (candidateStore && database) {
     const idempotencyPrefix = `pipeline_${report.date}`
     const result = await candidateStore.insert(report.candidates, idempotencyPrefix)
@@ -86,6 +93,45 @@ try {
     skipped = result.skipped
     total = result.total
     process.stderr.write(`Persisted ${inserted} candidates (${skipped} duplicates skipped, ${total} total in store)\n`)
+
+    // Auto-review: 对新插入的 pending_review 候选自动审核
+    // automatic_publish 开关控制全局熔断，--no-review 可跳过
+    const pipelineConfig = rawConfig as {
+      limits: { publish_score: number; similarity_ceiling: number; automatic_publish: boolean }
+    }
+    const { automatic_publish } = pipelineConfig.limits
+    if (!skipReview && automatic_publish && inserted > 0) {
+      const pending = await candidateStore.list('pending_review')
+      if (pending.length > 0) {
+        const reviewConfig: AutoReviewConfig = {
+          publish_score: pipelineConfig.limits.publish_score,
+          similarity_ceiling: pipelineConfig.limits.similarity_ceiling,
+        }
+        const decisions = reviewCandidates(pending, reviewConfig)
+        for (const candidate of pending) {
+          const decision = decisions.get(candidate.id)
+          if (!decision) {
+            reviewErrors += 1
+            continue
+          }
+          const targetStatus: CandidateStatus = decision.decision === 'approve' ? 'approved' : 'rejected'
+          try {
+            await candidateStore.transition(candidate.id, targetStatus, decision.reason)
+            if (decision.decision === 'approve') reviewApproved += 1
+            else reviewRejected += 1
+          } catch {
+            // 单条失败不阻塞其他候选
+            reviewErrors += 1
+          }
+        }
+        process.stderr.write(
+          `Auto-review: ${reviewApproved} approved, ${reviewRejected} rejected, ${reviewErrors} errors out of ${pending.length} pending\n`,
+        )
+      }
+    } else if (!skipReview && !automatic_publish) {
+      process.stderr.write('Auto-review skipped: automatic_publish is disabled\n')
+    }
+
     database.close()
   }
 
@@ -185,6 +231,10 @@ try {
       inserted,
       skipped,
       total,
+      review_approved: reviewApproved,
+      review_rejected: reviewRejected,
+      review_errors: reviewErrors,
+      review_skipped: skipReview,
       production_total: productionStats?.total ?? 0,
       production_filtered_out: productionStats?.filtered_out ?? 0,
       production_remaining: productionStats?.remaining ?? 0,
