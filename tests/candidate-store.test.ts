@@ -102,11 +102,20 @@ test('isLegalTransition rejects rejected → approved', () => {
   assert.equal(isLegalTransition('rejected', 'approved'), false)
 })
 
-test('isLegalTransition rejects archived → anything', () => {
-  const statuses: CandidateStatus[] = ['pending_review', 'approved', 'rejected', 'archived']
-  for (const to of statuses) {
-    assert.equal(isLegalTransition('archived', to), false)
-  }
+test('isLegalTransition allows archived → pending_review (reactivate)', () => {
+  assert.equal(isLegalTransition('archived', 'pending_review'), true)
+})
+
+test('isLegalTransition rejects archived → approved', () => {
+  assert.equal(isLegalTransition('archived', 'approved'), false)
+})
+
+test('isLegalTransition rejects archived → rejected', () => {
+  assert.equal(isLegalTransition('archived', 'rejected'), false)
+})
+
+test('isLegalTransition rejects archived → archived', () => {
+  assert.equal(isLegalTransition('archived', 'archived'), false)
 })
 
 test('LEGAL_TRANSITIONS has no self-transitions', () => {
@@ -291,6 +300,31 @@ test('transition approved → rejected throws IllegalTransitionError', async () 
 })
 
 test('transition archived → approved throws IllegalTransitionError', async () => {
+  await withDatabase(async (store) => {
+    await store.insert([createCandidate('c1')], 'run_001')
+    await store.transition('c1', 'approved')
+    await store.transition('c1', 'archived')
+    await assert.rejects(store.transition('c1', 'approved'), IllegalTransitionError)
+  })
+})
+
+test('transition archived → pending_review succeeds (reactivate)', async () => {
+  await withDatabase(async (store) => {
+    await store.insert([createCandidate('c1')], 'run_001')
+    await store.transition('c1', 'approved', 'good quality')
+    await store.transition('c1', 'archived', 'published')
+    const result = await store.transition('c1', 'pending_review', 'manual reactivate for re-review')
+    assert.equal(result.from, 'archived')
+    assert.equal(result.to, 'pending_review')
+
+    // Candidate should now be available in pending_review list
+    const pending = await store.list('pending_review')
+    assert.equal(pending.length, 1)
+    assert.equal(pending[0].id, 'c1')
+  })
+})
+
+test('transition archived → approved still throws (must go through pending_review)', async () => {
   await withDatabase(async (store) => {
     await store.insert([createCandidate('c1')], 'run_001')
     await store.transition('c1', 'approved')

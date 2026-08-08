@@ -3,6 +3,8 @@ import type { Candidate } from '../data/contracts.ts'
 /**
  * Valid candidate statuses following the state machine:
  * pending_review → approved | rejected → archived
+ * rejected → pending_review (re-review)
+ * archived → pending_review (reactivate)
  */
 export const CANDIDATE_STATUSES = ['pending_review', 'approved', 'rejected', 'archived'] as const
 
@@ -13,13 +15,17 @@ export type CandidateStatus = (typeof CANDIDATE_STATUSES)[number]
  *
  * rejected → pending_review allows re-reviewing candidates that were auto-rejected
  * but later become relevant (e.g., trend resurgence, rule adjustment, or manual override).
- * The transition reopens the candidate for review:auto or manual approval.
+ *
+ * archived → pending_review allows reactivating archived candidates when trends
+ * resurge, rules are adjusted, or human judgment determines the archive was premature.
+ * This makes the lifecycle fully circular: any non-pending_review status can return
+ * to pending_review for re-evaluation.
  */
 export const LEGAL_TRANSITIONS: Record<CandidateStatus, CandidateStatus[]> = {
   pending_review: ['approved', 'rejected', 'archived'],
   approved: ['archived'],
   rejected: ['pending_review', 'archived'],
-  archived: [],
+  archived: ['pending_review'],
 }
 
 /**
