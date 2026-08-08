@@ -10,11 +10,15 @@ export type CandidateStatus = (typeof CANDIDATE_STATUSES)[number]
 
 /**
  * Legal state transitions. Any transition not listed here is illegal.
+ *
+ * rejected → pending_review allows re-reviewing candidates that were auto-rejected
+ * but later become relevant (e.g., trend resurgence, rule adjustment, or manual override).
+ * The transition reopens the candidate for review:auto or manual approval.
  */
 export const LEGAL_TRANSITIONS: Record<CandidateStatus, CandidateStatus[]> = {
   pending_review: ['approved', 'rejected', 'archived'],
   approved: ['archived'],
-  rejected: ['archived'],
+  rejected: ['pending_review', 'archived'],
   archived: [],
 }
 

@@ -18,6 +18,7 @@
     "export:candidates": "node --experimental-strip-types scripts/export-candidates.ts",
     "review:auto": "node --experimental-strip-types scripts/review-auto.ts",
     "review:revoke": "node --experimental-strip-types scripts/review-revoke.ts",
+    "review:reopen": "node --experimental-strip-types scripts/review-reopen.ts",
     "collect:wikipedia": "node --experimental-strip-types scripts/collect-wikipedia.ts",
     "sync:events": "node --experimental-strip-types scripts/sync-events.ts",
     "update:weekly-weights": "node --experimental-strip-types scripts/update-weekly-weights.ts",

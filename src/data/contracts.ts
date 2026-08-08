@@ -633,6 +633,7 @@ export const TaskRunLogSchema = z.object({
     'pipeline:daily',
     'review:auto',
     'review:revoke',
+    'review:reopen',
     'export:trends',
     'export:candidates',
     'sync:events',

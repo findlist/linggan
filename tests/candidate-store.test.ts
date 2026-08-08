@@ -90,6 +90,10 @@ test('isLegalTransition allows pending_review → archived', () => {
   assert.equal(isLegalTransition('pending_review', 'archived'), true)
 })
 
+test('isLegalTransition allows rejected → pending_review (re-review)', () => {
+  assert.equal(isLegalTransition('rejected', 'pending_review'), true)
+})
+
 test('isLegalTransition rejects approved → pending_review', () => {
   assert.equal(isLegalTransition('approved', 'pending_review'), false)
 })
@@ -252,6 +256,29 @@ test('transition rejected → archived succeeds', async () => {
     const result = await store.transition('c1', 'archived', 'expired')
     assert.equal(result.from, 'rejected')
     assert.equal(result.to, 'archived')
+  })
+})
+
+test('transition rejected → pending_review succeeds (re-review)', async () => {
+  await withDatabase(async (store) => {
+    await store.insert([createCandidate('c1')], 'run_001')
+    await store.transition('c1', 'rejected', 'auto-review: low score')
+    const result = await store.transition('c1', 'pending_review', 'manual reopen for re-review')
+    assert.equal(result.from, 'rejected')
+    assert.equal(result.to, 'pending_review')
+
+    // Candidate should now be available in pending_review list
+    const pending = await store.list('pending_review')
+    assert.equal(pending.length, 1)
+    assert.equal(pending[0].id, 'c1')
+  })
+})
+
+test('transition rejected → approved still throws (must go through pending_review)', async () => {
+  await withDatabase(async (store) => {
+    await store.insert([createCandidate('c1')], 'run_001')
+    await store.transition('c1', 'rejected')
+    await assert.rejects(store.transition('c1', 'approved'), IllegalTransitionError)
   })
 })
 
