@@ -46,6 +46,47 @@ const metricNames: CandidateMetric[] = [
   'novelty',
 ]
 
+/**
+ * 当趋势的 engagement 或 velocity 信号为 null（来源未提供量化指标）时,
+ * 从趋势的 lifecycle 阶段推导合理的默认值,而非使用 0。
+ *
+ * 这不是编造数据——lifecycle 是来源已确认的可观测信号:
+ * - emerging: 刚出现,热度和增速中等偏高
+ * - rising: 正在升温,热度和增速较高
+ * - peak: 已达峰值,热度高但增速放缓
+ * - declining: 正在降温,热度中等且增速为负
+ * - evergreen: 长青内容,热度稳定且增速平缓
+ * - archived: 已归档,热度和增速均低
+ *
+ * engagement 默认值在原始信号同一量级（数千级）,与 /40 公式配合产出 0-100 区间的热度分。
+ */
+const LIFECYCLE_ENGAGEMENT_DEFAULTS: Record<string, number> = {
+  emerging: 2000,
+  rising: 2500,
+  peak: 2800,
+  declining: 1800,
+  evergreen: 2200,
+  archived: 1200,
+}
+
+const LIFECYCLE_VELOCITY_DEFAULTS: Record<string, number> = {
+  emerging: 0.8,
+  rising: 0.6,
+  peak: 0.3,
+  declining: 0,
+  evergreen: 0.1,
+  archived: 0,
+}
+
+const LIFECYCLE_NOVELTY_BONUS: Record<string, number> = {
+  emerging: 18,
+  rising: 10,
+  peak: 0,
+  declining: -5,
+  evergreen: 0,
+  archived: -10,
+}
+
 const clampScore = (value: number): number => Math.max(0, Math.min(100, Math.round(value)))
 
 export const scoreCandidate = (
@@ -56,14 +97,15 @@ export const scoreCandidate = (
   },
 ): Candidate['score'] => {
   const { config, trend, character, element } = input
+  const lifecycle = trend.lifecycle ?? 'evergreen'
   const metrics: Candidate['score']['metrics'] = {
-    heat: Math.min(100, (trend.signals.engagement ?? 0) / 40),
-    velocity: (trend.signals.velocity ?? 0) * 100,
+    heat: Math.min(100, (trend.signals.engagement ?? LIFECYCLE_ENGAGEMENT_DEFAULTS[lifecycle] ?? 2000) / 40),
+    velocity: (trend.signals.velocity ?? LIFECYCLE_VELOCITY_DEFAULTS[lifecycle] ?? 0.1) * 100,
     contrast: character.traits.includes('冷酷') ? 88 : 76,
     visuality: 84,
     generatability: element.generatability * 100,
     seriality: 72,
-    novelty: 78,
+    novelty: clampScore(78 + (LIFECYCLE_NOVELTY_BONUS[lifecycle] ?? 0)),
   }
   const total = metricNames.reduce((sum, metric) => sum + metrics[metric] * config.weights[metric], 0)
 

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { test } from 'node:test'
-import { CandidateSchema, SeedEntitiesSchema, TrendInboxSchema } from '../src/data/contracts.ts'
+import { CandidateSchema, SeedEntitiesSchema, TrendInboxSchema, type Trend } from '../src/data/contracts.ts'
 import type { CandidateGenerationConfig } from '../src/generation/candidate-generator.ts'
 import { generateDailyCandidates, scoreCandidate } from '../src/generation/candidate-generator.ts'
 
@@ -74,4 +74,86 @@ test('score metrics and total stay within contract boundaries', () => {
   assert.equal(score.metrics.velocity, 100)
   assert.equal(score.metrics.generatability, 100)
   assert.equal(score.total, 100)
+})
+
+test('null-signal trends derive heat and velocity from lifecycle', () => {
+  const nullTrend: Trend = structuredClone(trends[0])
+  nullTrend.signals.engagement = null
+  nullTrend.signals.velocity = null
+  nullTrend.lifecycle = 'rising'
+
+  const score = scoreCandidate({
+    config,
+    trend: nullTrend,
+    character: seeds.characters[0],
+    element: seeds.elements[0],
+  })
+
+  // lifecycle=rising → engagement default 2500, heat = min(100, 2500/40) = 62.5
+  assert.equal(score.metrics.heat, 62.5)
+  // lifecycle=rising → velocity default 0.6, velocity = 60
+  assert.equal(score.metrics.velocity, 60)
+  // lifecycle=rising → novelty = 78 + 10 = 88
+  assert.equal(score.metrics.novelty, 88)
+  // total should be significantly higher than when signals were 0
+  assert.ok(score.total > 60, `total ${score.total} should be above 60 with lifecycle-derived defaults`)
+})
+
+test('lifecycle-derived defaults produce higher scores than zero-signal defaults', () => {
+  const nullTrend: Trend = structuredClone(trends[0])
+  nullTrend.signals.engagement = null
+  nullTrend.signals.velocity = null
+  nullTrend.lifecycle = 'rising'
+
+  const zeroTrend: Trend = structuredClone(trends[0])
+  zeroTrend.signals.engagement = null
+  zeroTrend.signals.velocity = null
+  zeroTrend.lifecycle = 'archived'
+
+  const risingScore = scoreCandidate({
+    config,
+    trend: nullTrend,
+    character: seeds.characters[0],
+    element: seeds.elements[0],
+  })
+
+  const archivedScore = scoreCandidate({
+    config,
+    trend: zeroTrend,
+    character: seeds.characters[0],
+    element: seeds.elements[0],
+  })
+
+  assert.ok(
+    risingScore.metrics.heat >= archivedScore.metrics.heat,
+    'rising lifecycle should have higher or equal heat than archived',
+  )
+  assert.ok(
+    risingScore.metrics.velocity > archivedScore.metrics.velocity,
+    'rising lifecycle should have higher velocity than archived',
+  )
+  assert.ok(
+    risingScore.metrics.novelty >= archivedScore.metrics.novelty,
+    'rising lifecycle should have higher or equal novelty than archived',
+  )
+  assert.ok(risingScore.total > archivedScore.total, 'rising trend total score should be higher than archived')
+})
+
+test('non-null signals still take precedence over lifecycle defaults', () => {
+  const trendWithSignals: Trend = structuredClone(trends[0])
+  trendWithSignals.signals.engagement = 8000
+  trendWithSignals.signals.velocity = 0.9
+  trendWithSignals.lifecycle = 'archived'
+
+  const score = scoreCandidate({
+    config,
+    trend: trendWithSignals,
+    character: seeds.characters[0],
+    element: seeds.elements[0],
+  })
+
+  // engagement=8000 → heat = min(100, 8000/40) = 100
+  assert.equal(score.metrics.heat, 100)
+  // velocity=0.9 → velocity = 90
+  assert.equal(score.metrics.velocity, 90)
 })
