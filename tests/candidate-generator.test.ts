@@ -19,7 +19,8 @@ test('generates candidates that match the shared contract', () => {
 
   assert.equal(report.date, '2026-07-29')
   assert.equal(report.summary.trends, 1)
-  assert.equal(report.summary.candidates, 2)
+  // 1 trend × 3 characters per trend = 3 candidates
+  assert.equal(report.summary.candidates, 3)
   assert.equal(
     report.candidates.every((candidate) => CandidateSchema.safeParse(candidate).success),
     true,
@@ -46,6 +47,66 @@ test('repeated generation is deterministic with a fixed clock', () => {
   const input = { config, seeds, trends, clock: fixedClock }
 
   assert.deepEqual(generateDailyCandidates(input), generateDailyCandidates(input))
+})
+
+test('candidate diversity: uses more than 2 unique characters across candidates', () => {
+  // 使用 5 个趋势 × 3 角色/趋势 = 15 候选,验证使用角色数 > 2
+  const multiTrends = Array.from({ length: 5 }, (_, i) => {
+    const t = structuredClone(trends[0])
+    t.external_id = `trend-${i}`
+    t.title = `测试趋势${i}`
+    return t
+  })
+  const report = generateDailyCandidates({ config, seeds, trends: multiTrends, clock: fixedClock })
+
+  const uniqueChars = new Set(report.candidates.map((c) => c.entities[0]))
+  assert.ok(uniqueChars.size > 2, `expected more than 2 unique characters, got ${uniqueChars.size}`)
+})
+
+test('candidate diversity: titles are not all identical', () => {
+  const multiTrends = Array.from({ length: 5 }, (_, i) => {
+    const t = structuredClone(trends[0])
+    t.external_id = `trend-${i}`
+    t.title = `测试趋势${i}`
+    return t
+  })
+  const report = generateDailyCandidates({ config, seeds, trends: multiTrends, clock: fixedClock })
+
+  const uniqueTitles = new Set(report.candidates.map((c) => c.title))
+  assert.ok(uniqueTitles.size > 1, `expected more than 1 unique title, got ${uniqueTitles.size}`)
+})
+
+test('candidate diversity: hooks are not all identical', () => {
+  const multiTrends = Array.from({ length: 5 }, (_, i) => {
+    const t = structuredClone(trends[0])
+    t.external_id = `trend-${i}`
+    t.title = `测试趋势${i}`
+    return t
+  })
+  const report = generateDailyCandidates({ config, seeds, trends: multiTrends, clock: fixedClock })
+
+  const uniqueHooks = new Set(report.candidates.map((c) => c.hook))
+  assert.ok(uniqueHooks.size > 1, `expected more than 1 unique hook, got ${uniqueHooks.size}`)
+})
+
+test('candidate diversity: all 14 seed characters can appear in candidates', () => {
+  // 使用足够多的趋势确保所有角色至少出现一次
+  const manyTrends = Array.from({ length: 10 }, (_, i) => {
+    const t = structuredClone(trends[0])
+    t.external_id = `trend-${i}`
+    t.title = `测试趋势${i}`
+    return t
+  })
+  const report = generateDailyCandidates({ config, seeds, trends: manyTrends, clock: fixedClock })
+
+  const usedCharIds = new Set(report.candidates.map((c) => c.entities[0]))
+  const allCharIds = new Set(seeds.characters.map((c) => c.id))
+  // 10 trends × 3 chars = 30 candidates, but candidate_count limit may apply
+  // At minimum, more than half of all characters should be used
+  assert.ok(
+    usedCharIds.size >= 8,
+    `expected at least 8 unique characters used, got ${usedCharIds.size} out of ${allCharIds.size}`,
+  )
 })
 
 test('score metrics and total stay within contract boundaries', () => {

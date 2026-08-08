@@ -112,6 +112,36 @@ export const scoreCandidate = (
   return { total: clampScore(total), metrics }
 }
 
+/**
+ * 候选标题模板池——根据角色名、元素名和趋势标题组合生成多样化标题。
+ * 按组合索引选取,确保不同候选产生不同标题文本。
+ */
+const TITLE_PATTERNS: ((charName: string, elementName: string, trendTitle: string) => string)[] = [
+  (c, e) => `${c}把${e}变成一场史诗挑战`,
+  (c, e) => `当${c}遇上${e}`,
+  (c, e, t) => `${t}·${c}的${e}时刻`,
+  (c, e) => `${c}的${e}生存指南`,
+  (c, e, t) => `从${e}到${t.slice(0, 8)}:${c}的逆风局`,
+  (c, e) => `${e}前夜:${c}做了个决定`,
+  (c, e, t) => `${t.slice(0, 8)}之后,${c}和${e}的故事`,
+  (c, e) => `如果${c}出现在${e}`,
+]
+
+/**
+ * 候选钩子模板池——根据角色名、元素名和趋势标题组合生成多样化钩子。
+ * 按组合索引选取,确保不同候选产生不同钩子文本。
+ */
+const HOOK_PATTERNS: ((charName: string, elementName: string, trendTitle: string) => string)[] = [
+  (c, e) => `所有人以为这只是${e}，直到${c}认真起来。`,
+  (c, e) => `没人想到${e}会变成${c}的主场。`,
+  (c, e, t) => `${t.slice(0, 10)}的热度还在涨,但${c}已经看到了${e}背后的机会。`,
+  (c, e) => `第一步:${c}走进${e}。接下来发生的事没人预料到。`,
+  (c, e) => `为什么${e}总是和${c}过不去?答案比你想的复杂。`,
+  (c, e, t) => `如果${t.slice(0, 8)}是一场棋局,${c}的筹码就是${e}。`,
+  (c, e) => `${e}不是终点,是${c}的起跑线。`,
+  (c, e) => `本以为是普通的${e},结果${c}把它玩出了新花样。`,
+]
+
 const formatDate = (date: Date, timezone: string): string =>
   new Intl.DateTimeFormat('sv-SE', {
     timeZone: timezone,
@@ -119,6 +149,13 @@ const formatDate = (date: Date, timezone: string): string =>
     month: '2-digit',
     day: '2-digit',
   }).format(date)
+
+/**
+ * 每个趋势选取的角色数量上限。
+ * 14 个角色（4 archetype + 10 original）轮换使用,
+ * 每个趋势分配 3 个不同角色,确保候选多样性。
+ */
+const CHARACTERS_PER_TREND = 3
 
 export const generateDailyCandidates = (input: CandidateGenerationInput): DailyCandidateReport => {
   const { config, seeds, trends } = input
@@ -129,17 +166,32 @@ export const generateDailyCandidates = (input: CandidateGenerationInput): DailyC
   const candidates = canGenerate
     ? trends
         .slice(0, 10)
-        .flatMap((trend, trendIndex) =>
-          seeds.characters.slice(0, 2).map((character, characterIndex) => {
-            const entityIndex = trendIndex + characterIndex
-            const scene = seeds.scenes[entityIndex % seeds.scenes.length]
-            const element = seeds.elements[entityIndex % seeds.elements.length]
+        .flatMap((trend, trendIndex) => {
+          // 轮换选取角色:每个趋势从不同位置开始选取 CHARACTERS_PER_TREND 个角色
+          const charCount = seeds.characters.length
+          const charStart = (trendIndex * CHARACTERS_PER_TREND) % charCount
+          const selectedChars: Character[] = []
+          for (let i = 0; i < Math.min(CHARACTERS_PER_TREND, charCount); i++) {
+            selectedChars.push(seeds.characters[(charStart + i) % charCount])
+          }
+
+          return selectedChars.map((character, characterIndex) => {
+            // 使用组合索引确保不同趋势+角色产生不同场景和元素
+            const comboIndex = trendIndex * CHARACTERS_PER_TREND + characterIndex
+            const scene = seeds.scenes[comboIndex % seeds.scenes.length]
+            const element = seeds.elements[comboIndex % seeds.elements.length]
+
+            // 按组合索引选取标题和钩子模板,确保文本多样化
+            const titleFn = TITLE_PATTERNS[comboIndex % TITLE_PATTERNS.length]
+            const hookFn = HOOK_PATTERNS[comboIndex % HOOK_PATTERNS.length]
+            const trendTitle = trend.title
+
             const candidate = {
               id: `candidate_${trendIndex + 1}_${characterIndex + 1}`,
-              title: `${character.name}把${element.name}变成一场史诗挑战`,
+              title: titleFn(character.name, element.name, trendTitle),
               source_trend: trend.external_id,
               entities: [character.id, scene.id, element.id],
-              hook: `所有人以为这只是${element.name}，直到${character.name}认真起来。`,
+              hook: hookFn(character.name, element.name, trendTitle),
               score: scoreCandidate({ config, trend, character, element }),
               risk_level: trend.risk_level,
               rights_status: character.rights_status,
@@ -148,8 +200,8 @@ export const generateDailyCandidates = (input: CandidateGenerationInput): DailyC
             }
 
             return CandidateSchema.parse(candidate)
-          }),
-        )
+          })
+        })
         .slice(0, config.limits.candidate_count)
     : []
 
