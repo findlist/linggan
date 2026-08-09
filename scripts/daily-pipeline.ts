@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { resolve, join } from 'node:path'
+import { mkdir, writeFile } from 'node:fs/promises'
 import {
   CompatibilityMatrixSchema,
   KnowledgeBaseSchema,
@@ -21,6 +22,8 @@ import { reviewCandidates } from '../src/review/auto-reviewer.ts'
 import type { AutoReviewConfig } from '../src/review/auto-reviewer.ts'
 import type { CandidateStatus } from '../src/storage/candidate-store.ts'
 import { exportCandidates } from './export-candidates.ts'
+import { fetchWikipediaMostRead, transformWikipediaMostRead } from '../src/collectors/wikipedia-adapter.ts'
+import { migrateCollectionInbox } from '../src/ingestion/migrate-collection-inbox.ts'
 
 const root = new URL('../', import.meta.url)
 const readJson = async (path: string): Promise<unknown> =>
@@ -30,6 +33,8 @@ const useExample = process.argv.includes('--example')
 const persist = !process.argv.includes('--no-persist')
 const skipReview = process.argv.includes('--no-review')
 const skipExport = process.argv.includes('--no-export')
+const skipCollect = process.argv.includes('--no-collect') || useExample
+const skipMigrate = process.argv.includes('--no-migrate') || useExample
 
 const logger = createTaskRunLogger({
   taskName: 'pipeline:daily',
@@ -37,11 +42,50 @@ const logger = createTaskRunLogger({
   metadata: { use_example: useExample, persist },
 })
 
+// 采集统计
+let collectStats: { items: number; batch_file: string | null; error: string | null } | null = null
+// 迁移统计
+let migrateStats: {
+  discovered: number
+  processed: number
+  inserted: number
+  updated: number
+  deduplicated: number
+  total_trends: number
+  error: string | null
+} | null = null
+
 try {
   const [rawConfig, rawSeeds] = await Promise.all([
     readJson('config/pipeline.json'),
     readJson('data/seed-entities.json'),
   ])
+
+  // 可选步骤 1：采集公开热点到 collection-inbox（--no-collect 或 --example 跳过）
+  if (!skipCollect) {
+    try {
+      const language = 'zh'
+      const date = new Date().toISOString().slice(0, 10)
+      const response = await fetchWikipediaMostRead({ language, date })
+      const now = new Date()
+      const collectedAt = now.toISOString()
+      const timeSlug = now.toISOString().slice(11, 19).replace(/:/gu, '')
+      const dateSlug = date.replace(/-/gu, '')
+      const runId = `wiki_most_read_${language}_${dateSlug}_${timeSlug}`
+      const batch = transformWikipediaMostRead({ response, language, collectedAt, runId })
+      const [year, month, day] = date.split('-')
+      const targetDir = join('data/collection-inbox', year, month, day)
+      await mkdir(targetDir, { recursive: true })
+      const fileName = `${date}_${timeSlug}+00-00.json`
+      const batchPath = join(targetDir, fileName)
+      await writeFile(batchPath, `${JSON.stringify(batch, null, 2)}\n`, 'utf8')
+      collectStats = { items: batch.items.length, batch_file: batchPath, error: null }
+      process.stderr.write(`Collected ${batch.items.length} items from Wikipedia (${language}) to ${batchPath}\n`)
+    } catch (collectError) {
+      collectStats = { items: 0, batch_file: null, error: (collectError as Error).message }
+      process.stderr.write(`Collect skipped: ${(collectError as Error).message}\n`)
+    }
+  }
 
   let trends
   let candidateStore: SqliteCandidateStore | null = null
@@ -58,6 +102,39 @@ try {
       migrationsDirectory: dbConfig.migrationsDirectory,
     })
     database = migrated.database
+
+    // 可选步骤 2：迁移 collection-inbox 批次到 SQLite（--no-migrate 或 --example 跳过）
+    if (!skipMigrate) {
+      try {
+        const migrateReport = await migrateCollectionInbox({
+          inboxDirectory: 'data/collection-inbox',
+          store: new SqliteTrendStore(database),
+        })
+        migrateStats = {
+          discovered: migrateReport.files_discovered,
+          processed: migrateReport.files_processed,
+          inserted: migrateReport.inserted,
+          updated: migrateReport.updated,
+          deduplicated: migrateReport.deduplicated,
+          total_trends: migrateReport.total_trends,
+          error: null,
+        }
+        process.stderr.write(
+          `Migrated ${migrateReport.files_processed} batches (${migrateReport.inserted} inserted, ${migrateReport.deduplicated} deduplicated, ${migrateReport.total_trends} total trends)\n`,
+        )
+      } catch (migrateError) {
+        migrateStats = {
+          discovered: 0,
+          processed: 0,
+          inserted: 0,
+          updated: 0,
+          deduplicated: 0,
+          total_trends: 0,
+          error: (migrateError as Error).message,
+        }
+        process.stderr.write(`Migrate skipped: ${(migrateError as Error).message}\n`)
+      }
+    }
 
     try {
       const store = new SqliteTrendStore(database)
@@ -254,6 +331,13 @@ try {
       review_rejected: reviewRejected,
       review_errors: reviewErrors,
       review_skipped: skipReview,
+      collect_items: collectStats?.items ?? 0,
+      collect_error: collectStats?.error ?? null,
+      migrate_discovered: migrateStats?.discovered ?? 0,
+      migrate_inserted: migrateStats?.inserted ?? 0,
+      migrate_deduplicated: migrateStats?.deduplicated ?? 0,
+      migrate_total_trends: migrateStats?.total_trends ?? 0,
+      migrate_error: migrateStats?.error ?? null,
       export_count: exportCount,
       export_skipped: exportSkipped,
       production_total: productionStats?.total ?? 0,
