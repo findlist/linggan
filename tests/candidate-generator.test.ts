@@ -218,3 +218,94 @@ test('non-null signals still take precedence over lifecycle defaults', () => {
   // velocity=0.9 → velocity = 90
   assert.equal(score.metrics.velocity, 90)
 })
+
+test('contrast score varies based on character traits', () => {
+  const trend: Trend = structuredClone(trends[0])
+  // 冷酷剑客 (traits: 冷酷,守诺,惜字如金,以行动代替解释,在沉默中施压)
+  const coldChar = seeds.characters.find((c) => c.id === 'char_archetype_swordsman')!
+  // 热血新人 (traits: 热血,莽撞,大声宣告意图,用承诺绑定自己,失败后立刻卷土重来)
+  const hotChar = seeds.characters.find((c) => c.id === 'char_archetype_hotblood')!
+  // 外卖诗人 (traits: 奔波,浪漫,市井观察,用送餐路线写诗,在琐碎中发现史诗感,以食物比喻人情冷暖)
+  const poetChar = seeds.characters.find((c) => c.id === 'char_original_delivery_poet')!
+
+  const coldScore = scoreCandidate({ config, trend, character: coldChar, element: seeds.elements[0] })
+  const hotScore = scoreCandidate({ config, trend, character: hotChar, element: seeds.elements[0] })
+  const poetScore = scoreCandidate({ config, trend, character: poetChar, element: seeds.elements[0] })
+
+  // All three should have different contrast scores
+  const contrasts = new Set([coldScore.metrics.contrast, hotScore.metrics.contrast, poetScore.metrics.contrast])
+  assert.ok(contrasts.size >= 2, `expected at least 2 different contrast scores, got ${contrasts.size}`)
+  // All scores should be in valid range
+  for (const c of [coldScore, hotScore, poetScore]) {
+    assert.ok(c.metrics.contrast >= 60 && c.metrics.contrast <= 95, `contrast ${c.metrics.contrast} out of range`)
+  }
+})
+
+test('visuality score varies based on element category and actions', () => {
+  const trend: Trend = structuredClone(trends[0])
+  const char = seeds.characters[0]
+  // 台球 (sport, 3 actions)
+  const billiards = seeds.elements.find((e) => e.id === 'element_billiards')!
+  // 深夜拉面铺 (location, 3 actions)
+  const noodleShop = seeds.elements.find((e) => e.id === 'element_noodle_shop')!
+  // 公司会议室 (location, 3 actions)
+  const office = seeds.elements.find((e) => e.id === 'element_office_meeting')!
+
+  const sportScore = scoreCandidate({ config, trend, character: char, element: billiards })
+  const locationScore = scoreCandidate({ config, trend, character: char, element: noodleShop })
+  const officeScore = scoreCandidate({ config, trend, character: char, element: office })
+
+  // sport category should have higher or equal visuality than location
+  assert.ok(
+    sportScore.metrics.visuality >= locationScore.metrics.visuality,
+    `sport visuality ${sportScore.metrics.visuality} should be >= location ${locationScore.metrics.visuality}`,
+  )
+  // All scores should be in valid range
+  for (const s of [sportScore, locationScore, officeScore]) {
+    assert.ok(s.metrics.visuality >= 70 && s.metrics.visuality <= 95, `visuality ${s.metrics.visuality} out of range`)
+  }
+})
+
+test('seriality score varies based on scene pattern and element category', () => {
+  const trend: Trend = structuredClone(trends[0])
+  const char = seeds.characters[0]
+  const scene = seeds.scenes[0]
+  // 台球 (sport) - should get series bonus
+  const billiards = seeds.elements.find((e) => e.id === 'element_billiards')!
+  // 深夜拉面铺 (location) - should get location bonus
+  const noodleShop = seeds.elements.find((e) => e.id === 'element_noodle_shop')!
+
+  const sportScore = scoreCandidate({ config, trend, character: char, element: billiards, scene })
+  const locationScore = scoreCandidate({ config, trend, character: char, element: noodleShop, scene })
+
+  // sport should have higher seriality than location (sport gets +8, location gets +5)
+  assert.ok(
+    sportScore.metrics.seriality > locationScore.metrics.seriality,
+    `sport seriality ${sportScore.metrics.seriality} should be > location ${locationScore.metrics.seriality}`,
+  )
+  // All scores should be in valid range
+  for (const s of [sportScore, locationScore]) {
+    assert.ok(s.metrics.seriality >= 65 && s.metrics.seriality <= 92, `seriality ${s.metrics.seriality} out of range`)
+  }
+})
+
+test('contrast/visuality/seriality are no longer constant across different characters and elements', () => {
+  const trend: Trend = structuredClone(trends[0])
+  const scene = seeds.scenes[0]
+
+  // Generate scores for multiple character×element combinations
+  const scores = seeds.characters
+    .slice(0, 6)
+    .flatMap((char) =>
+      seeds.elements.map((element) => scoreCandidate({ config, trend, character: char, element, scene })),
+    )
+
+  const uniqueContrasts = new Set(scores.map((s) => s.metrics.contrast))
+  const uniqueVisualities = new Set(scores.map((s) => s.metrics.visuality))
+  const uniqueSerialities = new Set(scores.map((s) => s.metrics.seriality))
+
+  // All three dimensions should produce at least 2 different values across 18 combinations
+  assert.ok(uniqueContrasts.size >= 2, `contrast should vary, got ${uniqueContrasts.size} unique values`)
+  assert.ok(uniqueVisualities.size >= 2, `visuality should vary, got ${uniqueVisualities.size} unique values`)
+  assert.ok(uniqueSerialities.size >= 2, `seriality should vary, got ${uniqueSerialities.size} unique values`)
+})

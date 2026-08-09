@@ -87,6 +87,98 @@ const LIFECYCLE_NOVELTY_BONUS: Record<string, number> = {
   archived: -10,
 }
 
+/**
+ * 性格反差度评估——基于角色 traits 计算角色在不同场景中的反差潜力。
+ *
+ * 反差度高的角色（如同时拥有冷酷和温柔特质）在创意场景中能产生更大的戏剧张力,
+ * 从而获得更高的 contrast 分数。
+ */
+const CONTRAST_TRAIT_BONUS: Record<string, number> = {
+  冷酷: 6,
+  热血: 5,
+  腹黑: 7,
+  温柔: 4,
+  理性: 3,
+  冒险: 4,
+  偏执: 5,
+  不服老: 6,
+  浪漫: 4,
+  随性: 3,
+  圆滑: 3,
+  缜密: 4,
+  数据敏感: 3,
+  温暖: 3,
+  自律: 2,
+  奔波: 2,
+  漂泊: 3,
+  孤独感: 4,
+  专注: 2,
+}
+
+const CONTRAST_BASE = 68
+const CONTRAST_MAX = 95
+
+const computeContrast = (character: Character): number => {
+  let score = CONTRAST_BASE
+  for (const trait of character.traits) {
+    score += CONTRAST_TRAIT_BONUS[trait] ?? 0
+  }
+  // 角色拥有越多不同维度的 traits,反差潜力越大（但边际递减）
+  if (character.traits.length >= 5) score += 4
+  else if (character.traits.length >= 4) score += 2
+  return Math.min(CONTRAST_MAX, score)
+}
+
+/**
+ * 视觉化程度评估——基于元素类别和动作可视性计算画面想象空间。
+ *
+ * 运动类元素（如台球）有明确的动作和空间,视觉化程度高；
+ * 场景类元素（如深夜拉面铺、公司会议室）有环境细节和道具,视觉化程度中等偏高；
+ * 抽象元素的视觉化程度取决于动作描述的具体程度。
+ */
+const ELEMENT_CATEGORY_VISUALITY: Record<string, number> = {
+  sport: 92,
+  location: 86,
+  abstract: 70,
+  activity: 84,
+  object: 78,
+}
+
+const VISUALITY_BASE = 72
+const VISUALITY_ACTION_BONUS = 3
+const VISUALITY_MAX = 95
+
+const computeVisuality = (element: Element): number => {
+  let score = ELEMENT_CATEGORY_VISUALITY[element.category] ?? VISUALITY_BASE
+  // 动作越多,画面想象空间越大（但边际递减）
+  const actionCount = element.actions?.length ?? 0
+  score += Math.min(6, actionCount * VISUALITY_ACTION_BONUS)
+  return Math.min(VISUALITY_MAX, score)
+}
+
+/**
+ * 系列化潜力评估——基于场景 pattern 步骤数和元素类别计算内容延展性。
+ *
+ * 场景 pattern 步骤越多,故事结构越复杂,可延展为系列内容的潜力越大；
+ * 运动和场景类元素天然适合系列化（训练、日常、事件序列）。
+ */
+const SERIALITY_BASE = 65
+const SERIALITY_MAX = 92
+
+const computeSeriality = (scene: Scene, element: Element): number => {
+  let score = SERIALITY_BASE
+  // 场景 pattern 步骤数越多,结构越复杂,系列化潜力越大
+  const patternSteps = scene.pattern?.length ?? 0
+  score += Math.min(12, patternSteps * 2)
+  // 运动类元素天然有训练/比赛/进步的系列结构
+  if (element.category === 'sport') score += 8
+  else if (element.category === 'location') score += 5
+  else if (element.category === 'activity') score += 4
+  // 场景生命周期影响系列化潜力——evergreen 适合长系列
+  if (scene.lifecycle === 'evergreen') score += 3
+  return Math.min(SERIALITY_MAX, score)
+}
+
 const clampScore = (value: number): number => Math.max(0, Math.min(100, Math.round(value)))
 
 export const scoreCandidate = (
@@ -94,17 +186,18 @@ export const scoreCandidate = (
     trend: Trend
     character: Character
     element: Element
+    scene?: Scene
   },
 ): Candidate['score'] => {
-  const { config, trend, character, element } = input
+  const { config, trend, character, element, scene } = input
   const lifecycle = trend.lifecycle ?? 'evergreen'
   const metrics: Candidate['score']['metrics'] = {
     heat: Math.min(100, (trend.signals.engagement ?? LIFECYCLE_ENGAGEMENT_DEFAULTS[lifecycle] ?? 2000) / 40),
     velocity: (trend.signals.velocity ?? LIFECYCLE_VELOCITY_DEFAULTS[lifecycle] ?? 0.1) * 100,
-    contrast: character.traits.includes('冷酷') ? 88 : 76,
-    visuality: 84,
+    contrast: computeContrast(character),
+    visuality: computeVisuality(element),
     generatability: element.generatability * 100,
-    seriality: 72,
+    seriality: scene ? computeSeriality(scene, element) : SERIALITY_BASE,
     novelty: clampScore(78 + (LIFECYCLE_NOVELTY_BONUS[lifecycle] ?? 0)),
   }
   const total = metricNames.reduce((sum, metric) => sum + metrics[metric] * config.weights[metric], 0)
@@ -192,7 +285,7 @@ export const generateDailyCandidates = (input: CandidateGenerationInput): DailyC
               source_trend: trend.external_id,
               entities: [character.id, scene.id, element.id],
               hook: hookFn(character.name, element.name, trendTitle),
-              score: scoreCandidate({ config, trend, character, element }),
+              score: scoreCandidate({ config, trend, character, element, scene }),
               risk_level: trend.risk_level,
               rights_status: character.rights_status,
               status: 'pending_review' as const,
