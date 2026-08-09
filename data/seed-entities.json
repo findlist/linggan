@@ -18,7 +18,12 @@
   "scenes": [
     {"id":"scene_duel_reversal","name":"弱者在公开对决中逆转","pattern":["公开对峙","遭到轻视","第一次失败","发现破绽","标志性逆转"],"lifecycle":"evergreen","rights_status":"original"},
     {"id":"scene_identity_reveal","name":"隐藏身份突然揭露","pattern":["异常线索","众人质疑","证据出现","身份揭露","关系重置"],"lifecycle":"evergreen","rights_status":"original"},
-    {"id":"scene_meeting_blame","name":"严肃会议集体甩锅","pattern":["公布事故","逐个采访","证词冲突","真相回放","更大事故发生"],"lifecycle":"evergreen","rights_status":"original"}
+    {"id":"scene_meeting_blame","name":"严肃会议集体甩锅","pattern":["公布事故","逐个采访","证词冲突","真相回放","更大事故发生"],"lifecycle":"evergreen","rights_status":"original"},
+    {"id":"scene_quick_betrayal","name":"盟友突然反水","pattern":["合作确认","关键节点","反水揭露"],"lifecycle":"emerging","rights_status":"original"},
+    {"id":"scene_misunderstanding_escalation","name":"误会在三人间升级","pattern":["信息偏差","各自解读","试探确认","误判爆发","真相同框","尴尬和解"],"lifecycle":"rising","rights_status":"original"},
+    {"id":"scene_countdown_dilemma","name":"限时抉择","pattern":["倒计时开始","选项呈现","挣扎","取舍","代价显现","接受结果","新线索"],"lifecycle":"peak","rights_status":"original"},
+    {"id":"scene_role_reversal","name":"身份互换","pattern":["被迫接手","不适应","意外发现","换位理解","主动调整"],"lifecycle":"declining","rights_status":"original"},
+    {"id":"scene_chain_reaction","name":"连锁反应","pattern":["小事触发","逐级放大","波及无辜","不可收拾"],"lifecycle":"rising","rights_status":"original"}
   ],
   "story_patterns": [
     {"id":"story_serious_absurd","name":"一本正经的荒诞","beats":["严肃建立规则","目标极其微小","过程逐渐史诗化","生活化台词收尾"]},
@@ -28,6 +33,15 @@
   "elements": [
     {"id":"element_billiards","name":"台球","category":"sport","actions":["开球","走位","清台"],"generatability":0.85},
     {"id":"element_noodle_shop","name":"深夜拉面铺","category":"location","actions":["拉面","端碗","打烊"],"generatability":0.88},
-    {"id":"element_office_meeting","name":"公司会议室","category":"location","actions":["汇报","投屏","甩锅"],"generatability":0.95}
+    {"id":"element_office_meeting","name":"公司会议室","category":"location","actions":["汇报","投屏","甩锅"],"generatability":0.95},
+    {"id":"element_marathon","name":"城市马拉松","category":"sport","actions":["起跑","补水","撞墙","冲刺"],"generatability":0.82},
+    {"id":"element_escape_room","name":"密室逃脱","category":"activity","actions":["搜证","解谜","解锁","逃脱"],"generatability":0.80},
+    {"id":"element_live_stream","name":"直播带货","category":"activity","actions":["开场","展示","逼单","下播"],"generatability":0.92},
+    {"id":"element_old_phone","name":"老人机","category":"object","actions":["翻盖","按键","挂断"],"generatability":0.90},
+    {"id":"element_vinyl_record","name":"黑胶唱片","category":"object","actions":["放针","翻面","收套"],"generatability":0.87},
+    {"id":"element_vintage_camera","name":"胶片相机","category":"object","actions":["装卷","取景","按快门","过片"],"generatability":0.86},
+    {"id":"element_memory","name":"一段记忆","category":"abstract","actions":["回忆","模糊","闪回"],"generatability":0.65},
+    {"id":"element_rumor","name":"一条传闻","category":"abstract","actions":["传播","变形","澄清"],"generatability":0.60},
+    {"id":"element_silence","name":"沉默","category":"abstract","actions":["沉默"],"generatability":0.50}
   ]
 }
