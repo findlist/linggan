@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises'
 import { test } from 'node:test'
 import { CandidateSchema, SeedEntitiesSchema, TrendInboxSchema, type Trend } from '../src/data/contracts.ts'
 import type { CandidateGenerationConfig } from '../src/generation/candidate-generator.ts'
-import { generateDailyCandidates, scoreCandidate } from '../src/generation/candidate-generator.ts'
+import { generateDailyCandidates, scoreCandidate, shortenTrendTitle } from '../src/generation/candidate-generator.ts'
 
 const root = new URL('../', import.meta.url)
 const readJson = async (path: string): Promise<unknown> =>
@@ -308,4 +308,60 @@ test('contrast/visuality/seriality are no longer constant across different chara
   assert.ok(uniqueContrasts.size >= 2, `contrast should vary, got ${uniqueContrasts.size} unique values`)
   assert.ok(uniqueVisualities.size >= 2, `visuality should vary, got ${uniqueVisualities.size} unique values`)
   assert.ok(uniqueSerialities.size >= 2, `seriality should vary, got ${uniqueSerialities.size} unique values`)
+})
+
+test('shortenTrendTitle: breaks on Chinese colon and returns first segment truncated to maxLen', () => {
+  const result = shortenTrendTitle('2026年未录满本科专业排行榜出炉：会计学410次居首')
+  assert.ok(result.length <= 10, `result should be <= 10 chars, got ${result.length}`)
+  assert.ok(!result.includes('：'), 'result should not contain the colon')
+  assert.ok(!result.includes('会计学'), 'result should not contain the second segment')
+})
+
+test('shortenTrendTitle: breaks on em dash when first segment fits maxLen', () => {
+  const result = shortenTrendTitle('上海地铁—3号线停运', 10)
+  assert.equal(result, '上海地铁')
+})
+
+test('shortenTrendTitle: truncates long title without break chars', () => {
+  const result = shortenTrendTitle('一个非常非常非常非常非常长的趋势标题没有任何标点符号', 10)
+  assert.ok(result.length <= 10)
+  assert.equal(result, '一个非常非常非常非常')
+})
+
+test('shortenTrendTitle: respects custom maxLen', () => {
+  const result = shortenTrendTitle('香港刷新1884年以来最高气温纪录', 6)
+  assert.ok(result.length <= 6)
+})
+
+test('shortenTrendTitle: strips trailing punctuation', () => {
+  const result = shortenTrendTitle('某趋势：', 10)
+  assert.equal(result, '某趋势')
+})
+
+test('shortenTrendTitle: candidate titles no longer contain full long trend titles', () => {
+  const longTitleTrend: Trend = {
+    external_id: 'test-long-title',
+    title: '2026年未录满本科专业排行榜出炉：会计学410次居首',
+    source: 'test',
+    source_url: 'https://example.com',
+    observed_at: '2026-08-10T00:00:00.000Z',
+    signals: { rank: null, engagement: null, velocity: null },
+    aliases: [],
+    lifecycle: 'rising',
+    rights_status: 'reference_only',
+    risk_level: 'low',
+  }
+  const report = generateDailyCandidates({ config, seeds, trends: [longTitleTrend], clock: fixedClock })
+  assert.ok(report.candidates.length > 0)
+  // No candidate title should contain the full 30+ char trend title
+  for (const candidate of report.candidates) {
+    assert.ok(
+      !candidate.title.includes('会计学410次居首'),
+      `title should not contain full trend title: ${candidate.title}`,
+    )
+    assert.ok(
+      !candidate.hook.includes('会计学410次居首'),
+      `hook should not contain full trend title: ${candidate.hook}`,
+    )
+  }
 })

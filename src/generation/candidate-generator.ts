@@ -209,14 +209,39 @@ export const scoreCandidate = (
  * 候选标题模板池——根据角色名、元素名和趋势标题组合生成多样化标题。
  * 按组合索引选取,确保不同候选产生不同标题文本。
  */
+/**
+ * 将趋势标题缩短为适合候选标题/钩子中使用的短文本。
+ * 优先在中文标点（：、—、|）处截断取第一段，
+ * 否则按最大长度截断。
+ * 保证输出不含前导/尾随标点。
+ */
+export const shortenTrendTitle = (title: string, maxLen = 10): string => {
+  const breakChars = ['：', ':', '—', '–', '|', '·', '，']
+  let short = title.trim()
+  // 优先在分隔标点处截断取第一段（允许超出 maxLen 一定范围）
+  for (const ch of breakChars) {
+    const idx = short.indexOf(ch)
+    if (idx > 0) {
+      short = short.slice(0, idx)
+      break
+    }
+  }
+  // 如果第一段仍超过 maxLen，截断到 maxLen
+  if (short.length > maxLen) {
+    short = short.slice(0, maxLen)
+  }
+  short = short.replace(/[：:—–|·，,\s]+$/, '')
+  return short
+}
+
 const TITLE_PATTERNS: ((charName: string, elementName: string, trendTitle: string) => string)[] = [
   (c, e) => `${c}把${e}变成一场史诗挑战`,
   (c, e) => `当${c}遇上${e}`,
-  (c, e, t) => `${t}·${c}的${e}时刻`,
+  (c, e, t) => `${shortenTrendTitle(t)}·${c}的${e}时刻`,
   (c, e) => `${c}的${e}生存指南`,
-  (c, e, t) => `从${e}到${t.slice(0, 8)}:${c}的逆风局`,
+  (c, e, t) => `从${e}到${shortenTrendTitle(t, 6)}:${c}的逆风局`,
   (c, e) => `${e}前夜:${c}做了个决定`,
-  (c, e, t) => `${t.slice(0, 8)}之后,${c}和${e}的故事`,
+  (c, e, t) => `${shortenTrendTitle(t, 6)}之后,${c}和${e}的故事`,
   (c, e) => `如果${c}出现在${e}`,
 ]
 
@@ -227,10 +252,10 @@ const TITLE_PATTERNS: ((charName: string, elementName: string, trendTitle: strin
 const HOOK_PATTERNS: ((charName: string, elementName: string, trendTitle: string) => string)[] = [
   (c, e) => `所有人以为这只是${e}，直到${c}认真起来。`,
   (c, e) => `没人想到${e}会变成${c}的主场。`,
-  (c, e, t) => `${t.slice(0, 10)}的热度还在涨,但${c}已经看到了${e}背后的机会。`,
+  (c, e, t) => `${shortenTrendTitle(t, 12)}的热度还在涨,但${c}已经看到了${e}背后的机会。`,
   (c, e) => `第一步:${c}走进${e}。接下来发生的事没人预料到。`,
   (c, e) => `为什么${e}总是和${c}过不去?答案比你想的复杂。`,
-  (c, e, t) => `如果${t.slice(0, 8)}是一场棋局,${c}的筹码就是${e}。`,
+  (c, e, t) => `如果${shortenTrendTitle(t, 8)}是一场棋局,${c}的筹码就是${e}。`,
   (c, e) => `${e}不是终点,是${c}的起跑线。`,
   (c, e) => `本以为是普通的${e},结果${c}把它玩出了新花样。`,
 ]
