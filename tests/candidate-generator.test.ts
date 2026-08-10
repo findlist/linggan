@@ -333,6 +333,28 @@ test('shortenTrendTitle: respects custom maxLen', () => {
   assert.ok(result.length <= 6)
 })
 
+test('shortenTrendTitle: strips leading book title brackets', () => {
+  const result = shortenTrendTitle('《蜘蛛侠：英雄无归》票房破纪录', 10)
+  assert.ok(!result.startsWith('《'), `result should not start with 《, got: ${result}`)
+  assert.ok(result.length <= 10, `result should be <= 10 chars, got: ${result.length}`)
+})
+
+test('shortenTrendTitle: breaks at natural word boundary to avoid mid-word truncation', () => {
+  // "上海地铁多条线路因台风全部停运" — truncating at 10 would give "上海地铁多条线路因台"
+  // which cuts "台风" in half. Should break after "因" to give "上海地铁多条线路因".
+  const result = shortenTrendTitle('上海地铁多条线路因台风全部停运', 10)
+  assert.ok(result.length <= 10, `result should be <= 10 chars, got: ${result.length}`)
+  assert.ok(!result.endsWith('因台'), `result should not cut mid-word, got: ${result}`)
+})
+
+test('shortenTrendTitle: AI短剧 title truncates at natural break point', () => {
+  // "AI短剧制作成本与周期讨论" — truncating at 10 gives "AI短剧制作成本与周"
+  // which cuts "周期" to "周". Should break after "与" to give "AI短剧制作成本与".
+  const result = shortenTrendTitle('AI短剧制作成本与周期讨论', 10)
+  assert.ok(result.length <= 10, `result should be <= 10 chars, got: ${result.length}`)
+  assert.ok(!result.endsWith('与周'), `result should not cut mid-word, got: ${result}`)
+})
+
 test('shortenTrendTitle: strips trailing punctuation', () => {
   const result = shortenTrendTitle('某趋势：', 10)
   assert.equal(result, '某趋势')

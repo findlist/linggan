@@ -214,11 +214,16 @@ export const scoreCandidate = (
  * 优先在中文标点（：、—、|）处截断取第一段，
  * 否则按最大长度截断。
  * 保证输出不含前导/尾随标点。
+ * 截断时回退到最近的自然断点（常见虚词/介词/连词），
+ * 避免在中文词语中间截断（如"因台"→"因"而非"因台风"→"因台"）。
+ * 去除前导书名号《》等装饰符号。
  */
 export const shortenTrendTitle = (title: string, maxLen = 10): string => {
   const breakChars = ['：', ':', '—', '–', '|', '·', '，']
   let short = title.trim()
-  // 优先在分隔标点处截断取第一段（允许超出 maxLen 一定范围）
+  // 去除前导书名号/引号等装饰符号
+  short = short.replace(/^[《〈「『（([【]+/, '')
+  // 优先在分隔标点处截断取第一段
   for (const ch of breakChars) {
     const idx = short.indexOf(ch)
     if (idx > 0) {
@@ -226,12 +231,52 @@ export const shortenTrendTitle = (title: string, maxLen = 10): string => {
       break
     }
   }
-  // 如果第一段仍超过 maxLen，截断到 maxLen
+  // 如果第一段仍超过 maxLen，尝试在自然断点处截断
   if (short.length > maxLen) {
-    short = short.slice(0, maxLen)
+    short = breakAtNaturalPoint(short, maxLen)
   }
   short = short.replace(/[：:—–|·，,\s]+$/, '')
   return short
+}
+
+/**
+ * 在自然断点处截断中文文本。
+ * 常见虚词/介词/连词（的、了、在、与、因、等）后面是自然的断点。
+ * 如果找不到自然断点，回退到按 maxLen 硬截断。
+ */
+const NATURAL_BREAK_AFTER = [
+  '的',
+  '了',
+  '在',
+  '与',
+  '因',
+  '等',
+  '和',
+  '或',
+  '由',
+  '为',
+  '从',
+  '到',
+  '于',
+  '后',
+  '前',
+  '中',
+  '上',
+  '下',
+  '里',
+  '外',
+]
+const breakAtNaturalPoint = (text: string, maxLen: number): string => {
+  // 在 [0, maxLen] 范围内从后往前找自然断点
+  const segment = text.slice(0, maxLen + 1) // +1 to check if maxLen itself is a break point
+  for (let i = segment.length - 1; i > 0; i--) {
+    const twoChars = segment.slice(i - 1, i + 1)
+    if (NATURAL_BREAK_AFTER.some((p) => twoChars.startsWith(p))) {
+      return segment.slice(0, i)
+    }
+  }
+  // 无自然断点，硬截断
+  return text.slice(0, maxLen)
 }
 
 const TITLE_PATTERNS: ((charName: string, elementName: string, trendTitle: string) => string)[] = [
@@ -239,9 +284,9 @@ const TITLE_PATTERNS: ((charName: string, elementName: string, trendTitle: strin
   (c, e) => `当${c}遇上${e}`,
   (c, e, t) => `${shortenTrendTitle(t)}·${c}的${e}时刻`,
   (c, e) => `${c}的${e}生存指南`,
-  (c, e, t) => `从${e}到${shortenTrendTitle(t, 6)}:${c}的逆风局`,
+  (c, e, t) => `从${e}到${shortenTrendTitle(t, 8)}:${c}的逆风局`,
   (c, e) => `${e}前夜:${c}做了个决定`,
-  (c, e, t) => `${shortenTrendTitle(t, 6)}之后,${c}和${e}的故事`,
+  (c, e, t) => `${shortenTrendTitle(t, 8)}之后,${c}和${e}的故事`,
   (c, e) => `如果${c}出现在${e}`,
 ]
 
