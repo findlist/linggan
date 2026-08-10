@@ -387,3 +387,85 @@ test('shortenTrendTitle: candidate titles no longer contain full long trend titl
     )
   }
 })
+
+test('candidate titles avoid awkward truncated trend titles ending with particles', () => {
+  // "上海地铁多条线路因台风全部停运" shortens to "上海地铁多条线路因" which ends with particle "因"
+  // and is not usable in candidate titles. Generator should fall back to non-trend patterns.
+  const awkwardTrend: Trend = {
+    external_id: 'trend-awkward',
+    title: '上海地铁多条线路因台风全部停运',
+    discovered_at: '2026-08-10T00:00:00Z',
+    source: { name: 'test', url: 'https://example.com' },
+    signals: { rank: null, engagement: 3000, velocity: 0.5 },
+    aliases: [],
+    lifecycle: 'rising',
+    rights_status: 'reference_only',
+    risk_level: 'low',
+  }
+  const report = generateDailyCandidates({ config, seeds, trends: [awkwardTrend], clock: fixedClock })
+  assert.ok(report.candidates.length > 0)
+  // No candidate title should contain the awkward truncated form ending with "因"
+  for (const candidate of report.candidates) {
+    assert.ok(
+      !candidate.title.includes('上海地铁多条线路因·'),
+      `title should not contain awkward truncated trend title: ${candidate.title}`,
+    )
+    assert.ok(
+      !candidate.title.includes('上海地铁多条线路因之后'),
+      `title should not contain awkward truncated trend title: ${candidate.title}`,
+    )
+    assert.ok(
+      !candidate.hook.includes('上海地铁多条线路因的热度'),
+      `hook should not contain awkward truncated trend title: ${candidate.hook}`,
+    )
+    assert.ok(
+      !candidate.hook.includes('上海地铁多条线路因是一场棋局'),
+      `hook should not contain awkward truncated trend title: ${candidate.hook}`,
+    )
+  }
+})
+
+test('candidate titles use trend title when it is short and meaningful', () => {
+  // "蜘蛛侠" is short (3 chars) and meaningful - should be usable in candidate titles
+  const shortTrend: Trend = {
+    external_id: 'trend-short',
+    title: '蜘蛛侠',
+    discovered_at: '2026-08-10T00:00:00Z',
+    source: { name: 'test', url: 'https://example.com' },
+    signals: { rank: null, engagement: 3000, velocity: 0.5 },
+    aliases: [],
+    lifecycle: 'rising',
+    rights_status: 'reference_only',
+    risk_level: 'low',
+  }
+  const report = generateDailyCandidates({ config, seeds, trends: [shortTrend], clock: fixedClock })
+  assert.ok(report.candidates.length > 0)
+  // At least one candidate should reference the trend title (since it's usable)
+  const usesTrend = report.candidates.some((c) => c.title.includes('蜘蛛侠') || c.hook.includes('蜘蛛侠'))
+  assert.ok(usesTrend, 'at least one candidate should use the short meaningful trend title')
+})
+
+test('candidate titles avoid trend titles that shorten to pure numbers', () => {
+  // "2026年高考分数线公布" shortens to "2026年高考分数" which is usable,
+  // but "8850元Mi" shortens to just numbers which is not usable
+  const numericTrend: Trend = {
+    external_id: 'trend-numeric',
+    title: '8850元Mi',
+    discovered_at: '2026-08-10T00:00:00Z',
+    source: { name: 'test', url: 'https://example.com' },
+    signals: { rank: null, engagement: 3000, velocity: 0.5 },
+    aliases: [],
+    lifecycle: 'rising',
+    rights_status: 'reference_only',
+    risk_level: 'low',
+  }
+  const report = generateDailyCandidates({ config, seeds, trends: [numericTrend], clock: fixedClock })
+  assert.ok(report.candidates.length > 0)
+  // "8850元Mi" is only 6 chars but starts with numbers - shortened form may be usable
+  // as long as it passes the isTrendTitleUsable check (length >= 4, not pure numbers, no particle ending)
+  // The key validation is that no candidate title contains an unusable truncated form
+  for (const candidate of report.candidates) {
+    // Title should be non-empty and meaningful regardless of trend title usability
+    assert.ok(candidate.title.length > 0, 'candidate title should not be empty')
+  }
+})

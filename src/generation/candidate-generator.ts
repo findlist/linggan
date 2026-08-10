@@ -206,8 +206,25 @@ export const scoreCandidate = (
 }
 
 /**
+ * 判断缩短后的趋势标题是否足够有意义可在候选标题/钩子中使用。
+ *
+ * 当趋势标题过长被截断后,可能以虚词/介词结尾（如"上海地铁多条线路因"）
+ * 或过短,在候选标题中显得不自然。此函数检测这些情况,
+ * 让生成器在趋势标题不可用时回退到不引用趋势标题的模板。
+ */
+const isTrendTitleUsable = (shortened: string): boolean => {
+  if (shortened.length < 3) return false
+  // 以虚词/介词结尾的截断在标题中不自然
+  if (NATURAL_BREAK_AFTER.some((p) => shortened.endsWith(p))) return false
+  // 纯数字或含大量数字的截断通常无意义
+  if (/^\d+$/.test(shortened)) return false
+  return true
+}
+
+/**
  * 候选标题模板池——根据角色名、元素名和趋势标题组合生成多样化标题。
  * 按组合索引选取,确保不同候选产生不同标题文本。
+ * 标记为 usesTrend 的模板引用趋势标题,仅在趋势标题可用时才会被选中。
  */
 /**
  * 将趋势标题缩短为适合候选标题/钩子中使用的短文本。
@@ -265,6 +282,12 @@ const NATURAL_BREAK_AFTER = [
   '下',
   '里',
   '外',
+  '以',
+  '将',
+  '被',
+  '把',
+  '对',
+  '向',
 ]
 const breakAtNaturalPoint = (text: string, maxLen: number): string => {
   // 在 [0, maxLen] 范围内从后往前找自然断点
@@ -279,30 +302,40 @@ const breakAtNaturalPoint = (text: string, maxLen: number): string => {
   return text.slice(0, maxLen)
 }
 
-const TITLE_PATTERNS: ((charName: string, elementName: string, trendTitle: string) => string)[] = [
-  (c, e) => `${c}把${e}变成一场史诗挑战`,
-  (c, e) => `当${c}遇上${e}`,
-  (c, e, t) => `${shortenTrendTitle(t)}·${c}的${e}时刻`,
-  (c, e) => `${c}的${e}生存指南`,
-  (c, e, t) => `从${e}到${shortenTrendTitle(t, 8)}:${c}的逆风局`,
-  (c, e) => `${e}前夜:${c}做了个决定`,
-  (c, e, t) => `${shortenTrendTitle(t, 8)}之后,${c}和${e}的故事`,
-  (c, e) => `如果${c}出现在${e}`,
+interface TitlePattern {
+  fn: (charName: string, elementName: string, trendTitle: string) => string
+  usesTrend: boolean
+}
+
+const TITLE_PATTERNS: TitlePattern[] = [
+  { fn: (c, e) => `${c}把${e}变成一场史诗挑战`, usesTrend: false },
+  { fn: (c, e) => `当${c}遇上${e}`, usesTrend: false },
+  { fn: (c, e, t) => `${shortenTrendTitle(t)}·${c}的${e}时刻`, usesTrend: true },
+  { fn: (c, e) => `${c}的${e}生存指南`, usesTrend: false },
+  { fn: (c, e, t) => `从${e}到${shortenTrendTitle(t, 8)}:${c}的逆风局`, usesTrend: true },
+  { fn: (c, e) => `${e}前夜:${c}做了个决定`, usesTrend: false },
+  { fn: (c, e, t) => `${shortenTrendTitle(t, 8)}之后,${c}和${e}的故事`, usesTrend: true },
+  { fn: (c, e) => `如果${c}出现在${e}`, usesTrend: false },
 ]
 
 /**
  * 候选钩子模板池——根据角色名、元素名和趋势标题组合生成多样化钩子。
  * 按组合索引选取,确保不同候选产生不同钩子文本。
  */
-const HOOK_PATTERNS: ((charName: string, elementName: string, trendTitle: string) => string)[] = [
-  (c, e) => `所有人以为这只是${e}，直到${c}认真起来。`,
-  (c, e) => `没人想到${e}会变成${c}的主场。`,
-  (c, e, t) => `${shortenTrendTitle(t, 12)}的热度还在涨,但${c}已经看到了${e}背后的机会。`,
-  (c, e) => `第一步:${c}走进${e}。接下来发生的事没人预料到。`,
-  (c, e) => `为什么${e}总是和${c}过不去?答案比你想的复杂。`,
-  (c, e, t) => `如果${shortenTrendTitle(t, 8)}是一场棋局,${c}的筹码就是${e}。`,
-  (c, e) => `${e}不是终点,是${c}的起跑线。`,
-  (c, e) => `本以为是普通的${e},结果${c}把它玩出了新花样。`,
+interface HookPattern {
+  fn: (charName: string, elementName: string, trendTitle: string) => string
+  usesTrend: boolean
+}
+
+const HOOK_PATTERNS: HookPattern[] = [
+  { fn: (c, e) => `所有人以为这只是${e}，直到${c}认真起来。`, usesTrend: false },
+  { fn: (c, e) => `没人想到${e}会变成${c}的主场。`, usesTrend: false },
+  { fn: (c, e, t) => `${shortenTrendTitle(t, 12)}的热度还在涨,但${c}已经看到了${e}背后的机会。`, usesTrend: true },
+  { fn: (c, e) => `第一步:${c}走进${e}。接下来发生的事没人预料到。`, usesTrend: false },
+  { fn: (c, e) => `为什么${e}总是和${c}过不去?答案比你想的复杂。`, usesTrend: false },
+  { fn: (c, e, t) => `如果${shortenTrendTitle(t, 8)}是一场棋局,${c}的筹码就是${e}。`, usesTrend: true },
+  { fn: (c, e) => `${e}不是终点,是${c}的起跑线。`, usesTrend: false },
+  { fn: (c, e) => `本以为是普通的${e},结果${c}把它玩出了新花样。`, usesTrend: false },
 ]
 
 const formatDate = (date: Date, timezone: string): string =>
@@ -344,17 +377,24 @@ export const generateDailyCandidates = (input: CandidateGenerationInput): DailyC
             const scene = seeds.scenes[comboIndex % seeds.scenes.length]
             const element = seeds.elements[comboIndex % seeds.elements.length]
 
-            // 按组合索引选取标题和钩子模板,确保文本多样化
-            const titleFn = TITLE_PATTERNS[comboIndex % TITLE_PATTERNS.length]
-            const hookFn = HOOK_PATTERNS[comboIndex % HOOK_PATTERNS.length]
+            // 判断趋势标题缩短后是否足够有意义可在标题/钩子模板中使用
+            const shortenedTrendTitle = shortenTrendTitle(trend.title)
+            const trendUsable = isTrendTitleUsable(shortenedTrendTitle)
             const trendTitle = trend.title
+
+            // 按组合索引选取标题和钩子模板,确保文本多样化
+            // 趋势标题不可用时跳过引用趋势的模板,回退到不引用趋势的模板
+            const usableTitlePatterns = trendUsable ? TITLE_PATTERNS : TITLE_PATTERNS.filter((p) => !p.usesTrend)
+            const usableHookPatterns = trendUsable ? HOOK_PATTERNS : HOOK_PATTERNS.filter((p) => !p.usesTrend)
+            const titlePattern = usableTitlePatterns[comboIndex % usableTitlePatterns.length]
+            const hookPattern = usableHookPatterns[comboIndex % usableHookPatterns.length]
 
             const candidate = {
               id: `candidate_${trendIndex + 1}_${characterIndex + 1}`,
-              title: titleFn(character.name, element.name, trendTitle),
+              title: titlePattern.fn(character.name, element.name, trendTitle),
               source_trend: trend.external_id,
               entities: [character.id, scene.id, element.id],
-              hook: hookFn(character.name, element.name, trendTitle),
+              hook: hookPattern.fn(character.name, element.name, trendTitle),
               score: scoreCandidate({ config, trend, character, element, scene }),
               risk_level: trend.risk_level,
               rights_status: character.rights_status,
