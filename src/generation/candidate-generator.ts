@@ -341,6 +341,14 @@ const TITLE_PATTERNS: TitlePattern[] = [
   { fn: (c, e) => `${e}前夜:${c}做了个决定`, usesTrend: false },
   { fn: (c, e, t) => `${shortenTrendTitle(t, 8)}之后,${c}和${e}的故事`, usesTrend: true },
   { fn: (c, e) => `如果${c}出现在${e}`, usesTrend: false },
+  { fn: (c, e) => `${c}在${e}的另一面`, usesTrend: false },
+  { fn: (c, e) => `${e}里的${c}:一场没有赢家的对峙`, usesTrend: false },
+  { fn: (c, e, t) => `${shortenTrendTitle(t, 8)}风暴中,${c}守住了${e}`, usesTrend: true },
+  { fn: (c, e) => `谁说${c}不懂${e}?`, usesTrend: false },
+  { fn: (c, e) => `${c}×${e}:规则重新定义`, usesTrend: false },
+  { fn: (c, e, t) => `${shortenTrendTitle(t, 6)}余波:${c}的${e}抉择`, usesTrend: true },
+  { fn: (c, e) => `离开${e}的那天,${c}没有回头`, usesTrend: false },
+  { fn: (c, e, t) => `${shortenTrendTitle(t, 6)}还没有结束,${c}已经走进${e}`, usesTrend: true },
 ]
 
 /**
@@ -361,6 +369,14 @@ const HOOK_PATTERNS: HookPattern[] = [
   { fn: (c, e, t) => `如果${shortenTrendTitle(t, 8)}是一场棋局,${c}的筹码就是${e}。`, usesTrend: true },
   { fn: (c, e) => `${e}不是终点,是${c}的起跑线。`, usesTrend: false },
   { fn: (c, e) => `本以为是普通的${e},结果${c}把它玩出了新花样。`, usesTrend: false },
+  { fn: (c, e) => `${c}站在${e}门口,犹豫了三秒。第四秒,一切改变了。`, usesTrend: false },
+  { fn: (c, e) => `关于${e},${c}知道的比所有人都多——但这次不一样。`, usesTrend: false },
+  { fn: (c, e, t) => `${shortenTrendTitle(t, 8)}只是导火索。真正的战场在${e}。`, usesTrend: true },
+  { fn: (c, e) => `${e}教会${c}的第一件事:永远别亮底牌。`, usesTrend: false },
+  { fn: (c, e) => `有人劝${c}远离${e}。他们不知道,${c}就是为此而来的。`, usesTrend: false },
+  { fn: (c, e, t) => `${shortenTrendTitle(t, 6)}过去三天了,${c}还在${e}里出不来。`, usesTrend: true },
+  { fn: (c, e) => `${c}在${e}里藏了一个秘密。现在,秘密醒了。`, usesTrend: false },
+  { fn: (c, e, t) => `${shortenTrendTitle(t, 6)}那天,${c}刚好在${e}。巧合?`, usesTrend: true },
 ]
 
 const formatDate = (date: Date, timezone: string): string =>
