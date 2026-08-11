@@ -42,6 +42,9 @@
     {"id":"element_vintage_camera","name":"胶片相机","category":"object","actions":["装卷","取景","按快门","过片"],"generatability":0.86},
     {"id":"element_memory","name":"一段记忆","category":"abstract","actions":["回忆","模糊","闪回"],"generatability":0.65},
     {"id":"element_rumor","name":"一条传闻","category":"abstract","actions":["传播","变形","澄清"],"generatability":0.60},
-    {"id":"element_silence","name":"沉默","category":"abstract","actions":["沉默"],"generatability":0.50}
+    {"id":"element_silence","name":"沉默","category":"abstract","actions":["沉默"],"generatability":0.50},
+    {"id":"element_rooftop_bbq","name":"天台烧烤","category":"location","actions":["生火","翻烤","碰杯","收摊"],"generatability":0.89},
+    {"id":"element_used_bookstore","name":"二手书店","category":"location","actions":["翻书","讨价","包书"],"generatability":0.84},
+    {"id":"element_square_dance","name":"广场舞","category":"activity","actions":["列队","跟跳","变阵","散场"],"generatability":0.87}
   ]
 }
