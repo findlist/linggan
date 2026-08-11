@@ -23,6 +23,7 @@
     "collect:wikipedia": "node --experimental-strip-types scripts/collect-wikipedia.ts",
     "sync:events": "node --experimental-strip-types scripts/sync-events.ts",
     "update:weekly-weights": "node --experimental-strip-types scripts/update-weekly-weights.ts",
+    "analyze:diversity": "node --experimental-strip-types scripts/analyze-diversity.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",

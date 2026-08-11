@@ -1,6 +1,31 @@
 import { CandidateSchema } from '../data/contracts.ts'
 import type { Candidate, Character, Element, Scene, Trend } from '../data/contracts.ts'
 
+/**
+ * FNV-1a 字符串哈希，与 remix-engine 共用同一算法保证跨模块一致性。
+ * 避免依赖位运算溢出在不同平台产生不同种子。
+ */
+const hashStringToSeed = (input: string): number => {
+  let hash = 0x811c9dc5
+  for (let i = 0; i < input.length; i++) {
+    hash ^= input.charCodeAt(i)
+    hash = Math.imul(hash, 0x01000193)
+  }
+  return hash >>> 0
+}
+
+/** mulberry32 PRNG：接受 uint32 种子，返回 [0,1) 的确定序列。 */
+const createPrng = (seed: number): (() => number) => {
+  let state = seed >>> 0
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0
+    let t = state
+    t = Math.imul(t ^ (t >>> 15), t | 1)
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+
 export type CandidateMetric = keyof Candidate['score']['metrics']
 
 export interface CandidateGenerationConfig {
@@ -371,23 +396,41 @@ export const generateDailyCandidates = (input: CandidateGenerationInput): DailyC
             selectedChars.push(seeds.characters[(charStart + i) % charCount])
           }
 
+          // 每个趋势创建独立 PRNG，种子基于趋势 external_id + 日期，
+          // 确保不同趋势产生不同的模板选取序列，同时保持完全可复现。
+          const trendSeed = hashStringToSeed(`${trend.external_id}:${formatDate(generatedAt, config.timezone)}`)
+          const trendRng = createPrng(trendSeed)
+
+          // 预先为该趋势的可选模板打乱顺序，使不同趋势选取不同的模板序列
+          const shortenedTrendTitle = shortenTrendTitle(trend.title)
+          const trendUsable = isTrendTitleUsable(shortenedTrendTitle)
+          const trendTitle = trend.title
+
+          const usableTitlePatterns = trendUsable ? TITLE_PATTERNS : TITLE_PATTERNS.filter((p) => !p.usesTrend)
+          const usableHookPatterns = trendUsable ? HOOK_PATTERNS : HOOK_PATTERNS.filter((p) => !p.usesTrend)
+
+          // 使用 Fisher-Yates 洗牌生成该趋势的模板排列，每个趋势不同
+          const shuffleArray = <T>(arr: readonly T[], rng: () => number): T[] => {
+            const result = [...arr]
+            for (let i = result.length - 1; i > 0; i--) {
+              const j = Math.floor(rng() * (i + 1))
+              ;[result[i], result[j]] = [result[j], result[i]]
+            }
+            return result
+          }
+
+          const titleOrder = shuffleArray(usableTitlePatterns, trendRng)
+          const hookOrder = shuffleArray(usableHookPatterns, trendRng)
+          // 场景和元素也按趋势打乱，增加跨趋势多样性
+          const sceneOrder = shuffleArray(seeds.scenes, trendRng)
+          const elementOrder = shuffleArray(seeds.elements, trendRng)
+
           return selectedChars.map((character, characterIndex) => {
-            // 使用组合索引确保不同趋势+角色产生不同场景和元素
-            const comboIndex = trendIndex * CHARACTERS_PER_TREND + characterIndex
-            const scene = seeds.scenes[comboIndex % seeds.scenes.length]
-            const element = seeds.elements[comboIndex % seeds.elements.length]
-
-            // 判断趋势标题缩短后是否足够有意义可在标题/钩子模板中使用
-            const shortenedTrendTitle = shortenTrendTitle(trend.title)
-            const trendUsable = isTrendTitleUsable(shortenedTrendTitle)
-            const trendTitle = trend.title
-
-            // 按组合索引选取标题和钩子模板,确保文本多样化
-            // 趋势标题不可用时跳过引用趋势的模板,回退到不引用趋势的模板
-            const usableTitlePatterns = trendUsable ? TITLE_PATTERNS : TITLE_PATTERNS.filter((p) => !p.usesTrend)
-            const usableHookPatterns = trendUsable ? HOOK_PATTERNS : HOOK_PATTERNS.filter((p) => !p.usesTrend)
-            const titlePattern = usableTitlePatterns[comboIndex % usableTitlePatterns.length]
-            const hookPattern = usableHookPatterns[comboIndex % usableHookPatterns.length]
+            // 使用角色索引从打乱后的排列中选取，不同趋势产生不同选取
+            const scene = sceneOrder[characterIndex % sceneOrder.length]
+            const element = elementOrder[characterIndex % elementOrder.length]
+            const titlePattern = titleOrder[characterIndex % titleOrder.length]
+            const hookPattern = hookOrder[characterIndex % hookOrder.length]
 
             const candidate = {
               id: `candidate_${trendIndex + 1}_${characterIndex + 1}`,

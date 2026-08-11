@@ -109,6 +109,50 @@ test('candidate diversity: all 14 seed characters can appear in candidates', () 
   )
 })
 
+test('candidate diversity: hooks vary across trends for same character index', () => {
+  // 使用 10 个不同趋势验证同一角色索引位置不再总是产生相同钩子
+  // 旧实现使用 comboIndex % 8 导致同一角色索引总是选取相同钩子模板
+  // 新实现使用 per-trend PRNG 打乱模板顺序,不同趋势应产生不同钩子
+  const manyTrends = Array.from({ length: 10 }, (_, i) => {
+    const t = structuredClone(trends[0])
+    t.external_id = `trend-diversity-${i}`
+    t.title = `多样性测试趋势${i}`
+    return t
+  })
+  const report = generateDailyCandidates({ config, seeds, trends: manyTrends, clock: fixedClock })
+
+  // 提取每个趋势第 1 个候选的钩子（角色索引 0）
+  const firstCharHooks = report.candidates.filter((c) => c.id.endsWith('_1')).map((c) => c.hook)
+  const uniqueFirstHooks = new Set(firstCharHooks)
+  // 10 个趋势的第 1 个候选应产生至少 4 种不同钩子（旧实现全部相同）
+  assert.ok(
+    uniqueFirstHooks.size >= 4,
+    `expected at least 4 unique hooks for character index 0 across 10 trends, got ${uniqueFirstHooks.size}`,
+  )
+})
+
+test('candidate diversity: scenes and elements vary across trends', () => {
+  // 验证场景和元素也在不同趋势间产生变化
+  const manyTrends = Array.from({ length: 10 }, (_, i) => {
+    const t = structuredClone(trends[0])
+    t.external_id = `trend-scene-${i}`
+    t.title = `场景测试趋势${i}`
+    return t
+  })
+  const report = generateDailyCandidates({ config, seeds, trends: manyTrends, clock: fixedClock })
+
+  // 提取每个趋势第 1 个候选的场景和元素
+  const firstCandidates = report.candidates.filter((c) => c.id.endsWith('_1'))
+  const uniqueScenes = new Set(firstCandidates.map((c) => c.entities[1]))
+  const uniqueElements = new Set(firstCandidates.map((c) => c.entities[2]))
+  // 不同趋势应产生不同的场景和元素组合
+  assert.ok(uniqueScenes.size >= 3, `expected at least 3 unique scenes for character index 0, got ${uniqueScenes.size}`)
+  assert.ok(
+    uniqueElements.size >= 3,
+    `expected at least 3 unique elements for character index 0, got ${uniqueElements.size}`,
+  )
+})
+
 test('score metrics and total stay within contract boundaries', () => {
   const boundaryTrend = structuredClone(trends[0])
   boundaryTrend.signals.engagement = 1_000_000
