@@ -13,5 +13,7 @@ memory/archive/
 package-lock.json
 eslint.config.js
 
-# 临时文件
+# 临时文件（下划线前缀的诊断/调试脚本，不参与格式检查）
 _tmp_*
+_check_*.cjs
+_*.cjs
