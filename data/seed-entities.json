@@ -28,7 +28,10 @@
   "story_patterns": [
     {"id":"story_serious_absurd","name":"一本正经的荒诞","beats":["严肃建立规则","目标极其微小","过程逐渐史诗化","生活化台词收尾"]},
     {"id":"story_countdown","name":"倒计时挑战","beats":["展示倒计时","连续受阻","最后十秒觉醒","结果二次反转"]},
-    {"id":"story_mockumentary","name":"伪纪录片复盘","beats":["事故结果先行","多角色采访","证词互相矛盾","监控揭露真相"]}
+    {"id":"story_mockumentary","name":"伪纪录片复盘","beats":["事故结果先行","多角色采访","证词互相矛盾","监控揭露真相"]},
+    {"id":"story_daily_ritual","name":"日常仪式感","beats":["平凡动作特写","重复中微妙变化","某次偏离惯例","偏离引发连锁","回归日常但意味已变"]},
+    {"id":"story_cascading_mistakes","name":"错误连锁","beats":["微小误判","补救制造新问题","问题滚雪球","被迫选最差选项","意外收场"]},
+    {"id":"story_parallel_crosscut","name":"平行交叉","beats":["两条线索独立推进","线索A的关键道具出现在线索B","角色 unknowingly 交汇","交汇点真相浮出","双线合并收尾"]}
   ],
   "elements": [
     {"id":"element_billiards","name":"台球","category":"sport","actions":["开球","走位","清台"],"generatability":0.85},
