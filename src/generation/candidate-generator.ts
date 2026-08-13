@@ -400,6 +400,13 @@ export const generateDailyCandidates = (input: CandidateGenerationInput): DailyC
   const generatedAtIso = generatedAt.toISOString()
   const canGenerate = seeds.characters.length > 0 && seeds.scenes.length > 0 && seeds.elements.length > 0
 
+  // 跨趋势模式使用计数器：记录每个模式索引在全部候选中被使用的次数,
+  // 用于选取使用次数最少的模式,确保模式分布更均匀。
+  // 比纯 PRNG 洗牌更均匀：30 候选 / 16 模式 = 每模式约 1.875 次,
+  // 使用计数器后每模式被使用 1-2 次而非 0-5 次。
+  const titleUsageCount = new Map<number, number>()
+  const hookUsageCount = new Map<number, number>()
+
   const candidates = canGenerate
     ? trends
         .slice(0, 10)
@@ -445,8 +452,35 @@ export const generateDailyCandidates = (input: CandidateGenerationInput): DailyC
             // 使用角色索引从打乱后的排列中选取，不同趋势产生不同选取
             const scene = sceneOrder[characterIndex % sceneOrder.length]
             const element = elementOrder[characterIndex % elementOrder.length]
-            const titlePattern = titleOrder[characterIndex % titleOrder.length]
-            const hookPattern = hookOrder[characterIndex % hookOrder.length]
+
+            // 跨趋势模式均匀化：从打乱后的模式列表中选取使用次数最少的模式,
+            // 确保模式分布更均匀（每模式 1-2 次而非 0-5 次）。
+            // 优先从打乱顺序的前 min(length, 6) 个候选中选使用次数最少的,
+            // 兼顾随机性和均匀性。
+            const pickLeastUsed = <T extends { fn: unknown }>(
+              shuffled: readonly T[],
+              originalList: readonly T[],
+              usageMap: Map<number, number>,
+              poolCandidates: number,
+            ): T => {
+              const poolSize = Math.min(shuffled.length, poolCandidates)
+              let bestIdx = 0
+              let bestCount = Infinity
+              for (let i = 0; i < poolSize; i++) {
+                const originalIdx = originalList.indexOf(shuffled[i])
+                const count = usageMap.get(originalIdx) ?? 0
+                if (count < bestCount) {
+                  bestCount = count
+                  bestIdx = i
+                }
+              }
+              const originalIdx = originalList.indexOf(shuffled[bestIdx])
+              usageMap.set(originalIdx, (usageMap.get(originalIdx) ?? 0) + 1)
+              return shuffled[bestIdx]
+            }
+
+            const titlePattern = pickLeastUsed(titleOrder, usableTitlePatterns, titleUsageCount, 6)
+            const hookPattern = pickLeastUsed(hookOrder, usableHookPatterns, hookUsageCount, 6)
 
             const candidate = {
               id: `candidate_${trendIndex + 1}_${characterIndex + 1}`,

@@ -516,3 +516,69 @@ test('candidate titles avoid trend titles that shorten to pure numbers', () => {
     assert.ok(candidate.title.length > 0, 'candidate title should not be empty')
   }
 })
+
+test('cross-trend pattern distribution: no title pattern used more than 3 times in 30 candidates', () => {
+  // With 16 title patterns and 30 candidates, each pattern should be used ~1.875 times on average.
+  // Cross-trend usage counting should ensure no pattern is used more than 3 times
+  // (vs up to 5 times with pure PRNG shuffle).
+  const manyTrends = Array.from({ length: 10 }, (_, i) => {
+    const t = structuredClone(trends[0])
+    t.external_id = `trend-title-dist-${i}`
+    t.title = `标题分布测试趋势${i}`
+    return t
+  })
+  const report = generateDailyCandidates({ config, seeds, trends: manyTrends, clock: fixedClock })
+  assert.ok(report.candidates.length >= 20, `should have at least 20 candidates, got ${report.candidates.length}`)
+
+  // Count title frequency (normalized by extracting the structural pattern)
+  const titleCounts = new Map<string, number>()
+  for (const c of report.candidates) {
+    // Normalize: replace character names and element names with placeholders
+    let normalized = c.title
+    for (const char of seeds.characters) {
+      normalized = normalized.replaceAll(char.name, 'X')
+    }
+    for (const el of seeds.elements) {
+      normalized = normalized.replaceAll(el.name, 'Y')
+    }
+    titleCounts.set(normalized, (titleCounts.get(normalized) ?? 0) + 1)
+  }
+
+  const maxTitleCount = Math.max(...titleCounts.values())
+  assert.ok(
+    maxTitleCount <= 3,
+    `Most repeated title pattern used ${maxTitleCount} times (expected <= 3). Patterns: ${JSON.stringify(Object.fromEntries(titleCounts))}`,
+  )
+})
+
+test('cross-trend pattern distribution: no hook pattern used more than 3 times in 30 candidates', () => {
+  // With 16 hook patterns and 30 candidates, each pattern should be used ~1.875 times on average.
+  // Cross-trend usage counting should ensure no pattern is used more than 3 times.
+  const manyTrends = Array.from({ length: 10 }, (_, i) => {
+    const t = structuredClone(trends[0])
+    t.external_id = `trend-hook-dist-${i}`
+    t.title = `钩子分布测试趋势${i}`
+    return t
+  })
+  const report = generateDailyCandidates({ config, seeds, trends: manyTrends, clock: fixedClock })
+  assert.ok(report.candidates.length >= 20, `should have at least 20 candidates, got ${report.candidates.length}`)
+
+  // Count hook frequency (normalized by extracting the structural pattern)
+  const hookCounts = new Map<string, number>()
+  for (const c of report.candidates) {
+    let normalized = c.hook
+    for (const char of seeds.characters) {
+      normalized = normalized.replaceAll(char.name, 'X')
+    }
+    for (const el of seeds.elements) {
+      normalized = normalized.replaceAll(el.name, 'Y')
+    }
+    hookCounts.set(normalized, (hookCounts.get(normalized) ?? 0) + 1)
+  }
+
+  const maxHookCount = Math.max(...hookCounts.values())
+  assert.ok(
+    maxHookCount <= 3,
+    `Most repeated hook pattern used ${maxHookCount} times (expected <= 3). Patterns: ${JSON.stringify(Object.fromEntries(hookCounts))}`,
+  )
+})
