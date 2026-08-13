@@ -59,18 +59,33 @@ const styles: RemixStyle[] = [
 ]
 
 // Generate all combinations (same as daily-pipeline: 15 chars × 3 moments × 1 style × 30s)
+// 与 daily-pipeline 一致地轮换 story_patterns,以真实反映叙事模板集成对生成多样性的贡献
 const style = styles[0]!
+const storyPatterns = rawSeeds.story_patterns
 const inputs: RemixPlanInput[] = []
 for (let i = 0; i < allChars.length; i++) {
   for (let j = i + 1; j < allChars.length; j++) {
-    for (const moment of moments) {
+    for (let m = 0; m < moments.length; m++) {
+      const moment = moments[m]!
       const charA = allChars[i]!
       const charB = allChars[j]!
       const workA = workById.get(charA.work_id)!
       const workB = workById.get(charB.work_id)!
       const momentWork = workById.get(moment.work_id)!
       const seed = `${charA.id}-${charB.id}-${moment.id}-${style.id}-${duration}`
-      inputs.push({ characterA: charA, characterB: charB, moment, workA, workB, momentWork, style, duration, seed })
+      const patternIndex = (i + j + m) % storyPatterns.length
+      inputs.push({
+        characterA: charA,
+        characterB: charB,
+        moment,
+        workA,
+        workB,
+        momentWork,
+        style,
+        duration,
+        seed,
+        storyPattern: storyPatterns[patternIndex],
+      })
     }
   }
 }
@@ -148,6 +163,26 @@ for (const [cat, templates] of Object.entries(HOOK_TEMPLATES)) {
 for (const [pers, templates] of Object.entries(DIALOGUE_TEMPLATES)) {
   console.log(`  Dialogue ${pers}: ${templates.length}`)
 }
+
+// Story pattern distribution and storyboard diversity
+const patternCounts = new Map<string, number>()
+const storyboardStructures = new Set<string>()
+for (const plan of plans) {
+  const patternId = plan.storyPatternId ?? 'default'
+  patternCounts.set(patternId, (patternCounts.get(patternId) ?? 0) + 1)
+  // 分镜结构签名:景别+运镜+转场+时长序列
+  const signature = plan.storyboard
+    .map((s) => `${s.shot_type}:${s.camera_movement}:${s.transition}:${s.duration}`)
+    .join('|')
+  storyboardStructures.add(signature)
+}
+console.log('\nStory pattern distribution:')
+for (const [patternId, count] of [...patternCounts.entries()].sort((a, b) => b[1] - a[1])) {
+  console.log(`  ${patternId}: ${count}`)
+}
+console.log(
+  `Unique storyboard structures: ${storyboardStructures.size}/${plans.length} (${((storyboardStructures.size / plans.length) * 100).toFixed(1)}%)`,
+)
 
 // Unique hooks and dialogues
 const uniqueHooks = new Set(plans.map((p) => p.hook))

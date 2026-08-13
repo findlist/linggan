@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { test } from 'node:test'
 import { KnowledgeBaseSchema, KnownCharacterSchema } from '../src/data/contracts.ts'
-import type { KnownCharacter } from '../src/data/contracts.ts'
+import type { KnownCharacter, StoryPattern } from '../src/data/contracts.ts'
 import type { RemixPlanInput } from '../src/generation/remix-engine.ts'
 import {
   buildRemixPlan,
@@ -199,5 +199,83 @@ test('dialogues are original rewrites referencing character dialogue_style', () 
   assert.ok(plan.dialogueA.length > 0)
   assert.ok(plan.dialogueB.length > 0)
   // 对白使用引号包裹，表明是台词格式
-  assert.ok(plan.dialogueA.includes('“') || plan.dialogueA.includes('"'))
+  assert.ok(plan.dialogueA.includes('"') || plan.dialogueA.includes('"'))
+})
+
+/* ----------------------- story_pattern 集成测试 ----------------------- */
+
+const testPattern: StoryPattern = {
+  id: 'story_test_absurd',
+  name: '一本正经的荒诞',
+  beats: ['严肃建立规则', '目标极其微小', '过程逐渐史诗化', '生活化台词收尾'],
+}
+
+test('story_pattern beats replace default storyboard structure when provided', () => {
+  const plan = buildRemixPlan(buildInput({ storyPattern: testPattern, duration: 30 }))
+  // story_pattern 有 4 个 beats，分镜应为 4 镜而非默认 5 镜
+  assert.equal(plan.storyboard.length, 4)
+  // storyPatternId 和 storyPatternName 应正确记录
+  assert.equal(plan.storyPatternId, 'story_test_absurd')
+  assert.equal(plan.storyPatternName, '一本正经的荒诞')
+  // 分镜画面应包含叙事模板名称和节拍文本
+  for (const shot of plan.storyboard) {
+    assert.ok(shot.visual.includes('一本正经的荒诞'), 'shot visual should include story pattern name')
+    assert.ok(shot.duration > 0, 'shot duration must be positive')
+  }
+})
+
+test('story_pattern shot durations sum to total duration', () => {
+  for (const duration of [15, 30, 60] as const) {
+    const plan = buildRemixPlan(buildInput({ storyPattern: testPattern, duration }))
+    const totalDuration = plan.storyboard.reduce((sum, shot) => sum + shot.duration, 0)
+    assert.equal(totalDuration, duration, `storyboard total duration must equal ${duration}s with story_pattern`)
+  }
+})
+
+test('different story_patterns produce different storyboard structures', () => {
+  const patternA: StoryPattern = {
+    id: 'story_test_a',
+    name: '结构A',
+    beats: ['开场建立', '冲突升级', '转折收尾'],
+  }
+  const patternB: StoryPattern = {
+    id: 'story_test_b',
+    name: '结构B',
+    beats: ['线索一', '线索二', '线索三', '线索四', '线索五'],
+  }
+  const planA = buildRemixPlan(buildInput({ storyPattern: patternA, seed: 'same-seed' }))
+  const planB = buildRemixPlan(buildInput({ storyPattern: patternB, seed: 'same-seed' }))
+  // 不同 story_pattern 产生不同分镜数量
+  assert.notEqual(planA.storyboard.length, planB.storyboard.length)
+  // 不同 story_pattern 产生不同分镜画面
+  const visualsA = planA.storyboard.map((s) => s.visual)
+  const visualsB = planB.storyboard.map((s) => s.visual)
+  assert.notDeepEqual(visualsA, visualsB)
+})
+
+test('default storyboard structure unchanged when no storyPattern', () => {
+  for (const [duration, expected] of [
+    [15, 3],
+    [30, 5],
+    [60, 8],
+  ] as const) {
+    const plan = buildRemixPlan(buildInput({ duration }))
+    assert.equal(
+      plan.storyboard.length,
+      expected,
+      `duration ${duration}s should have ${expected} shots without storyPattern`,
+    )
+    assert.equal(plan.storyPatternId, undefined)
+    assert.equal(plan.storyPatternName, undefined)
+  }
+})
+
+test('story_pattern plan is deterministic with same seed', () => {
+  const input = buildInput({ storyPattern: testPattern, seed: 'deterministic-seed' })
+  assert.deepEqual(buildRemixPlan(input), buildRemixPlan(input))
+})
+
+test('story_pattern name appears in concept text', () => {
+  const plan = buildRemixPlan(buildInput({ storyPattern: testPattern }))
+  assert.ok(plan.concept.includes('一本正经的荒诞'), 'concept should include story pattern name')
 })

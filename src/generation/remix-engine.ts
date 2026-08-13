@@ -1,4 +1,4 @@
-import type { CompatibilityMatrix, IconicMoment, KnownCharacter, Work } from '../data/contracts.ts'
+import type { CompatibilityMatrix, IconicMoment, KnownCharacter, StoryPattern, Work } from '../data/contracts.ts'
 import {
   filterCompatibleCombinations,
   type CompatibilityFilterOptions,
@@ -30,6 +30,8 @@ export interface RemixPlanInput {
   momentWork: Work
   style: RemixStyle
   duration: RemixDuration
+  /** 可选叙事模板：提供时其 beats 替换默认分镜节拍，增加叙事结构多样性 */
+  storyPattern?: StoryPattern
   /** 显式种子字符串,同一字符串必须产生同一方案 */
   seed: string
 }
@@ -97,6 +99,10 @@ export interface RemixPlan {
   /** 人类可读的提示词摘要,保留向后兼容;详细字段见 production.prompts */
   prompt: string
   duration: RemixDuration
+  /** 叙事模板 ID：使用 story_pattern 时记录，便于追溯和去重 */
+  storyPatternId?: string
+  /** 叙事模板名称：人类可读，用于导出和展示 */
+  storyPatternName?: string
   /** C2 完整制作包:结构化提示词与版权边界声明 */
   production: ProductionPackage
 }
@@ -386,10 +392,18 @@ const SHOT_DURATION_PLAN: Record<RemixDuration, number[]> = {
 type BeatRole = 'opening' | 'buildup' | 'climax' | 'turning' | 'ending'
 
 const classifyBeat = (beat: string): BeatRole => {
+  // 固定 beat 名优先精确匹配（原有逻辑）
   if (beat === '钩子') return 'opening'
   if (beat === '铺垫' || beat === '升级') return 'buildup'
   if (beat === '冲突' || beat === '受阻') return 'climax'
   if (beat === '转折' || beat === '破局' || beat === '反转') return 'turning'
+  if (beat === '收尾' || beat === '彩蛋') return 'ending'
+  // story_pattern beats 关键词匹配：将叙事节拍映射到镜头角色
+  if (/建立|展示|开场|先行|平凡|微小|线索|起跑/.test(beat)) return 'opening'
+  if (/铺垫|升级|重复|变化|采访|道具|目标|逐渐/.test(beat)) return 'buildup'
+  if (/冲突|受阻|矛盾|连锁|滚雪球|被迫|交汇|史诗|问题/.test(beat)) return 'climax'
+  if (/转折|破局|反转|偏离|揭露|真相|觉醒|意外|浮出/.test(beat)) return 'turning'
+  if (/收尾|彩蛋|收场|回归|合并|散场/.test(beat)) return 'ending'
   return 'ending'
 }
 
@@ -425,23 +439,35 @@ const buildStoryboard = (
   moment: IconicMoment,
   style: RemixStyle,
   rng: () => number,
+  storyPattern?: StoryPattern,
 ): StoryboardShot[] => {
-  const beats = STORYBOARD_BEATS[duration]
-  const durations = SHOT_DURATION_PLAN[duration]
+  // 当提供 storyPattern 时，使用其 beats 替换默认分镜节拍，增加叙事结构多样性
+  const beats = storyPattern ? storyPattern.beats : STORYBOARD_BEATS[duration]
+  const fixedDurations = SHOT_DURATION_PLAN[duration]
   const emotions = moment.emotional_arc
   const actions = moment.visual_actions
   const reusableBeats = moment.reusable_beats
+
+  // story_pattern 模式下按实际 beat 数量动态分配时长（均分 + 余数分配给前几镜）
+  const baseDuration = Math.floor(duration / beats.length)
+  const remainder = duration - baseDuration * beats.length
 
   return beats.map((beat, index) => {
     const role = classifyBeat(beat)
     const emotion = emotions[index % emotions.length]
     const action = actions[index % actions.length]
-    // 镜头画面由名场面 setting + 节拍描述 + 风格 prompt 组合,保证原创改写
     const reusableBeat = reusableBeats[index % reusableBeats.length]
-    const visual = `${moment.setting}·${beat}:${style.prompt},呈现${reusableBeat}`
+    // story_pattern 模式下画面描述包含叙事模板名称和节拍，默认模式保持原有描述
+    const visual = storyPattern
+      ? `${moment.setting}·${storyPattern.name}:${beat}—${style.prompt}`
+      : `${moment.setting}·${beat}:${style.prompt},呈现${reusableBeat}`
+    // story_pattern 模式动态分配时长，默认模式使用固定时长表
+    const shotDuration = storyPattern
+      ? baseDuration + (index < remainder ? 1 : 0)
+      : (fixedDurations[index] ?? Math.floor(duration / beats.length))
     return {
       index: index + 1,
-      duration: durations[index] ?? Math.floor(duration / beats.length),
+      duration: shotDuration,
       shot_type: pick(SHOT_TYPE_POOL[role], rng),
       camera_movement: pick(CAMERA_MOVEMENT_POOL[role], rng),
       visual,
@@ -640,7 +666,7 @@ const buildProduction = (input: RemixPlanInput, prompt: string): ProductionPacka
 /* ------------------------------ 主入口 ------------------------------ */
 
 export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
-  const { characterA, characterB, moment, style, duration, seed } = input
+  const { characterA, characterB, moment, style, duration, seed, storyPattern } = input
   const rng = createPrng(hashStringToSeed(seed))
 
   const personalityA = detectPersonality(characterA)
@@ -660,7 +686,7 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
   const dialogueA = buildDialogue(personalityA, characterA, costCue, rng)
   const dialogueB = buildDialogue(personalityB, characterB, costCue, rng)
 
-  const storyboard = buildStoryboard(duration, moment, style, rng)
+  const storyboard = buildStoryboard(duration, moment, style, rng, storyPattern)
   const copywriting = buildCopywriting(input, personalityA, rng)
 
   // 概念文本:使用 roles[0] 和 dialogue_style[0] 替代 character_types[0],
@@ -676,10 +702,12 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
   const title = pick(TITLE_PATTERNS, rng)(characterA.name, characterB.name, moment.name, moment.conflict_type)
 
   const conceptTail = pick(CONCEPT_TAIL_BY_PERSONALITY[personalityA], rng)
+  // story_pattern 模式下在概念文本中加入叙事模板名称，降低同组合的 concept 相似度
+  const patternClause = storyPattern ? `，以"${storyPattern.name}"叙事展开` : ''
   const concept =
     `让《${input.workA.title}》的${roleA}${characterA.name}与` +
     `《${input.workB.title}》的${roleB}${characterB.name},` +
-    `进入《${input.momentWork.title}》启发的"${moment.conflict_type}"结构。` +
+    `进入《${input.momentWork.title}》启发的"${moment.conflict_type}"结构${patternClause}。` +
     `${characterA.name}的${traitA}与"${styleA}"对上${characterB.name}的${traitB}与"${styleB}",` +
     conceptTail
 
@@ -715,6 +743,8 @@ export const buildRemixPlan = (input: RemixPlanInput): RemixPlan => {
     copywriting,
     prompt,
     duration,
+    // 仅在提供 storyPattern 时附加相关字段,避免对象中出现 undefined 导致 JSON 往返不等
+    ...(storyPattern ? { storyPatternId: storyPattern.id, storyPatternName: storyPattern.name } : {}),
     production,
   }
 }
@@ -739,6 +769,8 @@ export interface ProductionPlanInput extends RemixCombination {
   momentWork: Work
   style: RemixStyle
   seed: string
+  /** 可选叙事模板：提供时其 beats 替换默认分镜节拍 */
+  storyPattern?: StoryPattern
 }
 
 export interface ProductionPlanStats {
@@ -777,6 +809,7 @@ export const buildProductionPlans = (
       style: input.style,
       duration: input.duration,
       seed: input.seed,
+      storyPattern: input.storyPattern,
     }),
   )
   return {

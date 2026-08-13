@@ -14,7 +14,9 @@ const escapeTableCell = (value: string): string => String(value).replace(/\|/g, 
 export const buildRemixMarkdown = (plan: RemixPlan): string => {
   const lines: string[] = []
   lines.push(`# ${plan.title}`, '')
-  lines.push(`> 时长 ${plan.duration}s · 钩子类型 ${plan.hookCategory} · 方案 ID \`${plan.id}\``, '')
+  // 叙事模板名称存在时加入元信息行，便于导出文档追溯叙事结构
+  const patternMeta = plan.storyPatternName ? ` · 叙事模板 ${plan.storyPatternName}` : ''
+  lines.push(`> 时长 ${plan.duration}s · 钩子类型 ${plan.hookCategory}${patternMeta} · 方案 ID \`${plan.id}\``, '')
   lines.push('## 概念', plan.concept, '')
   lines.push('## 前三秒钩子', `> ${plan.hook}`, '')
   lines.push('## 分镜')

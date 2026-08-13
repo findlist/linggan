@@ -552,6 +552,8 @@ export type SceneConstraintProfile = z.infer<typeof SceneConstraintProfileSchema
 export type ConflictDifficultyProfile = z.infer<typeof ConflictDifficultyProfileSchema>
 export type AbilityConflictFit = z.infer<typeof AbilityConflictFitSchema>
 export type CompatibilityMatrix = z.infer<typeof CompatibilityMatrixSchema>
+export type StoryPattern = z.infer<typeof StoryPatternSchema>
+export type SeedEntities = z.infer<typeof SeedEntitiesSchema>
 /**
  * Read-only export document for static site consumption.
  * The frontend reads this file instead of accessing SQLite directly.

@@ -264,14 +264,18 @@ try {
     originalCharCount = originalChars.length
     const characters = [...knownChars, ...originalChars]
     const moments = knowledge.iconic_moments.slice(0, 3)
+    // 叙事模板轮换选取：不同角色对 × 名场面组合使用不同 story_pattern，增加叙事结构多样性
+    const storyPatterns = seeds.story_patterns
     const inputs: ProductionPlanInput[] = []
     for (let i = 0; i < characters.length; i++) {
       for (let j = i + 1; j < characters.length; j++) {
-        for (const moment of moments) {
+        for (let m = 0; m < moments.length; m++) {
+          const moment = moments[m]
           const workA = workById.get(characters[i].work_id)
           const workB = workById.get(characters[j].work_id)
           const momentWork = workById.get(moment.work_id)
           if (!workA || !workB || !momentWork) continue
+          const patternIndex = (i + j + m) % storyPatterns.length
           inputs.push({
             characterA: characters[i],
             characterB: characters[j],
@@ -282,6 +286,7 @@ try {
             momentWork,
             style,
             seed: `pipeline-${report.date}-${i}-${j}-${moment.id}`,
+            storyPattern: storyPatterns[patternIndex],
           })
         }
       }
