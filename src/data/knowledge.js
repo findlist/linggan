@@ -96,4 +96,7 @@ export const shotTypeLabels = { extreme_close_up: '大特写', close_up: '特写
 export const cameraMovementLabels = { fixed: '固定', push: '推', pull: '拉', pan: '摇', tilt: '俯仰', tracking: '跟拍' }
 export const transitionLabels = { cut: '切', dissolve: '溶', fade: '淡变', match_cut: '匹配剪辑' }
 
+// 叙事模板：供前端创作工作台选择器使用，提供时替换默认分镜节拍
+export const storyPatterns = seedEntities.story_patterns
+
 export { knowledge }

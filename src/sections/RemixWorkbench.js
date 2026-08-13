@@ -12,6 +12,7 @@ import {
   workById,
   characterById,
   remixStyles,
+  storyPatterns,
   personalityLabels,
   hookCategoryLabels,
   shotTypeLabels,
@@ -65,6 +66,7 @@ export const renderRemixWorkbench = () => `
         <div class="operator">×</div>
         <div class="field wide"><label for="moment"><span>03</span>名场面冲突结构</label><select id="moment">${renderMomentOptions('moment_mass_assault')}</select><small class="field-hint" id="hint-moment"></small></div>
         <div class="field style-field"><label for="style"><span>04</span>视频风格</label><select id="style">${remixStyles.map((style) => `<option value="${style.id}">${style.label}</option>`).join('')}</select></div>
+        <div class="field pattern-field"><label for="story-pattern"><span>05</span>叙事模板</label><select id="story-pattern"><option value="">默认结构</option>${storyPatterns.map((p) => `<option value="${p.id}">${p.name}</option>`).join('')}</select><small class="field-hint" id="hint-pattern">按时长自动分配钩子→冲突→反转等节拍</small></div>
         <div class="duration"><span>时长</span><button type="button" data-duration="15">15s</button><button type="button" class="active" data-duration="30">30s</button><button type="button" data-duration="60">60s</button></div>
         <button class="btn primary generate-remix" type="submit">${icon('sparkles', 18)} 生成混搭方案</button>
       </form>
@@ -83,6 +85,21 @@ const updateHints = () => {
   document.querySelector('#hint-b').textContent = `${b.character_types.join(' · ')}｜${b.traits.join('、')}`
   document.querySelector('#hint-moment').textContent =
     `${moment.conflict_type}｜${moment.reusable_beats.slice(0, 2).join(' → ')}`
+}
+
+// 更新叙事模板提示：展示当前选中模板的 beats 序列，或默认结构的说明
+const updatePatternHint = () => {
+  const patternId = document.querySelector('#story-pattern')?.value
+  const hint = document.querySelector('#hint-pattern')
+  if (!hint) return
+  if (!patternId) {
+    hint.textContent = '按时长自动分配钩子→冲突→反转等节拍'
+    return
+  }
+  const pattern = storyPatterns.find((p) => p.id === patternId)
+  if (pattern) {
+    hint.textContent = pattern.beats.join(' → ')
+  }
 }
 
 /**
@@ -117,9 +134,11 @@ const buildRemix = () => {
   const b = characterById.get(document.querySelector('#character-b').value)
   const moment = knowledge.iconic_moments.find((item) => item.id === document.querySelector('#moment').value)
   const style = remixStyles.find((item) => item.id === document.querySelector('#style').value)
+  const patternId = document.querySelector('#story-pattern').value
+  const storyPattern = patternId ? storyPatterns.find((p) => p.id === patternId) : undefined
   const { generation } = getState()
   // 种子加入 generation 计数器，使每次点击"生成"都能产生不同方案；同一 seed 字符串在引擎内确定性展开
-  const seed = `${a.id}${b.id}${moment.id}${style.id}${generation}`
+  const seed = `${a.id}${b.id}${moment.id}${style.id}${patternId}${generation}`
   const plan = buildRemixPlan({
     characterA: a,
     characterB: b,
@@ -129,15 +148,16 @@ const buildRemix = () => {
     momentWork: workById.get(moment.work_id),
     style,
     duration: getState().duration,
+    storyPattern,
     seed,
   })
   // D5：返回 seed 供 addHistory 记录，支持后续可复现性
-  return { plan, a, b, moment, style, seed }
+  return { plan, a, b, moment, style, storyPattern, seed }
 }
 
 // D5：把一次生成结果记录到创作历史，供用户回看和重新加载
 const recordHistory = (result) => {
-  const { plan, a, b, moment, style, seed } = result
+  const { plan, a, b, moment, style, storyPattern, seed } = result
   addHistory({
     plan,
     context: {
@@ -145,6 +165,7 @@ const recordHistory = (result) => {
       characterBId: b.id,
       momentId: moment.id,
       styleId: style.id,
+      storyPatternId: storyPattern?.id ?? '',
     },
     seed,
   })
@@ -178,7 +199,7 @@ const renderPreview = (result, ctx) => {
     <p class="concept">${escapeHtml(plan.concept)}</p>
     <div class="hook"><span>前三秒钩子</span><b>${escapeHtml(plan.hook)}</b></div>
     <div class="cover-copy"><span>封面文案</span><b>${escapeHtml(plan.copywriting.cover_copy)}</b></div>
-    <div class="preview-tags"><span>${plan.duration}s</span><span>${hookCategoryLabels[plan.hookCategory]}钩子</span><span>${personalityLabels[plan.personalityA]} × ${personalityLabels[plan.personalityB]}</span><span>${plan.storyboard.length} 镜头</span></div>
+    <div class="preview-tags"><span>${plan.duration}s</span><span>${hookCategoryLabels[plan.hookCategory]}钩子</span><span>${personalityLabels[plan.personalityA]} × ${personalityLabels[plan.personalityB]}</span><span>${plan.storyboard.length} 镜头</span>${plan.storyPatternName ? `<span>${escapeHtml(plan.storyPatternName)}</span>` : ''}</div>
     ${dupBanner}
     <div class="preview-actions"><button class="btn ghost copy-result">${icon('copy', 16)} 复制</button><button class="btn primary save-result">${icon('bookmark', 16)} 收藏</button></div>`
   preview.querySelector('.copy-result').addEventListener('click', async () => {
@@ -202,6 +223,7 @@ const renderPreview = (result, ctx) => {
             characterBId: result.b.id,
             momentId: result.moment.id,
             styleId: result.style.id,
+            storyPatternId: result.storyPattern?.id ?? '',
           },
           savedAt: new Date().toISOString(),
         },
@@ -228,7 +250,7 @@ const renderResult = (result, ctx) => {
   const card = document.querySelector('#result-card')
   // C2 完整制作包：分镜表含景别 / 运镜 / 转场，结构化提示词，版权边界三字段
   card.innerHTML = `
-    <div class="result-top"><span class="result-label">完整制作包 · ${plan.duration}s · ${hookCategoryLabels[plan.hookCategory]}钩子</span></div>
+    <div class="result-top"><span class="result-label">完整制作包 · ${plan.duration}s · ${hookCategoryLabels[plan.hookCategory]}钩子${plan.storyPatternName ? ` · ${escapeHtml(plan.storyPatternName)}` : ''}</span></div>
     <div class="storyboard-section">
       <h4>分镜表（${plan.storyboard.length} 镜头）</h4>
       <div class="beat-list storyboard-list">${plan.storyboard.map((shot) => `<div class="shot"><div class="shot-head"><span>#${String(shot.index).padStart(2, '0')} · ${shot.duration}s</span><small>${shotTypeLabels[shot.shot_type]} · ${cameraMovementLabels[shot.camera_movement]} · 转${transitionLabels[shot.transition]}</small></div><p class="shot-visual">${escapeHtml(shot.visual)}</p><small>动作：${escapeHtml(shot.action)} · 情绪：${escapeHtml(shot.emotion)}</small></div>`).join('')}</div>
@@ -268,15 +290,17 @@ const loadRemixFromEntry = (entry, ctx, errorLabel, successPrefix) => {
     toast(errorLabel)
     return
   }
-  const { characterAId, characterBId, momentId, styleId } = entry.context
+  const { characterAId, characterBId, momentId, styleId, storyPatternId } = entry.context
   const selectA = document.querySelector('#character-a')
   const selectB = document.querySelector('#character-b')
   const momentSelect = document.querySelector('#moment')
   const styleSelect = document.querySelector('#style')
+  const patternSelect = document.querySelector('#story-pattern')
   selectA.value = characterAId
   selectB.value = characterBId
   momentSelect.value = momentId
   styleSelect.value = styleId
+  if (patternSelect) patternSelect.value = storyPatternId ?? ''
   // 知识库变更后，收藏/历史中的实体可能已被删除；任一选择器为空时拒绝加载
   if (!selectA.value || !selectB.value || !momentSelect.value || !styleSelect.value) {
     toast('方案中的角色或场面已不在知识库中')
@@ -290,10 +314,12 @@ const loadRemixFromEntry = (entry, ctx, errorLabel, successPrefix) => {
   const b = characterById.get(characterBId)
   const moment = knowledge.iconic_moments.find((m) => m.id === momentId)
   const style = remixStyles.find((s) => s.id === styleId)
-  const result = { plan: entry.plan, a, b, moment, style, seed: entry.seed ?? '' }
+  const storyPattern = storyPatternId ? storyPatterns.find((p) => p.id === storyPatternId) : undefined
+  const result = { plan: entry.plan, a, b, moment, style, storyPattern, seed: entry.seed ?? '' }
   setCurrentResult(result)
   renderResult(result, ctx)
   updateHints()
+  updatePatternHint()
   document.querySelector('#remix').scrollIntoView({ behavior: 'smooth', block: 'start' })
   toast(`${successPrefix}：${entry.title}`)
 }
@@ -311,9 +337,9 @@ const loadHistoryRemix = (id, ctx) => {
   loadRemixFromEntry(item, ctx, '该历史记录无法重新加载', '已从历史重新加载')
 }
 
-// 随机切换 4 个选择器，并自动生成方案
+// 随机切换 5 个选择器，并自动生成方案
 const randomize = (ctx) => {
-  const selects = ['#character-a', '#character-b', '#moment', '#style'].map((selector) =>
+  const selects = ['#character-a', '#character-b', '#moment', '#style', '#story-pattern'].map((selector) =>
     document.querySelector(selector),
   )
   selects.forEach((select) => {
@@ -322,6 +348,7 @@ const randomize = (ctx) => {
   if (selects[0].value === selects[1].value)
     selects[1].selectedIndex = (selects[1].selectedIndex + 1) % selects[1].options.length
   updateHints()
+  updatePatternHint()
   incrementGeneration()
   const result = buildRemix()
   setCurrentResult(result)
@@ -409,6 +436,9 @@ export const mountRemixWorkbench = (ctx) => {
   document
     .querySelectorAll('#character-a,#character-b,#moment')
     .forEach((select) => select.addEventListener('change', updateHints))
+
+  // 叙事模板选择器变化时更新提示
+  document.querySelector('#story-pattern')?.addEventListener('change', updatePatternHint)
 
   // 初始化：渲染提示 + 默认方案（不记录历史，避免页面加载就产生历史条目）
   updateHints()
