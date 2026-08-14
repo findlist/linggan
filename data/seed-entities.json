@@ -40,7 +40,10 @@
     {"id":"story_perspective_shift","name":"视角转换","beats":["A视角叙述事件","切换B视角同一事件","两视角信息互补","视角差异暴露认知偏差","第三视角收束真相"]},
     {"id":"story_circular_narrative","name":"环形叙事","beats":["结尾场景即开头场景","回溯整段旅程","关键道具传递到手","角色完成内心闭环","首帧重现但意义已变"]},
     {"id":"story_multiple_endings","name":"多结局","beats":["同一选择点分叉","结局A快速展示","结局B反方向发展","结局C出人意料","观众被引导选择最真实结局"]},
-    {"id":"story_unreliable_narrator","name":"不可靠叙述者","beats":["叙述者自信开讲","细节出现矛盾","旁人反应与叙述不符","叙述者自欺被揭穿","真相与叙述彻底相反"]}
+    {"id":"story_unreliable_narrator","name":"不可靠叙述者","beats":["叙述者自信开讲","细节出现矛盾","旁人反应与叙述不符","叙述者自欺被揭穿","真相与叙述彻底相反"]},
+    {"id":"story_nested_narrative","name":"嵌套叙事","beats":["外层故事开场","角色开始讲述内层故事","内层故事逐渐占据主导","内层结局反噬外层","外层因内层重写结局"]},
+    {"id":"story_meta_narrative","name":"元叙事","beats":["角色意识到自己在故事中","试图打破叙事规则","叙事结构开始崩塌","角色与叙事者博弈","重建新的叙事契约"]},
+    {"id":"story_silent_narrative","name":"沉默叙事","beats":["无声开场建立氛围","唯一声音打破寂静","沉默中暗流涌动","沉默被外部事件撕裂","回归沉默但张力留存"]}
   ],
   "elements": [
     {"id":"element_billiards","name":"台球","category":"sport","actions":["开球","走位","清台"],"generatability":0.85},
