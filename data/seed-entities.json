@@ -34,7 +34,10 @@
     {"id":"story_parallel_crosscut","name":"平行交叉","beats":["两条线索独立推进","线索A的关键道具出现在线索B","角色 unknowingly 交汇","交汇点真相浮出","双线合并收尾"]},
     {"id":"story_time_loop","name":"时间循环","beats":["同一场景重复展开","微小偏差开始积累","发现循环存在的线索","尝试打破循环的关键行为","循环结束但角色已改变"]},
     {"id":"story_identity_swap","name":"身份互换","beats":["身份错位突然发生","笨拙模仿对方日常","暴露对方隐藏的困境","关键时刻产生互换理解","回归原位但认知已改变"]},
-    {"id":"story_reverse_causality","name":"因果倒置","beats":["结果先行展示","倒推原因链条","真相与初判相反","正向时间线重述真相"]}
+    {"id":"story_reverse_causality","name":"因果倒置","beats":["结果先行展示","倒推原因链条","真相与初判相反","正向时间线重述真相"]},
+    {"id":"story_dual_narrative","name":"双线叙事","beats":["主线建立正常秩序","暗线埋下不安伏笔","暗线入侵主线","双线碰撞揭示隐藏联系","主线因暗线重构意义"]},
+    {"id":"story_nonlinear_fragments","name":"非线性碎片","beats":["碎片一闪回","碎片二闪回","碎片间隐含关联","碎片拼合还原全貌","最后一帧重新定义一切"]},
+    {"id":"story_perspective_shift","name":"视角转换","beats":["A视角叙述事件","切换B视角同一事件","两视角信息互补","视角差异暴露认知偏差","第三视角收束真相"]}
   ],
   "elements": [
     {"id":"element_billiards","name":"台球","category":"sport","actions":["开球","走位","清台"],"generatability":0.85},

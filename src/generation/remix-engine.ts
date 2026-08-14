@@ -399,11 +399,14 @@ const classifyBeat = (beat: string): BeatRole => {
   if (beat === '转折' || beat === '破局' || beat === '反转') return 'turning'
   if (beat === '收尾' || beat === '彩蛋') return 'ending'
   // story_pattern beats 关键词匹配：将叙事节拍映射到镜头角色
-  if (/建立|展示|开场|先行|平凡|微小偏差|线索|起跑|结果先行/.test(beat)) return 'opening'
-  if (/铺垫|升级|重复|变化|采访|道具|目标|逐渐|积累|模仿|笨拙|倒推|原因链条/.test(beat)) return 'buildup'
-  if (/冲突|受阻|矛盾|连锁|滚雪球|被迫|交汇|史诗|问题|打破|关键行为|错位/.test(beat)) return 'climax'
-  if (/转折|破局|反转|偏离|揭露|真相|觉醒|意外|浮出|发现|互换理解|相反|暴露/.test(beat)) return 'turning'
-  if (/收尾|彩蛋|收场|回归|合并|散场|循环结束|认知已改变|重述/.test(beat)) return 'ending'
+  if (/建立|展示|开场|先行|平凡|微小偏差|线索|起跑|结果先行|闪回|叙述/.test(beat)) return 'opening'
+  if (/铺垫|升级|重复|变化|采访|道具|目标|逐渐|积累|模仿|笨拙|倒推|原因链条|伏笔|暗线|切换|碎片/.test(beat))
+    return 'buildup'
+  if (/冲突|受阻|矛盾|连锁|滚雪球|被迫|交汇|史诗|问题|打破|关键行为|错位|入侵|碰撞|关联|互补/.test(beat))
+    return 'climax'
+  if (/转折|破局|反转|偏离|揭露|真相|觉醒|意外|浮出|发现|互换理解|相反|暴露|揭示|拼合|还原|差异/.test(beat))
+    return 'turning'
+  if (/收尾|彩蛋|收场|回归|合并|散场|循环结束|认知已改变|重述|重构|重新定义|收束/.test(beat)) return 'ending'
   return 'ending'
 }
 
