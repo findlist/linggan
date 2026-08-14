@@ -279,3 +279,80 @@ test('story_pattern name appears in concept text', () => {
   const plan = buildRemixPlan(buildInput({ storyPattern: testPattern }))
   assert.ok(plan.concept.includes('一本正经的荒诞'), 'concept should include story pattern name')
 })
+
+/* ----------------------- 新增 story_pattern 扩充测试 ----------------------- */
+
+const seedEntities = JSON.parse(await readFile(new URL('data/seed-entities.json', root), 'utf8')) as {
+  story_patterns: StoryPattern[]
+}
+
+const newPatterns = seedEntities.story_patterns.filter((p) =>
+  ['story_time_loop', 'story_identity_swap', 'story_reverse_causality'].includes(p.id),
+)
+
+test('new story_patterns (time_loop, identity_swap, reverse_causality) exist in seed-entities', () => {
+  assert.equal(newPatterns.length, 3, 'should have exactly 3 new story patterns')
+  for (const pattern of newPatterns) {
+    assert.ok(pattern.beats.length >= 4, `${pattern.id} should have at least 4 beats`)
+    assert.ok(pattern.beats.length <= 5, `${pattern.id} should have at most 5 beats`)
+  }
+})
+
+test('new story_patterns produce valid plans with correct beat count', () => {
+  for (const pattern of newPatterns) {
+    const plan = buildRemixPlan(buildInput({ storyPattern: pattern, duration: 30 }))
+    assert.equal(
+      plan.storyboard.length,
+      pattern.beats.length,
+      `${pattern.id}: storyboard length should match beats count`,
+    )
+    assert.equal(plan.storyPatternId, pattern.id, `${pattern.id}: storyPatternId should be set`)
+    assert.equal(plan.storyPatternName, pattern.name, `${pattern.id}: storyPatternName should be set`)
+    for (const shot of plan.storyboard) {
+      assert.ok(shot.duration > 0, `${pattern.id}: all shot durations must be positive`)
+    }
+  }
+})
+
+test('new story_patterns shot durations sum to total duration', () => {
+  for (const pattern of newPatterns) {
+    for (const duration of [15, 30, 60] as const) {
+      const plan = buildRemixPlan(buildInput({ storyPattern: pattern, duration }))
+      const totalDuration = plan.storyboard.reduce((sum, shot) => sum + shot.duration, 0)
+      assert.equal(totalDuration, duration, `${pattern.id} at ${duration}s: total duration must match`)
+    }
+  }
+})
+
+test('new story_patterns produce different storyboard structures from each other', () => {
+  const plans = newPatterns.map((p) => buildRemixPlan(buildInput({ storyPattern: p, seed: 'same-seed' })))
+  const visualSets = plans.map((plan) => plan.storyboard.map((s) => s.visual))
+  // All 3 new patterns should produce different visual sequences
+  for (let i = 0; i < visualSets.length; i++) {
+    for (let j = i + 1; j < visualSets.length; j++) {
+      assert.notDeepEqual(
+        visualSets[i],
+        visualSets[j],
+        `patterns ${newPatterns[i].id} and ${newPatterns[j].id} should produce different visuals`,
+      )
+    }
+  }
+})
+
+test('new story_patterns plans are deterministic with same seed', () => {
+  for (const pattern of newPatterns) {
+    const input = buildInput({ storyPattern: pattern, seed: 'deterministic-seed' })
+    assert.deepEqual(buildRemixPlan(input), buildRemixPlan(input), `${pattern.id} should be deterministic`)
+  }
+})
+
+test('new story_patterns name appears in concept text', () => {
+  for (const pattern of newPatterns) {
+    const plan = buildRemixPlan(buildInput({ storyPattern: pattern }))
+    assert.ok(plan.concept.includes(pattern.name), `${pattern.id}: concept should include pattern name`)
+  }
+})
+
+test('expanded story_patterns count is 9 (6 original + 3 new)', () => {
+  assert.equal(seedEntities.story_patterns.length, 9, 'should have 9 story patterns total')
+})

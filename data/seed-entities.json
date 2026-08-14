@@ -31,7 +31,10 @@
     {"id":"story_mockumentary","name":"伪纪录片复盘","beats":["事故结果先行","多角色采访","证词互相矛盾","监控揭露真相"]},
     {"id":"story_daily_ritual","name":"日常仪式感","beats":["平凡动作特写","重复中微妙变化","某次偏离惯例","偏离引发连锁","回归日常但意味已变"]},
     {"id":"story_cascading_mistakes","name":"错误连锁","beats":["微小误判","补救制造新问题","问题滚雪球","被迫选最差选项","意外收场"]},
-    {"id":"story_parallel_crosscut","name":"平行交叉","beats":["两条线索独立推进","线索A的关键道具出现在线索B","角色 unknowingly 交汇","交汇点真相浮出","双线合并收尾"]}
+    {"id":"story_parallel_crosscut","name":"平行交叉","beats":["两条线索独立推进","线索A的关键道具出现在线索B","角色 unknowingly 交汇","交汇点真相浮出","双线合并收尾"]},
+    {"id":"story_time_loop","name":"时间循环","beats":["同一场景重复展开","微小偏差开始积累","发现循环存在的线索","尝试打破循环的关键行为","循环结束但角色已改变"]},
+    {"id":"story_identity_swap","name":"身份互换","beats":["身份错位突然发生","笨拙模仿对方日常","暴露对方隐藏的困境","关键时刻产生互换理解","回归原位但认知已改变"]},
+    {"id":"story_reverse_causality","name":"因果倒置","beats":["结果先行展示","倒推原因链条","真相与初判相反","正向时间线重述真相"]}
   ],
   "elements": [
     {"id":"element_billiards","name":"台球","category":"sport","actions":["开球","走位","清台"],"generatability":0.85},
