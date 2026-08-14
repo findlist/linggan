@@ -294,7 +294,11 @@ const batch3Patterns = seedEntities.story_patterns.filter((p) =>
   ['story_dual_narrative', 'story_nonlinear_fragments', 'story_perspective_shift'].includes(p.id),
 )
 
-const allNewPatterns = [...batch2Patterns, ...batch3Patterns]
+const batch4Patterns = seedEntities.story_patterns.filter((p) =>
+  ['story_circular_narrative', 'story_multiple_endings', 'story_unreliable_narrator'].includes(p.id),
+)
+
+const allNewPatterns = [...batch2Patterns, ...batch3Patterns, ...batch4Patterns]
 
 test('batch2 story_patterns (time_loop, identity_swap, reverse_causality) exist in seed-entities', () => {
   assert.equal(batch2Patterns.length, 3, 'should have exactly 3 batch2 story patterns')
@@ -307,6 +311,14 @@ test('batch2 story_patterns (time_loop, identity_swap, reverse_causality) exist 
 test('batch3 story_patterns (dual_narrative, nonlinear_fragments, perspective_shift) exist in seed-entities', () => {
   assert.equal(batch3Patterns.length, 3, 'should have exactly 3 batch3 story patterns')
   for (const pattern of batch3Patterns) {
+    assert.ok(pattern.beats.length >= 4, `${pattern.id} should have at least 4 beats`)
+    assert.ok(pattern.beats.length <= 5, `${pattern.id} should have at most 5 beats`)
+  }
+})
+
+test('batch4 story_patterns (circular_narrative, multiple_endings, unreliable_narrator) exist in seed-entities', () => {
+  assert.equal(batch4Patterns.length, 3, 'should have exactly 3 batch4 story patterns')
+  for (const pattern of batch4Patterns) {
     assert.ok(pattern.beats.length >= 4, `${pattern.id} should have at least 4 beats`)
     assert.ok(pattern.beats.length <= 5, `${pattern.id} should have at most 5 beats`)
   }
@@ -367,6 +379,6 @@ test('all new story_patterns name appears in concept text', () => {
   }
 })
 
-test('expanded story_patterns count is 12 (6 original + 3 batch2 + 3 batch3)', () => {
-  assert.equal(seedEntities.story_patterns.length, 12, 'should have 12 story patterns total')
+test('expanded story_patterns count is 15 (6 original + 3 batch2 + 3 batch3 + 3 batch4)', () => {
+  assert.equal(seedEntities.story_patterns.length, 15, 'should have 15 story patterns total')
 })
