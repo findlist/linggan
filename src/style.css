@@ -676,6 +676,52 @@ select {
   font-size: 9px;
   margin-top: 4px;
 }
+/* 叙事模板节拍预览可视化 */
+.beat-preview {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+.beat-preview-label {
+  font: 800 9px Manrope;
+  color: #596171;
+  margin-right: 2px;
+  white-space: nowrap;
+}
+.beat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  background: #1a2030;
+  border: 1px solid #2a3045;
+  border-radius: 7px;
+  font-size: 9px;
+  color: #cdd4df;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.beat-chip-index {
+  font: 800 8px Manrope;
+  color: var(--lime);
+  flex-shrink: 0;
+}
+.beat-chip-text {
+  color: #bbc1cc;
+}
+.beat-chip-default {
+  padding: 3px 8px;
+  background: #151a24;
+  border-color: #1f2535;
+  color: #7d8696;
+}
+.beat-arrow {
+  color: #3d4660;
+  font-size: 8px;
+  flex-shrink: 0;
+}
 .operator {
   height: 20px;
   display: grid;

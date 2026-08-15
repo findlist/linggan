@@ -66,7 +66,7 @@ export const renderRemixWorkbench = () => `
         <div class="operator">×</div>
         <div class="field wide"><label for="moment"><span>03</span>名场面冲突结构</label><select id="moment">${renderMomentOptions('moment_mass_assault')}</select><small class="field-hint" id="hint-moment"></small></div>
         <div class="field style-field"><label for="style"><span>04</span>视频风格</label><select id="style">${remixStyles.map((style) => `<option value="${style.id}">${style.label}</option>`).join('')}</select></div>
-        <div class="field pattern-field"><label for="story-pattern"><span>05</span>叙事模板</label><select id="story-pattern"><option value="">默认结构</option>${storyPatterns.map((p) => `<option value="${p.id}">${p.name}</option>`).join('')}</select><small class="field-hint" id="hint-pattern">按时长自动分配钩子→冲突→反转等节拍</small></div>
+        <div class="field pattern-field"><label for="story-pattern"><span>05</span>叙事模板</label><select id="story-pattern"><option value="">默认结构</option>${storyPatterns.map((p) => `<option value="${p.id}">${p.name}</option>`).join('')}</select><small class="field-hint" id="hint-pattern"></small></div>
         <div class="duration"><span>时长</span><button type="button" data-duration="15">15s</button><button type="button" class="active" data-duration="30">30s</button><button type="button" data-duration="60">60s</button></div>
         <button class="btn primary generate-remix" type="submit">${icon('sparkles', 18)} 生成混搭方案</button>
       </form>
@@ -87,18 +87,23 @@ const updateHints = () => {
     `${moment.conflict_type}｜${moment.reusable_beats.slice(0, 2).join(' → ')}`
 }
 
-// 更新叙事模板提示：展示当前选中模板的 beats 序列，或默认结构的说明
+// 默认结构的节拍说明（按时长自动分配）
+const DEFAULT_BEAT_LABELS = ['钩子', '铺垫', '冲突', '转折', '收尾']
+
+// 更新叙事模板提示：展示当前选中模板的可视化节拍卡片序列，或默认结构的说明
 const updatePatternHint = () => {
   const patternId = document.querySelector('#story-pattern')?.value
   const hint = document.querySelector('#hint-pattern')
   if (!hint) return
   if (!patternId) {
-    hint.textContent = '按时长自动分配钩子→冲突→反转等节拍'
+    // 默认结构：展示标准节拍卡片（不带序号高亮，表示自动分配）
+    hint.innerHTML = `<span class="beat-preview"><span class="beat-preview-label">默认节拍</span>${DEFAULT_BEAT_LABELS.map((label) => `<span class="beat-chip beat-chip-default">${escapeHtml(label)}</span>`).join('<span class="beat-arrow">→</span>')}</span>`
     return
   }
   const pattern = storyPatterns.find((p) => p.id === patternId)
   if (pattern) {
-    hint.textContent = pattern.beats.join(' → ')
+    // 叙事模板：展示带序号的节拍卡片序列
+    hint.innerHTML = `<span class="beat-preview"><span class="beat-preview-label">${escapeHtml(pattern.name)} · ${pattern.beats.length} 节拍</span>${pattern.beats.map((beat, i) => `<span class="beat-chip"><span class="beat-chip-index">${String(i + 1).padStart(2, '0')}</span><span class="beat-chip-text">${escapeHtml(beat)}</span></span>`).join('<span class="beat-arrow">→</span>')}</span>`
   }
 }
 
@@ -442,6 +447,7 @@ export const mountRemixWorkbench = (ctx) => {
 
   // 初始化：渲染提示 + 默认方案（不记录历史，避免页面加载就产生历史条目）
   updateHints()
+  updatePatternHint()
   const result = buildRemix()
   setCurrentResult(result)
   renderResult(result, ctx)
