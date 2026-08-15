@@ -49,7 +49,10 @@
     {"id":"story_musical_narrative","name":"音乐剧叙事","beats":["角色用歌唱代替对话","歌舞建立日常秩序","突发事件打断节奏","冲突以对唱展开","终曲收束所有线索"]},
     {"id":"story_montage_narrative","name":"蒙太奇叙事","beats":["快速剪辑建立空间感","相似动作跨场景拼接","节奏加速到临界点","一个定格打破所有节奏","静止后重新启动意义已变"]},
     {"id":"story_immersive_narrative","name":"沉浸式叙事","beats":["第一人称视角开场","环境声包裹观众","角色直接对镜头说话","边界消失观众成为参与者","退出后发现视角已被改变"]},
-    {"id":"story_interactive_narrative","name":"交互式叙事","beats":["角色提出选择题","选项A快速展示后果","选项B走向反面","两条路径交叉碰撞","最终揭示第三条隐藏路径"]}
+    {"id":"story_interactive_narrative","name":"交互式叙事","beats":["角色提出选择题","选项A快速展示后果","选项B走向反面","两条路径交叉碰撞","最终揭示第三条隐藏路径"]},
+    {"id":"story_absurdist_narrative","name":"荒诞派叙事","beats":["荒诞前提被平静接受","荒诞规则渗透日常","荒诞升级到不可收拾","一个更荒诞的事实颠覆一切","荒诞成为新常态没人质疑"]},
+    {"id":"story_documentary_narrative","name":"纪录片式叙事","beats":["旁白建立背景脉络","受访者讲述核心事件","素材拼贴展示多角度","矛盾证词揭示隐藏层","旁白收束留下开放思考"]},
+    {"id":"story_epic_narrative","name":"史诗叙事","beats":["宏大世界观铺陈展开","英雄接到命运召唤","征途遭遇重重考验","决战时刻牺牲与抉择","传说定型后人继续前行"]}
   ],
   "elements": [
     {"id":"element_billiards","name":"台球","category":"sport","actions":["开球","走位","清台"],"generatability":0.85},

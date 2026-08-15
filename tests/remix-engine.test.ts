@@ -310,6 +310,10 @@ const batch7Patterns = seedEntities.story_patterns.filter((p) =>
   ['story_montage_narrative', 'story_immersive_narrative', 'story_interactive_narrative'].includes(p.id),
 )
 
+const batch8Patterns = seedEntities.story_patterns.filter((p) =>
+  ['story_absurdist_narrative', 'story_documentary_narrative', 'story_epic_narrative'].includes(p.id),
+)
+
 const allNewPatterns = [
   ...batch2Patterns,
   ...batch3Patterns,
@@ -317,6 +321,7 @@ const allNewPatterns = [
   ...batch5Patterns,
   ...batch6Patterns,
   ...batch7Patterns,
+  ...batch8Patterns,
 ]
 
 test('batch2 story_patterns (time_loop, identity_swap, reverse_causality) exist in seed-entities', () => {
@@ -422,6 +427,14 @@ test('all new story_patterns name appears in concept text', () => {
   }
 })
 
-test('expanded story_patterns count is 24 (6 original + 3 batch2 + 3 batch3 + 3 batch4 + 3 batch5 + 3 batch6 + 3 batch7)', () => {
-  assert.equal(seedEntities.story_patterns.length, 24, 'should have 24 story patterns total')
+test('batch8 story_patterns (absurdist_narrative, documentary_narrative, epic_narrative) exist in seed-entities', () => {
+  assert.equal(batch8Patterns.length, 3, 'should have exactly 3 batch8 story patterns')
+  for (const pattern of batch8Patterns) {
+    assert.ok(pattern.beats.length >= 4, `${pattern.id} should have at least 4 beats`)
+    assert.ok(pattern.beats.length <= 5, `${pattern.id} should have at most 5 beats`)
+  }
+})
+
+test('expanded story_patterns count is 27 (6 original + 3 batch2 + 3 batch3 + 3 batch4 + 3 batch5 + 3 batch6 + 3 batch7 + 3 batch8)', () => {
+  assert.equal(seedEntities.story_patterns.length, 27, 'should have 27 story patterns total')
 })
