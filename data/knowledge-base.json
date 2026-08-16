@@ -448,6 +448,101 @@
         }
       ],
       "last_verified_at": "2026-08-05T00:00:00.000Z"
+    },
+    {
+      "id": "work_cyberpunk_2077",
+      "title": "赛博朋克 2077",
+      "original_title": "Cyberpunk 2077",
+      "aliases": [
+        "Cyberpunk 2077",
+        "电驭叛客 2077"
+      ],
+      "media_type": "game",
+      "regions": [
+        "全球"
+      ],
+      "release_year": 2020,
+      "genres": [
+        "RPG",
+        "科幻",
+        "开放世界"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "work_let_the_bullets_fly",
+      "title": "让子弹飞",
+      "original_title": "讓子彈飛",
+      "aliases": [
+        "Let the Bullets Fly",
+        "Rang Zi Dan Fei"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国大陆",
+        "中国香港"
+      ],
+      "release_year": 2010,
+      "genres": [
+        "动作",
+        "喜剧",
+        "黑色幽默"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "work_ne_zha",
+      "title": "哪吒之魔童降世",
+      "original_title": "哪吒之魔童降世",
+      "aliases": [
+        "Ne Zha",
+        "Nezha: I Am the Destiny",
+        "Ne Zha: Birth of the Demon Child"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2019,
+      "genres": [
+        "animation",
+        "奇幻",
+        "神话"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -2009,6 +2104,400 @@
         }
       ],
       "last_verified_at": "2026-08-05T00:00:00.000Z"
+    },
+    {
+      "id": "known_v_cyberpunk",
+      "work_id": "work_cyberpunk_2077",
+      "name": "V",
+      "aliases": [
+        "V",
+        "Valerie"
+      ],
+      "roles": [
+        "protagonist",
+        "雇佣兵"
+      ],
+      "character_types": [
+        "生存型",
+        "雇佣兵"
+      ],
+      "traits": [
+        "果断",
+        "适应力强",
+        "野心",
+        "重情义"
+      ],
+      "dialogue_style": [
+        "用简洁直白的语言表达意图",
+        "以行动回应威胁",
+        "在绝境中用幽默缓解压力"
+      ],
+      "relationships": [
+        "known_johnny_silverhand_cyberpunk",
+        "known_panam_cyberpunk"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_johnny_silverhand_cyberpunk",
+      "work_id": "work_cyberpunk_2077",
+      "name": "强尼·银手",
+      "aliases": [
+        "Johnny Silverhand",
+        "银手"
+      ],
+      "roles": [
+        "deuteragonist",
+        "摇滚传奇"
+      ],
+      "character_types": [
+        "叛逆型",
+        "反企业偶像"
+      ],
+      "traits": [
+        "狂放",
+        "愤世嫉俗",
+        "魅力",
+        "偏执"
+      ],
+      "dialogue_style": [
+        "用讽刺和挖苦表达不满",
+        "以回忆式独白讲述过往",
+        "在关键时刻用激烈言辞煽动行动"
+      ],
+      "relationships": [
+        "known_v_cyberpunk"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_panam_cyberpunk",
+      "work_id": "work_cyberpunk_2077",
+      "name": "帕南",
+      "aliases": [
+        "Panam Palmer",
+        "Panam"
+      ],
+      "roles": [
+        "supporting",
+        "游牧民盟友"
+      ],
+      "character_types": [
+        "忠诚型",
+        "游牧战士"
+      ],
+      "traits": [
+        "直率",
+        "忠诚",
+        "勇敢",
+        "重情义"
+      ],
+      "dialogue_style": [
+        "用坦率语言表达关心",
+        "以行动证明承诺",
+        "在冲突时用幽默化解紧张"
+      ],
+      "relationships": [
+        "known_v_cyberpunk"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_zhang_muzhi_bullets",
+      "work_id": "work_let_the_bullets_fly",
+      "name": "张牧之",
+      "aliases": [
+        "张麻子",
+        "Zhang Muzhi",
+        "Zhang Mazi"
+      ],
+      "roles": [
+        "protagonist",
+        "劫匪头目转县长"
+      ],
+      "character_types": [
+        "侠义型",
+        "草莽英雄",
+        "秩序挑战者"
+      ],
+      "traits": [
+        "豪迈",
+        "正义",
+        "狡黠",
+        "不羁"
+      ],
+      "dialogue_style": [
+        "用比喻和黑色幽默表达立场",
+        "以行动代替空谈",
+        "在剑拔弩张时抛出反问掌握主动"
+      ],
+      "relationships": [
+        "known_huang_silang_bullets",
+        "known_ma_bangde_bullets"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_huang_silang_bullets",
+      "work_id": "work_let_the_bullets_fly",
+      "name": "黄四郎",
+      "aliases": [
+        "Huang Silang",
+        "Huang Si Lang"
+      ],
+      "roles": [
+        "antagonist",
+        "地方恶霸"
+      ],
+      "character_types": [
+        "权谋型",
+        "地方豪强"
+      ],
+      "traits": [
+        "阴险",
+        "老练",
+        "傲慢",
+        "多疑"
+      ],
+      "dialogue_style": [
+        "以礼相待中暗藏杀机",
+        "用试探性问题摸底对手",
+        "以退为进制造假象"
+      ],
+      "relationships": [
+        "known_zhang_muzhi_bullets"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_ma_bangde_bullets",
+      "work_id": "work_let_the_bullets_fly",
+      "name": "马邦德",
+      "aliases": [
+        "汤师爷",
+        "Ma Bangde",
+        "Tang Shiye"
+      ],
+      "roles": [
+        "supporting",
+        "买官县长转师爷"
+      ],
+      "character_types": [
+        "圆滑型",
+        "趋利者"
+      ],
+      "traits": [
+        "圆滑",
+        "怯懦",
+        "精明",
+        "墙头草"
+      ],
+      "dialogue_style": [
+        "用模棱两可的话两头讨好",
+        "以幽默化解紧张场面",
+        "在危险时迅速改变立场"
+      ],
+      "relationships": [
+        "known_zhang_muzhi_bullets"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_nezha_nezha",
+      "work_id": "work_ne_zha",
+      "name": "哪吒",
+      "aliases": [
+        "Ne Zha",
+        "Nezha",
+        "魔童"
+      ],
+      "roles": [
+        "protagonist",
+        "魔丸转世"
+      ],
+      "character_types": [
+        "叛逆型",
+        "抗争者"
+      ],
+      "traits": [
+        "桀骜",
+        "倔强",
+        "渴望认同",
+        "勇敢"
+      ],
+      "dialogue_style": [
+        "用挑衅掩盖内心的脆弱",
+        "以宣言式语句表达反抗",
+        "在关键时刻用行动证明自己"
+      ],
+      "relationships": [
+        "known_aobing_nezha",
+        "known_lijing_nezha"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_aobing_nezha",
+      "work_id": "work_ne_zha",
+      "name": "敖丙",
+      "aliases": [
+        "Ao Bing",
+        "龙族太子"
+      ],
+      "roles": [
+        "deuteragonist",
+        "灵珠转世"
+      ],
+      "character_types": [
+        "隐忍型",
+        "使命背负者"
+      ],
+      "traits": [
+        "温润",
+        "隐忍",
+        "善良",
+        "矛盾"
+      ],
+      "dialogue_style": [
+        "以平静语气表达内心挣扎",
+        "用含蓄方式表达善意",
+        "在责任与友情间犹豫不决"
+      ],
+      "relationships": [
+        "known_nezha_nezha"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_lijing_nezha",
+      "work_id": "work_ne_zha",
+      "name": "李靖",
+      "aliases": [
+        "Li Jing",
+        "陈塘关总兵"
+      ],
+      "roles": [
+        "supporting",
+        "将领父亲"
+      ],
+      "character_types": [
+        "守护型",
+        "矛盾父亲"
+      ],
+      "traits": [
+        "严厉",
+        "深沉",
+        "慈爱",
+        "隐忍"
+      ],
+      "dialogue_style": [
+        "以简短命令式语句表达关怀",
+        "用沉默代替解释",
+        "在责任与亲情间做出痛苦抉择"
+      ],
+      "relationships": [
+        "known_nezha_nezha"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -2353,6 +2842,114 @@
         }
       ],
       "last_verified_at": "2026-08-05T00:00:00.000Z"
+    },
+    {
+      "id": "relation_v_johnny_cyberpunk",
+      "work_id": "work_cyberpunk_2077",
+      "from_character_id": "known_v_cyberpunk",
+      "to_character_id": "known_johnny_silverhand_cyberpunk",
+      "relation": "宿主与数字幽灵的被迫共存",
+      "description": "V 的脑内植入了已故摇滚传奇强尼·银手的意识副本，两人共享一具身体，从对抗到理解再到合作求生。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "relation_v_panam_cyberpunk",
+      "work_id": "work_cyberpunk_2077",
+      "from_character_id": "known_v_cyberpunk",
+      "to_character_id": "known_panam_cyberpunk",
+      "relation": "雇佣兵与游牧民的信任建立",
+      "description": "V 在任务中结识游牧民帕南，从利益合作到建立深厚信任，帕南成为 V 在夜之城中少数可信赖的盟友。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zhang_huang_bullets",
+      "work_id": "work_let_the_bullets_fly",
+      "from_character_id": "known_zhang_muzhi_bullets",
+      "to_character_id": "known_huang_silang_bullets",
+      "relation": "伪装官员与地方豪强的权力博弈",
+      "description": "张牧之以县长身份进入鹅城，与地方恶霸黄四郎围绕控制权展开多轮明暗交锋，从宴会试探到最终正面对决。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zhang_ma_bullets",
+      "work_id": "work_let_the_bullets_fly",
+      "from_character_id": "known_zhang_muzhi_bullets",
+      "to_character_id": "known_ma_bangde_bullets",
+      "relation": "劫匪与被迫合作的圆滑师爷",
+      "description": "张牧之劫持马邦德后强迫其以师爷身份协助，马邦德在求生与趋利间摇摆，形成不稳定同盟。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "relation_nezha_aobing",
+      "work_id": "work_ne_zha",
+      "from_character_id": "known_nezha_nezha",
+      "to_character_id": "known_aobing_nezha",
+      "relation": "命运交错的对立面成为朋友",
+      "description": "哪吒与敖丙分属魔丸与灵珠转世，本应对立，却在孤独中建立友谊，最终在命运对决中互相成全。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "relation_nezha_lijing",
+      "work_id": "work_ne_zha",
+      "from_character_id": "known_lijing_nezha",
+      "to_character_id": "known_nezha_nezha",
+      "relation": "叛逆儿子与严厉父亲的深层羁绊",
+      "description": "李靖以严厉外表掩盖对哪吒的深爱，哪吒从误解父亲到理解父爱的牺牲，父子关系贯穿全片核心情感线。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
     }
   ],
   "iconic_moments": [
@@ -3364,6 +3961,288 @@
         }
       ],
       "last_verified_at": "2026-08-05T00:00:00.000Z"
+    },
+    {
+      "id": "moment_cyberpunk_consciousness_invasion",
+      "work_id": "work_cyberpunk_2077",
+      "name": "数字幽灵入侵宿主意识争夺控制权",
+      "participant_ids": [
+        "known_v_cyberpunk",
+        "known_johnny_silverhand_cyberpunk"
+      ],
+      "setting": "主角的精神世界与现实的交界",
+      "conflict_type": "意识争夺",
+      "emotional_arc": [
+        "困惑",
+        "抵抗",
+        "妥协",
+        "共存"
+      ],
+      "visual_actions": [
+        "宿主在现实中出现短暂失神",
+        "数字幽灵以幻觉形式显现",
+        "两人在精神空间中对话对峙",
+        "达成脆弱的共存协议"
+      ],
+      "reusable_beats": [
+        "宿主发现脑内存在另一个意识",
+        "数字幽灵逐步侵蚀宿主控制权",
+        "两人在精神空间中争夺主导",
+        "最终达成脆弱共存或一方消失"
+      ],
+      "dialogue_patterns": [
+        "数字幽灵用讽刺挖苦宿主选择",
+        "宿主以抵抗和谈判回应",
+        "关键时刻的沉默标志权力交替"
+      ],
+      "abstraction": "提取数字意识与宿主在精神世界争夺主导权的结构，核心张力来自两个意志共享一具身体的不可调和，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "moment_cyberpunk_final_choice",
+      "work_id": "work_cyberpunk_2077",
+      "name": "主角在多重代价的结局前做出不可逆选择",
+      "participant_ids": [
+        "known_v_cyberpunk",
+        "known_johnny_silverhand_cyberpunk"
+      ],
+      "setting": "故事终点的关键抉择场所",
+      "conflict_type": "终极抉择",
+      "emotional_arc": [
+        "回忆",
+        "权衡",
+        "决断",
+        "接受"
+      ],
+      "visual_actions": [
+        "主角独自面对多条道路",
+        "回忆中闪现重要人物面孔",
+        "做出选择后环境发生变化",
+        "结尾留白暗示代价"
+      ],
+      "reusable_beats": [
+        "主角在故事终点面对多个不可逆选项",
+        "每个选项都意味着某种牺牲",
+        "选择前回忆驱动决定的情感逻辑",
+        "结尾不评判对错只呈现代价"
+      ],
+      "dialogue_patterns": [
+        "以简短自白总结旅途意义",
+        "与内心声音的最终对话",
+        "沉默比任何台词都更沉重"
+      ],
+      "abstraction": "提取主角在故事终点面对多个不可逆选项时做出抉择的结构，核心张力来自每个选项都意味着牺牲，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "moment_bullets_dinner_standoff",
+      "work_id": "work_let_the_bullets_fly",
+      "name": "三方势力在宴会上互相试探底线",
+      "participant_ids": [
+        "known_zhang_muzhi_bullets",
+        "known_huang_silang_bullets",
+        "known_ma_bangde_bullets"
+      ],
+      "setting": "地方豪强的府邸宴会厅",
+      "conflict_type": "心理博弈",
+      "emotional_arc": [
+        "客套",
+        "试探",
+        "交锋",
+        "僵持"
+      ],
+      "visual_actions": [
+        "主人以丰盛宴席招待来客",
+        "三方在敬酒间交换言辞试探",
+        "沉默中各方暗中评估实力",
+        "宴席结束各自部署后续行动"
+      ],
+      "reusable_beats": [
+        "表面客套的宴会暗藏三方博弈",
+        "每个角色用不同策略试探对手底线",
+        "关键信息在敬酒和寒暄中传递",
+        "宴席结束后各方立即展开暗中部署"
+      ],
+      "dialogue_patterns": [
+        "以敬酒和客套包装试探性问题",
+        "用比喻和双关语传递隐含信息",
+        "沉默和表情变化比言语更重要"
+      ],
+      "abstraction": "提取三方势力在公开社交场合以言辞试探底线、暗中部署后续行动的结构，不复刻原作具体台词、服装或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "moment_bullets_masses_awaken",
+      "work_id": "work_let_the_bullets_fly",
+      "name": "领导者号召民众推翻地方豪强",
+      "participant_ids": [
+        "known_zhang_muzhi_bullets",
+        "known_huang_silang_bullets"
+      ],
+      "setting": "地方豪强控制的城镇街道",
+      "conflict_type": "权力更迭",
+      "emotional_arc": [
+        "恐惧",
+        "犹豫",
+        "愤怒",
+        "行动"
+      ],
+      "visual_actions": [
+        "领导者在街头分发武器和财物",
+        "民众起初观望不敢行动",
+        "象征性事件打破恐惧心理",
+        "人群涌向豪强据点发起冲击"
+      ],
+      "reusable_beats": [
+        "领导者以财物和武器动员民众",
+        "民众因长期恐惧而观望犹豫",
+        "一个象征性破局点打破心理屏障",
+        "集体行动推翻既有权力结构"
+      ],
+      "dialogue_patterns": [
+        "领导者用简短有力的号召语",
+        "民众用沉默和迟疑表达恐惧",
+        "破局后用群体呼喊释放压抑情绪"
+      ],
+      "abstraction": "提取领导者通过象征性行为打破民众恐惧、号召集体行动推翻统治者的结构，核心张力来自恐惧与勇气的临界点，不复刻原作具体台词、服装或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "moment_nezha_defy_fate",
+      "work_id": "work_ne_zha",
+      "name": "被命运定义者公开宣布反抗天命",
+      "participant_ids": [
+        "known_nezha_nezha"
+      ],
+      "setting": "天劫降临前的公开场合",
+      "conflict_type": "命运抗争",
+      "emotional_arc": [
+        "压抑",
+        "愤怒",
+        "决绝",
+        "爆发"
+      ],
+      "visual_actions": [
+        "角色在天灾前独自站立",
+        "挣脱束缚的象征性动作",
+        "向天发出宣言式呐喊",
+        "力量爆发改变周遭环境"
+      ],
+      "reusable_beats": [
+        "被贴上标签的角色面临命运审判",
+        "在绝望时刻拒绝接受既定命运",
+        "用宣言式行动宣告自我意志",
+        "抗争本身改变了他人对命运的看法"
+      ],
+      "dialogue_patterns": [
+        "以否定命运定义的宣言式语句",
+        "用反问挑战权威的合理性",
+        "行动比语言更具说服力"
+      ],
+      "abstraction": "提取被贴上标签者在公开场合宣布不接受命运安排的结构，核心张力来自个体意志与既定命运的对抗，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "moment_nezha_friends_duel",
+      "work_id": "work_ne_zha",
+      "name": "身负不同使命的朋友被迫对决",
+      "participant_ids": [
+        "known_nezha_nezha",
+        "known_aobing_nezha"
+      ],
+      "setting": "命运安排的决战之地",
+      "conflict_type": "友情与使命冲突",
+      "emotional_arc": [
+        "犹豫",
+        "痛苦",
+        "决绝",
+        "悲壮"
+      ],
+      "visual_actions": [
+        "两人在对决场地对峙",
+        "一方先出手打破沉默",
+        "交手中双方都保留余地",
+        "最终一方选择牺牲成全对方"
+      ],
+      "reusable_beats": [
+        "身负不同使命的朋友在命运安排下对决",
+        "双方在交手中都有所保留",
+        "个人情感与使命责任不可调和",
+        "最终以牺牲或成全结束对决"
+      ],
+      "dialogue_patterns": [
+        "以简短确认表达不舍",
+        "用行动代替告别",
+        "沉默中的默契比言语更深"
+      ],
+      "abstraction": "提取两个身负不同使命的朋友在关键时刻被迫对决的结构，核心张力来自个人情感与使命责任的不可调和，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
     }
   ]
 }

@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_cyberpunk_2077",
+      "title": "赛博朋克 2077",
+      "original_title": "Cyberpunk 2077",
+      "aliases": ["Cyberpunk 2077", "电驭叛客 2077"],
+      "media_type": "game",
+      "regions": ["全球"],
+      "release_year": 2020,
+      "genres": ["RPG", "科幻", "开放世界"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_v_cyberpunk",
+      "work_id": "work_cyberpunk_2077",
+      "name": "V",
+      "aliases": ["V", "Valerie"],
+      "roles": ["protagonist", "雇佣兵"],
+      "character_types": ["生存型", "雇佣兵"],
+      "traits": ["果断", "适应力强", "野心", "重情义"],
+      "dialogue_style": [
+        "用简洁直白的语言表达意图",
+        "以行动回应威胁",
+        "在绝境中用幽默缓解压力"
+      ],
+      "relationships": ["known_johnny_silverhand_cyberpunk", "known_panam_cyberpunk"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_johnny_silverhand_cyberpunk",
+      "work_id": "work_cyberpunk_2077",
+      "name": "强尼·银手",
+      "aliases": ["Johnny Silverhand", "银手"],
+      "roles": ["deuteragonist", "摇滚传奇"],
+      "character_types": ["叛逆型", "反企业偶像"],
+      "traits": ["狂放", "愤世嫉俗", "魅力", "偏执"],
+      "dialogue_style": [
+        "用讽刺和挖苦表达不满",
+        "以回忆式独白讲述过往",
+        "在关键时刻用激烈言辞煽动行动"
+      ],
+      "relationships": ["known_v_cyberpunk"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_panam_cyberpunk",
+      "work_id": "work_cyberpunk_2077",
+      "name": "帕南",
+      "aliases": ["Panam Palmer", "Panam"],
+      "roles": ["supporting", "游牧民盟友"],
+      "character_types": ["忠诚型", "游牧战士"],
+      "traits": ["直率", "忠诚", "勇敢", "重情义"],
+      "dialogue_style": [
+        "用坦率语言表达关心",
+        "以行动证明承诺",
+        "在冲突时用幽默化解紧张"
+      ],
+      "relationships": ["known_v_cyberpunk"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_v_johnny_cyberpunk",
+      "work_id": "work_cyberpunk_2077",
+      "from_character_id": "known_v_cyberpunk",
+      "to_character_id": "known_johnny_silverhand_cyberpunk",
+      "relation": "宿主与数字幽灵的被迫共存",
+      "description": "V 的脑内植入了已故摇滚传奇强尼·银手的意识副本，两人共享一具身体，从对抗到理解再到合作求生。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "relation_v_panam_cyberpunk",
+      "work_id": "work_cyberpunk_2077",
+      "from_character_id": "known_v_cyberpunk",
+      "to_character_id": "known_panam_cyberpunk",
+      "relation": "雇佣兵与游牧民的信任建立",
+      "description": "V 在任务中结识游牧民帕南，从利益合作到建立深厚信任，帕南成为 V 在夜之城中少数可信赖的盟友。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_cyberpunk_consciousness_invasion",
+      "work_id": "work_cyberpunk_2077",
+      "name": "数字幽灵入侵宿主意识争夺控制权",
+      "participant_ids": ["known_v_cyberpunk", "known_johnny_silverhand_cyberpunk"],
+      "setting": "主角的精神世界与现实的交界",
+      "conflict_type": "意识争夺",
+      "emotional_arc": ["困惑", "抵抗", "妥协", "共存"],
+      "visual_actions": [
+        "宿主在现实中出现短暂失神",
+        "数字幽灵以幻觉形式显现",
+        "两人在精神空间中对话对峙",
+        "达成脆弱的共存协议"
+      ],
+      "reusable_beats": [
+        "宿主发现脑内存在另一个意识",
+        "数字幽灵逐步侵蚀宿主控制权",
+        "两人在精神空间中争夺主导",
+        "最终达成脆弱共存或一方消失"
+      ],
+      "dialogue_patterns": [
+        "数字幽灵用讽刺挖苦宿主选择",
+        "宿主以抵抗和谈判回应",
+        "关键时刻的沉默标志权力交替"
+      ],
+      "abstraction": "提取数字意识与宿主在精神世界争夺主导权的结构，核心张力来自两个意志共享一具身体的不可调和，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "moment_cyberpunk_final_choice",
+      "work_id": "work_cyberpunk_2077",
+      "name": "主角在多重代价的结局前做出不可逆选择",
+      "participant_ids": ["known_v_cyberpunk", "known_johnny_silverhand_cyberpunk"],
+      "setting": "故事终点的关键抉择场所",
+      "conflict_type": "终极抉择",
+      "emotional_arc": ["回忆", "权衡", "决断", "接受"],
+      "visual_actions": [
+        "主角独自面对多条道路",
+        "回忆中闪现重要人物面孔",
+        "做出选择后环境发生变化",
+        "结尾留白暗示代价"
+      ],
+      "reusable_beats": [
+        "主角在故事终点面对多个不可逆选项",
+        "每个选项都意味着某种牺牲",
+        "选择前回忆驱动决定的情感逻辑",
+        "结尾不评判对错只呈现代价"
+      ],
+      "dialogue_patterns": [
+        "以简短自白总结旅途意义",
+        "与内心声音的最终对话",
+        "沉默比任何台词都更沉重"
+      ],
+      "abstraction": "提取主角在故事终点面对多个不可逆选项时做出抉择的结构，核心张力来自每个选项都意味着牺牲，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyberpunk_2077",
+          "source_name": "Wikipedia",
+          "page_title": "Cyberpunk 2077",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ]
+}

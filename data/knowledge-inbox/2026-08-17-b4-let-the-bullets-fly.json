@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_let_the_bullets_fly",
+      "title": "让子弹飞",
+      "original_title": "讓子彈飛",
+      "aliases": ["Let the Bullets Fly", "Rang Zi Dan Fei"],
+      "media_type": "film",
+      "regions": ["中国大陆", "中国香港"],
+      "release_year": 2010,
+      "genres": ["动作", "喜剧", "黑色幽默"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_zhang_muzhi_bullets",
+      "work_id": "work_let_the_bullets_fly",
+      "name": "张牧之",
+      "aliases": ["张麻子", "Zhang Muzhi", "Zhang Mazi"],
+      "roles": ["protagonist", "劫匪头目转县长"],
+      "character_types": ["侠义型", "草莽英雄", "秩序挑战者"],
+      "traits": ["豪迈", "正义", "狡黠", "不羁"],
+      "dialogue_style": [
+        "用比喻和黑色幽默表达立场",
+        "以行动代替空谈",
+        "在剑拔弩张时抛出反问掌握主动"
+      ],
+      "relationships": ["known_huang_silang_bullets", "known_ma_bangde_bullets"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_huang_silang_bullets",
+      "work_id": "work_let_the_bullets_fly",
+      "name": "黄四郎",
+      "aliases": ["Huang Silang", "Huang Si Lang"],
+      "roles": ["antagonist", "地方恶霸"],
+      "character_types": ["权谋型", "地方豪强"],
+      "traits": ["阴险", "老练", "傲慢", "多疑"],
+      "dialogue_style": [
+        "以礼相待中暗藏杀机",
+        "用试探性问题摸底对手",
+        "以退为进制造假象"
+      ],
+      "relationships": ["known_zhang_muzhi_bullets"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_ma_bangde_bullets",
+      "work_id": "work_let_the_bullets_fly",
+      "name": "马邦德",
+      "aliases": ["汤师爷", "Ma Bangde", "Tang Shiye"],
+      "roles": ["supporting", "买官县长转师爷"],
+      "character_types": ["圆滑型", "趋利者"],
+      "traits": ["圆滑", "怯懦", "精明", "墙头草"],
+      "dialogue_style": [
+        "用模棱两可的话两头讨好",
+        "以幽默化解紧张场面",
+        "在危险时迅速改变立场"
+      ],
+      "relationships": ["known_zhang_muzhi_bullets"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_zhang_huang_bullets",
+      "work_id": "work_let_the_bullets_fly",
+      "from_character_id": "known_zhang_muzhi_bullets",
+      "to_character_id": "known_huang_silang_bullets",
+      "relation": "伪装官员与地方豪强的权力博弈",
+      "description": "张牧之以县长身份进入鹅城，与地方恶霸黄四郎围绕控制权展开多轮明暗交锋，从宴会试探到最终正面对决。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zhang_ma_bullets",
+      "work_id": "work_let_the_bullets_fly",
+      "from_character_id": "known_zhang_muzhi_bullets",
+      "to_character_id": "known_ma_bangde_bullets",
+      "relation": "劫匪与被迫合作的圆滑师爷",
+      "description": "张牧之劫持马邦德后强迫其以师爷身份协助，马邦德在求生与趋利间摇摆，形成不稳定同盟。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_bullets_dinner_standoff",
+      "work_id": "work_let_the_bullets_fly",
+      "name": "三方势力在宴会上互相试探底线",
+      "participant_ids": ["known_zhang_muzhi_bullets", "known_huang_silang_bullets", "known_ma_bangde_bullets"],
+      "setting": "地方豪强的府邸宴会厅",
+      "conflict_type": "心理博弈",
+      "emotional_arc": ["客套", "试探", "交锋", "僵持"],
+      "visual_actions": [
+        "主人以丰盛宴席招待来客",
+        "三方在敬酒间交换言辞试探",
+        "沉默中各方暗中评估实力",
+        "宴席结束各自部署后续行动"
+      ],
+      "reusable_beats": [
+        "表面客套的宴会暗藏三方博弈",
+        "每个角色用不同策略试探对手底线",
+        "关键信息在敬酒和寒暄中传递",
+        "宴席结束后各方立即展开暗中部署"
+      ],
+      "dialogue_patterns": [
+        "以敬酒和客套包装试探性问题",
+        "用比喻和双关语传递隐含信息",
+        "沉默和表情变化比言语更重要"
+      ],
+      "abstraction": "提取三方势力在公开社交场合以言辞试探底线、暗中部署后续行动的结构，不复刻原作具体台词、服装或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "moment_bullets_masses_awaken",
+      "work_id": "work_let_the_bullets_fly",
+      "name": "领导者号召民众推翻地方豪强",
+      "participant_ids": ["known_zhang_muzhi_bullets", "known_huang_silang_bullets"],
+      "setting": "地方豪强控制的城镇街道",
+      "conflict_type": "权力更迭",
+      "emotional_arc": ["恐惧", "犹豫", "愤怒", "行动"],
+      "visual_actions": [
+        "领导者在街头分发武器和财物",
+        "民众起初观望不敢行动",
+        "象征性事件打破恐惧心理",
+        "人群涌向豪强据点发起冲击"
+      ],
+      "reusable_beats": [
+        "领导者以财物和武器动员民众",
+        "民众因长期恐惧而观望犹豫",
+        "一个象征性破局点打破心理屏障",
+        "集体行动推翻既有权力结构"
+      ],
+      "dialogue_patterns": [
+        "领导者用简短有力的号召语",
+        "民众用沉默和迟疑表达恐惧",
+        "破局后用群体呼喊释放压抑情绪"
+      ],
+      "abstraction": "提取领导者通过象征性行为打破民众恐惧、号召集体行动推翻统治者的结构，核心张力来自恐惧与勇气的临界点，不复刻原作具体台词、服装或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Let_the_Bullets_Fly",
+          "source_name": "Wikipedia",
+          "page_title": "Let the Bullets Fly",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ]
+}

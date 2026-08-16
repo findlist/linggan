@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_ne_zha",
+      "title": "哪吒之魔童降世",
+      "original_title": "哪吒之魔童降世",
+      "aliases": ["Ne Zha", "Nezha: I Am the Destiny", "Ne Zha: Birth of the Demon Child"],
+      "media_type": "film",
+      "regions": ["中国大陆"],
+      "release_year": 2019,
+      "genres": ["animation", "奇幻", "神话"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_nezha_nezha",
+      "work_id": "work_ne_zha",
+      "name": "哪吒",
+      "aliases": ["Ne Zha", "Nezha", "魔童"],
+      "roles": ["protagonist", "魔丸转世"],
+      "character_types": ["叛逆型", "抗争者"],
+      "traits": ["桀骜", "倔强", "渴望认同", "勇敢"],
+      "dialogue_style": [
+        "用挑衅掩盖内心的脆弱",
+        "以宣言式语句表达反抗",
+        "在关键时刻用行动证明自己"
+      ],
+      "relationships": ["known_aobing_nezha", "known_lijing_nezha"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_aobing_nezha",
+      "work_id": "work_ne_zha",
+      "name": "敖丙",
+      "aliases": ["Ao Bing", "龙族太子"],
+      "roles": ["deuteragonist", "灵珠转世"],
+      "character_types": ["隐忍型", "使命背负者"],
+      "traits": ["温润", "隐忍", "善良", "矛盾"],
+      "dialogue_style": [
+        "以平静语气表达内心挣扎",
+        "用含蓄方式表达善意",
+        "在责任与友情间犹豫不决"
+      ],
+      "relationships": ["known_nezha_nezha"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_lijing_nezha",
+      "work_id": "work_ne_zha",
+      "name": "李靖",
+      "aliases": ["Li Jing", "陈塘关总兵"],
+      "roles": ["supporting", "将领父亲"],
+      "character_types": ["守护型", "矛盾父亲"],
+      "traits": ["严厉", "深沉", "慈爱", "隐忍"],
+      "dialogue_style": [
+        "以简短命令式语句表达关怀",
+        "用沉默代替解释",
+        "在责任与亲情间做出痛苦抉择"
+      ],
+      "relationships": ["known_nezha_nezha"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_nezha_aobing",
+      "work_id": "work_ne_zha",
+      "from_character_id": "known_nezha_nezha",
+      "to_character_id": "known_aobing_nezha",
+      "relation": "命运交错的对立面成为朋友",
+      "description": "哪吒与敖丙分属魔丸与灵珠转世，本应对立，却在孤独中建立友谊，最终在命运对决中互相成全。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "relation_nezha_lijing",
+      "work_id": "work_ne_zha",
+      "from_character_id": "known_lijing_nezha",
+      "to_character_id": "known_nezha_nezha",
+      "relation": "叛逆儿子与严厉父亲的深层羁绊",
+      "description": "李靖以严厉外表掩盖对哪吒的深爱，哪吒从误解父亲到理解父爱的牺牲，父子关系贯穿全片核心情感线。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_nezha_defy_fate",
+      "work_id": "work_ne_zha",
+      "name": "被命运定义者公开宣布反抗天命",
+      "participant_ids": ["known_nezha_nezha"],
+      "setting": "天劫降临前的公开场合",
+      "conflict_type": "命运抗争",
+      "emotional_arc": ["压抑", "愤怒", "决绝", "爆发"],
+      "visual_actions": [
+        "角色在天灾前独自站立",
+        "挣脱束缚的象征性动作",
+        "向天发出宣言式呐喊",
+        "力量爆发改变周遭环境"
+      ],
+      "reusable_beats": [
+        "被贴上标签的角色面临命运审判",
+        "在绝望时刻拒绝接受既定命运",
+        "用宣言式行动宣告自我意志",
+        "抗争本身改变了他人对命运的看法"
+      ],
+      "dialogue_patterns": [
+        "以否定命运定义的宣言式语句",
+        "用反问挑战权威的合理性",
+        "行动比语言更具说服力"
+      ],
+      "abstraction": "提取被贴上标签者在公开场合宣布不接受命运安排的结构，核心张力来自个体意志与既定命运的对抗，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "moment_nezha_friends_duel",
+      "work_id": "work_ne_zha",
+      "name": "身负不同使命的朋友被迫对决",
+      "participant_ids": ["known_nezha_nezha", "known_aobing_nezha"],
+      "setting": "命运安排的决战之地",
+      "conflict_type": "友情与使命冲突",
+      "emotional_arc": ["犹豫", "痛苦", "决绝", "悲壮"],
+      "visual_actions": [
+        "两人在对决场地对峙",
+        "一方先出手打破沉默",
+        "交手中双方都保留余地",
+        "最终一方选择牺牲成全对方"
+      ],
+      "reusable_beats": [
+        "身负不同使命的朋友在命运安排下对决",
+        "双方在交手中都有所保留",
+        "个人情感与使命责任不可调和",
+        "最终以牺牲或成全结束对决"
+      ],
+      "dialogue_patterns": [
+        "以简短确认表达不舍",
+        "用行动代替告别",
+        "沉默中的默契比言语更深"
+      ],
+      "abstraction": "提取两个身负不同使命的朋友在关键时刻被迫对决的结构，核心张力来自个人情感与使命责任的不可调和，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ne_Zha_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Ne Zha (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-17T00:00:00.000Z"
+    }
+  ]
+}
