@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_kung_fu_hustle",
+      "title": "功夫",
+      "original_title": "Kung Fu Hustle",
+      "aliases": [
+        "Kung Fu Hustle",
+        "功夫足球"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国香港"
+      ],
+      "release_year": 2004,
+      "genres": [
+        "动作",
+        "喜剧",
+        "奇幻"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kung_Fu_Hustle",
+          "source_name": "Wikipedia",
+          "page_title": "Kung Fu Hustle",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_sing_kung_fu",
+      "work_id": "work_kung_fu_hustle",
+      "name": "星仔",
+      "aliases": [
+        "Sing",
+        "阿星",
+        "周星驰角色"
+      ],
+      "roles": [
+        "protagonist",
+        "小混混转英雄"
+      ],
+      "character_types": [
+        "小人物型",
+        "觉醒型",
+        "反英雄转英雄型"
+      ],
+      "traits": [
+        "想当坏人却下不去手",
+        "内心善良被掩盖",
+        "在绝境中觉醒潜力",
+        "对弱者有本能同情"
+      ],
+      "dialogue_style": [
+        "用虚张声势的大话掩饰胆怯",
+        "在关键时刻以沉默行动代替言语",
+        "觉醒后以简洁坚定的语气表达决心"
+      ],
+      "relationships": [
+        "known_landlady_kung_fu",
+        "known_beast_kung_fu"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kung_Fu_Hustle",
+          "source_name": "Wikipedia",
+          "page_title": "Kung Fu Hustle",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_landlady_kung_fu",
+      "work_id": "work_kung_fu_hustle",
+      "name": "包租婆",
+      "aliases": [
+        "Landlady",
+        "包租婆"
+      ],
+      "roles": [
+        "supporting",
+        "隐世高手"
+      ],
+      "character_types": [
+        "隐世型",
+        "强势型",
+        "守护者型"
+      ],
+      "traits": [
+        "表面泼辣实则正义",
+        "隐忍不发",
+        "在危机时挺身而出",
+        "以粗暴方式保护他人"
+      ],
+      "dialogue_style": [
+        "以大声呵斥和嘲讽日常交流",
+        "在认真时以低沉简短的命令式语气",
+        "用行动代替多余解释"
+      ],
+      "relationships": [
+        "known_sing_kung_fu"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kung_Fu_Hustle",
+          "source_name": "Wikipedia",
+          "page_title": "Kung Fu Hustle",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_beast_kung_fu",
+      "work_id": "work_kung_fu_hustle",
+      "name": "火云邪神",
+      "aliases": [
+        "The Beast",
+        "火云邪神"
+      ],
+      "roles": [
+        "antagonist",
+        "终极反派"
+      ],
+      "character_types": [
+        "武痴型",
+        "嗜武成魔型",
+        "亦正亦邪型"
+      ],
+      "traits": [
+        "对武学有极致追求",
+        "以弱者姿态试探对手",
+        "在败北时认输但不悔改",
+        "武学境界高于道德准则"
+      ],
+      "dialogue_style": [
+        "以谦卑语气掩盖真实实力",
+        "在交手时用感叹和评价代替对话",
+        "败北后以简洁认输表达敬意"
+      ],
+      "relationships": [
+        "known_sing_kung_fu"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kung_Fu_Hustle",
+          "source_name": "Wikipedia",
+          "page_title": "Kung Fu Hustle",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_sing_landlady_kung_fu",
+      "work_id": "work_kung_fu_hustle",
+      "from_character_id": "known_sing_kung_fu",
+      "to_character_id": "known_landlady_kung_fu",
+      "relation": "小混混与隐世高手从冲突到传承",
+      "description": "星仔试图混入斧头帮时与包租婆发生冲突,包租婆以绝对实力压制他,但在星仔被火云邪神重创后,包租婆认出其体内的武学天赋并将其引向正途,完成隐世高手对觉醒者的传承。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kung_Fu_Hustle",
+          "source_name": "Wikipedia",
+          "page_title": "Kung Fu Hustle",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_sing_beast_kung_fu",
+      "work_id": "work_kung_fu_hustle",
+      "from_character_id": "known_sing_kung_fu",
+      "to_character_id": "known_beast_kung_fu",
+      "relation": "觉醒者与武痴从臣服到超越",
+      "description": "星仔初遇火云邪神时被其武学实力震慑臣服,邪神以强者姿态压制并重创星仔,星仔在濒死中觉醒真正的武学境界,最终以更高层次的实力击败邪神,邪神认输。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kung_Fu_Hustle",
+          "source_name": "Wikipedia",
+          "page_title": "Kung Fu Hustle",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_kung_fu_awakening",
+      "work_id": "work_kung_fu_hustle",
+      "name": "被重创者在濒死中觉醒隐藏潜力",
+      "participant_ids": [
+        "known_sing_kung_fu",
+        "known_beast_kung_fu"
+      ],
+      "setting": "废弃仓库",
+      "conflict_type": "觉醒",
+      "emotional_arc": [
+        "绝望",
+        "濒死",
+        "觉醒",
+        "超越"
+      ],
+      "visual_actions": [
+        "弱者被强者以绝对力量重创倒地",
+        "在濒死中身体发生不可逆变化",
+        "从废墟中站起来时气质完全改变",
+        "以新境界的力量轻松化解对手攻击"
+      ],
+      "reusable_beats": [
+        "弱者在绝对力量面前被击倒",
+        "濒死状态触发体内隐藏潜力",
+        "重新站起时已脱胎换骨",
+        "以超越者的姿态面对曾经的压制者"
+      ],
+      "dialogue_patterns": [
+        "压制者以嘲讽评价弱者的挣扎",
+        "觉醒者以沉默代替回应",
+        "觉醒后以简洁的一句话收束"
+      ],
+      "abstraction": "提取弱者在绝对力量面前被重创、濒死状态触发隐藏潜力、重新站起时脱胎换骨的结构,核心张力来自毁灭与重生的瞬间转换,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kung_Fu_Hustle",
+          "source_name": "Wikipedia",
+          "page_title": "Kung Fu Hustle",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_kung_fu_pigsty_fight",
+      "work_id": "work_kung_fu_hustle",
+      "name": "隐世高手在日常场景中被迫暴露实力",
+      "participant_ids": [
+        "known_landlady_kung_fu"
+      ],
+      "setting": "城中村院落",
+      "conflict_type": "暴露",
+      "emotional_arc": [
+        "日常",
+        "试探",
+        "爆发",
+        "震慑"
+      ],
+      "visual_actions": [
+        "高手以市井形象隐藏在日常生活中",
+        "外来威胁逐渐逼近居住区",
+        "高手在忍无可忍时以日常物品展示绝技",
+        "周围人从轻视到完全震慑"
+      ],
+      "reusable_beats": [
+        "隐世高手以市井形象过着日常生活",
+        "外部威胁逐步逼近打破日常",
+        "高手在忍无可忍时被迫暴露真实实力",
+        "旁观者从轻视转为震慑"
+      ],
+      "dialogue_patterns": [
+        "高手以日常抱怨掩饰警觉",
+        "暴露时用简短命令驱散旁人",
+        "事后以轻描淡写掩饰严重性"
+      ],
+      "abstraction": "提取隐世高手在市井生活中被外部威胁逼迫暴露真实实力的结构,核心张力来自日常表象与隐藏能力的巨大反差,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kung_Fu_Hustle",
+          "source_name": "Wikipedia",
+          "page_title": "Kung Fu Hustle",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_the_legend_of_1900",
+      "title": "海上钢琴师",
+      "original_title": "The Legend of 1900",
+      "aliases": [
+        "The Legend of 1900",
+        "La leggenda del pianista sull'oceano",
+        "1900"
+      ],
+      "media_type": "film",
+      "regions": [
+        "意大利"
+      ],
+      "release_year": 1998,
+      "genres": [
+        "剧情",
+        "音乐",
+        "寓言"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Legend_of_1900",
+          "source_name": "Wikipedia",
+          "page_title": "The Legend of 1900",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_1900_pianist",
+      "work_id": "work_the_legend_of_1900",
+      "name": "1900",
+      "aliases": [
+        "Danny Boodmann T.D. Lemon Nineteen Hundred",
+        "1900"
+      ],
+      "roles": [
+        "protagonist",
+        "天才钢琴师"
+      ],
+      "character_types": [
+        "天才型",
+        "隐居型",
+        "困境型"
+      ],
+      "traits": [
+        "天赋异禀却从未踏上陆地",
+        "用音乐表达无法言说的情感",
+        "对无限选择感到恐惧",
+        "在有限中找到完整"
+      ],
+      "dialogue_style": [
+        "以平静沉思的语调表达哲学感悟",
+        "用音乐比喻代替直接情感表达",
+        "在解释拒绝离开时用长段独白剖析内心"
+      ],
+      "relationships": [
+        "known_max_1900",
+        "known_jelly_1900"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Legend_of_1900",
+          "source_name": "Wikipedia",
+          "page_title": "The Legend of 1900",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_max_1900",
+      "work_id": "work_the_legend_of_1900",
+      "name": "麦克斯",
+      "aliases": [
+        "Max Tooney",
+        "Max"
+      ],
+      "roles": [
+        "deuteragonist",
+        "号手兼叙述者"
+      ],
+      "character_types": [
+        "旁观者型",
+        "忠实型",
+        "桥梁型"
+      ],
+      "traits": [
+        "务实且重情义",
+        "是1900与外部世界唯一的桥梁",
+        "多年后仍试图拯救朋友"
+      ],
+      "dialogue_style": [
+        "以温暖的回忆口吻讲述往事",
+        "在劝说时用急切短句表达关切",
+        "在失败时以沉默和叹息表达无奈"
+      ],
+      "relationships": [
+        "known_1900_pianist"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Legend_of_1900",
+          "source_name": "Wikipedia",
+          "page_title": "The Legend of 1900",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_jelly_1900",
+      "work_id": "work_the_legend_of_1900",
+      "name": "杰利·罗尔·莫顿",
+      "aliases": [
+        "Jelly Roll Morton",
+        "Jelly"
+      ],
+      "roles": [
+        "antagonist",
+        "爵士乐发明者自称者"
+      ],
+      "character_types": [
+        "自负型",
+        "挑战者型",
+        "权威型"
+      ],
+      "traits": [
+        "极度自信且在意头衔",
+        "以挑战证明自己的地位",
+        "在败北时沉默离场"
+      ],
+      "dialogue_style": [
+        "以华丽的自我介绍展示身份",
+        "在较量时用评价性语言施压",
+        "败北后以沉默表达承认"
+      ],
+      "relationships": [
+        "known_1900_pianist"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Legend_of_1900",
+          "source_name": "Wikipedia",
+          "page_title": "The Legend of 1900",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_1900_max_legend",
+      "work_id": "work_the_legend_of_1900",
+      "from_character_id": "known_1900_pianist",
+      "to_character_id": "known_max_1900",
+      "relation": "天才与务实者的跨年友谊",
+      "description": "麦克斯作为号手登船后与1900建立深厚友谊,在船上共同演奏和生活,麦克斯多次试图让1900下船融入正常生活但始终未果,多年后麦克斯在废弃船即将炸毁时最后一次尝试劝说仍未成功,成为1900传奇的唯一见证者。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Legend_of_1900",
+          "source_name": "Wikipedia",
+          "page_title": "The Legend of 1900",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_1900_jelly_legend",
+      "work_id": "work_the_legend_of_1900",
+      "from_character_id": "known_1900_pianist",
+      "to_character_id": "known_jelly_1900",
+      "relation": "隐居天才与自负挑战者的钢琴对决",
+      "description": "杰利·罗尔·莫顿以爵士乐发明者自居登船挑战1900,三轮较量从轻视到震惊再到彻底败北,1900从最初的漫不经心到最终以超越人类极限的演奏压倒挑战者,是一场隐世天才与世俗权威的碰撞。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Legend_of_1900",
+          "source_name": "Wikipedia",
+          "page_title": "The Legend of 1900",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_1900_piano_duel",
+      "work_id": "work_the_legend_of_1900",
+      "name": "隐居天才在公开较量中以压倒性实力击败挑战者",
+      "participant_ids": [
+        "known_1900_pianist",
+        "known_jelly_1900"
+      ],
+      "setting": "远洋客轮舞厅",
+      "conflict_type": "较量",
+      "emotional_arc": [
+        "轻视",
+        "试探",
+        "升级",
+        "压倒"
+      ],
+      "visual_actions": [
+        "挑战者以华丽技巧展示实力",
+        "隐居天才最初以模仿和戏谑回应",
+        "挑战者愤怒提升到最高难度",
+        "隐居天才以超越人类极限的速度演奏压倒一切"
+      ],
+      "reusable_beats": [
+        "挑战者以既有的声望和技巧展示实力",
+        "隐居者最初以不认真的态度回应",
+        "挑战者愤怒升级到极限水平",
+        "隐居者以超越常规的维度彻底压倒挑战者"
+      ],
+      "dialogue_patterns": [
+        "挑战者用自我介绍和评价施压",
+        "旁观者用惊叹和描述渲染气氛",
+        "隐居者在结束后用轻描淡写收场"
+      ],
+      "abstraction": "提取隐居天才在公开较量中从漫不经心到压倒性击败挑战者的结构,核心张力来自轻视与终极实力之间的巨大落差,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Legend_of_1900",
+          "source_name": "Wikipedia",
+          "page_title": "The Legend of 1900",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_1900_refuse_land",
+      "work_id": "work_the_legend_of_1900",
+      "name": "天才在舷梯中途停步选择返回有限世界",
+      "participant_ids": [
+        "known_1900_pianist"
+      ],
+      "setting": "客轮舷梯",
+      "conflict_type": "选择",
+      "emotional_arc": [
+        "犹豫",
+        "凝视",
+        "领悟",
+        "决断"
+      ],
+      "visual_actions": [
+        "主角走下舷梯准备首次踏上陆地",
+        "在城市全景前停步不动",
+        "凝视远方城市后转身返回船上",
+        "此后终生未再踏足陆地"
+      ],
+      "reusable_beats": [
+        "主角走到两个世界的边界",
+        "在无限可能性面前停步",
+        "凝视外部世界后做出领悟",
+        "转身回到有限但完整的世界"
+      ],
+      "dialogue_patterns": [
+        "主角事后以哲学独白解释选择",
+        "用有限的琴键比喻无限的世界",
+        "以平静语气表达对无限的恐惧"
+      ],
+      "abstraction": "提取主角在两个世界边界停步、在无限可能性面前选择返回有限世界的结构,核心张力来自有限与无限、安全与未知之间的存在主义选择,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Legend_of_1900",
+          "source_name": "Wikipedia",
+          "page_title": "The Legend of 1900",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}

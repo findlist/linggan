@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_wandering_earth_2",
+      "title": "流浪地球2",
+      "original_title": "The Wandering Earth II",
+      "aliases": [
+        "The Wandering Earth 2",
+        "流浪地球二"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2023,
+      "genres": [
+        "科幻",
+        "灾难",
+        "冒险"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth 2",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_tu_hengyu_we2",
+      "work_id": "work_wandering_earth_2",
+      "name": "图恒宇",
+      "aliases": [
+        "Tu Hengyu"
+      ],
+      "roles": [
+        "protagonist",
+        "量子计算科学家"
+      ],
+      "character_types": [
+        "执念型",
+        "天才型",
+        "边界模糊型"
+      ],
+      "traits": [
+        "对亡女有不可放下的执念",
+        "为复活女儿意识愿意突破伦理边界",
+        "在数字世界中找到救赎",
+        "技术与情感的边界在他身上模糊"
+      ],
+      "dialogue_style": [
+        "以专业术语讨论技术方案",
+        "在涉及女儿时语气变得急切和脆弱",
+        "在突破伦理边界时用自我辩解掩饰不安"
+      ],
+      "relationships": [
+        "known_zhou_zhezhi_we2",
+        "known_han_zuozhi_we2"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth 2",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_zhou_zhezhi_we2",
+      "work_id": "work_wandering_earth_2",
+      "name": "周喆直",
+      "aliases": [
+        "Zhou Zhezhi",
+        "周老师"
+      ],
+      "roles": [
+        "deuteragonist",
+        "外交谈判代表"
+      ],
+      "character_types": [
+        "智慧型",
+        "坚定型",
+        "桥梁型"
+      ],
+      "traits": [
+        "在危机中以冷静和智慧斡旋各方",
+        "对人类团结有不可动摇的信念",
+        "以简短有力的发言影响全局决策",
+        "在身体衰弱时仍坚持使命感"
+      ],
+      "dialogue_style": [
+        "以缓慢有力的语调发表外交声明",
+        "在谈判中用比喻和反问引导共识",
+        "在危机时刻以一句关键发言改变走向"
+      ],
+      "relationships": [
+        "known_tu_hengyu_we2"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth 2",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_han_zuozhi_we2",
+      "work_id": "work_wandering_earth_2",
+      "name": "韩子昂",
+      "aliases": [
+        "Han Zuo'ang"
+      ],
+      "roles": [
+        "supporting",
+        "长辈"
+      ],
+      "character_types": [
+        "长辈型",
+        "隐忍型",
+        "牺牲型"
+      ],
+      "traits": [
+        "以市井智慧应对危机",
+        "对孙辈有深厚感情",
+        "在关键时刻以自身换取后代生存"
+      ],
+      "dialogue_style": [
+        "以幽默和市井俗语化解紧张气氛",
+        "在严肃时刻以简短嘱咐表达深情",
+        "在牺牲前以平静语气交代后事"
+      ],
+      "relationships": [
+        "known_tu_hengyu_we2"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth 2",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_tu_zhou_we2",
+      "work_id": "work_wandering_earth_2",
+      "from_character_id": "known_tu_hengyu_we2",
+      "to_character_id": "known_zhou_zhezhi_we2",
+      "relation": "科学家与外交官在末日中的互补决策",
+      "description": "图恒宇代表以技术突破解决危机的路线,周喆直代表以政治智慧和团结信念凝聚人类的路线,两人在不同层面为人类存亡做出贡献,科学家的执念与外交官的信念形成互补。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth 2",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_tu_han_we2",
+      "work_id": "work_wandering_earth_2",
+      "from_character_id": "known_tu_hengyu_we2",
+      "to_character_id": "known_han_zuozhi_we2",
+      "relation": "科学家与市井长辈在危机中的生死交集",
+      "description": "图恒宇在技术层面突破危机边界,韩子昂在地面以市井智慧和牺牲精神保护后代,两人分别代表知识精英和普通人在末日中各自做出的牺牲与贡献。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth 2",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_we2_elevator_launch",
+      "work_id": "work_wandering_earth_2",
+      "name": "太空电梯在攻击中奋力升空",
+      "participant_ids": [
+        "known_tu_hengyu_we2"
+      ],
+      "setting": "太空电梯基座",
+      "conflict_type": "危机",
+      "emotional_arc": [
+        "准备",
+        "升空",
+        "遇袭",
+        "决断"
+      ],
+      "visual_actions": [
+        "太空电梯在巨大轰鸣中开始加速升空",
+        "外部攻击导致电梯结构开始崩解",
+        "乘客在失重和冲击中挣扎维持秩序",
+        "关键人物在危机中做出牺牲决定确保任务继续"
+      ],
+      "reusable_beats": [
+        "大型工程在壮观启动中遭遇外部攻击",
+        "结构崩解将乘客置于生死边缘",
+        "混乱中有人以牺牲换取任务延续",
+        "幸存者带着牺牲者的意志继续升空"
+      ],
+      "dialogue_patterns": [
+        "指挥者用急促命令维持秩序",
+        "牺牲者用简短告别表达决心",
+        "幸存者用沉默和行动延续使命"
+      ],
+      "abstraction": "提取大型工程在启动中遭遇攻击、结构崩解中有人以牺牲换取任务延续的结构,核心张力来自人类工程的力量与脆弱性的瞬间转换,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth 2",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_we2_digital_reunion",
+      "work_id": "work_wandering_earth_2",
+      "name": "科学家在数字世界中与逝去至亲重逢",
+      "participant_ids": [
+        "known_tu_hengyu_we2"
+      ],
+      "setting": "数字空间",
+      "conflict_type": "重逢",
+      "emotional_arc": [
+        "执念",
+        "突破",
+        "重逢",
+        "救赎"
+      ],
+      "visual_actions": [
+        "科学家在数字空间中寻找亡女的意识备份",
+        "突破技术限制将女儿意识上传",
+        "在数字世界中父女重逢",
+        "以数字形态继续存在并完成任务"
+      ],
+      "reusable_beats": [
+        "执念驱动者突破技术伦理边界",
+        "在数字/虚拟空间中找到逝去至亲",
+        "重逢时的情感爆发与救赎",
+        "以非物理形态找到新的存在方式"
+      ],
+      "dialogue_patterns": [
+        "科学家在突破时用急切独白辩解",
+        "重逢时用碎片化的呼唤和名字",
+        "救赎后以平静语气表达释然"
+      ],
+      "abstraction": "提取执念驱动的科学家在数字空间中与亡女重逢的结构,核心张力来自技术伦理边界与人类情感的冲突,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
+          "source_name": "Wikipedia",
+          "page_title": "The Wandering Earth 2",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}
