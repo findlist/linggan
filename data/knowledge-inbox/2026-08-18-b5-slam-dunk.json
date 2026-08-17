@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_slam_dunk",
+      "title": "灌篮高手",
+      "original_title": "スラムダンク",
+      "aliases": ["Slam Dunk", "Slam Dunk: Yatsume! Toward the Victory", "灌籃高手"],
+      "media_type": "anime",
+      "regions": ["日本"],
+      "release_year": 1993,
+      "genres": ["运动", "青春", "喜剧", "热血"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_hanamichi_sakuragi_slam",
+      "work_id": "work_slam_dunk",
+      "name": "樱木花道",
+      "aliases": ["Hanamichi Sakuragi", "Sakuragi"],
+      "roles": ["protagonist", "大前锋"],
+      "character_types": ["热血型", "成长型", "搞笑担当"],
+      "traits": ["自负", "热血", "莽撞", "重情义", "不服输"],
+      "dialogue_style": [
+        "以夸张宣言表达自信",
+        "用粗犷直接的语言掩饰内心柔软",
+        "在关键时刻用简短话语展示决心"
+      ],
+      "relationships": ["known_kaede_rukawa_slam", "known_takenori_akagi_slam"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_kaede_rukawa_slam",
+      "work_id": "work_slam_dunk",
+      "name": "流川枫",
+      "aliases": ["Kaede Rukawa", "Rukawa"],
+      "roles": ["deuteragonist", "小前锋"],
+      "character_types": ["冷酷型", "天才选手"],
+      "traits": ["沉默", "专注", "孤傲", "实力主义"],
+      "dialogue_style": [
+        "以极简短句回应一切",
+        "用行动而非言语表达态度",
+        "偶尔的冷淡反问令人措手不及"
+      ],
+      "relationships": ["known_hanamichi_sakuragi_slam"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_takenori_akagi_slam",
+      "work_id": "work_slam_dunk",
+      "name": "赤木刚宪",
+      "aliases": ["Takenori Akagi", "Akagi", "大猩猩"],
+      "roles": ["supporting", "队长", "中锋"],
+      "character_types": ["领袖型", "硬汉"],
+      "traits": ["严厉", "坚韧", "责任感强", "不屈"],
+      "dialogue_style": [
+        "以命令式短句督促队友",
+        "用坚定语气传达信念和目标",
+        "在压力下用沉稳话语稳定军心"
+      ],
+      "relationships": ["known_hanamichi_sakuragi_slam"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_sakuragi_rukawa_slam",
+      "work_id": "work_slam_dunk",
+      "from_character_id": "known_hanamichi_sakuragi_slam",
+      "to_character_id": "known_kaede_rukawa_slam",
+      "relation": "自称天才与沉默天才的宿敌竞争",
+      "description": "樱木花道视流川枫为最大对手，两人在球场上的竞争从个人恩怨逐渐转化为默契配合，形成互补的攻防组合。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_sakuragi_akagi_slam",
+      "work_id": "work_slam_dunk",
+      "from_character_id": "known_hanamichi_sakuragi_slam",
+      "to_character_id": "known_takenori_akagi_slam",
+      "relation": "问题球员与严厉队长的师徒式磨合",
+      "description": "赤木刚宪以队长威严不断纠正樱木花道的莽撞行为，从最初的冲突对抗到后期互相信任，成为球队内线核心组合。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_slam_last_shot",
+      "work_id": "work_slam_dunk",
+      "name": "新手在关键比赛中投出决定性一球",
+      "participant_ids": ["known_hanamichi_sakuragi_slam", "known_takenori_akagi_slam"],
+      "setting": "全国大赛淘汰赛的篮球场",
+      "conflict_type": "自我超越",
+      "emotional_arc": ["紧张", "专注", "决断", "释放"],
+      "visual_actions": [
+        "新手在比赛最后时刻跑位到关键位置",
+        "队友传球到达的瞬间做出判断",
+        "新手以不熟练但坚决的动作出手",
+        "球进篮筐的瞬间全场沸腾"
+      ],
+      "reusable_beats": [
+        "新手在关键时刻被推到决定性位置",
+        "队友的信任传递成为催化剂",
+        "不完美的动作承载全部希望",
+        "结果改变后新手完成身份转变"
+      ],
+      "dialogue_patterns": [
+        "队长用简短指令传达信任",
+        "新手内心独白聚焦于单一目标",
+        "进球后用沉默和表情代替言语"
+      ],
+      "abstraction": "提取新手在淘汰赛关键时刻投出决定性球、完成自我超越的结构，核心张力来自经验不足与决心的碰撞，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_slam_rivalry_to_teamwork",
+      "work_id": "work_slam_dunk",
+      "name": "宿敌在关键配合中首次默契联手",
+      "participant_ids": ["known_hanamichi_sakuragi_slam", "known_kaede_rukawa_slam"],
+      "setting": "高强度比赛的攻防转换中",
+      "conflict_type": "关系转变",
+      "emotional_arc": ["对抗", "犹豫", "默契", "信任"],
+      "visual_actions": [
+        "两名长期对立的球员在快攻中跑位",
+        "一人传球瞬间另一人已到达接应点",
+        "配合得分后两人短暂对视",
+        "各自转身恢复冷淡但氛围已变"
+      ],
+      "reusable_beats": [
+        "长期对立的双方在关键比赛中被迫配合",
+        "默契在无语言沟通中自然产生",
+        "一次成功配合改变双方关系基调",
+        "外在态度不变但内在信任已建立"
+      ],
+      "dialogue_patterns": [
+        "传球时无言语只用眼神交流",
+        "得分后用沉默和短暂对视代替庆祝",
+        "事后双方都否认默契的存在"
+      ],
+      "abstraction": "提取长期对立的竞争者在关键比赛中无语言沟通下完成默契配合、关系基调悄然转变的结构，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}

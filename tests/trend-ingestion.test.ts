@@ -67,9 +67,9 @@ const withTemporaryDirectory = async (callback: (directory: string) => Promise<v
 test('knowledge base is valid and all known characters are reference only', async () => {
   const raw = JSON.parse(await readFile(new URL('../data/knowledge-base.json', import.meta.url), 'utf8')) as unknown
   const knowledge = KnowledgeBaseSchema.parse(raw)
-  assert.equal(knowledge.works.length, 18)
-  assert.equal(knowledge.known_characters.length, 46)
-  assert.equal(knowledge.iconic_moments.length, 28)
+  assert.equal(knowledge.works.length, 21)
+  assert.equal(knowledge.known_characters.length, 55)
+  assert.equal(knowledge.iconic_moments.length, 34)
   assert.equal(
     knowledge.known_characters.every((character) => character.rights_status === 'reference_only'),
     true,

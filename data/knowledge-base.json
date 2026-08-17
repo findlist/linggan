@@ -543,6 +543,104 @@
         }
       ],
       "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "work_harry_potter",
+      "title": "哈利波特",
+      "original_title": "Harry Potter",
+      "aliases": [
+        "Harry Potter (film series)",
+        "哈利·波特",
+        "Harry Potter and the Philosopher's Stone"
+      ],
+      "media_type": "film",
+      "regions": [
+        "英国",
+        "美国"
+      ],
+      "release_year": 2001,
+      "genres": [
+        "奇幻",
+        "冒险",
+        "成长"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_chernobyl",
+      "title": "切尔诺贝利",
+      "original_title": "Chernobyl",
+      "aliases": [
+        "Chernobyl (TV miniseries)",
+        "切尔诺贝利迷你剧"
+      ],
+      "media_type": "television",
+      "regions": [
+        "美国",
+        "英国"
+      ],
+      "release_year": 2019,
+      "genres": [
+        "历史剧",
+        "灾难",
+        "惊悚"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_slam_dunk",
+      "title": "灌篮高手",
+      "original_title": "スラムダンク",
+      "aliases": [
+        "Slam Dunk",
+        "Slam Dunk: Yatsume! Toward the Victory",
+        "灌籃高手"
+      ],
+      "media_type": "anime",
+      "regions": [
+        "日本"
+      ],
+      "release_year": 1993,
+      "genres": [
+        "运动",
+        "青春",
+        "喜剧",
+        "热血"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -2498,6 +2596,413 @@
         }
       ],
       "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "known_harry_potter_hp",
+      "work_id": "work_harry_potter",
+      "name": "哈利·波特",
+      "aliases": [
+        "Harry Potter",
+        "The Boy Who Lived",
+        "Harry"
+      ],
+      "roles": [
+        "protagonist",
+        "学生",
+        "天选之子"
+      ],
+      "character_types": [
+        "成长型",
+        "英雄型",
+        "命运承载者"
+      ],
+      "traits": [
+        "勇敢",
+        "忠诚",
+        "冲动",
+        "自我牺牲",
+        "命运感"
+      ],
+      "dialogue_style": [
+        "以坚定的语气表达对朋友的承诺",
+        "在危险面前用简短决断代替犹豫",
+        "用质疑权威的反问展现独立思考"
+      ],
+      "relationships": [
+        "known_hermione_granger_hp",
+        "known_severus_snape_hp"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_hermione_granger_hp",
+      "work_id": "work_harry_potter",
+      "name": "赫敏·格兰杰",
+      "aliases": [
+        "Hermione Granger",
+        "Hermione"
+      ],
+      "roles": [
+        "deuteragonist",
+        "学生",
+        "智者"
+      ],
+      "character_types": [
+        "学者型",
+        "行动派",
+        "忠诚伙伴"
+      ],
+      "traits": [
+        "聪明",
+        "严谨",
+        "坚韧",
+        "正义感",
+        "理性"
+      ],
+      "dialogue_style": [
+        "以引用知识和规则来支撑论点",
+        "用急促的连续提问表达焦虑",
+        "在关键时刻用沉稳陈述化解恐慌"
+      ],
+      "relationships": [
+        "known_harry_potter_hp"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_severus_snape_hp",
+      "work_id": "work_harry_potter",
+      "name": "西弗勒斯·斯内普",
+      "aliases": [
+        "Severus Snape",
+        "Snape",
+        "混血王子"
+      ],
+      "roles": [
+        "antagonist",
+        "教授",
+        "双面间谍"
+      ],
+      "character_types": [
+        "复杂型",
+        "悲剧人物",
+        "隐藏守护者"
+      ],
+      "traits": [
+        "阴沉",
+        "刻薄",
+        "深情",
+        "隐忍",
+        "矛盾"
+      ],
+      "dialogue_style": [
+        "以缓慢低沉的语调说出刻薄评价",
+        "用修辞问句让学生无处辩驳",
+        "在暴露真实情感时用极度克制的短句"
+      ],
+      "relationships": [
+        "known_harry_potter_hp"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_valery_legasov_chernobyl",
+      "work_id": "work_chernobyl",
+      "name": "瓦列里·列加索夫",
+      "aliases": [
+        "Valery Legasov",
+        "Legasov"
+      ],
+      "roles": [
+        "protagonist",
+        "物理学家"
+      ],
+      "character_types": [
+        "学者型",
+        "道德担当",
+        "真相追寻者"
+      ],
+      "traits": [
+        "严谨",
+        "正直",
+        "坚韧",
+        "自我牺牲"
+      ],
+      "dialogue_style": [
+        "以数据和事实为依据冷静陈述",
+        "用专业术语在权威面前坚持立场",
+        "在道德困境中用沉痛的简洁语言表达"
+      ],
+      "relationships": [
+        "known_boris_shcherbina_chernobyl"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_boris_shcherbina_chernobyl",
+      "work_id": "work_chernobyl",
+      "name": "鲍里斯·谢尔比纳",
+      "aliases": [
+        "Boris Shcherbina",
+        "Shcherbina"
+      ],
+      "roles": [
+        "deuteragonist",
+        "政府高官"
+      ],
+      "character_types": [
+        "官僚型",
+        "务实者",
+        "转变者"
+      ],
+      "traits": [
+        "权威",
+        "务实",
+        "服从",
+        "觉醒"
+      ],
+      "dialogue_style": [
+        "以行政命令式短句下达指示",
+        "用反问质疑科学家判断的可靠性",
+        "在认知转变后用低沉语气承认错误"
+      ],
+      "relationships": [
+        "known_valery_legasov_chernobyl"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_ulyana_khomyuk_chernobyl",
+      "work_id": "work_chernobyl",
+      "name": "乌拉娜·霍缪克",
+      "aliases": [
+        "Ulyana Khomyuk",
+        "Khomyuk"
+      ],
+      "roles": [
+        "supporting",
+        "物理学家"
+      ],
+      "character_types": [
+        "学者型",
+        "行动派",
+        "挑战者"
+      ],
+      "traits": [
+        "敏锐",
+        "坚决",
+        "不畏权威",
+        "同理心"
+      ],
+      "dialogue_style": [
+        "以反问挑战官方叙事的逻辑漏洞",
+        "用简洁有力的陈述揭露被掩盖的事实",
+        "在劝说他人时结合情感和理性"
+      ],
+      "relationships": [
+        "known_valery_legasov_chernobyl"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_hanamichi_sakuragi_slam",
+      "work_id": "work_slam_dunk",
+      "name": "樱木花道",
+      "aliases": [
+        "Hanamichi Sakuragi",
+        "Sakuragi"
+      ],
+      "roles": [
+        "protagonist",
+        "大前锋"
+      ],
+      "character_types": [
+        "热血型",
+        "成长型",
+        "搞笑担当"
+      ],
+      "traits": [
+        "自负",
+        "热血",
+        "莽撞",
+        "重情义",
+        "不服输"
+      ],
+      "dialogue_style": [
+        "以夸张宣言表达自信",
+        "用粗犷直接的语言掩饰内心柔软",
+        "在关键时刻用简短话语展示决心"
+      ],
+      "relationships": [
+        "known_kaede_rukawa_slam",
+        "known_takenori_akagi_slam"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_kaede_rukawa_slam",
+      "work_id": "work_slam_dunk",
+      "name": "流川枫",
+      "aliases": [
+        "Kaede Rukawa",
+        "Rukawa"
+      ],
+      "roles": [
+        "deuteragonist",
+        "小前锋"
+      ],
+      "character_types": [
+        "冷酷型",
+        "天才选手"
+      ],
+      "traits": [
+        "沉默",
+        "专注",
+        "孤傲",
+        "实力主义"
+      ],
+      "dialogue_style": [
+        "以极简短句回应一切",
+        "用行动而非言语表达态度",
+        "偶尔的冷淡反问令人措手不及"
+      ],
+      "relationships": [
+        "known_hanamichi_sakuragi_slam"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_takenori_akagi_slam",
+      "work_id": "work_slam_dunk",
+      "name": "赤木刚宪",
+      "aliases": [
+        "Takenori Akagi",
+        "Akagi",
+        "大猩猩"
+      ],
+      "roles": [
+        "supporting",
+        "队长",
+        "中锋"
+      ],
+      "character_types": [
+        "领袖型",
+        "硬汉"
+      ],
+      "traits": [
+        "严厉",
+        "坚韧",
+        "责任感强",
+        "不屈"
+      ],
+      "dialogue_style": [
+        "以命令式短句督促队友",
+        "用坚定语气传达信念和目标",
+        "在压力下用沉稳话语稳定军心"
+      ],
+      "relationships": [
+        "known_hanamichi_sakuragi_slam"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -2950,6 +3455,114 @@
         }
       ],
       "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "relation_harry_hermione_hp",
+      "work_id": "work_harry_potter",
+      "from_character_id": "known_harry_potter_hp",
+      "to_character_id": "known_hermione_granger_hp",
+      "relation": "天选之子与智者伙伴的互补友谊",
+      "description": "哈利的勇气与赫敏的智慧在多次冒险中形成互补，赫敏的理性和知识多次帮助哈利化解危机，两人建立起超越生死的信任。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_harry_snape_hp",
+      "work_id": "work_harry_potter",
+      "from_character_id": "known_harry_potter_hp",
+      "to_character_id": "known_severus_snape_hp",
+      "relation": "表面敌对的师生间隐藏的守护关系",
+      "description": "斯内普以刻薄和严厉伪装对哈利的敌意，实际暗中守护哈利的安全，其真实动机源于对哈利母亲的深情，直到斯内普临终才揭示真相。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_legasov_shcherbina_chernobyl",
+      "work_id": "work_chernobyl",
+      "from_character_id": "known_valery_legasov_chernobyl",
+      "to_character_id": "known_boris_shcherbina_chernobyl",
+      "relation": "科学家与官僚从对立到合作的信任建立",
+      "description": "列加索夫作为物理学家与政府高官谢尔比纳在灾难现场从最初的权威冲突，逐渐在共同面对真相的过程中建立起基于互相尊重的合作关系。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_legasov_khomyuk_chernobyl",
+      "work_id": "work_chernobyl",
+      "from_character_id": "known_valery_legasov_chernobyl",
+      "to_character_id": "known_ulyana_khomyuk_chernobyl",
+      "relation": "两位科学家在追求真相中的同盟",
+      "description": "列加索夫与霍缪克因共同追求灾难真相而结成同盟，霍缪克在列加索夫动摇时给予支持，两人合作揭露被体制掩盖的关键信息。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_sakuragi_rukawa_slam",
+      "work_id": "work_slam_dunk",
+      "from_character_id": "known_hanamichi_sakuragi_slam",
+      "to_character_id": "known_kaede_rukawa_slam",
+      "relation": "自称天才与沉默天才的宿敌竞争",
+      "description": "樱木花道视流川枫为最大对手，两人在球场上的竞争从个人恩怨逐渐转化为默契配合，形成互补的攻防组合。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_sakuragi_akagi_slam",
+      "work_id": "work_slam_dunk",
+      "from_character_id": "known_hanamichi_sakuragi_slam",
+      "to_character_id": "known_takenori_akagi_slam",
+      "relation": "问题球员与严厉队长的师徒式磨合",
+      "description": "赤木刚宪以队长威严不断纠正樱木花道的莽撞行为，从最初的冲突对抗到后期互相信任，成为球队内线核心组合。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
     }
   ],
   "iconic_moments": [
@@ -4243,6 +4856,287 @@
         }
       ],
       "last_verified_at": "2026-08-17T00:00:00.000Z"
+    },
+    {
+      "id": "moment_hp_choice_over_destiny",
+      "work_id": "work_harry_potter",
+      "name": "天选之子主动选择面对命运而非逃避",
+      "participant_ids": [
+        "known_harry_potter_hp",
+        "known_hermione_granger_hp"
+      ],
+      "setting": "决定性对决前的安静时刻",
+      "conflict_type": "命运选择",
+      "emotional_arc": [
+        "沉思",
+        "决断",
+        "平静",
+        "勇气"
+      ],
+      "visual_actions": [
+        "主角在安静空间中独自思考即将到来的危险",
+        "同伴提供支持但不替主角做决定",
+        "主角起身走向未知以简短行动表示选择",
+        "身后留下安全和熟悉的一切"
+      ],
+      "reusable_beats": [
+        "主角在最终抉择前获得安静思考的空间",
+        "同伴的存在给予力量而非代替决定",
+        "选择面对命运的瞬间表现为平静而非壮烈",
+        "主动走向未知标志着角色成长完成"
+      ],
+      "dialogue_patterns": [
+        "主角用简短陈述表达决定",
+        "同伴用沉默和支持代替劝说",
+        "关键时刻没有豪言壮语只有行动"
+      ],
+      "abstraction": "提取天选之子在最终对决前主动选择面对命运、以平静行动代替豪言壮语的结构，核心张力来自逃避的诱惑与接受的平静之间的对比，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_hp_reveal_true_loyalty",
+      "work_id": "work_harry_potter",
+      "name": "表面敌对者的真实阵营在临终时揭露",
+      "participant_ids": [
+        "known_severus_snape_hp",
+        "known_harry_potter_hp"
+      ],
+      "setting": "角色临终前的私密空间",
+      "conflict_type": "真相揭露",
+      "emotional_arc": [
+        "困惑",
+        "揭示",
+        "震惊",
+        "重新理解"
+      ],
+      "visual_actions": [
+        "长期被视为对立面的角色在弥留之际交出关键信物",
+        "被隐瞒的记忆和动机通过信物传递",
+        "接收者从抗拒到理解的态度转变",
+        "过往所有敌意行为在新视角下被重新解读"
+      ],
+      "reusable_beats": [
+        "长期表面敌对的角色在临终时暴露真实立场",
+        "关键信物承载被隐藏的全部记忆和动机",
+        "接收者在真相面前重新理解过往一切互动",
+        "敌意的表象下是深藏的守护和牺牲"
+      ],
+      "dialogue_patterns": [
+        "临终者用极简短句或沉默传递无法言说的真相",
+        "接收者用质疑到崩溃的情绪弧线回应",
+        "真相通过记忆片段而非长篇解释传达"
+      ],
+      "abstraction": "提取表面敌对者在临终时通过关键信物揭露真实守护身份、迫使接收者重新理解全部过往互动的结构，核心张力来自表象与真相的巨大反差，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_chernobyl_bridge_of_death",
+      "work_id": "work_chernobyl",
+      "name": "旁观者在灾难边缘不知情地围观异象",
+      "participant_ids": [
+        "known_valery_legasov_chernobyl"
+      ],
+      "setting": "灾难发生后的附近桥梁和城镇",
+      "conflict_type": "信息不对称",
+      "emotional_arc": [
+        "好奇",
+        "愉悦",
+        "不安",
+        "暗含恐惧"
+      ],
+      "visual_actions": [
+        "居民聚集在高处观看远处的奇异光芒",
+        "空气中漂浮着不明颗粒物",
+        "孩子们在含有放射性尘埃的场所玩耍",
+        "旁观者对美丽的异象毫无防备"
+      ],
+      "reusable_beats": [
+        "旁观者在不知情的情况下被灾难的视觉奇观吸引",
+        "美丽的外表掩盖着致命危险",
+        "信息封锁使普通人无法做出自救判断",
+        "观众的上帝视角制造强烈讽刺和不安"
+      ],
+      "dialogue_patterns": [
+        "旁观者用赞叹语气描述异常现象",
+        "officials用安抚性语言淡化危险",
+        "科学家用克制语气揭示真相的严重性"
+      ],
+      "abstraction": "提取旁观者在信息不对称下被灾难表象吸引、在不知情中暴露于危险的结构，核心张力来自美丽表象与致命真相的反差，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_chernobyl_trial_truth",
+      "work_id": "work_chernobyl",
+      "name": "科学家在听证会上公开被掩盖的真相",
+      "participant_ids": [
+        "known_valery_legasov_chernobyl",
+        "known_boris_shcherbina_chernobyl"
+      ],
+      "setting": "官方听证会或调查法庭",
+      "conflict_type": "真相对抗体制",
+      "emotional_arc": [
+        "压抑",
+        "决断",
+        "释放",
+        "代价"
+      ],
+      "visual_actions": [
+        "科学家在官方场合面临沉默压力",
+        "逐步展示被系统性掩盖的关键证据",
+        "在场官员从不屑到震惊的态度转变",
+        "科学家说出真相后承受后果"
+      ],
+      "reusable_beats": [
+        "掌握真相的人在官方场合面临是否开口的抉择",
+        "系统性掩盖的压力使说真话成为个人牺牲",
+        "证据展示逐步瓦解官方叙事",
+        "真相公开后说真话的人承担代价"
+      ],
+      "dialogue_patterns": [
+        "科学家用数据和事实逐步推进论证",
+        "官员用程序性问题试图打断",
+        "关键陈述用简短有力的宣言句"
+      ],
+      "abstraction": "提取科学家在体制压力下公开被掩盖真相、以个人代价换取公众知情权的结构，核心张力来自真相与权力的对抗，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_slam_last_shot",
+      "work_id": "work_slam_dunk",
+      "name": "新手在关键比赛中投出决定性一球",
+      "participant_ids": [
+        "known_hanamichi_sakuragi_slam",
+        "known_takenori_akagi_slam"
+      ],
+      "setting": "全国大赛淘汰赛的篮球场",
+      "conflict_type": "自我超越",
+      "emotional_arc": [
+        "紧张",
+        "专注",
+        "决断",
+        "释放"
+      ],
+      "visual_actions": [
+        "新手在比赛最后时刻跑位到关键位置",
+        "队友传球到达的瞬间做出判断",
+        "新手以不熟练但坚决的动作出手",
+        "球进篮筐的瞬间全场沸腾"
+      ],
+      "reusable_beats": [
+        "新手在关键时刻被推到决定性位置",
+        "队友的信任传递成为催化剂",
+        "不完美的动作承载全部希望",
+        "结果改变后新手完成身份转变"
+      ],
+      "dialogue_patterns": [
+        "队长用简短指令传达信任",
+        "新手内心独白聚焦于单一目标",
+        "进球后用沉默和表情代替言语"
+      ],
+      "abstraction": "提取新手在淘汰赛关键时刻投出决定性球、完成自我超越的结构，核心张力来自经验不足与决心的碰撞，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_slam_rivalry_to_teamwork",
+      "work_id": "work_slam_dunk",
+      "name": "宿敌在关键配合中首次默契联手",
+      "participant_ids": [
+        "known_hanamichi_sakuragi_slam",
+        "known_kaede_rukawa_slam"
+      ],
+      "setting": "高强度比赛的攻防转换中",
+      "conflict_type": "关系转变",
+      "emotional_arc": [
+        "对抗",
+        "犹豫",
+        "默契",
+        "信任"
+      ],
+      "visual_actions": [
+        "两名长期对立的球员在快攻中跑位",
+        "一人传球瞬间另一人已到达接应点",
+        "配合得分后两人短暂对视",
+        "各自转身恢复冷淡但氛围已变"
+      ],
+      "reusable_beats": [
+        "长期对立的双方在关键比赛中被迫配合",
+        "默契在无语言沟通中自然产生",
+        "一次成功配合改变双方关系基调",
+        "外在态度不变但内在信任已建立"
+      ],
+      "dialogue_patterns": [
+        "传球时无言语只用眼神交流",
+        "得分后用沉默和短暂对视代替庆祝",
+        "事后双方都否认默契的存在"
+      ],
+      "abstraction": "提取长期对立的竞争者在关键比赛中无语言沟通下完成默契配合、关系基调悄然转变的结构，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
+          "source_name": "Wikipedia",
+          "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
     }
   ]
 }

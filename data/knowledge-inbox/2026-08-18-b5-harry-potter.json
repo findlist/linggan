@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_harry_potter",
+      "title": "哈利波特",
+      "original_title": "Harry Potter",
+      "aliases": ["Harry Potter (film series)", "哈利·波特", "Harry Potter and the Philosopher's Stone"],
+      "media_type": "film",
+      "regions": ["英国", "美国"],
+      "release_year": 2001,
+      "genres": ["奇幻", "冒险", "成长"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_harry_potter_hp",
+      "work_id": "work_harry_potter",
+      "name": "哈利·波特",
+      "aliases": ["Harry Potter", "The Boy Who Lived", "Harry"],
+      "roles": ["protagonist", "学生", "天选之子"],
+      "character_types": ["成长型", "英雄型", "命运承载者"],
+      "traits": ["勇敢", "忠诚", "冲动", "自我牺牲", "命运感"],
+      "dialogue_style": [
+        "以坚定的语气表达对朋友的承诺",
+        "在危险面前用简短决断代替犹豫",
+        "用质疑权威的反问展现独立思考"
+      ],
+      "relationships": ["known_hermione_granger_hp", "known_severus_snape_hp"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_hermione_granger_hp",
+      "work_id": "work_harry_potter",
+      "name": "赫敏·格兰杰",
+      "aliases": ["Hermione Granger", "Hermione"],
+      "roles": ["deuteragonist", "学生", "智者"],
+      "character_types": ["学者型", "行动派", "忠诚伙伴"],
+      "traits": ["聪明", "严谨", "坚韧", "正义感", "理性"],
+      "dialogue_style": [
+        "以引用知识和规则来支撑论点",
+        "用急促的连续提问表达焦虑",
+        "在关键时刻用沉稳陈述化解恐慌"
+      ],
+      "relationships": ["known_harry_potter_hp"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_severus_snape_hp",
+      "work_id": "work_harry_potter",
+      "name": "西弗勒斯·斯内普",
+      "aliases": ["Severus Snape", "Snape", "混血王子"],
+      "roles": ["antagonist", "教授", "双面间谍"],
+      "character_types": ["复杂型", "悲剧人物", "隐藏守护者"],
+      "traits": ["阴沉", "刻薄", "深情", "隐忍", "矛盾"],
+      "dialogue_style": [
+        "以缓慢低沉的语调说出刻薄评价",
+        "用修辞问句让学生无处辩驳",
+        "在暴露真实情感时用极度克制的短句"
+      ],
+      "relationships": ["known_harry_potter_hp"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_harry_hermione_hp",
+      "work_id": "work_harry_potter",
+      "from_character_id": "known_harry_potter_hp",
+      "to_character_id": "known_hermione_granger_hp",
+      "relation": "天选之子与智者伙伴的互补友谊",
+      "description": "哈利的勇气与赫敏的智慧在多次冒险中形成互补，赫敏的理性和知识多次帮助哈利化解危机，两人建立起超越生死的信任。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_harry_snape_hp",
+      "work_id": "work_harry_potter",
+      "from_character_id": "known_harry_potter_hp",
+      "to_character_id": "known_severus_snape_hp",
+      "relation": "表面敌对的师生间隐藏的守护关系",
+      "description": "斯内普以刻薄和严厉伪装对哈利的敌意，实际暗中守护哈利的安全，其真实动机源于对哈利母亲的深情，直到斯内普临终才揭示真相。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_hp_choice_over_destiny",
+      "work_id": "work_harry_potter",
+      "name": "天选之子主动选择面对命运而非逃避",
+      "participant_ids": ["known_harry_potter_hp", "known_hermione_granger_hp"],
+      "setting": "决定性对决前的安静时刻",
+      "conflict_type": "命运选择",
+      "emotional_arc": ["沉思", "决断", "平静", "勇气"],
+      "visual_actions": [
+        "主角在安静空间中独自思考即将到来的危险",
+        "同伴提供支持但不替主角做决定",
+        "主角起身走向未知以简短行动表示选择",
+        "身后留下安全和熟悉的一切"
+      ],
+      "reusable_beats": [
+        "主角在最终抉择前获得安静思考的空间",
+        "同伴的存在给予力量而非代替决定",
+        "选择面对命运的瞬间表现为平静而非壮烈",
+        "主动走向未知标志着角色成长完成"
+      ],
+      "dialogue_patterns": [
+        "主角用简短陈述表达决定",
+        "同伴用沉默和支持代替劝说",
+        "关键时刻没有豪言壮语只有行动"
+      ],
+      "abstraction": "提取天选之子在最终对决前主动选择面对命运、以平静行动代替豪言壮语的结构，核心张力来自逃避的诱惑与接受的平静之间的对比，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_hp_reveal_true_loyalty",
+      "work_id": "work_harry_potter",
+      "name": "表面敌对者的真实阵营在临终时揭露",
+      "participant_ids": ["known_severus_snape_hp", "known_harry_potter_hp"],
+      "setting": "角色临终前的私密空间",
+      "conflict_type": "真相揭露",
+      "emotional_arc": ["困惑", "揭示", "震惊", "重新理解"],
+      "visual_actions": [
+        "长期被视为对立面的角色在弥留之际交出关键信物",
+        "被隐瞒的记忆和动机通过信物传递",
+        "接收者从抗拒到理解的态度转变",
+        "过往所有敌意行为在新视角下被重新解读"
+      ],
+      "reusable_beats": [
+        "长期表面敌对的角色在临终时暴露真实立场",
+        "关键信物承载被隐藏的全部记忆和动机",
+        "接收者在真相面前重新理解过往一切互动",
+        "敌意的表象下是深藏的守护和牺牲"
+      ],
+      "dialogue_patterns": [
+        "临终者用极简短句或沉默传递无法言说的真相",
+        "接收者用质疑到崩溃的情绪弧线回应",
+        "真相通过记忆片段而非长篇解释传达"
+      ],
+      "abstraction": "提取表面敌对者在临终时通过关键信物揭露真实守护身份、迫使接收者重新理解全部过往互动的结构，核心张力来自表象与真相的巨大反差，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Harry Potter (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}

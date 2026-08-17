@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_chernobyl",
+      "title": "切尔诺贝利",
+      "original_title": "Chernobyl",
+      "aliases": ["Chernobyl (TV miniseries)", "切尔诺贝利迷你剧"],
+      "media_type": "television",
+      "regions": ["美国", "英国"],
+      "release_year": 2019,
+      "genres": ["历史剧", "灾难", "惊悚"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_valery_legasov_chernobyl",
+      "work_id": "work_chernobyl",
+      "name": "瓦列里·列加索夫",
+      "aliases": ["Valery Legasov", "Legasov"],
+      "roles": ["protagonist", "物理学家"],
+      "character_types": ["学者型", "道德担当", "真相追寻者"],
+      "traits": ["严谨", "正直", "坚韧", "自我牺牲"],
+      "dialogue_style": [
+        "以数据和事实为依据冷静陈述",
+        "用专业术语在权威面前坚持立场",
+        "在道德困境中用沉痛的简洁语言表达"
+      ],
+      "relationships": ["known_boris_shcherbina_chernobyl"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_boris_shcherbina_chernobyl",
+      "work_id": "work_chernobyl",
+      "name": "鲍里斯·谢尔比纳",
+      "aliases": ["Boris Shcherbina", "Shcherbina"],
+      "roles": ["deuteragonist", "政府高官"],
+      "character_types": ["官僚型", "务实者", "转变者"],
+      "traits": ["权威", "务实", "服从", "觉醒"],
+      "dialogue_style": [
+        "以行政命令式短句下达指示",
+        "用反问质疑科学家判断的可靠性",
+        "在认知转变后用低沉语气承认错误"
+      ],
+      "relationships": ["known_valery_legasov_chernobyl"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_ulyana_khomyuk_chernobyl",
+      "work_id": "work_chernobyl",
+      "name": "乌拉娜·霍缪克",
+      "aliases": ["Ulyana Khomyuk", "Khomyuk"],
+      "roles": ["supporting", "物理学家"],
+      "character_types": ["学者型", "行动派", "挑战者"],
+      "traits": ["敏锐", "坚决", "不畏权威", "同理心"],
+      "dialogue_style": [
+        "以反问挑战官方叙事的逻辑漏洞",
+        "用简洁有力的陈述揭露被掩盖的事实",
+        "在劝说他人时结合情感和理性"
+      ],
+      "relationships": ["known_valery_legasov_chernobyl"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_legasov_shcherbina_chernobyl",
+      "work_id": "work_chernobyl",
+      "from_character_id": "known_valery_legasov_chernobyl",
+      "to_character_id": "known_boris_shcherbina_chernobyl",
+      "relation": "科学家与官僚从对立到合作的信任建立",
+      "description": "列加索夫作为物理学家与政府高官谢尔比纳在灾难现场从最初的权威冲突，逐渐在共同面对真相的过程中建立起基于互相尊重的合作关系。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_legasov_khomyuk_chernobyl",
+      "work_id": "work_chernobyl",
+      "from_character_id": "known_valery_legasov_chernobyl",
+      "to_character_id": "known_ulyana_khomyuk_chernobyl",
+      "relation": "两位科学家在追求真相中的同盟",
+      "description": "列加索夫与霍缪克因共同追求灾难真相而结成同盟，霍缪克在列加索夫动摇时给予支持，两人合作揭露被体制掩盖的关键信息。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_chernobyl_bridge_of_death",
+      "work_id": "work_chernobyl",
+      "name": "旁观者在灾难边缘不知情地围观异象",
+      "participant_ids": ["known_valery_legasov_chernobyl"],
+      "setting": "灾难发生后的附近桥梁和城镇",
+      "conflict_type": "信息不对称",
+      "emotional_arc": ["好奇", "愉悦", "不安", "暗含恐惧"],
+      "visual_actions": [
+        "居民聚集在高处观看远处的奇异光芒",
+        "空气中漂浮着不明颗粒物",
+        "孩子们在含有放射性尘埃的场所玩耍",
+        "旁观者对美丽的异象毫无防备"
+      ],
+      "reusable_beats": [
+        "旁观者在不知情的情况下被灾难的视觉奇观吸引",
+        "美丽的外表掩盖着致命危险",
+        "信息封锁使普通人无法做出自救判断",
+        "观众的上帝视角制造强烈讽刺和不安"
+      ],
+      "dialogue_patterns": [
+        "旁观者用赞叹语气描述异常现象",
+        " officials用安抚性语言淡化危险",
+        "科学家用克制语气揭示真相的严重性"
+      ],
+      "abstraction": "提取旁观者在信息不对称下被灾难表象吸引、在不知情中暴露于危险的结构，核心张力来自美丽表象与致命真相的反差，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_chernobyl_trial_truth",
+      "work_id": "work_chernobyl",
+      "name": "科学家在听证会上公开被掩盖的真相",
+      "participant_ids": ["known_valery_legasov_chernobyl", "known_boris_shcherbina_chernobyl"],
+      "setting": "官方听证会或调查法庭",
+      "conflict_type": "真相对抗体制",
+      "emotional_arc": ["压抑", "决断", "释放", "代价"],
+      "visual_actions": [
+        "科学家在官方场合面临沉默压力",
+        "逐步展示被系统性掩盖的关键证据",
+        "在场官员从不屑到震惊的态度转变",
+        "科学家说出真相后承受后果"
+      ],
+      "reusable_beats": [
+        "掌握真相的人在官方场合面临是否开口的抉择",
+        "系统性掩盖的压力使说真话成为个人牺牲",
+        "证据展示逐步瓦解官方叙事",
+        "真相公开后说真话的人承担代价"
+      ],
+      "dialogue_patterns": [
+        "科学家用数据和事实逐步推进论证",
+        "官员用程序性问题试图打断",
+        "关键陈述用简短有力的宣言句"
+      ],
+      "abstraction": "提取科学家在体制压力下公开被掩盖真相、以个人代价换取公众知情权的结构，核心张力来自真相与权力的对抗，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chernobyl_(miniseries)",
+          "source_name": "Wikipedia",
+          "page_title": "Chernobyl (miniseries)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}
