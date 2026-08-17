@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_interstellar",
+      "title": "星际穿越",
+      "original_title": "Interstellar",
+      "aliases": [
+        "Interstellar",
+        "星际启示录"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国",
+        "英国"
+      ],
+      "release_year": 2014,
+      "genres": [
+        "科幻",
+        "冒险",
+        "剧情"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_cooper_interstellar",
+      "work_id": "work_interstellar",
+      "name": "库珀",
+      "aliases": [
+        "Cooper",
+        "Joseph Cooper"
+      ],
+      "roles": [
+        "protagonist",
+        "前NASA飞行员",
+        "父亲"
+      ],
+      "character_types": [
+        "探索型",
+        "牺牲型",
+        "父爱型"
+      ],
+      "traits": [
+        "务实",
+        "勇敢",
+        "深爱女儿",
+        "在使命与亲情间撕裂",
+        "以工程师思维解决问题"
+      ],
+      "dialogue_style": [
+        "以简洁专业的口吻讨论技术方案",
+        "在情感时刻用沉默和注视代替长篇告白",
+        "用类比向孩子解释复杂的科学概念"
+      ],
+      "relationships": [
+        "known_murph_interstellar",
+        "known_amelia_interstellar"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_murph_interstellar",
+      "work_id": "work_interstellar",
+      "name": "墨菲",
+      "aliases": [
+        "Murph",
+        "Murphy Cooper"
+      ],
+      "roles": [
+        "deuteragonist",
+        "科学家",
+        "女儿"
+      ],
+      "character_types": [
+        "天才型",
+        "怨恨型",
+        "救赎型"
+      ],
+      "traits": [
+        "聪慧",
+        "执拗",
+        "童年对父亲离开心存怨恨",
+        "最终用科学破解拯救人类的方程"
+      ],
+      "dialogue_style": [
+        "以精确的科学术语表达研究发现",
+        "在回忆父亲时用压抑的情感短句",
+        "在突破时刻用急促的呼喊表达激动"
+      ],
+      "relationships": [
+        "known_cooper_interstellar"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_amelia_interstellar",
+      "work_id": "work_interstellar",
+      "name": "艾米莉亚",
+      "aliases": [
+        "Amelia Brand",
+        "Brand",
+        "布兰德"
+      ],
+      "roles": [
+        "supporting",
+        "生物学家",
+        "同行宇航员"
+      ],
+      "character_types": [
+        "理想型",
+        "感性型",
+        "执着型"
+      ],
+      "traits": [
+        "理性但被情感驱动",
+        "对远方爱人抱有执念",
+        "在绝境中坚持播种新文明"
+      ],
+      "dialogue_style": [
+        "以学术式的精确陈述科学判断",
+        "在讨论爱时用反常的感性措辞",
+        "在做出抉择时用坚定宣言结束争论"
+      ],
+      "relationships": [
+        "known_cooper_interstellar"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_cooper_murph_interstellar",
+      "work_id": "work_interstellar",
+      "from_character_id": "known_cooper_interstellar",
+      "to_character_id": "known_murph_interstellar",
+      "relation": "父女跨越时空与引力维度的羁绊",
+      "description": "库珀为拯救人类离开年幼的墨菲,墨菲因被抛弃而心生怨恨,库珀在五维空间中通过引力波向成年的墨菲传递量子数据,墨菲最终理解父亲并以数据破解方程拯救人类。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_cooper_amelia_interstellar",
+      "work_id": "work_interstellar",
+      "from_character_id": "known_cooper_interstellar",
+      "to_character_id": "known_amelia_interstellar",
+      "relation": "宇航搭档在绝境中的信任与分歧",
+      "description": "库珀与艾米莉亚在星际航行中面对时间膨胀和生存抉择产生分歧,艾米莉亚坚持前往远方爱人所在的星球,库珀为让她存活选择牺牲自己坠入黑洞,两人在极端环境中建立深层信任。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_interstellar_leave_behind",
+      "work_id": "work_interstellar",
+      "name": "探索者为拯救人类忍痛离开年幼至亲",
+      "participant_ids": [
+        "known_cooper_interstellar",
+        "known_murph_interstellar"
+      ],
+      "setting": " farmhouse与航天基地",
+      "conflict_type": "牺牲",
+      "emotional_arc": [
+        "不舍",
+        "决意",
+        "离别",
+        "沉默"
+      ],
+      "visual_actions": [
+        "探索者在夜间默默收拾行装",
+        "年幼至亲察觉异常但无法阻止",
+        "探索者驾车离开时强忍回望",
+        "至亲追出房屋被距离甩在身后"
+      ],
+      "reusable_beats": [
+        "探索者为更大使命必须离开至亲",
+        "至亲察觉异常但无法阻止",
+        "离别时探索者强忍情感不回望",
+        "至亲在物理距离中被甩在身后"
+      ],
+      "dialogue_patterns": [
+        "探索者用简短承诺安抚至亲",
+        "至亲用沉默和回避表达抗议",
+        "离别用引擎声代替告别"
+      ],
+      "abstraction": "提取探索者为更大使命忍痛离开年幼至亲、至亲无法阻止只能被距离甩在身后的结构,核心张力来自使命与亲情的撕裂,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_interstellar_cross_dimension",
+      "work_id": "work_interstellar",
+      "name": "探索者在高维空间中试图向低维至亲传递信息",
+      "participant_ids": [
+        "known_cooper_interstellar",
+        "known_murph_interstellar"
+      ],
+      "setting": "五维超立方体",
+      "conflict_type": "跨越",
+      "emotional_arc": [
+        "困惑",
+        "理解",
+        "焦急",
+        "连接"
+      ],
+      "visual_actions": [
+        "探索者坠入无法理解的高维空间",
+        "发现可以通过引力波触碰低维世界的物体",
+        "焦急地尝试引导至亲注意信号",
+        "至亲在低维世界中终于感知到信号并回应"
+      ],
+      "reusable_beats": [
+        "探索者坠入超越认知的高维空间",
+        "发现可借助物理规律向低维传递信息",
+        "多次尝试失败后找到正确方式",
+        "跨维度的信号被至亲接收和理解"
+      ],
+      "dialogue_patterns": [
+        "探索者用急促呼喊尝试沟通",
+        "高维空间以沉默和回声回应",
+        "连接建立后用简单的情感词收束"
+      ],
+      "abstraction": "提取探索者在高维空间中借助引力波向低维至亲传递关键信息的结构,核心张力来自跨维度的沟通绝望与最终连接,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}

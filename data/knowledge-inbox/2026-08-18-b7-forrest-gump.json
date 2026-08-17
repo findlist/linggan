@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_forrest_gump",
+      "title": "阿甘正传",
+      "original_title": "Forrest Gump",
+      "aliases": [
+        "Forrest Gump",
+        "阿甘"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1994,
+      "genres": [
+        "剧情",
+        "爱情",
+        "历史"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_forrest_gump",
+      "work_id": "work_forrest_gump",
+      "name": "阿甘",
+      "aliases": [
+        "Forrest Gump",
+        "Forrest"
+      ],
+      "roles": [
+        "protagonist",
+        "历史见证者"
+      ],
+      "character_types": [
+        "纯真型",
+        "坚韧型",
+        "意外英雄型"
+      ],
+      "traits": [
+        "纯真",
+        "坦诚",
+        "坚韧",
+        "不功利",
+        "用直觉代替算计"
+      ],
+      "dialogue_style": [
+        "以平实简单的短句陈述事实",
+        "用比喻和重复表达深层道理",
+        "在复杂场景中以孩童般的直率化解尴尬"
+      ],
+      "relationships": [
+        "known_jenny_gump",
+        "known_lieutenant_dan_gump"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_jenny_gump",
+      "work_id": "work_forrest_gump",
+      "name": "珍妮",
+      "aliases": [
+        "Jenny Curran",
+        "Jenny"
+      ],
+      "roles": [
+        "deuteragonist",
+        "青梅竹马"
+      ],
+      "character_types": [
+        "流浪型",
+        "受伤型",
+        "追寻型"
+      ],
+      "traits": [
+        "敏感",
+        "叛逆",
+        "受伤",
+        "在漂泊中寻找归属",
+        "对阿甘有复杂的牵挂"
+      ],
+      "dialogue_style": [
+        "以疲惫的语气回忆童年梦想",
+        "在离开时用简短告别回避解释",
+        "在脆弱时刻用轻声呢喃表达思念"
+      ],
+      "relationships": [
+        "known_forrest_gump"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_lieutenant_dan_gump",
+      "work_id": "work_forrest_gump",
+      "name": "丹中尉",
+      "aliases": [
+        "Lieutenant Dan Taylor",
+        "Dan",
+        "丹"
+      ],
+      "roles": [
+        "supporting",
+        "上级军官"
+      ],
+      "character_types": [
+        "骄傲型",
+        "宿命型",
+        "重生型"
+      ],
+      "traits": [
+        "骄傲",
+        "执拗",
+        "宿命感强",
+        "在绝望后重获生的意志"
+      ],
+      "dialogue_style": [
+        "以命令式短句展现军人作风",
+        "在绝望中用嘲讽和笑声掩盖痛苦",
+        "重获希望后用平静语调表达感恩"
+      ],
+      "relationships": [
+        "known_forrest_gump"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_forrest_jenny_gump",
+      "work_id": "work_forrest_gump",
+      "from_character_id": "known_forrest_gump",
+      "to_character_id": "known_jenny_gump",
+      "relation": "纯真守护者与漂泊追寻者的 lifelong 羁绊",
+      "description": "阿甘自幼爱慕珍妮,珍妮在创伤驱动下不断漂泊和叛逆,阿甘始终以不变的纯真等待和守护,两人在各自经历成长后短暂相聚又因珍妮离世而分离。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_forrest_dan_gump",
+      "work_id": "work_forrest_gump",
+      "from_character_id": "known_forrest_gump",
+      "to_character_id": "known_lieutenant_dan_gump",
+      "relation": "士兵与军官从战场到重生的命运交织",
+      "description": "丹中尉出身军人世家以战死沙场为荣,被阿甘救出战场后失去双腿陷入绝望,在阿甘的坚持下逐渐从愤怒与宿命中走出,最终在海上风暴后与命运和解。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_gump_run_break_free",
+      "work_id": "work_forrest_gump",
+      "name": "被束缚者用奔跑打破身体限制",
+      "participant_ids": [
+        "known_forrest_gump"
+      ],
+      "setting": "乡间小路",
+      "conflict_type": "突破",
+      "emotional_arc": [
+        "受限",
+        "挣扎",
+        "突破",
+        "自由"
+      ],
+      "visual_actions": [
+        "被束缚者在欺凌中开始笨拙奔跑",
+        "腿上的束缚在奔跑中逐渐碎裂脱落",
+        "奔跑从笨拙变为轻盈和快速",
+        "从逃避变为主动向前奔跑"
+      ],
+      "reusable_beats": [
+        "被束缚者在压力下开始笨拙移动",
+        "束缚在持续移动中逐渐崩解",
+        "动作从笨拙蜕变为流畅自如",
+        "从被动逃避转为主动向前"
+      ],
+      "dialogue_patterns": [
+        "旁观者用嘲笑鼓励追赶",
+        "奔跑者用急促喘息代替言语",
+        "突破后用简单的感叹收束"
+      ],
+      "abstraction": "提取被束缚者在压力下开始奔跑、束缚在持续移动中崩解、动作从笨拙蜕变为流畅的结构,核心张力来自限制与突破的物理化呈现,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_gump_bench_destiny",
+      "work_id": "work_forrest_gump",
+      "name": "普通人向陌生人平静讲述改变命运的往事",
+      "participant_ids": [
+        "known_forrest_gump"
+      ],
+      "setting": "公园长椅",
+      "conflict_type": "命运反思",
+      "emotional_arc": [
+        "平静",
+        "回忆",
+        "感悟",
+        "释然"
+      ],
+      "visual_actions": [
+        "讲述者在长椅上平静等待公交车",
+        "用平实语调向身边陌生人讲述往事",
+        "陌生人的反应从漫不经心转为专注",
+        "讲述者用简单比喻总结人生感悟"
+      ],
+      "reusable_beats": [
+        "普通人在日常场景中向陌生人讲述往事",
+        "叙述语调平实但内容涉及历史性事件",
+        "听众从不经意转为被吸引",
+        "讲述者用朴素比喻收束命运感悟"
+      ],
+      "dialogue_patterns": [
+        "讲述者用短句和平实比喻",
+        "听众用追问和感叹回应",
+        "感悟以日常意象表达"
+      ],
+      "abstraction": "提取普通人在日常场景中向陌生人平静讲述改变命运往事的结构,核心张力来自平实叙述与非凡经历的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}

@@ -109,12 +109,12 @@ test('knowledge seed populates SQLite and can be repeated without duplicates', a
     ) as unknown
     const first = seedKnowledgeBase(database, knowledge)
     const second = seedKnowledgeBase(database, knowledge)
-    assert.deepEqual(first, { works: 27, known_characters: 73, relationships: 43, iconic_moments: 46 })
+    assert.deepEqual(first, { works: 30, known_characters: 82, relationships: 49, iconic_moments: 52 })
     assert.deepEqual(second, first)
-    assert.equal((database.prepare('SELECT COUNT(*) AS count FROM works').get() as { count: number }).count, 27)
+    assert.equal((database.prepare('SELECT COUNT(*) AS count FROM works').get() as { count: number }).count, 30)
     assert.equal(
       (database.prepare('SELECT COUNT(*) AS count FROM known_characters').get() as { count: number }).count,
-      73,
+      82,
     )
   })
 })

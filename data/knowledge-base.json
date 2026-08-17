@@ -839,6 +839,101 @@
         }
       ],
       "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_farewell_my_concubine",
+      "title": "霸王别姬",
+      "original_title": "Farewell My Concubine",
+      "aliases": [
+        "Farewell My Concubine",
+        "Ba Wang Bie Ji"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国大陆",
+        "中国香港"
+      ],
+      "release_year": 1993,
+      "genres": [
+        "剧情",
+        "历史",
+        "爱情"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Farewell My Concubine (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_forrest_gump",
+      "title": "阿甘正传",
+      "original_title": "Forrest Gump",
+      "aliases": [
+        "Forrest Gump",
+        "阿甘"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1994,
+      "genres": [
+        "剧情",
+        "爱情",
+        "历史"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_interstellar",
+      "title": "星际穿越",
+      "original_title": "Interstellar",
+      "aliases": [
+        "Interstellar",
+        "星际启示录"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国",
+        "英国"
+      ],
+      "release_year": 2014,
+      "genres": [
+        "科幻",
+        "冒险",
+        "剧情"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -4037,6 +4132,418 @@
         }
       ],
       "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_cheng_dieyi_concubine",
+      "work_id": "work_farewell_my_concubine",
+      "name": "程蝶衣",
+      "aliases": [
+        "Cheng Dieyi",
+        "小豆子",
+        "蝶衣"
+      ],
+      "roles": [
+        "protagonist",
+        "京剧旦角演员"
+      ],
+      "character_types": [
+        "悲剧型",
+        "痴迷型",
+        "身份模糊型"
+      ],
+      "traits": [
+        "痴绝",
+        "偏执",
+        "敏感",
+        "不疯魔不成活",
+        "对艺术有献身式的执着"
+      ],
+      "dialogue_style": [
+        "以缓慢低沉的语调说出戏中台词般的话语",
+        "在情感激烈时用沉默和眼神代替言语",
+        "用戏曲念白式的节奏表达日常情感"
+      ],
+      "relationships": [
+        "known_duan_xiaolou_concubine",
+        "known_juxian_concubine"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Farewell My Concubine (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_duan_xiaolou_concubine",
+      "work_id": "work_farewell_my_concubine",
+      "name": "段小楼",
+      "aliases": [
+        "Duan Xiaolou",
+        "小石头",
+        "霸王"
+      ],
+      "roles": [
+        "deuteragonist",
+        "京剧生角演员"
+      ],
+      "character_types": [
+        "世故型",
+        "妥协型",
+        "义气型"
+      ],
+      "traits": [
+        "豪爽",
+        "世故",
+        "重义气但最终妥协",
+        "在现实压力下选择生存"
+      ],
+      "dialogue_style": [
+        "以豪爽洪亮的声音展现表面的阳刚",
+        "在政治压力下用含糊其辞回避立场",
+        "用自嘲和调侃掩盖内心的软弱"
+      ],
+      "relationships": [
+        "known_cheng_dieyi_concubine",
+        "known_juxian_concubine"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Farewell My Concubine (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_juxian_concubine",
+      "work_id": "work_farewell_my_concubine",
+      "name": "菊仙",
+      "aliases": [
+        "Juxian",
+        "花满楼姑娘"
+      ],
+      "roles": [
+        "supporting",
+        "former花满楼名妓",
+        "段小楼之妻"
+      ],
+      "character_types": [
+        "坚韧型",
+        "护巢型",
+        "精明型"
+      ],
+      "traits": [
+        "精明",
+        "坚韧",
+        "重情义",
+        "在绝境中选择自主终结"
+      ],
+      "dialogue_style": [
+        "以利落的市井口吻表达务实判断",
+        "在危急时用坚定短句安抚他人",
+        "用反问和比喻戳穿对方的虚伪"
+      ],
+      "relationships": [
+        "known_duan_xiaolou_concubine",
+        "known_cheng_dieyi_concubine"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Farewell My Concubine (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_forrest_gump",
+      "work_id": "work_forrest_gump",
+      "name": "阿甘",
+      "aliases": [
+        "Forrest Gump",
+        "Forrest"
+      ],
+      "roles": [
+        "protagonist",
+        "历史见证者"
+      ],
+      "character_types": [
+        "纯真型",
+        "坚韧型",
+        "意外英雄型"
+      ],
+      "traits": [
+        "纯真",
+        "坦诚",
+        "坚韧",
+        "不功利",
+        "用直觉代替算计"
+      ],
+      "dialogue_style": [
+        "以平实简单的短句陈述事实",
+        "用比喻和重复表达深层道理",
+        "在复杂场景中以孩童般的直率化解尴尬"
+      ],
+      "relationships": [
+        "known_jenny_gump",
+        "known_lieutenant_dan_gump"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_jenny_gump",
+      "work_id": "work_forrest_gump",
+      "name": "珍妮",
+      "aliases": [
+        "Jenny Curran",
+        "Jenny"
+      ],
+      "roles": [
+        "deuteragonist",
+        "青梅竹马"
+      ],
+      "character_types": [
+        "流浪型",
+        "受伤型",
+        "追寻型"
+      ],
+      "traits": [
+        "敏感",
+        "叛逆",
+        "受伤",
+        "在漂泊中寻找归属",
+        "对阿甘有复杂的牵挂"
+      ],
+      "dialogue_style": [
+        "以疲惫的语气回忆童年梦想",
+        "在离开时用简短告别回避解释",
+        "在脆弱时刻用轻声呢喃表达思念"
+      ],
+      "relationships": [
+        "known_forrest_gump"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_lieutenant_dan_gump",
+      "work_id": "work_forrest_gump",
+      "name": "丹中尉",
+      "aliases": [
+        "Lieutenant Dan Taylor",
+        "Dan",
+        "丹"
+      ],
+      "roles": [
+        "supporting",
+        "上级军官"
+      ],
+      "character_types": [
+        "骄傲型",
+        "宿命型",
+        "重生型"
+      ],
+      "traits": [
+        "骄傲",
+        "执拗",
+        "宿命感强",
+        "在绝望后重获生的意志"
+      ],
+      "dialogue_style": [
+        "以命令式短句展现军人作风",
+        "在绝望中用嘲讽和笑声掩盖痛苦",
+        "重获希望后用平静语调表达感恩"
+      ],
+      "relationships": [
+        "known_forrest_gump"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_cooper_interstellar",
+      "work_id": "work_interstellar",
+      "name": "库珀",
+      "aliases": [
+        "Cooper",
+        "Joseph Cooper"
+      ],
+      "roles": [
+        "protagonist",
+        "前NASA飞行员",
+        "父亲"
+      ],
+      "character_types": [
+        "探索型",
+        "牺牲型",
+        "父爱型"
+      ],
+      "traits": [
+        "务实",
+        "勇敢",
+        "深爱女儿",
+        "在使命与亲情间撕裂",
+        "以工程师思维解决问题"
+      ],
+      "dialogue_style": [
+        "以简洁专业的口吻讨论技术方案",
+        "在情感时刻用沉默和注视代替长篇告白",
+        "用类比向孩子解释复杂的科学概念"
+      ],
+      "relationships": [
+        "known_murph_interstellar",
+        "known_amelia_interstellar"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_murph_interstellar",
+      "work_id": "work_interstellar",
+      "name": "墨菲",
+      "aliases": [
+        "Murph",
+        "Murphy Cooper"
+      ],
+      "roles": [
+        "deuteragonist",
+        "科学家",
+        "女儿"
+      ],
+      "character_types": [
+        "天才型",
+        "怨恨型",
+        "救赎型"
+      ],
+      "traits": [
+        "聪慧",
+        "执拗",
+        "童年对父亲离开心存怨恨",
+        "最终用科学破解拯救人类的方程"
+      ],
+      "dialogue_style": [
+        "以精确的科学术语表达研究发现",
+        "在回忆父亲时用压抑的情感短句",
+        "在突破时刻用急促的呼喊表达激动"
+      ],
+      "relationships": [
+        "known_cooper_interstellar"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_amelia_interstellar",
+      "work_id": "work_interstellar",
+      "name": "艾米莉亚",
+      "aliases": [
+        "Amelia Brand",
+        "Brand",
+        "布兰德"
+      ],
+      "roles": [
+        "supporting",
+        "生物学家",
+        "同行宇航员"
+      ],
+      "character_types": [
+        "理想型",
+        "感性型",
+        "执着型"
+      ],
+      "traits": [
+        "理性但被情感驱动",
+        "对远方爱人抱有执念",
+        "在绝境中坚持播种新文明"
+      ],
+      "dialogue_style": [
+        "以学术式的精确陈述科学判断",
+        "在讨论爱时用反常的感性措辞",
+        "在做出抉择时用坚定宣言结束争论"
+      ],
+      "relationships": [
+        "known_cooper_interstellar"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -4808,6 +5315,114 @@
           "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
           "source_name": "Wikipedia",
           "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_dieyi_xiaolou_concubine",
+      "work_id": "work_farewell_my_concubine",
+      "from_character_id": "known_cheng_dieyi_concubine",
+      "to_character_id": "known_duan_xiaolou_concubine",
+      "relation": "师兄弟之间从舞台到人生的纠缠与决裂",
+      "description": "程蝶衣与段小楼自幼同门学戏,蝶衣入戏太深将师兄弟情谊等同于舞台上的霸王虞姬之恋,小楼则始终区分戏与人生选择娶妻成家,两人在时代动荡中因立场和选择不同从至亲走向决裂。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Farewell My Concubine (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_xiaolou_juxian_concubine",
+      "work_id": "work_farewell_my_concubine",
+      "from_character_id": "known_duan_xiaolou_concubine",
+      "to_character_id": "known_juxian_concubine",
+      "relation": "风尘女子与京剧演员的相互救赎与共患难",
+      "description": "菊仙从花满楼赎身嫁给段小楼,在乱世中竭力护持家庭,小楼在菊仙的支持下度过多次危机,但最终在政治压力下被迫划清界限,菊仙在绝望中选择自主终结。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Farewell My Concubine (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_forrest_jenny_gump",
+      "work_id": "work_forrest_gump",
+      "from_character_id": "known_forrest_gump",
+      "to_character_id": "known_jenny_gump",
+      "relation": "纯真守护者与漂泊追寻者的 lifelong 羁绊",
+      "description": "阿甘自幼爱慕珍妮,珍妮在创伤驱动下不断漂泊和叛逆,阿甘始终以不变的纯真等待和守护,两人在各自经历成长后短暂相聚又因珍妮离世而分离。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_forrest_dan_gump",
+      "work_id": "work_forrest_gump",
+      "from_character_id": "known_forrest_gump",
+      "to_character_id": "known_lieutenant_dan_gump",
+      "relation": "士兵与军官从战场到重生的命运交织",
+      "description": "丹中尉出身军人世家以战死沙场为荣,被阿甘救出战场后失去双腿陷入绝望,在阿甘的坚持下逐渐从愤怒与宿命中走出,最终在海上风暴后与命运和解。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_cooper_murph_interstellar",
+      "work_id": "work_interstellar",
+      "from_character_id": "known_cooper_interstellar",
+      "to_character_id": "known_murph_interstellar",
+      "relation": "父女跨越时空与引力维度的羁绊",
+      "description": "库珀为拯救人类离开年幼的墨菲,墨菲因被抛弃而心生怨恨,库珀在五维空间中通过引力波向成年的墨菲传递量子数据,墨菲最终理解父亲并以数据破解方程拯救人类。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_cooper_amelia_interstellar",
+      "work_id": "work_interstellar",
+      "from_character_id": "known_cooper_interstellar",
+      "to_character_id": "known_amelia_interstellar",
+      "relation": "宇航搭档在绝境中的信任与分歧",
+      "description": "库珀与艾米莉亚在星际航行中面对时间膨胀和生存抉择产生分歧,艾米莉亚坚持前往远方爱人所在的星球,库珀为让她存活选择牺牲自己坠入黑洞,两人在极端环境中建立深层信任。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
           "published_at": null,
           "collected_at": "2026-08-18T00:00:00.000Z"
         }
@@ -6944,6 +7559,287 @@
           "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
           "source_name": "Wikipedia",
           "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_concubine_stage_life_blur",
+      "work_id": "work_farewell_my_concubine",
+      "name": "演员将舞台角色与真实身份彻底混淆",
+      "participant_ids": [
+        "known_cheng_dieyi_concubine",
+        "known_duan_xiaolou_concubine"
+      ],
+      "setting": "京剧舞台与后台",
+      "conflict_type": "身份认同",
+      "emotional_arc": [
+        "投入",
+        "痴迷",
+        "混淆",
+        "执念"
+      ],
+      "visual_actions": [
+        "演员在舞台上完全沉浸于角色",
+        "下台后仍以角色口吻对待师兄弟",
+        "在日常生活中重现舞台身段和眼神",
+        "被提醒戏与人生有别时拒绝接受"
+      ],
+      "reusable_beats": [
+        "表演者在舞台上达到人戏合一的沉浸状态",
+        "下台后无法切换回日常身份",
+        "周围人提醒戏与人生的界限被拒绝",
+        "执念深化为对特定关系的独占欲"
+      ],
+      "dialogue_patterns": [
+        "表演者用戏曲念白节奏说话",
+        "旁人用日常语气试图拉回现实",
+        "表演者用沉默和注视拒绝切换"
+      ],
+      "abstraction": "提取表演者在舞台上达到人戏合一后无法切换回日常身份的结构,核心张力来自艺术沉浸与现实身份的边界消解,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Farewell My Concubine (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_concubine_betrayal_under_pressure",
+      "work_id": "work_farewell_my_concubine",
+      "name": "至亲在批斗中被迫互相揭发",
+      "participant_ids": [
+        "known_cheng_dieyi_concubine",
+        "known_duan_xiaolou_concubine",
+        "known_juxian_concubine"
+      ],
+      "setting": "公开批斗会",
+      "conflict_type": "背叛",
+      "emotional_arc": [
+        "恐惧",
+        "妥协",
+        "揭发",
+        "决裂"
+      ],
+      "visual_actions": [
+        "被批斗者在群众压力下低头站立",
+        "其中一人在逼问下开口揭发另一人",
+        "被揭发者用沉默和注视回应背叛",
+        "第三人目睹背叛后做出终极选择"
+      ],
+      "reusable_beats": [
+        "至亲在政治压力下被推至公开对峙",
+        "其中一人在生存本能下开口揭发",
+        "被揭发者用沉默回应而非辩解",
+        "旁观者因目睹背叛做出不可逆决定"
+      ],
+      "dialogue_patterns": [
+        "逼迫者用口号式短句施压",
+        "被逼者用断续的陈述句揭发",
+        "受害者用沉默代替回应"
+      ],
+      "abstraction": "提取至亲在政治压力下被推至公开对峙、其中一人被迫揭发另一人导致关系彻底决裂的结构,核心张力来自生存本能与情义的撕裂,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Farewell My Concubine (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_gump_run_break_free",
+      "work_id": "work_forrest_gump",
+      "name": "被束缚者用奔跑打破身体限制",
+      "participant_ids": [
+        "known_forrest_gump"
+      ],
+      "setting": "乡间小路",
+      "conflict_type": "突破",
+      "emotional_arc": [
+        "受限",
+        "挣扎",
+        "突破",
+        "自由"
+      ],
+      "visual_actions": [
+        "被束缚者在欺凌中开始笨拙奔跑",
+        "腿上的束缚在奔跑中逐渐碎裂脱落",
+        "奔跑从笨拙变为轻盈和快速",
+        "从逃避变为主动向前奔跑"
+      ],
+      "reusable_beats": [
+        "被束缚者在压力下开始笨拙移动",
+        "束缚在持续移动中逐渐崩解",
+        "动作从笨拙蜕变为流畅自如",
+        "从被动逃避转为主动向前"
+      ],
+      "dialogue_patterns": [
+        "旁观者用嘲笑鼓励追赶",
+        "奔跑者用急促喘息代替言语",
+        "突破后用简单的感叹收束"
+      ],
+      "abstraction": "提取被束缚者在压力下开始奔跑、束缚在持续移动中崩解、动作从笨拙蜕变为流畅的结构,核心张力来自限制与突破的物理化呈现,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_gump_bench_destiny",
+      "work_id": "work_forrest_gump",
+      "name": "普通人向陌生人平静讲述改变命运的往事",
+      "participant_ids": [
+        "known_forrest_gump"
+      ],
+      "setting": "公园长椅",
+      "conflict_type": "命运反思",
+      "emotional_arc": [
+        "平静",
+        "回忆",
+        "感悟",
+        "释然"
+      ],
+      "visual_actions": [
+        "讲述者在长椅上平静等待公交车",
+        "用平实语调向身边陌生人讲述往事",
+        "陌生人的反应从漫不经心转为专注",
+        "讲述者用简单比喻总结人生感悟"
+      ],
+      "reusable_beats": [
+        "普通人在日常场景中向陌生人讲述往事",
+        "叙述语调平实但内容涉及历史性事件",
+        "听众从不经意转为被吸引",
+        "讲述者用朴素比喻收束命运感悟"
+      ],
+      "dialogue_patterns": [
+        "讲述者用短句和平实比喻",
+        "听众用追问和感叹回应",
+        "感悟以日常意象表达"
+      ],
+      "abstraction": "提取普通人在日常场景中向陌生人平静讲述改变命运往事的结构,核心张力来自平实叙述与非凡经历的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+          "source_name": "Wikipedia",
+          "page_title": "Forrest Gump",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_interstellar_leave_behind",
+      "work_id": "work_interstellar",
+      "name": "探索者为拯救人类忍痛离开年幼至亲",
+      "participant_ids": [
+        "known_cooper_interstellar",
+        "known_murph_interstellar"
+      ],
+      "setting": "farmhouse与航天基地",
+      "conflict_type": "牺牲",
+      "emotional_arc": [
+        "不舍",
+        "决意",
+        "离别",
+        "沉默"
+      ],
+      "visual_actions": [
+        "探索者在夜间默默收拾行装",
+        "年幼至亲察觉异常但无法阻止",
+        "探索者驾车离开时强忍回望",
+        "至亲追出房屋被距离甩在身后"
+      ],
+      "reusable_beats": [
+        "探索者为更大使命必须离开至亲",
+        "至亲察觉异常但无法阻止",
+        "离别时探索者强忍情感不回望",
+        "至亲在物理距离中被甩在身后"
+      ],
+      "dialogue_patterns": [
+        "探索者用简短承诺安抚至亲",
+        "至亲用沉默和回避表达抗议",
+        "离别用引擎声代替告别"
+      ],
+      "abstraction": "提取探索者为更大使命忍痛离开年幼至亲、至亲无法阻止只能被距离甩在身后的结构,核心张力来自使命与亲情的撕裂,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_interstellar_cross_dimension",
+      "work_id": "work_interstellar",
+      "name": "探索者在高维空间中试图向低维至亲传递信息",
+      "participant_ids": [
+        "known_cooper_interstellar",
+        "known_murph_interstellar"
+      ],
+      "setting": "五维超立方体",
+      "conflict_type": "跨越",
+      "emotional_arc": [
+        "困惑",
+        "理解",
+        "焦急",
+        "连接"
+      ],
+      "visual_actions": [
+        "探索者坠入无法理解的高维空间",
+        "发现可以通过引力波触碰低维世界的物体",
+        "焦急地尝试引导至亲注意信号",
+        "至亲在低维世界中终于感知到信号并回应"
+      ],
+      "reusable_beats": [
+        "探索者坠入超越认知的高维空间",
+        "发现可借助物理规律向低维传递信息",
+        "多次尝试失败后找到正确方式",
+        "跨维度的信号被至亲接收和理解"
+      ],
+      "dialogue_patterns": [
+        "探索者用急促呼喊尝试沟通",
+        "高维空间以沉默和回声回应",
+        "连接建立后用简单的情感词收束"
+      ],
+      "abstraction": "提取探索者在高维空间中借助引力波向低维至亲传递关键信息的结构,核心张力来自跨维度的沟通绝望与最终连接,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Interstellar_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "Interstellar (film)",
           "published_at": null,
           "collected_at": "2026-08-18T00:00:00.000Z"
         }
