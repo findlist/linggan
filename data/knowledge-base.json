@@ -641,6 +641,204 @@
         }
       ],
       "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_a_chinese_odyssey",
+      "title": "大话西游",
+      "original_title": "A Chinese Odyssey",
+      "aliases": [
+        "A Chinese Odyssey",
+        "西遊記第壹佰零壹回之月光寶盒",
+        "大话西游之月光宝盒",
+        "大话西游之大圣娶亲"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国香港"
+      ],
+      "release_year": 1995,
+      "genres": [
+        "喜剧",
+        "爱情",
+        "奇幻"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_inception",
+      "title": "盗梦空间",
+      "original_title": "Inception",
+      "aliases": [
+        "Inception",
+        "奠基",
+        "心灵犯案"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 2010,
+      "genres": [
+        "科幻",
+        "动作",
+        "悬疑"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Inception",
+          "source_name": "Wikipedia",
+          "page_title": "Inception",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_parasite",
+      "title": "寄生虫",
+      "original_title": "Parasite",
+      "aliases": [
+        "Parasite",
+        "기생충",
+        "寄生虫",
+        "Parasite (2019 film)"
+      ],
+      "media_type": "film",
+      "regions": [
+        "韩国"
+      ],
+      "release_year": 2019,
+      "genres": [
+        "悬疑",
+        "黑色幽默",
+        "社会批判"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_lord_of_the_rings",
+      "title": "指环王",
+      "original_title": "The Lord of the Rings",
+      "aliases": [
+        "LOTR",
+        "魔戒",
+        "指环王三部曲"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国",
+        "新西兰"
+      ],
+      "release_year": 2001,
+      "genres": [
+        "奇幻",
+        "冒险",
+        "史诗",
+        "动作"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_spirited_away",
+      "title": "千与千寻",
+      "original_title": "千と千尋の神隠し",
+      "aliases": [
+        "Spirited Away",
+        "神隐少女",
+        "千寻"
+      ],
+      "media_type": "anime",
+      "regions": [
+        "日本"
+      ],
+      "release_year": 2001,
+      "genres": [
+        "奇幻",
+        "成长",
+        "冒险",
+        "动画"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_truman_show",
+      "title": "楚门的世界",
+      "original_title": "The Truman Show",
+      "aliases": [
+        "Truman Show",
+        "真人Show",
+        "楚门秀"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1998,
+      "genres": [
+        "科幻",
+        "剧情",
+        "讽刺",
+        "寓言"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -3003,6 +3201,842 @@
         }
       ],
       "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_zixia_aco",
+      "work_id": "work_a_chinese_odyssey",
+      "name": "紫霞仙子",
+      "aliases": [
+        "Zixia",
+        "紫霞",
+        "Lin Daiyu"
+      ],
+      "roles": [
+        "deuteragonist",
+        "仙子",
+        "痴情者"
+      ],
+      "character_types": [
+        "理想型",
+        "悲剧人物",
+        "执着追求者"
+      ],
+      "traits": [
+        "痴情",
+        "理想化",
+        "勇敢",
+        "倔强",
+        "宿命感"
+      ],
+      "dialogue_style": [
+        "以宣言式语句表达对爱情的绝对信念",
+        "用天真而坚定的语气描述命中注定的预言",
+        "在受伤时用倔强掩饰痛苦"
+      ],
+      "relationships": [
+        "known_zunbao_aco"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_zunbao_aco",
+      "work_id": "work_a_chinese_odyssey",
+      "name": "至尊宝",
+      "aliases": [
+        "Joker",
+        "至尊宝"
+      ],
+      "roles": [
+        "protagonist",
+        "山贼",
+        "转世者"
+      ],
+      "character_types": [
+        "反英雄型",
+        "成长型",
+        "宿命承载者"
+      ],
+      "traits": [
+        "痞气",
+        "逃避",
+        "深情",
+        "矛盾",
+        "成长"
+      ],
+      "dialogue_style": [
+        "以玩世不恭的调侃掩饰真实情感",
+        "在面对感情时用夸张拒绝代替坦诚",
+        "在觉悟时刻用极简短句表达悔悟"
+      ],
+      "relationships": [
+        "known_zixia_aco"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_tang_seng_aco",
+      "work_id": "work_a_chinese_odyssey",
+      "name": "唐僧",
+      "aliases": [
+        "Tang Sanzang",
+        "Tripitaka",
+        "唐三藏"
+      ],
+      "roles": [
+        "supporting",
+        "师父",
+        "说教者"
+      ],
+      "character_types": [
+        "喜剧型",
+        "理想主义",
+        "唠叨者"
+      ],
+      "traits": [
+        "啰嗦",
+        "慈悲",
+        "天真",
+        "执着",
+        "不合时宜"
+      ],
+      "dialogue_style": [
+        "以冗长说教将简单事情复杂化",
+        "用过分礼貌的语气在危险场合说教",
+        "在别人崩溃时仍保持不紧不慢的语调"
+      ],
+      "relationships": [
+        "known_zunbao_aco"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_dom_cobb_inception",
+      "work_id": "work_inception",
+      "name": "柯布",
+      "aliases": [
+        "Dominick Cobb",
+        "Cobb",
+        "Dom"
+      ],
+      "roles": [
+        "protagonist",
+        "盗梦者",
+        "团队领袖"
+      ],
+      "character_types": [
+        "专业型",
+        "悲剧人物",
+        "执念驱动者"
+      ],
+      "traits": [
+        "精密",
+        "克制",
+        "内疚",
+        "执念",
+        "专业主义"
+      ],
+      "dialogue_style": [
+        "以冷静专业的口吻解释复杂规则",
+        "在提及过去时用回避性短句切断话题",
+        "用精确的指令控制团队行动节奏"
+      ],
+      "relationships": [
+        "known_arthur_inception"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Inception",
+          "source_name": "Wikipedia",
+          "page_title": "Inception",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_arthur_inception",
+      "work_id": "work_inception",
+      "name": "亚瑟",
+      "aliases": [
+        "Arthur"
+      ],
+      "roles": [
+        "deuteragonist",
+        "搭档",
+        "执行者"
+      ],
+      "character_types": [
+        "理性型",
+        "忠诚伙伴",
+        "务实者"
+      ],
+      "traits": [
+        "冷静",
+        "严谨",
+        "幽默感",
+        "可靠",
+        "务实"
+      ],
+      "dialogue_style": [
+        "用干练简洁的陈述汇报关键信息",
+        "在紧张时刻用冷幽默缓解压力",
+        "以反问式澄清确保团队理解一致"
+      ],
+      "relationships": [
+        "known_dom_cobb_inception"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Inception",
+          "source_name": "Wikipedia",
+          "page_title": "Inception",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_mal_inception",
+      "work_id": "work_inception",
+      "name": "梅尔",
+      "aliases": [
+        "Mal",
+        "Maurice Cobb"
+      ],
+      "roles": [
+        "antagonist",
+        "亡妻",
+        "潜意识投影"
+      ],
+      "character_types": [
+        "诱惑型",
+        "悲剧人物",
+        "心理投射"
+      ],
+      "traits": [
+        "迷离",
+        "执念",
+        "危险",
+        "迷人",
+        "不可预测"
+      ],
+      "dialogue_style": [
+        "以温柔低语诱导对方放弃抵抗",
+        "用质疑现实的反问动摇对方信念",
+        "在亲密语气中嵌入威胁"
+      ],
+      "relationships": [
+        "known_dom_cobb_inception"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Inception",
+          "source_name": "Wikipedia",
+          "page_title": "Inception",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_ki_woo_parasite",
+      "work_id": "work_parasite",
+      "name": "金基宇",
+      "aliases": [
+        "Kim Ki-woo",
+        "Kevin"
+      ],
+      "roles": [
+        "protagonist",
+        "家庭长子",
+        "家教"
+      ],
+      "character_types": [
+        "成长型",
+        "底层青年",
+        "机会主义者"
+      ],
+      "traits": [
+        "机敏",
+        "善良",
+        "矛盾",
+        "不安",
+        "渴望"
+      ],
+      "dialogue_style": [
+        "以谦逊有礼的语气融入上流场合",
+        "在家人面前用直接坦率的方式讨论计谋",
+        "面对道德困境时用犹豫的语气掩饰不安"
+      ],
+      "relationships": [
+        "known_ki_taek_parasite"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_ki_taek_parasite",
+      "work_id": "work_parasite",
+      "name": "金基泽",
+      "aliases": [
+        "Kim Ki-taek",
+        "Mr. Kim"
+      ],
+      "roles": [
+        "deuteragonist",
+        "家庭父亲",
+        "司机"
+      ],
+      "character_types": [
+        "底层型",
+        "隐忍者",
+        "爆发者"
+      ],
+      "traits": [
+        "忍耐",
+        "机敏",
+        "自尊",
+        "压抑",
+        "忠诚"
+      ],
+      "dialogue_style": [
+        "以恭敬克制的语气服务雇主",
+        "在家人面前用低沉简短的指令安排行动",
+        "在尊严被触及时用沉默和眼神变化传递情绪"
+      ],
+      "relationships": [
+        "known_ki_woo_parasite"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_mr_park_parasite",
+      "work_id": "work_parasite",
+      "name": "朴社长",
+      "aliases": [
+        "Park Dong-ik",
+        "Mr. Park"
+      ],
+      "roles": [
+        "antagonist",
+        "富裕雇主",
+        "IT公司CEO"
+      ],
+      "character_types": [
+        "特权型",
+        "无意施压者",
+        "体面人"
+      ],
+      "traits": [
+        "体面",
+        "无意识傲慢",
+        "洁癖",
+        "成功",
+        "冷漠"
+      ],
+      "dialogue_style": [
+        "以客气但居高临下的语气下达指令",
+        "用看似礼貌的措辞表达对底层的嫌弃",
+        "在舒适区中用轻松随意的语调谈论不便"
+      ],
+      "relationships": [
+        "known_ki_taek_parasite"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_frodo_lotr",
+      "work_id": "work_lord_of_the_rings",
+      "name": "弗罗多·巴金斯",
+      "aliases": [
+        "Frodo Baggins",
+        "Frodo"
+      ],
+      "roles": [
+        "protagonist",
+        "持戒者"
+      ],
+      "character_types": [
+        "平凡英雄型",
+        "成长型",
+        "重压承担者"
+      ],
+      "traits": [
+        "坚韧",
+        "谦逊",
+        "内心挣扎",
+        "责任感",
+        "不屈"
+      ],
+      "dialogue_style": [
+        "以平静的低语表达承受重压后的疲惫",
+        "用简短承诺代替豪言壮语",
+        "在诱惑面前用断续的自白袒露挣扎"
+      ],
+      "relationships": [
+        "known_gandalf_lotr",
+        "known_aragorn_lotr"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_gandalf_lotr",
+      "work_id": "work_lord_of_the_rings",
+      "name": "甘道夫",
+      "aliases": [
+        "Gandalf",
+        "Gandalf the Grey",
+        "甘道夫·格雷"
+      ],
+      "roles": [
+        "mentor",
+        "巫师"
+      ],
+      "character_types": [
+        "智者型",
+        "守护型",
+        "引导者"
+      ],
+      "traits": [
+        "睿智",
+        "威严",
+        "慈悲",
+        "洞察",
+        "坚毅"
+      ],
+      "dialogue_style": [
+        "以隐喻和警句传达深层意图",
+        "用反问引导对方自行领悟",
+        "在危急时刻用沉稳断言稳定人心"
+      ],
+      "relationships": [
+        "known_frodo_lotr"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_aragorn_lotr",
+      "work_id": "work_lord_of_the_rings",
+      "name": "阿拉贡",
+      "aliases": [
+        "Aragorn",
+        "Strider",
+        "游侠",
+        "人皇"
+      ],
+      "roles": [
+        "deuteragonist",
+        "游侠",
+        "王位继承人"
+      ],
+      "character_types": [
+        "王者型",
+        "隐忍型",
+        "战士"
+      ],
+      "traits": [
+        "谦逊",
+        "坚毅",
+        "自我怀疑",
+        "忠诚",
+        "勇敢"
+      ],
+      "dialogue_style": [
+        "以克制低沉的语调承担身份焦虑",
+        "用行动和陪伴代替自我宣言",
+        "在关键抉择时用坚定短句接受命运"
+      ],
+      "relationships": [
+        "known_frodo_lotr"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_chihiro_spirited",
+      "work_id": "work_spirited_away",
+      "name": "千寻",
+      "aliases": [
+        "Chihiro",
+        "千",
+        "小千"
+      ],
+      "roles": [
+        "protagonist",
+        "成长者"
+      ],
+      "character_types": [
+        "平凡成长型",
+        "坚韧型",
+        "善良型"
+      ],
+      "traits": [
+        "胆怯",
+        "善良",
+        "坚韧",
+        "记牢初心",
+        "勇于承担"
+      ],
+      "dialogue_style": [
+        "以怯懦的低语表达陌生环境中的不安",
+        "在承担职责时用简短决心代替抱怨",
+        "面对诱惑时用真诚提问守住初心"
+      ],
+      "relationships": [
+        "known_haku_spirited",
+        "known_yubaba_spirited"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_haku_spirited",
+      "work_id": "work_spirited_away",
+      "name": "白龙",
+      "aliases": [
+        "Haku",
+        "赈早见琥珀主",
+        "龙"
+      ],
+      "roles": [
+        "deuteragonist",
+        "守护者",
+        "河神"
+      ],
+      "character_types": [
+        "守护型",
+        "失忆型",
+        "羁绊型"
+      ],
+      "traits": [
+        "克制",
+        "忠诚",
+        "内心挣扎",
+        "记不起过往",
+        "守护欲"
+      ],
+      "dialogue_style": [
+        "以冷静低沉的语调下达守护指令",
+        "用隐晦提示代替直接告知",
+        "在触及自己过往时用断续回避"
+      ],
+      "relationships": [
+        "known_chihiro_spirited"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_yubaba_spirited",
+      "work_id": "work_spirited_away",
+      "name": "汤婆婆",
+      "aliases": [
+        "Yubaba",
+        "汤屋主人"
+      ],
+      "roles": [
+        "antagonist",
+        "契约者",
+        "掌权者"
+      ],
+      "character_types": [
+        "权谋型",
+        "控制型",
+        "强势型"
+      ],
+      "traits": [
+        "威严",
+        "精明",
+        "控制欲强",
+        "护短",
+        "契约至上"
+      ],
+      "dialogue_style": [
+        "以夸张的高声威吓建立权威",
+        "用契约条款施压剥夺对方身份",
+        "在涉及自己珍视之物时用柔软语调流露破绽"
+      ],
+      "relationships": [
+        "known_chihiro_spirited"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_truman_burbank_show",
+      "work_id": "work_truman_show",
+      "name": "楚门",
+      "aliases": [
+        "Truman Burbank",
+        "Truman"
+      ],
+      "roles": [
+        "protagonist",
+        "被观察者"
+      ],
+      "character_types": [
+        "平凡英雄型",
+        "觉醒型",
+        "追寻型"
+      ],
+      "traits": [
+        "善良",
+        "好奇",
+        "坚韧",
+        "勇于追问",
+        "向往自由"
+      ],
+      "dialogue_style": [
+        "以日常化的轻松语调掩盖内心的疑惑",
+        "在发现异常时用反复追问逼近真相",
+        "决意离开时用平静宣告代替激烈控诉"
+      ],
+      "relationships": [
+        "known_christof_show",
+        "known_sylvia_show"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_christof_show",
+      "work_id": "work_truman_show",
+      "name": "克里斯托夫",
+      "aliases": [
+        "Christof",
+        "造物主",
+        "导演"
+      ],
+      "roles": [
+        "antagonist",
+        "造物主",
+        "导演"
+      ],
+      "character_types": [
+        "控制型",
+        "权谋型",
+        "造物主型"
+      ],
+      "traits": [
+        "威严",
+        "控制欲强",
+        "占有欲",
+        "艺术家偏执",
+        "居高临下"
+      ],
+      "dialogue_style": [
+        "以居高临下的沉稳语调宣称拥有权",
+        "用艺术化的修辞为控制行为辩护",
+        "在失控时用情绪化短句暴露占有欲"
+      ],
+      "relationships": [
+        "known_truman_burbank_show"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_sylvia_show",
+      "work_id": "work_truman_show",
+      "name": "施维亚",
+      "aliases": [
+        "Sylvia",
+        "Lauren",
+        "罗兰"
+      ],
+      "roles": [
+        "supporting",
+        "真相揭示者",
+        "初恋"
+      ],
+      "character_types": [
+        "觉醒型",
+        "勇敢型",
+        "救赎型"
+      ],
+      "traits": [
+        "勇敢",
+        "真诚",
+        "良知",
+        "反抗精神",
+        "坚定"
+      ],
+      "dialogue_style": [
+        "以急切的低语传递被压制的真相",
+        "用简短警告打破对方的安全幻觉",
+        "在分离时用坚定承诺留下追寻线索"
+      ],
+      "relationships": [
+        "known_truman_burbank_show"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -3558,6 +4592,222 @@
           "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
           "source_name": "Wikipedia",
           "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zixia_zunbao_aco",
+      "work_id": "work_a_chinese_odyssey",
+      "from_character_id": "known_zixia_aco",
+      "to_character_id": "known_zunbao_aco",
+      "relation": "痴情仙子与逃避者的命中注定之恋",
+      "description": "紫霞坚信命中注定的爱情预言，至尊宝最初以玩世不恭态度逃避，直到失去后才意识到深情，两人在宿命与选择之间形成悲剧性错位。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zunbao_tangseng_aco",
+      "work_id": "work_a_chinese_odyssey",
+      "from_character_id": "known_zunbao_aco",
+      "to_character_id": "known_tang_seng_aco",
+      "relation": "叛逆徒弟与唠叨师父的摩擦与成长",
+      "description": "至尊宝对唐僧的啰嗦说教极度不耐烦，但唐僧的看似荒谬的言行中蕴含真正的智慧，至尊宝在觉悟后才理解师父话语的含义。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_cobb_arthur_inception",
+      "work_id": "work_inception",
+      "from_character_id": "known_dom_cobb_inception",
+      "to_character_id": "known_arthur_inception",
+      "relation": "盗梦搭档间的专业信任与默契",
+      "description": "柯布与亚瑟长期合作执行梦境任务，亚瑟是柯布最信赖的搭档，两人在高压环境下以专业分工和默契配合维持团队运转，亚瑟虽质疑柯布的某些决定但仍忠诚执行。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Inception",
+          "source_name": "Wikipedia",
+          "page_title": "Inception",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_cobb_mal_inception",
+      "work_id": "work_inception",
+      "from_character_id": "known_dom_cobb_inception",
+      "to_character_id": "known_mal_inception",
+      "relation": "执念亡妻的潜意识投影不断侵蚀现实判断",
+      "description": "梅尔是柯布亡妻的潜意识投影，在梦境任务中不断出现并破坏柯布的计划，代表柯布内心深处无法释怀的内疚与执念，每次出现都在考验柯布对现实的判断。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Inception",
+          "source_name": "Wikipedia",
+          "page_title": "Inception",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_kiwoo_kitaek_parasite",
+      "work_id": "work_parasite",
+      "from_character_id": "known_ki_woo_parasite",
+      "to_character_id": "known_ki_taek_parasite",
+      "relation": "底层家庭父子在骗局中的共谋与裂痕",
+      "description": "基宇和父亲基泽共同参与渗透富人家庭的计划，父子在合作中默契配合，但随着计划升级和意外发生，基泽在儿子面前的隐忍逐渐走向失控。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_kitaek_park_parasite",
+      "work_id": "work_parasite",
+      "from_character_id": "known_ki_taek_parasite",
+      "to_character_id": "known_mr_park_parasite",
+      "relation": "底层雇员与无意施压的富人雇主的阶级张力",
+      "description": "基泽作为司机恭敬服务朴社长，朴社长虽客气但不断在无意中贬低基泽的尊严，阶级间的无意识傲慢逐渐积累成基泽内心无法承受的压力。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_frodo_gandalf_lotr",
+      "work_id": "work_lord_of_the_rings",
+      "from_character_id": "known_frodo_lotr",
+      "to_character_id": "known_gandalf_lotr",
+      "relation": "平凡者被智者托付毁灭重任的师徒式守护",
+      "description": "甘道夫识破弗罗多内心的坚韧，将毁灭魔戒的重任托付给他，并在漫长旅途中以守护者身份指引其承担常人难以承受的孤独与诱惑。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_frodo_aragorn_lotr",
+      "work_id": "work_lord_of_the_rings",
+      "from_character_id": "known_frodo_lotr",
+      "to_character_id": "known_aragorn_lotr",
+      "relation": "平凡持戒者与隐忍王者的并肩守护",
+      "description": "阿拉贡以游侠身份默默守护弗罗多穿越险境，两人在共同承担使命的过程中从陌生同行演变为互相理解的战友，各自承担不同形式的命运重压。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_chihiro_haku_spirited",
+      "work_id": "work_spirited_away",
+      "from_character_id": "known_chihiro_spirited",
+      "to_character_id": "known_haku_spirited",
+      "relation": "异世界中互相救助的跨时空羁绊",
+      "description": "千寻与白龙在异世界相遇后形成深厚羁绊：白龙以守护者身份多次救千寻于危难，千寻则在关键时刻记起白龙被遗忘的真名，反向完成对守护者的救赎。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_chihiro_yubaba_spirited",
+      "work_id": "work_spirited_away",
+      "from_character_id": "known_chihiro_spirited",
+      "to_character_id": "known_yubaba_spirited",
+      "relation": "弱者与权力者的契约博弈",
+      "description": "汤婆婆以契约夺走千寻的名字并迫使她在汤屋劳作，千寻在服从契约的同时坚守本名与初心，最终通过自己的成长在契约框架内赢得自由，弱者与权力者形成不对等的博弈关系。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_truman_christof_show",
+      "work_id": "work_truman_show",
+      "from_character_id": "known_truman_burbank_show",
+      "to_character_id": "known_christof_show",
+      "relation": "被观察者与造物主关于自由意志的博弈",
+      "description": "克里斯托夫以造物主身份为楚门构建虚构世界并宣称出于爱,楚门在发现真相后与造物主形成关于自由意志与控制权的终极博弈,造物主试图用情感挽留,被观察者选择离开。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_truman_sylvia_show",
+      "work_id": "work_truman_show",
+      "from_character_id": "known_truman_burbank_show",
+      "to_character_id": "known_sylvia_show",
+      "relation": "真相揭示者与被蒙蔽者的跨时空召唤",
+      "description": "施维亚曾试图告诉楚门他生活在虚构世界中却被强行带走,楚门在多年后凭借她留下的线索开始追寻真相,两人的连接成为楚门觉醒的关键召唤。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
           "published_at": null,
           "collected_at": "2026-08-18T00:00:00.000Z"
         }
@@ -5132,6 +6382,568 @@
           "url": "https://en.wikipedia.org/wiki/Slam_Dunk_(manga)",
           "source_name": "Wikipedia",
           "page_title": "Slam Dunk (manga)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_aco_love_prophecy",
+      "work_id": "work_a_chinese_odyssey",
+      "name": "痴情者以预言方式宣告命中注定的爱情",
+      "participant_ids": [
+        "known_zixia_aco",
+        "known_zunbao_aco"
+      ],
+      "setting": "仙子与凡人的初次相遇",
+      "conflict_type": "命运宣言",
+      "emotional_arc": [
+        "天真",
+        "坚定",
+        "困惑",
+        "逃避"
+      ],
+      "visual_actions": [
+        "一方以绝对信念宣告命运的预言",
+        "另一方以玩世不恭态度试图否定",
+        "预言的物理信物被展示作为证据",
+        "被预言者用幽默逃避严肃面对"
+      ],
+      "reusable_beats": [
+        "一方以宿命论方式宣告两人关系",
+        "另一方用幽默和逃避应对命运的重量",
+        "信物作为命运的具象化符号出现",
+        "逃避者在后来才意识到预言的真实"
+      ],
+      "dialogue_patterns": [
+        "宣告者用天真而绝对的语气陈述预言",
+        "逃避者用调侃和夸张反应化解严肃",
+        "两人对待命运的态度形成鲜明对比"
+      ],
+      "abstraction": "提取一方以宿命预言宣告爱情、另一方以玩世不恭逃避命运、最终预言应验但为时已晚的结构，核心张力来自对待命运截然相反的态度，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_aco_put_on_crown",
+      "work_id": "work_a_chinese_odyssey",
+      "name": "放弃凡心戴上紧箍接受宿命的身份转变",
+      "participant_ids": [
+        "known_zunbao_aco"
+      ],
+      "setting": "角色在失去挚爱后独自面对身份抉择",
+      "conflict_type": "身份抉择",
+      "emotional_arc": [
+        "悔悟",
+        "决绝",
+        "放下",
+        "承担"
+      ],
+      "visual_actions": [
+        "角色在意识到无法挽回后做出不可逆选择",
+        "戴上象征宿命的信物标志凡心死去",
+        "身体在转变过程中承受痛苦",
+        "转变完成后角色已不再是原来的自己"
+      ],
+      "reusable_beats": [
+        "角色在失去后理解了此前逃避的责任",
+        "戴上宿命信物标志放弃个人情感",
+        "身份转变伴随物理痛苦和精神蜕变",
+        "接受宿命意味着永远失去所爱"
+      ],
+      "dialogue_patterns": [
+        "角色在转变时用极简短句表达觉悟",
+        "没有旁白只有动作和沉默",
+        "觉悟表现为放下而非豪言"
+      ],
+      "abstraction": "提取角色在失去挚爱后戴上宿命信物、放弃凡心接受身份转变的结构，核心张力来自个人情感与宿命责任的不可兼得，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_inception_dream_collapse",
+      "work_id": "work_inception",
+      "name": "梦境世界在失控边缘开始物理崩塌",
+      "participant_ids": [
+        "known_dom_cobb_inception",
+        "known_arthur_inception"
+      ],
+      "setting": "多层梦境中的某一层突然失去稳定",
+      "conflict_type": "环境失控",
+      "emotional_arc": [
+        "专注",
+        "警觉",
+        "紧迫",
+        "果断"
+      ],
+      "visual_actions": [
+        "梦境中的物理环境开始异常变形和碎裂",
+        "团队成员意识到时间不够必须立刻行动",
+        "领袖在混乱中发出精确撤离指令",
+        "环境完全崩塌前最后一秒完成关键操作"
+      ],
+      "reusable_beats": [
+        "虚构世界的物理规律开始瓦解",
+        "专业团队在环境失控时仍保持分工",
+        "领袖的冷静指令是唯一锚点",
+        "极限时间窗口内的精确操作决定成败"
+      ],
+      "dialogue_patterns": [
+        "领袖用短促精确的指令控制节奏",
+        "搭档用状态报告配合指挥",
+        "危机中没有情绪宣泄只有行动"
+      ],
+      "abstraction": "提取专业团队在虚构世界物理崩塌时以精确分工和冷静指令完成极限操作的结构，核心张力来自环境瓦解速度与人类操作速度的赛跑，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Inception",
+          "source_name": "Wikipedia",
+          "page_title": "Inception",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_inception_spinning_totem",
+      "work_id": "work_inception",
+      "name": "主角在完成任务后用信物验证现实",
+      "participant_ids": [
+        "known_dom_cobb_inception"
+      ],
+      "setting": "任务完成后的安静空间",
+      "conflict_type": "现实认知",
+      "emotional_arc": [
+        "释然",
+        "犹豫",
+        "专注",
+        "开放"
+      ],
+      "visual_actions": [
+        "主角在安静环境中取出私人信物",
+        "信物的物理行为是判断现实与梦境的唯一依据",
+        "主角凝视信物等待结果",
+        "画面在答案揭晓前中断"
+      ],
+      "reusable_beats": [
+        "角色在重大事件后独处验证现实",
+        "一个小物件承载角色对真实的全部判断",
+        "信物的行为结果被刻意留白",
+        "观众与角色共享不确定性的结局"
+      ],
+      "dialogue_patterns": [
+        "角色在验证过程中保持沉默",
+        "没有旁白解释只有物理动作",
+        "结局以沉默而非对白收束"
+      ],
+      "abstraction": "提取角色在重大事件后用私人信物验证现实、结果被刻意留白留下开放性解读的结构，核心张力来自角色和观众对「何为真实」的共同不确定，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Inception",
+          "source_name": "Wikipedia",
+          "page_title": "Inception",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_parasite_rain_flood",
+      "work_id": "work_parasite",
+      "name": "暴雨中底层家园被淹没而富人区毫无感知",
+      "participant_ids": [
+        "known_ki_woo_parasite",
+        "known_ki_taek_parasite"
+      ],
+      "setting": "暴雨夜的底层半地下室社区",
+      "conflict_type": "阶级鸿沟",
+      "emotional_arc": [
+        "紧迫",
+        "绝望",
+        "无力",
+        "麻木"
+      ],
+      "visual_actions": [
+        "暴雨导致底层社区严重内涝",
+        "家庭在深夜紧急抢救仅有的财物",
+        "污水淹没整个生活空间无法阻止",
+        "同一时刻富人在高处安然享受暴雨"
+      ],
+      "reusable_beats": [
+        "自然灾害对不同阶级造成截然不同的影响",
+        "底层家庭在灾难中失去仅有的生存空间",
+        "同一城市中两个阶级对暴雨的体验完全不同",
+        "灾后的无力感和麻木取代了恐慌"
+      ],
+      "dialogue_patterns": [
+        "底层角色用急促短句指挥抢救",
+        "在绝望中没有人哭泣只有机械行动",
+        "灾后用沉默和空洞的眼神表达麻木"
+      ],
+      "abstraction": "提取同一自然灾害对底层和富人阶级造成截然不同后果、底层在灾后陷入麻木的结构，核心张力来自同一城市中阶级体验的割裂，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_parasite_smell_realization",
+      "work_id": "work_parasite",
+      "name": "底层雇员意识到雇主嫌弃自己的体味",
+      "participant_ids": [
+        "known_ki_taek_parasite",
+        "known_mr_park_parasite"
+      ],
+      "setting": "日常驾车的密闭空间",
+      "conflict_type": "尊严践踏",
+      "emotional_arc": [
+        "平静",
+        "困惑",
+        "领悟",
+        "压抑"
+      ],
+      "visual_actions": [
+        "雇主在日常对话中无意提及一种气味",
+        "司机意识到气味指向自己和自己代表的阶级",
+        "司机试图掩饰但无法消除气味来源",
+        "雇主毫无察觉地继续日常对话"
+      ],
+      "reusable_beats": [
+        "特权者无意中用感官隐喻暴露阶级偏见",
+        "底层角色在密闭空间中无法逃离羞辱",
+        "被嫌弃的特征无法改变也无法掩盖",
+        "无知觉的施压比蓄意侮辱更具毁灭性"
+      ],
+      "dialogue_patterns": [
+        "雇主用客气随意的语气谈论不便",
+        "司机用沉默和微微变化的表情回应",
+        "最深的伤害在客气中完成"
+      ],
+      "abstraction": "提取底层角色在日常场景中意识到特权者嫌弃自己无法改变的体味特征、尊严在无知觉中被践踏的结构，核心张力来自客气外表下的阶级鸿沟，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_lotr_volunteer_burden",
+      "work_id": "work_lord_of_the_rings",
+      "name": "平凡者在众目睽睽下主动承担毁灭重担",
+      "participant_ids": [
+        "known_frodo_lotr",
+        "known_gandalf_lotr"
+      ],
+      "setting": "精灵与各族的议事会议现场",
+      "conflict_type": "使命承担",
+      "emotional_arc": [
+        "压抑",
+        "犹豫",
+        "决断",
+        "释然"
+      ],
+      "visual_actions": [
+        "各方为魔戒归属争执不下气氛紧张",
+        "最不起眼的平凡者从沉默中起身",
+        "用低沉的声音主动提出承担毁灭重任",
+        "在场强者从争论转为沉默认同"
+      ],
+      "reusable_beats": [
+        "强者争执不下时弱者主动承担",
+        "承担者的平凡与任务的艰巨形成反差",
+        "沉默打破后权威者转为守护者",
+        "使命由选择而非强加赋予意义"
+      ],
+      "dialogue_patterns": [
+        "承担者用简短承诺代替长篇宣言",
+        "智者用沉默和目光表达认可",
+        "旁观者从质疑转为服从"
+      ],
+      "abstraction": "提取强者争执不下时最平凡者主动承担毁灭重任、权威者转为守护者的结构，核心张力来自能力与使命的反差，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_lotr_king_reclaimed",
+      "work_id": "work_lord_of_the_rings",
+      "name": "隐忍王者在绝境中重燃血脉之光",
+      "participant_ids": [
+        "known_aragorn_lotr",
+        "known_frodo_lotr"
+      ],
+      "setting": "决定命运的大战前夜",
+      "conflict_type": "身份觉醒",
+      "emotional_arc": [
+        "逃避",
+        "挣扎",
+        "觉醒",
+        "承担"
+      ],
+      "visual_actions": [
+        "隐忍多年的王者后裔在绝境前徘徊",
+        "从自我怀疑中接受血脉召唤",
+        "在众人面前亮出象征身份的信物",
+        "用沉稳的宣言接过统帅之责"
+      ],
+      "reusable_beats": [
+        "长期逃避身份者在绝境前接受命运",
+        "自我怀疑转化为坚定承担",
+        "象征物的出现唤醒集体记忆",
+        "隐忍者主动走向台前改写战局"
+      ],
+      "dialogue_patterns": [
+        "承担者用沉稳断言回应自我怀疑",
+        "旁观者用沉默和注视表达认同",
+        "宣言简短但分量沉重"
+      ],
+      "abstraction": "提取长期逃避身份的隐忍者在绝境前接受血脉召唤、从自我怀疑转向坚定承担的结构，核心张力来自逃避与责任的内心博弈，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_spirited_recall_true_name",
+      "work_id": "work_spirited_away",
+      "name": "主角在异世界主动记起对方被遗忘的真名",
+      "participant_ids": [
+        "known_chihiro_spirited",
+        "known_haku_spirited"
+      ],
+      "setting": "高空坠落的回忆空间",
+      "conflict_type": "记忆觉醒",
+      "emotional_arc": [
+        "坠落",
+        "回忆",
+        "领悟",
+        "解放"
+      ],
+      "visual_actions": [
+        "守护者在失控中向主角坠落",
+        "主角在坠落中突然记起多年前的往事",
+        "用真诚的呼喊唤出对方被遗忘的真名",
+        "真名唤出后束缚解除对方恢复自我"
+      ],
+      "reusable_beats": [
+        "守护者失控时弱者反向成为救助者",
+        "记忆在危机中突然被一件小事触发",
+        "真名的唤出成为解除束缚的钥匙",
+        "被遗忘者因被记起而获得解放"
+      ],
+      "dialogue_patterns": [
+        "主角用真诚呼喊代替技巧性言辞",
+        "守护者在失控中用沉默接受救赎",
+        "真名唤出后用简短回应表达解放"
+      ],
+      "abstraction": "提取守护者失控时弱者反向记起对方被遗忘的真名、完成反向救赎的结构，核心张力来自遗忘与记忆、守护与被守护的身份反转，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_spirited_contract_protection",
+      "work_id": "work_spirited_away",
+      "name": "契约束缚者在关键时刻选择守护而非掠夺",
+      "participant_ids": [
+        "known_haku_spirited",
+        "known_chihiro_spirited"
+      ],
+      "setting": "权力者的契约空间",
+      "conflict_type": "选择守护",
+      "emotional_arc": [
+        "压抑",
+        "试探",
+        "抉择",
+        "释放"
+      ],
+      "visual_actions": [
+        "被契约束缚的守护者奉命取回主角",
+        "在关键抉择时刻停止执行命令",
+        "用沉默和行动选择守护而非掠夺",
+        "主角因被守护获得离开的机会"
+      ],
+      "reusable_beats": [
+        "被契约束缚者面临服从与守护的抉择",
+        "关键时刻选择违反命令守护弱者",
+        "守护行为无声但明确",
+        "弱者因被守护获得改变命运的机会"
+      ],
+      "dialogue_patterns": [
+        "守护者用沉默代替解释",
+        "主角用眼神表达感激",
+        "权力者用愤怒质问但被无视"
+      ],
+      "abstraction": "提取被契约束缚者在关键时刻选择违反命令守护弱者、赋予其改变命运机会的结构，核心张力来自服从与良知的冲突，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_truman_pattern_discovery",
+      "work_id": "work_truman_show",
+      "name": "被观察者发现生活环境重复的固定规律",
+      "participant_ids": [
+        "known_truman_burbank_show",
+        "known_christof_show"
+      ],
+      "setting": "看似日常的社区街道",
+      "conflict_type": "真相觉察",
+      "emotional_arc": [
+        "日常",
+        "疑惑",
+        "验证",
+        "觉醒"
+      ],
+      "visual_actions": [
+        "被观察者在日常出行中注意到行人循环出现",
+        "主动改变路线测试规律是否固定",
+        "规律被反复验证后安全感崩塌",
+        "从疑惑转为决意寻找真相"
+      ],
+      "reusable_beats": [
+        "日常中的微小异常引发觉察",
+        "主动测试验证规律是否真实",
+        "安全感崩塌后认知框架被重写",
+        "觉察者从被动接受转为主动追寻"
+      ],
+      "dialogue_patterns": [
+        "觉察者用反问逼近周围人的破绽",
+        "周围人用重复话术掩盖异常",
+        "验证后用沉默代替控诉"
+      ],
+      "abstraction": "提取被观察者在日常中发现重复规律、主动测试验证后认知框架被重写的结构,核心张力来自安全感与真相的碰撞,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_truman_door_to_freedom",
+      "work_id": "work_truman_show",
+      "name": "被观察者主动走向虚构世界的边界门",
+      "participant_ids": [
+        "known_truman_burbank_show",
+        "known_christof_show"
+      ],
+      "setting": "虚构世界尽头的边界门",
+      "conflict_type": "自由抉择",
+      "emotional_arc": [
+        "决意",
+        "对抗",
+        "抉择",
+        "解放"
+      ],
+      "visual_actions": [
+        "被观察者在造物主阻挠中抵达世界边界",
+        "造物主用情感和恐惧试图挽留",
+        "被观察者在门前短暂沉默",
+        "用平静告别转身走向未知真实"
+      ],
+      "reusable_beats": [
+        "被观察者在造物主阻挠中抵达虚构世界边界",
+        "造物主用爱与恐惧同时施压",
+        "被观察者在终极抉择前选择真实",
+        "告别虚构后走向未知但自主的人生"
+      ],
+      "dialogue_patterns": [
+        "造物主用艺术化修辞辩护控制",
+        "被观察者用平静的告别语回应",
+        "抉择用沉默和动作而非长篇宣言"
+      ],
+      "abstraction": "提取被观察者在造物主阻挠中抵达虚构世界边界、在爱与恐惧的挽留下选择真实与未知的结构,核心张力来自被安排的安全与自主的未知之间的抉择,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
           "published_at": null,
           "collected_at": "2026-08-18T00:00:00.000Z"
         }

@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_parasite",
+      "title": "寄生虫",
+      "original_title": "Parasite",
+      "aliases": ["Parasite", "기생충", "寄生虫", "Parasite (2019 film)"],
+      "media_type": "film",
+      "regions": ["韩国"],
+      "release_year": 2019,
+      "genres": ["悬疑", "黑色幽默", "社会批判"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_ki_woo_parasite",
+      "work_id": "work_parasite",
+      "name": "金基宇",
+      "aliases": ["Kim Ki-woo", "Kevin"],
+      "roles": ["protagonist", "家庭长子", "家教"],
+      "character_types": ["成长型", "底层青年", "机会主义者"],
+      "traits": ["机敏", "善良", "矛盾", "不安", "渴望"],
+      "dialogue_style": [
+        "以谦逊有礼的语气融入上流场合",
+        "在家人面前用直接坦率的方式讨论计谋",
+        "面对道德困境时用犹豫的语气掩饰不安"
+      ],
+      "relationships": ["known_ki_taek_parasite"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_ki_taek_parasite",
+      "work_id": "work_parasite",
+      "name": "金基泽",
+      "aliases": ["Kim Ki-taek", "Mr. Kim"],
+      "roles": ["deuteragonist", "家庭父亲", "司机"],
+      "character_types": ["底层型", "隐忍者", "爆发者"],
+      "traits": ["忍耐", "机敏", "自尊", "压抑", "忠诚"],
+      "dialogue_style": [
+        "以恭敬克制的语气服务雇主",
+        "在家人面前用低沉简短的指令安排行动",
+        "在尊严被触及时用沉默和眼神变化传递情绪"
+      ],
+      "relationships": ["known_ki_woo_parasite"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_mr_park_parasite",
+      "work_id": "work_parasite",
+      "name": "朴社长",
+      "aliases": ["Park Dong-ik", "Mr. Park"],
+      "roles": ["antagonist", "富裕雇主", "IT公司CEO"],
+      "character_types": ["特权型", "无意施压者", "体面人"],
+      "traits": ["体面", "无意识傲慢", "洁癖", "成功", "冷漠"],
+      "dialogue_style": [
+        "以客气但居高临下的语气下达指令",
+        "用看似礼貌的措辞表达对底层的嫌弃",
+        "在舒适区中用轻松随意的语调谈论不便"
+      ],
+      "relationships": ["known_ki_taek_parasite"],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_kiwoo_kitaek_parasite",
+      "work_id": "work_parasite",
+      "from_character_id": "known_ki_woo_parasite",
+      "to_character_id": "known_ki_taek_parasite",
+      "relation": "底层家庭父子在骗局中的共谋与裂痕",
+      "description": "基宇和父亲基泽共同参与渗透富人家庭的计划，父子在合作中默契配合，但随着计划升级和意外发生，基泽在儿子面前的隐忍逐渐走向失控。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_kitaek_park_parasite",
+      "work_id": "work_parasite",
+      "from_character_id": "known_ki_taek_parasite",
+      "to_character_id": "known_mr_park_parasite",
+      "relation": "底层雇员与无意施压的富人雇主的阶级张力",
+      "description": "基泽作为司机恭敬服务朴社长，朴社长虽客气但不断在无意中贬低基泽的尊严，阶级间的无意识傲慢逐渐积累成基泽内心无法承受的压力。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_parasite_rain_flood",
+      "work_id": "work_parasite",
+      "name": "暴雨中底层家园被淹没而富人区毫无感知",
+      "participant_ids": ["known_ki_woo_parasite", "known_ki_taek_parasite"],
+      "setting": "暴雨夜的底层半地下室社区",
+      "conflict_type": "阶级鸿沟",
+      "emotional_arc": ["紧迫", "绝望", "无力", "麻木"],
+      "visual_actions": [
+        "暴雨导致底层社区严重内涝",
+        "家庭在深夜紧急抢救仅有的财物",
+        "污水淹没整个生活空间无法阻止",
+        "同一时刻富人在高处安然享受暴雨"
+      ],
+      "reusable_beats": [
+        "自然灾害对不同阶级造成截然不同的影响",
+        "底层家庭在灾难中失去仅有的生存空间",
+        "同一城市中两个阶级对暴雨的体验完全不同",
+        "灾后的无力感和麻木取代了恐慌"
+      ],
+      "dialogue_patterns": [
+        "底层角色用急促短句指挥抢救",
+        "在绝望中没有人哭泣只有机械行动",
+        "灾后用沉默和空洞的眼神表达麻木"
+      ],
+      "abstraction": "提取同一自然灾害对底层和富人阶级造成截然不同后果、底层在灾后陷入麻木的结构，核心张力来自同一城市中阶级体验的割裂，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_parasite_smell_realization",
+      "work_id": "work_parasite",
+      "name": "底层雇员意识到雇主嫌弃自己的体味",
+      "participant_ids": ["known_ki_taek_parasite", "known_mr_park_parasite"],
+      "setting": "日常驾车的密闭空间",
+      "conflict_type": "尊严践踏",
+      "emotional_arc": ["平静", "困惑", "领悟", "压抑"],
+      "visual_actions": [
+        "雇主在日常对话中无意提及一种气味",
+        "司机意识到气味指向自己和自己代表的阶级",
+        "司机试图掩饰但无法消除气味来源",
+        "雇主毫无察觉地继续日常对话"
+      ],
+      "reusable_beats": [
+        "特权者无意中用感官隐喻暴露阶级偏见",
+        "底层角色在密闭空间中无法逃离羞辱",
+        "被嫌弃的特征无法改变也无法掩盖",
+        "无知觉的施压比蓄意侮辱更具毁灭性"
+      ],
+      "dialogue_patterns": [
+        "雇主用客气随意的语气谈论不便",
+        "司机用沉默和微微变化的表情回应",
+        "最深的伤害在客气中完成"
+      ],
+      "abstraction": "提取底层角色在日常场景中意识到特权者嫌弃自己无法改变的体味特征、尊严在无知觉中被践踏的结构，核心张力来自客气外表下的阶级鸿沟，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Parasite (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}

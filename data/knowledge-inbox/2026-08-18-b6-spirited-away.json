@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_spirited_away",
+      "title": "千与千寻",
+      "original_title": "千と千尋の神隠し",
+      "aliases": ["Spirited Away", "神隐少女", "千寻"],
+      "media_type": "anime",
+      "regions": ["日本"],
+      "release_year": 2001,
+      "genres": ["奇幻", "成长", "冒险", "动画"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_chihiro_spirited",
+      "work_id": "work_spirited_away",
+      "name": "千寻",
+      "aliases": ["Chihiro", "千", "小千"],
+      "roles": ["protagonist", "成长者"],
+      "character_types": ["平凡成长型", "坚韧型", "善良型"],
+      "traits": ["胆怯", "善良", "坚韧", "记牢初心", "勇于承担"],
+      "dialogue_style": [
+        "以怯懦的低语表达陌生环境中的不安",
+        "在承担职责时用简短决心代替抱怨",
+        "面对诱惑时用真诚提问守住初心"
+      ],
+      "relationships": ["known_haku_spirited", "known_yubaba_spirited"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_haku_spirited",
+      "work_id": "work_spirited_away",
+      "name": "白龙",
+      "aliases": ["Haku", "赈早见琥珀主", "龙"],
+      "roles": ["deuteragonist", "守护者", "河神"],
+      "character_types": ["守护型", "失忆型", "羁绊型"],
+      "traits": ["克制", "忠诚", "内心挣扎", "记不起过往", "守护欲"],
+      "dialogue_style": [
+        "以冷静低沉的语调下达守护指令",
+        "用隐晦提示代替直接告知",
+        "在触及自己过往时用断续回避"
+      ],
+      "relationships": ["known_chihiro_spirited"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_yubaba_spirited",
+      "work_id": "work_spirited_away",
+      "name": "汤婆婆",
+      "aliases": ["Yubaba", "汤屋主人"],
+      "roles": ["antagonist", "契约者", "掌权者"],
+      "character_types": ["权谋型", "控制型", "强势型"],
+      "traits": ["威严", "精明", "控制欲强", "护短", "契约至上"],
+      "dialogue_style": [
+        "以夸张的高声威吓建立权威",
+        "用契约条款施压剥夺对方身份",
+        "在涉及自己珍视之物时用柔软语调流露破绽"
+      ],
+      "relationships": ["known_chihiro_spirited"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_chihiro_haku_spirited",
+      "work_id": "work_spirited_away",
+      "from_character_id": "known_chihiro_spirited",
+      "to_character_id": "known_haku_spirited",
+      "relation": "异世界中互相救助的跨时空羁绊",
+      "description": "千寻与白龙在异世界相遇后形成深厚羁绊：白龙以守护者身份多次救千寻于危难，千寻则在关键时刻记起白龙被遗忘的真名，反向完成对守护者的救赎。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_chihiro_yubaba_spirited",
+      "work_id": "work_spirited_away",
+      "from_character_id": "known_chihiro_spirited",
+      "to_character_id": "known_yubaba_spirited",
+      "relation": "弱者与权力者的契约博弈",
+      "description": "汤婆婆以契约夺走千寻的名字并迫使她在汤屋劳作，千寻在服从契约的同时坚守本名与初心，最终通过自己的成长在契约框架内赢得自由，弱者与权力者形成不对等的博弈关系。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_spirited_recall_true_name",
+      "work_id": "work_spirited_away",
+      "name": "主角在异世界主动记起对方被遗忘的真名",
+      "participant_ids": ["known_chihiro_spirited", "known_haku_spirited"],
+      "setting": "高空坠落的回忆空间",
+      "conflict_type": "记忆觉醒",
+      "emotional_arc": ["坠落", "回忆", "领悟", "解放"],
+      "visual_actions": [
+        "守护者在失控中向主角坠落",
+        "主角在坠落中突然记起多年前的往事",
+        "用真诚的呼喊唤出对方被遗忘的真名",
+        "真名唤出后束缚解除对方恢复自我"
+      ],
+      "reusable_beats": [
+        "守护者失控时弱者反向成为救助者",
+        "记忆在危机中突然被一件小事触发",
+        "真名的唤出成为解除束缚的钥匙",
+        "被遗忘者因被记起而获得解放"
+      ],
+      "dialogue_patterns": [
+        "主角用真诚呼喊代替技巧性言辞",
+        "守护者在失控中用沉默接受救赎",
+        "真名唤出后用简短回应表达解放"
+      ],
+      "abstraction": "提取守护者失控时弱者反向记起对方被遗忘的真名、完成反向救赎的结构，核心张力来自遗忘与记忆、守护与被守护的身份反转，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_spirited_contract_protection",
+      "work_id": "work_spirited_away",
+      "name": "契约束缚者在关键时刻选择守护而非掠夺",
+      "participant_ids": ["known_haku_spirited", "known_chihiro_spirited"],
+      "setting": "权力者的契约空间",
+      "conflict_type": "选择守护",
+      "emotional_arc": ["压抑", "试探", "抉择", "释放"],
+      "visual_actions": [
+        "被契约束缚的守护者奉命取回主角",
+        "在关键抉择时刻停止执行命令",
+        "用沉默和行动选择守护而非掠夺",
+        "主角因被守护获得离开的机会"
+      ],
+      "reusable_beats": [
+        "被契约束缚者面临服从与守护的抉择",
+        "关键时刻选择违反命令守护弱者",
+        "守护行为无声但明确",
+        "弱者因被守护获得改变命运的机会"
+      ],
+      "dialogue_patterns": [
+        "守护者用沉默代替解释",
+        "主角用眼神表达感激",
+        "权力者用愤怒质问但被无视"
+      ],
+      "abstraction": "提取被契约束缚者在关键时刻选择违反命令守护弱者、赋予其改变命运机会的结构，核心张力来自服从与良知的冲突，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spirited_Away",
+          "source_name": "Wikipedia",
+          "page_title": "Spirited Away",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}

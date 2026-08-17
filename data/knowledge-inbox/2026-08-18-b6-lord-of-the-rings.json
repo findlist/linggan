@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_lord_of_the_rings",
+      "title": "指环王",
+      "original_title": "The Lord of the Rings",
+      "aliases": ["LOTR", "魔戒", "指环王三部曲"],
+      "media_type": "film",
+      "regions": ["美国", "新西兰"],
+      "release_year": 2001,
+      "genres": ["奇幻", "冒险", "史诗", "动作"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_frodo_lotr",
+      "work_id": "work_lord_of_the_rings",
+      "name": "弗罗多·巴金斯",
+      "aliases": ["Frodo Baggins", "Frodo"],
+      "roles": ["protagonist", "持戒者"],
+      "character_types": ["平凡英雄型", "成长型", "重压承担者"],
+      "traits": ["坚韧", "谦逊", "内心挣扎", "责任感", "不屈"],
+      "dialogue_style": [
+        "以平静的低语表达承受重压后的疲惫",
+        "用简短承诺代替豪言壮语",
+        "在诱惑面前用断续的自白袒露挣扎"
+      ],
+      "relationships": ["known_gandalf_lotr", "known_aragorn_lotr"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_gandalf_lotr",
+      "work_id": "work_lord_of_the_rings",
+      "name": "甘道夫",
+      "aliases": ["Gandalf", "Gandalf the Grey", "甘道夫·格雷"],
+      "roles": ["mentor", "巫师"],
+      "character_types": ["智者型", "守护型", "引导者"],
+      "traits": ["睿智", "威严", "慈悲", "洞察", "坚毅"],
+      "dialogue_style": [
+        "以隐喻和警句传达深层意图",
+        "用反问引导对方自行领悟",
+        "在危急时刻用沉稳断言稳定人心"
+      ],
+      "relationships": ["known_frodo_lotr"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_aragorn_lotr",
+      "work_id": "work_lord_of_the_rings",
+      "name": "阿拉贡",
+      "aliases": ["Aragorn", "Strider", "游侠", "人皇"],
+      "roles": ["deuteragonist", "游侠", "王位继承人"],
+      "character_types": ["王者型", "隐忍型", "战士"],
+      "traits": ["谦逊", "坚毅", "自我怀疑", "忠诚", "勇敢"],
+      "dialogue_style": [
+        "以克制低沉的语调承担身份焦虑",
+        "用行动和陪伴代替自我宣言",
+        "在关键抉择时用坚定短句接受命运"
+      ],
+      "relationships": ["known_frodo_lotr"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_frodo_gandalf_lotr",
+      "work_id": "work_lord_of_the_rings",
+      "from_character_id": "known_frodo_lotr",
+      "to_character_id": "known_gandalf_lotr",
+      "relation": "平凡者被智者托付毁灭重任的师徒式守护",
+      "description": "甘道夫识破弗罗多内心的坚韧，将毁灭魔戒的重任托付给他，并在漫长旅途中以守护者身份指引其承担常人难以承受的孤独与诱惑。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_frodo_aragorn_lotr",
+      "work_id": "work_lord_of_the_rings",
+      "from_character_id": "known_frodo_lotr",
+      "to_character_id": "known_aragorn_lotr",
+      "relation": "平凡持戒者与隐忍王者的并肩守护",
+      "description": "阿拉贡以游侠身份默默守护弗罗多穿越险境，两人在共同承担使命的过程中从陌生同行演变为互相理解的战友，各自承担不同形式的命运重压。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_lotr_volunteer_burden",
+      "work_id": "work_lord_of_the_rings",
+      "name": "平凡者在众目睽睽下主动承担毁灭重担",
+      "participant_ids": ["known_frodo_lotr", "known_gandalf_lotr"],
+      "setting": "精灵与各族的议事会议现场",
+      "conflict_type": "使命承担",
+      "emotional_arc": ["压抑", "犹豫", "决断", "释然"],
+      "visual_actions": [
+        "各方为魔戒归属争执不下气氛紧张",
+        "最不起眼的平凡者从沉默中起身",
+        "用低沉的声音主动提出承担毁灭重任",
+        "在场强者从争论转为沉默认同"
+      ],
+      "reusable_beats": [
+        "强者争执不下时弱者主动承担",
+        "承担者的平凡与任务的艰巨形成反差",
+        "沉默打破后权威者转为守护者",
+        "使命由选择而非强加赋予意义"
+      ],
+      "dialogue_patterns": [
+        "承担者用简短承诺代替长篇宣言",
+        "智者用沉默和目光表达认可",
+        "旁观者从质疑转为服从"
+      ],
+      "abstraction": "提取强者争执不下时最平凡者主动承担毁灭重任、权威者转为守护者的结构，核心张力来自能力与使命的反差，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_lotr_king_reclaimed",
+      "work_id": "work_lord_of_the_rings",
+      "name": "隐忍王者在绝境中重燃血脉之光",
+      "participant_ids": ["known_aragorn_lotr", "known_frodo_lotr"],
+      "setting": "决定命运的大战前夜",
+      "conflict_type": "身份觉醒",
+      "emotional_arc": ["逃避", "挣扎", "觉醒", "承担"],
+      "visual_actions": [
+        "隐忍多年的王者后裔在绝境前徘徊",
+        "从自我怀疑中接受血脉召唤",
+        "在众人面前亮出象征身份的信物",
+        "用沉稳的宣言接过统帅之责"
+      ],
+      "reusable_beats": [
+        "长期逃避身份者在绝境前接受命运",
+        "自我怀疑转化为坚定承担",
+        "象征物的出现唤醒集体记忆",
+        "隐忍者主动走向台前改写战局"
+      ],
+      "dialogue_patterns": [
+        "承担者用沉稳断言回应自我怀疑",
+        "旁观者用沉默和注视表达认同",
+        "宣言简短但分量沉重"
+      ],
+      "abstraction": "提取长期逃避身份的隐忍者在绝境前接受血脉召唤、从自我怀疑转向坚定承担的结构，核心张力来自逃避与责任的内心博弈，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings_(film_series)",
+          "source_name": "Wikipedia",
+          "page_title": "The Lord of the Rings (film series)",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}

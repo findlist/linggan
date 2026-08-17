@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_truman_show",
+      "title": "楚门的世界",
+      "original_title": "The Truman Show",
+      "aliases": ["Truman Show", "真人Show", "楚门秀"],
+      "media_type": "film",
+      "regions": ["美国"],
+      "release_year": 1998,
+      "genres": ["科幻", "剧情", "讽刺", "寓言"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_truman_burbank_show",
+      "work_id": "work_truman_show",
+      "name": "楚门",
+      "aliases": ["Truman Burbank", "Truman"],
+      "roles": ["protagonist", "被观察者"],
+      "character_types": ["平凡英雄型", "觉醒型", "追寻型"],
+      "traits": ["善良", "好奇", "坚韧", "勇于追问", "向往自由"],
+      "dialogue_style": [
+        "以日常化的轻松语调掩盖内心的疑惑",
+        "在发现异常时用反复追问逼近真相",
+        "决意离开时用平静宣告代替激烈控诉"
+      ],
+      "relationships": ["known_christof_show", "known_sylvia_show"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_christof_show",
+      "work_id": "work_truman_show",
+      "name": "克里斯托夫",
+      "aliases": ["Christof", "造物主", "导演"],
+      "roles": ["antagonist", "造物主", "导演"],
+      "character_types": ["控制型", "权谋型", "造物主型"],
+      "traits": ["威严", "控制欲强", "占有欲", "艺术家偏执", "居高临下"],
+      "dialogue_style": [
+        "以居高临下的沉稳语调宣称拥有权",
+        "用艺术化的修辞为控制行为辩护",
+        "在失控时用情绪化短句暴露占有欲"
+      ],
+      "relationships": ["known_truman_burbank_show"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_sylvia_show",
+      "work_id": "work_truman_show",
+      "name": "施维亚",
+      "aliases": ["Sylvia", "Lauren", "罗兰"],
+      "roles": ["supporting", "真相揭示者", "初恋"],
+      "character_types": ["觉醒型", "勇敢型", "救赎型"],
+      "traits": ["勇敢", "真诚", "良知", "反抗精神", "坚定"],
+      "dialogue_style": [
+        "以急切的低语传递被压制的真相",
+        "用简短警告打破对方的安全幻觉",
+        "在分离时用坚定承诺留下追寻线索"
+      ],
+      "relationships": ["known_truman_burbank_show"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_truman_christof_show",
+      "work_id": "work_truman_show",
+      "from_character_id": "known_truman_burbank_show",
+      "to_character_id": "known_christof_show",
+      "relation": "被观察者与造物主关于自由意志的博弈",
+      "description": "克里斯托夫以造物主身份为楚门构建虚构世界并宣称出于爱,楚门在发现真相后与造物主形成关于自由意志与控制权的终极博弈,造物主试图用情感挽留,被观察者选择离开。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_truman_sylvia_show",
+      "work_id": "work_truman_show",
+      "from_character_id": "known_truman_burbank_show",
+      "to_character_id": "known_sylvia_show",
+      "relation": "真相揭示者与被蒙蔽者的跨时空召唤",
+      "description": "施维亚曾试图告诉楚门他生活在虚构世界中却被强行带走,楚门在多年后凭借她留下的线索开始追寻真相,两人的连接成为楚门觉醒的关键召唤。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_truman_pattern_discovery",
+      "work_id": "work_truman_show",
+      "name": "被观察者发现生活环境重复的固定规律",
+      "participant_ids": ["known_truman_burbank_show", "known_christof_show"],
+      "setting": "看似日常的社区街道",
+      "conflict_type": "真相觉察",
+      "emotional_arc": ["日常", "疑惑", "验证", "觉醒"],
+      "visual_actions": [
+        "被观察者在日常出行中注意到行人循环出现",
+        "主动改变路线测试规律是否固定",
+        "规律被反复验证后安全感崩塌",
+        "从疑惑转为决意寻找真相"
+      ],
+      "reusable_beats": [
+        "日常中的微小异常引发觉察",
+        "主动测试验证规律是否真实",
+        "安全感崩塌后认知框架被重写",
+        "觉察者从被动接受转为主动追寻"
+      ],
+      "dialogue_patterns": [
+        "觉察者用反问逼近周围人的破绽",
+        "周围人用重复话术掩盖异常",
+        "验证后用沉默代替控诉"
+      ],
+      "abstraction": "提取被观察者在日常中发现重复规律、主动测试验证后认知框架被重写的结构,核心张力来自安全感与真相的碰撞,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_truman_door_to_freedom",
+      "work_id": "work_truman_show",
+      "name": "被观察者主动走向虚构世界的边界门",
+      "participant_ids": ["known_truman_burbank_show", "known_christof_show"],
+      "setting": "虚构世界尽头的边界门",
+      "conflict_type": "自由抉择",
+      "emotional_arc": ["决意", "对抗", "抉择", "解放"],
+      "visual_actions": [
+        "被观察者在造物主阻挠中抵达世界边界",
+        "造物主用情感和恐惧试图挽留",
+        "被观察者在门前短暂沉默",
+        "用平静告别转身走向未知真实"
+      ],
+      "reusable_beats": [
+        "被观察者在造物主阻挠中抵达虚构世界边界",
+        "造物主用爱与恐惧同时施压",
+        "被观察者在终极抉择前选择真实",
+        "告别虚构后走向未知但自主的人生"
+      ],
+      "dialogue_patterns": [
+        "造物主用艺术化修辞辩护控制",
+        "被观察者用平静的告别语回应",
+        "抉择用沉默和动作而非长篇宣言"
+      ],
+      "abstraction": "提取被观察者在造物主阻挠中抵达虚构世界边界、在爱与恐惧的挽留下选择真实与未知的结构,核心张力来自被安排的安全与自主的未知之间的抉择,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Truman_Show",
+          "source_name": "Wikipedia",
+          "page_title": "The Truman Show",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}

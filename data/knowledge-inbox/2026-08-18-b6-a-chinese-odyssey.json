@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_a_chinese_odyssey",
+      "title": "大话西游",
+      "original_title": "A Chinese Odyssey",
+      "aliases": ["A Chinese Odyssey", "西遊記第壹佰零壹回之月光寶盒", "大话西游之月光宝盒", "大话西游之大圣娶亲"],
+      "media_type": "film",
+      "regions": ["中国香港"],
+      "release_year": 1995,
+      "genres": ["喜剧", "爱情", "奇幻"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_zixia_aco",
+      "work_id": "work_a_chinese_odyssey",
+      "name": "紫霞仙子",
+      "aliases": ["Zixia", "紫霞", "Lin Daiyu"],
+      "roles": ["deuteragonist", "仙子", "痴情者"],
+      "character_types": ["理想型", "悲剧人物", "执着追求者"],
+      "traits": ["痴情", "理想化", "勇敢", "倔强", "宿命感"],
+      "dialogue_style": [
+        "以宣言式语句表达对爱情的绝对信念",
+        "用天真而坚定的语气描述命中注定的预言",
+        "在受伤时用倔强掩饰痛苦"
+      ],
+      "relationships": ["known_zunbao_aco"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_zunbao_aco",
+      "work_id": "work_a_chinese_odyssey",
+      "name": "至尊宝",
+      "aliases": ["Joker", "至尊宝"],
+      "roles": ["protagonist", "山贼", "转世者"],
+      "character_types": ["反英雄型", "成长型", "宿命承载者"],
+      "traits": ["痞气", "逃避", "深情", "矛盾", "成长"],
+      "dialogue_style": [
+        "以玩世不恭的调侃掩饰真实情感",
+        "在面对感情时用夸张拒绝代替坦诚",
+        "在觉悟时刻用极简短句表达悔悟"
+      ],
+      "relationships": ["known_zixia_aco"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_tang_seng_aco",
+      "work_id": "work_a_chinese_odyssey",
+      "name": "唐僧",
+      "aliases": ["Tang Sanzang", "Tripitaka", "唐三藏"],
+      "roles": ["supporting", "师父", "说教者"],
+      "character_types": ["喜剧型", "理想主义", "唠叨者"],
+      "traits": ["啰嗦", "慈悲", "天真", "执着", "不合时宜"],
+      "dialogue_style": [
+        "以冗长说教将简单事情复杂化",
+        "用过分礼貌的语气在危险场合说教",
+        "在别人崩溃时仍保持不紧不慢的语调"
+      ],
+      "relationships": ["known_zunbao_aco"],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_zixia_zunbao_aco",
+      "work_id": "work_a_chinese_odyssey",
+      "from_character_id": "known_zixia_aco",
+      "to_character_id": "known_zunbao_aco",
+      "relation": "痴情仙子与逃避者的命中注定之恋",
+      "description": "紫霞坚信命中注定的爱情预言，至尊宝最初以玩世不恭态度逃避，直到失去后才意识到深情，两人在宿命与选择之间形成悲剧性错位。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zunbao_tangseng_aco",
+      "work_id": "work_a_chinese_odyssey",
+      "from_character_id": "known_zunbao_aco",
+      "to_character_id": "known_tang_seng_aco",
+      "relation": "叛逆徒弟与唠叨师父的摩擦与成长",
+      "description": "至尊宝对唐僧的啰嗦说教极度不耐烦，但唐僧的看似荒谬的言行中蕴含真正的智慧，至尊宝在觉悟后才理解师父话语的含义。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_aco_love_prophecy",
+      "work_id": "work_a_chinese_odyssey",
+      "name": "痴情者以预言方式宣告命中注定的爱情",
+      "participant_ids": ["known_zixia_aco", "known_zunbao_aco"],
+      "setting": "仙子与凡人的初次相遇",
+      "conflict_type": "命运宣言",
+      "emotional_arc": ["天真", "坚定", "困惑", "逃避"],
+      "visual_actions": [
+        "一方以绝对信念宣告命运的预言",
+        "另一方以玩世不恭态度试图否定",
+        "预言的物理信物被展示作为证据",
+        "被预言者用幽默逃避严肃面对"
+      ],
+      "reusable_beats": [
+        "一方以宿命论方式宣告两人关系",
+        "另一方用幽默和逃避应对命运的重量",
+        "信物作为命运的具象化符号出现",
+        "逃避者在后来才意识到预言的真实"
+      ],
+      "dialogue_patterns": [
+        "宣告者用天真而绝对的语气陈述预言",
+        "逃避者用调侃和夸张反应化解严肃",
+        "两人对待命运的态度形成鲜明对比"
+      ],
+      "abstraction": "提取一方以宿命预言宣告爱情、另一方以玩世不恭逃避命运、最终预言应验但为时已晚的结构，核心张力来自对待命运截然相反的态度，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_aco_put_on_crown",
+      "work_id": "work_a_chinese_odyssey",
+      "name": "放弃凡心戴上紧箍接受宿命的身份转变",
+      "participant_ids": ["known_zunbao_aco"],
+      "setting": "角色在失去挚爱后独自面对身份抉择",
+      "conflict_type": "身份抉择",
+      "emotional_arc": ["悔悟", "决绝", "放下", "承担"],
+      "visual_actions": [
+        "角色在意识到无法挽回后做出不可逆选择",
+        "戴上象征宿命的信物标志凡心死去",
+        "身体在转变过程中承受痛苦",
+        "转变完成后角色已不再是原来的自己"
+      ],
+      "reusable_beats": [
+        "角色在失去后理解了此前逃避的责任",
+        "戴上宿命信物标志放弃个人情感",
+        "身份转变伴随物理痛苦和精神蜕变",
+        "接受宿命意味着永远失去所爱"
+      ],
+      "dialogue_patterns": [
+        "角色在转变时用极简短句表达觉悟",
+        "没有旁白只有动作和沉默",
+        "觉悟表现为放下而非豪言"
+      ],
+      "abstraction": "提取角色在失去挚爱后戴上宿命信物、放弃凡心接受身份转变的结构，核心张力来自个人情感与宿命责任的不可兼得，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Odyssey",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Odyssey",
+          "published_at": null,
+          "collected_at": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-18T00:00:00.000Z"
+    }
+  ]
+}
