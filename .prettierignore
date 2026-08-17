@@ -18,5 +18,6 @@ _tmp_*
 _check_*.cjs
 _*.cjs
 _*.js
+_*.mjs
 fix_*.cjs
 fix_*.js
