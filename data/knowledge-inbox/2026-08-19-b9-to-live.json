@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_to_live",
+      "title": "活着",
+      "original_title": "To Live",
+      "aliases": [
+        "To Live",
+        "Lifetimes",
+        "Huozhe"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国大陆",
+        "中国香港"
+      ],
+      "release_year": 1994,
+      "genres": [
+        "剧情",
+        "家庭",
+        "历史"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_fugui_to_live",
+      "work_id": "work_to_live",
+      "name": "福贵",
+      "aliases": [
+        "Fugui",
+        "Xu Fugui"
+      ],
+      "roles": [
+        "protagonist",
+        "时代幸存者"
+      ],
+      "character_types": [
+        "小人物型",
+        "幸存者型",
+        "从纨绔到坚韧型"
+      ],
+      "traits": [
+        "嗜赌成性导致家破人亡后痛改前非",
+        "在时代洪流中失去至亲仍坚持活着",
+        "以皮影戏手艺谋生体现生存韧性",
+        "面对接连打击始终保持对生命的执着"
+      ],
+      "dialogue_style": [
+        "以碎碎念的日常口吻叙述经历",
+        "在失去亲人时以沉默和简短叹息表达悲痛",
+        "以自我安慰式的朴素哲理总结人生"
+      ],
+      "relationships": [
+        "known_jiazhen_to_live",
+        "known_chunsheng_to_live"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_jiazhen_to_live",
+      "work_id": "work_to_live",
+      "name": "家珍",
+      "aliases": [
+        "Jiazhen",
+        "Xu Jiazhen"
+      ],
+      "roles": [
+        "supporting",
+        "坚韧妻子"
+      ],
+      "character_types": [
+        "坚韧型",
+        "守护者型",
+        "隐忍型"
+      ],
+      "traits": [
+        "在丈夫破产后仍带着孩子回归",
+        "以沉默的勤劳维持家庭的生存",
+        "在接连丧子之痛中展现母性的坚韧",
+        "对家庭不离不弃的忠诚"
+      ],
+      "dialogue_style": [
+        "以简短朴实的语气表达关怀",
+        "在悲痛时以沉默和眼泪代替语言",
+        "用日常叮咛掩盖内心的苦楚"
+      ],
+      "relationships": [
+        "known_fugui_to_live"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_chunsheng_to_live",
+      "work_id": "work_to_live",
+      "name": "春生",
+      "aliases": [
+        "Chunsheng",
+        "Wan Erxi"
+      ],
+      "roles": [
+        "supporting",
+        "战友与愧疚者"
+      ],
+      "character_types": [
+        "愧疚型",
+        "战友型",
+        "赎罪型"
+      ],
+      "traits": [
+        "与福贵在战场共患难结下生死之交",
+        "因意外导致福贵丧子背负终身愧疚",
+        "以物质补偿试图赎罪但无法弥补创伤",
+        "在政治运动中自身也遭逢劫难"
+      ],
+      "dialogue_style": [
+        "以低沉恳切的语气道歉",
+        "在表达愧疚时以沉默和低头为主",
+        "用简短的自我责备代替解释"
+      ],
+      "relationships": [
+        "known_fugui_to_live"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_fugui_jiazhen_to_live",
+      "work_id": "work_to_live",
+      "from_character_id": "known_fugui_to_live",
+      "to_character_id": "known_jiazhen_to_live",
+      "relation": "纨绔丈夫与坚韧妻子从破裂到重聚的患难夫妻",
+      "description": "福贵因赌博败光家产后家珍带子离开,但一年后又带着孩子回归。此后数十年间,两人共同经历了战争、运动和接连丧子之痛,家珍以沉默的坚韧支撑家庭,福贵从纨绔子弟变为珍惜家人的幸存者,两人关系从破碎走向深层相依。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_fugui_chunsheng_to_live",
+      "work_id": "work_to_live",
+      "from_character_id": "known_fugui_to_live",
+      "to_character_id": "known_chunsheng_to_live",
+      "relation": "战场共患难的战友因意外丧子从生死之交到终身愧疚",
+      "description": "福贵与春生在战场中被俘共患难,约定活着回去。和平后春生因开车意外撞死了福贵的儿子,两人关系从战友变为愧疚者与宽恕者。福贵最终选择原谅,春生背负终身愧疚,在政治运动中遭难时福贵家是唯一给他温暖的地方。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_to_live_puppet_survival",
+      "work_id": "work_to_live",
+      "name": "纨绔子弟以皮影戏手艺在战乱中求生",
+      "participant_ids": [
+        "known_fugui_to_live"
+      ],
+      "setting": "战场与乡村",
+      "conflict_type": "生存",
+      "emotional_arc": [
+        "失落",
+        "恐惧",
+        "坚持",
+        "幸存"
+      ],
+      "visual_actions": [
+        "败家子从零开始学习皮影戏手艺",
+        "在战乱中带着皮影道具四处求生",
+        "皮影道具在战火中成为唯一财产",
+        "以传统手艺在乱世中维持基本生存"
+      ],
+      "reusable_beats": [
+        "纨绔子弟失去一切后以手艺重新开始",
+        "战乱中传统手艺成为生存工具",
+        "皮影道具象征文化与生命的延续",
+        "在时代洪流中以微小技能坚持活着"
+      ],
+      "dialogue_patterns": [
+        "以朴素语气讲述皮影戏的日常",
+        "在战乱中以简短的祈求语气求生存",
+        "幸存后以感慨总结活着本身的意义"
+      ],
+      "abstraction": "提取纨绔子弟破产后以传统手艺在战乱中求生的结构,核心张力来自个人渺小与时代洪流的巨大反差,皮影戏作为生存技能和文化符号承载生命的延续,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_to_live_loss_and_acceptance",
+      "work_id": "work_to_live",
+      "name": "父母在接连丧子之痛中选择继续活着",
+      "participant_ids": [
+        "known_fugui_to_live",
+        "known_jiazhen_to_live"
+      ],
+      "setting": "家中",
+      "conflict_type": "承受",
+      "emotional_arc": [
+        "日常",
+        "震惊",
+        "悲痛",
+        "接受"
+      ],
+      "visual_actions": [
+        "父母在接连失去孩子后陷入沉默",
+        "以日常劳作掩饰内心崩塌",
+        "在彼此的陪伴中缓慢接受命运",
+        "继续以活着本身作为对苦难的回答"
+      ],
+      "reusable_beats": [
+        "日常被突如其来的丧亲消息打破",
+        "父母以沉默和日常劳作应对悲痛",
+        "在彼此陪伴中缓慢接受不可逆的失去",
+        "以继续活着作为对苦难的最终回应"
+      ],
+      "dialogue_patterns": [
+        "以沉默代替哀嚎",
+        "用日常琐事的对话掩盖悲痛",
+        "以简短的朴素哲理总结活着本身的意义"
+      ],
+      "abstraction": "提取父母在接连丧子之痛中以沉默和日常劳作缓慢接受命运、最终选择继续活着的结构,核心张力来自巨大的悲痛与朴素生存意志的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}

@@ -1028,6 +1028,101 @@
         }
       ],
       "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "work_pegasus",
+      "title": "飞驰人生",
+      "original_title": "Pegasus",
+      "aliases": [
+        "Pegasus",
+        "Feichi Rensheng"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2019,
+      "genres": [
+        "喜剧",
+        "剧情",
+        "运动"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_schindlers_list",
+      "title": "辛德勒名单",
+      "original_title": "Schindler's List",
+      "aliases": [
+        "Schindler's List",
+        "辛德勒的名单"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1993,
+      "genres": [
+        "剧情",
+        "历史",
+        "战争"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_to_live",
+      "title": "活着",
+      "original_title": "To Live",
+      "aliases": [
+        "To Live",
+        "Lifetimes",
+        "Huozhe"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国大陆",
+        "中国香港"
+      ],
+      "release_year": 1994,
+      "genres": [
+        "剧情",
+        "家庭",
+        "历史"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -5033,6 +5128,405 @@
         }
       ],
       "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "known_zhang_chi_pegasus",
+      "work_id": "work_pegasus",
+      "name": "张驰",
+      "aliases": [
+        "Zhang Chi",
+        "张弛"
+      ],
+      "roles": [
+        "protagonist",
+        "过气车王"
+      ],
+      "character_types": [
+        "过气英雄型",
+        "执着追梦型",
+        "小人物逆袭型"
+      ],
+      "traits": [
+        "因非法飙车被禁赛五年仍不放弃赛车梦",
+        "以经营炒饭大排档维持生计但心怀赛道",
+        "没钱没车没队友仍坚持重返车坛",
+        "在绝境中以幽默自嘲掩饰不甘"
+      ],
+      "dialogue_style": [
+        "以自嘲和夸张的幽默掩饰窘境",
+        "在认真时以简洁坚定的语气表达决心",
+        "用日常闲聊般的语气讨论看似不可能的计划"
+      ],
+      "relationships": [
+        "known_lin_zhendong_pegasus",
+        "known_sun_yuqiang_pegasus"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_lin_zhendong_pegasus",
+      "work_id": "work_pegasus",
+      "name": "林臻东",
+      "aliases": [
+        "Lin Zhendong",
+        "林臻东"
+      ],
+      "roles": [
+        "antagonist",
+        "新生代天才车手"
+      ],
+      "character_types": [
+        "天才型",
+        "竞争者型",
+        "尊重前辈的对手型"
+      ],
+      "traits": [
+        "年轻一代拉力赛车天才",
+        "对前辈车手有真诚的尊重",
+        "在赛道上以实力说话",
+        "面对张驰的复出既期待又敬佩"
+      ],
+      "dialogue_style": [
+        "以冷静专业的语气讨论赛车技术",
+        "对前辈以恭敬但自信的语气交流",
+        "在赛道上以行动代替言语"
+      ],
+      "relationships": [
+        "known_zhang_chi_pegasus"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_sun_yuqiang_pegasus",
+      "work_id": "work_pegasus",
+      "name": "孙宇强",
+      "aliases": [
+        "Sun Yuqiang",
+        "宇强"
+      ],
+      "roles": [
+        "supporting",
+        "领航员好友"
+      ],
+      "character_types": [
+        "忠诚搭档型",
+        "义气型",
+        "共患难型"
+      ],
+      "traits": [
+        "在张驰低谷时不离不弃",
+        "以插科打诨缓解紧张气氛",
+        "关键时刻以行动支持兄弟",
+        "对赛车的热爱不如对友情的执着"
+      ],
+      "dialogue_style": [
+        "以调侃和玩笑日常交流",
+        "在紧张时刻以轻松语气化解压力",
+        "用简短的表态表达义气"
+      ],
+      "relationships": [
+        "known_zhang_chi_pegasus"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_schindler_slist",
+      "work_id": "work_schindlers_list",
+      "name": "奥斯卡·辛德勒",
+      "aliases": [
+        "Oskar Schindler",
+        "Schindler"
+      ],
+      "roles": [
+        "protagonist",
+        "商人转拯救者"
+      ],
+      "character_types": [
+        "从逐利到良知型",
+        "复杂的英雄型",
+        "实用主义救世者型"
+      ],
+      "traits": [
+        "初期以逐利商人身份雇佣犹太劳工降低成本",
+        "目睹迫害后逐渐觉醒良知转而拯救工人",
+        "以社交手腕和贿赂在纳粹体制中周旋",
+        "倾尽所有制作名单拯救工人却自责不够"
+      ],
+      "dialogue_style": [
+        "以自信从容的语气与纳粹军官社交周旋",
+        "在认真时以简洁有力的语气表达立场",
+        "面对获救工人时以哽咽和简短话语表达情感"
+      ],
+      "relationships": [
+        "known_stern_slist",
+        "known_goeth_slist"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_stern_slist",
+      "work_id": "work_schindlers_list",
+      "name": "伊扎克·斯特恩",
+      "aliases": [
+        "Itzhak Stern",
+        "Stern"
+      ],
+      "roles": [
+        "supporting",
+        "犹太会计与暗中合作者"
+      ],
+      "character_types": [
+        "智囊型",
+        "沉默合作者型",
+        "良知催化者型"
+      ],
+      "traits": [
+        "以会计专业技能成为辛德勒工厂不可或缺的人",
+        "暗中利用职权为更多犹太人争取工作证",
+        "以冷静克制的方式引导辛德勒认识道德责任",
+        "在制作名单时以专业和克制掩饰内心波澜"
+      ],
+      "dialogue_style": [
+        "以简短精准的专业口吻处理事务",
+        "在涉及道德时以沉默和眼神传递立场",
+        "用含蓄的措辞引导辛德勒做出正确选择"
+      ],
+      "relationships": [
+        "known_schindler_slist"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_goeth_slist",
+      "work_id": "work_schindlers_list",
+      "name": "阿蒙·格思",
+      "aliases": [
+        "Amon Göth",
+        "Amon Goeth"
+      ],
+      "roles": [
+        "antagonist",
+        "纳粹集中营指挥官"
+      ],
+      "character_types": [
+        "暴虐型",
+        "矛盾型",
+        "体制之恶的化身型"
+      ],
+      "traits": [
+        "以随意射杀囚犯展示绝对权力",
+        "对犹太女仆产生扭曲的情感",
+        "在辛德勒的社交手腕下时而慷慨时而残忍",
+        "体现体制化暴力的平庸性"
+      ],
+      "dialogue_style": [
+        "以平静日常的语气下达残忍命令",
+        "在社交场合以 charm 掩盖暴力本质",
+        "面对辛德勒的贿赂以慵懒的权威感回应"
+      ],
+      "relationships": [
+        "known_schindler_slist"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_fugui_to_live",
+      "work_id": "work_to_live",
+      "name": "福贵",
+      "aliases": [
+        "Fugui",
+        "Xu Fugui"
+      ],
+      "roles": [
+        "protagonist",
+        "时代幸存者"
+      ],
+      "character_types": [
+        "小人物型",
+        "幸存者型",
+        "从纨绔到坚韧型"
+      ],
+      "traits": [
+        "嗜赌成性导致家破人亡后痛改前非",
+        "在时代洪流中失去至亲仍坚持活着",
+        "以皮影戏手艺谋生体现生存韧性",
+        "面对接连打击始终保持对生命的执着"
+      ],
+      "dialogue_style": [
+        "以碎碎念的日常口吻叙述经历",
+        "在失去亲人时以沉默和简短叹息表达悲痛",
+        "以自我安慰式的朴素哲理总结人生"
+      ],
+      "relationships": [
+        "known_jiazhen_to_live",
+        "known_chunsheng_to_live"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_jiazhen_to_live",
+      "work_id": "work_to_live",
+      "name": "家珍",
+      "aliases": [
+        "Jiazhen",
+        "Xu Jiazhen"
+      ],
+      "roles": [
+        "supporting",
+        "坚韧妻子"
+      ],
+      "character_types": [
+        "坚韧型",
+        "守护者型",
+        "隐忍型"
+      ],
+      "traits": [
+        "在丈夫破产后仍带着孩子回归",
+        "以沉默的勤劳维持家庭的生存",
+        "在接连丧子之痛中展现母性的坚韧",
+        "对家庭不离不弃的忠诚"
+      ],
+      "dialogue_style": [
+        "以简短朴实的语气表达关怀",
+        "在悲痛时以沉默和眼泪代替语言",
+        "用日常叮咛掩盖内心的苦楚"
+      ],
+      "relationships": [
+        "known_fugui_to_live"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_chunsheng_to_live",
+      "work_id": "work_to_live",
+      "name": "春生",
+      "aliases": [
+        "Chunsheng",
+        "Wan Erxi"
+      ],
+      "roles": [
+        "supporting",
+        "战友与愧疚者"
+      ],
+      "character_types": [
+        "愧疚型",
+        "战友型",
+        "赎罪型"
+      ],
+      "traits": [
+        "与福贵在战场共患难结下生死之交",
+        "因意外导致福贵丧子背负终身愧疚",
+        "以物质补偿试图赎罪但无法弥补创伤",
+        "在政治运动中自身也遭逢劫难"
+      ],
+      "dialogue_style": [
+        "以低沉恳切的语气道歉",
+        "在表达愧疚时以沉默和低头为主",
+        "用简短的自我责备代替解释"
+      ],
+      "relationships": [
+        "known_fugui_to_live"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -6025,6 +6519,114 @@
         }
       ],
       "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zhang_lin_pegasus",
+      "work_id": "work_pegasus",
+      "from_character_id": "known_zhang_chi_pegasus",
+      "to_character_id": "known_lin_zhendong_pegasus",
+      "relation": "过气车王与新生代天才从隔代仰望到赛道对决",
+      "description": "张驰被禁赛五年期间林臻东成为新一代车王,张驰复出后两人形成隔代竞争关系。林臻东对张驰有真诚的尊重,张驰渴望在赛道上证明自己仍能与天才抗衡,最终两人在巴音布鲁克拉力赛上正面交锋。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zhang_sun_pegasus",
+      "work_id": "work_pegasus",
+      "from_character_id": "known_zhang_chi_pegasus",
+      "to_character_id": "known_sun_yuqiang_pegasus",
+      "relation": "过气车王与领航员好友的义气搭档",
+      "description": "孙宇强在张驰被禁赛低谷时不离不弃,张驰复出时宇强义无反顾担任领航员。两人以插科打诨的日常相处掩饰对赛车的认真,在赛道上以默契配合弥补装备和资金的劣势。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_schindler_stern_slist",
+      "work_id": "work_schindlers_list",
+      "from_character_id": "known_schindler_slist",
+      "to_character_id": "known_stern_slist",
+      "relation": "逐利商人与犹太会计从利用到良知同盟",
+      "description": "辛德勒初期视斯特恩为降低成本的犹太会计,斯特恩暗中利用职权为更多犹太人争取工作证。随着辛德勒良知觉醒,两人关系从雇佣转为道德同盟,斯特恩以含蓄方式催化辛德勒从逐利者转为拯救者,最终共同制作名单拯救工人。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_schindler_goeth_slist",
+      "work_id": "work_schindlers_list",
+      "from_character_id": "known_schindler_slist",
+      "to_character_id": "known_goeth_slist",
+      "relation": "拯救者与暴虐指挥官以社交手腕周旋的道德博弈",
+      "description": "辛德勒以社交手腕和贿赂与格思周旋,在酒宴和礼物中维持表面友谊以获取对犹太工人的保护。格思时而因辛德勒的奉承而慷慨,时而展露暴虐本性。辛德勒在格思的暴力阴影下以商人的从容掩盖拯救行动的真实目的。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_fugui_jiazhen_to_live",
+      "work_id": "work_to_live",
+      "from_character_id": "known_fugui_to_live",
+      "to_character_id": "known_jiazhen_to_live",
+      "relation": "纨绔丈夫与坚韧妻子从破裂到重聚的患难夫妻",
+      "description": "福贵因赌博败光家产后家珍带子离开,但一年后又带着孩子回归。此后数十年间,两人共同经历了战争、运动和接连丧子之痛,家珍以沉默的坚韧支撑家庭,福贵从纨绔子弟变为珍惜家人的幸存者,两人关系从破碎走向深层相依。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_fugui_chunsheng_to_live",
+      "work_id": "work_to_live",
+      "from_character_id": "known_fugui_to_live",
+      "to_character_id": "known_chunsheng_to_live",
+      "relation": "战场共患难的战友因意外丧子从生死之交到终身愧疚",
+      "description": "福贵与春生在战场中被俘共患难,约定活着回去。和平后春生因开车意外撞死了福贵的儿子,两人关系从战友变为愧疚者与宽恕者。福贵最终选择原谅,春生背负终身愧疚,在政治运动中遭难时福贵家是唯一给他温暖的地方。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
     }
   ],
   "iconic_moments": [
@@ -8720,6 +9322,286 @@
         }
       ],
       "last_verified_at": "2026-08-18T00:00:00.000Z"
+    },
+    {
+      "id": "moment_pegasus_comeback_race",
+      "work_id": "work_pegasus",
+      "name": "过气车王没钱没车仍坚持重返赛道",
+      "participant_ids": [
+        "known_zhang_chi_pegasus",
+        "known_sun_yuqiang_pegasus"
+      ],
+      "setting": "赛车场与维修区",
+      "conflict_type": "逆袭",
+      "emotional_arc": [
+        "窘迫",
+        "执着",
+        "兴奋",
+        "决绝"
+      ],
+      "visual_actions": [
+        "过气车王在炒饭大排档重温赛车梦",
+        "东拼西凑组建简陋车队重返赛事",
+        "领航员好友以义气支持复出计划",
+        "在赛道上以老练技术弥补装备差距"
+      ],
+      "reusable_beats": [
+        "过气冠军在市井生活中心怀旧梦",
+        "没钱没车没队友仍决定重返赛场",
+        "以义气召集伙伴东拼西凑组建团队",
+        "在赛道上以经验和技术对抗天才的装备优势"
+      ],
+      "dialogue_patterns": [
+        "以自嘲幽默掩饰窘境",
+        "在认真时以简洁语气表达决心",
+        "用日常闲聊般的语气讨论不可能的计划"
+      ],
+      "abstraction": "提取过气冠军在失去一切后以执着和义气重返赛道的结构,核心张力来自简陋条件与顶级赛车的巨大落差,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_pegasus_final_race",
+      "work_id": "work_pegasus",
+      "name": "老将和新秀在终极赛道上正面交锋",
+      "participant_ids": [
+        "known_zhang_chi_pegasus",
+        "known_lin_zhendong_pegasus"
+      ],
+      "setting": "巴音布鲁克拉力赛道",
+      "conflict_type": "对决",
+      "emotional_arc": [
+        "紧张",
+        "专注",
+        "极限",
+        "超越"
+      ],
+      "visual_actions": [
+        "老将和新秀在险峻赛道上同时出发",
+        "两车在弯道交替领先互不相让",
+        "老将以经验和直觉在险段逼近极限",
+        "终点前一刻老将做出超越常理的操作"
+      ],
+      "reusable_beats": [
+        "隔代对手在终极赛道同时出发",
+        "经验与天赋在赛道上交替领先",
+        "老将在最险路段选择逼近物理极限",
+        "终点前一刻以超越常理的操作决出胜负"
+      ],
+      "dialogue_patterns": [
+        "赛前以简短尊重的语气互相致意",
+        "赛中以 terse 命令式语言与领航员配合",
+        "赛后以沉默和点头代替多余言语"
+      ],
+      "abstraction": "提取隔代对手在终极赛道以经验和天赋交替领先、最终在极限处决出胜负的结构,核心张力来自老将的经验与新秀的天赋之间的碰撞,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_slist_red_coat",
+      "work_id": "work_schindlers_list",
+      "name": "旁观者在黑白世界中注意到一抹红色",
+      "participant_ids": [
+        "known_schindler_slist"
+      ],
+      "setting": "纳粹清剿犹太区",
+      "conflict_type": "觉醒",
+      "emotional_arc": [
+        "旁观",
+        "注意",
+        "触动",
+        "转变"
+      ],
+      "visual_actions": [
+        "商人在高处目睹对犹太区的清剿",
+        "在黑白画面中一个穿红衣的小女孩格外醒目",
+        "商人目光追随红衣女孩穿过混乱的街道",
+        "这一幕成为商人良知觉醒的转折点"
+      ],
+      "reusable_beats": [
+        "旁观者在混乱中注意到一个微小的视觉细节",
+        "该细节在巨大暴力中成为唯一的人性锚点",
+        "旁观者目光追随该细节穿过混乱场景",
+        "这一注视成为从旁观到行动的转折点"
+      ],
+      "dialogue_patterns": [
+        "旁观者在注视时以沉默代替言语",
+        "事后以简短的追问试图了解红衣女孩的下落",
+        "以沉默和表情变化标记内心转变"
+      ],
+      "abstraction": "提取旁观者在巨大暴力中注意到一个微小人性细节、该细节成为从旁观到行动转折点的结构,核心张力来自宏大暴力与微小人性符号的视觉对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_slist_list_creation",
+      "work_id": "work_schindlers_list",
+      "name": "商人与会计在深夜逐字制作拯救名单",
+      "participant_ids": [
+        "known_schindler_slist",
+        "known_stern_slist"
+      ],
+      "setting": "辛德勒工厂办公室",
+      "conflict_type": "救赎",
+      "emotional_arc": [
+        "紧迫",
+        "专注",
+        "沉重",
+        "自责"
+      ],
+      "visual_actions": [
+        "商人与会计在深夜对照花名册打字制作名单",
+        "每个名字代表一条生命能否被拯救",
+        "商人不断要求多加一些人以专业需要为由",
+        "名单完成后商人看着它自责未能救更多人"
+      ],
+      "reusable_beats": [
+        "两人在深夜以专业名义制作生死名单",
+        "每个名字的添加都是一次无声的救赎",
+        "以商业需要为借口掩护拯救行动",
+        "名单完成后拯救者为未能救下更多人而自责"
+      ],
+      "dialogue_patterns": [
+        "以简短专业的语气逐个核对名字",
+        "在添加名字时以事务性措辞掩饰紧迫感",
+        "事后以哽咽的简短自责表达遗憾"
+      ],
+      "abstraction": "提取两人以专业名义在深夜制作生死名单、每个名字代表一次救赎的结构,核心张力来自事务性操作与生死攸关的巨大反差,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_to_live_puppet_survival",
+      "work_id": "work_to_live",
+      "name": "纨绔子弟以皮影戏手艺在战乱中求生",
+      "participant_ids": [
+        "known_fugui_to_live"
+      ],
+      "setting": "战场与乡村",
+      "conflict_type": "生存",
+      "emotional_arc": [
+        "失落",
+        "恐惧",
+        "坚持",
+        "幸存"
+      ],
+      "visual_actions": [
+        "败家子从零开始学习皮影戏手艺",
+        "在战乱中带着皮影道具四处求生",
+        "皮影道具在战火中成为唯一财产",
+        "以传统手艺在乱世中维持基本生存"
+      ],
+      "reusable_beats": [
+        "纨绔子弟失去一切后以手艺重新开始",
+        "战乱中传统手艺成为生存工具",
+        "皮影道具象征文化与生命的延续",
+        "在时代洪流中以微小技能坚持活着"
+      ],
+      "dialogue_patterns": [
+        "以朴素语气讲述皮影戏的日常",
+        "在战乱中以简短的祈求语气求生存",
+        "幸存后以感慨总结活着本身的意义"
+      ],
+      "abstraction": "提取纨绔子弟破产后以传统手艺在战乱中求生的结构,核心张力来自个人渺小与时代洪流的巨大反差,皮影戏作为生存技能和文化符号承载生命的延续,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_to_live_loss_and_acceptance",
+      "work_id": "work_to_live",
+      "name": "父母在接连丧子之痛中选择继续活着",
+      "participant_ids": [
+        "known_fugui_to_live",
+        "known_jiazhen_to_live"
+      ],
+      "setting": "家中",
+      "conflict_type": "承受",
+      "emotional_arc": [
+        "日常",
+        "震惊",
+        "悲痛",
+        "接受"
+      ],
+      "visual_actions": [
+        "父母在接连失去孩子后陷入沉默",
+        "以日常劳作掩饰内心崩塌",
+        "在彼此的陪伴中缓慢接受命运",
+        "继续以活着本身作为对苦难的回答"
+      ],
+      "reusable_beats": [
+        "日常被突如其来的丧亲消息打破",
+        "父母以沉默和日常劳作应对悲痛",
+        "在彼此陪伴中缓慢接受不可逆的失去",
+        "以继续活着作为对苦难的最终回应"
+      ],
+      "dialogue_patterns": [
+        "以沉默代替哀嚎",
+        "用日常琐事的对话掩盖悲痛",
+        "以简短的朴素哲理总结活着本身的意义"
+      ],
+      "abstraction": "提取父母在接连丧子之痛中以沉默和日常劳作缓慢接受命运、最终选择继续活着的结构,核心张力来自巨大的悲痛与朴素生存意志的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
+          "source_name": "Wikipedia",
+          "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
     }
   ]
 }

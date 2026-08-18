@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_pegasus",
+      "title": "飞驰人生",
+      "original_title": "Pegasus",
+      "aliases": [
+        "Pegasus",
+        "Feichi Rensheng"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2019,
+      "genres": [
+        "喜剧",
+        "剧情",
+        "运动"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_zhang_chi_pegasus",
+      "work_id": "work_pegasus",
+      "name": "张驰",
+      "aliases": [
+        "Zhang Chi",
+        "张弛"
+      ],
+      "roles": [
+        "protagonist",
+        "过气车王"
+      ],
+      "character_types": [
+        "过气英雄型",
+        "执着追梦型",
+        "小人物逆袭型"
+      ],
+      "traits": [
+        "因非法飙车被禁赛五年仍不放弃赛车梦",
+        "以经营炒饭大排档维持生计但心怀赛道",
+        "没钱没车没队友仍坚持重返车坛",
+        "在绝境中以幽默自嘲掩饰不甘"
+      ],
+      "dialogue_style": [
+        "以自嘲和夸张的幽默掩饰窘境",
+        "在认真时以简洁坚定的语气表达决心",
+        "用日常闲聊般的语气讨论看似不可能的计划"
+      ],
+      "relationships": [
+        "known_lin_zhendong_pegasus",
+        "known_sun_yuqiang_pegasus"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_lin_zhendong_pegasus",
+      "work_id": "work_pegasus",
+      "name": "林臻东",
+      "aliases": [
+        "Lin Zhendong",
+        "林臻东"
+      ],
+      "roles": [
+        "antagonist",
+        "新生代天才车手"
+      ],
+      "character_types": [
+        "天才型",
+        "竞争者型",
+        "尊重前辈的对手型"
+      ],
+      "traits": [
+        "年轻一代拉力赛车天才",
+        "对前辈车手有真诚的尊重",
+        "在赛道上以实力说话",
+        "面对张驰的复出既期待又敬佩"
+      ],
+      "dialogue_style": [
+        "以冷静专业的语气讨论赛车技术",
+        "对前辈以恭敬但自信的语气交流",
+        "在赛道上以行动代替言语"
+      ],
+      "relationships": [
+        "known_zhang_chi_pegasus"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_sun_yuqiang_pegasus",
+      "work_id": "work_pegasus",
+      "name": "孙宇强",
+      "aliases": [
+        "Sun Yuqiang",
+        "宇强"
+      ],
+      "roles": [
+        "supporting",
+        "领航员好友"
+      ],
+      "character_types": [
+        "忠诚搭档型",
+        "义气型",
+        "共患难型"
+      ],
+      "traits": [
+        "在张驰低谷时不离不弃",
+        "以插科打诨缓解紧张气氛",
+        "关键时刻以行动支持兄弟",
+        "对赛车的热爱不如对友情的执着"
+      ],
+      "dialogue_style": [
+        "以调侃和玩笑日常交流",
+        "在紧张时刻以轻松语气化解压力",
+        "用简短的表态表达义气"
+      ],
+      "relationships": [
+        "known_zhang_chi_pegasus"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_zhang_lin_pegasus",
+      "work_id": "work_pegasus",
+      "from_character_id": "known_zhang_chi_pegasus",
+      "to_character_id": "known_lin_zhendong_pegasus",
+      "relation": "过气车王与新生代天才从隔代仰望到赛道对决",
+      "description": "张驰被禁赛五年期间林臻东成为新一代车王,张驰复出后两人形成隔代竞争关系。林臻东对张驰有真诚的尊重,张驰渴望在赛道上证明自己仍能与天才抗衡,最终两人在巴音布鲁克拉力赛上正面交锋。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_zhang_sun_pegasus",
+      "work_id": "work_pegasus",
+      "from_character_id": "known_zhang_chi_pegasus",
+      "to_character_id": "known_sun_yuqiang_pegasus",
+      "relation": "过气车王与领航员好友的义气搭档",
+      "description": "孙宇强在张驰被禁赛低谷时不离不弃,张驰复出时宇强义无反顾担任领航员。两人以插科打诨的日常相处掩饰对赛车的认真,在赛道上以默契配合弥补装备和资金的劣势。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_pegasus_comeback_race",
+      "work_id": "work_pegasus",
+      "name": "过气车王没钱没车仍坚持重返赛道",
+      "participant_ids": [
+        "known_zhang_chi_pegasus",
+        "known_sun_yuqiang_pegasus"
+      ],
+      "setting": "赛车场与维修区",
+      "conflict_type": "逆袭",
+      "emotional_arc": [
+        "窘迫",
+        "执着",
+        "兴奋",
+        "决绝"
+      ],
+      "visual_actions": [
+        "过气车王在炒饭大排档重温赛车梦",
+        "东拼西凑组建简陋车队重返赛事",
+        "领航员好友以义气支持复出计划",
+        "在赛道上以老练技术弥补装备差距"
+      ],
+      "reusable_beats": [
+        "过气冠军在市井生活中心怀旧梦",
+        "没钱没车没队友仍决定重返赛场",
+        "以义气召集伙伴东拼西凑组建团队",
+        "在赛道上以经验和技术对抗天才的装备优势"
+      ],
+      "dialogue_patterns": [
+        "以自嘲幽默掩饰窘境",
+        "在认真时以简洁语气表达决心",
+        "用日常闲聊般的语气讨论不可能的计划"
+      ],
+      "abstraction": "提取过气冠军在失去一切后以执着和义气重返赛道的结构,核心张力来自简陋条件与顶级赛车的巨大落差,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_pegasus_final_race",
+      "work_id": "work_pegasus",
+      "name": "老将和新秀在终极赛道上正面交锋",
+      "participant_ids": [
+        "known_zhang_chi_pegasus",
+        "known_lin_zhendong_pegasus"
+      ],
+      "setting": "巴音布鲁克拉力赛道",
+      "conflict_type": "对决",
+      "emotional_arc": [
+        "紧张",
+        "专注",
+        "极限",
+        "超越"
+      ],
+      "visual_actions": [
+        "老将和新秀在险峻赛道上同时出发",
+        "两车在弯道交替领先互不相让",
+        "老将以经验和直觉在险段逼近极限",
+        "终点前一刻老将做出超越常理的操作"
+      ],
+      "reusable_beats": [
+        "隔代对手在终极赛道同时出发",
+        "经验与天赋在赛道上交替领先",
+        "老将在最险路段选择逼近物理极限",
+        "终点前一刻以超越常理的操作决出胜负"
+      ],
+      "dialogue_patterns": [
+        "赛前以简短尊重的语气互相致意",
+        "赛中以 terse 命令式语言与领航员配合",
+        "赛后以沉默和点头代替多余言语"
+      ],
+      "abstraction": "提取隔代对手在终极赛道以经验和天赋交替领先、最终在极限处决出胜负的结构,核心张力来自老将的经验与新秀的天赋之间的碰撞,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pegasus_(2019_film)",
+          "source_name": "Wikipedia",
+          "page_title": "Pegasus (2019 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}

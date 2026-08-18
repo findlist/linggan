@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_schindlers_list",
+      "title": "辛德勒名单",
+      "original_title": "Schindler's List",
+      "aliases": [
+        "Schindler's List",
+        "辛德勒的名单"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1993,
+      "genres": [
+        "剧情",
+        "历史",
+        "战争"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_schindler_slist",
+      "work_id": "work_schindlers_list",
+      "name": "奥斯卡·辛德勒",
+      "aliases": [
+        "Oskar Schindler",
+        "Schindler"
+      ],
+      "roles": [
+        "protagonist",
+        "商人转拯救者"
+      ],
+      "character_types": [
+        "从逐利到良知型",
+        "复杂的英雄型",
+        "实用主义救世者型"
+      ],
+      "traits": [
+        "初期以逐利商人身份雇佣犹太劳工降低成本",
+        "目睹迫害后逐渐觉醒良知转而拯救工人",
+        "以社交手腕和贿赂在纳粹体制中周旋",
+        "倾尽所有制作名单拯救工人却自责不够"
+      ],
+      "dialogue_style": [
+        "以自信从容的语气与纳粹军官社交周旋",
+        "在认真时以简洁有力的语气表达立场",
+        "面对获救工人时以哽咽和简短话语表达情感"
+      ],
+      "relationships": [
+        "known_stern_slist",
+        "known_goeth_slist"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_stern_slist",
+      "work_id": "work_schindlers_list",
+      "name": "伊扎克·斯特恩",
+      "aliases": [
+        "Itzhak Stern",
+        "Stern"
+      ],
+      "roles": [
+        "supporting",
+        "犹太会计与暗中合作者"
+      ],
+      "character_types": [
+        "智囊型",
+        "沉默合作者型",
+        "良知催化者型"
+      ],
+      "traits": [
+        "以会计专业技能成为辛德勒工厂不可或缺的人",
+        "暗中利用职权为更多犹太人争取工作证",
+        "以冷静克制的方式引导辛德勒认识道德责任",
+        "在制作名单时以专业和克制掩饰内心波澜"
+      ],
+      "dialogue_style": [
+        "以简短精准的专业口吻处理事务",
+        "在涉及道德时以沉默和眼神传递立场",
+        "用含蓄的措辞引导辛德勒做出正确选择"
+      ],
+      "relationships": [
+        "known_schindler_slist"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_goeth_slist",
+      "work_id": "work_schindlers_list",
+      "name": "阿蒙·格思",
+      "aliases": [
+        "Amon Göth",
+        "Amon Goeth"
+      ],
+      "roles": [
+        "antagonist",
+        "纳粹集中营指挥官"
+      ],
+      "character_types": [
+        "暴虐型",
+        "矛盾型",
+        "体制之恶的化身型"
+      ],
+      "traits": [
+        "以随意射杀囚犯展示绝对权力",
+        "对犹太女仆产生扭曲的情感",
+        "在辛德勒的社交手腕下时而慷慨时而残忍",
+        "体现体制化暴力的平庸性"
+      ],
+      "dialogue_style": [
+        "以平静日常的语气下达残忍命令",
+        "在社交场合以 charm 掩盖暴力本质",
+        "面对辛德勒的贿赂以慵懒的权威感回应"
+      ],
+      "relationships": [
+        "known_schindler_slist"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_schindler_stern_slist",
+      "work_id": "work_schindlers_list",
+      "from_character_id": "known_schindler_slist",
+      "to_character_id": "known_stern_slist",
+      "relation": "逐利商人与犹太会计从利用到良知同盟",
+      "description": "辛德勒初期视斯特恩为降低成本的犹太会计,斯特恩暗中利用职权为更多犹太人争取工作证。随着辛德勒良知觉醒,两人关系从雇佣转为道德同盟,斯特恩以含蓄方式催化辛德勒从逐利者转为拯救者,最终共同制作名单拯救工人。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_schindler_goeth_slist",
+      "work_id": "work_schindlers_list",
+      "from_character_id": "known_schindler_slist",
+      "to_character_id": "known_goeth_slist",
+      "relation": "拯救者与暴虐指挥官以社交手腕周旋的道德博弈",
+      "description": "辛德勒以社交手腕和贿赂与格思周旋,在酒宴和礼物中维持表面友谊以获取对犹太工人的保护。格思时而因辛德勒的奉承而慷慨,时而展露暴虐本性。辛德勒在格思的暴力阴影下以商人的从容掩盖拯救行动的真实目的。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_slist_red_coat",
+      "work_id": "work_schindlers_list",
+      "name": "旁观者在黑白世界中注意到一抹红色",
+      "participant_ids": [
+        "known_schindler_slist"
+      ],
+      "setting": "纳粹清剿犹太区",
+      "conflict_type": "觉醒",
+      "emotional_arc": [
+        "旁观",
+        "注意",
+        "触动",
+        "转变"
+      ],
+      "visual_actions": [
+        "商人在高处目睹对犹太区的清剿",
+        "在黑白画面中一个穿红衣的小女孩格外醒目",
+        "商人目光追随红衣女孩穿过混乱的街道",
+        "这一幕成为商人良知觉醒的转折点"
+      ],
+      "reusable_beats": [
+        "旁观者在混乱中注意到一个微小的视觉细节",
+        "该细节在巨大暴力中成为唯一的人性锚点",
+        "旁观者目光追随该细节穿过混乱场景",
+        "这一注视成为从旁观到行动的转折点"
+      ],
+      "dialogue_patterns": [
+        "旁观者在注视时以沉默代替言语",
+        "事后以简短的追问试图了解红衣女孩的下落",
+        "以沉默和表情变化标记内心转变"
+      ],
+      "abstraction": "提取旁观者在巨大暴力中注意到一个微小人性细节、该细节成为从旁观到行动转折点的结构,核心张力来自宏大暴力与微小人性符号的视觉对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_slist_list_creation",
+      "work_id": "work_schindlers_list",
+      "name": "商人与会计在深夜逐字制作拯救名单",
+      "participant_ids": [
+        "known_schindler_slist",
+        "known_stern_slist"
+      ],
+      "setting": "辛德勒工厂办公室",
+      "conflict_type": "救赎",
+      "emotional_arc": [
+        "紧迫",
+        "专注",
+        "沉重",
+        "自责"
+      ],
+      "visual_actions": [
+        "商人与会计在深夜对照花名册打字制作名单",
+        "每个名字代表一条生命能否被拯救",
+        "商人不断要求多加一些人以专业需要为由",
+        "名单完成后商人看着它自责未能救更多人"
+      ],
+      "reusable_beats": [
+        "两人在深夜以专业名义制作生死名单",
+        "每个名字的添加都是一次无声的救赎",
+        "以商业需要为借口掩护拯救行动",
+        "名单完成后拯救者为未能救下更多人而自责"
+      ],
+      "dialogue_patterns": [
+        "以简短专业的语气逐个核对名字",
+        "在添加名字时以事务性措辞掩饰紧迫感",
+        "事后以哽咽的简短自责表达遗憾"
+      ],
+      "abstraction": "提取两人以专业名义在深夜制作生死名单、每个名字代表一次救赎的结构,核心张力来自事务性操作与生死攸关的巨大反差,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Schindler%27s_List",
+          "source_name": "Wikipedia",
+          "page_title": "Schindler's List",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}
