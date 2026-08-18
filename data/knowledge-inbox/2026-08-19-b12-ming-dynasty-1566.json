@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_ming_dynasty_1566",
+      "title": "大明王朝1566",
+      "original_title": "大明王朝1566",
+      "aliases": [
+        "Ming Dynasty 1566",
+        "大明王朝"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2007,
+      "genres": [
+        "历史",
+        "政治",
+        "权谋"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_jiajing_emperor_ming1566",
+      "work_id": "work_ming_dynasty_1566",
+      "name": "嘉靖帝",
+      "aliases": [
+        "Jiajing Emperor",
+        "朱厚熜"
+      ],
+      "roles": [
+        "protagonist",
+        "皇帝"
+      ],
+      "character_types": [
+        "权谋型",
+        "帝王型",
+        "隐匿型"
+      ],
+      "traits": [
+        "以修道炼丹为名退居西苑实则操控朝局",
+        "以帝王心术在严党与清流之间维持平衡",
+        "以隐晦的方式传递旨意让臣子揣摩圣意",
+        "在国库空虚时以改稻为桑的国策试探群臣"
+      ],
+      "dialogue_style": [
+        "以修道术语和隐晦隐喻传递政治意图",
+        "在不表态时以沉默让臣子自行揣摩",
+        "在定夺时以轻描淡写的口吻做出重大决策"
+      ],
+      "relationships": [
+        "known_yan_shifan_ming1566",
+        "known_hai_rui_ming1566"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_hai_rui_ming1566",
+      "work_id": "work_ming_dynasty_1566",
+      "name": "海瑞",
+      "aliases": [
+        "Hai Rui",
+        "海刚峰"
+      ],
+      "roles": [
+        "protagonist",
+        "清官"
+      ],
+      "character_types": [
+        "刚直型",
+        "清廉型",
+        "孤勇型"
+      ],
+      "traits": [
+        "以不惜一死的刚直上疏痛斥皇帝的怠政与奢靡",
+        "在地方任上以法律为依据与权贵势力正面对抗",
+        "以对百姓的实际关怀驱动一切政治行动",
+        "以个人道德洁癖和牺牲精神成为腐败官场中的异类"
+      ],
+      "dialogue_style": [
+        "以引经据典的方式逐条驳斥不合理政策",
+        "在对抗权贵时以不卑不亢的直白陈述立场",
+        "在上疏时以不留余地的措辞表达死谏决心"
+      ],
+      "relationships": [
+        "known_jiajing_emperor_ming1566"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_yan_shifan_ming1566",
+      "work_id": "work_ming_dynasty_1566",
+      "name": "严世蕃",
+      "aliases": [
+        "Yan Shifan",
+        "严东楼"
+      ],
+      "roles": [
+        "antagonist",
+        "权臣"
+      ],
+      "character_types": [
+        "权谋型",
+        "贪婪型",
+        "纨绔型"
+      ],
+      "traits": [
+        "以父亲严嵩的权势为靠山把持朝政卖官鬻爵",
+        "以过目不忘的才智在朝堂博弈中精准算计",
+        "在国策推行中以中饱私囊为首要目的",
+        "最终在清流的持续弹劾下被处斩伏法"
+      ],
+      "dialogue_style": [
+        "以傲慢张扬的语气炫耀权势",
+        "在算计时以精准的引经据典包装私利",
+        "在失势时以不甘和愤懑的口吻控诉不公"
+      ],
+      "relationships": [
+        "known_jiajing_emperor_ming1566"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_jiajing_hairui_ming1566",
+      "work_id": "work_ming_dynasty_1566",
+      "from_character_id": "known_jiajing_emperor_ming1566",
+      "to_character_id": "known_hai_rui_ming1566",
+      "relation": "深居简出的帝王与以死谏闻名的清官之间的终极对决",
+      "description": "嘉靖帝以修道为名退居西苑操控朝局,海瑞则以不惜一死的刚直上疏痛斥皇帝的怠政与奢靡。嘉靖在看到海瑞的奏疏后震怒但也不得不正视其中的事实。海瑞在狱中等待处决时表现出对死亡的坦然,嘉靖在临终前释放海瑞留下一个可能的改革种子。两人关系展现了绝对权力与绝对道德之间不可调和但相互定义的张力。",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_jiajing_yanshifan_ming1566",
+      "work_id": "work_ming_dynasty_1566",
+      "from_character_id": "known_jiajing_emperor_ming1566",
+      "to_character_id": "known_yan_shifan_ming1566",
+      "relation": "帝王与权臣在利用与弃子之间的权力博弈",
+      "description": "嘉靖帝利用严嵩严世蕃父子的严党把持朝政遮蔽清流,严世蕃则借父亲权势中饱私囊。嘉靖对严党的贪腐心知肚明但以平衡术暂时容忍。当严党在改稻为桑等国策中过度激化矛盾、清流弹劾压力积累到临界点时,嘉靖选择弃车保帅处斩严世蕃。两人关系展现了帝王以权臣为工具又在利益受损时毫不犹豫抛弃的经典权力逻辑。",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_ming1566_hairui_memorial",
+      "work_id": "work_ming_dynasty_1566",
+      "name": "清官以死谏上疏痛斥皇帝的怠政与奢靡",
+      "participant_ids": [
+        "known_hai_rui_ming1566",
+        "known_jiajing_emperor_ming1566"
+      ],
+      "setting": "京城",
+      "conflict_type": "死谏",
+      "emotional_arc": [
+        "决绝",
+        "震怒",
+        "沉思",
+        "无奈"
+      ],
+      "visual_actions": [
+        "清官在买好棺材安顿家人后呈递措辞激烈的奏疏",
+        "皇帝在阅读奏疏后从震怒到不得不正视其中事实",
+        "清官在狱中等待处决时表现坦然",
+        "皇帝在临终前释放清官留下改革种子"
+      ],
+      "reusable_beats": [
+        "臣子以必死决心准备后事后呈递直言奏疏",
+        "权力者在震怒后不得不正视奏疏中的事实",
+        "臣子在等待死亡时表现出超越恐惧的坦然",
+        "权力者在临终时释放臣子留下可能的变革种子"
+      ],
+      "dialogue_patterns": [
+        "以不留余地的措辞表达死谏决心",
+        "以引经据典的方式逐条驳斥不当行为",
+        "在权力者的震怒面前以平静回应"
+      ],
+      "abstraction": "提取臣子以必死决心准备后事后呈递直言奏疏、权力者在震怒后正视事实、臣子在狱中坦然等待、权力者临终释放臣子留下变革种子的结构,核心张力来自绝对道德与绝对权力的对峙以及死谏的决绝与释怀的微妙并存,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_ming1566_change_rice_to_silk",
+      "work_id": "work_ming_dynasty_1566",
+      "name": "朝廷以改稻为桑国策在民间引发灾难",
+      "participant_ids": [
+        "known_jiajing_emperor_ming1566",
+        "known_yan_shifan_ming1566"
+      ],
+      "setting": "浙江",
+      "conflict_type": "国策与民生",
+      "emotional_arc": [
+        "推行",
+        "抗拒",
+        "激化",
+        "清算"
+      ],
+      "visual_actions": [
+        "朝廷在国库空虚时推出将稻田改种桑树的国策",
+        "权臣借国策推行之机中饱私囊激起民变",
+        "地方官在执行与抗拒之间陷入两难",
+        "民变激化后清流借机弹劾最终导致权臣伏法"
+      ],
+      "reusable_beats": [
+        "朝廷在财政危机中推出将粮食作物改种经济作物的国策",
+        "执行者借国策推行之机谋取私利激起民间抗争",
+        "基层官员在上命与民生之间陷入两难",
+        "抗争激化后反对派借机清算执行者"
+      ],
+      "dialogue_patterns": [
+        "以国策大义包装利益输送",
+        "基层官员以委婉方式表达执行困境",
+        "反对派以民生为据弹劾执行者"
+      ],
+      "abstraction": "提取朝廷在财政危机中推出将粮食作物改种经济作物的国策、执行者借机谋取私利激起民间抗争、基层官员在上命与民生间两难、抗争激化后反对派借机清算的结构,核心张力来自国策的宏观利益与民生的微观代价以及执行者的中饱私囊,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}

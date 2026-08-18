@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_shawshank_redemption",
+      "title": "肖申克的救赎",
+      "original_title": "The Shawshank Redemption",
+      "aliases": [
+        "The Shawshank Redemption",
+        "Shawshank"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1994,
+      "genres": [
+        "剧情",
+        "犯罪"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_andy_dufresne_shawshank",
+      "work_id": "work_shawshank_redemption",
+      "name": "安迪·杜弗雷恩",
+      "aliases": [
+        "Andy Dufresne",
+        "Andy"
+      ],
+      "roles": [
+        "protagonist",
+        "囚犯"
+      ],
+      "character_types": [
+        "隐忍型",
+        "智慧型",
+        "希望型"
+      ],
+      "traits": [
+        "以银行家的专业能力为狱警处理税务换取庇护",
+        "在长达二十年的囚禁中始终保持对自由的信念",
+        "以雕刻石头的爱好掩护秘密挖掘逃亡通道",
+        "在暴风雨之夜通过自挖通道越狱重获自由"
+      ],
+      "dialogue_style": [
+        "以平静温和的语气陈述事实不卑不亢",
+        "在威胁面前以冷幽默化解紧张",
+        "在谈论希望时以克制的方式表达坚定信念"
+      ],
+      "relationships": [
+        "known_red_shawshank"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_red_shawshank",
+      "work_id": "work_shawshank_redemption",
+      "name": "瑞德",
+      "aliases": [
+        "Ellis Boyd Redding",
+        "Red"
+      ],
+      "roles": [
+        "narrator",
+        "囚犯"
+      ],
+      "character_types": [
+        "世故型",
+        "观察型",
+        "转变型"
+      ],
+      "traits": [
+        "以监狱中的走私能力成为能在狱中搞到东西的人",
+        "以老练世故的口吻自称对体制已彻底驯服",
+        "在安迪的影响下重新审视希望的意义",
+        "假释后克服体制化恐惧踏上寻找安迪的旅途"
+      ],
+      "dialogue_style": [
+        "以沧桑低沉的语调旁白叙述监狱生活",
+        "在谈论体制时以无奈的自嘲表达认命",
+        "在回忆安迪时以缓慢沉思的口吻表达感悟"
+      ],
+      "relationships": [
+        "known_andy_dufresne_shawshank"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_warden_norton_shawshank",
+      "work_id": "work_shawshank_redemption",
+      "name": "诺顿典狱长",
+      "aliases": [
+        "Warden Norton",
+        "Samuel Norton"
+      ],
+      "roles": [
+        "antagonist",
+        "典狱长"
+      ],
+      "character_types": [
+        "伪善型",
+        "权谋型",
+        "贪婪型"
+      ],
+      "traits": [
+        "以虔诚宗教徒的外表掩盖贪婪残暴的本性",
+        "利用安迪的银行才能为自己洗钱牟利",
+        "在安迪提出翻案可能时为留住利益不择手段",
+        "最终在罪行败露时选择自杀"
+      ],
+      "dialogue_style": [
+        "以虔诚刻板的圣经引用包装权威",
+        "在威胁囚犯时以温和口吻传递冷酷意图",
+        "在利益受威胁时以暴怒撕破伪善面具"
+      ],
+      "relationships": [
+        "known_andy_dufresne_shawshank"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_andy_red_shawshank",
+      "work_id": "work_shawshank_redemption",
+      "from_character_id": "known_andy_dufresne_shawshank",
+      "to_character_id": "known_red_shawshank",
+      "relation": "银行家囚犯与监狱走私者在囚禁中建立的跨越种族的友谊",
+      "description": "安迪以沉默的尊严和不屈的希望逐渐打破了瑞德对体制的认命。瑞德最初以世故老练的口吻告诫安迪希望是危险的,但安迪用二十年的坚持和最终越狱证明了希望的力量。安迪越狱后瑞德在假释中挣扎于体制化恐惧,最终循着安迪留下的线索踏上寻友之旅。两人关系展现了在绝望环境中友谊如何成为维系人性的纽带。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_andy_norton_shawshank",
+      "work_id": "work_shawshank_redemption",
+      "from_character_id": "known_andy_dufresne_shawshank",
+      "to_character_id": "known_warden_norton_shawshank",
+      "relation": "囚徒与伪善典狱长在被利用与反抗中的权力博弈",
+      "description": "诺顿典狱长以虔诚外表掩盖贪婪,利用安迪的银行才能为自己洗钱。安迪在被迫合作中隐忍收集证据,同时秘密挖掘逃亡通道。当安迪提出翻案可能时,诺顿为留住利益不惜杀害知情囚犯。安迪最终在越狱同时曝光诺顿的罪行,导致其自杀。两人关系展现了以隐忍对抗伪善、以耐心瓦解权力的经典博弈。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_shawshank_rooftop_beer",
+      "work_id": "work_shawshank_redemption",
+      "name": "囚犯在屋顶上喝着冰啤如自由人",
+      "participant_ids": [
+        "known_andy_dufresne_shawshank",
+        "known_red_shawshank"
+      ],
+      "setting": "监狱屋顶",
+      "conflict_type": "短暂自由",
+      "emotional_arc": [
+        "压抑",
+        "阳光",
+        "惬意",
+        "惆怅"
+      ],
+      "visual_actions": [
+        "囚犯在酷热屋顶上涂沥青劳作",
+        "安迪以专业能力为狱警避税换取同伴冰啤",
+        "囚犯们在屋顶上喝着啤酒如自由人般短暂享受",
+        "安迪自己不喝只是坐在阳光下微笑"
+      ],
+      "reusable_beats": [
+        "囚徒在极端环境中进行集体劳作",
+        "以专业技能为看守提供利益换取同伴的短暂优待",
+        "群体在片刻自由中体验常态生活的珍贵",
+        "策划者自己不参与只是旁观微笑"
+      ],
+      "dialogue_patterns": [
+        "以专业术语为权威提供利益交换",
+        "在群体欢愉时以沉默旁观表达满足",
+        "以平淡口吻描述不平常的交易"
+      ],
+      "abstraction": "提取囚徒在极端环境中以专业技能为看守提供利益换取同伴短暂优待、群体在片刻自由中体验常态生活珍贵的结构,核心张力来自极端环境与短暂惬意以及策划者的旁观微笑,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_shawshank_rain_escape",
+      "work_id": "work_shawshank_redemption",
+      "name": "囚徒在暴风雨中从自挖通道越狱重获自由",
+      "participant_ids": [
+        "known_andy_dufresne_shawshank"
+      ],
+      "setting": "监狱排水管道",
+      "conflict_type": "自由重生",
+      "emotional_arc": [
+        "压抑",
+        "窒息",
+        "爆发",
+        "解放"
+      ],
+      "visual_actions": [
+        "囚徒在二十年囚禁中秘密挖掘通道以海报掩护",
+        "在暴风雨之夜从自挖通道爬入排水管道",
+        "在污水中爬行后在暴雨中张开双臂迎接自由",
+        "在雷电交加中完成从囚徒到自由人的蜕变"
+      ],
+      "reusable_beats": [
+        "囚徒在长期囚禁中以日常爱好掩护秘密挖掘",
+        "在暴风雨之夜通过自挖通道进入更狭窄的通道",
+        "在污水中忍耐爬行后冲出地面",
+        "在暴雨中张开双臂迎接自由完成蜕变"
+      ],
+      "dialogue_patterns": [
+        "在独处时以自言自语积蓄决心",
+        "在极端环境中以沉默忍耐支撑",
+        "在重获自由时以无声呐喊释放"
+      ],
+      "abstraction": "提取囚徒在长期囚禁中以日常爱好掩护秘密挖掘、在暴风雨之夜通过自挖通道和污水管道越狱、在暴雨中张开双臂迎接自由的结构,核心张力来自二十年隐忍与一夜爆发以及极端污秽与暴雨洗礼的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}

@@ -1313,6 +1313,99 @@
         }
       ],
       "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_blade_runner",
+      "title": "银翼杀手",
+      "original_title": "Blade Runner",
+      "aliases": [
+        "Blade Runner",
+        "Blade Runner: The Final Cut"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国",
+        "中国香港"
+      ],
+      "release_year": 1982,
+      "genres": [
+        "科幻",
+        "黑色电影",
+        "赛博朋克"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+          "source_name": "Wikipedia",
+          "page_title": "Blade Runner",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_ming_dynasty_1566",
+      "title": "大明王朝1566",
+      "original_title": "大明王朝1566",
+      "aliases": [
+        "Ming Dynasty 1566",
+        "大明王朝"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2007,
+      "genres": [
+        "历史",
+        "政治",
+        "权谋"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_shawshank_redemption",
+      "title": "肖申克的救赎",
+      "original_title": "The Shawshank Redemption",
+      "aliases": [
+        "The Shawshank Redemption",
+        "Shawshank"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1994,
+      "genres": [
+        "剧情",
+        "犯罪"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -3682,8 +3775,7 @@
       "name": "紫霞仙子",
       "aliases": [
         "Zixia",
-        "紫霞",
-        "Lin Daiyu"
+        "紫霞"
       ],
       "roles": [
         "deuteragonist",
@@ -6529,6 +6621,404 @@
         }
       ],
       "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_rick_deckard_blade_runner",
+      "work_id": "work_blade_runner",
+      "name": "瑞克·戴克",
+      "aliases": [
+        "Rick Deckard",
+        "Deckard"
+      ],
+      "roles": [
+        "protagonist",
+        "银翼杀手"
+      ],
+      "character_types": [
+        "厌倦型",
+        "侦探型",
+        "灰色型"
+      ],
+      "traits": [
+        "以退役银翼杀手的身份被强制召回追杀复制人",
+        "在城市中追踪逃亡复制人时逐渐质疑自身立场",
+        "在与复制人的接触中重新思考人与非人的界限",
+        "最终选择与复制人伴侣逃离城市寻找自由"
+      ],
+      "dialogue_style": [
+        "以疲惫冷淡的语调执行任务",
+        "在面对道德困境时以沉默回避表态",
+        "在质疑自身身份时以克制方式流露困惑"
+      ],
+      "relationships": [
+        "known_roy_batty_blade_runner",
+        "known_rachael_blade_runner"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+          "source_name": "Wikipedia",
+          "page_title": "Blade Runner",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_roy_batty_blade_runner",
+      "work_id": "work_blade_runner",
+      "name": "罗伊·贝提",
+      "aliases": [
+        "Roy Batty",
+        "Roy"
+      ],
+      "roles": [
+        "antagonist",
+        "复制人领袖"
+      ],
+      "character_types": [
+        "悲剧型",
+        "战士型",
+        "哲思型"
+      ],
+      "traits": [
+        "以四年寿命的复制人战士身份追求延长生命的可能",
+        "在逃亡中展现超越人类的体能与智慧",
+        "在创造者面前质问被赋予短暂生命的命运不公",
+        "在生命最后时刻选择拯救追杀者展现超越程序的人性"
+      ],
+      "dialogue_style": [
+        "以充满诗意的隐喻质问存在意义",
+        "在对抗时以从容优雅的姿态展现力量",
+        "在临终时以平静深沉的语调回忆毕生经历"
+      ],
+      "relationships": [
+        "known_rick_deckard_blade_runner"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+          "source_name": "Wikipedia",
+          "page_title": "Blade Runner",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_rachael_blade_runner",
+      "work_id": "work_blade_runner",
+      "name": "瑞秋",
+      "aliases": [
+        "Rachael",
+        "Rachel"
+      ],
+      "roles": [
+        "supporting",
+        "复制人"
+      ],
+      "character_types": [
+        "觉醒型",
+        "伴侣型",
+        "迷茫型"
+      ],
+      "traits": [
+        "以植入记忆的方式相信自己是人类直到被告知真相",
+        "在得知真实身份后经历剧烈的身份认同危机",
+        "以人类情感反应证明复制人也能拥有真实的情感",
+        "最终选择与戴克一起逃离城市寻找新生活"
+      ],
+      "dialogue_style": [
+        "以平静优雅的语调掩饰内心困惑",
+        "在被质问身份时以防御性克制回应",
+        "在情感觉醒后以温柔但不确定的方式表达"
+      ],
+      "relationships": [
+        "known_rick_deckard_blade_runner"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+          "source_name": "Wikipedia",
+          "page_title": "Blade Runner",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_jiajing_emperor_ming1566",
+      "work_id": "work_ming_dynasty_1566",
+      "name": "嘉靖帝",
+      "aliases": [
+        "Jiajing Emperor",
+        "朱厚熜"
+      ],
+      "roles": [
+        "protagonist",
+        "皇帝"
+      ],
+      "character_types": [
+        "权谋型",
+        "帝王型",
+        "隐匿型"
+      ],
+      "traits": [
+        "以修道炼丹为名退居西苑实则操控朝局",
+        "以帝王心术在严党与清流之间维持平衡",
+        "以隐晦的方式传递旨意让臣子揣摩圣意",
+        "在国库空虚时以改稻为桑的国策试探群臣"
+      ],
+      "dialogue_style": [
+        "以修道术语和隐晦隐喻传递政治意图",
+        "在不表态时以沉默让臣子自行揣摩",
+        "在定夺时以轻描淡写的口吻做出重大决策"
+      ],
+      "relationships": [
+        "known_yan_shifan_ming1566",
+        "known_hai_rui_ming1566"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_hai_rui_ming1566",
+      "work_id": "work_ming_dynasty_1566",
+      "name": "海瑞",
+      "aliases": [
+        "Hai Rui",
+        "海刚峰"
+      ],
+      "roles": [
+        "protagonist",
+        "清官"
+      ],
+      "character_types": [
+        "刚直型",
+        "清廉型",
+        "孤勇型"
+      ],
+      "traits": [
+        "以不惜一死的刚直上疏痛斥皇帝的怠政与奢靡",
+        "在地方任上以法律为依据与权贵势力正面对抗",
+        "以对百姓的实际关怀驱动一切政治行动",
+        "以个人道德洁癖和牺牲精神成为腐败官场中的异类"
+      ],
+      "dialogue_style": [
+        "以引经据典的方式逐条驳斥不合理政策",
+        "在对抗权贵时以不卑不亢的直白陈述立场",
+        "在上疏时以不留余地的措辞表达死谏决心"
+      ],
+      "relationships": [
+        "known_jiajing_emperor_ming1566"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_yan_shifan_ming1566",
+      "work_id": "work_ming_dynasty_1566",
+      "name": "严世蕃",
+      "aliases": [
+        "Yan Shifan",
+        "严东楼"
+      ],
+      "roles": [
+        "antagonist",
+        "权臣"
+      ],
+      "character_types": [
+        "权谋型",
+        "贪婪型",
+        "纨绔型"
+      ],
+      "traits": [
+        "以父亲严嵩的权势为靠山把持朝政卖官鬻爵",
+        "以过目不忘的才智在朝堂博弈中精准算计",
+        "在国策推行中以中饱私囊为首要目的",
+        "最终在清流的持续弹劾下被处斩伏法"
+      ],
+      "dialogue_style": [
+        "以傲慢张扬的语气炫耀权势",
+        "在算计时以精准的引经据典包装私利",
+        "在失势时以不甘和愤懑的口吻控诉不公"
+      ],
+      "relationships": [
+        "known_jiajing_emperor_ming1566"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_andy_dufresne_shawshank",
+      "work_id": "work_shawshank_redemption",
+      "name": "安迪·杜弗雷恩",
+      "aliases": [
+        "Andy Dufresne",
+        "Andy"
+      ],
+      "roles": [
+        "protagonist",
+        "囚犯"
+      ],
+      "character_types": [
+        "隐忍型",
+        "智慧型",
+        "希望型"
+      ],
+      "traits": [
+        "以银行家的专业能力为狱警处理税务换取庇护",
+        "在长达二十年的囚禁中始终保持对自由的信念",
+        "以雕刻石头的爱好掩护秘密挖掘逃亡通道",
+        "在暴风雨之夜通过自挖通道越狱重获自由"
+      ],
+      "dialogue_style": [
+        "以平静温和的语气陈述事实不卑不亢",
+        "在威胁面前以冷幽默化解紧张",
+        "在谈论希望时以克制的方式表达坚定信念"
+      ],
+      "relationships": [
+        "known_red_shawshank"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_red_shawshank",
+      "work_id": "work_shawshank_redemption",
+      "name": "瑞德",
+      "aliases": [
+        "Ellis Boyd Redding",
+        "Red"
+      ],
+      "roles": [
+        "narrator",
+        "囚犯"
+      ],
+      "character_types": [
+        "世故型",
+        "观察型",
+        "转变型"
+      ],
+      "traits": [
+        "以监狱中的走私能力成为能在狱中搞到东西的人",
+        "以老练世故的口吻自称对体制已彻底驯服",
+        "在安迪的影响下重新审视希望的意义",
+        "假释后克服体制化恐惧踏上寻找安迪的旅途"
+      ],
+      "dialogue_style": [
+        "以沧桑低沉的语调旁白叙述监狱生活",
+        "在谈论体制时以无奈的自嘲表达认命",
+        "在回忆安迪时以缓慢沉思的口吻表达感悟"
+      ],
+      "relationships": [
+        "known_andy_dufresne_shawshank"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_warden_norton_shawshank",
+      "work_id": "work_shawshank_redemption",
+      "name": "诺顿典狱长",
+      "aliases": [
+        "Warden Norton",
+        "Samuel Norton"
+      ],
+      "roles": [
+        "antagonist",
+        "典狱长"
+      ],
+      "character_types": [
+        "伪善型",
+        "权谋型",
+        "贪婪型"
+      ],
+      "traits": [
+        "以虔诚宗教徒的外表掩盖贪婪残暴的本性",
+        "利用安迪的银行才能为自己洗钱牟利",
+        "在安迪提出翻案可能时为留住利益不择手段",
+        "最终在罪行败露时选择自杀"
+      ],
+      "dialogue_style": [
+        "以虔诚刻板的圣经引用包装权威",
+        "在威胁囚犯时以温和口吻传递冷酷意图",
+        "在利益受威胁时以暴怒撕破伪善面具"
+      ],
+      "relationships": [
+        "known_andy_dufresne_shawshank"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -7840,6 +8330,114 @@
           "url": "https://en.wikipedia.org/wiki/The_Godfather",
           "source_name": "Wikipedia",
           "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_deckard_roy_blade_runner",
+      "work_id": "work_blade_runner",
+      "from_character_id": "known_rick_deckard_blade_runner",
+      "to_character_id": "known_roy_batty_blade_runner",
+      "relation": "追杀者与被追杀的复制人在生死对决中完成关于人性的终极对话",
+      "description": "戴克以银翼杀手身份追杀罗伊等逃亡复制人,在追杀过程中逐渐质疑自己追杀的存在的道德性。罗伊在四年寿命将尽时寻找创造者求延命不得,转而以超越人类的体能让戴克陷入绝境。但在戴克即将坠楼的最后时刻,罗伊选择救起追杀自己的人,在雨中死去。两人关系展现了猎人与猎物在生死极限时对何为人性的终极拷问。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+          "source_name": "Wikipedia",
+          "page_title": "Blade Runner",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_deckard_rachael_blade_runner",
+      "work_id": "work_blade_runner",
+      "from_character_id": "known_rick_deckard_blade_runner",
+      "to_character_id": "known_rachael_blade_runner",
+      "relation": "追杀者与不知身份的复制人在相处中发展出跨越物种的羁绊",
+      "description": "瑞秋以植入记忆相信自己是人类,戴克在测试中揭露其复制人身份令其崩溃。瑞秋在愤怒和困惑中离开,但又在戴克遭遇危险时回来相助。两人在逃亡中逐渐建立信任与情感,瑞秋以真实的情感反应证明复制人也能拥有人性。最终两人选择一起逃离城市。两人关系展现了在身份界限模糊时情感如何超越定义。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+          "source_name": "Wikipedia",
+          "page_title": "Blade Runner",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_jiajing_hairui_ming1566",
+      "work_id": "work_ming_dynasty_1566",
+      "from_character_id": "known_jiajing_emperor_ming1566",
+      "to_character_id": "known_hai_rui_ming1566",
+      "relation": "深居简出的帝王与以死谏闻名的清官之间的终极对决",
+      "description": "嘉靖帝以修道为名退居西苑操控朝局,海瑞则以不惜一死的刚直上疏痛斥皇帝的怠政与奢靡。嘉靖在看到海瑞的奏疏后震怒但也不得不正视其中的事实。海瑞在狱中等待处决时表现出对死亡的坦然,嘉靖在临终前释放海瑞留下一个可能的改革种子。两人关系展现了绝对权力与绝对道德之间不可调和但相互定义的张力。",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_jiajing_yanshifan_ming1566",
+      "work_id": "work_ming_dynasty_1566",
+      "from_character_id": "known_jiajing_emperor_ming1566",
+      "to_character_id": "known_yan_shifan_ming1566",
+      "relation": "帝王与权臣在利用与弃子之间的权力博弈",
+      "description": "嘉靖帝利用严嵩严世蕃父子的严党把持朝政遮蔽清流,严世蕃则借父亲权势中饱私囊。嘉靖对严党的贪腐心知肚明但以平衡术暂时容忍。当严党在改稻为桑等国策中过度激化矛盾、清流弹劾压力积累到临界点时,嘉靖选择弃车保帅处斩严世蕃。两人关系展现了帝王以权臣为工具又在利益受损时毫不犹豫抛弃的经典权力逻辑。",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_andy_red_shawshank",
+      "work_id": "work_shawshank_redemption",
+      "from_character_id": "known_andy_dufresne_shawshank",
+      "to_character_id": "known_red_shawshank",
+      "relation": "银行家囚犯与监狱走私者在囚禁中建立的跨越种族的友谊",
+      "description": "安迪以沉默的尊严和不屈的希望逐渐打破了瑞德对体制的认命。瑞德最初以世故老练的口吻告诫安迪希望是危险的,但安迪用二十年的坚持和最终越狱证明了希望的力量。安迪越狱后瑞德在假释中挣扎于体制化恐惧,最终循着安迪留下的线索踏上寻友之旅。两人关系展现了在绝望环境中友谊如何成为维系人性的纽带。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_andy_norton_shawshank",
+      "work_id": "work_shawshank_redemption",
+      "from_character_id": "known_andy_dufresne_shawshank",
+      "to_character_id": "known_warden_norton_shawshank",
+      "relation": "囚徒与伪善典狱长在被利用与反抗中的权力博弈",
+      "description": "诺顿典狱长以虔诚外表掩盖贪婪,利用安迪的银行才能为自己洗钱。安迪在被迫合作中隐忍收集证据,同时秘密挖掘逃亡通道。当安迪提出翻案可能时,诺顿为留住利益不惜杀害知情囚犯。安迪最终在越狱同时曝光诺顿的罪行,导致其自杀。两人关系展现了以隐忍对抗伪善、以耐心瓦解权力的经典博弈。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
           "published_at": null,
           "collected_at": "2026-08-19T00:00:00.000Z"
         }
@@ -11376,6 +11974,287 @@
           "url": "https://en.wikipedia.org/wiki/The_Godfather",
           "source_name": "Wikipedia",
           "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_blade_runner_tears_in_rain",
+      "work_id": "work_blade_runner",
+      "name": "复制人战士在雨中临终回忆毕生经历",
+      "participant_ids": [
+        "known_roy_batty_blade_runner",
+        "known_rick_deckard_blade_runner"
+      ],
+      "setting": "雨夜楼顶",
+      "conflict_type": "生死顿悟",
+      "emotional_arc": [
+        "对峙",
+        "拯救",
+        "回忆",
+        "消逝"
+      ],
+      "visual_actions": [
+        "被追杀的复制人战士在追杀者即将坠楼时伸手救起对方",
+        "复制人在雨中安静坐下面对自己的死亡",
+        "以充满诗意的口吻回忆毕生经历过的壮丽景象",
+        "在说出雨中泪的感悟后头颅低垂安静逝去"
+      ],
+      "reusable_beats": [
+        "被追杀者在追杀者危难时选择拯救而非报复",
+        "拯救者在雨中安静面对自己的有限生命",
+        "以充满诗意的口吻回忆毕生独特的经历",
+        "在说出对生命消逝的感悟后安静死去"
+      ],
+      "dialogue_patterns": [
+        "在拯救敌人后以平静口吻表达对生命的理解",
+        "以诗意的隐喻回忆不可复制的经历",
+        "在临终时以简短感悟概括存在的意义"
+      ],
+      "abstraction": "提取被追杀者在追杀者危难时选择拯救、在雨中安静面对有限生命、以诗意口吻回忆毕生独特经历后安静死去的结构,核心张力来自追杀与拯救的逆转以及有限生命中不可复制经历的珍贵,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+          "source_name": "Wikipedia",
+          "page_title": "Blade Runner",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_blade_runner_voight_kampff",
+      "work_id": "work_blade_runner",
+      "name": "测试者通过追问极端场景揭示受试者的非人身份",
+      "participant_ids": [
+        "known_rick_deckard_blade_runner",
+        "known_rachael_blade_runner"
+      ],
+      "setting": "办公室",
+      "conflict_type": "身份揭露",
+      "emotional_arc": [
+        "平静",
+        "试探",
+        "动摇",
+        "崩塌"
+      ],
+      "visual_actions": [
+        "测试者以仪器监测受试者的生理反应",
+        "测试者逐步追问越来越极端的假设场景",
+        "受试者以平静防御性的回答应对每个问题",
+        "在问题触及植入记忆的核心时受试者的伪装开始瓦解"
+      ],
+      "reusable_beats": [
+        "测试者以仪器和追问逐步逼近受试者的真实身份",
+        "通过假设极端场景观察受试者的情感反应差异",
+        "受试者以平静防御性回答维持自我认知",
+        "在追问触及核心时受试者的自我认知开始崩塌"
+      ],
+      "dialogue_patterns": [
+        "以平静但步步紧逼的追问逼近真相",
+        "受试者以过度克制的回答掩饰异常",
+        "在真相揭露时以沉默和震惊回应"
+      ],
+      "abstraction": "提取测试者以仪器和逐步升级的追问逼近受试者真实身份、通过假设极端场景观察情感反应差异、受试者从防御性克制到自我认知崩塌的结构,核心张力来自追问的步步紧逼与受试者的逐步瓦解,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+          "source_name": "Wikipedia",
+          "page_title": "Blade Runner",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_ming1566_hairui_memorial",
+      "work_id": "work_ming_dynasty_1566",
+      "name": "清官以死谏上疏痛斥皇帝的怠政与奢靡",
+      "participant_ids": [
+        "known_hai_rui_ming1566",
+        "known_jiajing_emperor_ming1566"
+      ],
+      "setting": "京城",
+      "conflict_type": "死谏",
+      "emotional_arc": [
+        "决绝",
+        "震怒",
+        "沉思",
+        "无奈"
+      ],
+      "visual_actions": [
+        "清官在买好棺材安顿家人后呈递措辞激烈的奏疏",
+        "皇帝在阅读奏疏后从震怒到不得不正视其中事实",
+        "清官在狱中等待处决时表现坦然",
+        "皇帝在临终前释放清官留下改革种子"
+      ],
+      "reusable_beats": [
+        "臣子以必死决心准备后事后呈递直言奏疏",
+        "权力者在震怒后不得不正视奏疏中的事实",
+        "臣子在等待死亡时表现出超越恐惧的坦然",
+        "权力者在临终时释放臣子留下可能的变革种子"
+      ],
+      "dialogue_patterns": [
+        "以不留余地的措辞表达死谏决心",
+        "以引经据典的方式逐条驳斥不当行为",
+        "在权力者的震怒面前以平静回应"
+      ],
+      "abstraction": "提取臣子以必死决心准备后事后呈递直言奏疏、权力者在震怒后正视事实、臣子在狱中坦然等待、权力者临终释放臣子留下变革种子的结构,核心张力来自绝对道德与绝对权力的对峙以及死谏的决绝与释怀的微妙并存,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_ming1566_change_rice_to_silk",
+      "work_id": "work_ming_dynasty_1566",
+      "name": "朝廷以改稻为桑国策在民间引发灾难",
+      "participant_ids": [
+        "known_jiajing_emperor_ming1566",
+        "known_yan_shifan_ming1566"
+      ],
+      "setting": "浙江",
+      "conflict_type": "国策与民生",
+      "emotional_arc": [
+        "推行",
+        "抗拒",
+        "激化",
+        "清算"
+      ],
+      "visual_actions": [
+        "朝廷在国库空虚时推出将稻田改种桑树的国策",
+        "权臣借国策推行之机中饱私囊激起民变",
+        "地方官在执行与抗拒之间陷入两难",
+        "民变激化后清流借机弹劾最终导致权臣伏法"
+      ],
+      "reusable_beats": [
+        "朝廷在财政危机中推出将粮食作物改种经济作物的国策",
+        "执行者借国策推行之机谋取私利激起民间抗争",
+        "基层官员在上命与民生之间陷入两难",
+        "抗争激化后反对派借机清算执行者"
+      ],
+      "dialogue_patterns": [
+        "以国策大义包装利益输送",
+        "基层官员以委婉方式表达执行困境",
+        "反对派以民生为据弹劾执行者"
+      ],
+      "abstraction": "提取朝廷在财政危机中推出将粮食作物改种经济作物的国策、执行者借机谋取私利激起民间抗争、基层官员在上命与民生间两难、抗争激化后反对派借机清算的结构,核心张力来自国策的宏观利益与民生的微观代价以及执行者的中饱私囊,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/大明王朝1566",
+          "source_name": "Wikipedia",
+          "page_title": "大明王朝1566",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_shawshank_rooftop_beer",
+      "work_id": "work_shawshank_redemption",
+      "name": "囚犯在屋顶上喝着冰啤如自由人",
+      "participant_ids": [
+        "known_andy_dufresne_shawshank",
+        "known_red_shawshank"
+      ],
+      "setting": "监狱屋顶",
+      "conflict_type": "短暂自由",
+      "emotional_arc": [
+        "压抑",
+        "阳光",
+        "惬意",
+        "惆怅"
+      ],
+      "visual_actions": [
+        "囚犯在酷热屋顶上涂沥青劳作",
+        "安迪以专业能力为狱警避税换取同伴冰啤",
+        "囚犯们在屋顶上喝着啤酒如自由人般短暂享受",
+        "安迪自己不喝只是坐在阳光下微笑"
+      ],
+      "reusable_beats": [
+        "囚徒在极端环境中进行集体劳作",
+        "以专业技能为看守提供利益换取同伴的短暂优待",
+        "群体在片刻自由中体验常态生活的珍贵",
+        "策划者自己不参与只是旁观微笑"
+      ],
+      "dialogue_patterns": [
+        "以专业术语为权威提供利益交换",
+        "在群体欢愉时以沉默旁观表达满足",
+        "以平淡口吻描述不平常的交易"
+      ],
+      "abstraction": "提取囚徒在极端环境中以专业技能为看守提供利益换取同伴短暂优待、群体在片刻自由中体验常态生活珍贵的结构,核心张力来自极端环境与短暂惬意以及策划者的旁观微笑,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_shawshank_rain_escape",
+      "work_id": "work_shawshank_redemption",
+      "name": "囚徒在暴风雨中从自挖通道越狱重获自由",
+      "participant_ids": [
+        "known_andy_dufresne_shawshank"
+      ],
+      "setting": "监狱排水管道",
+      "conflict_type": "自由重生",
+      "emotional_arc": [
+        "压抑",
+        "窒息",
+        "爆发",
+        "解放"
+      ],
+      "visual_actions": [
+        "囚徒在二十年囚禁中秘密挖掘通道以海报掩护",
+        "在暴风雨之夜从自挖通道爬入排水管道",
+        "在污水中爬行后在暴雨中张开双臂迎接自由",
+        "在雷电交加中完成从囚徒到自由人的蜕变"
+      ],
+      "reusable_beats": [
+        "囚徒在长期囚禁中以日常爱好掩护秘密挖掘",
+        "在暴风雨之夜通过自挖通道进入更狭窄的通道",
+        "在污水中忍耐爬行后冲出地面",
+        "在暴雨中张开双臂迎接自由完成蜕变"
+      ],
+      "dialogue_patterns": [
+        "在独处时以自言自语积蓄决心",
+        "在极端环境中以沉默忍耐支撑",
+        "在重获自由时以无声呐喊释放"
+      ],
+      "abstraction": "提取囚徒在长期囚禁中以日常爱好掩护秘密挖掘、在暴风雨之夜通过自挖通道和污水管道越狱、在暴雨中张开双臂迎接自由的结构,核心张力来自二十年隐忍与一夜爆发以及极端污秽与暴雨洗礼的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+          "source_name": "Wikipedia",
+          "page_title": "The Shawshank Redemption",
           "published_at": null,
           "collected_at": "2026-08-19T00:00:00.000Z"
         }
