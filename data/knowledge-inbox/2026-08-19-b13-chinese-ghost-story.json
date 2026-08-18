@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_chinese_ghost_story",
+      "title": "倩女幽魂",
+      "original_title": "倩女幽魂",
+      "aliases": [
+        "A Chinese Ghost Story",
+        "倩女幽魂"
+      ],
+      "media_type": "film",
+      "regions": [
+        "中国香港"
+      ],
+      "release_year": 1987,
+      "genres": [
+        "奇幻",
+        "爱情",
+        "武侠"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Ghost_Story",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Ghost Story",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_nie_xiaoqian_ghost_story",
+      "work_id": "work_chinese_ghost_story",
+      "name": "聂小倩",
+      "aliases": [
+        "Nie Xiaoqian",
+        "小倩"
+      ],
+      "roles": [
+        "protagonist",
+        "女鬼"
+      ],
+      "character_types": [
+        "悲剧型",
+        "柔情型",
+        "超自然型"
+      ],
+      "traits": [
+        "死后葬于兰若寺旁被树妖姥姥控制驱使迷惑路人",
+        "在遇见正直书生后主动示警并寻求救赎",
+        "以自身鬼魂身份承受被操控的痛苦却保持善良本性",
+        "最终在书生和剑客帮助下迁葬脱离控制获得安息"
+      ],
+      "dialogue_style": [
+        "以幽怨低回的语调倾诉身世",
+        "在表达善意时以含蓄委婉的方式暗示危险",
+        "在求助时以克制哀婉的语气请求而非恳求"
+      ],
+      "relationships": [
+        "known_ning_caichen_ghost_story"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Ghost_Story",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Ghost Story",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_ning_caichen_ghost_story",
+      "work_id": "work_chinese_ghost_story",
+      "name": "宁采臣",
+      "aliases": [
+        "Ning Caichen",
+        "宁采臣"
+      ],
+      "roles": [
+        "protagonist",
+        "书生"
+      ],
+      "character_types": [
+        "正直型",
+        "书生型",
+        "勇敢型"
+      ],
+      "traits": [
+        "以耿直书生本色面对超自然存在不卑不亢",
+        "在旅途中借宿荒寺却不畏鬼神",
+        "在得知女鬼身世后选择信任并伸出援手",
+        "以凡人之力协助剑客完成迁葬仪式解救女鬼"
+      ],
+      "dialogue_style": [
+        "以书卷气的文言陈述见解",
+        "在面对超自然威胁时以平静理性化解恐惧",
+        "在承诺帮助时以简洁坚定表达决心"
+      ],
+      "relationships": [
+        "known_nie_xiaoqian_ghost_story",
+        "known_yan_chixia_ghost_story"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Ghost_Story",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Ghost Story",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_yan_chixia_ghost_story",
+      "work_id": "work_chinese_ghost_story",
+      "name": "燕赤霞",
+      "aliases": [
+        "Yan Chixia",
+        "赤霞"
+      ],
+      "roles": [
+        "supporting",
+        "剑客"
+      ],
+      "character_types": [
+        "豪迈型",
+        "侠义型",
+        "力量型"
+      ],
+      "traits": [
+        "以游方剑客身份行走江湖借宿荒寺",
+        "以深厚道术修为降妖除魔但不滥杀",
+        "在书生求助时以义气为重慷慨出手",
+        "以经验和法力辨识妖邪善恶不以外表判断"
+      ],
+      "dialogue_style": [
+        "以豪迈直爽的语气说话不绕弯子",
+        "在施展法术时以洪亮短喝提振气势",
+        "在判断善恶时以斩钉截铁的断语下结论"
+      ],
+      "relationships": [
+        "known_ning_caichen_ghost_story"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Ghost_Story",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Ghost Story",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_nie_ning_ghost_story",
+      "work_id": "work_chinese_ghost_story",
+      "from_character_id": "known_nie_xiaoqian_ghost_story",
+      "to_character_id": "known_ning_caichen_ghost_story",
+      "relation": "被控制的女鬼与正直书生跨越人鬼界限的信任与救赎",
+      "description": "聂小倩被树妖姥姥控制驱使迷惑路人,在遇见宁采臣后以含蓄方式示警。宁采臣不以鬼神论善恶,在得知小倩身世后选择信任并伸出援手。小倩从被迫害者变为主动求救者,宁采臣从陌路书生变为解救者。两人关系展现了超越身份界限的信任如何成为救赎的起点。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Ghost_Story",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Ghost Story",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_ning_yan_ghost_story",
+      "work_id": "work_chinese_ghost_story",
+      "from_character_id": "known_ning_caichen_ghost_story",
+      "to_character_id": "known_yan_chixia_ghost_story",
+      "relation": "书生与剑客在荒寺中因义气结交共抗妖邪",
+      "description": "宁采臣与燕赤霞在兰若寺偶遇,一为借宿书生一为游方剑客。燕赤霞以经验和法力辨识妖邪善恶,在宁采臣求助时以义气为重慷慨出手。两人一文一武,在解救聂小倩的过程中形成互补搭档,展现了书生的勇气与剑客的侠义如何在非常境遇中结为同盟。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Ghost_Story",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Ghost Story",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_ghost_story_temple_encounter",
+      "work_id": "work_chinese_ghost_story",
+      "name": "书生在荒寺夜遇女鬼以礼相待不惧",
+      "participant_ids": [
+        "known_nie_xiaoqian_ghost_story",
+        "known_ning_caichen_ghost_story"
+      ],
+      "setting": "兰若寺荒庙",
+      "conflict_type": "人鬼相遇",
+      "emotional_arc": [
+        "孤寂",
+        "警觉",
+        "试探",
+        "信任"
+      ],
+      "visual_actions": [
+        "书生独自在荒废古寺中借宿过夜",
+        "女鬼受驱使前来迷惑书生却被书生正气所慑",
+        "女鬼转而以含蓄方式向书生示警",
+        "书生在得知对方身份后以礼相待不以鬼神论善恶"
+      ],
+      "reusable_beats": [
+        "旅人在荒废场所独自过夜",
+        "超自然存在受驱使接近目标却被正气所慑",
+        "被迫害者转而以含蓄方式向陌生人示警",
+        "陌生人在得知对方真实身份后以礼相待不以偏见判断"
+      ],
+      "dialogue_patterns": [
+        "以含蓄委婉的暗示表达危险",
+        "以平静理性的态度回应超自然现象",
+        "以书卷气的礼貌对待非常规来客"
+      ],
+      "abstraction": "提取旅人在荒废场所独遇超自然存在、被迫害者以含蓄方式示警、陌生人在得知真实身份后以礼相待不以偏见判断的结构,核心张力来自荒寺的孤寂与试探的善意以及人鬼身份的反差,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Ghost_Story",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Ghost Story",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_ghost_story_reburial_rescue",
+      "work_id": "work_chinese_ghost_story",
+      "name": "书生与剑客协作迁葬解救女鬼脱离控制",
+      "participant_ids": [
+        "known_ning_caichen_ghost_story",
+        "known_yan_chixia_ghost_story",
+        "known_nie_xiaoqian_ghost_story"
+      ],
+      "setting": "兰若寺荒野",
+      "conflict_type": "救赎解救",
+      "emotional_arc": [
+        "紧张",
+        "协作",
+        "释然",
+        "安息"
+      ],
+      "visual_actions": [
+        "剑客以法术护持书生前往女鬼遗骨所在",
+        "书生以凡人之力挖掘并收敛遗骨",
+        "剑客在旁以法器抵御树妖干扰",
+        "迁葬完成后女鬼脱离控制获得安息"
+      ],
+      "reusable_beats": [
+        "力量型角色以法术护持凡人前往危险之地",
+        "凡人以自身力量完成关键任务",
+        "护持者在旁抵御外部干扰",
+        "任务完成后受害者脱离控制获得安宁"
+      ],
+      "dialogue_patterns": [
+        "以简洁指令协调行动",
+        "以豪迈短喝回应威胁",
+        "以克制语气确认任务完成"
+      ],
+      "abstraction": "提取力量型角色以法术护持凡人前往危险之地完成关键任务、护持者抵御干扰、任务完成后受害者脱离控制获得安息的结构,核心张力来自凡人勇气与超自然力量的协作以及控制与解脱的转折,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Chinese_Ghost_Story",
+          "source_name": "Wikipedia",
+          "page_title": "A Chinese Ghost Story",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_pulp_fiction",
+      "title": "低俗小说",
+      "original_title": "Pulp Fiction",
+      "aliases": [
+        "Pulp Fiction",
+        "黑色追缉令"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1994,
+      "genres": [
+        "犯罪",
+        "剧情",
+        "黑色幽默"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pulp_Fiction",
+          "source_name": "Wikipedia",
+          "page_title": "Pulp Fiction",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_vincent_vega_pulp",
+      "work_id": "work_pulp_fiction",
+      "name": "文森特·维加",
+      "aliases": [
+        "Vincent Vega",
+        "Vincent"
+      ],
+      "roles": [
+        "protagonist",
+        "杀手"
+      ],
+      "character_types": [
+        "职业型",
+        "矛盾型",
+        "命运型"
+      ],
+      "traits": [
+        "以职业杀手身份执行老板任务却对老板妻子产生微妙情感",
+        "在执行任务间隙讨论日常琐事如快餐文化差异",
+        "以专业冷静处理突发事件却在关键时刻因疏忽遭遇命运反转",
+        "在多重叙事线索中作为交叉角色连接不同故事线"
+      ],
+      "dialogue_style": [
+        "以漫不经心的闲聊语气讨论严肃话题",
+        "在执行任务时以专业简洁的指令行动",
+        "在面对尴尬处境时以无奈自嘲化解"
+      ],
+      "relationships": [
+        "known_jules_winnfield_pulp"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pulp_Fiction",
+          "source_name": "Wikipedia",
+          "page_title": "Pulp Fiction",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_jules_winnfield_pulp",
+      "work_id": "work_pulp_fiction",
+      "name": "朱尔斯·温菲尔德",
+      "aliases": [
+        "Jules Winnfield",
+        "Jules"
+      ],
+      "roles": [
+        "protagonist",
+        "杀手"
+      ],
+      "character_types": [
+        "转变型",
+        "哲思型",
+        "职业型"
+      ],
+      "traits": [
+        "在执行杀人任务前以背诵经文仪式化地宣告命运",
+        "在经历奇迹般幸存后对职业和信仰产生根本质疑",
+        "以街头智慧和对哲学的思考形成独特世界观",
+        "最终选择放弃杀手生涯寻求救赎"
+      ],
+      "dialogue_style": [
+        "在宣告命运时以庄严仪式感引用经文",
+        "在日常对话中以黑人俚语和街头智慧交流",
+        "在反思人生时以哲学思辨语气自问自答"
+      ],
+      "relationships": [
+        "known_vincent_vega_pulp"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pulp_Fiction",
+          "source_name": "Wikipedia",
+          "page_title": "Pulp Fiction",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_mia_wallace_pulp",
+      "work_id": "work_pulp_fiction",
+      "name": "米娅·华莱士",
+      "aliases": [
+        "Mia Wallace",
+        "Mia"
+      ],
+      "roles": [
+        "supporting",
+        "黑帮老大之妻"
+      ],
+      "character_types": [
+        "魅力型",
+        "神秘型",
+        "冒险型"
+      ],
+      "traits": [
+        "以黑帮老大妻子的身份享受特权却渴望日常刺激",
+        "在夜店中展现出色的舞姿和自信魅力",
+        "在意外过量后濒临死亡被文森特急救脱险",
+        "以神秘微笑和不可捉摸的态度保持距离感"
+      ],
+      "dialogue_style": [
+        "以慵懒低沉的语调提出暧昧邀请",
+        "在社交场合以自信幽默主导对话",
+        "在涉及私人话题时以转移话题保持神秘"
+      ],
+      "relationships": [
+        "known_vincent_vega_pulp"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pulp_Fiction",
+          "source_name": "Wikipedia",
+          "page_title": "Pulp Fiction",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_vincent_jules_pulp",
+      "work_id": "work_pulp_fiction",
+      "from_character_id": "known_vincent_vega_pulp",
+      "to_character_id": "known_jules_winnfield_pulp",
+      "relation": "职业杀手搭档在日常闲聊与生死任务间的默契与分歧",
+      "description": "文森特和朱尔斯作为搭档执行杀人任务,在车内讨论快餐文化差异等日常琐事。朱尔斯在经历奇迹幸存后选择退出,文森特继续职业道路最终遭遇命运反转。两人关系展现了职业搭档在生死边缘对命运的不同选择——一个寻求救赎一个继续沉沦。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pulp_Fiction",
+          "source_name": "Wikipedia",
+          "page_title": "Pulp Fiction",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_vincent_mia_pulp",
+      "work_id": "work_pulp_fiction",
+      "from_character_id": "known_vincent_vega_pulp",
+      "to_character_id": "known_mia_wallace_pulp",
+      "relation": "杀手与黑帮老大之妻在护送任务中的暧昧与危险",
+      "description": "文森特受老板之命护送米娅外出,米娅以神秘魅力和冒险精神试探文森特的底线。文森特在职业忠诚与个人情感间挣扎。米娅意外过量后文森特以急救针挽救其生命。两人关系展现了在危险边界上个人欲望与职业纪律的张力。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pulp_Fiction",
+          "source_name": "Wikipedia",
+          "page_title": "Pulp Fiction",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_pulp_dance_contest",
+      "work_id": "work_pulp_fiction",
+      "name": "杀手与黑帮老大之妻在夜店共舞",
+      "participant_ids": [
+        "known_vincent_vega_pulp",
+        "known_mia_wallace_pulp"
+      ],
+      "setting": "复古夜店",
+      "conflict_type": "暧昧试探",
+      "emotional_arc": [
+        "紧张",
+        "放松",
+        "沉醉",
+        "克制"
+      ],
+      "visual_actions": [
+        "两人来到复古夜店参加扭摆舞比赛",
+        "在众目睽睽下以自信舞姿完成表演",
+        "在舞蹈中以肢体语言试探彼此的边界",
+        "在回到住处后以克制收场维持职业底线"
+      ],
+      "reusable_beats": [
+        "职业执行者在任务间隙与目标人物进入社交场合",
+        "两人在众目睽睽下以自信表现完成公开互动",
+        "以肢体语言试探彼此的边界与意图",
+        "在回到私密空间后以克制收场维持职业底线"
+      ],
+      "dialogue_patterns": [
+        "以慵懒邀请提出社交建议",
+        "在公共场合以幽默自信主导互动",
+        "在私密时刻以沉默克制回应暧昧"
+      ],
+      "abstraction": "提取职业执行者在任务间隙与目标人物进入社交场合、以自信表现完成公开互动、以肢体语言试探边界、最终克制收场维持底线的结构,核心张力来自职业纪律与个人欲望的拉扯以及公开场合与私密空间的转换,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pulp_Fiction",
+          "source_name": "Wikipedia",
+          "page_title": "Pulp Fiction",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_pulp_miracle_survival",
+      "work_id": "work_pulp_fiction",
+      "name": "杀手在枪战中奇迹幸存后质疑职业信仰",
+      "participant_ids": [
+        "known_vincent_vega_pulp",
+        "known_jules_winnfield_pulp"
+      ],
+      "setting": "公寓房间",
+      "conflict_type": "命运转折",
+      "emotional_arc": [
+        "紧张",
+        "震惊",
+        "反思",
+        "决裂"
+      ],
+      "visual_actions": [
+        "两名杀手在执行任务时遭遇近距离枪击",
+        "子弹奇迹般全部偏离两人毫发无伤",
+        "一人将其解读为神迹开始质疑职业信仰",
+        "另一人不以为然继续职业道路最终遭遇命运反转"
+      ],
+      "reusable_beats": [
+        "两名职业执行者在任务中遭遇致命意外",
+        "意外以不可思议的方式未造成伤害",
+        "一人将幸存解读为超自然信号开始反思",
+        "另一人忽视信号继续原路径最终遭遇反转"
+      ],
+      "dialogue_patterns": [
+        "在震惊后以庄严语气解读超自然意义",
+        "在日常对话中以漫不经心态度回避哲学问题",
+        "在决裂时以平静语气表达不同选择"
+      ],
+      "abstraction": "提取两名职业执行者在任务中遭遇致命意外奇迹幸存、一人将幸存解读为超自然信号开始反思另一人忽视信号继续原路径最终遭遇反转的结构,核心张力来自幸存的偶然性与解读的分歧以及同一路径的不同终点,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pulp_Fiction",
+          "source_name": "Wikipedia",
+          "page_title": "Pulp Fiction",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}

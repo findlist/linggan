@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_12_angry_men",
+      "title": "十二怒汉",
+      "original_title": "12 Angry Men",
+      "aliases": [
+        "12 Angry Men",
+        "十二怒汉"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1957,
+      "genres": [
+        "剧情",
+        "法律",
+        "悬疑"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/12_Angry_Men_(1957_film)",
+          "source_name": "Wikipedia",
+          "page_title": "12 Angry Men (1957 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_juror_8_twelve_angry_men",
+      "work_id": "work_12_angry_men",
+      "name": "八号陪审员",
+      "aliases": [
+        "Juror 8",
+        "Juror Eight"
+      ],
+      "roles": [
+        "protagonist",
+        "陪审员"
+      ],
+      "character_types": [
+        "理性型",
+        "坚持型",
+        "引导型"
+      ],
+      "traits": [
+        "在十一人一致认定有罪时唯一投无罪票引发讨论",
+        "以耐心和逻辑逐步拆解看似铁证的证据链",
+        "不急于说服他人而是以提问引导陪审员自行思考",
+        "以冷静克制在压力下坚持合理怀疑原则"
+      ],
+      "dialogue_style": [
+        "以平和提问引导他人思考而非直接反驳",
+        "在展示证据漏洞时以清晰逻辑层层推进",
+        "在遭遇人身攻击时以冷静沉默回应不升级冲突"
+      ],
+      "relationships": [
+        "known_juror_3_twelve_angry_men"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/12_Angry_Men_(1957_film)",
+          "source_name": "Wikipedia",
+          "page_title": "12 Angry Men (1957 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_juror_3_twelve_angry_men",
+      "work_id": "work_12_angry_men",
+      "name": "三号陪审员",
+      "aliases": [
+        "Juror 3",
+        "Juror Three"
+      ],
+      "roles": [
+        "antagonist",
+        "陪审员"
+      ],
+      "character_types": [
+        "情绪型",
+        "固执型",
+        "投射型"
+      ],
+      "traits": [
+        "以最激烈态度坚持有罪立场不妥协",
+        "将与儿子的父子矛盾投射到被告身上",
+        "在讨论中频繁以人身攻击替代理性论证",
+        "在最终情感崩溃后改变立场暴露真实动机"
+      ],
+      "dialogue_style": [
+        "以激动高声的语调坚持己见",
+        "在论证受质疑时以人身攻击转移焦点",
+        "在情感崩溃时以颤抖声音承认真实动机"
+      ],
+      "relationships": [
+        "known_juror_8_twelve_angry_men"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/12_Angry_Men_(1957_film)",
+          "source_name": "Wikipedia",
+          "page_title": "12 Angry Men (1957 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_juror_10_twelve_angry_men",
+      "work_id": "work_12_angry_men",
+      "name": "十号陪审员",
+      "aliases": [
+        "Juror 10",
+        "Juror Ten"
+      ],
+      "roles": [
+        "supporting",
+        "陪审员"
+      ],
+      "character_types": [
+        "偏见型",
+        "排斥型",
+        "爆发型"
+      ],
+      "traits": [
+        "以明显的阶层偏见驱动判断而非证据",
+        "在讨论中频繁发表歧视性言论疏远他人",
+        "在偏见被多数人沉默抵制后仍不自觉问题",
+        "最终在孤立中被迫退让"
+      ],
+      "dialogue_style": [
+        "以居高临下的语气发表偏见性断言",
+        "在被质疑时以更大声量重复偏见",
+        "在被集体沉默抵制后以困惑和愤怒收场"
+      ],
+      "relationships": [
+        "known_juror_8_twelve_angry_men"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/12_Angry_Men_(1957_film)",
+          "source_name": "Wikipedia",
+          "page_title": "12 Angry Men (1957 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_juror8_juror3_twelve_angry_men",
+      "work_id": "work_12_angry_men",
+      "from_character_id": "known_juror_8_twelve_angry_men",
+      "to_character_id": "known_juror_3_twelve_angry_men",
+      "relation": "理性引导者与情绪固执者在密闭空间中的立场对决",
+      "description": "八号陪审员以唯一反对票引发讨论,三号陪审员以最激烈态度坚持有罪。八号以耐心和逻辑拆解证据,三号以人身攻击和情绪爆发回应。最终三号的坚持被揭示为与儿子矛盾的投射,在情感崩溃后改变立场。两人关系展现了理性引导与情绪投射在密闭审议中的对决。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/12_Angry_Men_(1957_film)",
+          "source_name": "Wikipedia",
+          "page_title": "12 Angry Men (1957 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_juror8_juror10_twelve_angry_men",
+      "work_id": "work_12_angry_men",
+      "from_character_id": "known_juror_8_twelve_angry_men",
+      "to_character_id": "known_juror_10_twelve_angry_men",
+      "relation": "理性引导者与偏见驱动者在审议中的价值观冲突",
+      "description": "十号陪审员以阶层偏见驱动判断,频繁发表歧视性言论。八号陪审员不直接反驳而是以提问引导他人思考。多数陪审员对十号的偏见以集体沉默抵制,最终十号在孤立中被迫退让。两人关系展现了理性引导与偏见驱动在群体审议中的冲突方式。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/12_Angry_Men_(1957_film)",
+          "source_name": "Wikipedia",
+          "page_title": "12 Angry Men (1957 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_twelve_angry_men_first_vote",
+      "work_id": "work_12_angry_men",
+      "name": "十一人一致有罪时一人投无罪引发讨论",
+      "participant_ids": [
+        "known_juror_8_twelve_angry_men"
+      ],
+      "setting": "陪审团议事室",
+      "conflict_type": "立场对决",
+      "emotional_arc": [
+        "例行公事",
+        "意外",
+        "压力",
+        "坚持"
+      ],
+      "visual_actions": [
+        "陪审员们在闷热议事室中进行首次举手表决",
+        "十一人举手认定有罪仅一人不举手",
+        "众人以质疑和不满转向唯一反对者",
+        "反对者以平静语气表示需要讨论而非急于说服"
+      ],
+      "reusable_beats": [
+        "群体在密闭空间中进行例行表决",
+        "仅一人持不同立场承受群体压力",
+        "多数以质疑和不满向少数施压",
+        "少数以平静态度提出讨论需求而非急于说服"
+      ],
+      "dialogue_patterns": [
+        "在群体压力下以平和语气表达立场",
+        "在质疑中以提问替代反驳引导思考",
+        "在施压中以克制态度坚持合理怀疑"
+      ],
+      "abstraction": "提取群体在密闭空间中进行例行表决时仅一人持不同立场承受群体压力、以平静态度提出讨论需求而非急于说服的结构,核心张力来自例行公事与意外反对以及群体压力与个人坚持的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/12_Angry_Men_(1957_film)",
+          "source_name": "Wikipedia",
+          "page_title": "12 Angry Men (1957 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_twelve_angry_men_breakdown",
+      "work_id": "work_12_angry_men",
+      "name": "固执者在情感崩溃中暴露真实动机后改变立场",
+      "participant_ids": [
+        "known_juror_3_twelve_angry_men",
+        "known_juror_8_twelve_angry_men"
+      ],
+      "setting": "陪审团议事室",
+      "conflict_type": "情感崩溃",
+      "emotional_arc": [
+        "固执",
+        "激怒",
+        "崩溃",
+        "释然"
+      ],
+      "visual_actions": [
+        "固执者在论点被逐一驳倒后仍坚持有罪立场",
+        "在无法以理性回应时以愤怒爆发掩盖无力",
+        "在愤怒中不慎流露与儿子的私人矛盾投射",
+        "在情感崩溃后沉默改变立场暴露真实动机"
+      ],
+      "reusable_beats": [
+        "固执者在论点被逐一驳倒后仍不改变立场",
+        "在无法以理性回应时以情绪爆发掩盖无力",
+        "在情绪失控中不慎流露私人矛盾的投射",
+        "在情感崩溃后沉默改变立场暴露真实动机"
+      ],
+      "dialogue_patterns": [
+        "在无力回应时以高声量重复立场",
+        "在情绪失控中以颤抖声音泄露私人经历",
+        "在崩溃后以沉默表达放弃"
+      ],
+      "abstraction": "提取固执者在论点被逐一驳倒后仍不改变立场、在情绪失控中流露私人矛盾投射、在情感崩溃后沉默改变立场的结构,核心张力来自理性论证的层层推进与情绪防线的逐层瓦解以及公共立场与私人动机的暴露,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/12_Angry_Men_(1957_film)",
+          "source_name": "Wikipedia",
+          "page_title": "12 Angry Men (1957 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}
