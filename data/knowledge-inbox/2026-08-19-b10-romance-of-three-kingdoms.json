@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_romance_of_three_kingdoms",
+      "title": "三国演义",
+      "original_title": "Romance of the Three Kingdoms",
+      "aliases": [
+        "Romance of the Three Kingdoms",
+        "Three Kingdoms",
+        "San Guo Yan Yi"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 1994,
+      "genres": [
+        "历史",
+        "战争",
+        "政治"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_caocao_three_kingdoms",
+      "work_id": "work_romance_of_three_kingdoms",
+      "name": "曹操",
+      "aliases": [
+        "Cao Cao",
+        "Mengde"
+      ],
+      "roles": [
+        "antagonist",
+        "枭雄"
+      ],
+      "character_types": [
+        "枭雄型",
+        "权谋型",
+        "复杂反派型"
+      ],
+      "traits": [
+        "以宁教我负天下人的果断行事",
+        "唯才是举不拘一格的用人策略",
+        "在战场上临危不乱冷静决策",
+        "兼具诗人气质与政治野心"
+      ],
+      "dialogue_style": [
+        "以简洁有力的断句下达命令",
+        "在沉思时以低沉吟诵表达志向",
+        "对人才以礼贤下士的语气招揽"
+      ],
+      "relationships": [
+        "known_liubei_three_kingdoms",
+        "known_zhuge_liang_three_kingdoms"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_liubei_three_kingdoms",
+      "work_id": "work_romance_of_three_kingdoms",
+      "name": "刘备",
+      "aliases": [
+        "Liu Bei",
+        "Xuande"
+      ],
+      "roles": [
+        "protagonist",
+        "仁义之主"
+      ],
+      "character_types": [
+        "仁义型",
+        "领袖型",
+        "从草根到帝王型"
+      ],
+      "traits": [
+        "以仁义为本收拢人心",
+        "在逆境中屡败屡战从不放弃",
+        "以兄弟情义维系核心团队",
+        "从织席贩履到建立蜀汉的逆袭"
+      ],
+      "dialogue_style": [
+        "以诚恳谦逊的语气表达志向",
+        "在危急时以坚定语气稳定军心",
+        "对兄弟以情义为重的口吻嘱托"
+      ],
+      "relationships": [
+        "known_caocao_three_kingdoms",
+        "known_zhuge_liang_three_kingdoms"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_zhuge_liang_three_kingdoms",
+      "work_id": "work_romance_of_three_kingdoms",
+      "name": "诸葛亮",
+      "aliases": [
+        "Zhuge Liang",
+        "Kongming"
+      ],
+      "roles": [
+        "supporting",
+        "军师"
+      ],
+      "character_types": [
+        "智者型",
+        "忠诚型",
+        "策略家型"
+      ],
+      "traits": [
+        "以隆中对规划三分天下格局",
+        "在绝境中以智谋扭转战局",
+        "以鞠躬尽瘁死而后已的忠诚辅佐幼主",
+        "在北伐中明知不可为而为之"
+      ],
+      "dialogue_style": [
+        "以从容平和的语气分析天下大势",
+        "在部署军事时以简洁条理的指令指挥",
+        "在表达忠诚时以恳切深沉的语调陈述"
+      ],
+      "relationships": [
+        "known_liubei_three_kingdoms"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_caocao_liubei_three_kingdoms",
+      "work_id": "work_romance_of_three_kingdoms",
+      "from_character_id": "known_caocao_three_kingdoms",
+      "to_character_id": "known_liubei_three_kingdoms",
+      "relation": "乱世枭雄与仁义之主的宿命对手",
+      "description": "曹操与刘备在乱世中选择了截然不同的道路，曹操以权谋和果断统一北方，刘备以仁义和兄弟情义建立蜀汉。两人多次交手又互相欣赏，曹操曾煮酒论英雄评价刘备，两人关系是三国格局的核心张力之一。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_liubei_zhuge_liang_three_kingdoms",
+      "work_id": "work_romance_of_three_kingdoms",
+      "from_character_id": "known_liubei_three_kingdoms",
+      "to_character_id": "known_zhuge_liang_three_kingdoms",
+      "relation": "仁义之主与卧龙军师的托孤信任",
+      "description": "刘备三顾茅庐请诸葛亮出山，此后将军事大权托付于他。刘备临终白帝城托孤，对诸葛亮说若嗣子可辅则辅，不可辅则可自取。诸葛亮以鞠躬尽瘁死而后已回报信任，六出祁山北伐直至病逝五丈原。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_three_kingdoms_heroes_discuss",
+      "work_id": "work_romance_of_three_kingdoms",
+      "name": "枭雄与草根在乱世中以煮酒论天下英雄",
+      "participant_ids": [
+        "known_caocao_three_kingdoms",
+        "known_liubei_three_kingdoms"
+      ],
+      "setting": "曹操府邸",
+      "conflict_type": "试探",
+      "emotional_arc": [
+        "平静",
+        "紧张",
+        "惊惧",
+        "隐忍"
+      ],
+      "visual_actions": [
+        "两位乱世豪杰在私人宴饮中论天下大势",
+        "强势方以漫不经心的试探逼近弱势方",
+        "弱势方以惊雷为掩饰蒙混过关",
+        "在表面和谐下暗藏杀机与自保"
+      ],
+      "reusable_beats": [
+        "两位对手在表面友好的私人场合互相试探",
+        "强势方以哲学话题为诱饵引出真实意图",
+        "弱势方以自然现象为借口掩盖内心惊惧",
+        "双方都心照不宣地维持表面关系"
+      ],
+      "dialogue_patterns": [
+        "以从容的语气讨论天下英雄",
+        "在被试探时以惶恐语气掩饰",
+        "双方以隐喻和含蓄的表达周旋"
+      ],
+      "abstraction": "提取两位乱世豪杰在私人宴饮中以讨论英雄为名互相试探底线的结构，核心张力来自表面的友善与暗中的敌意对比，以自然现象作为掩饰内心的转折点，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_three_kingdoms_trust_orphan",
+      "work_id": "work_romance_of_three_kingdoms",
+      "name": "仁义之主临终将军权和幼子托付给军师",
+      "participant_ids": [
+        "known_liubei_three_kingdoms",
+        "known_zhuge_liang_three_kingdoms"
+      ],
+      "setting": "白帝城",
+      "conflict_type": "托付",
+      "emotional_arc": [
+        "沉重",
+        "信任",
+        "悲壮",
+        "承诺"
+      ],
+      "visual_actions": [
+        "病重的主君在临终前召见军师",
+        "以极为坦诚的方式将军权和幼子托付",
+        "甚至表示若嗣子不才可取而代之",
+        "军师以涕泣誓言鞠躬尽瘁死而后已"
+      ],
+      "reusable_beats": [
+        "领袖在弥留之际做出最关键的权力交接",
+        "以超越常规信任的方式托付后事",
+        "被托付者以终身誓言回报信任",
+        "从此两人命运和理想合为一体"
+      ],
+      "dialogue_patterns": [
+        "以虚弱但坚定的语气交代遗言",
+        "在托付时以超乎寻常的坦诚表达信任",
+        "被托付者以沉痛的誓词语气回应"
+      ],
+      "abstraction": "提取领袖在临终前以超越常规信任的方式将军权和国事托付给军师、军师以终身誓言回报的结构，核心张力来自权力交接的极端坦诚与被托付者的悲壮承诺，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}

@@ -1123,6 +1123,101 @@
         }
       ],
       "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_nirvana_in_fire",
+      "title": "琅琊榜",
+      "original_title": "Nirvana in Fire",
+      "aliases": [
+        "Nirvana in Fire",
+        "Lang Ya Bang"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2015,
+      "genres": [
+        "古装",
+        "权谋",
+        "复仇"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_romance_of_three_kingdoms",
+      "title": "三国演义",
+      "original_title": "Romance of the Three Kingdoms",
+      "aliases": [
+        "Romance of the Three Kingdoms",
+        "Three Kingdoms",
+        "San Guo Yan Yi"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 1994,
+      "genres": [
+        "历史",
+        "战争",
+        "政治"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_water_margin",
+      "title": "水浒传",
+      "original_title": "Water Margin",
+      "aliases": [
+        "Water Margin",
+        "Outlaws of the Marsh",
+        "Shui Hu Zhuan"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 1998,
+      "genres": [
+        "历史",
+        "动作",
+        "兄弟情义"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -5527,6 +5622,410 @@
         }
       ],
       "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_mei_changsu_nirvana",
+      "work_id": "work_nirvana_in_fire",
+      "name": "梅长苏",
+      "aliases": [
+        "Mei Changsu",
+        "Su Zhe",
+        "Lin Shu"
+      ],
+      "roles": [
+        "protagonist",
+        "谋士"
+      ],
+      "character_types": [
+        "复仇者型",
+        "智者型",
+        "隐忍型"
+      ],
+      "traits": [
+        "以病弱之躯策划翻案大计",
+        "在朝堂权谋中以借刀杀人不动声色",
+        "以全新的身份隐藏真实过往",
+        "在复仇与守护间承受身心双重煎熬"
+      ],
+      "dialogue_style": [
+        "以平静从容的语气分析朝堂局势",
+        "在表达情感时以隐忍克制的低语暗示",
+        "对旧人以含蓄隐喻的方式传递心意"
+      ],
+      "relationships": [
+        "known_jingyan_nirvana",
+        "known_prince_qing_nirvana"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_jingyan_nirvana",
+      "work_id": "work_nirvana_in_fire",
+      "name": "靖王",
+      "aliases": [
+        "Jing Yan",
+        "Prince Jing",
+        "Xiao Jingyan"
+      ],
+      "roles": [
+        "supporting",
+        "皇子"
+      ],
+      "character_types": [
+        "正直型",
+        "武将型",
+        "被蒙在鼓中型"
+      ],
+      "traits": [
+        "以耿直刚正的性格在朝堂中孤立无援",
+        "在不知谋士真实身份的情况下信任对方",
+        "为替旧友翻案坚持不屈不挠",
+        "在权力争斗中保持赤子之心"
+      ],
+      "dialogue_style": [
+        "以直率坦诚的语气表达立场",
+        "在不解时以质问的语气追问",
+        "对旧友以沉痛压抑的语调回忆"
+      ],
+      "relationships": [
+        "known_mei_changsu_nirvana"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_prince_qing_nirvana",
+      "work_id": "work_nirvana_in_fire",
+      "name": "誉王",
+      "aliases": [
+        "Yu Wang",
+        "Prince Yu",
+        "Xiao Jinghuan"
+      ],
+      "roles": [
+        "antagonist",
+        "夺嫡皇子"
+      ],
+      "character_types": [
+        "权谋型",
+        "野心型",
+        "复杂反派型"
+      ],
+      "traits": [
+        "以礼贤下士的姿态笼络朝臣",
+        "在夺嫡争斗中以阴谋诡计行事",
+        "在表面温和下隐藏极深野心",
+        "在失败后以悲剧性的绝望面对身世真相"
+      ],
+      "dialogue_style": [
+        "以温和有礼的语气掩饰野心",
+        "在密谋时以低沉阴柔的语调部署",
+        "在绝望时以颤抖的声音质问命运"
+      ],
+      "relationships": [
+        "known_mei_changsu_nirvana"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_caocao_three_kingdoms",
+      "work_id": "work_romance_of_three_kingdoms",
+      "name": "曹操",
+      "aliases": [
+        "Cao Cao",
+        "Mengde"
+      ],
+      "roles": [
+        "antagonist",
+        "枭雄"
+      ],
+      "character_types": [
+        "枭雄型",
+        "权谋型",
+        "复杂反派型"
+      ],
+      "traits": [
+        "以宁教我负天下人的果断行事",
+        "唯才是举不拘一格的用人策略",
+        "在战场上临危不乱冷静决策",
+        "兼具诗人气质与政治野心"
+      ],
+      "dialogue_style": [
+        "以简洁有力的断句下达命令",
+        "在沉思时以低沉吟诵表达志向",
+        "对人才以礼贤下士的语气招揽"
+      ],
+      "relationships": [
+        "known_liubei_three_kingdoms",
+        "known_zhuge_liang_three_kingdoms"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_liubei_three_kingdoms",
+      "work_id": "work_romance_of_three_kingdoms",
+      "name": "刘备",
+      "aliases": [
+        "Liu Bei",
+        "Xuande"
+      ],
+      "roles": [
+        "protagonist",
+        "仁义之主"
+      ],
+      "character_types": [
+        "仁义型",
+        "领袖型",
+        "从草根到帝王型"
+      ],
+      "traits": [
+        "以仁义为本收拢人心",
+        "在逆境中屡败屡战从不放弃",
+        "以兄弟情义维系核心团队",
+        "从织席贩履到建立蜀汉的逆袭"
+      ],
+      "dialogue_style": [
+        "以诚恳谦逊的语气表达志向",
+        "在危急时以坚定语气稳定军心",
+        "对兄弟以情义为重的口吻嘱托"
+      ],
+      "relationships": [
+        "known_caocao_three_kingdoms",
+        "known_zhuge_liang_three_kingdoms"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_zhuge_liang_three_kingdoms",
+      "work_id": "work_romance_of_three_kingdoms",
+      "name": "诸葛亮",
+      "aliases": [
+        "Zhuge Liang",
+        "Kongming"
+      ],
+      "roles": [
+        "supporting",
+        "军师"
+      ],
+      "character_types": [
+        "智者型",
+        "忠诚型",
+        "策略家型"
+      ],
+      "traits": [
+        "以隆中对规划三分天下格局",
+        "在绝境中以智谋扭转战局",
+        "以鞠躬尽瘁死而后已的忠诚辅佐幼主",
+        "在北伐中明知不可为而为之"
+      ],
+      "dialogue_style": [
+        "以从容平和的语气分析天下大势",
+        "在部署军事时以简洁条理的指令指挥",
+        "在表达忠诚时以恳切深沉的语调陈述"
+      ],
+      "relationships": [
+        "known_liubei_three_kingdoms"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_songjiang_water_margin",
+      "work_id": "work_water_margin",
+      "name": "宋江",
+      "aliases": [
+        "Song Jiang",
+        "Timely Rain",
+        "Song Gongming"
+      ],
+      "roles": [
+        "protagonist",
+        "梁山之主"
+      ],
+      "character_types": [
+        "领袖型",
+        "忠义型",
+        "矛盾型"
+      ],
+      "traits": [
+        "以仗义疏财赢得江湖兄弟拥戴",
+        "在反叛与招安之间内心撕裂",
+        "以忠义为本却最终选择归顺朝廷",
+        "领导一百零八将却无法改变命运"
+      ],
+      "dialogue_style": [
+        "以谦和有礼的语气对兄弟表达关怀",
+        "在重大决策时以沉重的语气陈述利弊",
+        "对朝廷以恭敬但带保留的口吻应对"
+      ],
+      "relationships": [
+        "known_linchong_water_margin",
+        "known_wusong_water_margin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_linchong_water_margin",
+      "work_id": "work_water_margin",
+      "name": "林冲",
+      "aliases": [
+        "Lin Chong",
+        "Panther Head"
+      ],
+      "roles": [
+        "supporting",
+        "禁军教头"
+      ],
+      "character_types": [
+        "悲情英雄型",
+        "武艺高强型",
+        "被逼上梁山型"
+      ],
+      "traits": [
+        "武艺高强却一再忍让",
+        "在被陷害后仍抱有回归正途的幻想",
+        "最终在绝境中被逼上梁山",
+        "以隐忍和克制面对不公直到爆发"
+      ],
+      "dialogue_style": [
+        "以克制隐忍的语气表达不满",
+        "在爆发时以决绝有力的短句宣泄",
+        "对兄弟以沉稳忠厚的口吻交流"
+      ],
+      "relationships": [
+        "known_songjiang_water_margin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_wusong_water_margin",
+      "work_id": "work_water_margin",
+      "name": "武松",
+      "aliases": [
+        "Wu Song",
+        "Pilgrim"
+      ],
+      "roles": [
+        "supporting",
+        "打虎英雄"
+      ],
+      "character_types": [
+        "豪迈型",
+        "复仇者型",
+        "快意恩仇型"
+      ],
+      "traits": [
+        "以赤手空拳打虎的勇猛闻名",
+        "在兄长被害后以果决手段复仇",
+        "以快意恩仇的性格行事不拘",
+        "在经历世间不公后选择出家"
+      ],
+      "dialogue_style": [
+        "以豪迈直爽的语气表达态度",
+        "在复仇时以冷酷果断的短句行动",
+        "对不公以愤慨有力的语言抨击"
+      ],
+      "relationships": [
+        "known_songjiang_water_margin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -6622,6 +7121,114 @@
           "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
           "source_name": "Wikipedia",
           "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_meichangsu_jingyan_nirvana",
+      "work_id": "work_nirvana_in_fire",
+      "from_character_id": "known_mei_changsu_nirvana",
+      "to_character_id": "known_jingyan_nirvana",
+      "relation": "病弱谋士与耿直皇子在隐藏身份下的主从信任",
+      "description": "梅长苏以全新身份辅佐靖王争嫡，靖王不知谋士就是已故挚友林殊。梅长苏在暗中为靖王铺路的同时承受着无法相认的痛苦，靖王在信任谋士与怀念旧友间挣扎。当真相最终揭开时，两人之间的主从信任升华为超越生死的兄弟情义。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_meichangsu_yuwang_nirvana",
+      "work_id": "work_nirvana_in_fire",
+      "from_character_id": "known_mei_changsu_nirvana",
+      "to_character_id": "known_prince_qing_nirvana",
+      "relation": "病弱谋士与野心皇子在权谋争斗中的利用与反制",
+      "description": "梅长苏表面上在誉王和太子之间周旋，实则利用誉王的野心推动靖王上位。誉王以为自己在招揽人才，不知已被谋士引入棋局。两人关系是权谋剧中经典的棋手与棋子关系，直到誉王发现自己从未掌握主动权。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_caocao_liubei_three_kingdoms",
+      "work_id": "work_romance_of_three_kingdoms",
+      "from_character_id": "known_caocao_three_kingdoms",
+      "to_character_id": "known_liubei_three_kingdoms",
+      "relation": "乱世枭雄与仁义之主的宿命对手",
+      "description": "曹操与刘备在乱世中选择了截然不同的道路，曹操以权谋和果断统一北方，刘备以仁义和兄弟情义建立蜀汉。两人多次交手又互相欣赏，曹操曾煮酒论英雄评价刘备，两人关系是三国格局的核心张力之一。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_liubei_zhuge_liang_three_kingdoms",
+      "work_id": "work_romance_of_three_kingdoms",
+      "from_character_id": "known_liubei_three_kingdoms",
+      "to_character_id": "known_zhuge_liang_three_kingdoms",
+      "relation": "仁义之主与卧龙军师的托孤信任",
+      "description": "刘备三顾茅庐请诸葛亮出山，此后将军事大权托付于他。刘备临终白帝城托孤，对诸葛亮说若嗣子可辅则辅，不可辅则可自取。诸葛亮以鞠躬尽瘁死而后已回报信任，六出祁山北伐直至病逝五丈原。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_songjiang_linchong_water_margin",
+      "work_id": "work_water_margin",
+      "from_character_id": "known_songjiang_water_margin",
+      "to_character_id": "known_linchong_water_margin",
+      "relation": "梁山之主与被逼上山的悲情英雄的惺惺相惜",
+      "description": "宋江以仗义疏财闻名江湖，林冲被陷害后走投无路上了梁山。宋江对林冲的武艺和隐忍深为敬重，林冲对宋江的忠义心怀认同。但宋江选择招安的道路让林冲等被逼上山的好汉内心复杂，两人关系反映了梁山内部反叛与归顺的根本矛盾。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_songjiang_wusong_water_margin",
+      "work_id": "work_water_margin",
+      "from_character_id": "known_songjiang_water_margin",
+      "to_character_id": "known_wusong_water_margin",
+      "relation": "梁山之主与快意恩仇英雄的兄弟情义",
+      "description": "宋江以谦和仗义的性格吸引武松上山，武松对宋江的领袖气质和忠义心怀敬佩。但武松快意恩仇的性格与宋江隐忍求招安的路线存在根本分歧，两人虽为兄弟却代表梁山两种截然不同的价值观。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
           "published_at": null,
           "collected_at": "2026-08-19T00:00:00.000Z"
         }
@@ -9597,6 +10204,286 @@
           "url": "https://en.wikipedia.org/wiki/To_Live_(1994_film)",
           "source_name": "Wikipedia",
           "page_title": "To Live (1994 film)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_nirvana_identity_reveal",
+      "work_id": "work_nirvana_in_fire",
+      "name": "谋士的真实身份在关键时刻被旧友辨认",
+      "participant_ids": [
+        "known_mei_changsu_nirvana",
+        "known_jingyan_nirvana"
+      ],
+      "setting": "靖王府",
+      "conflict_type": "身份揭露",
+      "emotional_arc": [
+        "压抑",
+        "震动",
+        "悲喜交加",
+        "释然"
+      ],
+      "visual_actions": [
+        "耿直皇子在某个细节中突然意识到谋士的真实身份",
+        "两人在沉默中对视确认无需言语的真相",
+        "多年的隐忍和误解在沉默中崩塌",
+        "旧友以新的方式重新确认彼此的关系"
+      ],
+      "reusable_beats": [
+        "一方长期隐藏真实身份与另一方共处",
+        "在某个关键细节中身份被无意暴露",
+        "双方在沉默对视中完成确认",
+        "多年的隐忍在无声中释放"
+      ],
+      "dialogue_patterns": [
+        "以平静的语气掩饰身份即将暴露的紧张",
+        "在被辨认时以沉默代替否认",
+        "在确认后以极简的低语表达多年隐忍"
+      ],
+      "abstraction": "提取一方长期隐藏身份与另一方共处、在关键细节中被辨认后在沉默中完成身份确认的结构，核心张力来自长期的隐忍与瞬间的震动对比，沉默取代对话成为情感高潮，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_nirvana_chess_game",
+      "work_id": "work_nirvana_in_fire",
+      "name": "病弱谋士在棋局中以借刀杀人不动声色",
+      "participant_ids": [
+        "known_mei_changsu_nirvana",
+        "known_prince_qing_nirvana"
+      ],
+      "setting": "誉王府",
+      "conflict_type": "权谋博弈",
+      "emotional_arc": [
+        "平静",
+        "暗流",
+        "收网",
+        "震撼"
+      ],
+      "visual_actions": [
+        "病弱谋士以闲谈姿态向野心皇子提出建议",
+        "野心皇子以为自己在利用谋士的智囊",
+        "实则谋士在暗中引导对手走向预设陷阱",
+        "当棋局揭晓时对手发现自己从来不是棋手"
+      ],
+      "reusable_beats": [
+        "弱势方以看似无害的建议引导强势方",
+        "强势方以为自己在利用弱势方",
+        "实则是弱势方在暗中布棋",
+        "在棋局揭晓时强势方才意识到自己一直是棋子"
+      ],
+      "dialogue_patterns": [
+        "以温和从容的语气提出看似中立的建议",
+        "在被追问时以谦逊的语气掩饰真实意图",
+        "在棋局揭晓后以平静的口吻总结因果"
+      ],
+      "abstraction": "提取弱势方以看似无害的建议引导强势方、在暗中布棋最终在揭晓时让对方发现自己一直是棋子的结构，核心张力来自表面主从关系与实际棋局控制权的反转，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_three_kingdoms_heroes_discuss",
+      "work_id": "work_romance_of_three_kingdoms",
+      "name": "枭雄与草根在乱世中以煮酒论天下英雄",
+      "participant_ids": [
+        "known_caocao_three_kingdoms",
+        "known_liubei_three_kingdoms"
+      ],
+      "setting": "曹操府邸",
+      "conflict_type": "试探",
+      "emotional_arc": [
+        "平静",
+        "紧张",
+        "惊惧",
+        "隐忍"
+      ],
+      "visual_actions": [
+        "两位乱世豪杰在私人宴饮中论天下大势",
+        "强势方以漫不经心的试探逼近弱势方",
+        "弱势方以惊雷为掩饰蒙混过关",
+        "在表面和谐下暗藏杀机与自保"
+      ],
+      "reusable_beats": [
+        "两位对手在表面友好的私人场合互相试探",
+        "强势方以哲学话题为诱饵引出真实意图",
+        "弱势方以自然现象为借口掩盖内心惊惧",
+        "双方都心照不宣地维持表面关系"
+      ],
+      "dialogue_patterns": [
+        "以从容的语气讨论天下英雄",
+        "在被试探时以惶恐语气掩饰",
+        "双方以隐喻和含蓄的表达周旋"
+      ],
+      "abstraction": "提取两位乱世豪杰在私人宴饮中以讨论英雄为名互相试探底线的结构，核心张力来自表面的友善与暗中的敌意对比，以自然现象作为掩饰内心的转折点，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_three_kingdoms_trust_orphan",
+      "work_id": "work_romance_of_three_kingdoms",
+      "name": "仁义之主临终将军权和幼子托付给军师",
+      "participant_ids": [
+        "known_liubei_three_kingdoms",
+        "known_zhuge_liang_three_kingdoms"
+      ],
+      "setting": "白帝城",
+      "conflict_type": "托付",
+      "emotional_arc": [
+        "沉重",
+        "信任",
+        "悲壮",
+        "承诺"
+      ],
+      "visual_actions": [
+        "病重的主君在临终前召见军师",
+        "以极为坦诚的方式将军权和幼子托付",
+        "甚至表示若嗣子不才可取而代之",
+        "军师以涕泣誓言鞠躬尽瘁死而后已"
+      ],
+      "reusable_beats": [
+        "领袖在弥留之际做出最关键的权力交接",
+        "以超越常规信任的方式托付后事",
+        "被托付者以终身誓言回报信任",
+        "从此两人命运和理想合为一体"
+      ],
+      "dialogue_patterns": [
+        "以虚弱但坚定的语气交代遗言",
+        "在托付时以超乎寻常的坦诚表达信任",
+        "被托付者以沉痛的誓词语气回应"
+      ],
+      "abstraction": "提取领袖在临终前以超越常规信任的方式将军权和国事托付给军师、军师以终身誓言回报的结构，核心张力来自权力交接的极端坦诚与被托付者的悲壮承诺，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Romance_of_the_Three_Kingdoms_(1994_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Romance of the Three Kingdoms (1994 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_water_margin_forced_to_rebel",
+      "work_id": "work_water_margin",
+      "name": "武艺高强者被步步紧逼最终走上反抗之路",
+      "participant_ids": [
+        "known_linchong_water_margin"
+      ],
+      "setting": "风雪中的山神庙",
+      "conflict_type": "被逼反抗",
+      "emotional_arc": [
+        "隐忍",
+        "绝望",
+        "爆发",
+        "决绝"
+      ],
+      "visual_actions": [
+        "武艺高强者一再忍让不断被陷害",
+        "在被流放途中仍抱有回归正途的幻想",
+        "在风雪夜被逼到绝境发现真相",
+        "在绝望中爆发以武力终结压迫者"
+      ],
+      "reusable_beats": [
+        "强者因体制不公被步步紧逼",
+        "一再忍让仍无法逃脱迫害",
+        "在绝境中发现阴谋真相",
+        "隐忍者最终爆发走上不归路"
+      ],
+      "dialogue_patterns": [
+        "以克制隐忍的语气忍受不公",
+        "在爆发时以决绝有力的短句宣泄",
+        "复仇后以平静的语气陈述因果"
+      ],
+      "abstraction": "提取武艺高强者在体制迫害下一再忍让最终被逼上反抗之路的结构，核心张力来自隐忍与爆发的极端反差，风雪夜作为情绪转折的视觉符号，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_water_margin_tiger_fight",
+      "work_id": "work_water_margin",
+      "name": "豪杰以赤手空拳在绝境中击杀猛兽",
+      "participant_ids": [
+        "known_wusong_water_margin"
+      ],
+      "setting": "景阳冈",
+      "conflict_type": "生死搏斗",
+      "emotional_arc": [
+        "豪迈",
+        "惊险",
+        "爆发",
+        "传奇"
+      ],
+      "visual_actions": [
+        "豪杰在酒后独自穿过猛兽出没的山冈",
+        "在猛兽扑来时以徒手搏斗求生",
+        "在生死关头以爆发力击杀猛兽",
+        "事后成为民间传说中的英雄"
+      ],
+      "reusable_beats": [
+        "豪迈者在醉酒状态下独自面对危险",
+        "在猛兽攻击下从被动转为主动反击",
+        "以赤手空拳在生死搏斗中获胜",
+        "事后一战成名成为传奇"
+      ],
+      "dialogue_patterns": [
+        "以豪迈的语气表达对危险的轻蔑",
+        "在搏斗中以用力的短促呼喝发力",
+        "事后以平淡口吻描述惊险经历"
+      ],
+      "abstraction": "提取豪杰以赤手空拳在绝境中击杀猛兽一战成名的结构，核心张力来自人类裸手力量与野兽力量的直接对抗，醉酒状态增加豪迈色彩，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
           "published_at": null,
           "collected_at": "2026-08-19T00:00:00.000Z"
         }

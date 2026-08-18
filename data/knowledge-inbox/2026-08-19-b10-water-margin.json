@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_water_margin",
+      "title": "水浒传",
+      "original_title": "Water Margin",
+      "aliases": [
+        "Water Margin",
+        "Outlaws of the Marsh",
+        "Shui Hu Zhuan"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 1998,
+      "genres": [
+        "历史",
+        "动作",
+        "兄弟情义"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_songjiang_water_margin",
+      "work_id": "work_water_margin",
+      "name": "宋江",
+      "aliases": [
+        "Song Jiang",
+        "Timely Rain",
+        "Song Gongming"
+      ],
+      "roles": [
+        "protagonist",
+        "梁山之主"
+      ],
+      "character_types": [
+        "领袖型",
+        "忠义型",
+        "矛盾型"
+      ],
+      "traits": [
+        "以仗义疏财赢得江湖兄弟拥戴",
+        "在反叛与招安之间内心撕裂",
+        "以忠义为本却最终选择归顺朝廷",
+        "领导一百零八将却无法改变命运"
+      ],
+      "dialogue_style": [
+        "以谦和有礼的语气对兄弟表达关怀",
+        "在重大决策时以沉重的语气陈述利弊",
+        "对朝廷以恭敬但带保留的口吻应对"
+      ],
+      "relationships": [
+        "known_linchong_water_margin",
+        "known_wusong_water_margin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_linchong_water_margin",
+      "work_id": "work_water_margin",
+      "name": "林冲",
+      "aliases": [
+        "Lin Chong",
+        "Panther Head"
+      ],
+      "roles": [
+        "supporting",
+        "禁军教头"
+      ],
+      "character_types": [
+        "悲情英雄型",
+        "武艺高强型",
+        "被逼上梁山型"
+      ],
+      "traits": [
+        "武艺高强却一再忍让",
+        "在被陷害后仍抱有回归正途的幻想",
+        "最终在绝境中被逼上梁山",
+        "以隐忍和克制面对不公直到爆发"
+      ],
+      "dialogue_style": [
+        "以克制隐忍的语气表达不满",
+        "在爆发时以决绝有力的短句宣泄",
+        "对兄弟以沉稳忠厚的口吻交流"
+      ],
+      "relationships": [
+        "known_songjiang_water_margin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_wusong_water_margin",
+      "work_id": "work_water_margin",
+      "name": "武松",
+      "aliases": [
+        "Wu Song",
+        "Pilgrim"
+      ],
+      "roles": [
+        "supporting",
+        "打虎英雄"
+      ],
+      "character_types": [
+        "豪迈型",
+        "复仇者型",
+        "快意恩仇型"
+      ],
+      "traits": [
+        "以赤手空拳打虎的勇猛闻名",
+        "在兄长被害后以果决手段复仇",
+        "以快意恩仇的性格行事不拘",
+        "在经历世间不公后选择出家"
+      ],
+      "dialogue_style": [
+        "以豪迈直爽的语气表达态度",
+        "在复仇时以冷酷果断的短句行动",
+        "对不公以愤慨有力的语言抨击"
+      ],
+      "relationships": [
+        "known_songjiang_water_margin"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_songjiang_linchong_water_margin",
+      "work_id": "work_water_margin",
+      "from_character_id": "known_songjiang_water_margin",
+      "to_character_id": "known_linchong_water_margin",
+      "relation": "梁山之主与被逼上山的悲情英雄的惺惺相惜",
+      "description": "宋江以仗义疏财闻名江湖，林冲被陷害后走投无路上了梁山。宋江对林冲的武艺和隐忍深为敬重，林冲对宋江的忠义心怀认同。但宋江选择招安的道路让林冲等被逼上山的好汉内心复杂，两人关系反映了梁山内部反叛与归顺的根本矛盾。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_songjiang_wusong_water_margin",
+      "work_id": "work_water_margin",
+      "from_character_id": "known_songjiang_water_margin",
+      "to_character_id": "known_wusong_water_margin",
+      "relation": "梁山之主与快意恩仇英雄的兄弟情义",
+      "description": "宋江以谦和仗义的性格吸引武松上山，武松对宋江的领袖气质和忠义心怀敬佩。但武松快意恩仇的性格与宋江隐忍求招安的路线存在根本分歧，两人虽为兄弟却代表梁山两种截然不同的价值观。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_water_margin_forced_to_rebel",
+      "work_id": "work_water_margin",
+      "name": "武艺高强者被步步紧逼最终走上反抗之路",
+      "participant_ids": [
+        "known_linchong_water_margin"
+      ],
+      "setting": "风雪中的山神庙",
+      "conflict_type": "被逼反抗",
+      "emotional_arc": [
+        "隐忍",
+        "绝望",
+        "爆发",
+        "决绝"
+      ],
+      "visual_actions": [
+        "武艺高强者一再忍让不断被陷害",
+        "在被流放途中仍抱有回归正途的幻想",
+        "在风雪夜被逼到绝境发现真相",
+        "在绝望中爆发以武力终结压迫者"
+      ],
+      "reusable_beats": [
+        "强者因体制不公被步步紧逼",
+        "一再忍让仍无法逃脱迫害",
+        "在绝境中发现阴谋真相",
+        "隐忍者最终爆发走上不归路"
+      ],
+      "dialogue_patterns": [
+        "以克制隐忍的语气忍受不公",
+        "在爆发时以决绝有力的短句宣泄",
+        "复仇后以平静的语气陈述因果"
+      ],
+      "abstraction": "提取武艺高强者在体制迫害下一再忍让最终被逼上反抗之路的结构，核心张力来自隐忍与爆发的极端反差，风雪夜作为情绪转折的视觉符号，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_water_margin_tiger_fight",
+      "work_id": "work_water_margin",
+      "name": "豪杰以赤手空拳在绝境中击杀猛兽",
+      "participant_ids": [
+        "known_wusong_water_margin"
+      ],
+      "setting": "景阳冈",
+      "conflict_type": "生死搏斗",
+      "emotional_arc": [
+        "豪迈",
+        "惊险",
+        "爆发",
+        "传奇"
+      ],
+      "visual_actions": [
+        "豪杰在酒后独自穿过猛兽出没的山冈",
+        "在猛兽扑来时以徒手搏斗求生",
+        "在生死关头以爆发力击杀猛兽",
+        "事后成为民间传说中的英雄"
+      ],
+      "reusable_beats": [
+        "豪迈者在醉酒状态下独自面对危险",
+        "在猛兽攻击下从被动转为主动反击",
+        "以赤手空拳在生死搏斗中获胜",
+        "事后一战成名成为传奇"
+      ],
+      "dialogue_patterns": [
+        "以豪迈的语气表达对危险的轻蔑",
+        "在搏斗中以用力的短促呼喝发力",
+        "事后以平淡口吻描述惊险经历"
+      ],
+      "abstraction": "提取豪杰以赤手空拳在绝境中击杀猛兽一战成名的结构，核心张力来自人类裸手力量与野兽力量的直接对抗，醉酒状态增加豪迈色彩，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}

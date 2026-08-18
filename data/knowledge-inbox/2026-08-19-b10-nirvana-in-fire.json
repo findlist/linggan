@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_nirvana_in_fire",
+      "title": "琅琊榜",
+      "original_title": "Nirvana in Fire",
+      "aliases": [
+        "Nirvana in Fire",
+        "Lang Ya Bang"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2015,
+      "genres": [
+        "古装",
+        "权谋",
+        "复仇"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_mei_changsu_nirvana",
+      "work_id": "work_nirvana_in_fire",
+      "name": "梅长苏",
+      "aliases": [
+        "Mei Changsu",
+        "Su Zhe",
+        "Lin Shu"
+      ],
+      "roles": [
+        "protagonist",
+        "谋士"
+      ],
+      "character_types": [
+        "复仇者型",
+        "智者型",
+        "隐忍型"
+      ],
+      "traits": [
+        "以病弱之躯策划翻案大计",
+        "在朝堂权谋中以借刀杀人不动声色",
+        "以全新的身份隐藏真实过往",
+        "在复仇与守护间承受身心双重煎熬"
+      ],
+      "dialogue_style": [
+        "以平静从容的语气分析朝堂局势",
+        "在表达情感时以隐忍克制的低语暗示",
+        "对旧人以含蓄隐喻的方式传递心意"
+      ],
+      "relationships": [
+        "known_jingyan_nirvana",
+        "known_prince_qing_nirvana"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_jingyan_nirvana",
+      "work_id": "work_nirvana_in_fire",
+      "name": "靖王",
+      "aliases": [
+        "Jing Yan",
+        "Prince Jing",
+        "Xiao Jingyan"
+      ],
+      "roles": [
+        "supporting",
+        "皇子"
+      ],
+      "character_types": [
+        "正直型",
+        "武将型",
+        "被蒙在鼓中型"
+      ],
+      "traits": [
+        "以耿直刚正的性格在朝堂中孤立无援",
+        "在不知谋士真实身份的情况下信任对方",
+        "为替旧友翻案坚持不屈不挠",
+        "在权力争斗中保持赤子之心"
+      ],
+      "dialogue_style": [
+        "以直率坦诚的语气表达立场",
+        "在不解时以质问的语气追问",
+        "对旧友以沉痛压抑的语调回忆"
+      ],
+      "relationships": [
+        "known_mei_changsu_nirvana"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_prince_qing_nirvana",
+      "work_id": "work_nirvana_in_fire",
+      "name": "誉王",
+      "aliases": [
+        "Yu Wang",
+        "Prince Yu",
+        "Xiao Jinghuan"
+      ],
+      "roles": [
+        "antagonist",
+        "夺嫡皇子"
+      ],
+      "character_types": [
+        "权谋型",
+        "野心型",
+        "复杂反派型"
+      ],
+      "traits": [
+        "以礼贤下士的姿态笼络朝臣",
+        "在夺嫡争斗中以阴谋诡计行事",
+        "在表面温和下隐藏极深野心",
+        "在失败后以悲剧性的绝望面对身世真相"
+      ],
+      "dialogue_style": [
+        "以温和有礼的语气掩饰野心",
+        "在密谋时以低沉阴柔的语调部署",
+        "在绝望时以颤抖的声音质问命运"
+      ],
+      "relationships": [
+        "known_mei_changsu_nirvana"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_meichangsu_jingyan_nirvana",
+      "work_id": "work_nirvana_in_fire",
+      "from_character_id": "known_mei_changsu_nirvana",
+      "to_character_id": "known_jingyan_nirvana",
+      "relation": "病弱谋士与耿直皇子在隐藏身份下的主从信任",
+      "description": "梅长苏以全新身份辅佐靖王争嫡，靖王不知谋士就是已故挚友林殊。梅长苏在暗中为靖王铺路的同时承受着无法相认的痛苦，靖王在信任谋士与怀念旧友间挣扎。当真相最终揭开时，两人之间的主从信任升华为超越生死的兄弟情义。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_meichangsu_yuwang_nirvana",
+      "work_id": "work_nirvana_in_fire",
+      "from_character_id": "known_mei_changsu_nirvana",
+      "to_character_id": "known_prince_qing_nirvana",
+      "relation": "病弱谋士与野心皇子在权谋争斗中的利用与反制",
+      "description": "梅长苏表面上在誉王和太子之间周旋，实则利用誉王的野心推动靖王上位。誉王以为自己在招揽人才，不知已被谋士引入棋局。两人关系是权谋剧中经典的棋手与棋子关系，直到誉王发现自己从未掌握主动权。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_nirvana_identity_reveal",
+      "work_id": "work_nirvana_in_fire",
+      "name": "谋士的真实身份在关键时刻被旧友辨认",
+      "participant_ids": [
+        "known_mei_changsu_nirvana",
+        "known_jingyan_nirvana"
+      ],
+      "setting": "靖王府",
+      "conflict_type": "身份揭露",
+      "emotional_arc": [
+        "压抑",
+        "震动",
+        "悲喜交加",
+        "释然"
+      ],
+      "visual_actions": [
+        "耿直皇子在某个细节中突然意识到谋士的真实身份",
+        "两人在沉默中对视确认无需言语的真相",
+        "多年的隐忍和误解在沉默中崩塌",
+        "旧友以新的方式重新确认彼此的关系"
+      ],
+      "reusable_beats": [
+        "一方长期隐藏真实身份与另一方共处",
+        "在某个关键细节中身份被无意暴露",
+        "双方在沉默对视中完成确认",
+        "多年的隐忍在无声中释放"
+      ],
+      "dialogue_patterns": [
+        "以平静的语气掩饰身份即将暴露的紧张",
+        "在被辨认时以沉默代替否认",
+        "在确认后以极简的低语表达多年隐忍"
+      ],
+      "abstraction": "提取一方长期隐藏身份与另一方共处、在关键细节中被辨认后在沉默中完成身份确认的结构，核心张力来自长期的隐忍与瞬间的震动对比，沉默取代对话成为情感高潮，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_nirvana_chess_game",
+      "work_id": "work_nirvana_in_fire",
+      "name": "病弱谋士在棋局中以借刀杀人不动声色",
+      "participant_ids": [
+        "known_mei_changsu_nirvana",
+        "known_prince_qing_nirvana"
+      ],
+      "setting": "誉王府",
+      "conflict_type": "权谋博弈",
+      "emotional_arc": [
+        "平静",
+        "暗流",
+        "收网",
+        "震撼"
+      ],
+      "visual_actions": [
+        "病弱谋士以闲谈姿态向野心皇子提出建议",
+        "野心皇子以为自己在利用谋士的智囊",
+        "实则谋士在暗中引导对手走向预设陷阱",
+        "当棋局揭晓时对手发现自己从来不是棋手"
+      ],
+      "reusable_beats": [
+        "弱势方以看似无害的建议引导强势方",
+        "强势方以为自己在利用弱势方",
+        "实则是弱势方在暗中布棋",
+        "在棋局揭晓时强势方才意识到自己一直是棋子"
+      ],
+      "dialogue_patterns": [
+        "以温和从容的语气提出看似中立的建议",
+        "在被追问时以谦逊的语气掩饰真实意图",
+        "在棋局揭晓后以平静的口吻总结因果"
+      ],
+      "abstraction": "提取弱势方以看似无害的建议引导强势方、在暗中布棋最终在揭晓时让对方发现自己一直是棋子的结构，核心张力来自表面主从关系与实际棋局控制权的反转，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nirvana_in_Fire",
+          "source_name": "Wikipedia",
+          "page_title": "Nirvana in Fire",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}
