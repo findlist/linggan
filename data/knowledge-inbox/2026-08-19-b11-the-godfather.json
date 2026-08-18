@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_the_godfather",
+      "title": "教父",
+      "original_title": "The Godfather",
+      "aliases": [
+        "The Godfather",
+        "Il Padrino"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1972,
+      "genres": [
+        "犯罪",
+        "剧情",
+        "黑帮"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_vito_corleone_godfather",
+      "work_id": "work_the_godfather",
+      "name": "维托·柯里昂",
+      "aliases": [
+        "Vito Corleone",
+        "Don Vito",
+        "The Godfather"
+      ],
+      "roles": [
+        "protagonist",
+        "家族掌权者"
+      ],
+      "character_types": [
+        "教父型",
+        "权谋型",
+        "家长型"
+      ],
+      "traits": [
+        "以老派绅士的风度维持地下王国的秩序",
+        "在暴力与外交之间以家族利益为最高准则",
+        "以拒绝参与新兴毒品生意坚守自己的底线",
+        "在遇刺后以退为重将权力交接给幼子"
+      ],
+      "dialogue_style": [
+        "以沙哑低沉的耳语式语气施加威压",
+        "在谈判时以含蓄隐喻的方式传递威胁",
+        "对家人以温和克制的语调表达期许"
+      ],
+      "relationships": [
+        "known_michael_corleone_godfather",
+        "known_sonny_corleone_godfather"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_michael_corleone_godfather",
+      "work_id": "work_the_godfather",
+      "name": "迈克尔·柯里昂",
+      "aliases": [
+        "Michael Corleone",
+        "Mike Corleone",
+        "Michael"
+      ],
+      "roles": [
+        "protagonist",
+        "家族继承人"
+      ],
+      "character_types": [
+        "转变型",
+        "冷峻型",
+        "悲剧型"
+      ],
+      "traits": [
+        "以战争英雄身份试图远离家族黑道生意",
+        "在父亲遇刺后被迫卷入家族纷争",
+        "在复仇中以冷静算计完成第一次杀戮",
+        "最终从纯真幼子蜕变为比父亲更冷酷的教父"
+      ],
+      "dialogue_style": [
+        "以冷静克制的语气掩饰内心波动",
+        "在布局时以简短直接的指令传递决断",
+        "在背叛者面前以平静口吻宣布命运"
+      ],
+      "relationships": [
+        "known_vito_corleone_godfather"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_sonny_corleone_godfather",
+      "work_id": "work_the_godfather",
+      "name": "桑尼·柯里昂",
+      "aliases": [
+        "Sonny Corleone",
+        "Santino Corleone",
+        "Sonny"
+      ],
+      "roles": [
+        "supporting",
+        "家族长子"
+      ],
+      "character_types": [
+        "暴躁型",
+        "武斗型",
+        "冲动型"
+      ],
+      "traits": [
+        "以火爆冲动的性格在家族中担任武力担当",
+        "在父亲遇刺后立即主张以暴制暴",
+        "在妹夫施暴护妹事件中暴露致命弱点",
+        "最终在收费站伏击中被乱枪打死"
+      ],
+      "dialogue_style": [
+        "以高亢暴烈的语气表达愤怒",
+        "在争执时以威胁恐吓的口吻压人",
+        "对家人以粗鲁直接的方式表达关护"
+      ],
+      "relationships": [
+        "known_vito_corleone_godfather"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_vito_michael_godfather",
+      "work_id": "work_the_godfather",
+      "from_character_id": "known_vito_corleone_godfather",
+      "to_character_id": "known_michael_corleone_godfather",
+      "relation": "老教父与幼子在权力交接中的命运传承与悲剧",
+      "description": "维托·柯里昂最初希望幼子迈克尔远离家族黑道生意,迈克尔也以战争英雄身份保持清白。但父亲遇刺后迈克尔被迫卷入,在复仇中完成第一次杀戮,逐步蜕变为比父亲更冷酷的教父。维托在晚年目睹幼子走向自己曾希望避免的道路,迈克尔则在掌权后失去家人信任。两人关系是经典的权力传承与人性异化悲剧。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_vito_sonny_godfather",
+      "work_id": "work_the_godfather",
+      "from_character_id": "known_vito_corleone_godfather",
+      "to_character_id": "known_sonny_corleone_godfather",
+      "relation": "老教父与长子在治理风格上的冲突与致命后果",
+      "description": "维托·柯里昂以老派权谋维持地下王国秩序,长子桑尼则以火爆冲动的性格主张以暴制暴。父子在父亲遇刺后的应对策略上产生根本分歧,维托主张隐忍外交,桑尼主张血腥报复。桑尼的冲动最终被对手利用,在收费站伏击中惨死。维托在得知长子死讯后被迫结束退隐重新掌局。两人关系展现家族权力交接中性格差异的致命后果。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_godfather_wedday_audience",
+      "work_id": "work_the_godfather",
+      "name": "教父在女儿婚礼上于书房接见求助者",
+      "participant_ids": [
+        "known_vito_corleone_godfather"
+      ],
+      "setting": "柯里昂宅邸书房",
+      "conflict_type": "权力展示",
+      "emotional_arc": [
+        "喜庆",
+        "肃穆",
+        "权谋",
+        "伏笔"
+      ],
+      "visual_actions": [
+        "教父在女儿婚礼的喧闹中于书房接见求助者",
+        "求助者以情绪化的方式倾诉委屈请求援助",
+        "教父以低沉耳语的姿态提出交换条件",
+        "在求助者行礼确认从属后完成权力展示"
+      ],
+      "reusable_beats": [
+        "掌权者在家族庆典的喧闹中于密室接见求助者",
+        "求助者以情绪化的方式倾诉委屈请求援助",
+        "掌权者以低姿态提出含蓄的交换条件",
+        "在求助者行礼确认从属后完成权力展示"
+      ],
+      "dialogue_patterns": [
+        "以低沉耳语式的语气施加威压",
+        "在谈判中以含蓄隐喻传递交换条件",
+        "在被拒绝时以平静口吻预告后果"
+      ],
+      "abstraction": "提取掌权者在家族庆典的喧闹中于密室接见求助者、以低姿态提出含蓄交换条件、求助者行礼确认从属后完成权力展示的结构,核心张力来自庆典的喜庆与密室的肃穆以及低姿态下的绝对权力之间的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_godfather_restaurant_assassination",
+      "work_id": "work_the_godfather",
+      "name": "纯真幼子在餐厅以冷静算计完成第一次杀戮",
+      "participant_ids": [
+        "known_michael_corleone_godfather"
+      ],
+      "setting": "意大利餐厅",
+      "conflict_type": "命运转折",
+      "emotional_arc": [
+        "压抑",
+        "决断",
+        "爆发",
+        "蜕变"
+      ],
+      "visual_actions": [
+        "纯真幼子以谈判姿态与敌对势力在餐厅会面",
+        "在洗手间取回藏匿武器时承受巨大的心理压力",
+        "在返回餐桌后以冷静算计完成第一次杀戮",
+        "在杀戮后以平静离开完成从纯真到冷酷的蜕变"
+      ],
+      "reusable_beats": [
+        "纯真之人在被迫情况下以谈判姿态接近敌对势力",
+        "在取回藏匿武器时承受巨大的心理压力",
+        "在关键时刻以冷静算计完成第一次越界",
+        "在越界后以平静离开完成从纯真到冷酷的蜕变"
+      ],
+      "dialogue_patterns": [
+        "以过度克制的语气掩饰内心波动",
+        "在决断前以短暂的沉默积蓄力量",
+        "在越界后以平静的告别完成仪式"
+      ],
+      "abstraction": "提取纯真之人在被迫情况下以谈判姿态接近敌对势力、在取回武器时承受心理压力、在关键时刻以冷静算计完成第一次越界并完成从纯真到冷酷蜕变的结构,核心张力来自外在的冷静与内在的恐惧以及越界前后的不可逆对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_dream_of_red_chamber",
+      "title": "红楼梦",
+      "original_title": "Dream of the Red Chamber",
+      "aliases": [
+        "Dream of the Red Chamber",
+        "Hong Lou Meng",
+        "A Dream in Red Mansions"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 1987,
+      "genres": [
+        "古装",
+        "爱情",
+        "家族兴衰"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_jiabaoyu_dream_red_chamber",
+      "work_id": "work_dream_of_red_chamber",
+      "name": "贾宝玉",
+      "aliases": [
+        "Jia Baoyu",
+        "Baoyu",
+        "Jia Bao-yu"
+      ],
+      "roles": [
+        "protagonist",
+        "贵族公子"
+      ],
+      "character_types": [
+        "叛逆型",
+        "痴情型",
+        "纨绔型"
+      ],
+      "traits": [
+        "在封建礼教森严的家族中保持对女性的尊重与怜惜",
+        "以通灵宝玉的出身被视为家族异类",
+        "在爱情与婚姻之间承受家族意志的压迫",
+        "最终以出家方式与世俗彻底决裂"
+      ],
+      "dialogue_style": [
+        "以率真任性的语气表达对礼教的不满",
+        "对女儿们以温存体贴的语调相待",
+        "在情感冲突时以冲动激烈的言辞表态"
+      ],
+      "relationships": [
+        "known_lindaiyu_dream_red_chamber",
+        "known_wangxifeng_dream_red_chamber"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_lindaiyu_dream_red_chamber",
+      "work_id": "work_dream_of_red_chamber",
+      "name": "林黛玉",
+      "aliases": [
+        "Lin Dai-yu",
+        "Daiyu",
+        "Dai Yu"
+      ],
+      "roles": [
+        "protagonist",
+        "寄居表妹"
+      ],
+      "character_types": [
+        "才女型",
+        "敏感型",
+        "悲剧型"
+      ],
+      "traits": [
+        "以寄人篱下的身份保持极高的自尊与敏感",
+        "在诗词才情上独步大观园",
+        "以葬花自喻身世与命运",
+        "在爱情无望中以病逝完成悲剧"
+      ],
+      "dialogue_style": [
+        "以含蓄机锋的语言掩饰真情",
+        "在伤感时以诗意隐喻的独白表达",
+        "对心仪之人以试探反讽的语气试探心意"
+      ],
+      "relationships": [
+        "known_jiabaoyu_dream_red_chamber"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_wangxifeng_dream_red_chamber",
+      "work_id": "work_dream_of_red_chamber",
+      "name": "王熙凤",
+      "aliases": [
+        "Wang Xifeng",
+        "Xifeng",
+        "Sister Feng"
+      ],
+      "roles": [
+        "supporting",
+        "家族管家"
+      ],
+      "character_types": [
+        "权谋型",
+        "泼辣型",
+        "复杂反派型"
+      ],
+      "traits": [
+        "以精明强干的手腕管理庞大家族事务",
+        "在八面玲珑的表面下隐藏狠毒算计",
+        "在权钱交易中以笑面虎姿态行事",
+        "最终在家族败落中以惨淡结局收场"
+      ],
+      "dialogue_style": [
+        "以爽朗泼辣的笑声掌控场面",
+        "在算计时以甜言蜜语的语气笼络",
+        "在威胁时以绵里藏针的语调施压"
+      ],
+      "relationships": [
+        "known_jiabaoyu_dream_red_chamber"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_baoyu_daiyu_dream_red_chamber",
+      "work_id": "work_dream_of_red_chamber",
+      "from_character_id": "known_jiabaoyu_dream_red_chamber",
+      "to_character_id": "known_lindaiyu_dream_red_chamber",
+      "relation": "贵族公子与寄居表妹在礼教压迫下的精神知己与爱情悲剧",
+      "description": "贾宝玉与林黛玉在贾府初见便有前盟之感,两人在诗词与大观园日常中发展为精神知己。但家族意志最终拆散二人,以金玉良缘取代木石前盟。黛玉在宝玉成亲之夜病逝,宝玉在得知真相后以出家完成最终的决裂。两人关系是封建礼教下纯粹爱情被家族利益碾压的经典悲剧。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_baoyu_xifeng_dream_red_chamber",
+      "work_id": "work_dream_of_red_chamber",
+      "from_character_id": "known_jiabaoyu_dream_red_chamber",
+      "to_character_id": "known_wangxifeng_dream_red_chamber",
+      "relation": "纨绔公子与泼辣管家在家族中的姑嫂周旋",
+      "description": "王熙凤作为贾琏之妻、宝玉的堂嫂,以八面玲珑的手段管理贾府家务。宝玉对这位精明强干的嫂子既敬畏又亲近,王熙凤对宝玉则以笼络讨好的姿态相处。两人在家族鼎盛时共享繁华,在败落时走向各自悲剧,形成封建大家族中权力与纯真的对照。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_red_chamber_daiyu_burying_flowers",
+      "work_id": "work_dream_of_red_chamber",
+      "name": "寄居才女以葬花自喻身世命运",
+      "participant_ids": [
+        "known_lindaiyu_dream_red_chamber"
+      ],
+      "setting": "大观园花冢",
+      "conflict_type": "自我悲悼",
+      "emotional_arc": [
+        "伤感",
+        "共鸣",
+        "悲愤",
+        "释怀"
+      ],
+      "visual_actions": [
+        "寄居者收集落花以锦囊收敛",
+        "在花冢前以葬花仪式自喻身世",
+        "在葬花过程中以诗自悼命运",
+        "在知己偷听时完成情感共鸣的高潮"
+      ],
+      "reusable_beats": [
+        "寄居者以仪式化的行为为逝去之物送葬",
+        "在送葬过程中以自创诗文映射自身命运",
+        "行为被暗中偷听的知己发现",
+        "两人在偷听与被发现中完成情感共鸣"
+      ],
+      "dialogue_patterns": [
+        "以诗意隐喻的独白映射自身命运",
+        "在被偷听时以含蓄的反问确认知己",
+        "在共鸣中以极简的感叹完成情感交接"
+      ],
+      "abstraction": "提取寄居者以仪式化行为为逝去之物送葬、在过程中以自创诗文映射自身命运、被暗中偷听的知己发现后完成情感共鸣的结构,核心张力来自外在的脆弱(落花)与内在的才情(诗文)以及被理解(偷听)三者交织,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_red_chamber_daiyu_entering_mansion",
+      "work_id": "work_dream_of_red_chamber",
+      "name": "寄居者初入大家族步步留心的自我规训",
+      "participant_ids": [
+        "known_lindaiyu_dream_red_chamber",
+        "known_jiabaoyu_dream_red_chamber"
+      ],
+      "setting": "贾府荣禧堂",
+      "conflict_type": "身份处境适应",
+      "emotional_arc": [
+        "拘谨",
+        "试探",
+        "触动",
+        "伏笔"
+      ],
+      "visual_actions": [
+        "寄居者初入陌生大家族以步步留心的姿态应对",
+        "在拜见各房长辈时以察言观色调整言行",
+        "在与表兄初见时双方皆有似曾相识之感",
+        "在初见后以摔玉风波埋下命运伏笔"
+      ],
+      "reusable_beats": [
+        "寄居者初入陌生大家族以过度谨慎的姿态自我规训",
+        "在拜见各房时以察言观色调整言行分寸",
+        "与关键人物初见时双方皆有似曾相识之感",
+        "初见后以一场小风波埋下命运伏笔"
+      ],
+      "dialogue_patterns": [
+        "以过度谦逊的语气应对长辈问询",
+        "在试探中以含蓄的应答避免冒犯",
+        "在似曾相识的触动中以沉默代替解释"
+      ],
+      "abstraction": "提取寄居者初入陌生大家族以过度谨慎自我规训、与关键人物初见时双方产生似曾相识之感、初见后以一场小风波埋下命运伏笔的结构,核心张力来自寄人篱下的拘谨与命中注定的触动之间的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}

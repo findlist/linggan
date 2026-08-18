@@ -1218,6 +1218,101 @@
         }
       ],
       "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_dream_of_red_chamber",
+      "title": "红楼梦",
+      "original_title": "Dream of the Red Chamber",
+      "aliases": [
+        "Dream of the Red Chamber",
+        "Hong Lou Meng",
+        "A Dream in Red Mansions"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 1987,
+      "genres": [
+        "古装",
+        "爱情",
+        "家族兴衰"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_my_own_swordsman",
+      "title": "武林外传",
+      "original_title": "My Own Swordsman",
+      "aliases": [
+        "My Own Swordsman",
+        "Wu Lin Wai Zhuan",
+        "Wulin Biography"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2006,
+      "genres": [
+        "古装",
+        "情景喜剧",
+        "武侠"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_the_godfather",
+      "title": "教父",
+      "original_title": "The Godfather",
+      "aliases": [
+        "The Godfather",
+        "Il Padrino"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1972,
+      "genres": [
+        "犯罪",
+        "剧情",
+        "黑帮"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -6026,6 +6121,414 @@
         }
       ],
       "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_jiabaoyu_dream_red_chamber",
+      "work_id": "work_dream_of_red_chamber",
+      "name": "贾宝玉",
+      "aliases": [
+        "Jia Baoyu",
+        "Baoyu",
+        "Jia Bao-yu"
+      ],
+      "roles": [
+        "protagonist",
+        "贵族公子"
+      ],
+      "character_types": [
+        "叛逆型",
+        "痴情型",
+        "纨绔型"
+      ],
+      "traits": [
+        "在封建礼教森严的家族中保持对女性的尊重与怜惜",
+        "以通灵宝玉的出身被视为家族异类",
+        "在爱情与婚姻之间承受家族意志的压迫",
+        "最终以出家方式与世俗彻底决裂"
+      ],
+      "dialogue_style": [
+        "以率真任性的语气表达对礼教的不满",
+        "对女儿们以温存体贴的语调相待",
+        "在情感冲突时以冲动激烈的言辞表态"
+      ],
+      "relationships": [
+        "known_lindaiyu_dream_red_chamber",
+        "known_wangxifeng_dream_red_chamber"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_lindaiyu_dream_red_chamber",
+      "work_id": "work_dream_of_red_chamber",
+      "name": "林黛玉",
+      "aliases": [
+        "Lin Dai-yu",
+        "Daiyu",
+        "Dai Yu"
+      ],
+      "roles": [
+        "protagonist",
+        "寄居表妹"
+      ],
+      "character_types": [
+        "才女型",
+        "敏感型",
+        "悲剧型"
+      ],
+      "traits": [
+        "以寄人篱下的身份保持极高的自尊与敏感",
+        "在诗词才情上独步大观园",
+        "以葬花自喻身世与命运",
+        "在爱情无望中以病逝完成悲剧"
+      ],
+      "dialogue_style": [
+        "以含蓄机锋的语言掩饰真情",
+        "在伤感时以诗意隐喻的独白表达",
+        "对心仪之人以试探反讽的语气试探心意"
+      ],
+      "relationships": [
+        "known_jiabaoyu_dream_red_chamber"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_wangxifeng_dream_red_chamber",
+      "work_id": "work_dream_of_red_chamber",
+      "name": "王熙凤",
+      "aliases": [
+        "Wang Xifeng",
+        "Xifeng",
+        "Sister Feng"
+      ],
+      "roles": [
+        "supporting",
+        "家族管家"
+      ],
+      "character_types": [
+        "权谋型",
+        "泼辣型",
+        "复杂反派型"
+      ],
+      "traits": [
+        "以精明强干的手腕管理庞大家族事务",
+        "在八面玲珑的表面下隐藏狠毒算计",
+        "在权钱交易中以笑面虎姿态行事",
+        "最终在家族败落中以惨淡结局收场"
+      ],
+      "dialogue_style": [
+        "以爽朗泼辣的笑声掌控场面",
+        "在算计时以甜言蜜语的语气笼络",
+        "在威胁时以绵里藏针的语调施压"
+      ],
+      "relationships": [
+        "known_jiabaoyu_dream_red_chamber"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_tongxiangyu_my_own_swordsman",
+      "work_id": "work_my_own_swordsman",
+      "name": "佟湘玉",
+      "aliases": [
+        "Tong Xiangyu",
+        "Tong Niang",
+        "Boss Tong"
+      ],
+      "roles": [
+        "protagonist",
+        "客栈掌柜"
+      ],
+      "character_types": [
+        "风情型",
+        "抠门型",
+        "刀子嘴豆腐心型"
+      ],
+      "traits": [
+        "以寡妇身份独自撑起同福客栈",
+        "在抠门算计的表面下对伙计如家人般关护",
+        "以龙门镖局千金的出身维持最后的体面",
+        "在对白展堂的爱情中以患得患失的姿态周旋"
+      ],
+      "dialogue_style": [
+        "以汉中口音的软糯语调撒娇或撒娇式施压",
+        "在算账时以精打细算的语气计较毫厘",
+        "在动情时以欲擒故纵的口吻试探心意"
+      ],
+      "relationships": [
+        "known_baizhantang_my_own_swordsman",
+        "known_guofurong_my_own_swordsman"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_baizhantang_my_own_swordsman",
+      "work_id": "work_my_own_swordsman",
+      "name": "白展堂",
+      "aliases": [
+        "Bai Zhantang",
+        "Lao Bai",
+        "Thief Saint"
+      ],
+      "roles": [
+        "protagonist",
+        "跑堂"
+      ],
+      "character_types": [
+        "浪子回头型",
+        "胆小型",
+        "隐藏身份型"
+      ],
+      "traits": [
+        "以盗圣的过往隐居客栈当跑堂",
+        "在武艺高强的实力下隐藏胆小如鼠的本性",
+        "在官府追缉中以战战兢兢的姿态度日",
+        "对佟湘玉以浪子回头的姿态投入真情"
+      ],
+      "dialogue_style": [
+        "以东北口音的豪爽语气掩饰心虚",
+        "在被揭穿时以闪烁其词的方式搪塞",
+        "在动情时以憨厚直率的告白表态"
+      ],
+      "relationships": [
+        "known_tongxiangyu_my_own_swordsman"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_guofurong_my_own_swordsman",
+      "work_id": "work_my_own_swordsman",
+      "name": "郭芙蓉",
+      "aliases": [
+        "Guo Furong",
+        "Xiao Guo",
+        "Guo Fu Rong"
+      ],
+      "roles": [
+        "supporting",
+        "打杂伙计"
+      ],
+      "character_types": [
+        "野蛮女友型",
+        "鲁莽型",
+        "成长型"
+      ],
+      "traits": [
+        "以侠门千金出身离家出走闯荡江湖",
+        "在第一站就被扣在客栈从打杂开始磨练",
+        "以鲁莽冲动的性格不断制造麻烦",
+        "在客栈日常中逐渐从娇横成长为真正的担当者"
+      ],
+      "dialogue_style": [
+        "以爽朗直率的语气表达立场",
+        "在不服时以质问的语气顶撞",
+        "在反省时以嘟囔的自我辩解承认错误"
+      ],
+      "relationships": [
+        "known_tongxiangyu_my_own_swordsman"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_vito_corleone_godfather",
+      "work_id": "work_the_godfather",
+      "name": "维托·柯里昂",
+      "aliases": [
+        "Vito Corleone",
+        "Don Vito",
+        "The Godfather"
+      ],
+      "roles": [
+        "protagonist",
+        "家族掌权者"
+      ],
+      "character_types": [
+        "教父型",
+        "权谋型",
+        "家长型"
+      ],
+      "traits": [
+        "以老派绅士的风度维持地下王国的秩序",
+        "在暴力与外交之间以家族利益为最高准则",
+        "以拒绝参与新兴毒品生意坚守自己的底线",
+        "在遇刺后以退为重将权力交接给幼子"
+      ],
+      "dialogue_style": [
+        "以沙哑低沉的耳语式语气施加威压",
+        "在谈判时以含蓄隐喻的方式传递威胁",
+        "对家人以温和克制的语调表达期许"
+      ],
+      "relationships": [
+        "known_michael_corleone_godfather",
+        "known_sonny_corleone_godfather"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_michael_corleone_godfather",
+      "work_id": "work_the_godfather",
+      "name": "迈克尔·柯里昂",
+      "aliases": [
+        "Michael Corleone",
+        "Mike Corleone",
+        "Michael"
+      ],
+      "roles": [
+        "protagonist",
+        "家族继承人"
+      ],
+      "character_types": [
+        "转变型",
+        "冷峻型",
+        "悲剧型"
+      ],
+      "traits": [
+        "以战争英雄身份试图远离家族黑道生意",
+        "在父亲遇刺后被迫卷入家族纷争",
+        "在复仇中以冷静算计完成第一次杀戮",
+        "最终从纯真幼子蜕变为比父亲更冷酷的教父"
+      ],
+      "dialogue_style": [
+        "以冷静克制的语气掩饰内心波动",
+        "在布局时以简短直接的指令传递决断",
+        "在背叛者面前以平静口吻宣布命运"
+      ],
+      "relationships": [
+        "known_vito_corleone_godfather"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_sonny_corleone_godfather",
+      "work_id": "work_the_godfather",
+      "name": "桑尼·柯里昂",
+      "aliases": [
+        "Sonny Corleone",
+        "Santino Corleone",
+        "Sonny"
+      ],
+      "roles": [
+        "supporting",
+        "家族长子"
+      ],
+      "character_types": [
+        "暴躁型",
+        "武斗型",
+        "冲动型"
+      ],
+      "traits": [
+        "以火爆冲动的性格在家族中担任武力担当",
+        "在父亲遇刺后立即主张以暴制暴",
+        "在妹夫施暴护妹事件中暴露致命弱点",
+        "最终在收费站伏击中被乱枪打死"
+      ],
+      "dialogue_style": [
+        "以高亢暴烈的语气表达愤怒",
+        "在争执时以威胁恐吓的口吻压人",
+        "对家人以粗鲁直接的方式表达关护"
+      ],
+      "relationships": [
+        "known_vito_corleone_godfather"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -7229,6 +7732,114 @@
           "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
           "source_name": "Wikipedia",
           "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_baoyu_daiyu_dream_red_chamber",
+      "work_id": "work_dream_of_red_chamber",
+      "from_character_id": "known_jiabaoyu_dream_red_chamber",
+      "to_character_id": "known_lindaiyu_dream_red_chamber",
+      "relation": "贵族公子与寄居表妹在礼教压迫下的精神知己与爱情悲剧",
+      "description": "贾宝玉与林黛玉在贾府初见便有前盟之感,两人在诗词与大观园日常中发展为精神知己。但家族意志最终拆散二人,以金玉良缘取代木石前盟。黛玉在宝玉成亲之夜病逝,宝玉在得知真相后以出家完成最终的决裂。两人关系是封建礼教下纯粹爱情被家族利益碾压的经典悲剧。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_baoyu_xifeng_dream_red_chamber",
+      "work_id": "work_dream_of_red_chamber",
+      "from_character_id": "known_jiabaoyu_dream_red_chamber",
+      "to_character_id": "known_wangxifeng_dream_red_chamber",
+      "relation": "纨绔公子与泼辣管家在家族中的姑嫂周旋",
+      "description": "王熙凤作为贾琏之妻、宝玉的堂嫂,以八面玲珑的手段管理贾府家务。宝玉对这位精明强干的嫂子既敬畏又亲近,王熙凤对宝玉则以笼络讨好的姿态相处。两人在家族鼎盛时共享繁华,在败落时走向各自悲剧,形成封建大家族中权力与纯真的对照。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_tongyu_baitang_my_own_swordsman",
+      "work_id": "work_my_own_swordsman",
+      "from_character_id": "known_tongxiangyu_my_own_swordsman",
+      "to_character_id": "known_baizhantang_my_own_swordsman",
+      "relation": "寡妇掌柜与盗圣跑堂在客栈日常中的欢喜冤家爱情",
+      "description": "佟湘玉与白展堂在同福客栈的日常博弈中相互试探心意。佟湘玉以寡妇的患得患失和白展堂的盗圣身份顾虑周旋,白展堂以浪子回头的憨厚试图安定下来。两人在身份差异与日常吵闹中逐渐确认真情,形成情景喜剧中典型的欢喜冤家爱情模板。",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_tongyu_guofurong_my_own_swordsman",
+      "work_id": "work_my_own_swordsman",
+      "from_character_id": "known_tongxiangyu_my_own_swordsman",
+      "to_character_id": "known_guofurong_my_own_swordsman",
+      "relation": "抠门掌柜与鲁莽伙计在主仆与朋友间的相处",
+      "description": "佟湘玉作为掌柜以抠门算计的方式管理郭芙蓉这个打杂伙计,两人在薪酬与劳损上不断博弈。但在关键时刻佟湘玉对郭芙蓉以家人般关护,郭芙蓉在闯祸后也以真心认错承担。两人关系展现情景喜剧中主仆吵闹下的真挚情谊。",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_vito_michael_godfather",
+      "work_id": "work_the_godfather",
+      "from_character_id": "known_vito_corleone_godfather",
+      "to_character_id": "known_michael_corleone_godfather",
+      "relation": "老教父与幼子在权力交接中的命运传承与悲剧",
+      "description": "维托·柯里昂最初希望幼子迈克尔远离家族黑道生意,迈克尔也以战争英雄身份保持清白。但父亲遇刺后迈克尔被迫卷入,在复仇中完成第一次杀戮,逐步蜕变为比父亲更冷酷的教父。维托在晚年目睹幼子走向自己曾希望避免的道路,迈克尔则在掌权后失去家人信任。两人关系是经典的权力传承与人性异化悲剧。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_vito_sonny_godfather",
+      "work_id": "work_the_godfather",
+      "from_character_id": "known_vito_corleone_godfather",
+      "to_character_id": "known_sonny_corleone_godfather",
+      "relation": "老教父与长子在治理风格上的冲突与致命后果",
+      "description": "维托·柯里昂以老派权谋维持地下王国秩序,长子桑尼则以火爆冲动的性格主张以暴制暴。父子在父亲遇刺后的应对策略上产生根本分歧,维托主张隐忍外交,桑尼主张血腥报复。桑尼的冲动最终被对手利用,在收费站伏击中惨死。维托在得知长子死讯后被迫结束退隐重新掌局。两人关系展现家族权力交接中性格差异的致命后果。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
           "published_at": null,
           "collected_at": "2026-08-19T00:00:00.000Z"
         }
@@ -10484,6 +11095,287 @@
           "url": "https://en.wikipedia.org/wiki/Water_Margin_(1998_TV_series)",
           "source_name": "Wikipedia",
           "page_title": "Water Margin (1998 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_red_chamber_daiyu_burying_flowers",
+      "work_id": "work_dream_of_red_chamber",
+      "name": "寄居才女以葬花自喻身世命运",
+      "participant_ids": [
+        "known_lindaiyu_dream_red_chamber"
+      ],
+      "setting": "大观园花冢",
+      "conflict_type": "自我悲悼",
+      "emotional_arc": [
+        "伤感",
+        "共鸣",
+        "悲愤",
+        "释怀"
+      ],
+      "visual_actions": [
+        "寄居者收集落花以锦囊收敛",
+        "在花冢前以葬花仪式自喻身世",
+        "在葬花过程中以诗自悼命运",
+        "在知己偷听时完成情感共鸣的高潮"
+      ],
+      "reusable_beats": [
+        "寄居者以仪式化的行为为逝去之物送葬",
+        "在送葬过程中以自创诗文映射自身命运",
+        "行为被暗中偷听的知己发现",
+        "两人在偷听与被发现中完成情感共鸣"
+      ],
+      "dialogue_patterns": [
+        "以诗意隐喻的独白映射自身命运",
+        "在被偷听时以含蓄的反问确认知己",
+        "在共鸣中以极简的感叹完成情感交接"
+      ],
+      "abstraction": "提取寄居者以仪式化行为为逝去之物送葬、在过程中以自创诗文映射自身命运、被暗中偷听的知己发现后完成情感共鸣的结构,核心张力来自外在的脆弱(落花)与内在的才情(诗文)以及被理解(偷听)三者交织,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_red_chamber_daiyu_entering_mansion",
+      "work_id": "work_dream_of_red_chamber",
+      "name": "寄居者初入大家族步步留心的自我规训",
+      "participant_ids": [
+        "known_lindaiyu_dream_red_chamber",
+        "known_jiabaoyu_dream_red_chamber"
+      ],
+      "setting": "贾府荣禧堂",
+      "conflict_type": "身份处境适应",
+      "emotional_arc": [
+        "拘谨",
+        "试探",
+        "触动",
+        "伏笔"
+      ],
+      "visual_actions": [
+        "寄居者初入陌生大家族以步步留心的姿态应对",
+        "在拜见各房长辈时以察言观色调整言行",
+        "在与表兄初见时双方皆有似曾相识之感",
+        "在初见后以摔玉风波埋下命运伏笔"
+      ],
+      "reusable_beats": [
+        "寄居者初入陌生大家族以过度谨慎的姿态自我规训",
+        "在拜见各房时以察言观色调整言行分寸",
+        "与关键人物初见时双方皆有似曾相识之感",
+        "初见后以一场小风波埋下命运伏笔"
+      ],
+      "dialogue_patterns": [
+        "以过度谦逊的语气应对长辈问询",
+        "在试探中以含蓄的应答避免冒犯",
+        "在似曾相识的触动中以沉默代替解释"
+      ],
+      "abstraction": "提取寄居者初入陌生大家族以过度谨慎自我规训、与关键人物初见时双方产生似曾相识之感、初见后以一场小风波埋下命运伏笔的结构,核心张力来自寄人篱下的拘谨与命中注定的触动之间的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber_(1987_TV_series)",
+          "source_name": "Wikipedia",
+          "page_title": "Dream of the Red Chamber (1987 TV series)",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_my_own_swordsman_tavern_daily",
+      "work_id": "work_my_own_swordsman",
+      "name": "客栈众人在日常冲突中以插科打诨化解危机",
+      "participant_ids": [
+        "known_tongxiangyu_my_own_swordsman",
+        "known_baizhantang_my_own_swordsman",
+        "known_guofurong_my_own_swordsman"
+      ],
+      "setting": "同福客栈大堂",
+      "conflict_type": "日常冲突化解",
+      "emotional_arc": [
+        "吵闹",
+        "插科",
+        "真情",
+        "和解"
+      ],
+      "visual_actions": [
+        "众伙计在客栈大堂因琐事爆发争执",
+        "掌柜以算账或威胁的方式介入调停",
+        "众人在插科打诨中以方言金句轮流接话",
+        "在外部危机来临时一致对外后回归日常吵闹"
+      ],
+      "reusable_beats": [
+        "一群性格各异的伙计在固定场所因琐事争执",
+        "掌柜以独特的方式介入调停",
+        "众人在插科打诨中以方言金句轮流接话",
+        "外部危机来临时一致对外后回归日常吵闹"
+      ],
+      "dialogue_patterns": [
+        "以方言口音的金句轮流接话推进节奏",
+        "在调停中以威胁或算账的口吻施压",
+        "在外部危机时以正经语气短暂切换",
+        "危机化解后立即以玩笑回到日常"
+      ],
+      "abstraction": "提取一群性格各异的伙计在固定场所因琐事争执、在插科打诨中以方言金句轮流接话、外部危机来临时一致对外后回归日常吵闹的结构,核心张力来自日常琐碎与江湖风波的错位以及喜剧节奏下的真情流露,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_my_own_swordsman_identity_reveal",
+      "work_id": "work_my_own_swordsman",
+      "name": "隐居跑堂的江湖身份在危机中被同伴知晓",
+      "participant_ids": [
+        "known_baizhantang_my_own_swordsman",
+        "known_tongxiangyu_my_own_swordsman"
+      ],
+      "setting": "同福客栈后院",
+      "conflict_type": "身份揭露",
+      "emotional_arc": [
+        "隐瞒",
+        "暴露",
+        "接纳",
+        "守护"
+      ],
+      "visual_actions": [
+        "隐居跑堂在危机中被迫展现真实武艺",
+        "掌柜在震惊中发现跑堂的江湖身份",
+        "两人在身份差异中经历短暂的信任危机",
+        "最终以接纳真实身份的方式完成守护承诺"
+      ],
+      "reusable_beats": [
+        "隐居者在危机中被迫展现真实身份",
+        "亲近之人在震惊中发现秘密",
+        "双方在身份差异中经历信任危机",
+        "最终以接纳真实身份的方式完成守护承诺"
+      ],
+      "dialogue_patterns": [
+        "在被发现时以闪烁其词的方式试图搪塞",
+        "在被追问时以坦诚的告白承认过往",
+        "在接纳时以日常玩笑化解严肃气氛"
+      ],
+      "abstraction": "提取隐居者在危机中被迫展现真实身份、亲近之人发现后经历信任危机最终以接纳完成守护承诺的结构,核心张力来自隐藏身份的恐惧与被接纳的释然之间的对比以及喜剧外壳下的真情,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_godfather_wedday_audience",
+      "work_id": "work_the_godfather",
+      "name": "教父在女儿婚礼上于书房接见求助者",
+      "participant_ids": [
+        "known_vito_corleone_godfather"
+      ],
+      "setting": "柯里昂宅邸书房",
+      "conflict_type": "权力展示",
+      "emotional_arc": [
+        "喜庆",
+        "肃穆",
+        "权谋",
+        "伏笔"
+      ],
+      "visual_actions": [
+        "教父在女儿婚礼的喧闹中于书房接见求助者",
+        "求助者以情绪化的方式倾诉委屈请求援助",
+        "教父以低沉耳语的姿态提出交换条件",
+        "在求助者行礼确认从属后完成权力展示"
+      ],
+      "reusable_beats": [
+        "掌权者在家族庆典的喧闹中于密室接见求助者",
+        "求助者以情绪化的方式倾诉委屈请求援助",
+        "掌权者以低姿态提出含蓄的交换条件",
+        "在求助者行礼确认从属后完成权力展示"
+      ],
+      "dialogue_patterns": [
+        "以低沉耳语式的语气施加威压",
+        "在谈判中以含蓄隐喻传递交换条件",
+        "在被拒绝时以平静口吻预告后果"
+      ],
+      "abstraction": "提取掌权者在家族庆典的喧闹中于密室接见求助者、以低姿态提出含蓄交换条件、求助者行礼确认从属后完成权力展示的结构,核心张力来自庆典的喜庆与密室的肃穆以及低姿态下的绝对权力之间的对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_godfather_restaurant_assassination",
+      "work_id": "work_the_godfather",
+      "name": "纯真幼子在餐厅以冷静算计完成第一次杀戮",
+      "participant_ids": [
+        "known_michael_corleone_godfather"
+      ],
+      "setting": "意大利餐厅",
+      "conflict_type": "命运转折",
+      "emotional_arc": [
+        "压抑",
+        "决断",
+        "爆发",
+        "蜕变"
+      ],
+      "visual_actions": [
+        "纯真幼子以谈判姿态与敌对势力在餐厅会面",
+        "在洗手间取回藏匿武器时承受巨大的心理压力",
+        "在返回餐桌后以冷静算计完成第一次杀戮",
+        "在杀戮后以平静离开完成从纯真到冷酷的蜕变"
+      ],
+      "reusable_beats": [
+        "纯真之人在被迫情况下以谈判姿态接近敌对势力",
+        "在取回藏匿武器时承受巨大的心理压力",
+        "在关键时刻以冷静算计完成第一次越界",
+        "在越界后以平静离开完成从纯真到冷酷的蜕变"
+      ],
+      "dialogue_patterns": [
+        "以过度克制的语气掩饰内心波动",
+        "在决断前以短暂的沉默积蓄力量",
+        "在越界后以平静的告别完成仪式"
+      ],
+      "abstraction": "提取纯真之人在被迫情况下以谈判姿态接近敌对势力、在取回武器时承受心理压力、在关键时刻以冷静算计完成第一次越界并完成从纯真到冷酷蜕变的结构,核心张力来自外在的冷静与内在的恐惧以及越界前后的不可逆对比,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Godfather",
+          "source_name": "Wikipedia",
+          "page_title": "The Godfather",
           "published_at": null,
           "collected_at": "2026-08-19T00:00:00.000Z"
         }

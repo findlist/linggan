@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_my_own_swordsman",
+      "title": "武林外传",
+      "original_title": "My Own Swordsman",
+      "aliases": [
+        "My Own Swordsman",
+        "Wu Lin Wai Zhuan",
+        "Wulin Biography"
+      ],
+      "media_type": "television",
+      "regions": [
+        "中国大陆"
+      ],
+      "release_year": 2006,
+      "genres": [
+        "古装",
+        "情景喜剧",
+        "武侠"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_tongxiangyu_my_own_swordsman",
+      "work_id": "work_my_own_swordsman",
+      "name": "佟湘玉",
+      "aliases": [
+        "Tong Xiangyu",
+        "Tong Niang",
+        "Boss Tong"
+      ],
+      "roles": [
+        "protagonist",
+        "客栈掌柜"
+      ],
+      "character_types": [
+        "风情型",
+        "抠门型",
+        "刀子嘴豆腐心型"
+      ],
+      "traits": [
+        "以寡妇身份独自撑起同福客栈",
+        "在抠门算计的表面下对伙计如家人般关护",
+        "以龙门镖局千金的出身维持最后的体面",
+        "在对白展堂的爱情中以患得患失的姿态周旋"
+      ],
+      "dialogue_style": [
+        "以汉中口音的软糯语调撒娇或撒娇式施压",
+        "在算账时以精打细算的语气计较毫厘",
+        "在动情时以欲擒故纵的口吻试探心意"
+      ],
+      "relationships": [
+        "known_baizhantang_my_own_swordsman",
+        "known_guofurong_my_own_swordsman"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_baizhantang_my_own_swordsman",
+      "work_id": "work_my_own_swordsman",
+      "name": "白展堂",
+      "aliases": [
+        "Bai Zhantang",
+        "Lao Bai",
+        "Thief Saint"
+      ],
+      "roles": [
+        "protagonist",
+        "跑堂"
+      ],
+      "character_types": [
+        "浪子回头型",
+        "胆小型",
+        "隐藏身份型"
+      ],
+      "traits": [
+        "以盗圣的过往隐居客栈当跑堂",
+        "在武艺高强的实力下隐藏胆小如鼠的本性",
+        "在官府追缉中以战战兢兢的姿态度日",
+        "对佟湘玉以浪子回头的姿态投入真情"
+      ],
+      "dialogue_style": [
+        "以东北口音的豪爽语气掩饰心虚",
+        "在被揭穿时以闪烁其词的方式搪塞",
+        "在动情时以憨厚直率的告白表态"
+      ],
+      "relationships": [
+        "known_tongxiangyu_my_own_swordsman"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_guofurong_my_own_swordsman",
+      "work_id": "work_my_own_swordsman",
+      "name": "郭芙蓉",
+      "aliases": [
+        "Guo Furong",
+        "Xiao Guo",
+        "Guo Fu Rong"
+      ],
+      "roles": [
+        "supporting",
+        "打杂伙计"
+      ],
+      "character_types": [
+        "野蛮女友型",
+        "鲁莽型",
+        "成长型"
+      ],
+      "traits": [
+        "以侠门千金出身离家出走闯荡江湖",
+        "在第一站就被扣在客栈从打杂开始磨练",
+        "以鲁莽冲动的性格不断制造麻烦",
+        "在客栈日常中逐渐从娇横成长为真正的担当者"
+      ],
+      "dialogue_style": [
+        "以爽朗直率的语气表达立场",
+        "在不服时以质问的语气顶撞",
+        "在反省时以嘟囔的自我辩解承认错误"
+      ],
+      "relationships": [
+        "known_tongxiangyu_my_own_swordsman"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_tongyu_baitang_my_own_swordsman",
+      "work_id": "work_my_own_swordsman",
+      "from_character_id": "known_tongxiangyu_my_own_swordsman",
+      "to_character_id": "known_baizhantang_my_own_swordsman",
+      "relation": "寡妇掌柜与盗圣跑堂在客栈日常中的欢喜冤家爱情",
+      "description": "佟湘玉与白展堂在同福客栈的日常博弈中相互试探心意。佟湘玉以寡妇的患得患失和白展堂的盗圣身份顾虑周旋,白展堂以浪子回头的憨厚试图安定下来。两人在身份差异与日常吵闹中逐渐确认真情,形成情景喜剧中典型的欢喜冤家爱情模板。",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_tongyu_guofurong_my_own_swordsman",
+      "work_id": "work_my_own_swordsman",
+      "from_character_id": "known_tongxiangyu_my_own_swordsman",
+      "to_character_id": "known_guofurong_my_own_swordsman",
+      "relation": "抠门掌柜与鲁莽伙计在主仆与朋友间的相处",
+      "description": "佟湘玉作为掌柜以抠门算计的方式管理郭芙蓉这个打杂伙计,两人在薪酬与劳损上不断博弈。但在关键时刻佟湘玉对郭芙蓉以家人般关护,郭芙蓉在闯祸后也以真心认错承担。两人关系展现情景喜剧中主仆吵闹下的真挚情谊。",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_my_own_swordsman_tavern_daily",
+      "work_id": "work_my_own_swordsman",
+      "name": "客栈众人在日常冲突中以插科打诨化解危机",
+      "participant_ids": [
+        "known_tongxiangyu_my_own_swordsman",
+        "known_baizhantang_my_own_swordsman",
+        "known_guofurong_my_own_swordsman"
+      ],
+      "setting": "同福客栈大堂",
+      "conflict_type": "日常冲突化解",
+      "emotional_arc": [
+        "吵闹",
+        "插科",
+        "真情",
+        "和解"
+      ],
+      "visual_actions": [
+        "众伙计在客栈大堂因琐事爆发争执",
+        "掌柜以算账或威胁的方式介入调停",
+        "众人在插科打诨中以方言金句轮流接话",
+        "在外部危机来临时一致对外后回归日常吵闹"
+      ],
+      "reusable_beats": [
+        "一群性格各异的伙计在固定场所因琐事争执",
+        "掌柜以独特的方式介入调停",
+        "众人在插科打诨中以方言金句轮流接话",
+        "外部危机来临时一致对外后回归日常吵闹"
+      ],
+      "dialogue_patterns": [
+        "以方言口音的金句轮流接话推进节奏",
+        "在调停中以威胁或算账的口吻施压",
+        "在外部危机时以正经语气短暂切换",
+        "危机化解后立即以玩笑回到日常"
+      ],
+      "abstraction": "提取一群性格各异的伙计在固定场所因琐事争执、在插科打诨中以方言金句轮流接话、外部危机来临时一致对外后回归日常吵闹的结构,核心张力来自日常琐碎与江湖风波的错位以及喜剧节奏下的真情流露,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_my_own_swordsman_identity_reveal",
+      "work_id": "work_my_own_swordsman",
+      "name": "隐居跑堂的江湖身份在危机中被同伴知晓",
+      "participant_ids": [
+        "known_baizhantang_my_own_swordsman",
+        "known_tongxiangyu_my_own_swordsman"
+      ],
+      "setting": "同福客栈后院",
+      "conflict_type": "身份揭露",
+      "emotional_arc": [
+        "隐瞒",
+        "暴露",
+        "接纳",
+        "守护"
+      ],
+      "visual_actions": [
+        "隐居跑堂在危机中被迫展现真实武艺",
+        "掌柜在震惊中发现跑堂的江湖身份",
+        "两人在身份差异中经历短暂的信任危机",
+        "最终以接纳真实身份的方式完成守护承诺"
+      ],
+      "reusable_beats": [
+        "隐居者在危机中被迫展现真实身份",
+        "亲近之人在震惊中发现秘密",
+        "双方在身份差异中经历信任危机",
+        "最终以接纳真实身份的方式完成守护承诺"
+      ],
+      "dialogue_patterns": [
+        "在被发现时以闪烁其词的方式试图搪塞",
+        "在被追问时以坦诚的告白承认过往",
+        "在接纳时以日常玩笑化解严肃气氛"
+      ],
+      "abstraction": "提取隐居者在危机中被迫展现真实身份、亲近之人发现后经历信任危机最终以接纳完成守护承诺的结构,核心张力来自隐藏身份的恐惧与被接纳的释然之间的对比以及喜剧外壳下的真情,不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/武林外传",
+          "source_name": "Wikipedia",
+          "page_title": "武林外传",
+          "published_at": null,
+          "collected_at": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-08-19T00:00:00.000Z"
+    }
+  ]
+}
