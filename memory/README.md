@@ -14,5 +14,5 @@
 4. 产品规范、开发标准和长期路线仍存放在 `docs/`，只把跨轮次项目状态和决策放入 `memory/`；
 5. 公开热点原始批次属于内容数据，继续存放在 `data/collection-inbox/`，不作为 Agent 项目记忆；
 6. 记忆必须记录真实结果，不得把计划、推测或未验证能力描述为已完成；
-7. 超过 30 轮的历史日志可按月归档到 `memory/archive/`，但当前状态与最近五轮必须保留在 `PROGRESS.md`。
+7. 迭代日志累计超过 15 轮或 `PROGRESS.md` 主文件超过 100KB 时，**必须**按月归档到 `memory/archive/YYYY-MM.md`，主文件只保留当前状态摘要 + 最近五轮详细日志 + 队列与阻塞；归档后重新运行 typecheck / validate:data / test / build 确认未破坏链接。归档规则细节见 `docs/DEVELOPMENT_STANDARD.md` 第 17 节。
 8. 每轮修改完成并通过验证后必须创建 Git 提交并推送当前远程分支；`PROGRESS.md` 记录交付状态或失败原因，精确提交哈希在本轮最终报告中提供，避免修改提交后再写回自身哈希。

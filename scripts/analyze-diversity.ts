@@ -23,8 +23,11 @@ const readJson = async (path: string): Promise<unknown> =>
 const rawKb = KnowledgeBaseSchema.parse(await readJson('data/knowledge-base.json'))
 const rawSeeds = SeedEntitiesSchema.parse(await readJson('data/seed-entities.json'))
 
-// Known characters (first 5)
-const knownChars = rawKb.known_characters.slice(0, 5)
+// Known characters: stratified rotating sample
+// Always includes last 2 (most recently added) + first 3 (baseline) = 5 known chars
+// This ensures new knowledge base entries are reflected in diversity stats
+// while keeping the total combination count stable (15 chars × 3 moments = 315)
+const knownChars = [...rawKb.known_characters.slice(0, 3), ...rawKb.known_characters.slice(-2)]
 
 // Original characters (all 10)
 const originalChars = rawSeeds.characters
@@ -33,8 +36,8 @@ const originalChars = rawSeeds.characters
 
 const allChars: KnownCharacter[] = [...knownChars, ...originalChars]
 
-// Moments (first 3)
-const moments = rawKb.iconic_moments.slice(0, 3)
+// Moments: first 2 (baseline) + last 1 (most recently added) = 3 moments
+const moments = [...rawKb.iconic_moments.slice(0, 2), ...rawKb.iconic_moments.slice(-1)]
 
 // Works
 const workById = new Map<string, Work>(rawKb.works.map((w) => [w.id, w]))
@@ -58,7 +61,7 @@ const styles: RemixStyle[] = [
   { id: 'suspense_twist', label: '悬疑反转', prompt: '悬疑反转' },
 ]
 
-// Generate all combinations (same as daily-pipeline: 15 chars × 3 moments × 1 style × 30s)
+// Generate all combinations (15 chars × 3 moments × 1 style × 30s = 315 plans)
 // 与 daily-pipeline 一致地轮换 story_patterns,以真实反映叙事模板集成对生成多样性的贡献
 const style = styles[0]!
 const storyPatterns = rawSeeds.story_patterns
@@ -119,40 +122,44 @@ for (const [pair, stats] of [...personalityPairStats.entries()].sort(
   console.log(`  ${pair}: ${stats.duplicates}/${stats.total} (${((stats.duplicates / stats.total) * 100).toFixed(1)}%)`)
 }
 
-// Analyze similarity breakdown for duplicate pairs
+// Analyze similarity breakdown for duplicate pairs (skip O(n²) when no duplicates found)
 console.log('\nTop 20 duplicate pairs breakdown:')
-const dupPairs: {
-  i: number
-  j: number
-  score: number
-  breakdown: ReturnType<typeof computePlanSimilarity>['breakdown']
-}[] = []
-for (let i = 0; i < plans.length; i++) {
-  for (let j = i + 1; j < plans.length; j++) {
-    const sim = computePlanSimilarity(plans[i]!, plans[j]!)
-    if (sim.score >= 0.7) {
-      dupPairs.push({ i, j, score: sim.score, breakdown: sim.breakdown })
+if (result.stats.duplicates === 0) {
+  console.log('  (no duplicates found, skipping pairwise computation)')
+} else {
+  const dupPairs: {
+    i: number
+    j: number
+    score: number
+    breakdown: ReturnType<typeof computePlanSimilarity>['breakdown']
+  }[] = []
+  for (let i = 0; i < plans.length; i++) {
+    for (let j = i + 1; j < plans.length; j++) {
+      const sim = computePlanSimilarity(plans[i]!, plans[j]!)
+      if (sim.score >= 0.7) {
+        dupPairs.push({ i, j, score: sim.score, breakdown: sim.breakdown })
+      }
     }
   }
-}
-dupPairs.sort((a, b) => b.score - a.score)
+  dupPairs.sort((a, b) => b.score - a.score)
 
-for (const dup of dupPairs.slice(0, 20)) {
-  const planA = plans[dup.i]!
-  const planB = plans[dup.j]!
-  console.log(
-    `  [${dup.score.toFixed(3)}] ${planA.personalityA}|${planA.personalityB} vs ${planB.personalityA}|${planB.personalityB}`,
-  )
-  console.log(
-    `    hook: ${dup.breakdown.hook.toFixed(2)} title: ${dup.breakdown.title.toFixed(2)} dialogue: ${dup.breakdown.dialogue.toFixed(2)} concept: ${dup.breakdown.concept.toFixed(2)}`,
-  )
-  console.log(
-    `    storyboard: ${dup.breakdown.storyboard_sequence.toFixed(2)} hook_cat: ${dup.breakdown.hook_category.toFixed(2)} prompt: ${dup.breakdown.positive_prompt.toFixed(2)}`,
-  )
-  console.log(`    A hook: ${planA.hook.slice(0, 50)}`)
-  console.log(`    B hook: ${planB.hook.slice(0, 50)}`)
-  console.log(`    A dlgA: ${planA.dialogueA.slice(0, 50)}`)
-  console.log(`    B dlgA: ${planB.dialogueA.slice(0, 50)}`)
+  for (const dup of dupPairs.slice(0, 20)) {
+    const planA = plans[dup.i]!
+    const planB = plans[dup.j]!
+    console.log(
+      `  [${dup.score.toFixed(3)}] ${planA.personalityA}|${planA.personalityB} vs ${planB.personalityA}|${planB.personalityB}`,
+    )
+    console.log(
+      `    hook: ${dup.breakdown.hook.toFixed(2)} title: ${dup.breakdown.title.toFixed(2)} dialogue: ${dup.breakdown.dialogue.toFixed(2)} concept: ${dup.breakdown.concept.toFixed(2)}`,
+    )
+    console.log(
+      `    storyboard: ${dup.breakdown.storyboard_sequence.toFixed(2)} hook_cat: ${dup.breakdown.hook_category.toFixed(2)} prompt: ${dup.breakdown.positive_prompt.toFixed(2)}`,
+    )
+    console.log(`    A hook: ${planA.hook.slice(0, 50)}`)
+    console.log(`    B hook: ${planB.hook.slice(0, 50)}`)
+    console.log(`    A dlgA: ${planA.dialogueA.slice(0, 50)}`)
+    console.log(`    B dlgA: ${planB.dialogueA.slice(0, 50)}`)
+  }
 }
 
 // Template counts
