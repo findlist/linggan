@@ -27,7 +27,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "measure:bundle": "node --experimental-strip-types scripts/measure-bundle.ts"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",
