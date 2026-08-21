@@ -84,6 +84,18 @@ export const getIsoWeekId = (date: Date): string => {
 }
 
 /**
+ * 从按 computed_at 倒序的快照列表中，选取目标周之外最近的快照作为更新基准。
+ * 定时调度场景下同一 ISO 周可能重复触发（补跑、重复执行）：
+ * 此时 latest() 就是本周已保存的快照，若直接作为 previous 会把自身当上周基准，
+ * 导致同一事件流对权重做二次调整（10% clamp 只能限幅不能防重复叠加）。
+ * 纯函数，供 update:weekly-weights 调度入口复用。
+ */
+export const findPreviousSnapshot = (
+  snapshots: readonly RankingWeightSnapshot[],
+  targetWeekId: string,
+): RankingWeightSnapshot | null => snapshots.find((snapshot) => snapshot.week_id !== targetWeekId) ?? null
+
+/**
  * 限制新权重相对旧权重的变化不超过 MAX_CHANGE_RATIO（10%）。
  * 同时保证结果在 [0, 1] 合法区间内。
  */

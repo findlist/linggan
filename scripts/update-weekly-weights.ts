@@ -5,6 +5,7 @@ import { SqliteEventStore } from '../src/storage/sqlite-event-store.ts'
 import { SqliteWeightSnapshotStore } from '../src/storage/weight-store.ts'
 import {
   buildWeeklyWeightSnapshot,
+  findPreviousSnapshot,
   getIsoWeekId,
   MIN_SAMPLE_SIZE,
   type WeightEvent,
@@ -56,8 +57,9 @@ try {
         payload: event.payload,
       }))
 
-    // 读取上周快照（latest）：首次运行时为 null，使用 DEFAULT_WEIGHTS
-    const previous = await weightStore.latest()
+    // 读取更新基准：取目标周之外最近的快照（调度场景同周重复运行时 latest 是本周快照，
+    // 直接使用会把自身当上周基准造成权重二次调整，findPreviousSnapshot 已排除该情况）
+    const previous = findPreviousSnapshot(await weightStore.list(), targetWeekId)
 
     const computedAt = new Date().toISOString()
     const snapshot = buildWeeklyWeightSnapshot(weekEvents, targetWeekId, previous, computedAt)

@@ -41,7 +41,10 @@ const listJsonFiles = async (directory: string): Promise<string[]> => {
 
 // 生成符合 StableIdSchema 的稳定 ID：task_run_{task_slug}_{timestamp}_{random}
 const buildLogId = (taskName: TaskRunLogTaskName, finishedAt: Date): string => {
-  const slug = taskName.replace(/:/gu, '_')
+  // 替换所有非小写字母数字字符（如 ':' 与 '-'）为下划线：
+  // 'update:weekly-weights' 这类含连字符的任务名，旧逻辑只替换冒号会留下 '-'，
+  // 生成含连字符的 id 无法通过 StableIdSchema 校验，导致任务日志从未写入
+  const slug = taskName.replace(/[^a-z0-9]/gu, '_')
   const stamp = finishedAt.toISOString().replace(/[-:]/gu, '').replace('T', '_').slice(0, 15)
   const suffix = randomBytes(3).toString('hex')
   return `task_run_${slug}_${stamp}_${suffix}`

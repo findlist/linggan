@@ -4,6 +4,7 @@ import { RankingWeightSnapshotSchema } from '../src/data/contracts.ts'
 import type { RankingWeightSnapshot } from '../src/data/contracts.ts'
 import {
   buildWeeklyWeightSnapshot,
+  findPreviousSnapshot,
   getIsoWeekId,
   DEFAULT_WEIGHTS,
   MIN_SAMPLE_SIZE,
@@ -122,6 +123,49 @@ test('样本不足时 previous_week_id 仍正确链接上周', () => {
   const previous = buildPreviousSnapshot()
   const snapshot = buildWeeklyWeightSnapshot([], WEEK_ID, previous, FIXED_TIME)
   assert.equal(snapshot.previous_week_id, '2026-W30')
+})
+
+/* ----------------------- findPreviousSnapshot（调度重复执行保护） ----------------------- */
+
+test('findPreviousSnapshot 空列表返回 null', () => {
+  assert.equal(findPreviousSnapshot([], WEEK_ID), null)
+})
+
+test('findPreviousSnapshot 仅存在同周快照时返回 null（首次运行或回溯重算）', () => {
+  const sameWeek = buildPreviousSnapshot({ week_id: WEEK_ID })
+  assert.equal(findPreviousSnapshot([sameWeek], WEEK_ID), null)
+})
+
+test('findPreviousSnapshot 跳过最新同周快照，返回最近的异周快照', () => {
+  const week30 = buildPreviousSnapshot({ week_id: '2026-W30' })
+  const week29 = buildPreviousSnapshot({ week_id: '2026-W29', computed_at: '2026-07-17T12:00:00.000Z' })
+  // list() 语义：按 computed_at 倒序，最新的是本周重复运行产生的同周快照
+  const sameWeekRerun = buildPreviousSnapshot({ week_id: WEEK_ID, computed_at: '2026-07-31T18:00:00.000Z' })
+  const previous = findPreviousSnapshot([sameWeekRerun, week30, week29], WEEK_ID)
+  assert.ok(previous)
+  assert.equal(previous.week_id, '2026-W30')
+})
+
+test('同周重复运行时基准取上周快照，权重不被二次调整', () => {
+  // 第一周：充足样本生成 W30 快照（正向交互率高，base_ratio 应上调）
+  const events = [
+    ...Array.from({ length: 30 }, () => buildEvent({ event_type: 'idea_saved', idea_id: 'idea_a' })),
+    ...Array.from({ length: 30 }, () => buildEvent({ event_type: 'idea_impression', idea_id: 'idea_b' })),
+  ]
+  const week30Snapshot = buildWeeklyWeightSnapshot(events, '2026-W30', null, FIXED_TIME)
+
+  // 首次计算 W31：以 W30 为基准
+  const firstRun = buildWeeklyWeightSnapshot(events, WEEK_ID, week30Snapshot, FIXED_TIME)
+
+  // 调度重复触发：存储里最新快照是本周的 firstRun，基准必须仍取 W30 而非自身
+  const rerunPrevious = findPreviousSnapshot([firstRun, week30Snapshot], WEEK_ID)
+  assert.ok(rerunPrevious)
+  assert.equal(rerunPrevious.week_id, '2026-W30')
+  const rerun = buildWeeklyWeightSnapshot(events, WEEK_ID, rerunPrevious, FIXED_TIME)
+
+  // 同一事件流 + 同一基准 → 权重完全一致，未发生二次调整
+  assert.deepEqual(rerun.weights, firstRun.weights)
+  assert.equal(rerun.previous_week_id, firstRun.previous_week_id)
 })
 
 /* ----------------------- 单次变化不超过 10% ----------------------- */

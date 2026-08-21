@@ -49,6 +49,8 @@ npm run database:init
 
 数据库通过 `DATABASE_URL` 配置，默认是 `file:./data/linggan.sqlite`。配置、迁移和重建说明见 [SQLite 数据库说明](database/README.md)。SQLite 文件不提交 Git，原始采集批次会提交并可用于重建数据库。
 
+本地定时调度：`sync:events`（前端事件回收）与 `update:weekly-weights`（排序权重周更新）提供任务计划程序入口脚本与注册样例，见 [本地定时调度与运维说明](docs/OPERATIONS.md)。
+
 基础作品、知名人物、人物关系和抽象名场面存放在 `data/knowledge-base.json`。具体知名角色与名场面仅作 `reference_only`，不得作为精确复刻素材。
 
 自进化系统的完整规划见 [开发计划](docs/DEVELOPMENT_PLAN.md) 和 [内容分类规范](docs/CONTENT_SYSTEM.md)。当前脚本只读取示例趋势并向标准输出生成候选，不会自动发布内容。

@@ -117,6 +117,26 @@ test('succeed writes a valid success log to dated directory', async () => {
   })
 })
 
+test('succeed writes a valid log for task names containing hyphens', async () => {
+  // 回归测试：'update:weekly-weights' 是任务枚举中唯一含连字符的名称，
+  // 旧 slug 逻辑只替换冒号，生成的 id 含 '-' 无法通过 StableIdSchema，
+  // 导致该任务快照保存成功后日志写入抛 ZodError、进程以非零码退出
+  await withTemporaryDirectory(async (logDir) => {
+    const logger = createTaskRunLogger({
+      taskName: 'update:weekly-weights',
+      logDirectory: logDir,
+      clock: createFixedClock().now,
+    })
+    const log = await logger.succeed({ processedCount: 1, successCount: 1, failureCount: 0 })
+
+    assert.equal(log.status, 'success')
+    assert.match(log.id, /^task_run_update_weekly_weights_\d{8}_\d{6}_[a-f0-9]{6}$/)
+    // 写出的文件同样可被查询回读
+    const logs = await listTaskRunLogs({ logDirectory: logDir, taskName: 'update:weekly-weights' })
+    assert.equal(logs.length, 1)
+  })
+})
+
 test('partial writes a log with errors for partial failure', async () => {
   await withTemporaryDirectory(async (logDir) => {
     const logger = createTaskRunLogger({

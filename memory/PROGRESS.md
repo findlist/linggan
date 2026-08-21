@@ -1,9 +1,40 @@
 # 灵感项目当前进度
 
-最后更新：2026-08-21
-当前轮次：JS bundle 体积评估与阈值告警方案轮
+最后更新：2026-08-22
+当前轮次：定时调度配置轮
 当前阶段：Phase 1—3 规划任务已尽，D1—D5 反馈学习闭环健康扫描完成；用户已于 2026-08-03 授权自主推进 4.1—4.4 本地数据迭代；4.1—4.4 全部完成且 4.1 达到 15+ 目标；本轮在 4.1 已达标基础上继续扩充知识库第十三批（倩女幽魂/低俗小说/十二怒汉），知识库从 45 部作品/127 角色/79 关系/82 名场面扩充至 48 部作品/136 角色/85 关系/88 名场面；原创角色原型已接入 remix-engine 和 daily-pipeline；生成引擎模板扩充已完成（钩子 32 个/对白 56 个）；钩子模板双角色感知改写已完成；概念/提示词/钩子模板多样化改写已完成；概念尾句/标题模式/提示词句式多样化改写已完成；对白模板从 7 个/性格扩充至 14 个/性格（28→56），新增 {trait} 占位符引用角色 traits 增加差异化；pipeline:daily 已内嵌 review:auto 和 export:candidates 全自动闭环；本轮将 collect:wikipedia 和 migrate:trends 集成到 pipeline:daily，形成采集→迁移→生成→审核→导出全链路一键运行；原创角色 traits 已扩充至 5-6 个/角色（唯一对白A 80.0%、B 84.8%、C3 重复率 0.0%）；候选状态机已支持 rejected → pending_review（review:reopen）和 archived → pending_review（review:reactivate）重新审核，完成候选生命周期全循环；候选生成器已改进：每趋势角色选取从固定 2 个扩充至轮换 3 个（覆盖全部 14 个角色），标题模式从 8 种扩充至 16 种、钩子模式从 8 种扩充至 16 种，per-trend PRNG 洗牌使不同趋势产生不同选取序列，12 条真实趋势产生 30 条候选（原 20 条）、使用 14 个不同角色（原 2 个）、30 个不同标题和 30 个不同钩子（原全部相同）；种子实体已扩充：元素从 3 个扩充至 15 个（第三批新增天台烧烤/二手书店/广场舞，ready_for_review 率从 80% 升至 93.3%）（新增 activity/object/abstract 三个类别，动作数从全 3 扩展至 1-4），场景从 3 个扩充至 8 个（pattern 步骤从全 5 扩展至 3-7，lifecycle 从全 evergreen 扩展至 emerging/rising/peak/declining/evergreen）；visuality 从 2 个值扩充至 6 个值 [73,76,84,90,92,95]、seriality 从 2 个值扩充至 13 个值 [71,73,75,76,77,78,79,80,81,82,83,85,86]；叙事模板已从 3 个扩充至 27 个（第九批新增荒诞派叙事/纪录片式叙事/史诗叙事）；跨趋势模式均匀化已完成：新增 pickLeastUsed 函数跟踪全局模式使用次数，从打乱后的前 6 个候选中选取使用次数最少的模式，30 条候选中单个模式最大重复从 5 次降至 3 次（16 模式 × 30 候选 = 理论最优 1.875 次/模式），新增 2 项测试验证标题和钩子模式在 30 候选中不超过 3 次；story_patterns 已集成到生成引擎：RemixPlanInput 新增 storyPattern 可选字段，提供时其 beats 替换默认分镜节拍，daily-pipeline 按 (i+j+m) % patterns.length 轮换选取叙事模板传入生成器，Markdown 导出展示叙事模板名称，analyze-diversity 脚本同步轮换 story_patterns 并新增分镜结构唯一率统计（315/315 = 100.0%），avg max_similarity 从 0.553 降至 0.521；前端创作工作台 story_pattern 选择器已完成：用户可在跨作品混搭工作台手动选择叙事模板（或使用默认结构），选择器变化时展示当前模板的 beats 序列，生成的方案预览和制作包展示 storyPatternName，收藏和历史记录保存 storyPatternId 供重新加载时恢复；Agent 可推进的本地优化任务已接近尾声，Phase 4 商业化与扩展（E1—E5）需用户决策；story_pattern 选择器 beats 预览可视化已完成；叙事模板已从 24 个扩充至 27 个（新增荒诞派叙事/纪录片式叙事/史诗叙事）；知识库第四批扩充已完成（新增让子弹飞/哪吒之魔童降世/赛博朋克 2077，15→18 作品）；知识库第五批扩充已完成（新增灌篮高手/切尔诺贝利/哈利波特，18→21 作品）；知识库第六批扩充已完成（新增指环王/千与千寻/楚门的世界，24→27 作品；本轮发现并修正 3 部之前未在 PROGRESS.md 记录的已存在作品：大话西游/盗梦空间/寄生虫，实际知识库从 24 部而非 21 部开始）
 整体状态：本地数据闭环可验证；前端埋点采集闭环已建立（session 管理 + localStorage 事件队列 + 导出按钮 + sync:events 回收入库）；前端 6 类核心交互事件（impression/opened/saved/copied/exported/hidden）已在 FeedSection/RemixWorkbench/SavedList 接入 track()，事件暂存 localStorage 后可通过"导出事件"按钮下载 event-inbox 兼容 JSON，再由 npm run sync:events 经 ProductEventSchema 校验后幂等写入 SQLite product_events 表；SQLite 已为默认存储，基础知识可幂等初始化、热点可事务入库；候选生成已接通 SQLite 正式趋势；正式趋势可原子导出为只读 JSON；网站热点雷达已消费真实趋势数据；候选已持久化到 SQLite，状态机支持 pending_review → approved/rejected → archived、rejected → pending_review（重新审核）和 archived → pending_review（重新激活）流转和幂等键去重；review:reopen 命令支持单条/批量 reopen rejected 候选并可立即 --re-review；review:reactivate 命令支持单条/批量 reactivate archived 候选并可立即 --re-review；今日推荐流已通过只读 JSON 导出消费 approved 候选；知识库增量合并命令已建立并通过真实批次验证，知识库已扩充至 48 部作品/136 角色/85 关系/88 名场面（4.1 第一批：进击的巨人、繁花、狂飙；4.1 第二批：原神、黑神话悟空；4.1 第三批：长安三万里；4.1 第四批：让子弹飞、哪吒之魔童降世、赛博朋克 2077；4.1 第五批：灌篮高手、切尔诺贝利、哈利波特；4.1 第六批：指环王、千与千寻、楚门的世界；4.1 第七批：霸王别姬、阿甘正传、星际穿越；4.1 第八批：功夫、海上钢琴师、流浪地球2；4.1 第九批：活着、飞驰人生、辛德勒名单；4.1 第十批：三国演义、水浒传、琅琊榜；4.1 第十一批：红楼梦、武林外传、教父；4.1 第十二批：肖申克的救赎、银翼杀手、大明王朝1566；注：大话西游/盗梦空间/寄生虫为之前未记录的已存在作品，第六批核实并补录）；跨作品混搭引擎已升级为多样化、固定种子可复现的生成器，支持 4 类共 32 个钩子模板、8 种风格（电影感热血/一本正经的荒诞/国风动画/伪纪录片/赛博朋克霓虹/古风水墨写意/Vlog 日常感/悬疑反转）、4 种性格驱动对白（4 性格共 56 个对白模板）、性格对钩子类别扩展机制（6 种互补组合扩展）、按时长分镜（15/30/60s → 3/5/8 镜头）和发布文案（3 标题+描述+3 标签）；素材库角色/作品/名场面三类卡片可点击进入详情弹窗，展示完整字段并提供"开始创作"入口；混搭方案支持导出 Markdown（人类可读，含标题/概念/钩子/分镜表格/对白/文案/画面提示词/版权边界）和 JSON（机器可读，完整 RemixPlan 字段），收藏列表保存完整方案和上下文，支持展开查看、重新加载到工作台、单条导出和删除，旧格式收藏降级显示；首个固定公开来源适配器（维基百科最热词条 REST API）已建立，使用本地保存的响应样本驱动测试，输出 CollectionBatchSchema 兼容批次可被 migrate:trends 消费；统一任务运行日志已建立，覆盖采集、迁移、生成、导出、事件同步和周权重更新七个 CLI 环节，日志按日期分目录持久化到 data/run-logs/，支持按任务名、状态和日期范围查询回溯；B4/B5 两轮遗留的浏览器交互回归缺口已通过 C8 补齐，桌面端 1440px 五大核心流程（详情弹窗+实体跳转+Esc+开始创作、工作台生成+复制+导出 MD/JSON+收藏、收藏列表展开+重新加载+单条导出+删除、热点雷达真实趋势、今日推荐流空状态）和移动端 375/640/768/1024px 响应式断点均通过 browser_evaluate DOM 检查验证；C1 兼容矩阵已建立，覆盖 19 角色能力档案 × 11 场景约束档案 × 11 冲突难度档案 × 55 能力-冲突适配规则，提供 computeCompatibility/filterCompatibleCombinations API 供 remix-engine 在生成前过滤不合理组合（如"温柔型角色 × 高强度战斗场景 × 15s"）或调整生成难度权重；C2 完整制作包已建立，RemixPlan 扩展为包含结构化画面提示词（正向/负面/比例/风格强度）、版权边界声明（参考状态/商用限制/改写范围）、分镜表增加景别/运镜/转场三列、文案增加封面文案，daily-pipeline 已集成 C1 兼容矩阵过滤（buildProductionPlans 先 filterCompatibleCombinations 再 buildRemixPlan），导出器 Markdown 同步输出全部制作字段；C3 近似度检测已建立，提供 computePlanSimilarity/detectDuplicates/filterUniquePlans 三个 API，采用字符 bigram Jaccard 文本相似度 + 结构字段精确匹配的加权综合方案（钩子权重 0.25 最高，结构字段权重最低），daily-pipeline 在 C2 生成后调用 detectDuplicates 标记重复方案并写入 logger metadata，不删除只标记保留可追溯性；C4 创作工作台已升级为三栏布局（左素材选择/中核心预览/右完整制作包），中栏预览展示标题/钩子/封面文案/C3 重复检测标记/复制收藏快捷操作，右栏展示完整分镜表（含景别/运镜/转场中文标签）、结构化画面提示词（正向/负面/比例/风格强度）、版权边界三字段声明和导出按钮，前端集成 detectDuplicates 把当前方案与已收藏方案对比并在相似度≥0.7 时显示换皮警告，桌面端三栏在 ≤980px 堆叠为单栏；C5 素材库多维筛选已建立，业务规则与 UI 分离为 src/library/filter.ts 纯函数（filterLibraryItems/collectFilterOptions），素材库三个 tab 各配置 3 个筛选维度（角色：类型/作品/版权；名场面：冲突/情绪/作品；作品：媒介/类型/版权），同维度多选 OR、跨维度 AND、文本搜索与所有维度 AND，chip 动态收集可选项避免死选项，切换 tab 自动重置筛选，有选中时显示清空按钮和"显示 N / 共 M 项"计数；C6 前端模块化已完成，main.js 从 730 行减至 78 行（-92%），按行为边界拆分为 6 个 section 组件（Hero/RadarSection/RemixWorkbench/LibrarySection/SavedList/FeedSection）和 4 个基础模块（data/knowledge.js 知识库读取层、data/store.js 状态管理、ui/icons.js 图标库、ui/dom.js DOM 工具），原 main.js 顶层 6 个可变 let（duration/generation/currentResult/activeTab/libraryFilters/saved）全部收敛到 store.js，跨 section 调用通过 ctx 注入回调避免循环依赖，浏览器 DOM 检查 6/7 项 PASS（唯一 FAIL 是验证脚本查询方式问题，代码正确）；C7 lint/format 配置已完成，ESLint 9 flat config + Prettier 3 覆盖全部 .ts/.js 源码，lint 与 format:check 全部通过，TypeScript 降级至 6.0.3 以兼容 typescript-eslint v8，Phase 2 全部任务结束；D1 事件采集已建立，9 类核心产品事件（idea_impression/idea_opened/idea_saved/prompt_copied/idea_exported/video_created/video_published/idea_hidden/risk_reported）可通过 ProductEventSchema 校验并经 EventTracker 记录到 SQLite product_events 表（INSERT OR IGNORE 幂等），EventStore 接口 + InMemoryEventStore/SqliteEventStore 双实现支持按 event_type/session_id/idea_id/日期范围查询和 countByType 九类计数，003 迁移建表含 3 索引（type+occurred/session+occurred/idea_id）；D2a 前端埋点采集闭环已建立，前端 session 管理（localStorage 持久化 + 30 分钟超时新建会话）+ 事件队列（track 接口暂存 localStorage，上限 200 丢弃最旧）+ 导出按钮（EventSyncBar 渲染计数轮询和下载 event-inbox 兼容 JSON）+ sync:events 脚本（递归扫描 event-inbox，逐事件 Schema 校验后幂等写入 SQLite）完整接通前端行为到后端 product_events 表的闭环，6 类核心交互事件（impression/opened/saved/copied/exported/hidden）已在 FeedSection/RemixWorkbench/SavedList 接入埋点；D2b 创作者偏好画像与个性化排序已建立，buildPreferenceProfile 按 session_id 聚合事件流（9 类事件加权：saved 5/copied 4/exported 4/opened 3/impression 1/hidden -3）并结合候选 entities/source_trend/risk_level 扩散到维度权重输出 PreferenceProfile，rankCandidates 基于画像对候选重排（personalized_score = base_score*0.6 + match_score*0.4，已交互候选优先、共享 entity 候选获匹配分提升、explore_ratio 15% 保留未交互候选探索位、冷启动无画像时降级原顺序），前端 personalize.ts 从 localStorage 事件队列实时聚合画像并注入 FeedSection 渲染"为你推荐"流（画像摘要 + 已关注/探索徽章）；D3 排序权重周更新已建立，buildWeeklyWeightSnapshot 按 ISO 周从 product_events 聚合事件流计算全局排序权重（base_ratio/match_ratio/explore_ratio），单次变化不超过 10%（clampChange 限制在 [old*0.9, old*1.1]）、样本不足（event_count < 50）时保持原权重 changes 全 0、previous_week_id 链接上周快照支持回滚、input_stats 记录事件数/会话数/创意数/按类型分布提供可解释性，权重调整基于正向交互率（saved+copied+exported 占比 >30% 时 base 增 / <10% 时 match 增）和 idea 多样性（<0.3 时 explore 增 / >0.6 时减），InMemoryWeightSnapshotStore + SqliteWeightSnapshotStore 双实现保留全部历史快照支持查询任意周回滚（INSERT OR REPLACE 保证相同 week_id 幂等），004 迁移建 ranking_weight_snapshots 表（week_id 主键 + computed_at 索引 + snapshot_json 完整快照），update:weekly-weights CLI 脚本聚合本周事件生成快照并持久化、personalized-rank.ts 集成 weight_snapshot 参数让周级权重覆盖默认 base_ratio/explore_ratio 影响个性化排序；D4 探索流量机制已建立，exploration.ts 提供 computeExploreSlotCount（基于全部候选用 ceil 计算探索位数量保证 ≥15% 门槛，旧实现基于 nonProfiled.length 用 round 会让小列表得到 0 探索位）、selectExploreCandidates（多样性优先贪心选取 entities 重叠最少的候选作为探索位，FNV-1a 哈希 + seed 打破平局保证可复现）、buildExploreEffectStats（扫描 impression payload.reason='explore' 追踪探索位后续正向交互率 opened/saved/copied/exported），personalized-rank.ts 接入多样性选取替代旧 slice(0,N) 简单截取、新增 explore_seed 参数，weight-snapshot.ts 的 WeightEvent 扩展 payload 字段、input_stats 新增可选 explore_stats 字段（explore_impressions/unique_explore_ideas/explored_with_interaction/interaction_rate）、computeRawAdjustments 增加探索效果信号（interaction_rate>0.3 时 explore_ratio 略减 / <0.1 时略增，需 unique_explore_ideas≥5 避免小样本噪声，与 diversity 信号叠加后仍受 10% clamp 限制），update:weekly-weights 脚本传递 payload 并输出 explore_stats 到报告和日志 metadata；D5 创作历史与项目管理已建立，history.ts 提供 localStorage 持久化的创作历史存储（MAX_HISTORY=50 上限，自动记录每次用户主动生成的完整 RemixPlan + 选择器上下文 + 种子 + ISO 时间，addHistory 同 id 更新移前避免重复堆积、超限丢弃最旧、损坏 JSON/非数组/缺字段降级空数组、配额满静默降级不阻塞生成），HistoryList.js 渲染历史列表 UI（按时间倒序、展开折叠查看核心概念与对白、重新加载到工作台、单条删除、清空全部、键盘 Enter/Space 可访问、D2 埋点 idea_opened），RemixWorkbench 在用户主动生成和随机生成时自动 recordHistory（初始挂载默认方案不记录），loadRemixFromEntry 提取收藏和历史共享的重新加载逻辑避免重复代码，与收藏列表视觉区分（历史 cyan 色 50 条自动记录 vs 收藏 lime 色 8 条主动保存）；D1—D5 反馈学习闭环健康扫描已完成，端到端链路（前端 track → localStorage 队列 → sync:events → SQLite product_events → buildPreferenceProfile → rankCandidates + weight_snapshot + exploration → FeedSection 个性化推荐；update:weekly-weights 聚合周事件 → weight_snapshot → rankCandidates 覆盖默认权重）代码结构与脚本入口齐全且自洽，332 项测试全部通过；扫描发现并修复 D5 提交（838f3aa）引入的 docs/DEVELOPMENT_DIRECTION.md 表格列填充不符合 Prettier 规范导致 format:check 失败的基线问题（D5 进度记录中"format:check 通过"声明不准确）；今日推荐自动审核闭环已建立，review:auto 命令用规则引擎对 pending_review 候选自动 approve/reject，今日推荐流可消费 approved 候选；daily-pipeline 已内嵌自动审核，候选生成后自动审核无需手动运行 review:auto；pipeline:daily 已集成 collect:wikipedia 和 migrate:trends，形成采集→迁移→生成→审核→导出全链路一键运行，采集和迁移失败不阻塞后续流程；候选生成器标题缩短函数 shortenTrendTitle 已改进（94bbf22 + cbf8ddb）：先按中文标点断句再按自然断点（虚词/介词/连词）截断避免词语中间切断（如"台风"被截为"因台"），去除前导书名号《》等装饰符号，TITLE_PATTERNS 中两处 maxLen 从 6 调整为 8 保持标题可读，新增 6 项测试覆盖标点断句、书名号去除、自然断点截断和 AI短剧场景；候选标题趋势可用性检查已建立：新增 isTrendTitleUsable 函数检测缩短后的趋势标题是否以虚词结尾或过短，不可用时跳过引用趋势标题的标题/钩子模板回退到不引用趋势的模板，TITLE_PATTERNS 和 HOOK_PATTERNS 从函数数组重构为带 usesTrend 标记的对象数组，NATURAL_BREAK_AFTER 新增 5 个虚词（以/将/被/把/对/向），新增 3 项测试覆盖虚词结尾回退、短标题可用和纯数字回退；上轮 dea3dce 提交中 3 个新测试 Trend 对象使用了错误字段格式（discovered_at 代替 observed_at、source 对象代替 source+source_url 字符串），本轮已修复 typecheck 错误
+
+### 定时调度配置轮 — 2026-08-22
+
+本轮目标：为 update:weekly-weights 与 sync:events 补充本地调度入口与文档，使两个周期任务可在 Windows 任务计划程序中无人值守运行（不部署、不写真实密钥）。验收条件为：(1) 两个调度入口脚本可端到端运行成功；(2) 调度文档齐备并含注册示例；(3) typecheck / lint / format:check / validate:data / test / build 全部通过。
+
+完成：
+
+- 创建 scripts/scheduled/sync-events.cmd 与 update-weekly-weights.cmd 本地调度入口：
+  - 全 ASCII 注释（cmd.exe 以 OEM 代码页解析批处理，中文注释在中文 Windows 上会乱码）；
+  - LINGGAN_NODE_DIR 环境变量可覆盖 Node 目录（默认 D:\development\nodejs，因本机默认 node 为 v14 而流水线需 ≥22.6）；
+  - Node 版本守卫：快速失败并返回退出码 1，避免产出难排查的 TypeScript 语法错误；
+  - wrapper 追加日志捕获 npm 自身启动失败；data/run-logs/ 下结构化 JSON 日志仍是真源；
+  - 通过 %~dp0 相对定位项目根，脚本可从任意工作目录调用。
+- 编写 docs/OPERATIONS.md 运维文档：任务清单（周权重更新/事件同步）、幂等性说明、入口脚本设计（Node 版本守卫/日志策略/退出码契约）、Windows 任务计划程序 schtasks 注册示例（不部署）、验证步骤与故障排查表；README.md 添加入口链接。
+- 实测发现并修复两个真实 bug（调度场景下首次暴露）：
+  - bug 1（同周重复运行权重二次调整）：update:weekly-weights 使用 store.latest() 作为 previous，调度场景下同周第二次运行时 latest 返回本周刚写的快照，导致基准错位。新增 findPreviousSnapshot（跳过目标周快照，返回最近异周快照；仅有同周快照时返回 null），update-weekly-weights.ts 改用该函数，同周重复运行不再产生二次调整；
+  - bug 2（含连字符任务名日志写入失败）：buildLogId 生成 slug 时只替换冒号，update:weekly-weights（枚举中唯一含连字符的任务名）生成 id 含 '-'，无法通过 StableIdSchema 校验，任务快照保存成功但日志写入抛 ZodError、进程非零退出。修复为替换所有非字母数字字符（[^a-z0-9] → '_'），新 id 形如 task_run_update_weekly_weights_20260821_181615_20ef37。
+- 新增 5 项单元测试：findPreviousSnapshot 空列表/仅有同周快照返回 null、跳过最新同周快照返回最近异周快照、同周重复运行权重不被二次调整；task-run-logger 含连字符任务名生成合法日志并可查询回读。
+- 端到端验证两个入口真实运行：sync-events.cmd（wrapper 日志 02:11:27 启动 → 成功日志 task_run_sync_events_20260821_181134_29936e.json，37ms，0 事件幂等）；update-weekly-weights.cmd（修复 bug 2 后 wrapper 日志 02:16:14 启动 → 成功日志 task_run_update_weekly_weights_20260821_181615_20ef37.json，47ms，样本不足保持默认权重）。
+- 清理记忆文件错误：删除 PROGRESS.md 中重复的"多样性测试矩阵改进轮 — 2026-08-20"记录（2026-08-20 归档时残留的重复段落，与第 57 行版本几乎完全相同）。
+
+验证：typecheck 通过、lint 通过、format:check 通过、validate:data 通过（5 份 JSON 有效，跨文件外键校验通过）、test 427/427 通过（422 基础上新增 5 个）、build 34 modules 通过（CSS 34.71 kB / gzip 7.46 kB 不变、JS 415.32 kB / gzip 117.68 kB 不变，本轮只新增 .cmd 脚本和文档，不涉及前端 bundle）。
+
+关键决策与遗留问题：
+
+- 调度入口只做"本地可注册"，不执行 schtasks 注册本身（用户指令明确不部署）；文档提供注册示例命令供用户自行执行；
+- wrapper 日志定位：追加式 .log 捕获 Node/npm 启动失败这类结构化日志覆盖不到的场景；结构化 JSON 日志（data/run-logs/<日期>/）仍是运行真源，两者互补不冲突；
+- data/collection-inbox/2026/08/ 下存在 15 个未跟踪批次文件（2026-08-04 至 08-20，之前会话趋势收集遗留产物）。历史上 7 月批次有提交先例，本轮不改动不提交，留待用户决策是否入库或忽略；
+- Phase 4 商业化与扩展（E1—E5）仍需用户决策，不得擅自启动。
+
+下一轮：定时调度配置已完成（用户优先级 1—5 全部完成：记忆归档 fef0bfd、测试演进 6dab860、bundle 评估 0f89533、调度配置本轮）。下一轮唯一首选任务为文档同步（DEVELOPMENT_DIRECTION.md 4.1—4.4 章节顶部标注完成日期、验证依据、真实数据规模，规范 §5）。
 
 ### JS bundle 体积评估与阈值告警方案轮 — 2026-08-21
 
@@ -341,43 +372,6 @@ bundle 组成分析：
 
 下一轮：知识库第九批扩充已完成，knowledge-base.json 从 33 部作品扩充至 36 部作品/100 角色/61 关系/64 名场面。Phase 4 商业化与扩展（E1—E5）需用户决策，不得擅自启动。可选方向：继续扩充知识库第十批（候选作品可考虑三体电视剧版（如与已有三体小说不同）、活着（已本轮完成）、飞驰人生（已本轮完成）、辛德勒名单（已本轮完成）等已排除，可考虑活着余华原著小说版（如与电影不同媒介）、让子弹飞原著小说、三国演义、水浒传等经典文学或电视剧作品）、为 update:weekly-weights 和 sync:events 配置定时调度、为前端增加更多交互反馈等本地任务。
 
-### 多样性测试矩阵改进轮 — 2026-08-20
-
-本轮目标：scripts/analyze-diversity.ts 使用固定切片（known_characters.slice(0,5) + 10 original = 15 角色、iconic_moments.slice(0,3) = 3 名场面）导致 b9—b13 五轮多样性数字完全不变（0.531/100.0%），违反 DEVELOPMENT_STANDARD.md §13 测试演进规则（"若测试数字连续 3 轮完全不变，视为测试失效，必须改进测试矩阵"）。本轮改进测试矩阵让新增知识库数据进入统计，使多样性指标随知识库扩充真实变化。验收条件为：(1) 测试矩阵覆盖最近一批新增角色和名场面；(2) b9—b13 的多样性数字不再完全不变；(3) typecheck / test / build 全部通过。
-
-完成：
-
-- 改进 scripts/analyze-diversity.ts 测试矩阵采样策略：
-  - 知名角色从固定 slice(0,5) 改为分层旋转采样 slice(0,3) + slice(-2)（3 基线 + 2 最近新增 = 5 知名角色），保持总量 5 不变（+ 10 原创角色 = 15 角色），确保最近一批新增角色始终进入统计；
-  - 名场面从固定 slice(0,3) 改为分层旋转采样 slice(0,2) + slice(-1)（2 基线 + 1 最近新增 = 3 名场面），保持总量 3 不变，确保最近一批新增名场面始终进入统计；
-  - 总组合数保持 315（15 角色 × 3 名场面 × 1 风格 × 30s）不变，运行时间不变（~72s），不影响开发体验；
-  - 当前测试矩阵覆盖：3 基线角色（甄嬛/宣瑜/鸣人）+ 2 最近新增角色（宁采臣/燕赤霞，来自 b13 倩女幽魂）+ 2 基线名场面 + 1 最近新增名场面（迁葬解救女鬼脱离控制，来自 b13 倩女幽魂）；
-  - 当未来扩充第十四批时，新增角色和名场面将自动进入 slice(-2)/slice(-1) 采样范围，多样性数字将真实变化。
-- 优化 top-20 重复对计算：当 detectDuplicates 返回 0 重复时跳过 O(n²) pairwise 遍历（从 315 plans 的 C(315,2)=49K 对到直接跳过），消除无重复时的冗余计算开销。
-
-多样性数字改进前后对比：
-
-| 指标                  | 改进前（固定 slice(0,5)+slice(0,3)） | 改进后（分层 slice(0,3)+slice(-2) + slice(0,2)+slice(-1)） | 变化              |
-| --------------------- | ------------------------------------ | ---------------------------------------------------------- | ----------------- |
-| Total plans           | 315                                  | 315                                                        | 不变（设计如此）  |
-| Duplicates            | 0 (0.0%)                             | 0 (0.0%)                                                   | 不变              |
-| avg max_similarity    | 0.531                                | 0.528                                                      | ✅ 变化（-0.003） |
-| Unique hooks          | 314/315 (99.7%)                      | 312/315 (99.0%)                                            | ✅ 变化（-0.7%）  |
-| Unique dialogueA      | 252/315 (80.0%)                      | 257/315 (81.6%)                                            | ✅ 变化（+1.6%）  |
-| Unique dialogueB      | 267/315 (84.8%)                      | 273/315 (86.7%)                                            | ✅ 变化（+1.9%）  |
-| Storyboard uniqueness | 315/315 (100.0%)                     | 315/315 (100.0%)                                           | 不变              |
-
-验证：typecheck 通过、lint 通过（0 errors 0 warnings）、format:check 通过、validate:data 通过（5 份 JSON 有效，跨文件外键校验通过）、test 422/422 通过、build 34 modules 通过（CSS 34.71 kB 不变、JS 415.32 kB 不变）。analyze:diversity 生成多样性自检：C3 重复率 0.0%（不变）、avg max_similarity 0.528（从 0.531 变化）、分镜结构唯一率 100.0%（不变）、唯一钩子 99.0%（从 99.7% 变化）、唯一对白A 81.6%（从 80.0% 变化）、唯一对白B 86.7%（从 84.8% 变化）。
-
-关键决策与遗留问题：
-
-- 采样策略选择 slice(0,3)+slice(-2) 而非 slice(0,5)+slice(-5)：后者将组合数增至 1140 plans（C(20,2)×6=1140），detectDuplicates O(n²) 遍历需 C(1140,2)=~650K 次相似度计算，运行时间从 ~72s 增至 ~950s（不可接受）；前者保持 315 plans 不变，运行时间不变，多样性数字真实变化，符合 DEVELOPMENT_STANDARD.md §13 测试演进规则；
-- 分层旋转采样设计：始终保持 5 知名角色（3 基线 + 2 最近）+ 10 原创角色 = 15 角色、3 名场面（2 基线 + 1 最近），总组合数 315 不变；当知识库扩充时，slice(-2)/slice(-1) 自动采样最近新增实体，无需手动更新脚本；
-- top-20 重复对计算优化：b9—b13 五轮 C3 重复率均为 0.0%，detectDuplicates 返回 0 重复时跳过 O(n²) pairwise 遍历是安全优化，有重复时仍执行完整遍历；
-- Phase 4 商业化与扩展（E1—E5）仍需用户决策，不得擅自启动。
-
-下一轮：多样性测试矩阵改进已完成，analyze:diversity 多样性数字从 0.531/99.7%/80.0%/84.8% 变为 0.528/99.0%/81.6%/86.7%，随知识库扩充真实变化。Phase 4 商业化与扩展（E1—E5）需用户决策，不得擅自启动。下一轮唯一首选任务为 JS bundle 优化（评估 knowledge-base.json 增长趋势和 gzip 后体积，若当前可接受则记录结论和阈值告警方案）。
-
 ### 记忆归档维护轮 — 2026-08-20
 
 本轮目标：PROGRESS.md 已积累 40+ 轮日志（约 293KB），远超"最近五轮"上限和 100KB 阈值。将 2026-08-06 至 2026-08-18 的已完成轮次（第八批至生成引擎多样性提升轮，共 23 轮）按月归档到 memory/archive/2026-08.md，PROGRESS.md 只保留当前状态摘要 + 最近五轮（b9—b13）详细日志 + 队列与阻塞。
@@ -411,4 +405,4 @@ bundle 组成分析：
 
 ### 下一轮唯一首选任务
 
-**知识库扩充第十四批（4.1 延续，48→51 作品）**：4.1—4.4 本地数据迭代方向全部完成，技术债 #1 和 #2 均已解决，JS bundle 阈值告警方案已建立（当前 GREEN 117.68 kB，距 YELLOW 阈值还有 12.32 kB 余量约 1—2 批扩充空间）。本轮在 4.1 已达标（48 部远超 15+ 目标）基础上继续扩充知识库第十四批，新增 3 部作品，每部 2—3 角色 + 1—2 抽象名场面，通过 merge-knowledge 命令增量合并并校验。候选作品可考虑：人民的名义/走向共和（中国大陆政治剧）、沉默的羔羊/搏击俱乐部（美国经典犯罪/心理）、美丽人生/天堂电影院（意大利经典）。验收条件：(1) merge:knowledge 合并成功 0 失败；(2) validate:data 跨文件外键校验通过；(3) 固定种子生成多样性保持健康（C3 重复率 0.0%、avg max_similarity ≤0.7）；(4) npm run measure:bundle 确认 JS gzip 仍在 GREEN 或 YELLOW 范围；(5) typecheck / test / build 全部通过。
+**文档同步（DEVELOPMENT_DIRECTION.md 4.1—4.4 章节完成标注，规范 §5）**：4.1—4.4 本地数据迭代已全部完成，但 DEVELOPMENT_DIRECTION.md 第四章各小节（4.1 作品扩充目标/4.2 原创角色原型/4.3 风格扩充/4.4 前端展示种子数据）顶部尚未标注完成日期、验证依据和真实数据规模，文档滞后于实际进度。本轮在每小节顶部补充完成标注：4.1（已完成 2026-08-19，知识库 48 作品/136 角色/85 关系/88 名场面，第十三批 45→48，验证依据 merge:knowledge 0 失败 + validate:data 跨文件外键校验 + 422→427 测试通过）；4.2（已完成，10 个原创角色接入 remix-engine 和 daily-pipeline）；4.3（已完成，8 种风格全部可用）；4.4（已完成，前端展示齐备）。验收条件：(1) 四个小节顶部均有完成日期 + 验证依据 + 真实数据规模；(2) format:check 通过（该文件此前有 Prettier 表格填充先例）；(3) 标注内容与 PROGRESS.md 记录一致，不夸大不编造。次优先级任务（文档同步完成后）：前端交互反馈增强（生成进度/筛选状态持久化/收藏分组），再次为知识库扩充第十四批（48→51 作品，候选：人民的名义/走向共和/沉默的羔羊/搏击俱乐部/美丽人生/天堂电影院，扩充后需运行 npm run measure:bundle 确认 JS gzip 仍在 GREEN 或 YELLOW 范围）。
