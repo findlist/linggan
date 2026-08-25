@@ -6,7 +6,8 @@ import { icon } from '../ui/icons.js'
 import { escapeHtml } from '../ui/dom.js'
 import { filterLibraryItems, collectFilterOptions } from '../library/filter.ts'
 import { knowledge, workById, mediaNames, rightsLabels } from '../data/knowledge.js'
-import { getState, setActiveTab, resetLibraryFilters } from '../data/store.js'
+import { getState, setActiveTab, setLibraryFilters, resetLibraryFilters } from '../data/store.js'
+import { getLibraryPrefs, patchLibraryPrefs } from '../data/library-prefs.ts'
 
 // 把知识库实体映射为可被 filterLibraryItems 消费的 FilterableItem + UI 字段
 const libraryItems = (tab) => {
@@ -135,13 +136,34 @@ export const renderLibrarySection = () => `
   </section>
 `
 
+// 持久化恢复的筛选可能包含知识库已不存在的值（作品移除 / 数据合并改名），
+// 清洗掉这些"幽灵筛选"避免过滤出空结果，并同步清除持久化数据
+const pruneStaleFilters = (allItems, dimensions) => {
+  const { libraryFilters } = getState()
+  const pruned = {}
+  let changed = false
+  dimensions.forEach((dim) => {
+    const options = collectFilterOptions(allItems, dim.key)
+    const selected = libraryFilters[dim.key] ?? []
+    const kept = selected.filter((value) => options.includes(value))
+    if (kept.length) pruned[dim.key] = kept
+    if (kept.length !== selected.length) changed = true
+  })
+  // 还有非配置维度的残留键（如知识库结构变化）也一并清掉
+  const dimKeys = new Set(dimensions.map((dim) => dim.key))
+  if (Object.keys(libraryFilters).some((key) => !dimKeys.has(key))) changed = true
+  if (changed) setLibraryFilters(pruned)
+}
+
 // C5：渲染筛选器 chips，每个维度一行，支持多选（同维度 OR），跨维度 AND；有选中时显示清空按钮
-const renderLibraryFilters = () => {
+const renderLibraryFilters = (ctx) => {
   const container = document.querySelector('#library-filters')
   if (!container) return
-  const { activeTab, libraryFilters } = getState()
+  const { activeTab } = getState()
   const dimensions = filterDimensions[activeTab] ?? []
   const allItems = libraryItems(activeTab)
+  pruneStaleFilters(allItems, dimensions)
+  const { libraryFilters } = getState()
   container.innerHTML = dimensions
     .map((dim) => {
       // 动态收集该维度所有可选值，避免出现"选了却无结果"的死选项
@@ -161,25 +183,24 @@ const renderLibraryFilters = () => {
   if (hasSelection) {
     container.innerHTML += `<button class="filter-clear" type="button" id="filter-clear">${icon('close', 14)} 清空筛选</button>`
   }
-  // chip 点击：切换选中态后重渲染筛选器和列表
+  // chip 点击：切换选中态后重渲染筛选器和列表；setLibraryFilters 内部持久化，刷新后恢复
   container.querySelectorAll('.filter-chip').forEach((chip) => {
     chip.addEventListener('click', () => {
       const { libraryFilters: current } = getState()
       const { dim, value } = chip.dataset
       const selected = current[dim] ?? []
       const next = selected.includes(value) ? selected.filter((v) => v !== value) : [...selected, value]
-      // 通过 patch 直接更新 libraryFilters，避免引用比较失效
-      current[dim] = next
-      renderLibraryFilters()
-      renderLibrary()
+      setLibraryFilters({ ...current, [dim]: next })
+      renderLibraryFilters(ctx)
+      renderLibrary(ctx)
     })
   })
   const clearBtn = container.querySelector('#filter-clear')
   if (clearBtn)
     clearBtn.addEventListener('click', () => {
       resetLibraryFilters()
-      renderLibraryFilters()
-      renderLibrary()
+      renderLibraryFilters(ctx)
+      renderLibrary(ctx)
     })
 }
 
@@ -222,30 +243,37 @@ const renderLibrary = (ctx) => {
 /**
  * 挂载素材库 section：绑定 tab 切换和搜索框输入事件，并触发首次渲染。
  * ctx 提供：detailView（详情视图实例）、refreshLibrary（重新渲染筛选 + 列表，供外部调用）
+ * 挂载时从 library-prefs 恢复上次的 tab / 搜索词 / 筛选状态（刷新后不丢失）。
  */
 export const mountLibrarySection = (ctx) => {
-  // tab 切换：切换激活态、更新 activeTab、重置筛选状态后重渲染
-  document.querySelectorAll('[data-tab]').forEach((button) =>
+  // tab 切换：切换激活态后由 setActiveTab 恢复该 tab 上次保存的筛选（各 tab 分开持久化）
+  document.querySelectorAll('[data-tab]').forEach((button) => {
+    // 初始激活态按持久化的 activeTab 设置（HTML 默认写死 characters，这里纠正）
+    button.classList.toggle('active', button.dataset.tab === getState().activeTab)
     button.addEventListener('click', () => {
       document.querySelectorAll('[data-tab]').forEach((item) => item.classList.remove('active'))
       button.classList.add('active')
       setActiveTab(button.dataset.tab)
-      // C5：切换 tab 时重置筛选状态，避免上一个 tab 的选中值对新 tab 产生无意义筛选
-      resetLibraryFilters()
-      renderLibraryFilters()
+      renderLibraryFilters(ctx)
       renderLibrary(ctx)
-    }),
-  )
+    })
+  })
 
-  document.querySelector('#library-search').addEventListener('input', () => renderLibrary(ctx))
+  // 搜索框：恢复上次搜索词并即时持久化，刷新后保留
+  const searchInput = document.querySelector('#library-search')
+  searchInput.value = getLibraryPrefs().searchQuery
+  searchInput.addEventListener('input', () => {
+    patchLibraryPrefs({ searchQuery: searchInput.value })
+    renderLibrary(ctx)
+  })
 
   // 初始渲染筛选器和列表
-  renderLibraryFilters()
+  renderLibraryFilters(ctx)
   renderLibrary(ctx)
 
   return {
     refreshLibrary: () => {
-      renderLibraryFilters()
+      renderLibraryFilters(ctx)
       renderLibrary(ctx)
     },
   }
