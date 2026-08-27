@@ -759,6 +759,42 @@ select {
   width: 100%;
   margin-top: 5px;
 }
+/* 生成进度反馈：生成按钮下方状态条（生成中 / 已生成·耗时 / 失败+重试），文字+图标双通道不依赖颜色 */
+.gen-status {
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: #9ca4b3;
+}
+.gen-status-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.gen-status-inner.busy {
+  color: var(--lime);
+}
+.gen-status-inner.ok {
+  color: #7fe08f;
+}
+.gen-status-inner.err {
+  color: #ff9b9b;
+}
+/* 失败态重试按钮：沿用紧凑操作按钮尺寸（与收藏/历史操作按钮一致） */
+.gen-status .gen-retry {
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: 11px;
+}
+/* 生成中旋转图标：prefers-reduced-motion 时全局动画禁用规则让其静止，状态仍由文字传达 */
+.gen-spin {
+  display: inline-flex;
+  animation: sweep 0.9s linear infinite;
+}
 .result-card {
   padding: 28px;
   min-height: 650px;

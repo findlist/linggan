@@ -20,6 +20,8 @@ const paths = {
   check: '<path d="m5 12 4 4L19 6"/>',
   // 历史记录：时钟 + 逆时针箭头，与收藏的 bookmark 区分
   history: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/>',
+  // 生成中加载：不闭合的圆弧，配合 CSS 旋转动画形成 spinner
+  loader: '<path d="M21 12a9 9 0 1 1-9-9"/>',
 }
 
 // 渲染一个带 stroke 的 SVG 图标；未知图标回退到 sparkles，避免页面空白

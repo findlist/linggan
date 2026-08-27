@@ -29,6 +29,8 @@ import { detectDuplicates } from '../generation/similarity.ts'
 import { track } from '../data/tracker.ts'
 // D5：创作历史自动记录，每次用户主动生成都持久化到 localStorage 供回看
 import { addHistory, getHistory } from '../data/history.ts'
+// 生成进度反馈：状态机管理 生成中/成功·耗时/失败 规则，与 UI 分离
+import { createGenerationStatus, formatElapsed } from '../data/generation-status.ts'
 
 // 渲染角色 A / B 下拉选项；selected 用于初始默认值（来自原 main.js）
 // 合并知识库已知角色和原创角色原型，原创角色用「原创」标记区分
@@ -69,6 +71,7 @@ export const renderRemixWorkbench = () => `
         <div class="field pattern-field"><label for="story-pattern"><span>05</span>叙事模板</label><select id="story-pattern"><option value="">默认结构</option>${storyPatterns.map((p) => `<option value="${p.id}">${p.name}</option>`).join('')}</select><small class="field-hint" id="hint-pattern"></small></div>
         <div class="duration"><span>时长</span><button type="button" data-duration="15">15s</button><button type="button" class="active" data-duration="30">30s</button><button type="button" data-duration="60">60s</button></div>
         <button class="btn primary generate-remix" type="submit">${icon('sparkles', 18)} 生成混搭方案</button>
+        <div class="gen-status" id="gen-status" role="status" aria-live="polite"></div>
       </form>
       <article class="preview-card" id="preview-card" aria-live="polite"></article>
       <article class="result-card" id="result-card" aria-live="polite"></article>
@@ -342,26 +345,80 @@ const loadHistoryRemix = (id, ctx) => {
   loadRemixFromEntry(item, ctx, '该历史记录无法重新加载', '已从历史重新加载')
 }
 
-// 随机切换 5 个选择器，并自动生成方案
-const randomize = (ctx) => {
-  const selects = ['#character-a', '#character-b', '#moment', '#style', '#story-pattern'].map((selector) =>
-    document.querySelector(selector),
-  )
-  selects.forEach((select) => {
-    select.selectedIndex = Math.floor(Math.random() * select.options.length)
-  })
-  if (selects[0].value === selects[1].value)
-    selects[1].selectedIndex = (selects[1].selectedIndex + 1) % selects[1].options.length
-  updateHints()
-  updatePatternHint()
-  incrementGeneration()
-  const result = buildRemix()
-  setCurrentResult(result)
-  renderResult(result, ctx)
-  // D5：随机生成也记录到历史
-  recordHistory(result)
-  ctx.renderHistory?.()
-  toast('已随机换一组内容基因')
+// 生成进度反馈：状态机实例（防重复提交与真实耗时规则集中在 generation-status.ts）
+const generationStatus = createGenerationStatus()
+
+// 双 requestAnimationFrame：先让"生成中"状态真实绘制到屏幕，再执行同步生成。
+// 生成是同步阻塞主线程的，不先让出两帧，用户在点击后看不到任何中间反馈。
+const nextPaint = () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+
+// 当前选择器组合的简短描述，用于"生成中"状态展示真实输入（而非编造的进度文案）
+const combinationLabel = () => {
+  const a = characterById.get(document.querySelector('#character-a').value)
+  const b = characterById.get(document.querySelector('#character-b').value)
+  const moment = knowledge.iconic_moments.find((item) => item.id === document.querySelector('#moment').value)
+  return `${a?.name ?? '?'} × ${b?.name ?? '?'} × ${moment?.name ?? '?'}`
+}
+
+// 把状态机快照渲染到表单下方状态条：生成中（含组合描述）/ 已生成·耗时 / 失败原因 + 重试
+const renderGenerationStatus = () => {
+  const bar = document.querySelector('#gen-status')
+  if (!bar) return
+  const snapshot = generationStatus.snapshot()
+  if (snapshot.status === 'generating') {
+    bar.innerHTML = `<span class="gen-status-inner busy"><span class="gen-spin">${icon('loader', 14)}</span><span>正在生成：${escapeHtml(combinationLabel())}…</span></span>`
+  } else if (snapshot.status === 'success') {
+    bar.innerHTML = `<span class="gen-status-inner ok">${icon('check', 14)}<span>已生成 · 耗时 ${formatElapsed(snapshot.elapsedMs)}</span></span>`
+  } else if (snapshot.status === 'error') {
+    // 失败态给出原因与恢复方式（规范 §12）；重试重新触发表单提交流程
+    bar.innerHTML = `<span class="gen-status-inner err">${icon('close', 14)}<span>生成失败：${escapeHtml(snapshot.error ?? '未知错误')}</span></span><button type="button" class="btn ghost gen-retry">${icon('play', 14)} 重试</button>`
+    bar.querySelector('.gen-retry').addEventListener('click', () => {
+      document.querySelector('#remix-form').requestSubmit()
+    })
+  } else {
+    bar.innerHTML = ''
+  }
+}
+
+/**
+ * 统一异步生成流程：状态机 begin（生成中重复触发直接忽略）→ 按钮与状态条进入"生成中"
+ * → 让出两帧绘制中间态 → 同步生成 → 成功渲染结果并展示真实耗时 / 失败展示原因与重试入口。
+ * beforeGenerate 供"随机换一组"在生成前调整选择器。
+ */
+const runGeneration = async (ctx, { successToast, beforeGenerate }) => {
+  if (!generationStatus.begin()) return
+  const button = document.querySelector('.generate-remix')
+  const randomButton = document.querySelector('.randomize')
+  const buttonHtml = button.innerHTML
+  button.disabled = true
+  button.setAttribute('aria-busy', 'true')
+  button.innerHTML = `<span class="gen-spin">${icon('loader', 18)}</span> 生成中…`
+  if (randomButton) randomButton.disabled = true
+  beforeGenerate?.()
+  renderGenerationStatus()
+  try {
+    await nextPaint()
+    incrementGeneration()
+    const result = buildRemix()
+    setCurrentResult(result)
+    renderResult(result, ctx)
+    generationStatus.complete()
+    renderGenerationStatus()
+    // D5：用户主动生成（含随机）时记录到创作历史；初始挂载的默认方案不记录
+    recordHistory(result)
+    ctx.renderHistory?.()
+    toast(successToast)
+  } catch (error) {
+    // 失败时旧方案保留在预览区不破坏；状态条展示失败原因与重试入口
+    generationStatus.fail(error?.message ?? String(error))
+    renderGenerationStatus()
+    toast('生成失败，可点击"重试"恢复')
+  } finally {
+    button.disabled = false
+    button.removeAttribute('aria-busy')
+    button.innerHTML = buttonHtml
+    if (randomButton) randomButton.disabled = false
+  }
 }
 
 // 把详情视图中的实体带入跨作品混搭工作台，自动避免 A / B 选到同一角色
@@ -413,20 +470,30 @@ const applyToRemix = (type, id, slot) => {
  *           供 SavedList / HistoryList / DetailView 跨 section 调用
  */
 export const mountRemixWorkbench = (ctx) => {
-  // 表单提交：generation 计数器 +1 后生成新方案
+  // 表单提交：走异步生成流程（生成中反馈 → 生成 → 成功/失败状态）
   document.querySelector('#remix-form').addEventListener('submit', (event) => {
     event.preventDefault()
-    incrementGeneration()
-    const result = buildRemix()
-    setCurrentResult(result)
-    renderResult(result, ctx)
-    // D5：用户主动生成时记录到创作历史；初始挂载的默认方案不记录
-    recordHistory(result)
-    ctx.renderHistory?.()
-    toast('新的跨界方案已生成')
+    runGeneration(ctx, { successToast: '新的跨界方案已生成' })
   })
 
-  document.querySelector('.randomize').addEventListener('click', () => randomize(ctx))
+  // 随机换一组：先随机化 5 个选择器（beforeGenerate 在让出主线程前执行，生成读取的是新选择），再走同一生成流程
+  document.querySelector('.randomize').addEventListener('click', () =>
+    runGeneration(ctx, {
+      successToast: '已随机换一组内容基因',
+      beforeGenerate: () => {
+        const selects = ['#character-a', '#character-b', '#moment', '#style', '#story-pattern'].map((selector) =>
+          document.querySelector(selector),
+        )
+        selects.forEach((select) => {
+          select.selectedIndex = Math.floor(Math.random() * select.options.length)
+        })
+        if (selects[0].value === selects[1].value)
+          selects[1].selectedIndex = (selects[1].selectedIndex + 1) % selects[1].options.length
+        updateHints()
+        updatePatternHint()
+      },
+    }),
+  )
 
   // 时长切换：单选按钮互斥
   document.querySelectorAll('[data-duration]').forEach((button) =>
