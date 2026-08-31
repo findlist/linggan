@@ -16,6 +16,10 @@ export default tseslint.config(
       'data/**',
       'public/data/**',
       'memory/archive/**',
+      // 浏览器 e2e 验证脚本的临时 Chrome profile / 崩溃转储（用后即删，运行期间会下载扩展 JS）
+      '.e2e-profile-*/**',
+      '.e2e-crash/**',
+      'test-output.tmp',
     ],
   },
   // JS 推荐规则：捕捉常见错误（未定义变量、未使用、空块等）

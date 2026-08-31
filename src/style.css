@@ -2276,6 +2276,100 @@ footer {
   }
 }
 
+/* ----------------------- 收藏分组条 ----------------------- */
+/* 复用 .filter-chip 的 chip 视觉，外围补齐分组项 / 行内编辑 / 归属下拉 */
+
+.saved-groups {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.saved-groups .filter-chip b {
+  font-size: 10px;
+  opacity: 0.65;
+  margin-left: 2px;
+}
+.saved-group-item,
+.group-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+/* 分组项上的重命名 / 删除小按钮：与 chip 等高、紧凑触达 */
+.chip-mini {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #121721;
+  color: #7f8797;
+  cursor: pointer;
+  flex: none;
+}
+.chip-mini:hover {
+  color: var(--lime);
+  border-color: rgba(201, 255, 99, 0.3);
+}
+.chip-mini.chip-danger:hover {
+  color: #ff9370;
+  border-color: rgba(255, 147, 112, 0.3);
+}
+/* 行内新建 / 重命名输入：lime 描边提示编辑态 */
+.group-input {
+  height: 30px;
+  width: 148px;
+  padding: 0 12px;
+  border: 1px solid var(--lime);
+  border-radius: 99px;
+  background: #121721;
+  color: #e7ecf3;
+  font:
+    600 12px Manrope,
+    'PingFang SC',
+    'Microsoft YaHei',
+    sans-serif;
+}
+.group-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(201, 255, 99, 0.15);
+}
+.group-input::placeholder {
+  color: #6f7888;
+}
+/* 卡片操作区的"移入分组"下拉：与 .btn 同高，无分组时不渲染 */
+.saved-group-select {
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #121721;
+  color: #cdd4df;
+  font:
+    700 11px Manrope,
+    'PingFang SC',
+    'Microsoft YaHei',
+    sans-serif;
+  cursor: pointer;
+  flex: none;
+}
+.saved-group-select:hover {
+  border-color: rgba(201, 255, 99, 0.3);
+}
+.saved-group-select:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 1px;
+}
+@media (max-width: 640px) {
+  .saved-actions .saved-group-select {
+    width: 100%;
+  }
+}
+
 /* ----------------------- D5 创作历史列表 ----------------------- */
 /* 与收藏列表视觉区分：history 用 cyan 色系图标，saved 用 lime 色系；
    历史卡片更紧凑（单列），因为最多 50 条需快速扫描 */

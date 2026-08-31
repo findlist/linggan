@@ -22,6 +22,10 @@ const paths = {
   history: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/>',
   // 生成中加载：不闭合的圆弧，配合 CSS 旋转动画形成 spinner
   loader: '<path d="M21 12a9 9 0 1 1-9-9"/>',
+  // 分组重命名：铅笔
+  edit: '<path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3Z"/>',
+  // 新建分组：加号
+  plus: '<path d="M12 5v14M5 12h14"/>',
 }
 
 // 渲染一个带 stroke 的 SVG 图标；未知图标回退到 sparkles，避免页面空白
