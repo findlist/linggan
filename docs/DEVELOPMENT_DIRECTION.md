@@ -150,7 +150,7 @@
 
 ### 4.1 作品扩充目标
 
-> **已完成（2026-08-19，提交 52f4d06）**：分十三批扩充，实际规模 48 部作品 / 136 知名角色 / 85 关系 / 88 名场面（目标 15+ 部）。验证依据：`npm run validate:data` 跨文件外键校验通过；`npm run merge:knowledge` 41 个 inbox 批次增量合并 0 失败；固定种子多样性自检 C3 重复率 0.0%、avg max_similarity 0.528。下方清单为首批规划候选，实际收录以 `data/knowledge-base.json` 为准；全部知名实体遵循 `reference_only` 边界。
+> **已完成（2026-09-01，提交待定）**：分十四批扩充，实际规模 51 部作品 / 145 知名角色 / 91 关系 / 94 名场面（目标 15+ 部）。验证依据：`npm run validate:data` 跨文件外键校验通过；`npm run merge:knowledge` 44 个 inbox 批次增量合并 0 失败；固定种子多样性自检 C3 重复率 0.0%、avg max_similarity 0.528。下方清单为首批规划候选，实际收录以 `data/knowledge-base.json` 为准；全部知名实体遵循 `reference_only` 边界。
 
 从 6 部扩充到 15+ 部，覆盖更多媒介和类型：
 

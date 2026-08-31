@@ -1499,6 +1499,100 @@
         }
       ],
       "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "work_fight_club",
+      "title": "搏击俱乐部",
+      "original_title": "Fight Club",
+      "aliases": [
+        "Fight Club",
+        "搏击俱乐部"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1999,
+      "genres": [
+        "剧情",
+        "惊悚",
+        "黑色喜剧"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "work_life_is_beautiful",
+      "title": "美丽人生",
+      "original_title": "La vita è bella",
+      "aliases": [
+        "Life Is Beautiful",
+        "La vita è bella",
+        "美丽人生"
+      ],
+      "media_type": "film",
+      "regions": [
+        "意大利"
+      ],
+      "release_year": 1997,
+      "genres": [
+        "剧情",
+        "喜剧",
+        "战争"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "work_silence_of_the_lambs",
+      "title": "沉默的羔羊",
+      "original_title": "The Silence of the Lambs",
+      "aliases": [
+        "The Silence of the Lambs",
+        "沉默的羔羊"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1991,
+      "genres": [
+        "惊悚",
+        "犯罪",
+        "心理"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Silence_of_the_Lambs_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Silence of the Lambs (film)",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
     }
   ],
   "known_characters": [
@@ -7510,6 +7604,414 @@
         }
       ],
       "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "known_narrator_fight_club",
+      "work_id": "work_fight_club",
+      "name": "叙述者",
+      "aliases": [
+        "The Narrator",
+        "Jack"
+      ],
+      "roles": [
+        "protagonist",
+        "汽车召回协调员"
+      ],
+      "character_types": [
+        "压抑型",
+        "分裂型",
+        "觉醒型"
+      ],
+      "traits": [
+        "以消费主义填充空虚生活中逐渐丧失真实自我感知",
+        "以慢性失眠模糊现实与幻觉的边界导致人格分裂",
+        "在分裂出的另我中投射全部被压抑的冲动和反叛欲望",
+        "在意识到真相后面对自我毁灭的后果做出决断"
+      ],
+      "dialogue_style": [
+        "以内心独白式的旁白叙述暴露精神状态的恶化",
+        "在对话中以被动和困惑的语气回应异常事件",
+        "在觉醒时刻以颤抖但坚定的语气做出最终选择"
+      ],
+      "relationships": [
+        "known_tyler_durden_fight_club",
+        "known_marla_singer_fight_club"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_tyler_durden_fight_club",
+      "work_id": "work_fight_club",
+      "name": "泰勒·德顿",
+      "aliases": [
+        "Tyler Durden",
+        "Tyler"
+      ],
+      "roles": [
+        "deuteragonist",
+        "肥皂推销员",
+        "分裂人格"
+      ],
+      "character_types": [
+        "反叛型",
+        "魅力型",
+        "极端型"
+      ],
+      "traits": [
+        "以极致反消费主义 rhetoric 吸引对现状不满的年轻人",
+        "以个人魅力和行动力将从反抗到恐怖的升级包装为解放",
+        "作为叙述者的分裂人格代表其全部被压抑的反社会冲动",
+        "在逐步升级的混乱中暴露对控制本身的渴望而非真正的自由"
+      ],
+      "dialogue_style": [
+        "以简洁有力的格言式语句传递反叛理念",
+        "在煽动群体时以平静语调说出极端内容",
+        "在被质疑时以行动替代辩论直接展示力量"
+      ],
+      "relationships": [
+        "known_narrator_fight_club",
+        "known_marla_singer_fight_club"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_marla_singer_fight_club",
+      "work_id": "work_fight_club",
+      "name": "玛拉·辛格",
+      "aliases": [
+        "Marla Singer",
+        "Marla"
+      ],
+      "roles": [
+        "supporting",
+        "自助小组成员"
+      ],
+      "character_types": [
+        "虚无型",
+        "直率型",
+        "边缘型"
+      ],
+      "traits": [
+        "以假冒病人身份参加互助会获取情感慰藉暴露对连接的渴望",
+        "以自毁倾向和冷漠外表掩饰内心的孤独和对被在意的需求",
+        "在与叙述者和泰勒的三角关系中成为真相揭露的关键证人",
+        "以直率和黑色幽默戳穿周围人的伪装不加修饰"
+      ],
+      "dialogue_style": [
+        "以讽刺和黑色幽默回应严肃场景",
+        "在表达情感需求时以漫不经心的语气降低暴露风险",
+        "在关键时刻以直白陈述揭示叙述者不愿面对的真相"
+      ],
+      "relationships": [
+        "known_narrator_fight_club",
+        "known_tyler_durden_fight_club"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_guido_orefice_life_is_beautiful",
+      "work_id": "work_life_is_beautiful",
+      "name": "圭多",
+      "aliases": [
+        "Guido Orefice",
+        "Guido"
+      ],
+      "roles": [
+        "protagonist",
+        "服务员",
+        "书店老板"
+      ],
+      "character_types": [
+        "乐观型",
+        "机智型",
+        "牺牲型"
+      ],
+      "traits": [
+        "以幽默和想象力作为对抗残酷现实的终极武器",
+        "在集中营中以游戏谎言保护儿子童心不因恐惧而破碎",
+        "以即兴表演和快速反应在危险中创造生存空间",
+        "在赴死前仍以夸张步伐向藏在铁柜中的儿子传递游戏未结束的信号"
+      ],
+      "dialogue_style": [
+        "以夸张幽默的语调将残酷现实转译为游戏规则",
+        "在面对威胁时以机智周旋替代正面冲突",
+        "在向家人传递信息时以浪漫夸张的表达表达爱意"
+      ],
+      "relationships": [
+        "known_dora_life_is_beautiful",
+        "known_giosue_life_is_beautiful"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_dora_life_is_beautiful",
+      "work_id": "work_life_is_beautiful",
+      "name": "多拉",
+      "aliases": [
+        "Dora",
+        "Dora Orefice"
+      ],
+      "roles": [
+        "deuteragonist",
+        "教师",
+        "母亲"
+      ],
+      "character_types": [
+        "坚定型",
+        "爱驱型",
+        "自主型"
+      ],
+      "traits": [
+        "在未婚夫和圭多之间选择不富有但真心爱她的圭多不惜与家庭决裂",
+        "在丈夫和儿子被押送集中营时主动要求同往虽无犹太血统",
+        "在集中营男女分离的环境中以坚韧等待家人的消息",
+        "以沉默的坚强支撑全家的精神联系"
+      ],
+      "dialogue_style": [
+        "以平静而坚定的语气表达不可动摇的选择",
+        "在面对分离时以眼神和简短话语传递力量",
+        "在获知家人安全时以克制情感表达释放内心"
+      ],
+      "relationships": [
+        "known_guido_orefice_life_is_beautiful",
+        "known_giosue_life_is_beautiful"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_giosue_life_is_beautiful",
+      "work_id": "work_life_is_beautiful",
+      "name": "约书亚",
+      "aliases": [
+        "Giosuè",
+        "Giosue",
+        "Joshua"
+      ],
+      "roles": [
+        "supporting",
+        "儿童"
+      ],
+      "character_types": [
+        "纯真型",
+        "信任型",
+        "成长型"
+      ],
+      "traits": [
+        "以五岁儿童的天真信任父亲的每一个谎言作为游戏规则",
+        "在不适和恐惧中凭借对父亲的信任坚持躲藏不放弃游戏",
+        "在目睹成人世界残酷时以儿童的直接反应暴露荒诞",
+        "在父亲死后从铁柜出来见到美军坦克时真心相信赢得了游戏"
+      ],
+      "dialogue_style": [
+        "以儿童的好奇提问推动父亲不断升级谎言",
+        "在恐惧中以稚嫩声音表达想放弃的念头",
+        "在相信胜利时以纯真的兴奋回应残酷后的温暖"
+      ],
+      "relationships": [
+        "known_guido_orefice_life_is_beautiful",
+        "known_dora_life_is_beautiful"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_clarice_starling_silence_of_the_lambs",
+      "work_id": "work_silence_of_the_lambs",
+      "name": "克拉丽斯·斯塔林",
+      "aliases": [
+        "Clarice Starling",
+        "Clarice"
+      ],
+      "roles": [
+        "protagonist",
+        "FBI实习探员"
+      ],
+      "character_types": [
+        "坚韧型",
+        "聪慧型",
+        "成长型"
+      ],
+      "traits": [
+        "在男性主导的FBI环境中以专业能力证明自己不依赖性别优势",
+        "在面对心理操控时保持冷静以职业素养回应而非情绪化",
+        "以童年丧父和羔羊尖叫的心理创伤驱动追凶执念",
+        "在压力下展现敏锐洞察力从细节中提取关键线索"
+      ],
+      "dialogue_style": [
+        "以克制而礼貌的语气应对操控和侮辱",
+        "在专业讨论中以简洁逻辑陈述推断",
+        "在回忆创伤时以低沉语调暴露内心脆弱"
+      ],
+      "relationships": [
+        "known_hannibal_lecter_silence_of_the_lambs"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Silence_of_the_Lambs_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Silence of the Lambs (film)",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_hannibal_lecter_silence_of_the_lambs",
+      "work_id": "work_silence_of_the_lambs",
+      "name": "汉尼拔·莱克特",
+      "aliases": [
+        "Hannibal Lecter",
+        "Dr. Lecter",
+        "Hannibal the Cannibal"
+      ],
+      "roles": [
+        "antagonist",
+        "精神科医生",
+        "连环杀手"
+      ],
+      "character_types": [
+        "操控型",
+        "超智型",
+        "优雅型"
+      ],
+      "traits": [
+        "以极高的智商和心理学专业能力精准洞察他人内心弱点",
+        "以优雅礼貌的表面言行掩盖极度危险的操控意图",
+        "以quid pro quo交换机制逐步获取对方私人信息建立心理优势",
+        "在帮助追凶的同时享受对调查者的心理渗透和控制"
+      ],
+      "dialogue_style": [
+        "以优雅平静的语调说出令人不安的内容",
+        "以精准的提问引导对方自我暴露而非直接索取",
+        "在展示智力优势时以微妙讽刺和双关语施压"
+      ],
+      "relationships": [
+        "known_clarice_starling_silence_of_the_lambs"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Silence_of_the_Lambs_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Silence of the Lambs (film)",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_buffalo_bill_silence_of_the_lambs",
+      "work_id": "work_silence_of_the_lambs",
+      "name": "水牛比尔",
+      "aliases": [
+        "Buffalo Bill",
+        "Jame Gumb"
+      ],
+      "roles": [
+        "antagonist",
+        "连环杀手"
+      ],
+      "character_types": [
+        "扭曲型",
+        "孤僻型",
+        "执念型"
+      ],
+      "traits": [
+        "以绑架和剥皮女性受害者驱动扭曲的身份认同追求",
+        "在孤立环境中策划犯罪避免与人建立真实关系",
+        "以伪装修补房屋等日常行为掩护犯罪活动",
+        "在受害者的猎物视角中暴露对权力和控制的渴望"
+      ],
+      "dialogue_style": [
+        "以不稳定的语调在平静和爆发间切换",
+        "在面对受害者时以居高临下的指令语气控制局面",
+        "在受到威胁时以歇斯底里的情绪回应"
+      ],
+      "relationships": [
+        "known_clarice_starling_silence_of_the_lambs"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Silence_of_the_Lambs_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Silence of the Lambs (film)",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
     }
   ],
   "relationships": [
@@ -9042,6 +9544,114 @@
         }
       ],
       "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "relation_narrator_tyler_fight_club",
+      "work_id": "work_fight_club",
+      "from_character_id": "known_narrator_fight_club",
+      "to_character_id": "known_tyler_durden_fight_club",
+      "relation": "压抑者与分裂出的反叛另我之间的控制权争夺",
+      "description": "叙述者在消费主义压抑下分裂出泰勒作为全部反叛冲动的投射。泰勒逐步将搏击俱乐部升级为恐怖组织Project Mayhem，叙述者在发现真相后试图夺回控制权。两人关系是同一人格内部的压抑与释放、控制与反控制的零和博弈，核心张力来自自我解放与自我毁灭的边界模糊。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "relation_narrator_marla_fight_club",
+      "work_id": "work_fight_club",
+      "from_character_id": "known_narrator_fight_club",
+      "to_character_id": "known_marla_singer_fight_club",
+      "relation": "两个伪装者在互助会中相遇后形成的扭曲连接",
+      "description": "叙述者和玛拉都以假冒身份参加互助会，在识破彼此的伪装后形成一种既排斥又吸引的扭曲关系。玛拉是唯一能看到叙述者与泰勒是同一人的证人，她的存在不断打破叙述者的自我欺骗。两人关系是伪装者之间的真实连接与自我欺骗的持续碰撞。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "relation_guido_giosue_life_is_beautiful",
+      "work_id": "work_life_is_beautiful",
+      "from_character_id": "known_guido_orefice_life_is_beautiful",
+      "to_character_id": "known_giosue_life_is_beautiful",
+      "relation": "父亲以想象力谎言在集中营中保护儿子童心",
+      "description": "圭多在被押送集中营后向年幼的约书亚编造一个千分游戏，将恐怖的集中营规则转译为游戏得分规则。圭多以不断升级的谎言在死亡环境中为约书亚维持天真的屏障，最终在赴死前仍以夸张步伐向藏在铁柜中的儿子传递游戏未结束的信号。两人关系是父爱的极致表达，核心张力来自谎言的温情与现实的残酷之间的持续对抗。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "relation_guido_dora_life_is_beautiful",
+      "work_id": "work_life_is_beautiful",
+      "from_character_id": "known_guido_orefice_life_is_beautiful",
+      "to_character_id": "known_dora_life_is_beautiful",
+      "relation": "幽默穷小子与富贵教师跨越阶级的爱情与集中营中的坚守",
+      "description": "圭多以幽默和浪漫追求已订婚的多拉，多拉不惜与家庭决裂选择圭多。在集中营中男女分离，圭多冒着危险通过广播向多拉传递家人平安的信号。两人关系是浪漫喜剧到生死坚守的弧线，核心张力来自幽默爱情与极端环境中的沉默坚守之间的反差。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "relation_clarice_lecter_silence_of_the_lambs",
+      "work_id": "work_silence_of_the_lambs",
+      "from_character_id": "known_clarice_starling_silence_of_the_lambs",
+      "to_character_id": "known_hannibal_lecter_silence_of_the_lambs",
+      "relation": "实习探员与囚禁连环杀手之间的心理博弈与信息交换",
+      "description": "克拉丽斯以实习探员身份向莱克特寻求追凶线索，莱克特以quid pro quo要求克拉丽斯交换私人创伤经历。克拉丽斯在心理操控中保持职业目标，莱克特在帮助追凶的同时享受心理渗透。两人关系是追凶需要与心理博弈的双向利用，核心张力来自克拉丽斯的职业执着与莱克特的操控欲望。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Silence_of_the_Lambs_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Silence of the Lambs (film)",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "relation_clarice_bill_silence_of_the_lambs",
+      "work_id": "work_silence_of_the_lambs",
+      "from_character_id": "known_clarice_starling_silence_of_the_lambs",
+      "to_character_id": "known_buffalo_bill_silence_of_the_lambs",
+      "relation": "追凶探员与连环杀手在地下室中的终极对决",
+      "description": "克拉丽斯循线索找到水牛比尔的藏身处，在黑暗地下室中与凶手正面遭遇。水牛比尔利用夜视仪观察克拉丽斯，克拉丽斯在黑暗中凭借训练和冷静击毙凶手。两人关系是追捕者与被追捕者的终局对抗，核心张力来自黑暗环境中的信息不对称与生死一线。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Silence_of_the_Lambs_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Silence of the Lambs (film)",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
     }
   ],
   "iconic_moments": [
@@ -13141,6 +13751,288 @@
         }
       ],
       "last_verified_at": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "id": "moment_fight_club_first_punch",
+      "work_id": "work_fight_club",
+      "name": "压抑者在停车场请求陌生人一拳打破文明外壳",
+      "participant_ids": [
+        "known_narrator_fight_club",
+        "known_tyler_durden_fight_club"
+      ],
+      "setting": "酒吧停车场深夜",
+      "conflict_type": "自我打破",
+      "emotional_arc": [
+        "压抑",
+        "请求",
+        "疼痛",
+        "释放"
+      ],
+      "visual_actions": [
+        "压抑者在停车场向刚认识的陌生人请求被打一拳",
+        "陌生人在犹豫后出拳两人扭打在一起",
+        "在疼痛中压抑者露出久违的笑容感受到存在感",
+        "搏斗吸引旁观者两人决定定期重复"
+      ],
+      "reusable_beats": [
+        "被文明规则压抑到麻木的人主动寻求身体疼痛作为存在证明",
+        "陌生人在犹豫后答应暴力请求打破社交禁忌",
+        "在疼痛中双方获得情感释放和真实连接感",
+        "一次私人搏斗演变为群体运动的开端"
+      ],
+      "dialogue_patterns": [
+        "以异常平静的语气提出反常识的暴力请求",
+        "在疼痛中以笑声表达释放感而非痛苦",
+        "在搏斗后以简短交流确认彼此的真实感"
+      ],
+      "abstraction": "提取被文明规则压抑到麻木的人主动寻求身体疼痛作为存在证明的结构，核心张力来自文明外壳与原始冲动之间的碰撞以及疼痛作为情感释放媒介的反直觉力量，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "moment_fight_club_revelation",
+      "work_id": "work_fight_club",
+      "name": "压抑者在追踪反叛另我的过程中发现两人是同一人格",
+      "participant_ids": [
+        "known_narrator_fight_club",
+        "known_tyler_durden_fight_club"
+      ],
+      "setting": "多城市追踪后的酒店房间",
+      "conflict_type": "身份揭示",
+      "emotional_arc": [
+        "困惑",
+        "追踪",
+        "震惊",
+        "对峙"
+      ],
+      "visual_actions": [
+        "压抑者循线索在多个城市追踪反叛另我的活动痕迹",
+        "在不同城市被陌生人以另我的名字称呼引发困惑",
+        "在酒店房间中另我出现在面前揭示两人是同一人格",
+        "压抑者在震惊中面对自己制造的混乱后果"
+      ],
+      "reusable_beats": [
+        "追踪者在循线索追查目标的过程中逐步发现目标就是自己",
+        "在不同地点被陌生人以另一个名字称呼引发身份困惑",
+        "在独处时另一个自我现身揭示人格分裂的真相",
+        "追踪者在震惊中面对自己作为源头制造的混乱"
+      ],
+      "dialogue_patterns": [
+        "在追踪中以困惑的语气向证人描述被追踪者",
+        "在真相揭示时以否认和恐惧回应",
+        "在对峙中以颤抖声音质问另一个自我"
+      ],
+      "abstraction": "提取追踪者在追查目标过程中发现目标就是自己的分裂人格的结构，核心张力来自自我追查的循环悖论与身份真相的颠覆性揭示，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "moment_life_is_beautiful_game_rules",
+      "work_id": "work_life_is_beautiful",
+      "name": "父亲在集中营中将恐怖规则转译为儿童游戏得分规则",
+      "participant_ids": [
+        "known_guido_orefice_life_is_beautiful",
+        "known_giosue_life_is_beautiful"
+      ],
+      "setting": "纳粹集中营宿舍",
+      "conflict_type": "谎言保护",
+      "emotional_arc": [
+        "恐惧",
+        "转译",
+        "信任",
+        "安定"
+      ],
+      "visual_actions": [
+        "父亲在拥挤恐怖的集中营宿舍中向儿子宣布这是一个游戏",
+        "以认真的语气将集中营的残酷规则翻译为得分和扣分规则",
+        "儿子以半信半疑但愿意信任的态度接受游戏设定",
+        "在后续集中营生活中父亲不断升级游戏细节维持谎言"
+      ],
+      "reusable_beats": [
+        "保护者在极端危险环境中向被保护者宣布一切只是游戏",
+        "将真实的恐怖规则转译为儿童可理解的得分机制",
+        "被保护者以信任接受游戏设定在恐惧中获得安全感",
+        "保护者在后续危险中不断升级谎言细节维持游戏幻象"
+      ],
+      "dialogue_patterns": [
+        "以认真而兴奋的语气宣布游戏规则掩盖内心恐惧",
+        "在规则翻译中以儿童化语言消解残酷性",
+        "在被质疑时以游戏惩罚机制回应维持幻象"
+      ],
+      "abstraction": "提取保护者在极端危险环境中以谎言将被保护者的恐惧转译为游戏规则的结构，核心张力来自谎言的温情与现实的残酷之间的持续对抗以及想象力作为生存工具的力量，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "moment_life_is_beautiful_final_march",
+      "work_id": "work_life_is_beautiful",
+      "name": "父亲在赴死前以夸张步伐向藏匿的儿子传递游戏未结束的信号",
+      "participant_ids": [
+        "known_guido_orefice_life_is_beautiful",
+        "known_giosue_life_is_beautiful"
+      ],
+      "setting": "集中营解放前夜",
+      "conflict_type": "生死诀别",
+      "emotional_arc": [
+        "决断",
+        "伪装",
+        "赴死",
+        "传承"
+      ],
+      "visual_actions": [
+        "父亲在混乱中将儿子藏入铁柜并叮嘱这是游戏最后一步",
+        "父亲在寻找妻子时被纳粹发现被押往刑场",
+        "在被押经铁柜时父亲以夸张滑稽的步伐走过向儿子暗示游戏继续",
+        "儿子在铁柜中目睹父亲的表演后安心等待游戏结束"
+      ],
+      "reusable_beats": [
+        "保护者在最后危险中将藏匿者安置好后独自面对威胁",
+        "在被押往死亡途中经过藏匿者时以表演维持谎言",
+        "以夸张的肢体语言将赴死转译为游戏环节的继续",
+        "藏匿者在目睹表演后以信任安心等待最终结果"
+      ],
+      "dialogue_patterns": [
+        "在诀别时以游戏指令语气叮嘱最后一步规则",
+        "在赴死途中以无声的表演替代语言",
+        "以肢体语言的夸张程度传递游戏未结束的信号"
+      ],
+      "abstraction": "提取保护者在赴死途中以夸张表演向藏匿者维持谎言的结构，核心张力来自赴死的真实与表演的轻松之间的极致反差以及父爱以谎言超越死亡的传递，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "moment_silence_of_the_lambs_quid_pro_quo",
+      "work_id": "work_silence_of_the_lambs",
+      "name": "实习探员与囚禁杀手在铁栏两侧进行创伤交换",
+      "participant_ids": [
+        "known_clarice_starling_silence_of_the_lambs",
+        "known_hannibal_lecter_silence_of_the_lambs"
+      ],
+      "setting": "精神病监狱铁栏两侧",
+      "conflict_type": "心理博弈",
+      "emotional_arc": [
+        "警惕",
+        "试探",
+        "暴露",
+        "共鸣"
+      ],
+      "visual_actions": [
+        "探员在铁栏外以职业姿态面对铁栏内的杀手",
+        "杀手以平静语调提出交换条件获取对方私人信息",
+        "探员在心理压力下逐步暴露童年创伤经历",
+        "杀手在获取信息后以精准洞察回赠追凶线索"
+      ],
+      "reusable_beats": [
+        "调查者在牢笼外以职业姿态面对牢笼内的危险智者",
+        "智者以交换条件逐步获取调查者的私人弱点",
+        "调查者在心理压力下暴露内心创伤",
+        "双方在交换中形成不对等的信息与情感流动"
+      ],
+      "dialogue_patterns": [
+        "以礼貌但暗含操控的语调提出交换条件",
+        "在暴露弱点后以职业目标重新收束情绪",
+        "在获得对方信任后以精准措辞提供关键线索"
+      ],
+      "abstraction": "提取调查者与囚禁危险者在铁栏两侧进行创伤交换的心理博弈结构，核心张力来自职业需求与心理渗透的双向利用以及信息不对称中的信任博弈，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Silence_of_the_Lambs_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Silence of the Lambs (film)",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "moment_silence_of_the_lambs_basement",
+      "work_id": "work_silence_of_the_lambs",
+      "name": "追凶探员在黑暗地下室中与凶手展开生死对决",
+      "participant_ids": [
+        "known_clarice_starling_silence_of_the_lambs",
+        "known_buffalo_bill_silence_of_the_lambs"
+      ],
+      "setting": "凶手住所地下室（完全黑暗）",
+      "conflict_type": "生死对决",
+      "emotional_arc": [
+        "追猎",
+        "失明",
+        "恐惧",
+        "决断"
+      ],
+      "visual_actions": [
+        "探员循线索进入凶手藏身处地下室",
+        "凶手切断电源令地下室陷入完全黑暗",
+        "探员在黑暗中听到凶手呼吸和动作无法定位威胁",
+        "探员在听到枪机声瞬间凭训练朝声源开枪击毙凶手"
+      ],
+      "reusable_beats": [
+        "追捕者进入黑暗封闭空间失去视觉优势",
+        "被追捕者利用环境熟悉度建立信息优势",
+        "追捕者在极度恐惧中依靠训练本能寻找反击机会",
+        "在关键声音信号出现瞬间做出生死决断"
+      ],
+      "dialogue_patterns": [
+        "在黑暗中以呼吸和声音判断对方位置",
+        "在恐惧中以职业指令式语言稳定自己",
+        "在生死瞬间以枪声替代对话"
+      ],
+      "abstraction": "提取追捕者在黑暗封闭空间中面对环境优势方的生死对决结构，核心张力来自感官剥夺中的信息不对称与训练本能对恐惧的克服，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Silence_of_the_Lambs_(film)",
+          "source_name": "Wikipedia",
+          "page_title": "The Silence of the Lambs (film)",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
     }
   ]
 }

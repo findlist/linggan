@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_life_is_beautiful",
+      "title": "美丽人生",
+      "original_title": "La vita è bella",
+      "aliases": [
+        "Life Is Beautiful",
+        "La vita è bella",
+        "美丽人生"
+      ],
+      "media_type": "film",
+      "regions": [
+        "意大利"
+      ],
+      "release_year": 1997,
+      "genres": [
+        "剧情",
+        "喜剧",
+        "战争"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_guido_orefice_life_is_beautiful",
+      "work_id": "work_life_is_beautiful",
+      "name": "圭多",
+      "aliases": [
+        "Guido Orefice",
+        "Guido"
+      ],
+      "roles": [
+        "protagonist",
+        "服务员",
+        "书店老板"
+      ],
+      "character_types": [
+        "乐观型",
+        "机智型",
+        "牺牲型"
+      ],
+      "traits": [
+        "以幽默和想象力作为对抗残酷现实的终极武器",
+        "在集中营中以游戏谎言保护儿子童心不因恐惧而破碎",
+        "以即兴表演和快速反应在危险中创造生存空间",
+        "在赴死前仍以夸张步伐向藏在铁柜中的儿子传递游戏未结束的信号"
+      ],
+      "dialogue_style": [
+        "以夸张幽默的语调将残酷现实转译为游戏规则",
+        "在面对威胁时以机智周旋替代正面冲突",
+        "在向家人传递信息时以浪漫夸张的表达表达爱意"
+      ],
+      "relationships": [
+        "known_dora_life_is_beautiful",
+        "known_giosue_life_is_beautiful"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_dora_life_is_beautiful",
+      "work_id": "work_life_is_beautiful",
+      "name": "多拉",
+      "aliases": [
+        "Dora",
+        "Dora Orefice"
+      ],
+      "roles": [
+        "deuteragonist",
+        "教师",
+        "母亲"
+      ],
+      "character_types": [
+        "坚定型",
+        "爱驱型",
+        "自主型"
+      ],
+      "traits": [
+        "在未婚夫和圭多之间选择不富有但真心爱她的圭多不惜与家庭决裂",
+        "在丈夫和儿子被押送集中营时主动要求同往虽无犹太血统",
+        "在集中营男女分离的环境中以坚韧等待家人的消息",
+        "以沉默的坚强支撑全家的精神联系"
+      ],
+      "dialogue_style": [
+        "以平静而坚定的语气表达不可动摇的选择",
+        "在面对分离时以眼神和简短话语传递力量",
+        "在获知家人安全时以克制情感表达释放内心"
+      ],
+      "relationships": [
+        "known_guido_orefice_life_is_beautiful",
+        "known_giosue_life_is_beautiful"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_giosue_life_is_beautiful",
+      "work_id": "work_life_is_beautiful",
+      "name": "约书亚",
+      "aliases": [
+        "Giosuè",
+        "Giosue",
+        "Joshua"
+      ],
+      "roles": [
+        "supporting",
+        "儿童"
+      ],
+      "character_types": [
+        "纯真型",
+        "信任型",
+        "成长型"
+      ],
+      "traits": [
+        "以五岁儿童的天真信任父亲的每一个谎言作为游戏规则",
+        "在不适和恐惧中凭借对父亲的信任坚持躲藏不放弃游戏",
+        "在目睹成人世界残酷时以儿童的直接反应暴露荒诞",
+        "在父亲死后从铁柜出来见到美军坦克时真心相信赢得了游戏"
+      ],
+      "dialogue_style": [
+        "以儿童的好奇提问推动父亲不断升级谎言",
+        "在恐惧中以稚嫩声音表达想放弃的念头",
+        "在相信胜利时以纯真的兴奋回应残酷后的温暖"
+      ],
+      "relationships": [
+        "known_guido_orefice_life_is_beautiful",
+        "known_dora_life_is_beautiful"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_guido_giosue_life_is_beautiful",
+      "work_id": "work_life_is_beautiful",
+      "from_character_id": "known_guido_orefice_life_is_beautiful",
+      "to_character_id": "known_giosue_life_is_beautiful",
+      "relation": "父亲以想象力谎言在集中营中保护儿子童心",
+      "description": "圭多在被押送集中营后向年幼的约书亚编造一个千分游戏，将恐怖的集中营规则转译为游戏得分规则。圭多以不断升级的谎言在死亡环境中为约书亚维持天真的屏障，最终在赴死前仍以夸张步伐向藏在铁柜中的儿子传递游戏未结束的信号。两人关系是父爱的极致表达，核心张力来自谎言的温情与现实的残酷之间的持续对抗。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "relation_guido_dora_life_is_beautiful",
+      "work_id": "work_life_is_beautiful",
+      "from_character_id": "known_guido_orefice_life_is_beautiful",
+      "to_character_id": "known_dora_life_is_beautiful",
+      "relation": "幽默穷小子与富贵教师跨越阶级的爱情与集中营中的坚守",
+      "description": "圭多以幽默和浪漫追求已订婚的多拉，多拉不惜与家庭决裂选择圭多。在集中营中男女分离，圭多冒着危险通过广播向多拉传递家人平安的信号。两人关系是浪漫喜剧到生死坚守的弧线，核心张力来自幽默爱情与极端环境中的沉默坚守之间的反差。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_life_is_beautiful_game_rules",
+      "work_id": "work_life_is_beautiful",
+      "name": "父亲在集中营中将恐怖规则转译为儿童游戏得分规则",
+      "participant_ids": [
+        "known_guido_orefice_life_is_beautiful",
+        "known_giosue_life_is_beautiful"
+      ],
+      "setting": "纳粹集中营宿舍",
+      "conflict_type": "谎言保护",
+      "emotional_arc": [
+        "恐惧",
+        "转译",
+        "信任",
+        "安定"
+      ],
+      "visual_actions": [
+        "父亲在拥挤恐怖的集中营宿舍中向儿子宣布这是一个游戏",
+        "以认真的语气将集中营的残酷规则翻译为得分和扣分规则",
+        "儿子以半信半疑但愿意信任的态度接受游戏设定",
+        "在后续集中营生活中父亲不断升级游戏细节维持谎言"
+      ],
+      "reusable_beats": [
+        "保护者在极端危险环境中向被保护者宣布一切只是游戏",
+        "将真实的恐怖规则转译为儿童可理解的得分机制",
+        "被保护者以信任接受游戏设定在恐惧中获得安全感",
+        "保护者在后续危险中不断升级谎言细节维持游戏幻象"
+      ],
+      "dialogue_patterns": [
+        "以认真而兴奋的语气宣布游戏规则掩盖内心恐惧",
+        "在规则翻译中以儿童化语言消解残酷性",
+        "在被质疑时以游戏惩罚机制回应维持幻象"
+      ],
+      "abstraction": "提取保护者在极端危险环境中以谎言将被保护者的恐惧转译为游戏规则的结构，核心张力来自谎言的温情与现实的残酷之间的持续对抗以及想象力作为生存工具的力量，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "moment_life_is_beautiful_final_march",
+      "work_id": "work_life_is_beautiful",
+      "name": "父亲在赴死前以夸张步伐向藏匿的儿子传递游戏未结束的信号",
+      "participant_ids": [
+        "known_guido_orefice_life_is_beautiful",
+        "known_giosue_life_is_beautiful"
+      ],
+      "setting": "集中营解放前夜",
+      "conflict_type": "生死诀别",
+      "emotional_arc": [
+        "决断",
+        "伪装",
+        "赴死",
+        "传承"
+      ],
+      "visual_actions": [
+        "父亲在混乱中将儿子藏入铁柜并叮嘱这是游戏最后一步",
+        "父亲在寻找妻子时被纳粹发现被押往刑场",
+        "在被押经铁柜时父亲以夸张滑稽的步伐走过向儿子暗示游戏继续",
+        "儿子在铁柜中目睹父亲的表演后安心等待游戏结束"
+      ],
+      "reusable_beats": [
+        "保护者在最后危险中将藏匿者安置好后独自面对威胁",
+        "在被押往死亡途中经过藏匿者时以表演维持谎言",
+        "以夸张的肢体语言将赴死转译为游戏环节的继续",
+        "藏匿者在目睹表演后以信任安心等待最终结果"
+      ],
+      "dialogue_patterns": [
+        "在诀别时以游戏指令语气叮嘱最后一步规则",
+        "在赴死途中以无声的表演替代语言",
+        "以肢体语言的夸张程度传递游戏未结束的信号"
+      ],
+      "abstraction": "提取保护者在赴死途中以夸张表演向藏匿者维持谎言的结构，核心张力来自赴死的真实与表演的轻松之间的极致反差以及父爱以谎言超越死亡的传递，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+          "source_name": "Wikipedia",
+          "page_title": "Life Is Beautiful",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    }
+  ]
+}

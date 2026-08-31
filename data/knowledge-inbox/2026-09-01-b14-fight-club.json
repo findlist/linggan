@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "works": [
+    {
+      "id": "work_fight_club",
+      "title": "搏击俱乐部",
+      "original_title": "Fight Club",
+      "aliases": [
+        "Fight Club",
+        "搏击俱乐部"
+      ],
+      "media_type": "film",
+      "regions": [
+        "美国"
+      ],
+      "release_year": 1999,
+      "genres": [
+        "剧情",
+        "惊悚",
+        "黑色喜剧"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    }
+  ],
+  "known_characters": [
+    {
+      "id": "known_narrator_fight_club",
+      "work_id": "work_fight_club",
+      "name": "叙述者",
+      "aliases": [
+        "The Narrator",
+        "Jack"
+      ],
+      "roles": [
+        "protagonist",
+        "汽车召回协调员"
+      ],
+      "character_types": [
+        "压抑型",
+        "分裂型",
+        "觉醒型"
+      ],
+      "traits": [
+        "以消费主义填充空虚生活中逐渐丧失真实自我感知",
+        "以慢性失眠模糊现实与幻觉的边界导致人格分裂",
+        "在分裂出的另我中投射全部被压抑的冲动和反叛欲望",
+        "在意识到真相后面对自我毁灭的后果做出决断"
+      ],
+      "dialogue_style": [
+        "以内心独白式的旁白叙述暴露精神状态的恶化",
+        "在对话中以被动和困惑的语气回应异常事件",
+        "在觉醒时刻以颤抖但坚定的语气做出最终选择"
+      ],
+      "relationships": [
+        "known_tyler_durden_fight_club",
+        "known_marla_singer_fight_club"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_tyler_durden_fight_club",
+      "work_id": "work_fight_club",
+      "name": "泰勒·德顿",
+      "aliases": [
+        "Tyler Durden",
+        "Tyler"
+      ],
+      "roles": [
+        "deuteragonist",
+        "肥皂推销员",
+        "分裂人格"
+      ],
+      "character_types": [
+        "反叛型",
+        "魅力型",
+        "极端型"
+      ],
+      "traits": [
+        "以极致反消费主义 rhetoric 吸引对现状不满的年轻人",
+        "以个人魅力和行动力将从反抗到恐怖的升级包装为解放",
+        "作为叙述者的分裂人格代表其全部被压抑的反社会冲动",
+        "在逐步升级的混乱中暴露对控制本身的渴望而非真正的自由"
+      ],
+      "dialogue_style": [
+        "以简洁有力的格言式语句传递反叛理念",
+        "在煽动群体时以平静语调说出极端内容",
+        "在被质疑时以行动替代辩论直接展示力量"
+      ],
+      "relationships": [
+        "known_narrator_fight_club",
+        "known_marla_singer_fight_club"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "known_marla_singer_fight_club",
+      "work_id": "work_fight_club",
+      "name": "玛拉·辛格",
+      "aliases": [
+        "Marla Singer",
+        "Marla"
+      ],
+      "roles": [
+        "supporting",
+        "自助小组成员"
+      ],
+      "character_types": [
+        "虚无型",
+        "直率型",
+        "边缘型"
+      ],
+      "traits": [
+        "以假冒病人身份参加互助会获取情感慰藉暴露对连接的渴望",
+        "以自毁倾向和冷漠外表掩饰内心的孤独和对被在意的需求",
+        "在与叙述者和泰勒的三角关系中成为真相揭露的关键证人",
+        "以直率和黑色幽默戳穿周围人的伪装不加修饰"
+      ],
+      "dialogue_style": [
+        "以讽刺和黑色幽默回应严肃场景",
+        "在表达情感需求时以漫不经心的语气降低暴露风险",
+        "在关键时刻以直白陈述揭示叙述者不愿面对的真相"
+      ],
+      "relationships": [
+        "known_narrator_fight_club",
+        "known_tyler_durden_fight_club"
+      ],
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation_narrator_tyler_fight_club",
+      "work_id": "work_fight_club",
+      "from_character_id": "known_narrator_fight_club",
+      "to_character_id": "known_tyler_durden_fight_club",
+      "relation": "压抑者与分裂出的反叛另我之间的控制权争夺",
+      "description": "叙述者在消费主义压抑下分裂出泰勒作为全部反叛冲动的投射。泰勒逐步将搏击俱乐部升级为恐怖组织Project Mayhem，叙述者在发现真相后试图夺回控制权。两人关系是同一人格内部的压抑与释放、控制与反控制的零和博弈，核心张力来自自我解放与自我毁灭的边界模糊。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "relation_narrator_marla_fight_club",
+      "work_id": "work_fight_club",
+      "from_character_id": "known_narrator_fight_club",
+      "to_character_id": "known_marla_singer_fight_club",
+      "relation": "两个伪装者在互助会中相遇后形成的扭曲连接",
+      "description": "叙述者和玛拉都以假冒身份参加互助会，在识破彼此的伪装后形成一种既排斥又吸引的扭曲关系。玛拉是唯一能看到叙述者与泰勒是同一人的证人，她的存在不断打破叙述者的自我欺骗。两人关系是伪装者之间的真实连接与自我欺骗的持续碰撞。",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    }
+  ],
+  "iconic_moments": [
+    {
+      "id": "moment_fight_club_first_punch",
+      "work_id": "work_fight_club",
+      "name": "压抑者在停车场请求陌生人一拳打破文明外壳",
+      "participant_ids": [
+        "known_narrator_fight_club",
+        "known_tyler_durden_fight_club"
+      ],
+      "setting": "酒吧停车场深夜",
+      "conflict_type": "自我打破",
+      "emotional_arc": [
+        "压抑",
+        "请求",
+        "疼痛",
+        "释放"
+      ],
+      "visual_actions": [
+        "压抑者在停车场向刚认识的陌生人请求被打一拳",
+        "陌生人在犹豫后出拳两人扭打在一起",
+        "在疼痛中压抑者露出久违的笑容感受到存在感",
+        "搏斗吸引旁观者两人决定定期重复"
+      ],
+      "reusable_beats": [
+        "被文明规则压抑到麻木的人主动寻求身体疼痛作为存在证明",
+        "陌生人在犹豫后答应暴力请求打破社交禁忌",
+        "在疼痛中双方获得情感释放和真实连接感",
+        "一次私人搏斗演变为群体运动的开端"
+      ],
+      "dialogue_patterns": [
+        "以异常平静的语气提出反常识的暴力请求",
+        "在疼痛中以笑声表达释放感而非痛苦",
+        "在搏斗后以简短交流确认彼此的真实感"
+      ],
+      "abstraction": "提取被文明规则压抑到麻木的人主动寻求身体疼痛作为存在证明的结构，核心张力来自文明外壳与原始冲动之间的碰撞以及疼痛作为情感释放媒介的反直觉力量，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "moment_fight_club_revelation",
+      "work_id": "work_fight_club",
+      "name": "压抑者在追踪反叛另我的过程中发现两人是同一人格",
+      "participant_ids": [
+        "known_narrator_fight_club",
+        "known_tyler_durden_fight_club"
+      ],
+      "setting": "多城市追踪后的酒店房间",
+      "conflict_type": "身份揭示",
+      "emotional_arc": [
+        "困惑",
+        "追踪",
+        "震惊",
+        "对峙"
+      ],
+      "visual_actions": [
+        "压抑者循线索在多个城市追踪反叛另我的活动痕迹",
+        "在不同城市被陌生人以另我的名字称呼引发困惑",
+        "在酒店房间中另我出现在面前揭示两人是同一人格",
+        "压抑者在震惊中面对自己制造的混乱后果"
+      ],
+      "reusable_beats": [
+        "追踪者在循线索追查目标的过程中逐步发现目标就是自己",
+        "在不同地点被陌生人以另一个名字称呼引发身份困惑",
+        "在独处时另一个自我现身揭示人格分裂的真相",
+        "追踪者在震惊中面对自己作为源头制造的混乱"
+      ],
+      "dialogue_patterns": [
+        "在追踪中以困惑的语气向证人描述被追踪者",
+        "在真相揭示时以否认和恐惧回应",
+        "在对峙中以颤抖声音质问另一个自我"
+      ],
+      "abstraction": "提取追踪者在追查目标过程中发现目标就是自己的分裂人格的结构，核心张力来自自我追查的循环悖论与身份真相的颠覆性揭示，不复刻原作具体台词、角色造型或场景设计。",
+      "rights_status": "reference_only",
+      "risk_level": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fight_Club",
+          "source_name": "Wikipedia",
+          "page_title": "Fight Club",
+          "published_at": null,
+          "collected_at": "2026-09-01T00:00:00.000Z"
+        }
+      ],
+      "last_verified_at": "2026-09-01T00:00:00.000Z"
+    }
+  ]
+}
